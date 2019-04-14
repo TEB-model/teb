@@ -6,9 +6,9 @@
 ! http://www.cecill.info/licences/Licence_CeCILL-C_V1-fr.txt
 ! The CeCILL-C licence is compatible with L-GPL
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-MODULE MODI_GARDEN_PROPERTIES
+MODULE MODI_TEB_VEG_PROPERTIES
 INTERFACE
-      SUBROUTINE GARDEN_PROPERTIES(PDIR_SW, PSCA_SW, PSW_BANDS, KSW,      &
+      SUBROUTINE TEB_VEG_PROPERTIES(PDIR_SW, PSCA_SW, PSW_BANDS, KSW,      &
                                    PTS, PEMIS, PALB, PTA                  )  
 
 REAL, DIMENSION(:),   INTENT(IN)   :: PTA                ! air temperature
@@ -19,6 +19,6 @@ INTEGER,              INTENT(IN)   :: KSW                ! number of short-wave 
 REAL, DIMENSION(:)  , INTENT(OUT)  :: PTS                ! radiative surface temperature
 REAL, DIMENSION(:)  , INTENT(OUT)  :: PEMIS              ! green areas emissivity
 REAL, DIMENSION(:)  , INTENT(OUT)  :: PALB               ! green areas albedo
-END SUBROUTINE GARDEN_PROPERTIES
+END SUBROUTINE TEB_VEG_PROPERTIES
 END INTERFACE
-END MODULE MODI_GARDEN_PROPERTIES
+END MODULE MODI_TEB_VEG_PROPERTIES

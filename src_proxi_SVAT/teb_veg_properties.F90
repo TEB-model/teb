@@ -7,11 +7,11 @@
 ! The CeCILL-C licence is compatible with L-GPL
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !     #########
-      SUBROUTINE GARDEN_PROPERTIES(PDIR_SW, PSCA_SW, PSW_BANDS, KSW,      &
+      SUBROUTINE TEB_VEG_PROPERTIES(PDIR_SW, PSCA_SW, PSW_BANDS, KSW,      &
                                    PTS, PEMIS, PALB, PTA                  )  
 !     ##########################################################################
 !
-!!****  *GARDEN_PROPERTIES*  
+!!****  *TEB_VEG_PROPERTIES*  
 !!
 !!    PURPOSE
 !!    -------
@@ -76,5 +76,5 @@ PTS  = PTA
 !
 !-------------------------------------------------------------------------------
 !
-END SUBROUTINE GARDEN_PROPERTIES
+END SUBROUTINE TEB_VEG_PROPERTIES
 

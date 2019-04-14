@@ -1,178 +1,135 @@
 !auto_modi:spll_avg_urban_fluxes.D
 MODULE MODI_AVG_URBAN_FLUXES
 INTERFACE
-    SUBROUTINE AVG_URBAN_FLUXES(                                                &
-                       PTS_TOWN, PEMIS_TOWN,                                    &
-                       PT_CANYON, PQ_CANYON,                                    &
-                       PT_LOWCAN, PQ_LOWCAN,                                    &
-                       PTS_ROOF,PTS_ROAD,PTS_WALL_A,PTS_WALL_B,PTS_GARDEN,      &
-                       PTA, PQA, PRHOA, PPS,                                    &
-                       PH_TRAFFIC, PLE_TRAFFIC, PH_INDUSTRY, PLE_INDUSTRY,      &
-                       PBLD, PROAD, PGARDEN, PWALL_O_HOR, PWALL_O_GRND,         &
-                       PFRAC_GR,                                                &
-                       PEMIS_ROOF, PESNOW_ROOF, PEMIS_GREENROOF,                &
-                       PLW_RAD,                                                 &
-                       PABS_LW_ROOF, PABS_LW_WALL_A, PABS_LW_WALL_B,            &
-                       PABS_LW_ROAD, PABS_LW_GARDEN, PABS_LW_GREENROOF,         &
-                       PABS_LW_SNOW_ROOF, PABS_LW_SNOW_ROAD,                    &
-                       PAC_ROOF, PAC_ROOF_WAT,                                  &
-                       PAC_WALL, PAC_ROAD, PAC_ROAD_WAT, PAC_TOP,               &
-                       PAC_GARDEN,                                              &
-                       PQSAT_GARDEN, PAC_AGG_GARDEN, PHU_AGG_GARDEN,            &
-                       PQSAT_ROOF, PQSAT_ROAD,                                  &
-                       PDELT_ROOF, PDELT_ROAD,                                  &
-                       PROOF_FRAC, PWALL_FRAC, PROAD_FRAC, PGARDEN_FRAC,        &
-                       PTOTS_O_HORS,                                            &
-                       PDF_ROOF, PDN_ROOF, PDF_ROAD, PDN_ROAD,                  &
-                       PRN_ROOF, PH_ROOF, PLE_ROOF, PGFLUX_ROOF,                &
-                       PRN_ROAD, PH_ROAD, PLE_ROAD, PGFLUX_ROAD,                &
-                       PRN_GARDEN, PH_GARDEN, PLE_GARDEN, PGFLUX_GARDEN,        &
-                       PRN_WALL_A, PH_WALL_A, PLE_WALL_A, PGFLUX_WALL_A,        &
-                       PRN_WALL_B, PH_WALL_B, PLE_WALL_B, PGFLUX_WALL_B,        &
-                       PLEW_ROOF, PLESNOW_ROOF,                                 &
-                       PLEW_ROAD, PLESNOW_ROAD, PHSNOW_ROAD,                    &
-                       PEVAP_GARDEN, PEVAP_GREENROOF,                           &
-                       PRN_GRND, PH_GRND, PLE_GRND, PGFLUX_GRND,                &
-                       PRN_TOWN, PH_TOWN, PLE_TOWN, PGFLUX_TOWN, PEVAP_TOWN,    &
-                       PRUNOFF_GARDEN,PRUNOFF_ROAD,PRUNOFF_STRLROOF,            &
-                       PRUNOFF_GREENROOF, PDRAIN_GREENROOF, PRUNOFF_TOWN,       &
-                       PABS_LW_PANEL, PEMIS_PANEL, PFRAC_PANEL, PRN_PANEL,      &
-                       PH_PANEL,                                                &
-                       PH_WASTE, PLE_WASTE, PF_WASTE_CAN,                       &
-                       PABS_LW_WIN, PT_WIN1, PGR, PEMIT_LW_ROAD,                &
-                       PEMIT_LW_GARDEN, PEMIT_LW_GRND, HBEM,                    &
-                       PSVF_ROAD, PSVF_GARDEN, PSVF_WALL, PGARDEN_O_GRND,       &
-                       PROAD_O_GRND,                                            &
-                       PEMIS_ROAD, PESNOW_ROAD, PEMIS_WALL, PEMIS_GARDEN,       &
-                       OCANOPY                                                  )  
+    SUBROUTINE AVG_URBAN_FLUXES(TOP, T, B, TPN, DMT,                               &
+                                PTS_TWN, PEMIS_TWN,  PT_CAN,                       &
+                                PQ_CAN, PT_LOWCAN, PQ_LOWCAN, PTA, PQA, PRHOA, PPS,&
+                                PH_TRAFFIC, PLE_TRAFFIC, PWL_O_GRND, PESN_RF,      &
+                                PEMIS_GR, PLW_RAD, PAC_RF, PAC_RF_WAT, PAC_WL,     &
+                                PAC_RD, PAC_RD_WAT, PAC_TOP, PAC_GD, PQSAT_GD,     &
+                                PAC_AGG_GD, PHU_AGG_GD, PQSAT_RF, PQSAT_RD,        &
+                                PDELT_RF, PDELT_RD, PRF_FRAC, PWL_FRAC, PRD_FRAC,  &
+                                PGD_FRAC, PTOTS_O_HORS, PDF_RF, PDN_RF, PDF_RD,    &
+                                PDN_RD, PLE_WL_A, PLE_WL_B, PLEW_RF, PLESN_RF,     &
+                                PLEW_RD, PLESN_RD, PHSN_RD,                        &
+                                PTSRAD_GD, PRN_GD, PH_GD, PLE_GD, PGFLUX_GD, PEVAP_GD,&
+                                PRUNOFF_GD, PEVAP_GR, PRUNOFF_GR, PDRAIN_GR,       &
+                                PRN_GRND, PH_GRND, PLE_GRND, PGFLX_GRND,           &
+                                PRN_TWN, PH_TWN, PLE_TWN, PGFLX_TWN, PEVAP_TWN,    &
+                                PEMIT_LW_RD, PEMIT_LW_GD, PEMIT_LW_GRND, PEMIS_GD  )
+USE MODD_TEB_OPTION_n, ONLY : TEB_OPTIONS_t
+USE MODD_TEB_n, ONLY : TEB_t
+USE MODD_BEM_n, ONLY : BEM_t
+USE MODD_TEB_PANEL_n, ONLY : TEB_PANEL_t
+USE MODD_DIAG_MISC_TEB_n, ONLY : DIAG_MISC_TEB_t
 IMPLICIT NONE
-REAL, DIMENSION(:), INTENT(OUT)   :: PTS_TOWN          ! town surface temperature
-REAL, DIMENSION(:), INTENT(OUT)   :: PEMIS_TOWN        ! town equivalent emissivity
-REAL, DIMENSION(:), INTENT(INOUT) :: PT_CANYON         ! canyon air temperature
-REAL, DIMENSION(:), INTENT(INOUT) :: PQ_CANYON         ! canyon air specific humidity
+TYPE(TEB_OPTIONS_t), INTENT(INOUT) :: TOP
+TYPE(TEB_t), INTENT(INOUT) :: T
+TYPE(BEM_t), INTENT(INOUT) :: B
+TYPE(TEB_PANEL_t), INTENT(INOUT) :: TPN
+TYPE(DIAG_MISC_TEB_t), INTENT(INOUT) :: DMT
+!
+REAL, DIMENSION(:), INTENT(OUT)   :: PTS_TWN           ! town surface temperature
+REAL, DIMENSION(:), INTENT(OUT)   :: PEMIS_TWN         ! town equivalent emissivity
+REAL, DIMENSION(:), INTENT(INOUT) :: PT_CAN            ! canyon air temperature
+REAL, DIMENSION(:), INTENT(INOUT) :: PQ_CAN            ! canyon air specific humidity
 REAL, DIMENSION(:), INTENT(IN)    :: PT_LOWCAN         ! low canyon air temperature
 REAL, DIMENSION(:), INTENT(IN)    :: PQ_LOWCAN         ! low canyon air specific humidity
-REAL, DIMENSION(:), INTENT(IN)    :: PTS_ROOF          ! roof surface temperature
-REAL, DIMENSION(:), INTENT(IN)    :: PTS_ROAD          ! road surface temperature
-REAL, DIMENSION(:), INTENT(IN)    :: PTS_WALL_A        ! wall surface temperature
-REAL, DIMENSION(:), INTENT(IN)    :: PTS_WALL_B        ! wall surface temperature
-REAL, DIMENSION(:), INTENT(IN)    :: PTS_GARDEN        ! green area surface temperature
+!
 REAL, DIMENSION(:), INTENT(IN)    :: PTA               ! temperature at roof level
 REAL, DIMENSION(:), INTENT(IN)    :: PQA               ! specific humidity
+                                                       ! at roof level
 REAL, DIMENSION(:), INTENT(IN)    :: PRHOA             ! air density
+                                                       ! at the lowest level
 REAL, DIMENSION(:), INTENT(IN)    :: PPS               ! surface pressure
 REAL, DIMENSION(:), INTENT(IN)    :: PH_TRAFFIC        ! anthropogenic sensible
+!                                                      ! heat fluxes due to traffic
 REAL, DIMENSION(:), INTENT(IN)    :: PLE_TRAFFIC       ! anthropogenic latent
-REAL, DIMENSION(:), INTENT(IN)    :: PH_INDUSTRY       ! anthropogenic sensible
-REAL, DIMENSION(:), INTENT(IN)    :: PLE_INDUSTRY      ! anthropogenic latent
-REAL, DIMENSION(:), INTENT(IN)    :: PBLD              ! fraction of buildings
-REAL, DIMENSION(:), INTENT(IN)    :: PROAD             ! fraction of roads
-REAL, DIMENSION(:), INTENT(IN)    :: PGARDEN           ! fraction of green areas
-REAL, DIMENSION(:), INTENT(IN)    :: PWALL_O_HOR       ! wall Surf. / (bld+road+green) Surf.
-REAL, DIMENSION(:), INTENT(IN)    :: PWALL_O_GRND      ! wall Surf. / ground (road+green) Surf.
-REAL, DIMENSION(:), INTENT(IN)    :: PFRAC_GR          ! fraction of green roofs
-REAL, DIMENSION(:), INTENT(IN)    :: PEMIS_ROOF        ! roof emissivity
-REAL, DIMENSION(:), INTENT(IN)    :: PESNOW_ROOF       ! snow roof emissivity
-REAL, DIMENSION(:), INTENT(IN)    :: PEMIS_GREENROOF   ! green roof emissivity
+!                                                      ! heat fluxes due to traffic
+REAL, DIMENSION(:), INTENT(IN)    :: PWL_O_GRND        ! wall Surf. / ground (road+green) Surf.
+!   
+REAL, DIMENSION(:), INTENT(IN)    :: PESN_RF           ! snow roof emissivity
+!
+REAL, DIMENSION(:), INTENT(IN)    :: PEMIS_GR          ! green roof emissivity
+!
 REAL, DIMENSION(:), INTENT(IN)    :: PLW_RAD           ! incoming longwave rad.
-REAL, DIMENSION(:), INTENT(IN)    :: PABS_LW_ROOF      ! absorbed LW rad. by roof
-REAL, DIMENSION(:), INTENT(IN)    :: PABS_LW_WALL_A    ! absorbed LW rad. by wall
-REAL, DIMENSION(:), INTENT(IN)    :: PABS_LW_WALL_B    ! absorbed LW rad. by wall
-REAL, DIMENSION(:), INTENT(IN)    :: PABS_LW_ROAD      ! absorbed LW rad. by road
-REAL, DIMENSION(:), INTENT(IN)    :: PABS_LW_GARDEN    ! absorbed LW rad. by green areas
-REAL, DIMENSION(:), INTENT(IN)    :: PABS_LW_GREENROOF ! absorbed LW rad. by green roofs
-REAL, DIMENSION(:), INTENT(IN)    :: PABS_LW_SNOW_ROOF ! abs. LW rad. by snow
-REAL, DIMENSION(:), INTENT(IN)    :: PABS_LW_SNOW_ROAD ! abs. LW rad. by snow
-REAL, DIMENSION(:), INTENT(IN)    :: PAC_ROOF          ! surface conductance
-REAL, DIMENSION(:), INTENT(IN)    :: PAC_ROOF_WAT      ! surface conductance
-REAL, DIMENSION(:), INTENT(IN)    :: PAC_WALL          ! surface conductance
-REAL, DIMENSION(:), INTENT(IN)    :: PAC_ROAD          ! surface conductance
-REAL, DIMENSION(:), INTENT(IN)    :: PAC_ROAD_WAT      ! surface conductance
+!
+REAL, DIMENSION(:), INTENT(IN)    :: PAC_RF            ! surface conductance
+!                                                      ! for heat transfers
+!                                                      ! above roofs
+REAL, DIMENSION(:), INTENT(IN)    :: PAC_RF_WAT        ! surface conductance
+!                                                      ! for heat transfers
+!                                                      ! above roofs (for water)
+REAL, DIMENSION(:), INTENT(IN)    :: PAC_WL            ! surface conductance
+!                                                      ! for heat transfer
+!                                                      ! between wall and canyon
+REAL, DIMENSION(:), INTENT(IN)    :: PAC_RD            ! surface conductance
+!                                                      ! for heat transfers
+!                                                      ! between road and canyon
+REAL, DIMENSION(:), INTENT(IN)    :: PAC_RD_WAT        ! surface conductance
+!                                                      ! for heat transfers
+!                                                      ! inside canyon (for water)
 REAL, DIMENSION(:), INTENT(IN)    :: PAC_TOP           ! aerodynamical conductance
-REAL, DIMENSION(:), INTENT(IN)    :: PAC_GARDEN        ! aerodynamical conductance
-REAL, DIMENSION(:), INTENT(IN)    :: PQSAT_GARDEN      ! q_sat(Ts)
-REAL, DIMENSION(:), INTENT(IN)    :: PAC_AGG_GARDEN    ! aggregated aerodyn resistance for green areas
-REAL, DIMENSION(:), INTENT(IN)    :: PHU_AGG_GARDEN    ! aggregated relative humidity for green areas
-REAL, DIMENSION(:), INTENT(IN)    :: PQSAT_ROOF        ! q_sat(Ts)
-REAL, DIMENSION(:), INTENT(IN)    :: PQSAT_ROAD        ! q_sat(Ts)
-REAL, DIMENSION(:), INTENT(IN)    :: PDELT_ROOF        ! water fraction on snow-free
-REAL, DIMENSION(:), INTENT(IN)    :: PDELT_ROAD        ! roof and roads
-REAL, DIMENSION(:), INTENT(IN)    :: PROOF_FRAC        ! roof, wall,
-REAL, DIMENSION(:), INTENT(IN)    :: PWALL_FRAC        ! road, and green area
-REAL, DIMENSION(:), INTENT(IN)    :: PROAD_FRAC        ! fractions
-REAL, DIMENSION(:), INTENT(IN)    :: PGARDEN_FRAC      ! of exchange surf.
-REAL, DIMENSION(:), INTENT(IN)    :: PTOTS_O_HORS      ! total canyon+roof surface
-REAL, DIMENSION(:), INTENT(IN)    :: PDF_ROOF          ! snow-free    roof fraction
-REAL, DIMENSION(:), INTENT(IN)    :: PDN_ROOF          ! snow-covered roof fraction
-REAL, DIMENSION(:), INTENT(IN)    :: PDF_ROAD          ! snow-free    road fraction
-REAL, DIMENSION(:), INTENT(IN)    :: PDN_ROAD          ! snow-covered road fraction
-REAL, DIMENSION(:), INTENT(IN)    :: PRN_ROOF          ! net radiation over roof
-REAL, DIMENSION(:), INTENT(IN)    :: PH_ROOF           ! sensible heat flux over roof
-REAL, DIMENSION(:), INTENT(IN)    :: PLE_ROOF          ! latent heat flux over roof
-REAL, DIMENSION(:), INTENT(IN)    :: PGFLUX_ROOF       ! flux through the roof
-REAL, DIMENSION(:), INTENT(IN)    :: PRN_ROAD          ! net radiation over road
-REAL, DIMENSION(:), INTENT(IN)    :: PH_ROAD           ! sensible heat flux over road
-REAL, DIMENSION(:), INTENT(IN)    :: PLE_ROAD          ! latent heat flux over road
-REAL, DIMENSION(:), INTENT(IN)    :: PGFLUX_ROAD       ! flux through the road
-REAL, DIMENSION(:), INTENT(IN)    :: PRN_GARDEN        ! net radiation over green areas
-REAL, DIMENSION(:), INTENT(IN)    :: PH_GARDEN         ! sensible heat flux over green areas
-REAL, DIMENSION(:), INTENT(IN)    :: PLE_GARDEN        ! latent heat flux over green areas
-REAL, DIMENSION(:), INTENT(IN)    :: PGFLUX_GARDEN     ! flux through the green areas
-REAL, DIMENSION(:), INTENT(IN)    :: PRN_WALL_A        ! net radiation over wall
-REAL, DIMENSION(:), INTENT(IN)    :: PH_WALL_A         ! sensible heat flux over wall
-REAL, DIMENSION(:), INTENT(IN)    :: PLE_WALL_A        ! latent heat flux over wall
-REAL, DIMENSION(:), INTENT(IN)    :: PGFLUX_WALL_A     ! flux through the wall
-REAL, DIMENSION(:), INTENT(IN)    :: PRN_WALL_B        ! net radiation over wall
-REAL, DIMENSION(:), INTENT(IN)    :: PH_WALL_B         ! sensible heat flux over wall
-REAL, DIMENSION(:), INTENT(IN)    :: PLE_WALL_B        ! latent heat flux over wall
-REAL, DIMENSION(:), INTENT(IN)    :: PGFLUX_WALL_B     ! flux through the wall
-REAL, DIMENSION(:), INTENT(IN)    :: PLEW_ROOF         ! latent heat flux of snowfree roof
-REAL, DIMENSION(:), INTENT(IN)    :: PLESNOW_ROOF      ! latent heat flux over snow
-REAL, DIMENSION(:), INTENT(IN)    :: PLEW_ROAD         ! latent heat flux of snowfree road
-REAL, DIMENSION(:), INTENT(IN)    :: PLESNOW_ROAD      ! latent heat flux over snow
-REAL, DIMENSION(:), INTENT(IN)    :: PHSNOW_ROAD       ! sensible heat flux over snow
-REAL, DIMENSION(:), INTENT(IN)    :: PEVAP_GARDEN      ! evaporation over gardens
-REAL, DIMENSION(:), INTENT(IN)    :: PEVAP_GREENROOF   ! evaporation over green roofs
-REAL, DIMENSION(:), INTENT(IN)    :: PRUNOFF_GARDEN    ! surface runoff over green areas      (kg/m2/s)
-REAL, DIMENSION(:), INTENT(IN)    :: PRUNOFF_ROAD      ! surface runoff over roads            (kg/m2/s)
-REAL, DIMENSION(:), INTENT(IN)    :: PRUNOFF_STRLROOF  ! surface runoff over structural roofs (kg/m2/s)
-REAL, DIMENSION(:), INTENT(IN)    :: PRUNOFF_GREENROOF ! surface runoff over green roofs      (kg/m2/s)
-REAL, DIMENSION(:), INTENT(IN)    :: PDRAIN_GREENROOF  ! outlet drainage at green roof base   (kg/m2/s)
-REAL, DIMENSION(:), INTENT(OUT)   :: PRN_GRND          ! net radiation over ground
-REAL, DIMENSION(:), INTENT(OUT)   :: PH_GRND           ! sensible heat flux over ground
-REAL, DIMENSION(:), INTENT(OUT)   :: PLE_GRND          ! latent heat flux over ground
-REAL, DIMENSION(:), INTENT(OUT)   :: PGFLUX_GRND       ! flux through the ground
-REAL, DIMENSION(:), INTENT(OUT)   :: PRN_TOWN          ! net radiation over town
-REAL, DIMENSION(:), INTENT(OUT)   :: PH_TOWN           ! sensible heat flux over town
-REAL, DIMENSION(:), INTENT(OUT)   :: PLE_TOWN          ! latent heat flux over town
-REAL, DIMENSION(:), INTENT(OUT)   :: PGFLUX_TOWN       ! flux through the ground for town
-REAL, DIMENSION(:), INTENT(OUT)   :: PEVAP_TOWN        ! evaporation (kg/m2/s)
-REAL, DIMENSION(:), INTENT(OUT)   :: PRUNOFF_TOWN      ! aggregated runoff for town (kg/m2/s)
-REAL, DIMENSION(:), INTENT(IN)    :: PABS_LW_PANEL     ! absorbed LW radiation by solar panels
-REAL, DIMENSION(:), INTENT(IN)    :: PEMIS_PANEL       ! emissivity of solar panels
-REAL, DIMENSION(:), INTENT(IN)    :: PFRAC_PANEL       ! fraction of solar panels on roofs
-REAL, DIMENSION(:), INTENT(IN)    :: PRN_PANEL         ! net radiation of solar panels
-REAL, DIMENSION(:), INTENT(IN)    :: PH_PANEL          ! sensible heat flux of solar panels
-REAL, DIMENSION(:), INTENT(IN)    :: PH_WASTE     ! sensible waste heat released by HVAC systems
-REAL, DIMENSION(:), INTENT(IN)    :: PLE_WASTE    ! latent waste heat released by HVAC systems
-REAL, DIMENSION(:), INTENT(IN)    :: PF_WASTE_CAN ! fraction of waste heat released into the canyon
-REAL, DIMENSION(:), INTENT(IN)    :: PABS_LW_WIN  ! absorbed LW radiation by windows
-REAL, DIMENSION(:), INTENT(IN)    :: PT_WIN1      ! window outdoor temperature
-REAL, DIMENSION(:), INTENT(IN)    :: PGR          ! glazing ratio
-REAL, DIMENSION(:), INTENT(IN)    :: PEMIT_LW_ROAD ! LW emitted by the road (W/m2 road)
-REAL, DIMENSION(:), INTENT(IN)    :: PEMIT_LW_GARDEN ! LW emitted by the garden (W/m2 garden)
+!                                                      ! between atmosphere and
+!                                                      ! canyon top
+REAL, DIMENSION(:), INTENT(IN)    :: PAC_GD            ! aerodynamical conductance
+!                                                      ! between atmosphere and
+!                                                      ! green areas
+REAL, DIMENSION(:), INTENT(IN)    :: PQSAT_GD      ! q_sat(Ts)
+REAL, DIMENSION(:), INTENT(IN)    :: PAC_AGG_GD    ! aggregated aerodyn resistance for green areas
+REAL, DIMENSION(:), INTENT(IN)    :: PHU_AGG_GD    ! aggregated relative humidity for green areas
+!
+REAL, DIMENSION(:), INTENT(IN)    :: PQSAT_RF        ! q_sat(Ts)
+REAL, DIMENSION(:), INTENT(IN)    :: PQSAT_RD        ! q_sat(Ts)
+REAL, DIMENSION(:), INTENT(IN)    :: PDELT_RF        ! water fraction on snow-free
+REAL, DIMENSION(:), INTENT(IN)    :: PDELT_RD        ! roof and roads
+REAL, DIMENSION(:), INTENT(IN)    :: PRF_FRAC        ! roof, wall,
+REAL, DIMENSION(:), INTENT(IN)    :: PWL_FRAC        ! road, and green area
+REAL, DIMENSION(:), INTENT(IN)    :: PRD_FRAC        ! fractions
+REAL, DIMENSION(:), INTENT(IN)    :: PGD_FRAC        ! of exchange surf.
+REAL, DIMENSION(:), INTENT(IN)    :: PTOTS_O_HORS    ! total canyon+roof surface
+!                                                    ! over horizontal surface
+REAL, DIMENSION(:), INTENT(IN)    :: PDF_RF          ! snow-free    roof fraction
+REAL, DIMENSION(:), INTENT(IN)    :: PDN_RF          ! snow-covered roof fraction
+REAL, DIMENSION(:), INTENT(IN)    :: PDF_RD          ! snow-free    road fraction
+REAL, DIMENSION(:), INTENT(IN)    :: PDN_RD          ! snow-covered road fraction
+!
+REAL, DIMENSION(:), INTENT(IN)    :: PLE_WL_A        ! latent heat flux over wall
+REAL, DIMENSION(:), INTENT(IN)    :: PLE_WL_B        ! latent heat flux over wall
+!
+REAL, DIMENSION(:), INTENT(IN)    :: PLEW_RF         ! latent heat flux of snowfree roof
+REAL, DIMENSION(:), INTENT(IN)    :: PLESN_RF        ! latent heat flux over snow
+REAL, DIMENSION(:), INTENT(IN)    :: PLEW_RD         ! latent heat flux of snowfree road
+REAL, DIMENSION(:), INTENT(IN)    :: PLESN_RD        ! latent heat flux over snow
+REAL, DIMENSION(:), INTENT(IN)    :: PHSN_RD         ! sensible heat flux over snow
+
+REAL, DIMENSION(:), INTENT(IN)    :: PTSRAD_GD     ! green area surface temperature
+REAL, DIMENSION(:), INTENT(IN)    :: PRN_GD        ! net radiation over green areas
+REAL, DIMENSION(:), INTENT(IN)    :: PH_GD         ! sensible heat flux over green areas
+REAL, DIMENSION(:), INTENT(IN)    :: PLE_GD        ! latent heat flux over green areas
+REAL, DIMENSION(:), INTENT(IN)    :: PGFLUX_GD     ! flux through the green areas
+REAL, DIMENSION(:), INTENT(IN)    :: PEVAP_GD      ! evaporation over gardens
+REAL, DIMENSION(:), INTENT(IN)    :: PRUNOFF_GD    ! surface runoff over green areas      (kg/m2/s)
+REAL, DIMENSION(:), INTENT(IN)    :: PEVAP_GR      ! evaporation over green roofs
+REAL, DIMENSION(:), INTENT(IN)    :: PRUNOFF_GR    ! surface runoff over green roofs      (kg/m2/s)
+REAL, DIMENSION(:), INTENT(IN)    :: PDRAIN_GR     ! outlet drainage at green roof base   (kg/m2/s)
+!
+!
+REAL, DIMENSION(:), INTENT(OUT)   :: PRN_GRND         ! net radiation over ground
+REAL, DIMENSION(:), INTENT(OUT)   :: PH_GRND          ! sensible heat flux over ground
+REAL, DIMENSION(:), INTENT(OUT)   :: PLE_GRND         ! latent heat flux over ground
+REAL, DIMENSION(:), INTENT(OUT)   :: PGFLX_GRND       ! flux through the ground
+REAL, DIMENSION(:), INTENT(OUT)   :: PRN_TWN          ! net radiation over town
+REAL, DIMENSION(:), INTENT(OUT)   :: PH_TWN           ! sensible heat flux over town
+REAL, DIMENSION(:), INTENT(OUT)   :: PLE_TWN          ! latent heat flux over town
+REAL, DIMENSION(:), INTENT(OUT)   :: PGFLX_TWN        ! flux through the ground for town
+REAL, DIMENSION(:), INTENT(OUT)   :: PEVAP_TWN        ! evaporation (kg/m2/s)
+!
+REAL, DIMENSION(:), INTENT(IN)    :: PEMIT_LW_RD   ! LW emitted by the road (W/m2 road)
+REAL, DIMENSION(:), INTENT(IN)    :: PEMIT_LW_GD   ! LW emitted by the garden (W/m2 garden)
 REAL, DIMENSION(:), INTENT(OUT)   :: PEMIT_LW_GRND ! LW emitted by the ground (road+garden) (W/m2 ground)
- CHARACTER(LEN=3), INTENT(IN)      :: HBEM ! Building Energy model 'DEF' or 'BEM'
-REAL, DIMENSION(:), INTENT(IN)    :: PGARDEN_O_GRND! garden surf. / (road+garden surf.) 
-REAL, DIMENSION(:), INTENT(IN)    :: PROAD_O_GRND  ! road surf.   / (road+garden surf.) 
-REAL, DIMENSION(:), INTENT(IN)    :: PSVF_ROAD     ! road sky view factor
-REAL, DIMENSION(:), INTENT(IN)    :: PSVF_GARDEN   ! garden sky view factor
-REAL, DIMENSION(:), INTENT(IN)    :: PSVF_WALL     ! wall sky view factor
-REAL, DIMENSION(:), INTENT(IN)    :: PEMIS_ROAD    ! snow free road emissivity
-REAL, DIMENSION(:), INTENT(IN)    :: PESNOW_ROAD   ! snow (road) emissivity
-REAL, DIMENSION(:), INTENT(IN)    :: PEMIS_WALL    ! wall emissivity
-REAL, DIMENSION(:), INTENT(IN)    :: PEMIS_GARDEN  ! garden emissivity
-LOGICAL,            INTENT(IN)    :: OCANOPY ! is canopy active ?
+!
+REAL, DIMENSION(:), INTENT(IN)    :: PEMIS_GD  ! garden emissivity
 END SUBROUTINE AVG_URBAN_FLUXES
 END INTERFACE
 END MODULE MODI_AVG_URBAN_FLUXES

@@ -96,7 +96,7 @@ ENDDO
 
 IF (LHOOK) CALL DR_HOOK('MODE_CONV_DOE:CHTC_VERT_DOE',1,ZHOOK_HANDLE)
 !-------------------------------------------------------------------------------
- CONTAINS
+CONTAINS
 SUBROUTINE FIJ(PE, PF11, PF13)
 REAL, DIMENSION(:), INTENT(IN) :: PE !sky clearness factor
 REAL, DIMENSION(:), INTENT(OUT):: PF11

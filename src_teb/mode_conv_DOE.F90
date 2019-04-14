@@ -58,7 +58,7 @@ INTERFACE CHTC_ROUGH_DOE
         MODULE PROCEDURE CHTC_ROUGH_DOE_1D
 END INTERFACE
 !
- CONTAINS
+CONTAINS
 !----------------------------
 !#############################################
 FUNCTION CHTC_VERT_DOE_0D(PTS, PTA) RESULT(PCHTC)

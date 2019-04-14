@@ -50,13 +50,14 @@ USE MODD_TYPE_DATE_SURF
 USE MODE_THERMOS
 USE MODD_REPROD_OPER, ONLY : CQSAT
 !
+USE MODI_INIT_SURFCONSPHY
 USE MODI_SUNPOS
 USE MODI_OL_READ_ATM
 USE MODI_OL_ALLOC_ATM
 USE MODI_OL_TIME_INTERP_ATM
-USE MODI_TEB_GARDEN
-USE MODI_BEM_MORPHO
-USE MODI_WINDOW_DATA
+USE MODI_TEB_GARDEN_STRUCT
+USE MODI_WINDOW_DATA_STRUCT
+USE MODI_BEM_MORPHO_STRUCT
 USE MODI_CIRCUMSOLAR_RAD
 !
 USE MODD_FORC_ATM, ONLY: CSV         ,&! name of all scalar variables
@@ -296,9 +297,6 @@ REAL,DIMENSION(1)  :: ZGFLUX_WALL_B    ! flux through the wall                  
                                                                                       ! ||   ||
 REAL,DIMENSION(1)  :: ZG_GREENROOF_ROOF! heat flux between base of greenroof          ! ||   ||
 !                                      ! and structural roof                          ! ||   ||
-REAL,DIMENSION(1)  :: ZRUNOFF_GREENROOF! greenroof surface runoff                     ! ||   ||
-REAL,DIMENSION(1)  :: ZIRRIG_GREENROOF ! greenroof surface irrigation                 ! ||   ||
-REAL,DIMENSION(1)  :: ZDRAIN_GREENROOF ! greenroof total vertical drainage            ! ||   ||
                                                                                       ! ||   ||
 REAL,DIMENSION(1)  :: ZRNSNOW_ROOF = 0.0 ! net radiation over snow                    ! ||   ||
 REAL,DIMENSION(1)  :: ZRNSNOW_ROAD = 0.0 ! net radiation over snow                    ! ||   ||
@@ -323,6 +321,8 @@ CHARACTER(LEN=6)    :: CCOOL_COIL        ! option for cooling device type       
 CHARACTER(LEN=6)    :: CHEAT_COIL        ! option for heating device type             ! ||   ||
 REAL, DIMENSION(1)  :: ZF_WATER_COND     ! fraction of evaporation for the condensers ! ||   ||
 CHARACTER(LEN=4), DIMENSION(1) :: HNATVENT                                            ! ||   ||
+REAL, DIMENSION(1)  :: ZNATVENT          ! flag to describe surventilation system for ! ||   ||
+!                                        ! i/o 0 for NONE, 1 for MANU and 2 for AUTO  ! ||   ||
 REAL, DIMENSION(1)  :: ZAUX_MAX = 5. ! Auxiliar variable for autosize calcs (not used)! ||   ||
 REAL, DIMENSION(:,:), ALLOCATABLE :: ZT_FLOOR ! Floor layers temperatures [K]         ! ||   ||
 REAL, DIMENSION(:,:), ALLOCATABLE :: ZT_MASS  ! Internal mass layers temperatures [K] ! ||   ||
@@ -445,6 +445,8 @@ REAL, DIMENSION(1)  :: ZIRRIG_ROAD       ! road irrigation during current time-s
 !                                                                                     ! ||   ||
 ! new arguments for shading, schedule or natural ventilation                          ! ||   ||
 LOGICAL,DIMENSION(1) :: LSHADE            ! Flag to use shading devices               ! ||   ||
+REAL,   DIMENSION(1) :: ZSHADE            ! flag to activate shading devices          ! ||   ||
+!                                         ! -> REAL for i/o 0. or 1                   ! ||   ||
 LOGICAL,DIMENSION(1) :: GSHAD_DAY         ! has shading been necessary this day ?     ! ||   ||
 LOGICAL,DIMENSION(1) :: GNATVENT_NIGHT    ! has natural ventilation been              ! ||   ||
 !                                         ! necessary/possible this night ?           ! ||   ||
@@ -479,17 +481,6 @@ REAL,DIMENSION(1)  :: ZEMIS_TOWN        ! town equivalent emissivity            
 REAL,DIMENSION(1)  :: ZESNOW_ROOF  = 1.0! snow roof emissivity                        ! ||   ||
 REAL,DIMENSION(1)  :: ZABS_LW_SNOW_ROOF ! abs. LW rad. by snow                        ! ||   ||
 REAL,DIMENSION(1)  :: ZABS_LW_SNOW_ROAD ! abs. LW rad. by snow                        ! ||   ||
-REAL,DIMENSION(1)  :: ZRUNOFF_GARDEN    ! water runoff on gardens                     ! ||   ||
-REAL,DIMENSION(1)  :: ZDRAIN_GARDEN     ! water drainage below gardens                ! ||   ||
-REAL,DIMENSION(1)  :: ZIRRIG_GARDEN     ! irrigation supplied on the gardens          ! ||   ||
-REAL,DIMENSION(1)  :: ZRN_GARDEN        ! net radiation over green areas              ! ||   ||
-REAL,DIMENSION(1)  :: ZH_GARDEN         ! sensible heat flux over green areas         ! ||   ||
-REAL,DIMENSION(1)  :: ZLE_GARDEN        ! latent heat flux over green areas           ! ||   ||
-REAL,DIMENSION(1)  :: ZGFLUX_GARDEN     ! flux through the green areas                ! ||   ||
-REAL,DIMENSION(1)  :: ZRN_GREENROOF     ! net radiation over greenroofs               !\\     //
-REAL,DIMENSION(1)  :: ZH_GREENROOF      ! sensible heat flux over greenroofs          ! \\   //
-REAL,DIMENSION(1)  :: ZLE_GREENROOF     ! latent heat flux over greenroofs            !  \\ // 
-REAL,DIMENSION(1)  :: ZGFLUX_GREENROOF  ! flux through the greenroofs                 !   \\/  
 REAL,DIMENSION(1)  :: ZRN_STRLROOF      ! net radiation over structural roof          !
 REAL,DIMENSION(1)  :: ZH_STRLROOF       ! sensible heat flux over structural roof     ! ||   ||
 REAL,DIMENSION(1)  :: ZLE_STRLROOF      ! latent heat flux over structural roof       ! ||   ||
@@ -572,15 +563,15 @@ HROAD_DIR = 'UNIF'
 !     ! 'TWO ' : 2 opposite  wall
 HWALL_OPT = 'UNIF'
 ! Gardens
-LGARDEN = .FALSE.
+LGARDEN = .TRUE.
 ! Green roofs
-LGREENROOF = .FALSE. ! greenroof activation
-ZFRAC_GR   = 0.0      ! greenroof fraction on roofs
+LGREENROOF = .TRUE. ! greenroof activation
+ZFRAC_GR   = 0.3      ! greenroof fraction on roofs
 ! Solar panels
 LSOLAR_PANEL = .FALSE. ! solar panels activation
 ZFRAC_PANEL  = 0.0     ! solar panels fraction on roofs
 ! Road watering
-LPAR_RD_IRRIG= .TRUE.
+LPAR_RD_IRRIG= .FALSE.
 ! Natural Ventilation
 HNATVENT = "NONE"    ! 'NONE', 'MANU', 'AUTO', 'MECH'
 ! Cooling system    ! 'DXCOIL','IDEAL '
@@ -599,8 +590,8 @@ HZ0H = 'KAND07'
 !============================================================
 !============================================================
 ZZ0         = 2.     ! Roughness length (m)
-ZBLD        = 0.68   ! Horizontal building area density
-ZGARDEN     = 0.0    ! fraction of GARDEN areas
+ZBLD        = 0.62   ! Horizontal building area density
+ZGARDEN     = 0.11   ! fraction of GARDEN areas
 ZBLD_HEIGHT = 20.    ! Canyon height (m)
 ZWALL_O_HOR = 1.05   ! Vertical to horizonal surf ratio
 !* Road direction
@@ -734,7 +725,7 @@ ZRD_START_MONTH = 6. ! start month for watering of roads (included)
 ZRD_END_MONTH   = 8. ! end   month for watering of roads (included)
 ZRD_START_HOUR  = 6. ! start hour  for watering of roads (included)
 ZRD_END_HOUR    = 9. ! end   hour  for watering of roads (excluded)
-ZRD_24H_IRRIG   = 0. ! 24h quantity of water used for road watering (liter/m2)
+ZRD_24H_IRRIG   = 1. ! 24h quantity of water used for road watering (liter/m2)
 ! 
 !============================================================
 !============================================================
@@ -774,7 +765,7 @@ ZQIN_FLAT     = 0.2     ! Latent franction of internal heat gains
 ! windows
 !=============================================================
 !
-ZGR           = 0.3     ! Glazing ratio
+ZGR           = 0.1     ! Glazing ratio
 ZSHGC         = 0.763   ! window solar transmittance
 PU_WIN        = 2.716   ! window glass-to-glass U-factor [W m-2 K-1]
 !
@@ -783,8 +774,15 @@ PU_WIN        = 2.716   ! window glass-to-glass U-factor [W m-2 K-1]
 !=============================================================
 !
 LSHADE        = .FALSE. ! Are shading devices being used ?
+ZSHADE        = 0.      ! flag to activate shading devices -> REAL for i/o 0. or 1
 ZSHGC_SH      = 0.025   ! window + shading solar heat gain coef.
 !
+!=============================================================
+! Natural ventilation
+!=============================================================
+!
+ZNATVENT = 0.           ! flag to describe surventilation system for i/o 
+                        ! 0 for NONE, 1 for MANU and 2 for AUTO
 !=============================================================
 ! HVAC system
 !=============================================================
@@ -944,6 +942,8 @@ LCANOPY= .FALSE.  ! is canopy active ?  ** DO NOT CHANGE **
 !
 CALL INI_CSTS
 !
+CALL INIT_SURFCONSPHY
+!
 CQSAT='OLD' ! saturation is computed relative to water above 0°C, and relative to ice below 0°C
 !
 !* various thresholds
@@ -1009,7 +1009,7 @@ ZWALL_O_GRND = ZWALL_FRAC  / (ZROAD_FRAC+ZGARDEN_FRAC)
 ZROAD_O_GRND   = ZROAD / (ZROAD + ZGARDEN)
 ZGARDEN_O_GRND = ZGARDEN / (ZROAD + ZGARDEN)
 !
-CALL BEM_MORPHO(ZBLD, ZWALL_O_HOR, ZBLD_HEIGHT, PFLOOR_HEIGHT,                  &
+CALL BEM_MORPHO_STRUCT(ZBLD, ZWALL_O_HOR, ZBLD_HEIGHT, PFLOOR_HEIGHT,                  &
                       ZGR, ZN_FLOOR, ZWALL_O_BLD, ZGLAZ_O_BLD, ZMASS_O_BLD,     &
                       ZFLOOR_HW_RATIO,                                          &
                       ZF_FLOOR_MASS, ZF_FLOOR_WALL, ZF_FLOOR_WIN,               &
@@ -1022,7 +1022,7 @@ CALL BEM_MORPHO(ZBLD, ZWALL_O_HOR, ZBLD_HEIGHT, PFLOOR_HEIGHT,                  
 ! Window characteristics
 ! -----------------------------------------------------------
 !
-CALL WINDOW_DATA(1, ZSHGC, PU_WIN, ZALB_WIN, ZABS_WIN, ZUGG_WIN, ZTRAN_WIN)
+CALL WINDOW_DATA_STRUCT(1, ZSHGC, PU_WIN, ZALB_WIN, ZABS_WIN, ZUGG_WIN, ZTRAN_WIN)
 !
 ! -----------------------------------------------------------
 ! Default at first time-step : no snow
@@ -1159,7 +1159,8 @@ DO JFORC_STEP= 1,INB_STEP_ATM
 !                  Call of physical routines of TEB is here                  !
 !*****************************************************************************
 !*****************************************************************************
-    CALL TEB_GARDEN (LGARDEN, LGREENROOF, LSOLAR_PANEL,                       &
+
+    CALL TEB_GARDEN_STRUCT (LGARDEN, LGREENROOF, LSOLAR_PANEL,                &
                      HZ0H, HIMPLICIT_WIND, HROAD_DIR, HWALL_OPT, TPTIME,      &
                      XTSUN, ZT_CANYON, ZQ_CANYON, ZU_CANYON,                  &
                      ZT_LOWCAN, ZQ_LOWCAN, ZU_LOWCAN, ZZ_LOWCAN,              &
@@ -1199,9 +1200,6 @@ DO JFORC_STEP= 1,INB_STEP_ATM
                      ZRUNOFF_ROAD,                                            &
                      ZRN_WALL_A, ZH_WALL_A, ZLE_WALL_A, ZGFLUX_WALL_A,        &
                      ZRN_WALL_B, ZH_WALL_B, ZLE_WALL_B, ZGFLUX_WALL_B,        &
-                     ZRN_GARDEN,ZH_GARDEN,ZLE_GARDEN, ZGFLUX_GARDEN,          &
-                     ZRUNOFF_GARDEN, ZDRAIN_GARDEN, ZIRRIG_GARDEN,            &
-                     ZRN_GREENROOF,ZH_GREENROOF,ZLE_GREENROOF,ZGFLUX_GREENROOF, &
                      ZRN_STRLROOF,ZH_STRLROOF,ZLE_STRLROOF, ZGFLUX_STRLROOF,  &
                      ZRUNOFF_STRLROOF,                                        &
                      ZRN_BLT,ZH_BLT,ZLE_BLT, ZGFLUX_BLT,                      &
@@ -1227,9 +1225,9 @@ DO JFORC_STEP= 1,INB_STEP_ATM
                      ZABS_SW_PANEL,ZABS_LW_PANEL,                             &
                      ZABS_SW_GARDEN,ZABS_LW_GARDEN,                           &
                      ZABS_SW_GREENROOF,ZABS_LW_GREENROOF,                     &
-                     ZG_GREENROOF_ROOF,ZRUNOFF_GREENROOF,ZDRAIN_GREENROOF,    &
-                     ZIRRIG_GREENROOF,CCOOL_COIL, ZF_WATER_COND, CHEAT_COIL,  &
-                     HNATVENT, IDAY, ZAUX_MAX, ZT_FLOOR,                      &
+                     ZG_GREENROOF_ROOF,    &
+                     CCOOL_COIL, ZF_WATER_COND, CHEAT_COIL,  &
+                     HNATVENT, ZNATVENT, IDAY, ZAUX_MAX, ZT_FLOOR,            &
                      ZT_MASS, ZH_BLD_COOL, ZT_BLD_COOL, ZH_BLD_HEAT,          &
                      ZLE_BLD_COOL, ZLE_BLD_HEAT, ZH_WASTE, ZLE_WASTE,         &
                      ZF_WASTE_CAN, ZHVAC_COOL, ZHVAC_HEAT, ZQIN, ZQIN_FRAD,   &
@@ -1241,7 +1239,8 @@ DO JFORC_STEP= 1,INB_STEP_ATM
                      ZD_FLOOR, ZT_WIN1, ZABS_SW_WIN, ZABS_LW_WIN, ZSHGC,      &
                      ZSHGC_SH, ZUGG_WIN, ZALB_WIN, ZABS_WIN, ZEMIT_LW_FAC,    &
                      ZEMIT_LW_GRND, ZT_RAD_IND, ZREF_SW_GRND, ZREF_SW_FAC,    &
-                     ZHU_BLD, ZTIME_BEG, LSHADE, GSHAD_DAY, GNATVENT_NIGHT,   &
+                     ZHU_BLD, ZTIME_BEG, LSHADE, ZSHADE, GSHAD_DAY,           &
+                     GNATVENT_NIGHT,                                          &
                      CBEM,                                                    &
                      ZN_FLOOR, ZWALL_O_BLD, ZGLAZ_O_BLD, ZMASS_O_BLD,         &
                      ZFLOOR_HW_RATIO, ZF_FLOOR_MASS, ZF_FLOOR_WALL,           &
@@ -1262,7 +1261,7 @@ DO JFORC_STEP= 1,INB_STEP_ATM
 !*****************************************************************************
 !*****************************************************************************
 !*****************************************************************************
-
+!
 !* computation of temporaly averaged diagnostics
 
 !       ZTS_ROOF   = ZTS_ROOF   + ZT_ROOF(1,1)       ! surface temperature

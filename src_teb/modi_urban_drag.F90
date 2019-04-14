@@ -1,30 +1,24 @@
 !auto_modi:spll_urban_drag.D
 MODULE MODI_URBAN_DRAG
 INTERFACE
-    SUBROUTINE URBAN_DRAG(HZ0H, HIMPLICIT_WIND, PTSTEP,                     &
-                          PT_CANYON, PQ_CANYON, PU_CANYON,                  &
-                          PT_LOWCAN, PQ_LOWCAN, PU_LOWCAN, PZ_LOWCAN,       &
-                          PTS_ROOF, PTS_ROAD, PTS_WALL, PTS_GARDEN,         &
-                          PDELT_SNOW_ROOF, PDELT_SNOW_ROAD,                 &
-                          PEXNS, PEXNA, PTA, PQA, PPS, PRHOA,               &
-                          PZREF, PUREF, PVMOD,                              &
-                          PZ0_TOWN,                                         &
-                          PBLD, PGARDEN, PROAD,                             &
-                          PBLD_HEIGHT, PCAN_HW_RATIO,                       &
-                          PWALL_O_GRND,                                     &
-                          PWS_ROOF, PWS_ROAD,                               &
-                          PWS_ROOF_MAX, PWS_ROAD_MAX,                       &
-                          PPEW_A_COEF, PPEW_B_COEF,                         &
-                          PPEW_A_COEF_LOWCAN, PPEW_B_COEF_LOWCAN,           &
-                          PQSAT_ROOF, PQSAT_ROAD, PDELT_ROOF, PDELT_ROAD,   &
-                          PCD, PCDN, PAC_ROOF, PAC_ROOF_WAT,                &
-                          PAC_WALL, PAC_ROAD, PAC_ROAD_WAT, PAC_TOP,        &
-                          PAC_GARDEN, PRI,                                  &
-                          PUW_ROAD, PUW_ROOF, PDUWDU_ROAD, PDUWDU_ROOF,     &
-                          PUSTAR_TOWN, OCANOPY, PTS_WIN, PAC_WIN, HCH_BEM,  &
-                          PROUGH_ROOF, PROUGH_WALL                          ) 
+    SUBROUTINE URBAN_DRAG(TOP, T, B, HIMPLICIT_WIND, PTSTEP, PT_CANYON, PQ_CANYON, &
+                          PU_CANYON, PT_LOWCAN, PQ_LOWCAN, PU_LOWCAN, PZ_LOWCAN,   &
+                          PTS_ROOF, PTS_ROAD, PTS_WALL, PTS_GARDEN,                &
+                          PDELT_SNOW_ROOF, PDELT_SNOW_ROAD,  PEXNS, PEXNA, PTA,    &
+                          PQA, PPS, PRHOA,PZREF, PUREF, PVMOD, PWS_ROOF_MAX,       &
+                          PWS_ROAD_MAX, PPEW_A_COEF, PPEW_B_COEF,                  &
+                          PPEW_A_COEF_LOWCAN, PPEW_B_COEF_LOWCAN, PQSAT_ROOF,      &
+                          PQSAT_ROAD, PDELT_ROOF, PDELT_ROAD, PCD, PCDN, PAC_ROOF, &
+                          PAC_ROOF_WAT, PAC_WALL, PAC_ROAD, PAC_ROAD_WAT, PAC_TOP, &
+                          PAC_GARDEN, PRI, PUW_ROAD, PUW_ROOF, PDUWDU_ROAD,        &
+                          PDUWDU_ROOF, PUSTAR_TOWN, PAC_WIN ) 
+USE MODD_TEB_OPTION_n, ONLY : TEB_OPTIONS_t
+USE MODD_TEB_n, ONLY : TEB_t
+USE MODD_BEM_n, ONLY : BEM_t
 IMPLICIT NONE
- CHARACTER(LEN=6),   INTENT(IN)    :: HZ0H           ! TEB option for z0h roof & road
+TYPE(TEB_OPTIONS_t), INTENT(INOUT) :: TOP
+TYPE(TEB_t), INTENT(INOUT) :: T
+TYPE(BEM_t), INTENT(INOUT) :: B
  CHARACTER(LEN=*),     INTENT(IN)  :: HIMPLICIT_WIND   ! wind implicitation option
 REAL,               INTENT(IN)    :: PTSTEP         ! time-step
 REAL, DIMENSION(:), INTENT(IN)    :: PT_CANYON      ! canyon air temperature
@@ -49,15 +43,6 @@ REAL, DIMENSION(:), INTENT(IN)    :: PEXNA          ! exner function
 REAL, DIMENSION(:), INTENT(IN)    :: PRHOA          ! air density
 REAL, DIMENSION(:), INTENT(IN)    :: PZREF          ! reference height of the first
 REAL, DIMENSION(:), INTENT(IN)    :: PUREF          ! reference height of the first
-REAL, DIMENSION(:), INTENT(IN)    :: PZ0_TOWN       ! roughness length for momentum
-REAL, DIMENSION(:), INTENT(IN)    :: PBLD           ! fraction of buildings
-REAL, DIMENSION(:), INTENT(IN)    :: PROAD          ! fraction of roads
-REAL, DIMENSION(:), INTENT(IN)    :: PGARDEN        ! fraction of GARDEN areas
-REAL, DIMENSION(:), INTENT(IN)    :: PBLD_HEIGHT    ! h
-REAL, DIMENSION(:), INTENT(IN)    :: PCAN_HW_RATIO  ! h/W
-REAL, DIMENSION(:), INTENT(IN)    :: PWALL_O_GRND   ! wall surf. / (road+GARDEN area) surf.
-REAL, DIMENSION(:), INTENT(IN)    :: PWS_ROOF       ! roof water content (kg/m2)
-REAL, DIMENSION(:), INTENT(IN)    :: PWS_ROAD       ! road water content (kg/m2)
 REAL, DIMENSION(:), INTENT(IN)    :: PWS_ROOF_MAX   ! maximum deepness of roof
 REAL, DIMENSION(:), INTENT(IN)    :: PWS_ROAD_MAX   ! and water reservoirs (kg/m2)
 REAL, DIMENSION(:), INTENT(IN)    :: PPEW_A_COEF    ! implicit coefficients (m2s/kg)
@@ -83,12 +68,7 @@ REAL, DIMENSION(:), INTENT(OUT)   :: PUW_ROOF       ! Momentum flux for roofs
 REAL, DIMENSION(:), INTENT(OUT)   :: PDUWDU_ROAD    ! 
 REAL, DIMENSION(:), INTENT(OUT)   :: PDUWDU_ROOF    ! 
 REAL, DIMENSION(:), INTENT(OUT)   :: PUSTAR_TOWN    ! Fraction velocity for town
-LOGICAL, INTENT(IN)               :: OCANOPY        ! is canopy active
 REAL, DIMENSION(:), INTENT(OUT)   :: PAC_WIN        ! aerodynamical conductance for window
-REAL, DIMENSION(:), INTENT(IN)    :: PTS_WIN        ! window outdoor surface temp
- CHARACTER(LEN=5), INTENT(IN)      :: HCH_BEM        ! BEM option for convective heat transfer coef.
-REAL, DIMENSION(:), INTENT(IN)    :: PROUGH_ROOF    ! roughness coef for the roof
-REAL, DIMENSION(:), INTENT(IN)    :: PROUGH_WALL    ! roughness coef for the wall
 END SUBROUTINE URBAN_DRAG
 END INTERFACE
 END MODULE MODI_URBAN_DRAG

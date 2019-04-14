@@ -2,14 +2,12 @@
 !SFX_LIC This is part of the SURFEX software governed by the CeCILL-C licence
 !SFX_LIC version 1. See LICENSE, CeCILL-C_V1-en.txt and CeCILL-C_V1-fr.txt  
 !SFX_LIC for details. version 1.
-SUBROUTINE WINDOW_E_BUDGET(PU_WIN, PEMIS_WIN, PF_WIN_FLOOR, PF_WIN_WALL, PF_WIN_MASS, &
-                           PLW_W_TO_WIN, PLW_R_TO_WIN, PLW_G_TO_WIN,                  &
-                           PLW_NR_TO_WIN, PLW_S_TO_WIN, PRAD_ROOF_WIN, PRAD_WALL_WIN, &
-                           PABS_SW_WIN, PLW_RAD, PAC_WALL,                 &
-                           PRADHT_IN, PTI_BLD, PTS_MASS, PTS_FLOOR, PRHOA, PDN_ROAD,  &
-                           PT_CANYON, PTS_WALL, PTS_ROAD, PTSNOW_ROAD,                &
-                           PTS_GARDEN, PT_WIN1, PT_WIN2, PRAD_WIN_FLOOR,              &
-                           PRAD_WIN_MASS, PCONV_WIN_BLD, PEMIT_LW_WIN, PABS_LW_WIN, PLOAD_IN_WIN)
+SUBROUTINE WINDOW_E_BUDGET(B, PEMIS_WIN, PLW_W_TO_WIN, PLW_R_TO_WIN, PLW_G_TO_WIN, &
+                           PLW_NR_TO_WIN, PLW_S_TO_WIN, PRAD_RF_WIN, PRAD_WL_WIN,  &
+                           PABS_SW_WIN, PLW_RAD, PAC_WL, PRADHT_IN, PTS_FL, PRHOA, &
+                           PDN_RD, PT_CANYON, PTS_WL, PTS_RD, PTSN_RD, PTS_GD,     &
+                           PRAD_WIN_FL, PRAD_WIN_MA, PCONV_WIN_BLD, PEMIT_LW_WIN,  &
+                           PABS_LW_WIN, PLOAD_IN_WIN)
 !###################################################################################################################################
 !
 !!****  *WINDOW_E_BUDGET*  
@@ -59,6 +57,8 @@ SUBROUTINE WINDOW_E_BUDGET(PU_WIN, PEMIS_WIN, PF_WIN_FLOOR, PF_WIN_WALL, PF_WIN_
 !*       0.     DECLARATIONS
 !               ------------
 !
+USE MODD_BEM_n, ONLY : BEM_t
+!
 USE MODD_CSTS,ONLY : XCPD, XSTEFAN
 USE MODE_CONV_DOE
 USE YOMHOOK   ,ONLY : LHOOK,   DR_HOOK
@@ -68,11 +68,9 @@ IMPLICIT NONE
 !
 !*      0.1    declarations of arguments
 !
-REAL, DIMENSION(:), INTENT(IN)    :: PU_WIN       ! window U-factor [W m-2 K-1]
+TYPE(BEM_t), INTENT(INOUT) :: B
+!
 REAL, DIMENSION(:), INTENT(IN)    :: PEMIS_WIN    ! window emissivity
-REAL, DIMENSION(:), INTENT(IN)    :: PF_WIN_FLOOR ! window floor view factor
-REAL, DIMENSION(:), INTENT(IN)    :: PF_WIN_WALL  ! window wall view factor
-REAL, DIMENSION(:), INTENT(IN)    :: PF_WIN_MASS  ! window mass view factor
 REAL, DIMENSION(:), INTENT(IN)    :: PLW_W_TO_WIN ! Radiative heat trasfer coeff window-wall outdoor
                                                   ! [W K-1 m-2] 
 REAL, DIMENSION(:), INTENT(IN)    :: PLW_R_TO_WIN ! Radiative heat trasfer coeff window-road 
@@ -81,27 +79,23 @@ REAL, DIMENSION(:), INTENT(IN)    :: PLW_G_TO_WIN ! Radiative heat trasfer coeff
 REAL, DIMENSION(:), INTENT(IN)    :: PLW_NR_TO_WIN! Radiative heat trasfer coeff window-snow
 REAL, DIMENSION(:), INTENT(IN)    :: PLW_S_TO_WIN ! Radiative heat trasfer coeff window-sky 
                                                   ! [W K-1 m-2]
-REAL, DIMENSION(:), INTENT(IN)    :: PRAD_ROOF_WIN  ! rad. fluxes from roof to win [W m-2(roof)]
-REAL, DIMENSION(:), INTENT(IN)    :: PRAD_WALL_WIN  ! rad. fluxes from wall to win [W m-2(roof)]
+REAL, DIMENSION(:), INTENT(IN)    :: PRAD_RF_WIN  ! rad. fluxes from roof to win [W m-2(roof)]
+REAL, DIMENSION(:), INTENT(IN)    :: PRAD_WL_WIN  ! rad. fluxes from wall to win [W m-2(roof)]
 REAL, DIMENSION(:), INTENT(IN)    :: PABS_SW_WIN  ! window absorbed shortwave radiation [W m-2]
 REAL, DIMENSION(:), INTENT(IN)    :: PLW_RAD      ! atmospheric infrared radiation
-REAL, DIMENSION(:), INTENT(IN)    :: PAC_WALL     ! aerodynamical conductance between wall and canyon
+REAL, DIMENSION(:), INTENT(IN)    :: PAC_WL     ! aerodynamical conductance between wall and canyon
 REAL, DIMENSION(:),   INTENT(IN)  :: PRADHT_IN     ! Indoor radiant heat transfer coefficient
                                                     ! [W K-1 m-2]
-REAL, DIMENSION(:), INTENT(IN)    :: PTI_BLD      ! inside building temperature
-REAL, DIMENSION(:), INTENT(IN)    :: PTS_MASS     ! surface mass temperature  [K]
-REAL, DIMENSION(:), INTENT(IN)    :: PTS_FLOOR    ! floor layers temperatures [K]
+REAL, DIMENSION(:), INTENT(IN)    :: PTS_FL    ! floor layers temperatures [K]
 REAL, DIMENSION(:), INTENT(IN)    :: PRHOA        ! rho
-REAL, DIMENSION(:), INTENT(IN)    :: PDN_ROAD     ! snow-covered fraction on roads
+REAL, DIMENSION(:), INTENT(IN)    :: PDN_RD     ! snow-covered fraction on roads
 REAL, DIMENSION(:), INTENT(IN)    :: PT_CANYON    ! air canyon temperature
-REAL, DIMENSION(:), INTENT(IN)    :: PTS_WALL     ! wall outdoor surface temperature
-REAL, DIMENSION(:), INTENT(IN)    :: PTS_ROAD     ! road surface temperature
-REAL, DIMENSION(:), INTENT(IN)    :: PTSNOW_ROAD  ! road snow temperature
-REAL, DIMENSION(:), INTENT(IN)    :: PTS_GARDEN   ! green area surface temperature
-REAL, DIMENSION(:), INTENT(OUT)   :: PT_WIN1      ! outdoor window temperature [K]
-REAL, DIMENSION(:), INTENT(INOUT) :: PT_WIN2      ! indoor window temperature [K]
-REAL, DIMENSION(:), INTENT(OUT)   :: PRAD_WIN_FLOOR ! rad. fluxes from window to floor [W m-2(window)]
-REAL, DIMENSION(:), INTENT(OUT)   :: PRAD_WIN_MASS  ! rad. fluxes from window to mass [W m-2(window)]
+REAL, DIMENSION(:), INTENT(IN)    :: PTS_WL     ! wall outdoor surface temperature
+REAL, DIMENSION(:), INTENT(IN)    :: PTS_RD     ! road surface temperature
+REAL, DIMENSION(:), INTENT(IN)    :: PTSN_RD  ! road snow temperature
+REAL, DIMENSION(:), INTENT(IN)    :: PTS_GD   ! green area surface temperature
+REAL, DIMENSION(:), INTENT(OUT)   :: PRAD_WIN_FL ! rad. fluxes from window to floor [W m-2(window)]
+REAL, DIMENSION(:), INTENT(OUT)   :: PRAD_WIN_MA  ! rad. fluxes from window to mass [W m-2(window)]
 REAL, DIMENSION(:), INTENT(OUT)   :: PCONV_WIN_BLD  ! conv. fluxes from window to bld [W m-2(window)]
 REAL, DIMENSION(:), INTENT(OUT)   :: PEMIT_LW_WIN  ! Longwave radiation emitted by the window [W m-2(window)]
 REAL, DIMENSION(:), INTENT(OUT)   :: PABS_LW_WIN   ! Longwave radiation absorbed by the window [W m-2(window)]
@@ -119,7 +113,7 @@ INTEGER :: JJ
 
 !*      Preliminaries
 !       -------------
-ZCHTC_IN_WIN = CHTC_VERT_DOE(PT_WIN2, PTI_BLD)
+ZCHTC_IN_WIN = CHTC_VERT_DOE(B%XT_WIN2, B%XTI_BLD)
 DO JJ=1,SIZE(ZCHTC_IN_WIN)
    ZCHTC_IN_WIN(JJ) = MAX(1., ZCHTC_IN_WIN(JJ))
 ENDDO
@@ -129,52 +123,58 @@ ENDDO
 ZT_SKY(:) = (PLW_RAD(:)/XSTEFAN)**0.25
 !  
 ZA12(:) = ZCHTC_IN_WIN(:)   &
-         + PRADHT_IN(:) * PF_WIN_MASS(:)  &
-         + PRADHT_IN(:) * PF_WIN_FLOOR(:) &
-         + PU_WIN(:)
+         + PRADHT_IN(:) * B%XF_WIN_MASS (:)  &
+         + PRADHT_IN(:) * B%XF_WIN_FLOOR(:) &
+         + B%XUGG_WIN(:)
 !
-ZB1(:)  = ZCHTC_IN_WIN   (:) * PTI_BLD (:)             &
-         + PRADHT_IN(:) * PF_WIN_MASS(:) * PTS_MASS(:)             &
-         + PF_WIN_WALL(:) * PRAD_WALL_WIN(:) &
-         + PF_WIN_FLOOR(:) * PRAD_ROOF_WIN(:) &
-         + PRADHT_IN(:) * PF_WIN_FLOOR(:)* PTS_FLOOR(:) &
+ZB1(:)  = ZCHTC_IN_WIN   (:) * B%XTI_BLD (:)             &
+         + PRADHT_IN     (:) * B%XF_WIN_MASS(:) * B%XT_MASS(:,1)             &
+         + B%XF_WIN_WALL (:) * PRAD_WL_WIN(:) &
+         + B%XF_WIN_FLOOR(:) * PRAD_RF_WIN(:) &
+         + PRADHT_IN     (:) * B%XF_WIN_FLOOR(:)* PTS_FL(:) &
          + PLOAD_IN_WIN(:) + PABS_SW_WIN(:) /2.
 !
-ZA21(:) = - PAC_WALL     (:) * PRHOA(:)*XCPD   &
-           - PLW_S_TO_WIN (:)                  &
-           - PLW_W_TO_WIN (:)                  &
-           - PLW_R_TO_WIN (:) *(1.-PDN_ROAD(:))&
-           - PLW_G_TO_WIN (:)                  &
-           - PLW_NR_TO_WIN(:) * PDN_ROAD(:)    &
-           - PU_WIN(:)
+ZA21(:) = - PAC_WL       (:) * PRHOA(:)*XCPD   &
+          - PLW_S_TO_WIN (:)                  &
+          - PLW_W_TO_WIN (:)                  &
+          - PLW_R_TO_WIN (:) *(1.-PDN_RD(:))&
+          - PLW_G_TO_WIN (:)                  &
+          - PLW_NR_TO_WIN(:) * PDN_RD(:)    &
+          - B%XUGG_WIN(:)
 !
-ZB2(:)  = - PAC_WALL     (:) * PRHOA(:)*XCPD*PT_CANYON(:)   &
-           - PLW_S_TO_WIN (:) * ZT_SKY(:)                     &
-           - PLW_W_TO_WIN (:) * PTS_WALL(:)                   &
-           - PLW_R_TO_WIN (:) *(1.-PDN_ROAD(:)) * PTS_ROAD(:) &
-           - PLW_G_TO_WIN (:) * PTS_GARDEN(:)                 &
-           - PLW_NR_TO_WIN(:) * PDN_ROAD(:) * PTSNOW_ROAD(:) &
-           - PABS_SW_WIN  (:) /2.
+ZB2(:)  = - PAC_WL       (:) * PRHOA(:)*XCPD*PT_CANYON(:)   &
+          - PLW_S_TO_WIN (:) * ZT_SKY(:)                     &
+          - PLW_W_TO_WIN (:) * PTS_WL(:)                   &
+          - PLW_R_TO_WIN (:) *(1.-PDN_RD(:)) * PTS_RD(:) &
+          - PLW_NR_TO_WIN(:) * PDN_RD(:) * PTSN_RD(:) &
+          - PABS_SW_WIN  (:) /2.
+!
+IF (SIZE(PTS_GD)>0) THEN
+  ZB2(:) = ZB2(:) - PLW_G_TO_WIN (:) * PTS_GD(:)
+ENDIF
 !
 ! compute outdoor temperature
-PT_WIN1(:) = ( ZB2(:) - ZB1(:)*PU_WIN(:)/ZA12(:) ) / &
-              ( ZA21(:) + PU_WIN(:)**2/ZA12(:) )
+B%XT_WIN1(:) = ( ZB2(:) - ZB1(:)*B%XUGG_WIN(:)/ZA12(:) ) / &
+                  ( ZA21(:) + B%XUGG_WIN(:)**2/ZA12(:) )
 !
 ! compute indoor temperature
-PT_WIN2(:) = (ZB1(:) + PU_WIN(:)*PT_WIN1(:) ) / ZA12(:)
+B%XT_WIN2(:) = (ZB1(:) + B%XUGG_WIN(:)*B%XT_WIN1(:) ) / ZA12(:)
 !
 ! outdoor infrared radiation absorded by the window
-PABS_LW_WIN(:)    = PLW_S_TO_WIN (:) * (ZT_SKY     (:) - PT_WIN1(:)) + &
-  (1.-PDN_ROAD(:))*  PLW_R_TO_WIN (:) * (PTS_ROAD   (:) - PT_WIN1(:)) + &
-                     PLW_G_TO_WIN (:) * (PTS_GARDEN (:) - PT_WIN1(:)) + &
-                     PLW_W_TO_WIN (:) * (PTS_WALL  (:)  - PT_WIN1(:)) + &
-      PDN_ROAD(:) * PLW_NR_TO_WIN(:) * (PTSNOW_ROAD(:) - PT_WIN1(:))
+PABS_LW_WIN(:)    = PLW_S_TO_WIN (:) * (ZT_SKY (:) - B%XT_WIN1(:)) + &
+  (1.-PDN_RD(:)) *  PLW_R_TO_WIN (:) * (PTS_RD (:) - B%XT_WIN1(:)) + &
+                    PLW_W_TO_WIN (:) * (PTS_WL (:) - B%XT_WIN1(:)) + &
+        PDN_RD(:) * PLW_NR_TO_WIN(:) * (PTSN_RD(:) - B%XT_WIN1(:))
+!
+IF (SIZE(PTS_GD)>0) THEN
+  PABS_LW_WIN(:) = PABS_LW_WIN(:) +  PLW_G_TO_WIN (:) * (PTS_GD (:) - B%XT_WIN1(:))      
+ENDIF
 !
 ! outdoor infrared radiation emited by the window
-PEMIT_LW_WIN(:) = XSTEFAN * PT_WIN1(:)**4 + (1 - PEMIS_WIN(:))/PEMIS_WIN(:) * PABS_LW_WIN(:)
+PEMIT_LW_WIN(:) = XSTEFAN * B%XT_WIN1(:)**4 + (1 - PEMIS_WIN(:))/PEMIS_WIN(:) * PABS_LW_WIN(:)
 !
-PRAD_WIN_FLOOR(:) = PRADHT_IN(:)   * (PT_WIN2(:) - PTS_FLOOR(:))
-PRAD_WIN_MASS(:)  = PRADHT_IN(:)   * (PT_WIN2(:) - PTS_MASS(:))
-PCONV_WIN_BLD(:)  = ZCHTC_IN_WIN(:) * (PT_WIN2(:) - PTI_BLD(:))
+PRAD_WIN_FL  (:)  = PRADHT_IN(:)    * (B%XT_WIN2(:) - PTS_FL(:))
+PRAD_WIN_MA  (:)  = PRADHT_IN(:)    * (B%XT_WIN2(:) - B%XT_MASS(:,1))
+PCONV_WIN_BLD(:)  = ZCHTC_IN_WIN(:) * (B%XT_WIN2(:) - B%XTI_BLD(:))
 !
 END SUBROUTINE WINDOW_E_BUDGET

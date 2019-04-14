@@ -1,21 +1,19 @@
 !auto_modi:spll_road_layer_e_budget.D
 MODULE MODI_ROAD_LAYER_E_BUDGET
 INTERFACE
-    SUBROUTINE ROAD_LAYER_E_BUDGET(PT_ROAD, PTSTEP, PHC_ROAD, PTC_ROAD, PD_ROAD,       &
-                                   PDN_ROAD, PRHOA, PAC_ROAD, PAC_ROAD_WAT,            &
-                                   PLW_RAD, PPS, PQSAT_ROAD, PDELT_ROAD, PEXNS,        &
-                                   PABS_SW_ROAD, PGSNOW_ROAD, PQ_LOWCAN, PT_LOWCAN,    &
-                                   PTS_WALL_A, PTS_WALL_B, PTSNOW_ROAD,                &
-                                   PTS_GARDEN, PTS_WIN,                                &
-                                   PLW_WA_TO_R, PLW_WB_TO_R, PLW_S_TO_R, PLW_WIN_TO_R, &
-                                   PEMIS_ROAD, PEMIT_LW_ROAD, PDQS_ROAD, PABS_LW_ROAD, &
-                                   PHFREE_ROAD, PLEFREE_ROAD, PIMB_ROAD, PRR )
+    SUBROUTINE ROAD_LAYER_E_BUDGET(T, B, PTSTEP, PDN_ROAD, PRHOA, PAC_ROAD, PAC_ROAD_WAT, &
+                                   PLW_RAD, PPS, PQSAT_ROAD, PDELT_ROAD, PEXNS,           &
+                                   PABS_SW_ROAD, PGSNOW_ROAD, PQ_LOWCAN, PT_LOWCAN,       &
+                                   PTS_WALL_A, PTS_WALL_B, PTSNOW_ROAD, PTS_GARDEN,       &
+                                   PLW_WA_TO_R, PLW_WB_TO_R, PLW_S_TO_R, PLW_WIN_TO_R,    &
+                                   PEMIT_LW_ROAD, PDQS_ROAD, PABS_LW_ROAD, PHFREE_ROAD,   &
+                                   PLEFREE_ROAD, PIMB_ROAD, PRR )
+USE MODD_TEB_n, ONLY : TEB_t
+USE MODD_BEM_n, ONLY : BEM_t
 IMPLICIT NONE
-REAL, DIMENSION(:,:), INTENT(INOUT) :: PT_ROAD    ! road layers temperatures
+TYPE(TEB_t), INTENT(INOUT) :: T
+TYPE(BEM_t), INTENT(INOUT) :: B
 REAL,               INTENT(IN)    :: PTSTEP       ! time step
-REAL, DIMENSION(:,:), INTENT(IN)  :: PHC_ROAD     ! heat capacity for road layers
-REAL, DIMENSION(:,:), INTENT(IN)  :: PTC_ROAD     ! thermal conductivity for road layers
-REAL, DIMENSION(:,:), INTENT(IN)  :: PD_ROAD      ! depth of road layers
 REAL, DIMENSION(:), INTENT(IN)    :: PDN_ROAD     ! road snow fraction
 REAL, DIMENSION(:), INTENT(IN)    :: PRHOA        ! rho
 REAL, DIMENSION(:), INTENT(IN)    :: PAC_ROAD     ! aerodynamical conductance
@@ -33,12 +31,10 @@ REAL, DIMENSION(:), INTENT(IN)    :: PTS_WALL_A   ! wall surface temperature
 REAL, DIMENSION(:), INTENT(IN)    :: PTS_WALL_B   ! wall surface temperature
 REAL, DIMENSION(:), INTENT(IN)    :: PTSNOW_ROAD  ! road snow temperature
 REAL, DIMENSION(:), INTENT(IN)    :: PTS_GARDEN   ! green area surface temperature
-REAL, DIMENSION(:), INTENT(IN)    :: PTS_WIN      ! window outdoor surface temperature [K]
 REAL, DIMENSION(:), INTENT(IN)    :: PLW_WA_TO_R   ! LW interactions wall  -> road 
 REAL, DIMENSION(:), INTENT(IN)    :: PLW_WB_TO_R   ! LW interactions wall  -> road 
 REAL, DIMENSION(:), INTENT(IN)    :: PLW_S_TO_R    ! LW interactions sky   -> road 
 REAL, DIMENSION(:), INTENT(IN)    :: PLW_WIN_TO_R ! LW interactions window -> road 
-REAL, DIMENSION(:), INTENT(IN)    :: PEMIS_ROAD   ! road emissivity
 REAL, DIMENSION(:), INTENT(OUT)   :: PEMIT_LW_ROAD! LW flux emitted by the road (W/m2 of road)
 REAL, DIMENSION(:), INTENT(OUT)   :: PDQS_ROAD    !heat storage inside the road
 REAL, DIMENSION(:), INTENT(OUT)   :: PABS_LW_ROAD ! absorbed infrared rad.

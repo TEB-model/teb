@@ -3,14 +3,7 @@
 !SFX_LIC version 1. See LICENSE, CeCILL-C_V1-en.txt and CeCILL-C_V1-fr.txt  
 !SFX_LIC for details. version 1.
 !#####################################################################
-SUBROUTINE BEM_MORPHO(PBLD, PWALL_O_HOR, PBLD_HEIGHT, PFLOOR_HEIGHT,            &
-                      PGR, PN_FLOOR, PWALL_O_BLD, PGLAZ_O_BLD, PMASS_O_BLD,     &
-                      PFLOOR_HW_RATIO,                                          &
-                      PF_FLOOR_MASS, PF_FLOOR_WALL, PF_FLOOR_WIN,               &
-                      PF_FLOOR_ROOF, PF_WALL_FLOOR, PF_WALL_MASS,               &
-                      PF_WALL_WIN, PF_WIN_FLOOR, PF_WIN_MASS, PF_WIN_WALL,      &
-                      PF_MASS_FLOOR, PF_MASS_WALL, PF_MASS_WIN, PF_WASTE_CAN,   &
-                      PF_WIN_WIN)
+SUBROUTINE BEM_MORPHO(PBLD, PWALL_O_HOR, PBLD_HEIGHT, PWALL_O_BLD, B)
 !#####################################################################
 !
 !!**** *BEM_MORPHO 
@@ -45,6 +38,8 @@ SUBROUTINE BEM_MORPHO(PBLD, PWALL_O_HOR, PBLD_HEIGHT, PFLOOR_HEIGHT,            
 !*       0.    DECLARATIONS
 !              ------------
 !
+USE MODD_BEM_n, ONLY : BEM_t
+!
 IMPLICIT NONE
 !
 !*       0.1   Declarations of arguments
@@ -53,28 +48,8 @@ IMPLICIT NONE
 REAL, DIMENSION(:),   INTENT(IN)  :: PBLD         ! Urban horizontal building density
 REAL, DIMENSION(:),   INTENT(IN)  :: PWALL_O_HOR  ! Wall to horizontal surface ratio
 REAL, DIMENSION(:),   INTENT(IN)  :: PBLD_HEIGHT  ! Average building height [m]
-REAL, DIMENSION(:),   INTENT(INOUT)::PFLOOR_HEIGHT ! Building floor height [m]
-REAL, DIMENSION(:),   INTENT(IN)  :: PGR           ! Glazing ratio
-REAL, DIMENSION(:),   INTENT(OUT) :: PN_FLOOR ! number of floor levels
 REAL, DIMENSION(:),   INTENT(OUT) :: PWALL_O_BLD  ! wall surface per ground building surface [m2(wall)/m2(bld)]
-REAL, DIMENSION(:),   INTENT(OUT) :: PGLAZ_O_BLD  ! glazing surface per ground building surface [m2(glazing)/m2(bld)]
-REAL, DIMENSION(:),   INTENT(OUT) :: PMASS_O_BLD  ! thermal mass surface per ground building surface [m2(mass)/m2(bld)]
-REAL, DIMENSION(:),   INTENT(OUT) :: PFLOOR_HW_RATIO !Height to width ratio of the floor levels
-REAL, DIMENSION(:),   INTENT(OUT) :: PF_FLOOR_MASS  !view factor from floor to mass (how much floor seen by mass)
-REAL, DIMENSION(:),   INTENT(OUT) :: PF_FLOOR_WALL
-REAL, DIMENSION(:),   INTENT(OUT) :: PF_FLOOR_WIN
-REAL, DIMENSION(:),   INTENT(OUT) :: PF_FLOOR_ROOF
-REAL, DIMENSION(:),   INTENT(OUT) :: PF_WALL_FLOOR
-REAL, DIMENSION(:),   INTENT(OUT) :: PF_WALL_MASS
-REAL, DIMENSION(:),   INTENT(OUT) :: PF_WALL_WIN
-REAL, DIMENSION(:),   INTENT(OUT) :: PF_WIN_FLOOR
-REAL, DIMENSION(:),   INTENT(OUT) :: PF_WIN_MASS
-REAL, DIMENSION(:),   INTENT(OUT) :: PF_WIN_WALL
-REAL, DIMENSION(:),   INTENT(OUT) :: PF_WIN_WIN
-REAL, DIMENSION(:),   INTENT(OUT) :: PF_MASS_FLOOR
-REAL, DIMENSION(:),   INTENT(OUT) :: PF_MASS_WALL
-REAL, DIMENSION(:),   INTENT(OUT) :: PF_MASS_WIN
-REAL, DIMENSION(:),   INTENT(INOUT)::PF_WASTE_CAN !fraction of waste heat released into the canyon
+TYPE(BEM_t), INTENT(INOUT) :: B
 !
 !*      0.2    Declarations of local variables 
 !
@@ -89,34 +64,34 @@ INTEGER :: JJ
 !          -------------------
 !
 DO JJ=1,SIZE(PBLD)
-  IF (PFLOOR_HEIGHT(JJ) < 2.5) THEN
-!    WRITE(ILUOUT,*) 'WARNING: PFLOOR_HEIGHT low ',PFLOOR_HEIGHT(JJ),' grid mesh number ',JJ
-    PFLOOR_HEIGHT(JJ) = 2.5
+  IF (B%XFLOOR_HEIGHT(JJ) < 2.5) THEN
+!    WRITE(ILUOUT,*) 'WARNING: B%XFLOOR_HEIGHT low ',B%XFLOOR_HEIGHT(JJ),' grid mesh number ',JJ
+    B%XFLOOR_HEIGHT(JJ) = 2.5
   ENDIF
-  IF (PFLOOR_HEIGHT(JJ) > PBLD_HEIGHT(JJ)) THEN
-!    WRITE(ILUOUT,*) 'WARNING: PFLOOR_HEIGHT higher than PBLD_HEIGHT ',PFLOOR_HEIGHT(JJ),' grid mesh number ',JJ, &
+  IF (B%XFLOOR_HEIGHT(JJ) > PBLD_HEIGHT(JJ)) THEN
+!    WRITE(ILUOUT,*) 'WARNING: B%XFLOOR_HEIGHT higher than PBLD_HEIGHT ',B%XFLOOR_HEIGHT(JJ),' grid mesh number ',JJ, &
 !                    'set to PBLD_HEIGHT'
-    PFLOOR_HEIGHT(JJ) = PBLD_HEIGHT(JJ)
+    B%XFLOOR_HEIGHT(JJ) = PBLD_HEIGHT(JJ)
   ENDIF
 !
 !*    1.   Verify location of HVAC release for very extended buildings
 !          -----------------------------------------------------------
 !
-  IF (PBLD(JJ) > 0.9999 .AND. PF_WASTE_CAN(JJ) > 0.) THEN
-!    WRITE(ILUOUT,*) 'WARNING: PF_WASTE_CAN cannot be higher than 0. while PBLD is 0.9999',PF_WASTE_CAN(JJ), &
+  IF (PBLD(JJ) > 0.9999 .AND. B%XF_WASTE_CAN(JJ) > 0.) THEN
+!    WRITE(ILUOUT,*) 'WARNING: B%XF_WASTE_CAN cannot be higher than 0. while PBLD is 0.9999',B%XF_WASTE_CAN(JJ), &
 !                    ' grid mesh number ',JJ,' set to 0.'
-    PF_WASTE_CAN(JJ) = 0.
+    B%XF_WASTE_CAN(JJ) = 0.
   ENDIF
 END DO
 !
 !*       1.    floor number, relative surf. and view factors caculation
 !              --------------------------------------------------------
 !
-PN_FLOOR(:) = FLOAT(NINT(PBLD_HEIGHT(:) / PFLOOR_HEIGHT(:) ))
-PWALL_O_BLD(:) = PWALL_O_HOR(:) * (1. - PGR(:)) / PBLD(:) ! [m2(wall)/m2(bld)]
-PGLAZ_O_BLD(:) = PWALL_O_HOR(:) * PGR(:)        / PBLD(:) ! [m2(win)/m2(bld)]
+B%XN_FLOOR(:) = FLOAT(NINT(PBLD_HEIGHT(:) / B%XFLOOR_HEIGHT(:) ))
+PWALL_O_BLD(:) = PWALL_O_HOR(:) * (1. - B%XGR(:)) / PBLD(:) ! [m2(wall)/m2(bld)]
+B%XGLAZ_O_BLD(:) = PWALL_O_HOR(:) * B%XGR(:)        / PBLD(:) ! [m2(win)/m2(bld)]
 
-WHERE(PN_FLOOR > 1.5)
+WHERE(B%XN_FLOOR > 1.5)
    !* more than 1 floor level -> the floor and the roof don't see each other
    !
    !           ROOF
@@ -132,28 +107,28 @@ WHERE(PN_FLOOR > 1.5)
    !  |        FLOOR        |
    !  |---------------------|
    !
-   PMASS_O_BLD(:) = 2 * (PN_FLOOR(:) - 1.)                     ! [m2(mass)/m2(bld)]
-   PFLOOR_HW_RATIO(:) = PWALL_O_HOR(:) / PN_FLOOR(:) / PBLD(:) / 2.
+   B%XMASS_O_BLD(:) = 2 * (B%XN_FLOOR(:) - 1.)                     ! [m2(mass)/m2(bld)]
+   B%XFLOOR_HW_RATIO(:) = PWALL_O_HOR(:) / B%XN_FLOOR(:) / PBLD(:) / 2.
    !
-   PF_FLOOR_MASS(:) = (PFLOOR_HW_RATIO(:)**2 + 1.)**0.5  - PFLOOR_HW_RATIO(:)
-   PF_FLOOR_WALL(:) = (1. - PF_FLOOR_MASS(:)) * (1. - PGR(:))
-   PF_FLOOR_WIN (:) = (1. - PF_FLOOR_MASS(:)) * PGR(:)
-   PF_FLOOR_ROOF(:) = 0. ! no rad interaction between floor and roof
+   B%XF_FLOOR_MASS(:) = (B%XFLOOR_HW_RATIO(:)**2 + 1.)**0.5  - B%XFLOOR_HW_RATIO(:)
+   B%XF_FLOOR_WALL(:) = (1. - B%XF_FLOOR_MASS(:)) * (1. - B%XGR(:))
+   B%XF_FLOOR_WIN (:) = (1. - B%XF_FLOOR_MASS(:)) * B%XGR(:)
+   B%XF_FLOOR_ROOF(:) = 0. ! no rad interaction between floor and roof
    !
-   ZF_AUX2      (:) = (1. - PF_FLOOR_MASS(:)) / PFLOOR_HW_RATIO(:)
+   ZF_AUX2      (:) = (1. - B%XF_FLOOR_MASS(:)) / B%XFLOOR_HW_RATIO(:)
    !
-   PF_WALL_FLOOR(:) = ZF_AUX2(:) / ( 2.*PN_FLOOR(:) )
-   PF_WALL_MASS (:) = PF_WALL_FLOOR(:) * (2.*PN_FLOOR(:)-2.) 
-   PF_WALL_WIN  (:) = (1. - ZF_AUX2(:)) * PGR(:)
+   B%XF_WALL_FLOOR(:) = ZF_AUX2(:) / ( 2.*B%XN_FLOOR(:) )
+   B%XF_WALL_MASS (:) = B%XF_WALL_FLOOR(:) * (2.*B%XN_FLOOR(:)-2.) 
+   B%XF_WALL_WIN  (:) = (1. - ZF_AUX2(:)) * B%XGR(:)
    !
-   PF_WIN_FLOOR(:) = PF_WALL_FLOOR(:)
-   PF_WIN_MASS (:) = PF_WALL_MASS (:)
-   PF_WIN_WALL (:) = (1. - PF_WIN_FLOOR(:) * 2. - PF_WIN_MASS(:) ) * (1. - PGR(:))
-   PF_WIN_WIN  (:) = (1. - PF_WIN_FLOOR(:) * 2. - PF_WIN_MASS(:) ) * PGR(:)
+   B%XF_WIN_FLOOR(:) = B%XF_WALL_FLOOR(:)
+   B%XF_WIN_MASS (:) = B%XF_WALL_MASS (:)
+   B%XF_WIN_WALL (:) = (1. - B%XF_WIN_FLOOR(:) * 2. - B%XF_WIN_MASS(:) ) * (1. - B%XGR(:))
+   B%XF_WIN_WIN  (:) = (1. - B%XF_WIN_FLOOR(:) * 2. - B%XF_WIN_MASS(:) ) * B%XGR(:)
    !
-   PF_MASS_FLOOR(:) = PF_FLOOR_MASS(:) / PMASS_O_BLD(:)
-   PF_MASS_WALL (:) = PWALL_O_BLD(:) * PF_WALL_MASS(:) / PMASS_O_BLD(:)
-   PF_MASS_WIN  (:) = PGLAZ_O_BLD (:) * PF_WIN_MASS(:)  / PMASS_O_BLD(:)
+   B%XF_MASS_FLOOR(:) = B%XF_FLOOR_MASS(:) / B%XMASS_O_BLD(:)
+   B%XF_MASS_WALL (:) = PWALL_O_BLD(:) * B%XF_WALL_MASS(:) / B%XMASS_O_BLD(:)
+   B%XF_MASS_WIN  (:) = B%XGLAZ_O_BLD (:) * B%XF_WIN_MASS(:)  / B%XMASS_O_BLD(:)
 ELSE WHERE
    !* 1 floor level -> no mass view factors ; roof and floor see each other
    !
@@ -164,28 +139,28 @@ ELSE WHERE
    !  |        FLOOR        |
    !  |---------------------|
    !
-   PMASS_O_BLD(:) = 0.
-   PFLOOR_HW_RATIO(:) = PWALL_O_HOR(:) / PBLD(:) / 2.
+   B%XMASS_O_BLD(:) = 0.
+   B%XFLOOR_HW_RATIO(:) = PWALL_O_HOR(:) / PBLD(:) / 2.
    !
-   PF_FLOOR_ROOF(:) = (PFLOOR_HW_RATIO(:)**2 + 1.)**0.5  - PFLOOR_HW_RATIO(:)
-   PF_FLOOR_MASS(:) = 0.
-   PF_FLOOR_WALL(:) = (1. - PF_FLOOR_ROOF(:)) * (1. - PGR(:))
-   PF_FLOOR_WIN (:) = (1. - PF_FLOOR_ROOF(:)) * PGR(:)
+   B%XF_FLOOR_ROOF(:) = (B%XFLOOR_HW_RATIO(:)**2 + 1.)**0.5  - B%XFLOOR_HW_RATIO(:)
+   B%XF_FLOOR_MASS(:) = 0.
+   B%XF_FLOOR_WALL(:) = (1. - B%XF_FLOOR_ROOF(:)) * (1. - B%XGR(:))
+   B%XF_FLOOR_WIN (:) = (1. - B%XF_FLOOR_ROOF(:)) * B%XGR(:)
    !
-   ZF_AUX2      (:) = (1. - PF_FLOOR_ROOF(:)) / PFLOOR_HW_RATIO(:)
+   ZF_AUX2      (:) = (1. - B%XF_FLOOR_ROOF(:)) / B%XFLOOR_HW_RATIO(:)
    !
-   PF_WALL_FLOOR(:) = ZF_AUX2(:) / 2.
-   PF_WALL_MASS (:) = 0.
-   PF_WALL_WIN  (:) = (1. - ZF_AUX2(:)) * PGR(:)
+   B%XF_WALL_FLOOR(:) = ZF_AUX2(:) / 2.
+   B%XF_WALL_MASS (:) = 0.
+   B%XF_WALL_WIN  (:) = (1. - ZF_AUX2(:)) * B%XGR(:)
    !
-   PF_WIN_FLOOR(:) = PF_WALL_FLOOR(:)
-   PF_WIN_MASS (:) = 0.
-   PF_WIN_WALL (:) = (1. - PF_WIN_FLOOR(:) * 2. - PF_WIN_MASS(:) ) * (1. - PGR(:))
-   PF_WIN_WIN  (:) = (1. - PF_WIN_FLOOR(:) * 2. - PF_WIN_MASS(:) ) * PGR(:)
+   B%XF_WIN_FLOOR(:) = B%XF_WALL_FLOOR(:)
+   B%XF_WIN_MASS (:) = 0.
+   B%XF_WIN_WALL (:) = (1. - B%XF_WIN_FLOOR(:) * 2. - B%XF_WIN_MASS(:) ) * (1. - B%XGR(:))
+   B%XF_WIN_WIN  (:) = (1. - B%XF_WIN_FLOOR(:) * 2. - B%XF_WIN_MASS(:) ) * B%XGR(:)
    !
-   PF_MASS_FLOOR(:) = 0.
-   PF_MASS_WALL (:) = 0.
-   PF_MASS_WIN  (:) = 0.
+   B%XF_MASS_FLOOR(:) = 0.
+   B%XF_MASS_WALL (:) = 0.
+   B%XF_MASS_WIN  (:) = 0.
 END WHERE
 !
 END SUBROUTINE BEM_MORPHO

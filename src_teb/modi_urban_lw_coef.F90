@@ -1,10 +1,7 @@
 !auto_modi:spll_urban_lw_coef.D
 MODULE MODI_URBAN_LW_COEF
 INTERFACE
-    SUBROUTINE URBAN_LW_COEF(PGR, PBLD, PLW_RAD,                                 &
-                             PEMIS_R, PSVF_R, PEMIS_W, PSVF_W, PEMIS_G,          &
-                             PROAD, PGARDEN, PESNOW_R,                           &
-                             PTS_SR, PTS_W_A, PTS_W_B, PTS_R, PTS_G, PTS_WIN,    &
+    SUBROUTINE URBAN_LW_COEF(B, T, PLW_RAD, PEMIS_G, PTS_SR, PTS_G,              &
                              PLW_WA_TO_WB, PLW_WA_TO_R, PLW_WB_TO_R,             &
                              PLW_WA_TO_NR,PLW_WB_TO_NR,                          &
                              PLW_WA_TO_G, PLW_WB_TO_G,                           &
@@ -16,23 +13,14 @@ INTERFACE
                              PLW_WIN_TO_WA, PLW_WIN_TO_WB, PLW_WIN_TO_R,         &
                              PLW_WIN_TO_NR, PLW_WIN_TO_G,                        &
                              PLW_NR_TO_WA, PLW_NR_TO_WB, PLW_NR_TO_WIN           )
+USE MODD_BEM_n, ONLY : BEM_t
+USE MODD_TEB_n, ONLY : TEB_t
 IMPLICIT NONE
-REAL, DIMENSION(:), INTENT(IN)  :: PGR      ! glazing ratio
-REAL, DIMENSION(:), INTENT(IN)  :: PBLD     ! building density
+TYPE(BEM_t), INTENT(INOUT) :: B
+TYPE(TEB_t), INTENT(INOUT) :: T
 REAL, DIMENSION(:), INTENT(IN)  :: PLW_RAD  ! incoming LW radiation
-REAL, DIMENSION(:), INTENT(IN)  :: PEMIS_R  ! road emissivity
-REAL, DIMENSION(:), INTENT(IN)  :: PSVF_R   ! road sky view factor
-REAL, DIMENSION(:), INTENT(IN)  :: PEMIS_W  ! wall emissivity
-REAL, DIMENSION(:), INTENT(IN)  :: PSVF_W   ! wall sky view factor
 REAL, DIMENSION(:), INTENT(IN)  :: PEMIS_G  ! GARDEN area emissivity
-REAL, DIMENSION(:), INTENT(IN)  :: PROAD    ! road fraction
-REAL, DIMENSION(:), INTENT(IN)  :: PGARDEN  ! GARDEN area fraction
-REAL, DIMENSION(:), INTENT(IN)  :: PESNOW_R ! road snow emissivity
-REAL, DIMENSION(:), INTENT(IN)  :: PTS_W_A  ! wall A surface temperature
-REAL, DIMENSION(:), INTENT(IN)  :: PTS_W_B  ! wall B surface temperature
-REAL, DIMENSION(:), INTENT(IN)  :: PTS_R    ! road surface tempeature
 REAL, DIMENSION(:), INTENT(IN)  :: PTS_G    ! garden surface temperature
-REAL, DIMENSION(:), INTENT(IN)  :: PTS_WIN  ! window surface temperature
 REAL, DIMENSION(:), INTENT(IN)  :: PTS_SR   ! snow surface temperature
 REAL, DIMENSION(:), INTENT(OUT) :: PLW_WA_TO_WB! L.W. interactions wall->opposite wall
 REAL, DIMENSION(:), INTENT(OUT) :: PLW_WA_TO_R  ! L.W. interactions wall->road for road balance 

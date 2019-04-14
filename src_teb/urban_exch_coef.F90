@@ -62,8 +62,6 @@ USE PARKIND1  ,ONLY : JPRB
 !
 USE MODI_FLXSURF3BX
 !
-USE MODI_INIT_SURFCONSPHY
-!
 IMPLICIT NONE
 !
  CHARACTER(LEN=6)                  :: HZ0H     ! TEB option for z0h roof & road
@@ -133,7 +131,6 @@ ELSEIF(HZ0H=='BRUT82' .OR. HZ0H=='KAND07')THEN
   ! initialisations
   fcor(:)=1.0372462E-04
 !RJ: can be removed
-  CALL INIT_SURFCONSPHY
   N=SIZE(PTA)
   !
   ! Set a minimum threshold to the wind

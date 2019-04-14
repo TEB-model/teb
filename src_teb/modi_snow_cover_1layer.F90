@@ -1,17 +1,12 @@
 !auto_modi:spll_snow_cover_1layer.D
 MODULE MODI_SNOW_COVER_1LAYER
 INTERFACE
-    SUBROUTINE SNOW_COVER_1LAYER(PTSTEP, PANSMIN, PANSMAX, PTODRY,         &
-                                   PRHOSMIN, PRHOSMAX, PRHOFOLD, OALL_MELT,  &
-                                   PDRAIN_TIME, PWCRN, PZ0SN, PZ0HSN,        &
-                                   PTSNOW, PASNOW, PRSNOW, PWSNOW, PTS_SNOW, &
-                                   PESNOW,                                   &
-                                   PTG, PTG_COEFA, PTG_COEFB,                &
-                                   PABS_SW, PLW1, PLW2,                      &
-                                   PTA, PQA, PVMOD, PPS, PRHOA, PSR,         &
-                                   PZREF, PUREF,                             &
-                                   PRNSNOW, PHSNOW, PLESNOW, PGSNOW, PMELT,  &
-                                   PDQS_SNOW, PABS_LW                        )  
+    SUBROUTINE SNOW_COVER_1LAYER(PTSTEP, PANSMIN, PANSMAX, PTODRY, PRHOSMIN, PRHOSMAX,   &
+                                 PRHOFOLD, OALL_MELT, PDRAIN_TIME, PWCRN, PZ0SN, PZ0HSN, &
+                                 TPSNOW, PTG, PTG_COEFA, PTG_COEFB, PABS_SW, PLW1, PLW2, &
+                                 PTA, PQA, PVMOD, PPS, PRHOA, PSR, PZREF, PUREF, PRNSNOW,&
+                                 PHSNOW, PLESNOW, PGSNOW, PMELT, PDQS_SNOW, PABS_LW  )  
+USE MODD_TYPE_SNOW, ONLY : SURF_SNOW
 IMPLICIT NONE
 REAL,                 INTENT(IN)    :: PTSTEP   ! time step
 REAL,                 INTENT(IN)    :: PANSMIN  ! minimum snow albedo
@@ -25,12 +20,7 @@ REAL,                 INTENT(IN)    :: PDRAIN_TIME ! drainage folding time (days
 REAL,                 INTENT(IN)    :: PWCRN    ! critical snow amount necessary
 REAL,                 INTENT(IN)    :: PZ0SN    ! snow roughness length for momentum
 REAL,                 INTENT(IN)    :: PZ0HSN   ! snow roughness length for heat
-REAL, DIMENSION(:), INTENT(INOUT) :: PWSNOW   ! snow reservoir (kg/m2)
-REAL, DIMENSION(:), INTENT(INOUT) :: PTSNOW   ! snow temperature
-REAL, DIMENSION(:), INTENT(INOUT) :: PASNOW   ! snow albedo
-REAL, DIMENSION(:), INTENT(INOUT) :: PRSNOW   ! snow density
-REAL, DIMENSION(:), INTENT(INOUT) :: PTS_SNOW ! snow surface temperature
-REAL, DIMENSION(:), INTENT(INOUT) :: PESNOW   ! snow emissivity
+TYPE(SURF_SNOW), INTENT(INOUT) :: TPSNOW
 REAL, DIMENSION(:), INTENT(IN)    :: PTG      ! underlying ground temperature
 REAL, DIMENSION(:), INTENT(IN)    :: PTG_COEFA! underlying ground temperature
 REAL, DIMENSION(:), INTENT(IN)    :: PTG_COEFB! implicit terms

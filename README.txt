@@ -4,7 +4,7 @@
 
                            METEO-FRANCE / CNRS
 
-                            Version October 2013
+                            Version March 2018
 
 
 contact : Valéry Masson (valery.masson@meteo.fr)
@@ -22,7 +22,26 @@ SURFEX platform. It contains TEB and much more, especially the ISBA scheme
 for vegetation, or several I/O formats, including Netcdf. 
 (http://www.cnrm.meteo.fr/surfex/)
 
-Please refer to this website for the complete documentation on TEB.
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+Documentation:
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+
+Please refer to the SURFEX website for the complete documentation on TEB:
+http://www.umr-cnrm.fr/surfex/IMG/pdf/surfex_scidoc_v8.1.pdf
+
+code browser:
+
+There is a code browser available for all SURFEX code available from the SURFEX
+page. The code browser corresponding to the physical routines of teb scheme
+can be found starting from the teb_garden.F90 routine:
+
+http://www.umr-cnrm.fr/surfex/data/BROWSER/doc_surf81/teb__garden_8F90.html
+
+Note that, this browser is in the SURFEX environment. Because the garden and greenroofs
+are replaced by proxy schemes in this offline version, you should not take attention
+to the routines called by greenroof.F90, garden.F90 and teb_veg_properties.F90.
 
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
@@ -33,7 +52,7 @@ Physical description of TEB
 The present simple "driver" version of TEB is based on :
 
 ------------------------------------------------------------
-version7_3 of SURFEX code; branch TEB_DEV_1514, release 1550
+version8_1 of SURFEX code (r 5f2f00d8)
 ------------------------------------------------------------
 
 
@@ -77,6 +96,17 @@ The following physical features are included :
   - possibility to have irrigation of greenroofs, gardens and watering of roads
   - possibility to have solar panels (hot water and/or photovoltaic)
 
+
+Note: the only change of the TEB physical routines compared to the surfex v8.1 
+version (open_surfex_v8_1.tar.gz (r 5f2f00d8) version ) are:
+
+- a simpler ini_csts.F90 routine (less physical constants need to be initialized)
+- the snow constants are initialized directly in module modd_snow_par.F90
+- a correction of bug in teb.F90 routine for the extrapolation of air temperature 
+  and humidity from forcing level to roof level.
+- in teb_garden.F90, all references to garden and greenroofs (list of variables
+  and arguments) are simplified, because of the use of proxys schemes for these.
+
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
 Technical description of the driver structure
@@ -92,6 +122,14 @@ Technical description of the driver structure
       This program is the main driver of this driver version of TEB.
       You can modify the values of the urban parameters (where indicated,
       from line 530 to line 865).
+
+'src_struct' directory contains the modules defining the several fortran structures
+      used to group the TEB variables (and hence limit the number of arguments in all
+      teb subroutines). It also contains the teb_garden_struct.F90, bem_morpho_struct.F90 
+      and window_data_struct.F90 called from the main program driver.F90. The  
+      teb_garden_struct.F90 routine stores all the variables defined in the driver
+      into the variables of the fortran structures, before calling the physical routine
+      teb_garden.F90.   
 
 'src_solar' directory contains a simplified sky model, that is in SURFEX, to
       estimate the part of the diffuse solar radiation that is near solar direction.
@@ -129,7 +167,7 @@ To do this, you have to:
 a) define your fortran compiler options in file gfortran_args
 b) run the script this way :
 
-mkmf.pl -t gfortran_args -p driver.exe src_driver src_proxi_SVAT src_solar src_teb
+mkmf.pl -t gfortran_args -p driver.exe src_driver src_struct src_proxi_SVAT src_solar src_teb
 
 c) You now should have a 'Makefile' file in your directory
 
