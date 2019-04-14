@@ -1,12 +1,5 @@
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-! Copyright 1998-2013 Meteo-France
-! This is part of the TEB software governed by the CeCILL-C licence version 1.
-! See LICENCE, CeCILL-C_V1-en.txt and CeCILL-C_V1-fr.txt for details.
-! http://www.cecill.info/licences/Licence_CeCILL-C_V1-en.txt
-! http://www.cecill.info/licences/Licence_CeCILL-C_V1-fr.txt
-! The CeCILL-C licence is compatible with L-GPL
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-MODULE MODI_TEB_GARDEN 
+!auto_modi:spll_teb_garden.D
+MODULE MODI_TEB_GARDEN
 INTERFACE
     SUBROUTINE TEB_GARDEN (OGARDEN, OGREENROOF, OSOLAR_PANEL,                 &
                      HZ0H, HIMPLICIT_WIND, HROAD_DIR, HWALL_OPT, TPTIME,      &
@@ -105,6 +98,7 @@ INTERFACE
                      PDT_RES, PDT_OFF,                                        &
                      PCUR_TCOOL_TARGET, PCUR_THEAT_TARGET, PCUR_QIN           )
 USE MODD_TYPE_DATE_SURF,    ONLY: DATE_TIME
+IMPLICIT NONE
  LOGICAL,              INTENT(IN)    :: OGARDEN           ! Flag to use a garden    model inside the canyon
  LOGICAL,              INTENT(IN)    :: OGREENROOF        ! Flag to use a greenroof model on roofs
  LOGICAL,              INTENT(IN)    :: OSOLAR_PANEL      ! Flag to use a Solar Panel model on roofs
@@ -174,7 +168,7 @@ REAL                , INTENT(IN)    :: PTSTEP             ! time step
 REAL, DIMENSION(:)  , INTENT(IN)    :: PZ0_TOWN           ! town roughness length for momentum
 REAL, DIMENSION(:)  , INTENT(IN)    :: PBLD               ! fraction of buildings
 REAL, DIMENSION(:)  , INTENT(IN)    :: PGARDEN            ! fraction of green areas
-REAL, DIMENSION(:)  , INTENT(IN)    :: PROAD_DIR          ! road direction (° from North, clockwise)
+REAL, DIMENSION(:)  , INTENT(IN)    :: PROAD_DIR          ! road direction (deg from North, clockwise)
 REAL, DIMENSION(:)  , INTENT(IN)    :: PROAD              ! fraction of roads
 REAL, DIMENSION(:)  , INTENT(IN)    :: PFRAC_GR           ! fraction of green roofs
 REAL, DIMENSION(:)  , INTENT(IN)    :: PBLD_HEIGHT        ! buildings h
@@ -261,7 +255,7 @@ REAL, DIMENSION(:)  , INTENT(OUT)   :: PLE_TOWN           ! latent heat flux ove
 REAL, DIMENSION(:)  , INTENT(OUT)   :: PGFLUX_TOWN        ! flux through the ground
 REAL, DIMENSION(:)  , INTENT(OUT)   :: PEVAP_TOWN         ! evaporation flux (kg/m2/s)
 REAL, DIMENSION(:)  , INTENT(OUT)   :: PRUNOFF_TOWN       ! runoff over the ground
-REAL, DIMENSION(:)  , INTENT(OUT)   :: PSFCO2             ! flux of CO2       (kg/m2/s)
+REAL, DIMENSION(:)  , INTENT(OUT)   :: PSFCO2             ! flux of CO2       (m/s*kg_CO2/kg_air)
 REAL, DIMENSION(:)  , INTENT(OUT)   :: PUW_GRND           ! momentum flux for ground built surf
 REAL, DIMENSION(:)  , INTENT(OUT)   :: PUW_ROOF           ! momentum flux for roofs
 REAL, DIMENSION(:)  , INTENT(OUT)   :: PDUWDU_GRND        !
@@ -362,8 +356,8 @@ REAL, DIMENSION(:)  , INTENT(IN)    :: PUGG_WIN           ! window glass-to-glas
 REAL, DIMENSION(:)  , INTENT(OUT)   :: PALB_WIN           ! window albedo
 REAL, DIMENSION(:)  , INTENT(IN)    :: PABS_WIN           ! window absortance
 REAL, DIMENSION(:)  , INTENT(IN)    :: PTRAN_WIN          ! window transmittance
-REAL, DIMENSION(:)  , INTENT(OUT)    :: PEMIT_LW_GRND     ! LW flux emitted by the ground (W/m² ground)
-REAL, DIMENSION(:)  , INTENT(OUT)    :: PEMIT_LW_FAC      ! LW flux emitted by the facade (W/m² ground)
+REAL, DIMENSION(:)  , INTENT(OUT)    :: PEMIT_LW_GRND     ! LW flux emitted by the ground (W/m2 ground)
+REAL, DIMENSION(:)  , INTENT(OUT)    :: PEMIT_LW_FAC      ! LW flux emitted by the facade (W/m2 ground)
 REAL, DIMENSION(:)  , INTENT(OUT)    :: PT_RAD_IND        ! Indoor mean radiant temperature [K]
 REAL, DIMENSION(:)  , INTENT(OUT)    :: PREF_SW_GRND      ! total solar rad reflected from ground
 REAL, DIMENSION(:)  , INTENT(OUT)    :: PREF_SW_FAC       ! total solar rad reflected from facade
@@ -424,4 +418,4 @@ REAL, DIMENSION(:),   INTENT(OUT)     :: PCUR_THEAT_TARGET ! Heating target temp
 REAL, DIMENSION(:),   INTENT(OUT)     :: PCUR_QIN          ! Internal heat gains        at current time (W/m2 floor)
 END SUBROUTINE TEB_GARDEN
 END INTERFACE
-END MODULE MODI_TEB_GARDEN 
+END MODULE MODI_TEB_GARDEN

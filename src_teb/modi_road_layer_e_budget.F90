@@ -1,11 +1,4 @@
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-! Copyright 1998-2013 Meteo-France
-! This is part of the TEB software governed by the CeCILL-C licence version 1.
-! See LICENCE, CeCILL-C_V1-en.txt and CeCILL-C_V1-fr.txt for details.
-! http://www.cecill.info/licences/Licence_CeCILL-C_V1-en.txt
-! http://www.cecill.info/licences/Licence_CeCILL-C_V1-fr.txt
-! The CeCILL-C licence is compatible with L-GPL
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!auto_modi:spll_road_layer_e_budget.D
 MODULE MODI_ROAD_LAYER_E_BUDGET
 INTERFACE
     SUBROUTINE ROAD_LAYER_E_BUDGET(PT_ROAD, PTSTEP, PHC_ROAD, PTC_ROAD, PD_ROAD,       &
@@ -17,6 +10,7 @@ INTERFACE
                                    PLW_WA_TO_R, PLW_WB_TO_R, PLW_S_TO_R, PLW_WIN_TO_R, &
                                    PEMIS_ROAD, PEMIT_LW_ROAD, PDQS_ROAD, PABS_LW_ROAD, &
                                    PHFREE_ROAD, PLEFREE_ROAD, PIMB_ROAD, PRR )
+IMPLICIT NONE
 REAL, DIMENSION(:,:), INTENT(INOUT) :: PT_ROAD    ! road layers temperatures
 REAL,               INTENT(IN)    :: PTSTEP       ! time step
 REAL, DIMENSION(:,:), INTENT(IN)  :: PHC_ROAD     ! heat capacity for road layers
@@ -45,7 +39,7 @@ REAL, DIMENSION(:), INTENT(IN)    :: PLW_WB_TO_R   ! LW interactions wall  -> ro
 REAL, DIMENSION(:), INTENT(IN)    :: PLW_S_TO_R    ! LW interactions sky   -> road 
 REAL, DIMENSION(:), INTENT(IN)    :: PLW_WIN_TO_R ! LW interactions window -> road 
 REAL, DIMENSION(:), INTENT(IN)    :: PEMIS_ROAD   ! road emissivity
-REAL, DIMENSION(:), INTENT(OUT)   :: PEMIT_LW_ROAD! LW flux emitted by the road (W/m² of road)
+REAL, DIMENSION(:), INTENT(OUT)   :: PEMIT_LW_ROAD! LW flux emitted by the road (W/m2 of road)
 REAL, DIMENSION(:), INTENT(OUT)   :: PDQS_ROAD    !heat storage inside the road
 REAL, DIMENSION(:), INTENT(OUT)   :: PABS_LW_ROAD ! absorbed infrared rad.
 REAL, DIMENSION(:), INTENT(OUT)   :: PHFREE_ROAD  ! sensible heat flux on the

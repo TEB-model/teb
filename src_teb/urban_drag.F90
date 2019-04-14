@@ -1,11 +1,7 @@
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-! Copyright 1998-2013 Meteo-France
-! This is part of the TEB software governed by the CeCILL-C licence version 1.
-! See LICENCE, CeCILL-C_V1-en.txt and CeCILL-C_V1-fr.txt for details.
-! http://www.cecill.info/licences/Licence_CeCILL-C_V1-en.txt
-! http://www.cecill.info/licences/Licence_CeCILL-C_V1-fr.txt
-! The CeCILL-C licence is compatible with L-GPL
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!SFX_LIC Copyright 1994-2014 CNRS, Meteo-France and Universite Paul Sabatier
+!SFX_LIC This is part of the SURFEX software governed by the CeCILL-C licence
+!SFX_LIC version 1. See LICENSE, CeCILL-C_V1-en.txt and CeCILL-C_V1-fr.txt  
+!SFX_LIC for details. version 1.
 !     #########
     SUBROUTINE URBAN_DRAG(HZ0H, HIMPLICIT_WIND, PTSTEP,                     &
                           PT_CANYON, PQ_CANYON, PU_CANYON,                  &
@@ -61,7 +57,7 @@
 !!    AUTHOR
 !!    ------
 !!
-!!	V. Masson           * Meteo-France *
+!!      V. Masson           * Meteo-France *
 !!
 !!    MODIFICATIONS
 !!    -------------
@@ -226,11 +222,11 @@ REAL, DIMENSION(SIZE(PTA)) :: ZUSTAR_ROOF  ! friction velocity for roofs
 REAL, DIMENSION(SIZE(PTA)) :: ZUSTAR_TOWN  !
 !
 REAL, DIMENSION(SIZE(PTA)) :: ZZ0_TOP      ! roughness length for zac_top calculation
-REAL, DIMENSION(SIZE(PTA)) :: ZCHTCN_WIN   ! natural convective heat transfer coef. for window [W/(m².K)]
-REAL, DIMENSION(SIZE(PTA)) :: ZCHTCN_ROOF  ! natural convective heat transfer coef. for roof [W/(m².K)]
-REAL, DIMENSION(SIZE(PTA)) :: ZCHTCS_ROOF  ! forced convective heat transfer coef. for smooth roof [W/(m².K)]
-REAL, DIMENSION(SIZE(PTA)) :: ZCHTCN_WALL  ! natural convective heat transfer coef. for wall [W/(m².K)]
-REAL, DIMENSION(SIZE(PTA)) :: ZCHTCS_WALL  ! forced natural convective heat transfer coef. for smooth wall [W/(m².K)]
+REAL, DIMENSION(SIZE(PTA)) :: ZCHTCN_WIN   ! natural convective heat transfer coef. for window [W/(m2.K)]
+REAL, DIMENSION(SIZE(PTA)) :: ZCHTCN_ROOF  ! natural convective heat transfer coef. for roof [W/(m2.K)]
+REAL, DIMENSION(SIZE(PTA)) :: ZCHTCS_ROOF  ! forced convective heat transfer coef. for smooth roof [W/(m2.K)]
+REAL, DIMENSION(SIZE(PTA)) :: ZCHTCN_WALL  ! natural convective heat transfer coef. for wall [W/(m2.K)]
+REAL, DIMENSION(SIZE(PTA)) :: ZCHTCS_WALL  ! forced natural convective heat transfer coef. for smooth wall [W/(m2.K)]
 !
 INTEGER                   ::  JLOOP, JJ            !! 
 !

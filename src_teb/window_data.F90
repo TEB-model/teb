@@ -1,11 +1,7 @@
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-! Copyright 1998-2013 Meteo-France
-! This is part of the TEB software governed by the CeCILL-C licence version 1.
-! See LICENCE, CeCILL-C_V1-en.txt and CeCILL-C_V1-fr.txt for details.
-! http://www.cecill.info/licences/Licence_CeCILL-C_V1-en.txt
-! http://www.cecill.info/licences/Licence_CeCILL-C_V1-fr.txt
-! The CeCILL-C licence is compatible with L-GPL
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!SFX_LIC Copyright 1994-2014 CNRS, Meteo-France and Universite Paul Sabatier
+!SFX_LIC This is part of the SURFEX software governed by the CeCILL-C licence
+!SFX_LIC version 1. See LICENSE, CeCILL-C_V1-en.txt and CeCILL-C_V1-fr.txt  
+!SFX_LIC for details. version 1.
 !     #############################################################
 SUBROUTINE WINDOW_DATA(KI,PSHGC, PU_WIN, PALB_WIN, PABS_WIN, PUGG_WIN, PTRAN_WIN)
 !     #############################################################
@@ -24,7 +20,7 @@ SUBROUTINE WINDOW_DATA(KI,PSHGC, PU_WIN, PALB_WIN, PABS_WIN, PUGG_WIN, PTRAN_WIN
 !! uses U_WIN (window conductivity) and SHGC (window solar heat gain coef)
 !! to compute the normal incident transmittance/reflectance
 !! a factor to normal incident tran/ref is applied to take into account all
-!! possible incidence between 18° and 72°
+!! possible incidence between 18deg and 72deg
 !!
 !!
 !!    EXTERNAL
@@ -45,7 +41,7 @@ SUBROUTINE WINDOW_DATA(KI,PSHGC, PU_WIN, PALB_WIN, PABS_WIN, PUGG_WIN, PTRAN_WIN
 !!    AUTHOR
 !!    ------
 !!
-!!	B. Bueno           * Meteo-France *
+!!      B. Bueno           * Meteo-France *
 !!
 !!    MODIFICATIONS
 !!    -------------
@@ -88,7 +84,7 @@ REAL:: TA, RA, TBCD, RBCD, TD, RD, TE, RE, TFGHI, RFGHI, TFH, RFH, TJ, RJ
 
 !* initialization and determine transmittance and reflectance factor of the window
 
-!Curve AT temp Et  	 RA = R temp Et
+!Curve AT temp Et        RA = R temp Et
 TA = 0.9237767331    ; RA = 1.6911265959
 TBCD = 0.8802058937  ; RBCD = 1.5239470129
 TD = 0.893430955     ; RD = 1.0888507586

@@ -1,16 +1,10 @@
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-! Copyright 1998-2013 Meteo-France
-! This is part of the TEB software governed by the CeCILL-C licence version 1.
-! See LICENCE, CeCILL-C_V1-en.txt and CeCILL-C_V1-fr.txt for details.
-! http://www.cecill.info/licences/Licence_CeCILL-C_V1-en.txt
-! http://www.cecill.info/licences/Licence_CeCILL-C_V1-fr.txt
-! The CeCILL-C licence is compatible with L-GPL
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!auto_modi:spll_teb_irrig.D
 MODULE MODI_TEB_IRRIG
 INTERFACE
     SUBROUTINE TEB_IRRIG(OIRRIG, PTSTEP, KMONTH, PSOLAR_TIME,   &
                PSTART_MONTH, PEND_MONTH, PSTART_HOUR, PEND_HOUR,&
                P24H_IRRIG, PIRRIG                               )
+IMPLICIT NONE
 LOGICAL,            INTENT(IN)  :: OIRRIG   ! Flag for irrigation or not
 REAL,               INTENT(IN)  :: PTSTEP   ! time step
 INTEGER,            INTENT(IN)  :: KMONTH   ! Present Month

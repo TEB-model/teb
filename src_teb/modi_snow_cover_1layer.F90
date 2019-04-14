@@ -1,11 +1,4 @@
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-! Copyright 1998-2013 Meteo-France
-! This is part of the TEB software governed by the CeCILL-C licence version 1.
-! See LICENCE, CeCILL-C_V1-en.txt and CeCILL-C_V1-fr.txt for details.
-! http://www.cecill.info/licences/Licence_CeCILL-C_V1-en.txt
-! http://www.cecill.info/licences/Licence_CeCILL-C_V1-fr.txt
-! The CeCILL-C licence is compatible with L-GPL
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!auto_modi:spll_snow_cover_1layer.D
 MODULE MODI_SNOW_COVER_1LAYER
 INTERFACE
     SUBROUTINE SNOW_COVER_1LAYER(PTSTEP, PANSMIN, PANSMAX, PTODRY,         &
@@ -19,6 +12,7 @@ INTERFACE
                                    PZREF, PUREF,                             &
                                    PRNSNOW, PHSNOW, PLESNOW, PGSNOW, PMELT,  &
                                    PDQS_SNOW, PABS_LW                        )  
+IMPLICIT NONE
 REAL,                 INTENT(IN)    :: PTSTEP   ! time step
 REAL,                 INTENT(IN)    :: PANSMIN  ! minimum snow albedo
 REAL,                 INTENT(IN)    :: PANSMAX  ! maximum snow albedo

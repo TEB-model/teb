@@ -1,11 +1,7 @@
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-! Copyright 1998-2013 Meteo-France
-! This is part of the TEB software governed by the CeCILL-C licence version 1.
-! See LICENCE, CeCILL-C_V1-en.txt and CeCILL-C_V1-fr.txt for details.
-! http://www.cecill.info/licences/Licence_CeCILL-C_V1-en.txt
-! http://www.cecill.info/licences/Licence_CeCILL-C_V1-fr.txt
-! The CeCILL-C licence is compatible with L-GPL
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!SFX_LIC Copyright 1994-2014 CNRS, Meteo-France and Universite Paul Sabatier
+!SFX_LIC This is part of the SURFEX software governed by the CeCILL-C licence
+!SFX_LIC version 1. See LICENSE, CeCILL-C_V1-en.txt and CeCILL-C_V1-fr.txt  
+!SFX_LIC for details. version 1.
 !##################
 MODULE MODE_PSYCHRO
 !##################
@@ -27,11 +23,12 @@ MODULE MODE_PSYCHRO
 !!
 !!    AUTHOR
 !!    ------
-!!	
+!!      
 !!
 !!    MODIFICATIONS
 !!    -------------
-!!      Original    12/04/11 
+!!      Original    12/04/11
+!!      J.Escobar   11/13 :  remove space in ELSEWHERE statement
 !
 USE YOMHOOK   ,ONLY : LHOOK,   DR_HOOK
 USE PARKIND1  ,ONLY : JPRB
@@ -131,9 +128,9 @@ ALPHA(:) = LOG(ZPE(:)/1000.)
 WHERE (PT .GE. XTT .AND. PT .GE. 93.+XTT)
         PTD = XTT+6.54+14.526*ALPHA+0.7389*ALPHA*ALPHA+0.09486*ALPHA**3 &
               +0.4569*(ZPE/1000.)**0.1984
-      ELSE WHERE (PT .LT. XTT)
+      ELSEWHERE (PT .LT. XTT)
         PTD = XTT+6.09+12.608*ALPHA+0.4959*ALPHA*ALPHA
-ELSE WHERE
+ELSEWHERE
         PTD = XUNDEF
 END WHERE
 PTD(:) = MIN(PTD(:), PT(:))
@@ -274,7 +271,7 @@ end function TWB_FROM_TPQ_1D
 !!
 !!    AUTHOR
 !!    ------
-!!	
+!!      
 !!
 !!    MODIFICATIONS
 !!    -------------
@@ -344,7 +341,7 @@ END FUNCTION ENTH_FN_T_Q
 !!
 !!    AUTHOR
 !!    ------
-!!	
+!!      
 !!
 !!    MODIFICATIONS
 !!    -------------

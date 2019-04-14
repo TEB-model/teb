@@ -1,15 +1,9 @@
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-! Copyright 1998-2013 Meteo-France
-! This is part of the TEB software governed by the CeCILL-C licence version 1.
-! See LICENCE, CeCILL-C_V1-en.txt and CeCILL-C_V1-fr.txt for details.
-! http://www.cecill.info/licences/Licence_CeCILL-C_V1-en.txt
-! http://www.cecill.info/licences/Licence_CeCILL-C_V1-fr.txt
-! The CeCILL-C licence is compatible with L-GPL
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!auto_modi:spll_surface_ri.D
 MODULE MODI_SURFACE_RI
 INTERFACE
     SUBROUTINE SURFACE_RI(PTG, PQS, PEXNS, PEXNA, PTA, PQA,   &
                                PZREF, PUREF, PDIRCOSZW, PVMOD, PRI )  
+IMPLICIT NONE
 REAL, DIMENSION(:), INTENT(IN)    :: PTG      ! surface temperature
 REAL, DIMENSION(:), INTENT(IN)    :: PQS      ! surface specific humidity
 REAL, DIMENSION(:), INTENT(IN)    :: PEXNS    ! surface exner function

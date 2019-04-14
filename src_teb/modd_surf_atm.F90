@@ -1,11 +1,7 @@
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-! Copyright 1998-2013 Meteo-France
-! This is part of the TEB software governed by the CeCILL-C licence version 1.
-! See LICENCE, CeCILL-C_V1-en.txt and CeCILL-C_V1-fr.txt for details.
-! http://www.cecill.info/licences/Licence_CeCILL-C_V1-en.txt
-! http://www.cecill.info/licences/Licence_CeCILL-C_V1-fr.txt
-! The CeCILL-C licence is compatible with L-GPL
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!SFX_LIC Copyright 1994-2014 CNRS, Meteo-France and Universite Paul Sabatier
+!SFX_LIC This is part of the SURFEX software governed by the CeCILL-C licence
+!SFX_LIC version 1. See LICENSE, CeCILL-C_V1-en.txt and CeCILL-C_V1-fr.txt  
+!SFX_LIC for details. version 1.
 !     ####################
       MODULE MODD_SURF_ATM
 !     ####################
@@ -26,7 +22,7 @@
 !!
 !!    AUTHOR
 !!    ------
-!!	P. Le Moigne *Meteo France*
+!!      P. Le Moigne *Meteo France*
 !!
 !!    MODIFICATIONS
 !!    -------------
@@ -37,7 +33,11 @@
 !
 !!      B.Decharme     04/2009 Add flag used to Read/Write precipitation forcing from/into the restart file for ARPEGE/ALADIN run
 !!      B.Decharme     08/2009 Add flag used to know if you use SURFEX in the Earth System Model
-!!      B. Decharme    09/2012 New wind implicitation key option
+!!      B.Decharme     09/2012 New wind implicitation key option
+!!      B.Decharme     04/2013 Flag used to Read/Write some field from/into the restart file for coupling with ARPEGE/ALADIN
+!!                             Delete LRW_PRECIP, LSAVE_PRECIP
+!!                             Vertical shift for LW and Precip
+!!      R. Séférian    03/2014 Adding key for decouple CO2 for photosynthesis (XCO2UNCPL) 
 !
 IMPLICIT NONE
 !
@@ -50,21 +50,16 @@ LOGICAL    :: LDRAG_COEF_ARP ! activate aladin formulation for Cd and Ch
 LOGICAL    :: LALDZ0H
 !
 LOGICAL    :: LNOSOF   ! No parameterization of Subgrid Orography effects on atmospheric Forcing  
-LOGICAL    :: LVERTSHIFT  ! vertical shift from atmospheric orography to surface orography
-!
-LOGICAL    :: LRW_PRECIP       ! flag used to Read/Write precipitation forcing from/into the restart file for ARPEGE/ALADIN run
-LOGICAL    :: LSAVE_PRECIP     ! used with LRW_PRECIP
+LOGICAL    :: LVERTSHIFT ! vertical shift from atmospheric orography to surface orography
+LOGICAL    :: LVSHIFT_LW ! vertical shift for LW
+LOGICAL    :: LVSHIFT_PRCP ! vertical shift for Precip
 !
 LOGICAL    :: LVZIUSTAR0_ARP   ! activate aladin formulation for zoh over sea
 LOGICAL    :: LRRGUST_ARP      ! activate aladin formulation for CD CH, CDN, correction due to moist gustiness
 LOGICAL    :: LCPL_ARP         ! activate aladin formulation for Cp and L
 LOGICAL    :: LQVNPLUS         ! An option for the resolution of the surface temperature equation
 !
-LOGICAL    :: LCPL_ESM         ! Earth System Model Coupling key
-!
- CHARACTER(LEN=3) :: CIMPLICIT_WIND ! wind implicitation option
-!                                  ! 'OLD' = direct
-!                                  ! 'NEW' = Taylor serie, order 1
+LOGICAL    :: LCPL_GCM         ! Flag used to Read/Write some field from/into the restart file for coupling with ARPEGE/ALADIN
 !
 REAL       :: XEDB
 REAL       :: XEDC
@@ -85,6 +80,9 @@ REAL       :: XVZIUSTAR0
 REAL       :: XRRSCALE
 REAL       :: XRRGAMMA
 REAL       :: XUTILGUST
+!
+REAL       :: XCO2UNCPL ! uncoupled CO2 values (ppmv)
+!
 !-----------------------------------------------------------------------------------------------------
 !
 END MODULE MODD_SURF_ATM

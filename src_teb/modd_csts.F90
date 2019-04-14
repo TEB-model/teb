@@ -1,11 +1,7 @@
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-! Copyright 1998-2013 Meteo-France
-! This is part of the TEB software governed by the CeCILL-C licence version 1.
-! See LICENCE, CeCILL-C_V1-en.txt and CeCILL-C_V1-fr.txt for details.
-! http://www.cecill.info/licences/Licence_CeCILL-C_V1-en.txt
-! http://www.cecill.info/licences/Licence_CeCILL-C_V1-fr.txt
-! The CeCILL-C licence is compatible with L-GPL
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!SFX_LIC Copyright 1994-2014 CNRS, Meteo-France and Universite Paul Sabatier
+!SFX_LIC This is part of the SURFEX software governed by the CeCILL-C licence
+!SFX_LIC version 1. See LICENSE, CeCILL-C_V1-en.txt and CeCILL-C_V1-fr.txt  
+!SFX_LIC for details. version 1.
 !     ###############
       MODULE MODD_CSTS      
 !     ###############
@@ -37,6 +33,7 @@
 !!      J. Stein    25/07/97  add XTH00                    
 !!      V. Masson   05/10/98  add XRHOLI
 !!      C. Mari     31/10/00  add NDAYSEC
+!!      J. Escobar     06/13  add XSURF_TIMY XSURF_TIMY_12 XSURF_EPSILON for REAL*4
 !-------------------------------------------------------------------------------
 !
 !*       0.   DECLARATIONS
@@ -85,6 +82,10 @@ REAL,SAVE :: XRHOLI             ! Volumic mass of ice
 REAL,SAVE :: XCONDI             ! thermal conductivity of ice (W m-1 K-1)
 !
 INTEGER, SAVE :: NDAYSEC        ! Number of seconds in a day
+!
+REAL,SAVE     :: XSURF_TINY          ! minimum real on this machine
+REAL,SAVE     :: XSURF_TINY_12       ! sqrt(minimum real on this machine)
+REAL,SAVE     :: XSURF_EPSILON       ! minimum space with 1.0
 !
 END MODULE MODD_CSTS
 

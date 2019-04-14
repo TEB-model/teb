@@ -1,11 +1,4 @@
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-! Copyright 1998-2013 Meteo-France
-! This is part of the TEB software governed by the CeCILL-C licence version 1.
-! See LICENCE, CeCILL-C_V1-en.txt and CeCILL-C_V1-fr.txt for details.
-! http://www.cecill.info/licences/Licence_CeCILL-C_V1-en.txt
-! http://www.cecill.info/licences/Licence_CeCILL-C_V1-fr.txt
-! The CeCILL-C licence is compatible with L-GPL
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!auto_modi:spll_window_e_budget.D
 MODULE MODI_WINDOW_E_BUDGET
 INTERFACE
 SUBROUTINE WINDOW_E_BUDGET(PU_WIN, PEMIS_WIN, PF_WIN_FLOOR, PF_WIN_WALL, PF_WIN_MASS, &
@@ -16,6 +9,7 @@ SUBROUTINE WINDOW_E_BUDGET(PU_WIN, PEMIS_WIN, PF_WIN_FLOOR, PF_WIN_WALL, PF_WIN_
                            PT_CANYON, PTS_WALL, PTS_ROAD, PTSNOW_ROAD,                &
                            PTS_GARDEN, PT_WIN1, PT_WIN2, PRAD_WIN_FLOOR,              &
                            PRAD_WIN_MASS, PCONV_WIN_BLD, PEMIT_LW_WIN, PABS_LW_WIN, PLOAD_IN_WIN)
+IMPLICIT NONE
 REAL, DIMENSION(:), INTENT(IN)    :: PU_WIN       ! window U-factor [W m-2 K-1]
 REAL, DIMENSION(:), INTENT(IN)    :: PEMIS_WIN    ! window emissivity
 REAL, DIMENSION(:), INTENT(IN)    :: PF_WIN_FLOOR ! window floor view factor

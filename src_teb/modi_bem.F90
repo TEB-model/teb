@@ -1,11 +1,4 @@
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-! Copyright 1998-2013 Meteo-France
-! This is part of the TEB software governed by the CeCILL-C licence version 1.
-! See LICENCE, CeCILL-C_V1-en.txt and CeCILL-C_V1-fr.txt for details.
-! http://www.cecill.info/licences/Licence_CeCILL-C_V1-en.txt
-! http://www.cecill.info/licences/Licence_CeCILL-C_V1-fr.txt
-! The CeCILL-C licence is compatible with L-GPL
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!auto_modi:spll_bem.D
 MODULE MODI_BEM
 INTERFACE
         SUBROUTINE BEM(PTSTEP, PSUNTIME, HCOOL_COIL, HHEAT_COIL,              &
@@ -19,7 +12,7 @@ INTERFACE
                 PAUX_MAX, PT_FLOOR, PT_MASS, PTI_BLD, PQI_BLD,                &
                 PCAP_SYS_RAT, PM_SYS_RAT, ONATVENT_NIGHT,                     &
                 PH_BLD_COOL, PH_BLD_HEAT, PLE_BLD_COOL, PLE_BLD_HEAT,         &
-                PT_BLD_COOL, PHVAC_COOL, PT_SYS, PQ_SYS, PH_WASTE, PLE_WASTE,  &
+                PT_BLD_COOL, PHVAC_COOL, PT_SYS, PQ_SYS, PH_WASTE, PLE_WASTE, &
                 PFAN_POWER, PHVAC_HEAT, PM_SYS, PCOP, PCAP_SYS, PHU_BLD,      &
                 PTR_SW_WIN, PT_RAD_IND, PFLX_BLD_FLOOR, PFLX_BLD_MASS,        &
                 PF_FLOOR_MASS, PF_FLOOR_WALL, PF_FLOOR_WIN,                   &
@@ -29,6 +22,7 @@ INTERFACE
                 PRAD_WALL_FLOOR, PRAD_WIN_MASS, PRAD_WIN_FLOOR,               &
                 PCONV_ROOF_BLD, PCONV_WALL_BLD, PCONV_WIN_BLD, &
                 PLOAD_IN_FLOOR, PLOAD_IN_MASS                )
+IMPLICIT NONE
 REAL,                INTENT(IN)   :: PTSTEP        ! Time step
 REAL, DIMENSION(:),  INTENT(IN)   :: PSUNTIME       ! current solar time since midnight (solar time, s)
  CHARACTER(LEN=6),    INTENT(IN)   :: HCOOL_COIL    ! type of cooling system IDEAL/DX_COOL
@@ -115,8 +109,8 @@ REAL, DIMENSION(:)  , INTENT(IN)  :: PRAD_WIN_FLOOR  ! Rad. fluxes between wind.
 REAL, DIMENSION(:)  , INTENT(IN)  :: PCONV_ROOF_BLD  ! Conv. fluxes between roof and indoor air
 REAL, DIMENSION(:)  , INTENT(IN)  :: PCONV_WALL_BLD  ! Conv. fluxes between wall and indoor air
 REAL, DIMENSION(:)  , INTENT(IN)  :: PCONV_WIN_BLD   ! Conv. fluxes between wind. and indoor air
-REAL, DIMENSION(:)  , INTENT(IN)  :: PLOAD_IN_FLOOR  ! solar + int heat gain on floor W/m² [floor]
-REAL, DIMENSION(:)  , INTENT(IN)  :: PLOAD_IN_MASS   ! solar + int heat gain on floor W/m² [mass]
+REAL, DIMENSION(:)  , INTENT(IN)  :: PLOAD_IN_FLOOR  ! solar + int heat gain on floor W/m2 [floor]
+REAL, DIMENSION(:)  , INTENT(IN)  :: PLOAD_IN_MASS   ! solar + int heat gain on floor W/m2 [mass]
 END SUBROUTINE BEM
 END INTERFACE
 END MODULE MODI_BEM

@@ -1,11 +1,4 @@
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-! Copyright 1998-2013 Meteo-France
-! This is part of the TEB software governed by the CeCILL-C licence version 1.
-! See LICENCE, CeCILL-C_V1-en.txt and CeCILL-C_V1-fr.txt for details.
-! http://www.cecill.info/licences/Licence_CeCILL-C_V1-en.txt
-! http://www.cecill.info/licences/Licence_CeCILL-C_V1-fr.txt
-! The CeCILL-C licence is compatible with L-GPL
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!auto_modi:spll_urban_snow_evol.D
 MODULE MODI_URBAN_SNOW_EVOL
 INTERFACE
     SUBROUTINE URBAN_SNOW_EVOL(                                                 &
@@ -31,6 +24,7 @@ INTERFACE
                        PMELT_ROAD,                                              &
                        PLW_WA_TO_NR , PLW_WB_TO_NR, PLW_S_TO_NR, PLW_WIN_TO_NR, &
                        PDQS_SNOW_ROOF, PDQS_SNOW_ROAD, PT_WIN1                  )  
+IMPLICIT NONE
 REAL, DIMENSION(:),   INTENT(IN)    :: PT_LOWCAN  ! LOWCAN air temperature
 REAL, DIMENSION(:),   INTENT(IN)    :: PQ_LOWCAN  ! LOWCAN air specific humidity
 REAL, DIMENSION(:),   INTENT(IN)    :: PU_LOWCAN  ! LOWCAN hor. wind

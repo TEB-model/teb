@@ -1,11 +1,4 @@
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-! Copyright 1998-2013 Meteo-France
-! This is part of the TEB software governed by the CeCILL-C licence version 1.
-! See LICENCE, CeCILL-C_V1-en.txt and CeCILL-C_V1-fr.txt for details.
-! http://www.cecill.info/licences/Licence_CeCILL-C_V1-en.txt
-! http://www.cecill.info/licences/Licence_CeCILL-C_V1-fr.txt
-! The CeCILL-C licence is compatible with L-GPL
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!auto_modi:spll_mass_layer_e_budget.D
 MODULE MODI_MASS_LAYER_E_BUDGET
 INTERFACE
     SUBROUTINE MASS_LAYER_E_BUDGET(PT_MASS, PTSTEP, PHC_MASS, PTC_MASS, PD_MASS, &
@@ -15,6 +8,7 @@ INTERFACE
                                     PRAD_WALL_MASS, PRAD_ROOF_MASS,       &
                                     PRAD_WIN_MASS, PLOAD_MASS, PTI_BLD,             &
                                     PRAD_FLOOR_MASS, PCONV_MASS_BLD                  )
+IMPLICIT NONE
 REAL, DIMENSION(:,:), INTENT(INOUT) :: PT_MASS     ! floor layers temperatures
 REAL,                 INTENT(IN)    :: PTSTEP       ! time step
 REAL, DIMENSION(:,:), INTENT(IN)    :: PHC_MASS    ! heat capacity for road layers

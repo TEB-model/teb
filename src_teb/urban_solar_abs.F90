@@ -1,11 +1,7 @@
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-! Copyright 1998-2013 Meteo-France
-! This is part of the TEB software governed by the CeCILL-C licence version 1.
-! See LICENCE, CeCILL-C_V1-en.txt and CeCILL-C_V1-fr.txt for details.
-! http://www.cecill.info/licences/Licence_CeCILL-C_V1-en.txt
-! http://www.cecill.info/licences/Licence_CeCILL-C_V1-fr.txt
-! The CeCILL-C licence is compatible with L-GPL
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!SFX_LIC Copyright 1994-2014 CNRS, Meteo-France and Universite Paul Sabatier
+!SFX_LIC This is part of the SURFEX software governed by the CeCILL-C licence
+!SFX_LIC version 1. See LICENSE, CeCILL-C_V1-en.txt and CeCILL-C_V1-fr.txt  
+!SFX_LIC for details. version 1.
 !     #########
     SUBROUTINE URBAN_SOLAR_ABS(HBEM, HROAD_DIR, HWALL_OPT,                     &
                                  PDIR_SW, PSCA_SW, PZENITH, PAZIM,             &
@@ -183,7 +179,7 @@
 !!    AUTHOR
 !!    ------
 !!
-!!	V. Masson           * Meteo-France *
+!!      V. Masson           * Meteo-France *
 !!
 !!    MODIFICATIONS
 !!    -------------
@@ -229,7 +225,7 @@ REAL, DIMENSION(:), INTENT(IN)    :: PAZIM             ! solar azimuthal angle
 REAL, DIMENSION(:), INTENT(IN)    :: PBLD              ! buildings fraction
 REAL, DIMENSION(:), INTENT(IN)    :: PGARDEN           ! GARDEN area fraction
 REAL, DIMENSION(:), INTENT(IN)    :: PROAD_DIR         ! Road direction
-                                                       ! (° from N, clockwise)
+                                                       ! (deg from N, clockwise)
 REAL, DIMENSION(:), INTENT(IN)    :: PROAD             ! road fraction
 REAL, DIMENSION(:), INTENT(IN)    :: PFRAC_GR          ! green roof fraction
 REAL, DIMENSION(:), INTENT(IN)    :: PWALL_O_HOR       ! wall surf. / hor. surf
@@ -297,12 +293,12 @@ REAL, DIMENSION(:), INTENT(OUT)    :: PREC_SW_WIN      ! solar radiation receive
 REAL, DIMENSION(:), INTENT(OUT)    :: PREF_SW_GRND     ! total solar radiation reflected by ground
 REAL, DIMENSION(:), INTENT(OUT)    :: PREF_SW_FAC      ! total solar radiation reflected by wall
 REAL, DIMENSION(:), INTENT(OUT)    :: PTR_SW_WIN       ! Solar radiation transmitted
-                                                       ! through glazing [W/m²(bld)]
+                                                       ! through glazing [W/m2(bld)]
 !new arguments for shading
 REAL, DIMENSION(:), INTENT(OUT)    :: PE_SHADING       ! Energy that is not reflected 
                                                        ! by the shading, nor transmitted through
                                                        ! the bld, nor absorbed by the
-                                                       ! [W/m²(win)]
+                                                       ! [W/m2(win)]
 LOGICAL, DIMENSION(:),INTENT(INOUT):: OSHAD_DAY        ! has shading been necessary this day ?
 LOGICAL, DIMENSION(:),INTENT(IN)   :: OSHADE           ! are building conditions favorable for 
 !                                                      ! shading (independantly of solar irradiance) ?
@@ -733,7 +729,7 @@ ENDDO
 !-------------------------------------------------------------------------------
 !
 IF (LHOOK) CALL DR_HOOK('URBAN_SOLAR_ABS',1,ZHOOK_HANDLE)
-CONTAINS
+ CONTAINS
 !
 !-------------------------------------------------------------------------------
 SUBROUTINE SOLAR_REFLECTIONS(ZSW_ROAD,ZSW_WALL,ZSW_GARDEN,             &

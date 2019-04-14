@@ -1,11 +1,4 @@
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-! Copyright 1998-2013 Meteo-France
-! This is part of the TEB software governed by the CeCILL-C licence version 1.
-! See LICENCE, CeCILL-C_V1-en.txt and CeCILL-C_V1-fr.txt for details.
-! http://www.cecill.info/licences/Licence_CeCILL-C_V1-en.txt
-! http://www.cecill.info/licences/Licence_CeCILL-C_V1-fr.txt
-! The CeCILL-C licence is compatible with L-GPL
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!auto_modi:spll_urban_fluxes.D
 MODULE MODI_URBAN_FLUXES
 INTERFACE
     SUBROUTINE URBAN_FLUXES(HIMPLICIT_WIND, OCANOPY, PT_CANYON,                 &
@@ -20,7 +13,7 @@ INTERFACE
                        PAC_WALL, PCD,                                           &
                        PDF_ROOF, PDN_ROOF, PDF_ROAD, PDN_ROAD,                  &
                        PRNSNOW_ROOF, PHSNOW_ROOF, PLESNOW_ROOF, PGSNOW_ROOF,    &
-                       PRNSNOW_ROAD, PHSNOW_ROAD, PLESNOW_ROAD, PGSNOW_ROAD,     &
+                       PRNSNOW_ROAD, PHSNOW_ROAD, PLESNOW_ROAD, PGSNOW_ROAD,    &
                        PMELT_ROOF, PDQS_ROOF,                                   &
                        PMELT_ROAD, PDQS_ROAD,                                   &
                        PDQS_WALL_A, PDQS_WALL_B,                                &
@@ -36,11 +29,12 @@ INTERFACE
                        PGFLUX_ROOF, PRN_ROAD, PLE_ROAD, PGFLUX_ROAD,            &
                        PRN_WALL_A, PLE_WALL_A, PGFLUX_WALL_A,                   &
                        PRN_WALL_B, PLE_WALL_B, PGFLUX_WALL_B,                   &
-                       PRN_STRLROOF, PH_STRLROOF, PLE_STRLROOF,                  &
+                       PRN_STRLROOF, PH_STRLROOF, PLE_STRLROOF,                 &
                        PGFLUX_STRLROOF,                                         &
                        PRN_BLT,  PH_BLT,  PLE_BLT,                              &
                        PGFLUX_BLT, PMELT_BLT, PQF_BLD, PFLX_BLD, PDQS_BLT,      &
                        PQF_TOWN, PUSTAR_TOWN, PHVAC_COOL, PHVAC_HEAT            )
+IMPLICIT NONE
  CHARACTER(LEN=*),     INTENT(IN)  :: HIMPLICIT_WIND   ! wind implicitation option
 LOGICAL,            INTENT(IN)    :: OCANOPY      ! is canopy active ?
 REAL, DIMENSION(:), INTENT(IN)    :: PT_CANYON    ! canyon air temperature

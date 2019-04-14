@@ -1,17 +1,10 @@
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-! Copyright 1998-2013 Meteo-France
-! This is part of the TEB software governed by the CeCILL-C licence version 1.
-! See LICENCE, CeCILL-C_V1-en.txt and CeCILL-C_V1-fr.txt for details.
-! http://www.cecill.info/licences/Licence_CeCILL-C_V1-en.txt
-! http://www.cecill.info/licences/Licence_CeCILL-C_V1-fr.txt
-! The CeCILL-C licence is compatible with L-GPL
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!auto_modi:spll_urban_lw_coef.D
 MODULE MODI_URBAN_LW_COEF
 INTERFACE
     SUBROUTINE URBAN_LW_COEF(PGR, PBLD, PLW_RAD,                                 &
                              PEMIS_R, PSVF_R, PEMIS_W, PSVF_W, PEMIS_G,          &
                              PROAD, PGARDEN, PESNOW_R,                           &
-                             PTS_SR, PTS_W_A, PTS_W_B, PTS_R, PTS_G, PTS_WIN,      &
+                             PTS_SR, PTS_W_A, PTS_W_B, PTS_R, PTS_G, PTS_WIN,    &
                              PLW_WA_TO_WB, PLW_WA_TO_R, PLW_WB_TO_R,             &
                              PLW_WA_TO_NR,PLW_WB_TO_NR,                          &
                              PLW_WA_TO_G, PLW_WB_TO_G,                           &
@@ -23,6 +16,7 @@ INTERFACE
                              PLW_WIN_TO_WA, PLW_WIN_TO_WB, PLW_WIN_TO_R,         &
                              PLW_WIN_TO_NR, PLW_WIN_TO_G,                        &
                              PLW_NR_TO_WA, PLW_NR_TO_WB, PLW_NR_TO_WIN           )
+IMPLICIT NONE
 REAL, DIMENSION(:), INTENT(IN)  :: PGR      ! glazing ratio
 REAL, DIMENSION(:), INTENT(IN)  :: PBLD     ! building density
 REAL, DIMENSION(:), INTENT(IN)  :: PLW_RAD  ! incoming LW radiation

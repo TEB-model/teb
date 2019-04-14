@@ -48,6 +48,7 @@ USE MODD_SURF_ATM, ONLY: XCISMIN, XVMODMIN, LALDTHRES, XRIMAX
 USE MODD_SURF_PAR, ONLY: XUNDEF
 USE MODD_TYPE_DATE_SURF
 USE MODE_THERMOS
+USE MODD_REPROD_OPER, ONLY : CQSAT
 !
 USE MODI_SUNPOS
 USE MODI_OL_READ_ATM
@@ -574,10 +575,10 @@ HWALL_OPT = 'UNIF'
 LGARDEN = .FALSE.
 ! Green roofs
 LGREENROOF = .FALSE. ! greenroof activation
-ZFRAC_GR   = 0.      ! greenroof fraction on roofs
+ZFRAC_GR   = 0.0      ! greenroof fraction on roofs
 ! Solar panels
 LSOLAR_PANEL = .FALSE. ! solar panels activation
-ZFRAC_PANEL  = 0.      ! solar panels fraction on roofs
+ZFRAC_PANEL  = 0.0     ! solar panels fraction on roofs
 ! Road watering
 LPAR_RD_IRRIG= .TRUE.
 ! Natural Ventilation
@@ -922,6 +923,10 @@ IF ( (.NOT. LGARDEN) .AND. ZGARDEN(1)>0.) THEN
   print*, 'Garden     option   is not activated but a non-zero garden    fraction is given'
   STOP
 END IF
+IF ( ZBLD(1)+ZGARDEN(1)>=1.) THEN
+  print*, 'The sum of garden and building fraction is larger than one, so road fraction is negative. Please check their values.'
+  STOP
+END IF
 IF ( (.NOT. LSOLAR_PANEL) .AND. ZFRAC_PANEL(1)>0.) THEN
   print*, 'Solar panels option is not activated but a non-zero solar panels fraction is given'
   STOP
@@ -938,6 +943,8 @@ LCANOPY= .FALSE.  ! is canopy active ?  ** DO NOT CHANGE **
 ! initialization of physical constants
 !
 CALL INI_CSTS
+!
+CQSAT='OLD' ! saturation is computed relative to water above 0°C, and relative to ice below 0°C
 !
 !* various thresholds
 !

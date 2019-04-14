@@ -1,11 +1,7 @@
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-! Copyright 1998-2013 Meteo-France
-! This is part of the TEB software governed by the CeCILL-C licence version 1.
-! See LICENCE, CeCILL-C_V1-en.txt and CeCILL-C_V1-fr.txt for details.
-! http://www.cecill.info/licences/Licence_CeCILL-C_V1-en.txt
-! http://www.cecill.info/licences/Licence_CeCILL-C_V1-fr.txt
-! The CeCILL-C licence is compatible with L-GPL
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!SFX_LIC Copyright 1994-2014 CNRS, Meteo-France and Universite Paul Sabatier
+!SFX_LIC This is part of the SURFEX software governed by the CeCILL-C licence
+!SFX_LIC version 1. See LICENSE, CeCILL-C_V1-en.txt and CeCILL-C_V1-fr.txt  
+!SFX_LIC for details. version 1.
 !     #########
     SUBROUTINE TEB_GARDEN (OGARDEN, OGREENROOF, OSOLAR_PANEL,                 &
                      HZ0H, HIMPLICIT_WIND, HROAD_DIR, HWALL_OPT, TPTIME,      &
@@ -130,7 +126,7 @@
 !!    AUTHOR
 !!    ------
 !!
-!!	A. Lemonsu          * Meteo-France *
+!!      A. Lemonsu          * Meteo-France *
 !!
 !!    MODIFICATIONS
 !!    -------------
@@ -142,6 +138,11 @@
 !
 !*       0.     DECLARATIONS
 !               ------------
+!
+!
+!
+!
+!
 !
 USE MODD_TYPE_DATE_SURF,    ONLY: DATE_TIME
 USE MODD_CSTS,              ONLY: XTT, XSTEFAN
@@ -169,6 +170,9 @@ USE PARKIND1  ,ONLY : JPRB
 IMPLICIT NONE
 !
 !*      0.1    Declarations of arguments
+!
+!
+!
 !
  LOGICAL,              INTENT(IN)    :: OGARDEN           ! Flag to use a garden    model inside the canyon
  LOGICAL,              INTENT(IN)    :: OGREENROOF        ! Flag to use a greenroof model on roofs
@@ -252,7 +256,7 @@ REAL                , INTENT(IN)    :: PTSTEP             ! time step
 REAL, DIMENSION(:)  , INTENT(IN)    :: PZ0_TOWN           ! town roughness length for momentum
 REAL, DIMENSION(:)  , INTENT(IN)    :: PBLD               ! fraction of buildings
 REAL, DIMENSION(:)  , INTENT(IN)    :: PGARDEN            ! fraction of green areas
-REAL, DIMENSION(:)  , INTENT(IN)    :: PROAD_DIR          ! road direction (° from North, clockwise)
+REAL, DIMENSION(:)  , INTENT(IN)    :: PROAD_DIR          ! road direction (deg from North, clockwise)
 REAL, DIMENSION(:)  , INTENT(IN)    :: PROAD              ! fraction of roads
 REAL, DIMENSION(:)  , INTENT(IN)    :: PFRAC_GR           ! fraction of green roofs
 REAL, DIMENSION(:)  , INTENT(IN)    :: PBLD_HEIGHT        ! buildings h
@@ -342,7 +346,7 @@ REAL, DIMENSION(:)  , INTENT(OUT)   :: PLE_TOWN           ! latent heat flux ove
 REAL, DIMENSION(:)  , INTENT(OUT)   :: PGFLUX_TOWN        ! flux through the ground
 REAL, DIMENSION(:)  , INTENT(OUT)   :: PEVAP_TOWN         ! evaporation flux (kg/m2/s)
 REAL, DIMENSION(:)  , INTENT(OUT)   :: PRUNOFF_TOWN       ! runoff over the ground
-REAL, DIMENSION(:)  , INTENT(OUT)   :: PSFCO2             ! flux of CO2       (kg/m2/s)
+REAL, DIMENSION(:)  , INTENT(OUT)   :: PSFCO2             ! flux of CO2       (m/s*kg_CO2/kg_air)
 REAL, DIMENSION(:)  , INTENT(OUT)   :: PUW_GRND           ! momentum flux for ground built surf
 REAL, DIMENSION(:)  , INTENT(OUT)   :: PUW_ROOF           ! momentum flux for roofs
 REAL, DIMENSION(:)  , INTENT(OUT)   :: PDUWDU_GRND        !
@@ -468,8 +472,8 @@ REAL, DIMENSION(:)  , INTENT(IN)    :: PABS_WIN           ! window absortance
 REAL, DIMENSION(:)  , INTENT(IN)    :: PTRAN_WIN          ! window transmittance
 !
 ! new argument for the UTCI calculation
-REAL, DIMENSION(:)  , INTENT(OUT)    :: PEMIT_LW_GRND     ! LW flux emitted by the ground (W/m² ground)
-REAL, DIMENSION(:)  , INTENT(OUT)    :: PEMIT_LW_FAC      ! LW flux emitted by the facade (W/m² ground)
+REAL, DIMENSION(:)  , INTENT(OUT)    :: PEMIT_LW_GRND     ! LW flux emitted by the ground (W/m2 ground)
+REAL, DIMENSION(:)  , INTENT(OUT)    :: PEMIT_LW_FAC      ! LW flux emitted by the facade (W/m2 ground)
 REAL, DIMENSION(:)  , INTENT(OUT)    :: PT_RAD_IND        ! Indoor mean radiant temperature [K]
 REAL, DIMENSION(:)  , INTENT(OUT)    :: PREF_SW_GRND      ! total solar rad reflected from ground
 REAL, DIMENSION(:)  , INTENT(OUT)    :: PREF_SW_FAC       ! total solar rad reflected from facade
@@ -582,6 +586,16 @@ REAL, DIMENSION(SIZE(PTA)) :: ZEMIS_GARDEN   ! emissivity for green areas
 REAL, DIMENSION(SIZE(PTA)) :: ZALB_GREENROOF ! albedo     for green roofs
 REAL, DIMENSION(SIZE(PTA)) :: ZEMIS_GREENROOF! emissivity for green roofs
 !
+REAL, DIMENSION(SIZE(PTA)) :: ZALBNIR_TVEG_GARDEN      ! nearIR  veg tot albedo
+REAL, DIMENSION(SIZE(PTA)) :: ZALBVIS_TVEG_GARDEN      ! visible veg tot albedo
+REAL, DIMENSION(SIZE(PTA)) :: ZALBNIR_TSOIL_GARDEN     ! nearIR  soil tot albedo
+REAL, DIMENSION(SIZE(PTA)) :: ZALBVIS_TSOIL_GARDEN     ! visible soil tot albedo
+!
+REAL, DIMENSION(SIZE(PTA)) :: ZALBNIR_TVEG_GREENROOF      ! nearIR  veg tot albedo
+REAL, DIMENSION(SIZE(PTA)) :: ZALBVIS_TVEG_GREENROOF      ! visible veg tot albedo
+REAL, DIMENSION(SIZE(PTA)) :: ZALBNIR_TSOIL_GREENROOF     ! nearIR  soil tot albedo
+REAL, DIMENSION(SIZE(PTA)) :: ZALBVIS_TSOIL_GREENROOF     ! visible soil tot albedo
+!
 ! radiation received by surfaces
 !
 REAL, DIMENSION(SIZE(PTA)) :: ZREC_SW_ROAD        ! solar rad received by roads
@@ -678,18 +692,18 @@ REAL, DIMENSION(SIZE(PTA)) :: ZMTC_O_GR_R1        ! mean thermal conductivity ov
 ! fluxes from green surfaces
 !
 REAL, DIMENSION(SIZE(PTA)) :: ZEVAP_GARDEN        ! evaporation (kg/m2/s)
-REAL, DIMENSION(SIZE(PTA)) :: ZSFCO2_GARDEN       ! CO2 fluxes (kg/m2/s)
-REAL, DIMENSION(SIZE(PTA)) :: ZEMIT_LW_GARDEN     ! LW flux emitted by the garden (W/m² garden)
+REAL, DIMENSION(SIZE(PTA)) :: ZSFCO2_GARDEN       ! CO2 fluxes (m/s*kg_CO2/kg_air)
+REAL, DIMENSION(SIZE(PTA)) :: ZEMIT_LW_GARDEN     ! LW flux emitted by the garden (W/m2 garden)
 REAL, DIMENSION(SIZE(PTA)) :: ZEVAP_GREENROOF     ! evaporation over greenroofs (kg/m2/s)
-REAL, DIMENSION(SIZE(PTA)) :: ZSFCO2_GREENROOF    ! CO2 fluxes over greenroofs (kg/m2/s)
+REAL, DIMENSION(SIZE(PTA)) :: ZSFCO2_GREENROOF    ! CO2 fluxes over greenroofs (m/s*kg_CO2/kg_air)
 !
 ! fluxes from built surfaces
-REAL, DIMENSION(SIZE(PTA)) :: ZEMIT_LW_ROAD       ! LW flux emitted by the road (W/m² road)
+REAL, DIMENSION(SIZE(PTA)) :: ZEMIT_LW_ROAD       ! LW flux emitted by the road (W/m2 road)
 !
 ! fluxes from/to solar panel
-REAL, DIMENSION(SIZE(PTA)) :: ZEMIT_LWDN_PANEL    ! LW flux emitted DOWNWARDS by the solar panel (W/m² panel)
-REAL, DIMENSION(SIZE(PTA)) :: ZEMIT_LWUP_PANEL    ! LW flux emitted UPWARDS   by the solar panel (W/m² panel)
-REAL, DIMENSION(SIZE(PTA)) :: ZEMIT_LW_ROOF       ! LW flux emitted UPWARDS   by the roof        (W/m² roof )
+REAL, DIMENSION(SIZE(PTA)) :: ZEMIT_LWDN_PANEL    ! LW flux emitted DOWNWARDS by the solar panel (W/m2 panel)
+REAL, DIMENSION(SIZE(PTA)) :: ZEMIT_LWUP_PANEL    ! LW flux emitted UPWARDS   by the solar panel (W/m2 panel)
+REAL, DIMENSION(SIZE(PTA)) :: ZEMIT_LW_ROOF       ! LW flux emitted UPWARDS   by the roof        (W/m2 roof )
 !
 !new local variables for shading
 REAL, DIMENSION(SIZE(PTA)) :: ZE_SHADING          ! energy not ref., nor absorbed, nor
@@ -821,9 +835,11 @@ ENDIF
 !
 !* when building in unoccupied, target temperature is modified
 !
-CALL BLD_OCC_CALENDAR(TPTIME%TDATE%YEAR,TPTIME%TDATE%MONTH,TPTIME%TDATE%DAY,PTSUN,      &
-                      PRESIDENTIAL,PTCOOL_TARGET, PTHEAT_TARGET, PQIN,                  &
-                      PDT_RES,PDT_OFF,1.,PCUR_TCOOL_TARGET, PCUR_THEAT_TARGET, PCUR_QIN )
+IF (HBEM=="BEM") THEN
+  CALL BLD_OCC_CALENDAR(TPTIME%TDATE%YEAR,TPTIME%TDATE%MONTH,TPTIME%TDATE%DAY,PTSUN,      &
+                        PRESIDENTIAL,PTCOOL_TARGET, PTHEAT_TARGET, PQIN,                  &
+                        PDT_RES,PDT_OFF,1.,PCUR_TCOOL_TARGET, PCUR_THEAT_TARGET, PCUR_QIN )
+ENDIF
 !
 !-------------------------------------------------------------------------------
 !
@@ -907,7 +923,7 @@ END IF
 !
 IF (LHOOK) CALL DR_HOOK('TEB_GARDEN',1,ZHOOK_HANDLE)
 !-------------------------------------------------------------------------------
-CONTAINS
+ CONTAINS
 !-------------------------------------------------------------------------------
 SUBROUTINE TEB_GARDEN2
 !
@@ -982,31 +998,32 @@ IF (OGARDEN) THEN
   PAC_GARDEN_WAT(:) = PAC_GARDEN(:)
   PABS_SW_GARDEN(:) = (1.-ZALB_GARDEN(:)) * ZREC_SW_GARDEN
   PABS_LW_GARDEN(:) = ZEMIS_GARDEN(:) * ZREC_LW_GARDEN(:) - &
-                      XSTEFAN * ZEMIS_GARDEN(:) * ZTS_GARDEN(:)**4  
+                      XSTEFAN * ZEMIS_GARDEN(:) * ZTS_GARDEN(:)**4 
   ZEMIT_LW_GARDEN(:) = XSTEFAN * ZTS_GARDEN(:)**4 + &
                       (1 - ZEMIS_GARDEN(:)) / ZEMIS_GARDEN(:) * PABS_LW_GARDEN(:)   
 
 ELSE
 !
- PRN_GARDEN    (:) = 0.
- PH_GARDEN     (:) = 0.
- PLE_GARDEN    (:) = 0.
- PGFLUX_GARDEN (:) = 0.
- ZUW_GARDEN    (:) = 0.
- PAC_GARDEN    (:) = 0.
- PGFLUX_GARDEN (:) = 0.
- ZEVAP_GARDEN  (:) = 0.
- ZSFCO2_GARDEN (:) = 0.
- ZQSAT_GARDEN  (:) = XUNDEF
- ZTS_GARDEN    (:) = XUNDEF
- ZAC_AGG_GARDEN(:) = XUNDEF
- ZHU_AGG_GARDEN(:) = XUNDEF
- PAC_GARDEN_WAT(:) = XUNDEF
- PABS_SW_GARDEN(:) = XUNDEF
- PABS_LW_GARDEN(:) = XUNDEF
- PRUNOFF_GARDEN(:) = 0.
- PDRAIN_GARDEN (:) = 0.
- PIRRIG_GARDEN (:) = 0.
+ PRN_GARDEN     (:) = 0.
+ PH_GARDEN      (:) = 0.
+ PLE_GARDEN     (:) = 0.
+ PGFLUX_GARDEN  (:) = 0.
+ ZUW_GARDEN     (:) = 0.
+ PAC_GARDEN     (:) = 0.
+ PGFLUX_GARDEN  (:) = 0.
+ ZEVAP_GARDEN   (:) = 0.
+ ZSFCO2_GARDEN  (:) = 0.
+ ZQSAT_GARDEN   (:) = XUNDEF
+ ZTS_GARDEN     (:) = XUNDEF
+ ZAC_AGG_GARDEN (:) = XUNDEF
+ ZHU_AGG_GARDEN (:) = XUNDEF
+ PAC_GARDEN_WAT (:) = XUNDEF
+ PABS_SW_GARDEN (:) = XUNDEF
+ PABS_LW_GARDEN (:) = XUNDEF
+ ZEMIT_LW_GARDEN(:) = 0.
+ PRUNOFF_GARDEN (:) = 0.
+ PDRAIN_GARDEN  (:) = 0.
+ PIRRIG_GARDEN  (:) = 0.
 !
 ENDIF
 !

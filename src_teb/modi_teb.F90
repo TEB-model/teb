@@ -1,12 +1,5 @@
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-! Copyright 1998-2013 Meteo-France
-! This is part of the TEB software governed by the CeCILL-C licence version 1.
-! See LICENCE, CeCILL-C_V1-en.txt and CeCILL-C_V1-fr.txt for details.
-! http://www.cecill.info/licences/Licence_CeCILL-C_V1-en.txt
-! http://www.cecill.info/licences/Licence_CeCILL-C_V1-fr.txt
-! The CeCILL-C licence is compatible with L-GPL
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-MODULE MODI_TEB 
+!auto_modi:spll_teb.D
+MODULE MODI_TEB
 INTERFACE
     SUBROUTINE TEB  (HZ0H, HIMPLICIT_WIND, HWALL_OPT, HBEM, TPTIME, PTSUN,     &
                      PT_CANYON, PQ_CANYON, PU_CANYON,                          &
@@ -86,6 +79,7 @@ INTERFACE
                      OPAR_RD_IRRIG, PRD_START_MONTH, PRD_END_MONTH,            &
                      PRD_START_HOUR, PRD_END_HOUR, PRD_24H_IRRIG, PIRRIG_ROAD  )
 USE MODD_TYPE_DATE_SURF,ONLY: DATE_TIME
+IMPLICIT NONE
  CHARACTER(LEN=6), INTENT(IN)      :: HZ0H          ! TEB option for z0h roof & road
  CHARACTER(LEN=*),     INTENT(IN)  :: HIMPLICIT_WIND   ! wind implicitation option
  CHARACTER(LEN=4), INTENT(IN)      :: HWALL_OPT     ! TEB option for walls
@@ -327,8 +321,8 @@ REAL, DIMENSION(:), INTENT(INOUT):: PT_WIN1       ! outdoor window temperature [
 REAL, DIMENSION(:), INTENT(IN)   :: PABS_SW_WIN   ! window absorbed shortwave radiation [W m-2] 
 REAL, DIMENSION(:), INTENT(OUT)  :: PABS_LW_WIN   ! absorbed infrared rad. [W m-2]
 REAL, DIMENSION(:), INTENT(IN)   :: PUGG_WIN      ! window glass-to-glass U-factro [W m-2 K-1]
-REAL, DIMENSION(:), INTENT(OUT) :: PEMIT_LW_ROAD ! LW fluxes emitted by road (W/m² surf road)
-REAL, DIMENSION(:), INTENT(OUT) :: PEMIT_LW_FAC  ! LW fluxes emitted by wall (W/m² surf wall)
+REAL, DIMENSION(:), INTENT(OUT) :: PEMIT_LW_ROAD ! LW fluxes emitted by road (W/m2 surf road)
+REAL, DIMENSION(:), INTENT(OUT) :: PEMIT_LW_FAC  ! LW fluxes emitted by wall (W/m2 surf wall)
 REAL, DIMENSION(:), INTENT(OUT) :: PT_RAD_IND    ! Indoor mean radiant temperature [K]
 REAL, DIMENSION(:), INTENT(OUT) :: PHU_BLD       ! Indoor relative humidity 0 < (-) < 1
 REAL,                INTENT(IN)  :: PTIME        ! current time since midnight (UTC, s)
@@ -366,4 +360,4 @@ REAL, DIMENSION(:),   INTENT(IN)  :: PRD_24H_IRRIG  ! diurnal averaged irrigatio
 REAL, DIMENSION(:),   INTENT(OUT) :: PIRRIG_ROAD    ! man-made watering for road (kg/m2/s)
 END SUBROUTINE TEB
 END INTERFACE
-END MODULE MODI_TEB 
+END MODULE MODI_TEB

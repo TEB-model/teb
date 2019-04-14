@@ -1,11 +1,4 @@
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-! Copyright 1998-2013 Meteo-France
-! This is part of the TEB software governed by the CeCILL-C licence version 1.
-! See LICENCE, CeCILL-C_V1-en.txt and CeCILL-C_V1-fr.txt for details.
-! http://www.cecill.info/licences/Licence_CeCILL-C_V1-en.txt
-! http://www.cecill.info/licences/Licence_CeCILL-C_V1-fr.txt
-! The CeCILL-C licence is compatible with L-GPL
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!auto_modi:spll_roof_layer_e_budget.D
 MODULE MODI_ROOF_LAYER_E_BUDGET
 INTERFACE
     SUBROUTINE ROOF_LAYER_E_BUDGET(PT_ROOF, PQSAT_ROOF, PTI_BLD, PAC_BLD, PTSTEP, &
@@ -22,6 +15,7 @@ INTERFACE
                                    PRAD_ROOF_WALL, PRAD_ROOF_WIN, PRAD_ROOF_FLOOR,&
                                    PRAD_ROOF_MASS, PCONV_ROOF_BLD, PRR,           &
                                    PLOAD_IN_ROOF                                  )
+IMPLICIT NONE
 REAL, DIMENSION(:,:), INTENT(INOUT) :: PT_ROOF      ! roof layers temperatures
 REAL, DIMENSION(:), INTENT(INOUT) :: PQSAT_ROOF     ! q_sat(Ts)
 REAL, DIMENSION(:), INTENT(IN)    :: PTI_BLD        ! inside building temp.
@@ -68,7 +62,7 @@ REAL, DIMENSION(:), INTENT(OUT)   :: PRAD_ROOF_FLOOR! rad. fluxes from roof to f
 REAL, DIMENSION(:), INTENT(OUT)   :: PRAD_ROOF_MASS ! rad. fluxes from roof to mass [W m-2(roof)]
 REAL, DIMENSION(:), INTENT(OUT)   :: PCONV_ROOF_BLD ! conv. fluxes from roof to bld [W m-2(roof)]
 REAL, DIMENSION(:), INTENT(IN)    :: PRR ! rain rate [kg m-2 s-1]
-REAL, DIMENSION(:), INTENT(IN)    :: PLOAD_IN_ROOF ! solar + int heat gain on roof W/m² [roof]
+REAL, DIMENSION(:), INTENT(IN)    :: PLOAD_IN_ROOF ! solar + int heat gain on roof W/m2 [roof]
 END SUBROUTINE ROOF_LAYER_E_BUDGET
 END INTERFACE
 END MODULE MODI_ROOF_LAYER_E_BUDGET

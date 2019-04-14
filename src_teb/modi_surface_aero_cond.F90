@@ -1,15 +1,9 @@
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-! Copyright 1998-2013 Meteo-France
-! This is part of the TEB software governed by the CeCILL-C licence version 1.
-! See LICENCE, CeCILL-C_V1-en.txt and CeCILL-C_V1-fr.txt for details.
-! http://www.cecill.info/licences/Licence_CeCILL-C_V1-en.txt
-! http://www.cecill.info/licences/Licence_CeCILL-C_V1-fr.txt
-! The CeCILL-C licence is compatible with L-GPL
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!auto_modi:spll_surface_aero_cond.D
 MODULE MODI_SURFACE_AERO_COND
 INTERFACE
     SUBROUTINE SURFACE_AERO_COND(PRI, PZREF, PUREF, PVMOD, PZ0,&
                                      PZ0H, PAC, PRA, PCH           ) 
+IMPLICIT NONE
 REAL, DIMENSION(:), INTENT(IN)    :: PRI      ! Richardson number
 REAL, DIMENSION(:), INTENT(IN)    :: PVMOD    ! module of the horizontal wind
 REAL, DIMENSION(:), INTENT(IN)    :: PZREF    ! reference height of the first

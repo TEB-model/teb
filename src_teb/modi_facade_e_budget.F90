@@ -1,11 +1,4 @@
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-! Copyright 1998-2013 Meteo-France
-! This is part of the TEB software governed by the CeCILL-C licence version 1.
-! See LICENCE, CeCILL-C_V1-en.txt and CeCILL-C_V1-fr.txt for details.
-! http://www.cecill.info/licences/Licence_CeCILL-C_V1-en.txt
-! http://www.cecill.info/licences/Licence_CeCILL-C_V1-fr.txt
-! The CeCILL-C licence is compatible with L-GPL
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!auto_modi:spll_facade_e_budget.D
 MODULE MODI_FACADE_E_BUDGET
 INTERFACE
 SUBROUTINE FACADE_E_BUDGET(HWALL_OPT, HBEM,                                    &
@@ -34,6 +27,7 @@ SUBROUTINE FACADE_E_BUDGET(HWALL_OPT, HBEM,                                    &
                            PRAD_ROOF_WIN, PRAD_WALL_FLOOR, PRAD_WALL_MASS,     &
                            PRAD_WIN_FLOOR, PRAD_WIN_MASS, PCONV_WALL_BLD,      &
                            PCONV_WIN_BLD, PAC_WIN,  PLOAD_IN_WALL, PLOAD_IN_WIN )
+IMPLICIT NONE
  CHARACTER(LEN=4), INTENT(IN)      :: HWALL_OPT     ! TEB option for walls
  CHARACTER(LEN=3), INTENT(IN)      :: HBEM         ! Building Energy model 'DEF' or 'BEM'
 REAL, DIMENSION(:,:), INTENT(INOUT) :: PT_WALL_A  ! wall A layers temperatures
@@ -88,12 +82,12 @@ REAL, DIMENSION(:), INTENT(INOUT) :: PDQS_WALL_A    ! heat storage inside the wa
 REAL, DIMENSION(:), INTENT(OUT)   :: PFLX_BLD_WALL_B! flux from bld to wall
 REAL, DIMENSION(:), INTENT(INOUT) :: PDQS_WALL_B    ! heat storage inside the wall 
 REAL, DIMENSION(:), INTENT(INOUT) :: PT_WIN2      ! indoor window temperature [K]
-REAL, DIMENSION(:), INTENT(OUT)   :: PEMIT_LW_FAC ! LW flux emitted by the facade (W/m² of facade)
+REAL, DIMENSION(:), INTENT(OUT)   :: PEMIT_LW_FAC ! LW flux emitted by the facade (W/m2 of facade)
 REAL, DIMENSION(:), INTENT(OUT)   :: PABS_LW_WALL_A ! absorbed infrared rad.
 REAL, DIMENSION(:), INTENT(OUT)   :: PABS_LW_WALL_B ! absorbed infrared rad.
 REAL, DIMENSION(:), INTENT(OUT)   :: PABS_LW_WIN  ! window absorbed shortwave radiation [W m-2] 
-REAL, DIMENSION(:), INTENT(OUT)   :: PH_WALL_A    ! Sensible heat flux from wall to air [W/m²(wall)]
-REAL, DIMENSION(:), INTENT(OUT)   :: PH_WALL_B    ! Sensible heat flux from wall to air [W/m²(wall)]
+REAL, DIMENSION(:), INTENT(OUT)   :: PH_WALL_A    ! Sensible heat flux from wall to air [W/m2(wall)]
+REAL, DIMENSION(:), INTENT(OUT)   :: PH_WALL_B    ! Sensible heat flux from wall to air [W/m2(wall)]
 REAL, DIMENSION(:), INTENT(OUT)   :: PIMB_WALL    ! wall residual energy imbalance 
 REAL, DIMENSION(:),   INTENT(IN)  :: PF_WALL_FLOOR ! View factor wall-floor
 REAL, DIMENSION(:),   INTENT(IN)  :: PF_WALL_MASS  ! View factor wall-mass
@@ -108,8 +102,8 @@ REAL, DIMENSION(:), INTENT(OUT)   :: PRAD_WIN_MASS  ! rad. fluxes from window to
 REAL, DIMENSION(:), INTENT(OUT)   :: PCONV_WALL_BLD ! conv. fluxes from wall to bld [W m-2(wall)]
 REAL, DIMENSION(:), INTENT(OUT)   :: PCONV_WIN_BLD  ! conv. fluxes from window to bld [W m-2(wind.)]
 REAL, DIMENSION(:), INTENT(IN)    :: PAC_WIN        ! window aerodynamic conductance
-REAL, DIMENSION(:), INTENT(IN)    :: PLOAD_IN_WALL  ! solar + inter. heat gains W/m² [wall]
-REAL, DIMENSION(:), INTENT(IN)    :: PLOAD_IN_WIN   ! solar + inter. heat gains W/m² [win]
+REAL, DIMENSION(:), INTENT(IN)    :: PLOAD_IN_WALL  ! solar + inter. heat gains W/m2 [wall]
+REAL, DIMENSION(:), INTENT(IN)    :: PLOAD_IN_WIN   ! solar + inter. heat gains W/m2 [win]
 END SUBROUTINE FACADE_E_BUDGET
 END INTERFACE
 END MODULE MODI_FACADE_E_BUDGET

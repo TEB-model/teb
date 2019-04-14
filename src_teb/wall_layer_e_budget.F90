@@ -1,11 +1,7 @@
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-! Copyright 1998-2013 Meteo-France
-! This is part of the TEB software governed by the CeCILL-C licence version 1.
-! See LICENCE, CeCILL-C_V1-en.txt and CeCILL-C_V1-fr.txt for details.
-! http://www.cecill.info/licences/Licence_CeCILL-C_V1-en.txt
-! http://www.cecill.info/licences/Licence_CeCILL-C_V1-fr.txt
-! The CeCILL-C licence is compatible with L-GPL
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!SFX_LIC Copyright 1994-2014 CNRS, Meteo-France and Universite Paul Sabatier
+!SFX_LIC This is part of the SURFEX software governed by the CeCILL-C licence
+!SFX_LIC version 1. See LICENSE, CeCILL-C_V1-en.txt and CeCILL-C_V1-fr.txt  
+!SFX_LIC for details. version 1.
 !   ##########################################################################
     SUBROUTINE WALL_LAYER_E_BUDGET(HBEM, PT_WALL, PTS_WALL_B, PTI_WALL_B, PTSTEP,          &
                                    PHC_WALL, PTC_WALL, PD_WALL, PDN_ROAD, PRHOA, PAC_WALL, &
@@ -89,7 +85,7 @@
 !!    AUTHOR
 !!    ------
 !!
-!!	V. Masson           * Meteo-France *
+!!      V. Masson           * Meteo-France *
 !!
 !!    MODIFICATIONS
 !!    -------------
@@ -161,7 +157,7 @@ REAL, DIMENSION(:), INTENT(INOUT) :: PDQS_WALL    ! heat storage inside the wall
 REAL, DIMENSION(:), INTENT(IN)    :: PT_WIN2      ! indoor window temperature [K]
 REAL, DIMENSION(:), INTENT(OUT)   :: PABS_LW_WALL ! absorbed infrared rad. [W m-2(wall)]
 REAL, DIMENSION(:), INTENT(OUT)   :: PEMIT_LW_WALL  ! LW flux emitted by the wall [W m-2(wall)]
-REAL, DIMENSION(:), INTENT(OUT)   :: PH_WALL      ! Sensible heat flux from wall to air [W/m²(wall)]
+REAL, DIMENSION(:), INTENT(OUT)   :: PH_WALL      ! Sensible heat flux from wall to air [W/m2(wall)]
                                                   ! wall = facade - glazing
 REAL, DIMENSION(:), INTENT(OUT)   :: PIMB_WALL    ! wall residual energy imbalance 
                                                   ! for verification [W m-2]
@@ -176,7 +172,7 @@ REAL, DIMENSION(:), INTENT(OUT)   :: PRAD_WALL_FLOOR! rad. fluxes from wall to f
 REAL, DIMENSION(:), INTENT(OUT)   :: PRAD_WALL_MASS ! rad. fluxes from wall to mass [W m-2(wall)]
 REAL, DIMENSION(:), INTENT(OUT)   :: PCONV_WALL_BLD ! conv. fluxes from wall to bld [W m-2(wall)]
 
-REAL, DIMENSION(:), INTENT(IN)    :: PLOAD_IN_WALL  ! LOAD from solar heat gain + rad int. gains  W/m² [Wall]
+REAL, DIMENSION(:), INTENT(IN)    :: PLOAD_IN_WALL  ! LOAD from solar heat gain + rad int. gains  W/m2 [Wall]
 
 
 !

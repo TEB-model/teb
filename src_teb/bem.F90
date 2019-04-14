@@ -1,11 +1,7 @@
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-! Copyright 1998-2013 Meteo-France
-! This is part of the TEB software governed by the CeCILL-C licence version 1.
-! See LICENCE, CeCILL-C_V1-en.txt and CeCILL-C_V1-fr.txt for details.
-! http://www.cecill.info/licences/Licence_CeCILL-C_V1-en.txt
-! http://www.cecill.info/licences/Licence_CeCILL-C_V1-fr.txt
-! The CeCILL-C licence is compatible with L-GPL
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!SFX_LIC Copyright 1994-2014 CNRS, Meteo-France and Universite Paul Sabatier
+!SFX_LIC This is part of the SURFEX software governed by the CeCILL-C licence
+!SFX_LIC version 1. See LICENSE, CeCILL-C_V1-en.txt and CeCILL-C_V1-fr.txt  
+!SFX_LIC for details. version 1.
 !   ##########################################################################
         SUBROUTINE BEM(PTSTEP, PSUNTIME, HCOOL_COIL, HHEAT_COIL,              &
                 OAUTOSIZE, KDAY,  HNATVENT,                                   &
@@ -149,7 +145,7 @@
 !!    AUTHOR
 !!    ------
 !!
-!!	B. Bueno           * Meteo-France *
+!!      B. Bueno           * Meteo-France *
 !!
 !!!    MODIFICATIONS
 !!    -------------
@@ -303,8 +299,8 @@ REAL, DIMENSION(:)  , INTENT(IN)  :: PRAD_WIN_FLOOR  ! Rad. fluxes between wind.
 REAL, DIMENSION(:)  , INTENT(IN)  :: PCONV_ROOF_BLD  ! Conv. fluxes between roof and indoor air
 REAL, DIMENSION(:)  , INTENT(IN)  :: PCONV_WALL_BLD  ! Conv. fluxes between wall and indoor air
 REAL, DIMENSION(:)  , INTENT(IN)  :: PCONV_WIN_BLD   ! Conv. fluxes between wind. and indoor air
-REAL, DIMENSION(:)  , INTENT(IN)  :: PLOAD_IN_FLOOR  ! solar + int heat gain on floor W/m² [floor]
-REAL, DIMENSION(:)  , INTENT(IN)  :: PLOAD_IN_MASS   ! solar + int heat gain on floor W/m² [mass]
+REAL, DIMENSION(:)  , INTENT(IN)  :: PLOAD_IN_FLOOR  ! solar + int heat gain on floor W/m2 [floor]
+REAL, DIMENSION(:)  , INTENT(IN)  :: PLOAD_IN_MASS   ! solar + int heat gain on floor W/m2 [mass]
 !
 !*      0.2    Declarations of local variables 
 !
@@ -807,7 +803,7 @@ PLE_WASTE(:) = PLE_WASTE(:) + ZWASTE(:) * XLVTT * (PQI_BLD(:) - PQ_CANYON(:))
 !
 IF (LHOOK) CALL DR_HOOK('BEM',1,ZHOOK_HANDLE)
 !
-CONTAINS
+ CONTAINS
 !
 SUBROUTINE GET_NAT_VENT(PPTI_BLD, PPT_CANYON, PPU_CANYON, PPGR, &
                         PF_AUX, PPBLD_HEIGHT, PNAT_VENT)

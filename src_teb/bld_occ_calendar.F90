@@ -1,11 +1,7 @@
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-! Copyright 1998-2013 Meteo-France
-! This is part of the TEB software governed by the CeCILL-C licence version 1.
-! See LICENCE, CeCILL-C_V1-en.txt and CeCILL-C_V1-fr.txt for details.
-! http://www.cecill.info/licences/Licence_CeCILL-C_V1-en.txt
-! http://www.cecill.info/licences/Licence_CeCILL-C_V1-fr.txt
-! The CeCILL-C licence is compatible with L-GPL
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!SFX_LIC Copyright 1994-2014 CNRS, Meteo-France and Universite Paul Sabatier
+!SFX_LIC This is part of the SURFEX software governed by the CeCILL-C licence
+!SFX_LIC version 1. See LICENSE, CeCILL-C_V1-en.txt and CeCILL-C_V1-fr.txt  
+!SFX_LIC for details. version 1.
 !#####################################################################################
 SUBROUTINE BLD_OCC_CALENDAR(KYEAR, KMONTH, KDAY, PTSUN, PRESIDENTIAL, PTCOOL_TARGET_IN, PTHEAT_TARGET_IN, &
                             PQIN_IN, PDT_RES, PDT_OFF, PQIN_FRAC, PTCOOL_TARGET, PTHEAT_TARGET, PQIN)
@@ -55,7 +51,7 @@ REAL, DIMENSION(:) , INTENT(OUT)  :: PQIN          ! Internal heat gains [W m-2(
 !
 !! 2. declaration of local variables
 !
-CHARACTER(LEN = 6)                :: CTIME         ! Local time scheme (winter or summer time)
+ CHARACTER(LEN = 6)                :: CTIME         ! Local time scheme (winter or summer time)
 INTEGER                           :: JDOW          ! day of week
 INTEGER                           :: JJ
 !
@@ -71,9 +67,9 @@ IF (LHOOK) CALL DR_HOOK('BLD_OCC_CALENDAR',0,ZTODOOK_HANDLE)
 !  3. determine the day of the week and the local time scheme in France
 !--------------------------------------------------------------------------------------
 !
-CALL DAY_OF_WEEK(KYEAR, KMONTH, KDAY, JDOW)
+ CALL DAY_OF_WEEK(KYEAR, KMONTH, KDAY, JDOW)
 !
-CTIME = 'WINTER'
+ CTIME = 'WINTER'
 IF (KMONTH >= 4 .AND. KMONTH <= 10) CTIME = 'SUMMER'
 !
 !--------------------------------------------------------------------------------------

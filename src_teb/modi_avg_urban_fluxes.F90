@@ -1,11 +1,4 @@
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-! Copyright 1998-2013 Meteo-France
-! This is part of the TEB software governed by the CeCILL-C licence version 1.
-! See LICENCE, CeCILL-C_V1-en.txt and CeCILL-C_V1-fr.txt for details.
-! http://www.cecill.info/licences/Licence_CeCILL-C_V1-en.txt
-! http://www.cecill.info/licences/Licence_CeCILL-C_V1-fr.txt
-! The CeCILL-C licence is compatible with L-GPL
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!auto_modi:spll_avg_urban_fluxes.D
 MODULE MODI_AVG_URBAN_FLUXES
 INTERFACE
     SUBROUTINE AVG_URBAN_FLUXES(                                                &
@@ -52,6 +45,7 @@ INTERFACE
                        PROAD_O_GRND,                                            &
                        PEMIS_ROAD, PESNOW_ROAD, PEMIS_WALL, PEMIS_GARDEN,       &
                        OCANOPY                                                  )  
+IMPLICIT NONE
 REAL, DIMENSION(:), INTENT(OUT)   :: PTS_TOWN          ! town surface temperature
 REAL, DIMENSION(:), INTENT(OUT)   :: PEMIS_TOWN        ! town equivalent emissivity
 REAL, DIMENSION(:), INTENT(INOUT) :: PT_CANYON         ! canyon air temperature
@@ -165,10 +159,10 @@ REAL, DIMENSION(:), INTENT(IN)    :: PF_WASTE_CAN ! fraction of waste heat relea
 REAL, DIMENSION(:), INTENT(IN)    :: PABS_LW_WIN  ! absorbed LW radiation by windows
 REAL, DIMENSION(:), INTENT(IN)    :: PT_WIN1      ! window outdoor temperature
 REAL, DIMENSION(:), INTENT(IN)    :: PGR          ! glazing ratio
-REAL, DIMENSION(:), INTENT(IN)    :: PEMIT_LW_ROAD ! LW emitted by the road (W/m² road)
-REAL, DIMENSION(:), INTENT(IN)    :: PEMIT_LW_GARDEN ! LW emitted by the garden (W/m² garden)
-REAL, DIMENSION(:), INTENT(OUT)   :: PEMIT_LW_GRND ! LW emitted by the ground (road+garden) (W/m² ground)
-CHARACTER(LEN=3), INTENT(IN)      :: HBEM ! Building Energy model 'DEF' or 'BEM'
+REAL, DIMENSION(:), INTENT(IN)    :: PEMIT_LW_ROAD ! LW emitted by the road (W/m2 road)
+REAL, DIMENSION(:), INTENT(IN)    :: PEMIT_LW_GARDEN ! LW emitted by the garden (W/m2 garden)
+REAL, DIMENSION(:), INTENT(OUT)   :: PEMIT_LW_GRND ! LW emitted by the ground (road+garden) (W/m2 ground)
+ CHARACTER(LEN=3), INTENT(IN)      :: HBEM ! Building Energy model 'DEF' or 'BEM'
 REAL, DIMENSION(:), INTENT(IN)    :: PGARDEN_O_GRND! garden surf. / (road+garden surf.) 
 REAL, DIMENSION(:), INTENT(IN)    :: PROAD_O_GRND  ! road surf.   / (road+garden surf.) 
 REAL, DIMENSION(:), INTENT(IN)    :: PSVF_ROAD     ! road sky view factor

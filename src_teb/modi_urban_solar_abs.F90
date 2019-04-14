@@ -1,11 +1,4 @@
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-! Copyright 1998-2013 Meteo-France
-! This is part of the TEB software governed by the CeCILL-C licence version 1.
-! See LICENCE, CeCILL-C_V1-en.txt and CeCILL-C_V1-fr.txt for details.
-! http://www.cecill.info/licences/Licence_CeCILL-C_V1-en.txt
-! http://www.cecill.info/licences/Licence_CeCILL-C_V1-fr.txt
-! The CeCILL-C licence is compatible with L-GPL
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!auto_modi:spll_urban_solar_abs.D
 MODULE MODI_URBAN_SOLAR_ABS
 INTERFACE
     SUBROUTINE URBAN_SOLAR_ABS(HBEM, HROAD_DIR, HWALL_OPT,                     &
@@ -34,6 +27,7 @@ INTERFACE
                                  PREF_SW_GRND, PREF_SW_FAC, PTR_SW_WIN,        &
                                  PE_SHADING, OSHAD_DAY,                        &
                                  OSHADE                                        )  
+IMPLICIT NONE
  CHARACTER(LEN=3)  , INTENT(IN)    :: HBEM              ! Building Energy model 'DEF' or 'BEM'
  CHARACTER(LEN=4),   INTENT(IN)    :: HROAD_DIR         ! road direction option
  CHARACTER(LEN=4),   INTENT(IN)    :: HWALL_OPT         ! walls option

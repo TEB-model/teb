@@ -1,11 +1,7 @@
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-! Copyright 1998-2013 Meteo-France
-! This is part of the TEB software governed by the CeCILL-C licence version 1.
-! See LICENCE, CeCILL-C_V1-en.txt and CeCILL-C_V1-fr.txt for details.
-! http://www.cecill.info/licences/Licence_CeCILL-C_V1-en.txt
-! http://www.cecill.info/licences/Licence_CeCILL-C_V1-fr.txt
-! The CeCILL-C licence is compatible with L-GPL
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!SFX_LIC Copyright 1994-2014 CNRS, Meteo-France and Universite Paul Sabatier
+!SFX_LIC This is part of the SURFEX software governed by the CeCILL-C licence
+!SFX_LIC version 1. See LICENSE, CeCILL-C_V1-en.txt and CeCILL-C_V1-fr.txt  
+!SFX_LIC for details. version 1.
 !   ##########################################################################
     SUBROUTINE TEB  (HZ0H, HIMPLICIT_WIND, HWALL_OPT, HBEM, TPTIME, PTSUN,     &
                      PT_CANYON, PQ_CANYON, PU_CANYON,                          &
@@ -224,7 +220,7 @@
 !!    AUTHOR
 !!    ------
 !!
-!!	V. Masson           * Meteo-France *
+!!      V. Masson           * Meteo-France *
 !!
 !!    MODIFICATIONS
 !!    -------------
@@ -577,8 +573,8 @@ REAL, DIMENSION(:), INTENT(IN)   :: PABS_SW_WIN   ! window absorbed shortwave ra
 REAL, DIMENSION(:), INTENT(OUT)  :: PABS_LW_WIN   ! absorbed infrared rad. [W m-2]
 REAL, DIMENSION(:), INTENT(IN)   :: PUGG_WIN      ! window glass-to-glass U-factro [W m-2 K-1]
  !new argument for PET calculation
-REAL, DIMENSION(:), INTENT(OUT) :: PEMIT_LW_ROAD ! LW fluxes emitted by road (W/m² surf road)
-REAL, DIMENSION(:), INTENT(OUT) :: PEMIT_LW_FAC  ! LW fluxes emitted by wall (W/m² surf wall)
+REAL, DIMENSION(:), INTENT(OUT) :: PEMIT_LW_ROAD ! LW fluxes emitted by road (W/m2 surf road)
+REAL, DIMENSION(:), INTENT(OUT) :: PEMIT_LW_FAC  ! LW fluxes emitted by wall (W/m2 surf wall)
 REAL, DIMENSION(:), INTENT(OUT) :: PT_RAD_IND    ! Indoor mean radiant temperature [K]
 REAL, DIMENSION(:), INTENT(OUT) :: PHU_BLD       ! Indoor relative humidity 0 < (-) < 1
 REAL,                INTENT(IN)  :: PTIME        ! current time since midnight (UTC, s)
@@ -688,11 +684,11 @@ REAL, DIMENSION(SIZE(PTA)) :: ZCONV_WALL_BLD  ! rad. flux from roof to bld [W m-
 REAL, DIMENSION(SIZE(PTA)) :: ZCONV_WIN_BLD   ! rad. flux from roof to bld [W m-2(win)]
 REAL, DIMENSION(SIZE(PTA)) :: ZAC_WIN         ! window aerodynamic conductance
 
-REAL, DIMENSION(SIZE(PTA)) :: ZLOAD_IN_ROOF   ! indoor load on roof W/m²[roof]
-REAL, DIMENSION(SIZE(PTA)) :: ZLOAD_IN_FLOOR   ! indoor load on floor W/m²[floor]
-REAL, DIMENSION(SIZE(PTA)) :: ZLOAD_IN_WALL   ! indoor load on wall W/m²[wall]
-REAL, DIMENSION(SIZE(PTA)) :: ZLOAD_IN_WIN   ! indoor load on win W/m²[win]
-REAL, DIMENSION(SIZE(PTA)) :: ZLOAD_IN_MASS   ! indoor load on mass W/m²[mass]
+REAL, DIMENSION(SIZE(PTA)) :: ZLOAD_IN_ROOF   ! indoor load on roof W/m2[roof]
+REAL, DIMENSION(SIZE(PTA)) :: ZLOAD_IN_FLOOR   ! indoor load on floor W/m2[floor]
+REAL, DIMENSION(SIZE(PTA)) :: ZLOAD_IN_WALL   ! indoor load on wall W/m2[wall]
+REAL, DIMENSION(SIZE(PTA)) :: ZLOAD_IN_WIN   ! indoor load on win W/m2[win]
+REAL, DIMENSION(SIZE(PTA)) :: ZLOAD_IN_MASS   ! indoor load on mass W/m2[mass]
 !
 REAL(KIND=JPRB) :: ZHOOK_HANDLE                                             
 !-------------------------------------------------------------------------------
@@ -739,7 +735,7 @@ ZTS_ROOF    (:)=PT_ROOF     (:,1)
 IF (HBEM=='BEM') THEN
   !
   ZLOAD_IN_ROOF = PF_FLOOR_WIN * PTR_SW_WIN + PQIN * PN_FLOOR * (1-PQIN_FLAT) * PQIN_FRAD  &
-           / (2 + PWALL_O_BLD + PGLAZ_O_BLD + PMASS_O_BLD ) ! W/m² [ROOF]
+           / (2 + PWALL_O_BLD + PGLAZ_O_BLD + PMASS_O_BLD ) ! W/m2 [ROOF]
   ZLOAD_IN_FLOOR = PF_FLOOR_WIN * PTR_SW_WIN + PQIN * PN_FLOOR * (1-PQIN_FLAT) * PQIN_FRAD  &
            / (2 + PWALL_O_BLD + PGLAZ_O_BLD + PMASS_O_BLD )
   ZLOAD_IN_MASS = PF_MASS_WIN * PTR_SW_WIN + PQIN * PN_FLOOR * (1-PQIN_FLAT) * PQIN_FRAD  &
@@ -960,7 +956,7 @@ END SELECT
 ZT_WALL   (:,:)=0.5 * (PT_WALL_A(:,:)+PT_WALL_B(:,:))
 !
 SELECT CASE(HBEM)
-CASE("DEF")
+ CASE("DEF")
 !
    CALL BLD_E_BUDGET(.TRUE., PTSTEP, PBLD, PWALL_O_HOR,        &
                      PRHOA, PT_ROOF, ZT_WALL, PTI_BLD, ZTS_FLOOR(:) )
@@ -987,7 +983,7 @@ CASE("DEF")
    PFAN_POWER(:)  = XUNDEF
    PHU_BLD(:)     = XUNDEF
 
-CASE("BEM")
+ CASE("BEM")
   CALL BEM(PTSTEP, PTSUN, HCOOL_COIL, HHEAT_COIL,                 &
     OAUTOSIZE, KDAY, HNATVENT,                                    &
     PPS, PRHOA, PT_CANYON, PQ_CANYON, PU_CANYON,                  &

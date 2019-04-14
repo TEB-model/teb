@@ -1,11 +1,7 @@
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-! Copyright 1998-2013 Meteo-France
-! This is part of the TEB software governed by the CeCILL-C licence version 1.
-! See LICENCE, CeCILL-C_V1-en.txt and CeCILL-C_V1-fr.txt for details.
-! http://www.cecill.info/licences/Licence_CeCILL-C_V1-en.txt
-! http://www.cecill.info/licences/Licence_CeCILL-C_V1-fr.txt
-! The CeCILL-C licence is compatible with L-GPL
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!SFX_LIC Copyright 1994-2014 CNRS, Meteo-France and Universite Paul Sabatier
+!SFX_LIC This is part of the SURFEX software governed by the CeCILL-C licence
+!SFX_LIC version 1. See LICENSE, CeCILL-C_V1-en.txt and CeCILL-C_V1-fr.txt  
+!SFX_LIC for details. version 1.
 !     #########
 SUBROUTINE URBAN_EXCH_COEF(HZ0H, PZ0_O_Z0H, PTG, PQS, PEXNS, PEXNA, PTA, PQA,   &
                              PZREF, PUREF, PVMOD, PZ0,                            &
@@ -42,7 +38,7 @@ SUBROUTINE URBAN_EXCH_COEF(HZ0H, PZ0_O_Z0H, PTG, PQS, PEXNS, PEXNA, PTA, PQA,   
 !!    AUTHOR
 !!    ------
 !!
-!!	V. Masson           * Meteo-France *
+!!      V. Masson           * Meteo-France *
 !!
 !!    MODIFICATIONS
 !!    -------------
@@ -104,7 +100,7 @@ REAL, DIMENSION(SIZE(PZ0))         :: ZZ0H     ! roughness length for heat
 REAL,DIMENSION(SIZE(PTA)) :: cmu, ctu, rib,ftemp,fvap,ilmo  ! temporary var for
 REAL,DIMENSION(SIZE(PTA)) :: ue,fcor, hBL,lzz0,lzz0t,fm, fh ! flxsurf3
 REAL,DIMENSION(SIZE(PTA)) :: z0h_roof,z0h_town,z0h_road     ! local thermal roughness
-REAL,DIMENSION(SIZE(PTA)) :: zustar
+REAL,DIMENSION(SIZE(PTA)) :: zustar, zta, ztg
 REAL,DIMENSION(SIZE(PTA)) :: ZVMOD                          ! wind
 INTEGER N
 !
@@ -136,6 +132,7 @@ IF (HZ0H=='MASC95') THEN
 ELSEIF(HZ0H=='BRUT82' .OR. HZ0H=='KAND07')THEN
   ! initialisations
   fcor(:)=1.0372462E-04
+!RJ: can be removed
   CALL INIT_SURFCONSPHY
   N=SIZE(PTA)
   !
@@ -151,10 +148,11 @@ ELSEIF(HZ0H=='BRUT82' .OR. HZ0H=='KAND07')THEN
     ZZ0H(:)= PZ0(:) * 7.4 * EXP( - 2.46 *( PZ0(:)*zustar(:)/1.461e-5)**0.25)
   ENDIF
 
-
+  ZTA = PTA/PEXNA
+  ZTG = PTG/PEXNS
   CALL FLXSURF3BX( cmu, ctu, PRI,ftemp,fvap,ilmo,    &
-                   ue, fcor, PTA/PEXNA, PQA,           &
-                   PUREF, PZREF, ZVMOD, PTG/PEXNS, PQS,&
+                   ue, fcor, ZTA, PQA,           &
+                   PUREF, PZREF, ZVMOD, ZTG, PQS,&
                    hBL, PZ0,ZZ0H,                      &
                    lzz0, lzz0t, fm, fh,N               )  
 !
