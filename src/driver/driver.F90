@@ -9,12 +9,12 @@
 ! ======================================================================
 PROGRAM DRIVER
 ! ======================================================================
-! 
-! ......................................................................     
+!
+! ......................................................................
 !  METHOD
 ! ......................................................................
 !
-! Program designed to create, modify, and test TEB routines before being 
+! Program designed to create, modify, and test TEB routines before being
 ! actually implemented into another driver or model (e.g. SURFEX or in an
 ! atmospheric model)
 !
@@ -32,7 +32,7 @@ PROGRAM DRIVER
 !
 !    MODIFICATIONS
 !
-!      Original    08/12/10 
+!      Original    08/12/10
 !      Modification   04/13 (V. Masson) adds garden     (with a proxi SVAT)
 !                                            greenroofs (with a proxi SVAT)
 !                                            road orientation option
@@ -102,23 +102,48 @@ USE MODD_FORC_ATM, ONLY: CSV         ,&! name of all scalar variables
 !
 IMPLICIT NONE
 ! ---------------------------------------------------------------
+! Namelist: Add to allow parameters to be changed dynamically using
+!           namelist file.
+! ---------------------------------------------------------------
+!
+namelist /dimensions/   NROOF_LAYER, NROAD_LAYER, NWALL_LAYER, NFLOOR_LAYER
+
+namelist /parameters/   XTSTEP_SURF, IYEAR, IMONTH, IDAY, ZTIME_START, ZLON, ZLAT ,&
+                        INB_STEP_ATM, INB_ATM, KSW, ZZREF, CBEM, HROAD_DIR ,&
+                        HWALL_OPT, LGARDEN, LGREENROOF, ZFRAC_GR, LSOLAR_PANEL ,&
+                        ZFRAC_PANEL, LPAR_RD_IRRIG, HNATVENT, CCOOL_COIL ,&
+                        CHEAT_COIL, HZ0H, ZZ0, ZBLD, ZGARDEN, ZBLD_HEIGHT ,&
+                        ZWALL_O_HOR, ZROAD_DIR, ZALB_ROOF, ZEMIS_ROOF ,&
+                        ZHC_ROOF, ZTC_ROOF, ZD_ROOF, ZALB_ROAD, ZEMIS_ROAD ,&
+                        ZHC_ROAD, ZTC_ROAD, ZD_ROAD, ZALB_WALL, ZEMIS_WALL, ZHC_WALL ,&
+                        ZTC_WALL, ZD_WALL, ZHC_FLOOR, ZTC_FLOOR, ZD_FLOOR, ZH_TRAFFIC ,&
+                        ZLE_TRAFFIC, ZH_INDUSTRY, ZLE_INDUSTRY, ZRD_START_MONTH, ZRD_END_MONTH ,&
+                        ZRD_START_HOUR, ZRD_END_HOUR, ZRD_24H_IRRIG, ZEMIS_PANEL, ZALB_PANEL ,&
+                        ZEFF_PANEL, ZRESIDENTIAL, ZDT_RES, ZDT_OFF, PFLOOR_HEIGHT, ZINF, ZQIN ,&
+                        ZQIN_FRAD, ZQIN_FLAT, ZGR, ZSHGC, PU_WIN, LSHADE, ZSHADE, ZSHGC_SH ,&
+                        ZNATVENT, ZV_VENT, ZF_WATER_COND, ZF_WASTE_CAN, ZTCOOL_TARGET, ZTHEAT_TARGET ,&
+                        ZHR_TARGET, ZEFF_HEAT, ZCAP_SYS_HEAT, ZCAP_SYS_RAT, ZT_ADP, ZM_SYS_RAT ,&
+                        ZCOP_RAT, CCH_BEM, ZROUGH_ROOF, ZROUGH_WALL, ZT_ROAD, ZT_ROOF, ZT_WALL_A ,&
+                        ZT_FLOOR, ZT_MASS, ZTI_BLD, ZT_CANYON, ZT_WIN1, ZT_WIN2, ZQ_CANYON, ZQI_BLD
+
+! ---------------------------------------------------------------
 ! Declarations of local variables (INPUTS)
 ! ---------------------------------------------------------------
 !
 ! Simulation - prepared for CAPITOUL atmospheric forcing
-REAL               :: XTSTEP_SURF = 300.
-INTEGER            :: IYEAR       = 2004   ! Current year (UTC)
-INTEGER            :: IMONTH      = 2      ! Current month (UTC)
-INTEGER            :: IDAY        = 20     ! Current day (UTC)
-REAL               :: ZTIME_START = 0.     ! Time at start of the run (s)
-REAL,DIMENSION(1)  :: ZLON        = 1.3    ! Longitude (deg)
-REAL,DIMENSION(1)  :: ZLAT        = 43.484 ! Latitude (deg)
-INTEGER           :: INB_STEP_ATM = 17999  ! Forcing time-steps
-INTEGER            :: INB_ATM     = 6      ! number time the driver calls the TEB
-!                                          ! routines during a forcing time-step
-!                                          ! --> it defines the time-step for TEB
-INTEGER            :: KSW         = 1      ! number of spectral bands in SW forcing
-REAL,DIMENSION(1)  :: ZZREF       = 28.    ! Atm. Forcing height above roof level
+REAL               :: XTSTEP_SURF
+INTEGER            :: IYEAR      ! Current year (UTC)
+INTEGER            :: IMONTH     ! Current month (UTC)
+INTEGER            :: IDAY       ! Current day (UTC)
+REAL               :: ZTIME_START! Time at start of the run (s)
+REAL,DIMENSION(1)  :: ZLON       ! Longitude (deg)
+REAL,DIMENSION(1)  :: ZLAT       ! Latitude (deg)
+INTEGER           :: INB_STEP_ATM! Forcing time-steps
+INTEGER            :: INB_ATM    ! number time the driver calls the TEB
+!                                ! routines during a forcing time-step
+!                                ! --> it defines the time-step for TEB
+INTEGER            :: KSW        ! number of spectral bands in SW forcing
+REAL,DIMENSION(1)  :: ZZREF      ! Atm. Forcing height above roof level
 !
 ! GO TO LINE 550 FOR MORE INPUTS
 !
@@ -143,9 +168,9 @@ REAL,DIMENSION(:,:), ALLOCATABLE :: ZHC_WALL ! Heat capacity        of wall laye
 REAL,DIMENSION(:,:), ALLOCATABLE :: ZTC_WALL ! Thermal conductivity of wall layers    ! ||   ||
 REAL,DIMENSION(:,:), ALLOCATABLE :: ZD_WALL  ! Thickness            of wall layers    !\\     //
 REAL,DIMENSION(:,:), ALLOCATABLE :: ZHC_ROOF ! Heat capacity        of roof layers    ! \\   //
-REAL,DIMENSION(:,:), ALLOCATABLE :: ZTC_ROOF ! Thermal conductivity of roof layers    !  \\ //  
-REAL,DIMENSION(:,:), ALLOCATABLE :: ZD_ROOF  ! Thickness            of roof layers    !   \\/  
-REAL,DIMENSION(:,:), ALLOCATABLE :: ZHC_ROAD ! Heat capacity        of road layers    !        
+REAL,DIMENSION(:,:), ALLOCATABLE :: ZTC_ROOF ! Thermal conductivity of roof layers    !  \\ //
+REAL,DIMENSION(:,:), ALLOCATABLE :: ZD_ROOF  ! Thickness            of roof layers    !   \\/
+REAL,DIMENSION(:,:), ALLOCATABLE :: ZHC_ROAD ! Heat capacity        of road layers    !
 REAL,DIMENSION(:,:), ALLOCATABLE :: ZTC_ROAD ! Thermal conductivity of road layers    ! ||   ||
 REAL,DIMENSION(:,:), ALLOCATABLE :: ZD_ROAD  ! Thickness            of road layers    ! ||   ||
 REAL,DIMENSION(:,:), ALLOCATABLE :: ZT_ROAD  ! road layers temperatures               ! || F ||
@@ -172,8 +197,8 @@ REAL,DIMENSION(1)  :: ZALB_WALL         ! albedo of walls                       
 REAL,DIMENSION(1)  :: ZEMIS_WALL        ! emissivity of walls                         ! ||   ||
 REAL,DIMENSION(1)  :: ZALB_ROOF         ! albedo of roofs                             !\\     //
 REAL,DIMENSION(1)  :: ZEMIS_ROOF        ! emissivity of roofs                         ! \\   //
-REAL,DIMENSION(1)  :: ZESNOW_ROAD       ! road snow emissivity                        !  \\ // 
-REAL,DIMENSION(1)  :: ZALB_ROAD         ! albedo of roads                             !   \\/  
+REAL,DIMENSION(1)  :: ZESNOW_ROAD       ! road snow emissivity                        !  \\ //
+REAL,DIMENSION(1)  :: ZALB_ROAD         ! albedo of roads                             !   \\/
 REAL,DIMENSION(1)  :: ZEMIS_ROAD        ! emissivity of roads                         !
 REAL,DIMENSION(1)  :: ZASNOW_ROOF       ! roof snow albedo                            ! ||   ||
 REAL,DIMENSION(1)  :: ZASNOW_ROAD       ! road snow albedo                            ! || A ||
@@ -202,8 +227,8 @@ REAL,DIMENSION(1)  :: ZSVF_WALL      ! wall sky view factor                     
 REAL,DIMENSION(1)  :: ZWAKE          ! reduction of average wind speed                ! ||   ||
 REAL,DIMENSION(1)  :: ZGSNOW_ROOF  = 0.0 ! roof snow conduction                       !\\     //
 REAL,DIMENSION(1)  :: ZHSNOW_ROOF                                                     ! \\   //
-! Anthropogenic heat fluxes                                                           !  \\ // 
-REAL,DIMENSION(1)  :: ZH_TRAFFIC       ! heat fluxes due to traffic                   !   \\/  
+! Anthropogenic heat fluxes                                                           !  \\ //
+REAL,DIMENSION(1)  :: ZH_TRAFFIC       ! heat fluxes due to traffic                   !   \\/
 REAL,DIMENSION(1)  :: ZLE_TRAFFIC      ! heat fluxes due to traffic                   !
 REAL,DIMENSION(1)  :: ZH_INDUSTRY      ! heat fluxes due to factories                 ! ||   ||
 REAL,DIMENSION(1)  :: ZLE_INDUSTRY     ! heat fluxes due to factories                 ! ||   ||
@@ -231,8 +256,8 @@ REAL,DIMENSION(1)  :: ZQ_CANYON        ! canyon air humidity ratio              
 REAL,DIMENSION(1)  :: ZTS_ROOF         ! surface temperature                          ! ||   ||
 REAL,DIMENSION(1)  :: ZTS_ROAD         ! surface temperature                          !\\     //
 REAL,DIMENSION(1)  :: ZTS_WALL_A       ! surface temperature                          ! \\   //
-REAL,DIMENSION(1)  :: ZTS_WALL_B       ! surface temperature                          !  \\ // 
-!                                                                                     !   \\/  
+REAL,DIMENSION(1)  :: ZTS_WALL_B       ! surface temperature                          !  \\ //
+!                                                                                     !   \\/
 REAL,DIMENSION(1)  :: ZZ_LOWCAN        ! altitude of air layer above road             !
 REAL,DIMENSION(1)  :: ZT_LOWCAN        ! temperature of air above road                ! ||   ||
 REAL,DIMENSION(1)  :: ZU_LOWCAN        ! wind above road                              ! ||   ||
@@ -256,8 +281,8 @@ REAL,DIMENSION(1)  :: ZAC_ROAD         ! road aerodynamical conductance         
 REAL,DIMENSION(1)  :: ZAC_ROAD_WAT     ! road aerodynamical conductance (for water)   ! ||   ||
 REAL,DIMENSION(1)  :: ZAC_GARDEN       ! garden aerodynamical conductance             !\\     //
 REAL,DIMENSION(1)  :: ZAC_GARDEN_WAT   ! garden aerodynamical conductance for vapor   ! \\   //
-REAL,DIMENSION(1)  :: ZAC_GREENROOF    ! green roofs aerodynamical conductance        !  \\ // 
-REAL,DIMENSION(1)  :: ZAC_GREENROOF_WAT! green roofs aerodynamical conductance        !   \\/  
+REAL,DIMENSION(1)  :: ZAC_GREENROOF    ! green roofs aerodynamical conductance        !  \\ //
+REAL,DIMENSION(1)  :: ZAC_GREENROOF_WAT! green roofs aerodynamical conductance        !   \\/
 !                                      ! for vapor                                    !
 REAL,DIMENSION(1)  :: ZUW_ROOF         ! Momentum flux for roofs                      ! ||   ||
 REAL,DIMENSION(1)  :: ZDUWDU_GRND      ! d(u'w')/du for ground                        ! ||   ||
@@ -282,8 +307,8 @@ REAL,DIMENSION(1)  :: ZRN_ROOF         ! net radiation over roof                
 REAL,DIMENSION(1)  :: ZH_ROOF          ! sensible heat flux over roof                 ! ||   ||
 REAL,DIMENSION(1)  :: ZLE_ROOF         ! latent heat flux over roof                   !\\     //
 REAL,DIMENSION(1)  :: ZGFLUX_ROOF      ! flux through the roof                        ! \\   //
-REAL,DIMENSION(1)  :: ZRN_ROAD         ! net radiation over road                      !  \\ // 
-REAL,DIMENSION(1)  :: ZH_ROAD          ! sensible heat flux over road                 !   \\/  
+REAL,DIMENSION(1)  :: ZRN_ROAD         ! net radiation over road                      !  \\ //
+REAL,DIMENSION(1)  :: ZH_ROAD          ! sensible heat flux over road                 !   \\/
 REAL,DIMENSION(1)  :: ZLE_ROAD         ! latent heat flux over road                   !
 REAL,DIMENSION(1)  :: ZGFLUX_ROAD      ! flux through the road                        ! ||   ||
 REAL,DIMENSION(1)  :: ZRN_WALL_A       ! net radiation over wall                      ! ||   ||
@@ -306,8 +331,8 @@ REAL,DIMENSION(1)  :: ZRN_BLT            ! net radiation over built covers      
 REAL,DIMENSION(1)  :: ZH_BLT             ! sensible heat flux over built covers       ! ||   ||
 REAL,DIMENSION(1)  :: ZLE_BLT            ! latent heat flux over built covers         !\\     //
 REAL,DIMENSION(1)  :: ZGFLUX_BLT         ! flux through the built covers              ! \\   //
-REAL,DIMENSION(1)  :: ZFLX_BLD           ! heat flx from bld to its structure         !  \\ // 
-REAL,DIMENSION(1)  :: ZDQS_TOWN          ! storage inside town materials              !   \\/  
+REAL,DIMENSION(1)  :: ZFLX_BLD           ! heat flx from bld to its structure         !  \\ //
+REAL,DIMENSION(1)  :: ZDQS_TOWN          ! storage inside town materials              !   \\/
 REAL,DIMENSION(1)  :: ZQF_TOWN           ! total anthropogenic heat                   !
 REAL,DIMENSION(1)  :: ZMELT_ROOF = 0.0   ! snow melting on roof                       ! ||   ||
 REAL,DIMENSION(1)  :: ZMELT_ROAD  = 0.0  ! snow melting on road                       ! ||   ||
@@ -322,7 +347,7 @@ CHARACTER(LEN=6)    :: CHEAT_COIL        ! option for heating device type       
 REAL, DIMENSION(1)  :: ZF_WATER_COND     ! fraction of evaporation for the condensers ! ||   ||
 CHARACTER(LEN=4), DIMENSION(1) :: HNATVENT                                            ! ||   ||
 REAL, DIMENSION(1)  :: ZNATVENT          ! flag to describe surventilation system for ! ||   ||
-!                                        ! i/o 0 for NONE, 1 for MANU and 2 for AUTO  ! ||   ||
+!                                        ! i/o 0 for NONE, 1 for MANU and 2 for AUTO  ! ||   ||
 REAL, DIMENSION(1)  :: ZAUX_MAX = 5. ! Auxiliar variable for autosize calcs (not used)! ||   ||
 REAL, DIMENSION(:,:), ALLOCATABLE :: ZT_FLOOR ! Floor layers temperatures [K]         ! ||   ||
 REAL, DIMENSION(:,:), ALLOCATABLE :: ZT_MASS  ! Internal mass layers temperatures [K] ! ||   ||
@@ -335,8 +360,8 @@ REAL, DIMENSION(1) :: ZH_BLD_HEAT        ! Heating energy demand                
                                          ! of the building [W m-2(bld)]               ! ||   ||
 REAL, DIMENSION(1) :: ZLE_BLD_COOL       ! Latent cooling energy demand               !\\     //
                                          ! of the building [W m-2(bld)]               ! \\   //
-REAL, DIMENSION(1) :: ZLE_BLD_HEAT       ! Latent heating energy demand               !  \\ // 
-                                         ! of the building [W m-2(bld)]               !   \\/  
+REAL, DIMENSION(1) :: ZLE_BLD_HEAT       ! Latent heating energy demand               !  \\ //
+                                         ! of the building [W m-2(bld)]               !   \\/
 REAL, DIMENSION(1) :: ZH_WASTE           ! Sensible waste heat from HVAC system       !
                                          ! [W m-2(tot)]                               ! ||   ||
 REAL, DIMENSION(1) :: ZLE_WASTE          ! Latent waste heat from HVAC system         ! ||   ||
@@ -361,8 +386,8 @@ REAL, DIMENSION(1) :: ZCUR_THEAT_TARGET  ! Heating setpoint of HVAC system [K]  
 REAL, DIMENSION(1) :: ZHR_TARGET         ! Relative humidity setpoint                 ! ||   ||
 REAL, DIMENSION(1) :: ZT_WIN2            ! Indoor window temperature [K]              !\\     //
 REAL, DIMENSION(1) :: ZQI_BLD            ! Indoor air specific humidity [kg kg-1]     ! \\   //
-REAL, DIMENSION(1) :: ZV_VENT            ! Ventilation flow rate [AC/H]               !  \\ // 
-REAL, DIMENSION(1) :: ZCAP_SYS_HEAT      ! Capacity of the heating system             !   \\/  
+REAL, DIMENSION(1) :: ZV_VENT            ! Ventilation flow rate [AC/H]               !  \\ //
+REAL, DIMENSION(1) :: ZCAP_SYS_HEAT      ! Capacity of the heating system             !   \\/
                                          ! [W m-2(bld)]                               !
 REAL, DIMENSION(1) :: ZCAP_SYS_RAT       ! Rated capacity of the cooling system       ! ||   ||
                                          ! [W m-2(bld)]                               ! ||   ||
@@ -389,8 +414,8 @@ REAL, DIMENSION(:,:), ALLOCATABLE :: ZD_FLOOR  ! depth of floor layers          
 REAL, DIMENSION(1) :: ZT_WIN1            ! outdoor window temperature [K]             ! ||   ||
 REAL, DIMENSION(1) :: ZABS_SW_WIN        ! window absorbed shortwave radiation [W m-2]!\\     //
 REAL, DIMENSION(1) :: ZABS_LW_WIN        ! absorbed infrared rad. [W m-2]             ! \\   //
-REAL, DIMENSION(1) :: ZSHGC              ! window solar transmittance                 !  \\ // 
-REAL, DIMENSION(1) :: ZSHGC_SH           ! window + shading solar heat gain coef.     !   \\/  
+REAL, DIMENSION(1) :: ZSHGC              ! window solar transmittance                 !  \\ //
+REAL, DIMENSION(1) :: ZSHGC_SH           ! window + shading solar heat gain coef.     !   \\/
 REAL, DIMENSION(1) :: ZUGG_WIN           ! window glass-to-glass U-factro [W m-2 K-1] !
 REAL, DIMENSION(1) :: ZALB_WIN           ! window albedo                              ! ||   ||
 REAL, DIMENSION(1) :: PU_WIN             ! window U-factor [K m W-2]                  ! ||   ||
@@ -420,8 +445,8 @@ REAL, DIMENSION(1)  :: ZTHER_PROD_BLD    ! Thermal      Energy production       
 REAL, DIMENSION(1)  :: ZPHOT_PROD_BLD    ! Photovoltaic Energy production             ! ||   ||
 !                                        !     of solar panel on roofs (W/m2 bld  )   !\\     //
 REAL, DIMENSION(1)  :: ZPROD_BLD         ! Averaged     Energy production             ! \\   //
-!                                        !     of solar panel on roofs (W/m2 bld  )   !  \\ // 
-REAL, DIMENSION(1)  :: ZTHER_PRODC_DAY=0.! Present day integrated thermal production  !   \\/  
+!                                        !     of solar panel on roofs (W/m2 bld  )   !  \\ //
+REAL, DIMENSION(1)  :: ZTHER_PRODC_DAY=0.! Present day integrated thermal production  !   \\/
 !                                        ! of energy (J/m2 panel). zero value at start!
 REAL, DIMENSION(1)  :: ZH_PANEL          ! Sensible heat flux from solar panels       ! ||   ||
 !                                        !     (W/m2 panel)                           ! ||   ||
@@ -445,7 +470,7 @@ REAL, DIMENSION(1)  :: ZIRRIG_ROAD       ! road irrigation during current time-s
 !                                                                                     ! ||   ||
 ! new arguments for shading, schedule or natural ventilation                          ! ||   ||
 LOGICAL,DIMENSION(1) :: LSHADE            ! Flag to use shading devices               ! ||   ||
-REAL,   DIMENSION(1) :: ZSHADE            ! flag to activate shading devices          ! ||   ||
+REAL,   DIMENSION(1) :: ZSHADE            ! flag to activate shading devices          ! ||   ||
 !                                         ! -> REAL for i/o 0. or 1                   ! ||   ||
 LOGICAL,DIMENSION(1) :: GSHAD_DAY         ! has shading been necessary this day ?     ! ||   ||
 LOGICAL,DIMENSION(1) :: GNATVENT_NIGHT    ! has natural ventilation been              ! ||   ||
@@ -459,8 +484,8 @@ REAL, DIMENSION(1)  :: ZFLOOR_HW_RATIO   ! H/W ratio of 1 floor level           
 REAL, DIMENSION(1)  :: ZF_FLOOR_MASS     ! View factor floor-mass                     ! ||   ||
 REAL, DIMENSION(1)  :: ZF_FLOOR_WALL     ! View factor floor-wall                     !\\     //
 REAL, DIMENSION(1)  :: ZF_FLOOR_WIN      ! View factor floor-window                   ! \\   //
-REAL, DIMENSION(1)  :: ZF_FLOOR_ROOF     ! View factor floor-roof                     !  \\ // 
-REAL, DIMENSION(1)  :: ZF_WALL_FLOOR     ! View factor wall-floor                     !   \\/  
+REAL, DIMENSION(1)  :: ZF_FLOOR_ROOF     ! View factor floor-roof                     !  \\ //
+REAL, DIMENSION(1)  :: ZF_WALL_FLOOR     ! View factor wall-floor                     !   \\/
 REAL, DIMENSION(1)  :: ZF_WALL_MASS      ! View factor wall-mass                      !
 REAL, DIMENSION(1)  :: ZF_WALL_WIN       ! View factor wall-win                       ! ||   ||
 REAL, DIMENSION(1)  :: ZF_WIN_FLOOR      ! View factor win-floor                      ! ||   ||
@@ -508,8 +533,8 @@ REAL, DIMENSION(:,:), ALLOCATABLE :: ZLW    ! longwave radiation (on horizontal 
 REAL, DIMENSION(:,:), ALLOCATABLE :: ZSNOW  ! snow precipitation  (kg/m2/s)           ! ||   ||
 REAL, DIMENSION(:,:), ALLOCATABLE :: ZRAIN  ! liquid precipitation  (kg/m2/s)         !\\     //
 REAL, DIMENSION(:,:), ALLOCATABLE :: ZPS    ! pressure at forcing level  (Pa)         ! \\   //
-REAL, DIMENSION(:,:), ALLOCATABLE :: ZCO2   ! CO2 concentration in the air  (kg/m3)   !  \\ // 
-REAL, DIMENSION(:,:), ALLOCATABLE :: ZDIR   ! wind direction                          !   \\/  
+REAL, DIMENSION(:,:), ALLOCATABLE :: ZCO2   ! CO2 concentration in the air  (kg/m3)   !  \\ //
+REAL, DIMENSION(:,:), ALLOCATABLE :: ZDIR   ! wind direction                          !   \\/
 REAL, DIMENSION(1)  :: ZCOEF                ! work array                              !
 REAL, DIMENSION(1)  :: ZF1_o_B              ! Coefficient for sky model               ! ||   ||
 REAL, DIMENSION(1,1):: ZTDIR_SW             ! total direct SW                         ! ||   ||
@@ -531,367 +556,42 @@ CHARACTER(LEN=*), PARAMETER       :: P_CANYON = 'output/P_CANYON.txt'           
 CHARACTER(LEN=*), PARAMETER       :: U_CANYON = 'output/U_CANYON.txt'                 ! ||   ||
 CHARACTER(LEN=*), PARAMETER       :: H_TOWN = 'output/H_TOWN.txt'                     !\\     //
 CHARACTER(LEN=*), PARAMETER       :: LE_TOWN = 'output/LE_TOWN.txt'                   ! \\   //
-CHARACTER(LEN=*), PARAMETER       :: RN_TOWN = 'output/RN_TOWN.txt'                   !  \\ // 
-CHARACTER(LEN=*), PARAMETER       :: HVAC_COOL = 'output/HVAC_COOL.txt'               !   \\/ 
+CHARACTER(LEN=*), PARAMETER       :: RN_TOWN = 'output/RN_TOWN.txt'                   !  \\ //
+CHARACTER(LEN=*), PARAMETER       :: HVAC_COOL = 'output/HVAC_COOL.txt'               !   \\/
 CHARACTER(LEN=*), PARAMETER       :: HVAC_HEAT = 'output/HVAC_HEAT.txt'               !
-!                                                                                     ! ||   ||
-!                                                                                     ! ||   ||
-!============================================================                         ! ||   ||
-!============================================================                         ! ||   ||
-!============================================================            //_____________||   ||
-!============================================================           //_______________|   ||
-!             PARAMETERS SETUP : CAPITOUL CASE                         //                    ||
-!============================================================          \\ ___________________||
-!============================================================           \\ ___________________|
-!============================================================            \\
-!============================================================
-!
-! Main TEB options
-!
-!============================================================
-!============================================================
-! Building energy Model
-!     ! 'DEF'  : no Building Energy Model
-!     ! 'BEM'  :    Building Energy Model
-CBEM = "BEM"
-! Road direction
-!     ! 'UNIF' : uniform roads
-!     ! 'ORIE' : specified road orientation
-HROAD_DIR = 'UNIF'
-! Wall option
-!     ! 'UNIF' : uniform walls
-!     ! 'TWO ' : 2 opposite  wall
-HWALL_OPT = 'UNIF'
-! Gardens
-LGARDEN = .TRUE.
-! Green roofs
-LGREENROOF = .TRUE. ! greenroof activation
-ZFRAC_GR   = 0.3      ! greenroof fraction on roofs
-! Solar panels
-LSOLAR_PANEL = .FALSE. ! solar panels activation
-ZFRAC_PANEL  = 0.0     ! solar panels fraction on roofs
-! Road watering
-LPAR_RD_IRRIG= .FALSE.
-! Natural Ventilation
-HNATVENT = "NONE"    ! 'NONE', 'MANU', 'AUTO', 'MECH'
-! Cooling system    ! 'DXCOIL','IDEAL '
-CCOOL_COIL = "IDEAL"
-! Heating system    ! 'FINCAP','IDEAL '
-CHEAT_COIL = "IDEAL"
-! TEB option for z0h roof & road: 'MASC95' : Mascart et al,1995; 
-!                                 'BRUT82' : Brustaert,1982; 
-!                                 'KAND07' : Kanda,2007
-HZ0H = 'KAND07'
-!
-!
-!============================================================
-!============================================================
-! Urban geometry
-!============================================================
-!============================================================
-ZZ0         = 2.     ! Roughness length (m)
-ZBLD        = 0.62   ! Horizontal building area density
-ZGARDEN     = 0.11   ! fraction of GARDEN areas
-ZBLD_HEIGHT = 20.    ! Canyon height (m)
-ZWALL_O_HOR = 1.05   ! Vertical to horizonal surf ratio
-!* Road direction
-ZROAD_DIR    = 0.   ! N-S road  (° from North, clockwise)
-!
-!============================================================
-!============================================================
-! Roof
-!============================================================
-!============================================================
-NROOF_LAYER = 5          ! number of roof layers
-ALLOCATE(ZHC_ROOF    (1,NROOF_LAYER)) 
-ALLOCATE(ZTC_ROOF    (1,NROOF_LAYER)) 
-ALLOCATE(ZD_ROOF     (1,NROOF_LAYER)) 
-ALLOCATE(ZT_ROOF     (1,NROOF_LAYER)) 
-ZALB_ROOF   = 0.40
-ZEMIS_ROOF  = 0.97
-ZHC_ROOF(1,1) = 1580000.   ! volumetric heat capacity (J m-3 K-1) (external layer)
-ZHC_ROOF(1,2) = 1580000.   ! volumetric heat capacity (J m-3 K-1)
-ZHC_ROOF(1,3) = 1580000.   ! volumetric heat capacity (J m-3 K-1)
-ZHC_ROOF(1,4) = 1127845.62 !volumetric heat capacity (J m-3 K-1)
-ZHC_ROOF(1,5) =   52030.   ! volumetric heat capacity (J m-3 K-1) (inner layer)
-ZTC_ROOF(1,1) = 1.15       ! thermal conductivity (W/m K) (external layer)
-ZTC_ROOF(1,2) = 1.15       ! thermal conductivity (W/m K)
-ZTC_ROOF(1,3) = 1.15       ! thermal conductivity (W/m K)
-ZTC_ROOF(1,4) = 0.095454545! thermal conductivity (W/m K)
-ZTC_ROOF(1,5) = 0.03       ! thermal conductivity (W/m K) (inner layer)
-ZD_ROOF(1,1)  = 0.001      ! thickcness (m) (external layer)
-ZD_ROOF(1,2)  = 0.098      ! thickcness (m)
-ZD_ROOF(1,3)  = 0.132      ! thickcness (m)
-ZD_ROOF(1,4)  = 0.098      ! thickcness (m)
-ZD_ROOF(1,5)  = 0.001      ! thickcness (m) (inner layer)
-!============================================================
-!============================================================
-! Road
-!============================================================
-!============================================================
-NROAD_LAYER = 5          ! number of road layers
-ALLOCATE(ZHC_ROAD    (1,NROAD_LAYER)) 
-ALLOCATE(ZTC_ROAD    (1,NROAD_LAYER)) 
-ALLOCATE(ZD_ROAD     (1,NROAD_LAYER)) 
-ALLOCATE(ZT_ROAD     (1,NROAD_LAYER)) 
-ZALB_ROAD   = 0.08       ! albedo of roads
-ZEMIS_ROAD  = 0.96       ! emissivity of roads
-ZHC_ROAD(1,1) = 1740000. ! volumetric heat capacity (J m-3 K-1) (surface layer)
-ZHC_ROAD(1,2) = 1740000. ! volumetric heat capacity (J m-3 K-1)
-ZHC_ROAD(1,3) = 1989600. ! volumetric heat capacity (J m-3 K-1)
-ZHC_ROAD(1,4) = 1640000. ! volumetric heat capacity (J m-3 K-1)
-ZHC_ROAD(1,5) = 1400000. ! volumetric heat capacity (J m-3 K-1) (deep soil layer)
-ZTC_ROAD(1,1) = 0.82     ! thermal conductivity (W/m K) (surface layer)
-ZTC_ROAD(1,2) = 0.82     ! thermal conductivity (W/m K)
-ZTC_ROAD(1,3) = 1.976584 ! thermal conductivity (W/m K)
-ZTC_ROAD(1,4) = 0.5915493! thermal conductivity (W/m K)
-ZTC_ROAD(1,5) = 0.4000   ! thermal conductivity (W/m K) (deep soil layer)
-ZD_ROAD(1,1)  = 0.001       ! thickcness (m) (surface layer)
-ZD_ROAD(1,2)  = 0.045296296 ! thickcness (m)
-ZD_ROAD(1,3)  = 0.092592593 ! thickcness (m)
-ZD_ROAD(1,4)  = 0.27777778  ! thickcness (m)
-ZD_ROAD(1,5)  = 0.83333333  ! thickcness (m) (deep soil layer)
-!============================================================
-!============================================================
-! Wall
-!============================================================
-!============================================================
-NWALL_LAYER = 5         ! number of wall layers
-ALLOCATE(ZHC_WALL    (1,NWALL_LAYER)) 
-ALLOCATE(ZTC_WALL    (1,NWALL_LAYER)) 
-ALLOCATE(ZD_WALL     (1,NWALL_LAYER)) 
-ALLOCATE(ZT_WALL_A   (1,NWALL_LAYER)) 
-ALLOCATE(ZT_WALL_B   (1,NWALL_LAYER)) 
-ZALB_WALL   = 0.32          ! albedo of walls
-ZEMIS_WALL  = 0.97          ! emissivity of walls
-ZHC_WALL(1,1) = 1580000.    ! volumetric heat capacity (J m-3 K-1) (external layer)
-ZHC_WALL(1,2) = 1580000.    ! volumetric heat capacity (J m-3 K-1) 
-ZHC_WALL(1,3) = 1580000.    ! volumetric heat capacity (J m-3 K-1) 
-ZHC_WALL(1,4) = 1127845.6   ! volumetric heat capacity (J m-3 K-1) 
-ZHC_WALL(1,5) =   52030.    ! volumetric heat capacity (J m-3 K-1) (inner layer)
-ZTC_WALL(1,1) = 1.15        ! thermal conductivity (W/m K) (external layer)
-ZTC_WALL(1,2) = 1.15        ! thermal conductivity (W/m K)
-ZTC_WALL(1,3) = 1.15        ! thermal conductivity (W/m K)
-ZTC_WALL(1,4) = 0.095454545 ! thermal conductivity (W/m K)
-ZTC_WALL(1,5) = 0.03        ! thermal conductivity (W/m K) (inner layer)
-ZD_WALL(1,1)  = 0.001       ! thickcness (m) (external layer)
-ZD_WALL(1,2)  = 0.098       ! thickcness (m)
-ZD_WALL(1,3)  = 0.132       ! thickcness (m)
-ZD_WALL(1,4)  = 0.098       ! thickcness (m)
-ZD_WALL(1,5)  = 0.001       ! thickcness (m) (inner layer)
-!============================================================
-!============================================================
-! Floor and internal mass
-!============================================================
-!============================================================
-NFLOOR_LAYER = 5         ! number of floor layers
-ALLOCATE(ZHC_FLOOR   (1,NFLOOR_LAYER)) 
-ALLOCATE(ZTC_FLOOR   (1,NFLOOR_LAYER)) 
-ALLOCATE(ZD_FLOOR    (1,NFLOOR_LAYER)) 
-ALLOCATE(ZT_FLOOR    (1,NFLOOR_LAYER)) 
-ALLOCATE(ZT_MASS     (1,NFLOOR_LAYER)) 
-ZHC_FLOOR(1,1) = 2016000. ! volumetric heat capacity (J m-3 K-1) (upper layer)
-ZHC_FLOOR(1,2) = 2016000. ! volumetric heat capacity (J m-3 K-1)
-ZHC_FLOOR(1,3) = 2016000. ! volumetric heat capacity (J m-3 K-1)
-ZHC_FLOOR(1,4) = 2016000. ! volumetric heat capacity (J m-3 K-1)
-ZHC_FLOOR(1,5) = 2016000. ! volumetric heat capacity (J m-3 K-1) (lower layer)
-ZTC_FLOOR(1,1) = 1.95     ! thermal conductivity (W/m K) (upper layer)
-ZTC_FLOOR(1,2) = 1.95     ! thermal conductivity (W/m K)
-ZTC_FLOOR(1,3) = 1.95     ! thermal conductivity (W/m K)
-ZTC_FLOOR(1,4) = 1.95     ! thermal conductivity (W/m K)
-ZTC_FLOOR(1,5) = 1.95     ! thermal conductivity (W/m K) (lower layer)
-ZD_FLOOR(1,1)  = 0.001        ! thickcness (m) (upper layer)
-ZD_FLOOR(1,2)  = 0.0064074074 ! thickcness (m)
-ZD_FLOOR(1,3)  = 0.014814815  ! thickcness (m)
-ZD_FLOOR(1,4)  = 0.044444444  ! thickcness (m)
-ZD_FLOOR(1,5)  = 0.13333333   ! thickcness (m) (lower layer)
-! 
-!============================================================
-!============================================================
-!* anthropogenic heat fluxes
-!============================================================
-!============================================================
-ZH_TRAFFIC   = 0.0  ! heat fluxes due to traffic
-ZLE_TRAFFIC  = 0.0  ! heat fluxes due to traffic
-ZH_INDUSTRY  = 0.0  ! heat fluxes due to factories
-ZLE_INDUSTRY = 0.0  ! heat fluxes due to factories
-! 
-!============================================================
-!============================================================
-! road watering
-!============================================================
-!============================================================
-ZRD_START_MONTH = 6. ! start month for watering of roads (included)
-ZRD_END_MONTH   = 8. ! end   month for watering of roads (included)
-ZRD_START_HOUR  = 6. ! start hour  for watering of roads (included)
-ZRD_END_HOUR    = 9. ! end   hour  for watering of roads (excluded)
-ZRD_24H_IRRIG   = 1. ! 24h quantity of water used for road watering (liter/m2)
-! 
-!============================================================
-!============================================================
-! solar panels
-!============================================================
-!============================================================
-ZEMIS_PANEL = 0.9      ! Emissivity of solar panel [-]
-ZALB_PANEL  = 0.1      ! albedo of solar panel  [-]
-ZEFF_PANEL  = 0.14     ! Efficiency of solar panel [-]
-! 
-!============================================================
-!============================================================
-! Buildings' use information
-!============================================================
-!============================================================
-ZRESIDENTIAL = 1.      ! Fraction of residential use in buildings (-)
-ZDT_RES      = 3.      ! target temperature change when unoccupied (K) (residential buildings)
-ZDT_OFF      = 3.      ! target temperature change when unoccupied (K) (office buildings)
-!
-!============================================================
-!============================================================
-! Parameters for Building Energy Module (BEM)
-!============================================================
-!============================================================
-!
-!=============================================================
-! Building configuration
-!=============================================================
-!
-PFLOOR_HEIGHT = 3.0     ! Floor height (m)
-ZINF          = 0.5     ! Infiltration flow rate [AC/H]
-ZQIN          = 5.8     ! Internal heat gains [W m-2(floor)]
-ZQIN_FRAD     = 0.2     ! Radiant fraction of internal heat gains
-ZQIN_FLAT     = 0.2     ! Latent franction of internal heat gains
-!
-!=============================================================
-! windows
-!=============================================================
-!
-ZGR           = 0.1     ! Glazing ratio
-ZSHGC         = 0.763   ! window solar transmittance
-PU_WIN        = 2.716   ! window glass-to-glass U-factor [W m-2 K-1]
-!
-!=============================================================
-! Shading devices
-!=============================================================
-!
-LSHADE        = .FALSE. ! Are shading devices being used ?
-ZSHADE        = 0.      ! flag to activate shading devices -> REAL for i/o 0. or 1
-ZSHGC_SH      = 0.025   ! window + shading solar heat gain coef.
-!
-!=============================================================
-! Natural ventilation
-!=============================================================
-!
-ZNATVENT = 0.           ! flag to describe surventilation system for i/o 
-                        ! 0 for NONE, 1 for MANU and 2 for AUTO
-!=============================================================
-! HVAC system
-!=============================================================
-!
-ZV_VENT       = 0.0     ! Ventilation flow rate [AC/H]
-ZF_WATER_COND = 0.      ! fraction of evaporation for the condensers
-ZF_WASTE_CAN  = 1.0     ! fraction of waste heat released into the canyon
-!
-!=============================================================
-! Internal target temperatures
-!=============================================================
-!
-ZTCOOL_TARGET = 297.16  ! Cooling setpoint of HVAC system [K]
-ZTHEAT_TARGET = 292.16  ! Heating setpoint of HVAC system [K]
-ZHR_TARGET    = 0.5     ! Relative humidity setpoint
-!
-!=============================================================
-! Heating system
-!=============================================================
-!
-ZEFF_HEAT     = 0.9     ! Efficiency of the heating system
-ZCAP_SYS_HEAT =  90.    ! Capacity of the heating system 
-                        ! [W m-2(bld)]
-!
-!=============================================================
-! Cooling system
-!=============================================================
-!
-ZCAP_SYS_RAT  = 100.0   ! Rated capacity of the cooling system
-                        ! [W m-2(bld)]
-ZT_ADP        = 285.66  ! Apparatus dewpoint temperature of the
-                        ! cooling coil [K]
-ZM_SYS_RAT    = 0.0067  ! Rated HVAC mass flow rate 
-                        ! [kg s-1 m-2(bld)]
-ZCOP_RAT      = 2.5     ! Rated COP of the cooling system
-!
-!=============================================================
-! convection coefficients option
-!=============================================================
-!
-CCH_BEM       = 'DOE-2' ! TEB option for building outside conv. coef : '   ', 'DOE-2'
-ZROUGH_ROOF   = 1.52    ! roof roughness coef. in case DOE-2
-ZROUGH_WALL   = 1.52    ! wall roughness coef. in case DOE-2
-!
+
 !===========================================================================
+! Read from namelist file after default values are set.
 !===========================================================================
-!===========================================================================
-!===========================================================================
-! END OF PARAMETERS SETUP
-!===========================================================================
-!===========================================================================
-!===========================================================================
-!===========================================================================
-!
-!                  Check First time-step values below
-!
-!                               ||   ||
-!                               ||   ||
-!                              \\     //
-!                               \\   //
-!                                \\ //
-!                                 \\/
-!
-!===========================================================================
-!===========================================================================
-!===========================================================================
-!===========================================================================
-! Inizialization for first time-step
-!===========================================================================
-!===========================================================================
-!===========================================================================
-!===========================================================================
-!
-! These values correspond to the "capitoul" test case in SURFEX7_3
-!
-ZT_ROAD  (:,1) = 274.07256  ! road layers temperatures
-ZT_ROAD  (:,2) = 274.16793  ! road layers temperatures
-ZT_ROAD  (:,3) = 274.45198  ! road layers temperatures
-ZT_ROAD  (:,4) = 275.21494  ! road layers temperatures
-ZT_ROAD  (:,5) = 277.50383  ! road layers temperatures
-ZT_ROOF  (:,1) = 274.09930  ! roof layers temperatures
-ZT_ROOF  (:,2) = 276.95065  ! roof layers temperatures
-ZT_ROOF  (:,3) = 283.57500  ! roof layers temperatures
-ZT_ROOF  (:,4) = 289.55152  ! roof layers temperatures
-ZT_ROOF  (:,5) = 292.12402  ! roof layers temperatures
-ZT_WALL_A(:,1) = 274.09930  ! wall layers temperatures
-ZT_WALL_A(:,2) = 276.95065  ! wall layers temperatures
-ZT_WALL_A(:,3) = 283.57500  ! wall layers temperatures
-ZT_WALL_A(:,4) = 289.55152  ! wall layers temperatures
-ZT_WALL_A(:,5) = 292.12402  ! wall layers temperatures
-ZT_FLOOR (:,1) = 292.12     ! building floor temperature
-ZT_FLOOR (:,2) = 291.89778  ! building floor temperature
-ZT_FLOOR (:,3) = 291.26111  ! building floor temperature
-ZT_FLOOR (:,4) = 289.48333  ! building floor temperature
-ZT_FLOOR (:,5) = 283.84017  ! building floor temperature
-ZT_MASS  (:,1) = 292.15     ! building mass temperature
-ZT_MASS  (:,2) = 292.15     ! building mass temperature
-ZT_MASS  (:,3) = 292.15     ! building mass temperature
-ZT_MASS  (:,4) = 292.15     ! building mass temperature
-ZT_MASS  (:,5) = 291.84017  ! building mass temperature
-ZTI_BLD        = 292.15     ! indoor air temperature
-ZT_CANYON      = 274.07050  ! canyon air temperature
-ZT_WIN1        = 275.       ! External window temperature
-ZT_WIN2        = 292.15     ! Internal window temperature
-ZQ_CANYON      = 0.0020888011 ! Outdoor specific humidity    [kg kg-1]
-ZQI_BLD        = 0.0068794074 ! Indoor air specific humidity [kg kg-1]
-!
-ZT_WALL_B = ZT_WALL_A    ! wall layers temperatures
-!
+
+OPEN(UNIT=99, FILE='input.nml', STATUS='old')
+READ(99, NML = dimensions)
+
+ALLOCATE(ZHC_ROOF    (1,NROOF_LAYER))
+ALLOCATE(ZTC_ROOF    (1,NROOF_LAYER))
+ALLOCATE(ZD_ROOF     (1,NROOF_LAYER))
+ALLOCATE(ZT_ROOF     (1,NROOF_LAYER))
+
+ALLOCATE(ZHC_ROAD    (1,NROAD_LAYER))
+ALLOCATE(ZTC_ROAD    (1,NROAD_LAYER))
+ALLOCATE(ZD_ROAD     (1,NROAD_LAYER))
+ALLOCATE(ZT_ROAD     (1,NROAD_LAYER))
+
+ALLOCATE(ZHC_WALL    (1,NWALL_LAYER))
+ALLOCATE(ZTC_WALL    (1,NWALL_LAYER))
+ALLOCATE(ZD_WALL     (1,NWALL_LAYER))
+ALLOCATE(ZT_WALL_A   (1,NWALL_LAYER))
+ALLOCATE(ZT_WALL_B   (1,NWALL_LAYER))
+
+ALLOCATE(ZHC_FLOOR   (1,NFLOOR_LAYER))
+ALLOCATE(ZTC_FLOOR   (1,NFLOOR_LAYER))
+ALLOCATE(ZD_FLOOR    (1,NFLOOR_LAYER))
+ALLOCATE(ZT_FLOOR    (1,NFLOOR_LAYER))
+ALLOCATE(ZT_MASS     (1,NFLOOR_LAYER))
+
+READ(99, NML = parameters)
+CLOSE(99)
+
 !===========================================================================
 !===========================================================================
 !===========================================================================
@@ -908,7 +608,10 @@ ZT_WALL_B = ZT_WALL_A    ! wall layers temperatures
 ! -----------------------------------------------------------
 ! Inizializations (SYSTEM)
 ! -----------------------------------------------------------
+
+ZT_WALL_B = ZT_WALL_A    ! wall layers temperatures
 !
+
 GSHAD_DAY = .FALSE. ! has shading been necessary this day ?
 GNATVENT_NIGHT =.FALSE. ! has natural ventilation been necessary/possible this night ?
 !
@@ -968,7 +671,7 @@ ZTIME = ZTIME_START
 CALL SUNPOS(IYEAR, IMONTH, IDAY, ZTIME, ZLON, ZLAT, XTSUN, XZENITH, XAZIM)
 !
 ! allocate local atmospheric variables
-ALLOCATE(ZTA    (2,1)) 
+ALLOCATE(ZTA    (2,1))
 ALLOCATE(ZQA    (2,1))
 ALLOCATE(ZWIND  (2,1))
 ALLOCATE(ZDIR_SW(2,1))
@@ -1074,7 +777,7 @@ DO JFORC_STEP= 1,INB_STEP_ATM
    CALL OL_READ_ATM('ASCII ', 'ASCII ', JFORC_STEP,    &
                     ZTA,ZQA,ZWIND,ZDIR_SW,ZSCA_SW,ZLW,ZSNOW,ZRAIN,ZPS,&
                     ZCO2,ZDIR )
-   !  
+   !
    !
    DO JSURF_STEP=1,INB_ATM
        !
@@ -1101,7 +804,7 @@ DO JFORC_STEP= 1,INB_STEP_ATM
        !
        CALL OL_TIME_INTERP_ATM(JSURF_STEP,INB_ATM,                               &
                                ZTA,ZQA,ZWIND,ZDIR_SW,ZSCA_SW,ZLW,ZSNOW,ZRAIN,ZPS,&
-                               ZCO2,ZDIR  ) 
+                               ZCO2,ZDIR  )
        ! Exner functions
        !
        ZEXNS = (XPS/XP00)**(XRD/XCPD)
@@ -1114,7 +817,7 @@ DO JFORC_STEP= 1,INB_STEP_ATM
        ! coherence between solar zenithal angle and radiation
        ! when solar beam close to horizontal -> reduction of direct radiation to
        ! the benefit of scattered radiation
-       ! when pi/2 - 0.1 < ZENITH < pi/2 - 0.05 => weight of direct to scattered radiation decreases linearly with zenith 
+       ! when pi/2 - 0.1 < ZENITH < pi/2 - 0.05 => weight of direct to scattered radiation decreases linearly with zenith
        ! when pi/2 - 0.05 < ZENITH => all the direct radiation is converted to scattered radiation
        ! coherence between solar zenithal angle and radiation
        !
@@ -1143,10 +846,10 @@ DO JFORC_STEP= 1,INB_STEP_ATM
        ZWAKE = MAX(MIN(ZWAKE,1.),2./XPI)
        ZU_CANYON = ZWAKE * EXP(-ZCAN_HW_RATIO/4.) * ZVMOD     &
               * LOG( (           2.* ZBLD_HEIGHT/3.) / ZZ0)   &
-              / LOG( (ZZREF + 2.* ZBLD_HEIGHT/3.) / ZZ0) 
-       ZU_LOWCAN = ZU_CANYON 
-       ZT_LOWCAN = ZT_CANYON 
-       ZQ_LOWCAN = ZQ_CANYON 
+              / LOG( (ZZREF + 2.* ZBLD_HEIGHT/3.) / ZZ0)
+       ZU_LOWCAN = ZU_CANYON
+       ZT_LOWCAN = ZT_CANYON
+       ZQ_LOWCAN = ZQ_CANYON
        !
        ZPEW_A_COEF        = 0.
        ZPEW_A_COEF_LOWCAN = 0.
@@ -1210,7 +913,7 @@ DO JFORC_STEP= 1,INB_STEP_ATM
                      ZRN_GRND, ZH_GRND, ZLE_GRND, ZGFLUX_GRND,                &
                      ZRN_TOWN, ZH_TOWN, ZLE_TOWN, ZGFLUX_TOWN, ZEVAP_TOWN,    &
                      ZRUNOFF_TOWN, ZSFCO2,                                    &
-                     ZUW_GRND, ZUW_ROOF, ZDUWDU_GRND, ZDUWDU_ROOF,            & 
+                     ZUW_GRND, ZUW_ROOF, ZDUWDU_GRND, ZDUWDU_ROOF,            &
                      ZUSTAR_TOWN, ZCD, ZCDN, ZCH_TOWN, ZRI_TOWN,              &
                      ZTS_TOWN, ZEMIS_TOWN, ZDIR_ALB_TOWN, ZSCA_ALB_TOWN,      &
                      ZRESA_TOWN, ZDQS_TOWN, ZQF_TOWN, ZQF_BLD,                &
@@ -1268,7 +971,7 @@ DO JFORC_STEP= 1,INB_STEP_ATM
 !       ZTS_ROAD   = ZTS_ROAD   + ZT_ROAD(1,1)       ! surface temperature
 !       ZTS_WALL_A = ZTS_WALL_A + ZT_WALL_A(1,1)     ! surface temperature
 !       ZTS_WALL_B = ZTS_WALL_B + ZT_WALL_B(1,1)     ! surface temperature
-      ! 
+      !
        !
    END DO
    ! Calculate average for a forcing time step
@@ -1306,7 +1009,7 @@ END DO
 !
 !
 !  DEALLOCATE variables
-DEALLOCATE(ZTA) 
+DEALLOCATE(ZTA)
 DEALLOCATE(ZQA)
 DEALLOCATE(ZWIND)
 DEALLOCATE(ZDIR_SW)
@@ -1318,19 +1021,19 @@ DEALLOCATE(ZPS)
 DEALLOCATE(ZCO2)
 DEALLOCATE(ZDIR)
 !
-DEALLOCATE(ZHC_WALL) 
-DEALLOCATE(ZTC_WALL) 
+DEALLOCATE(ZHC_WALL)
+DEALLOCATE(ZTC_WALL)
 DEALLOCATE(ZD_WALL)
-DEALLOCATE(ZT_WALL_A) 
-DEALLOCATE(ZT_WALL_B) 
-DEALLOCATE(ZHC_ROOF) 
-DEALLOCATE(ZTC_ROOF) 
+DEALLOCATE(ZT_WALL_A)
+DEALLOCATE(ZT_WALL_B)
+DEALLOCATE(ZHC_ROOF)
+DEALLOCATE(ZTC_ROOF)
 DEALLOCATE(ZD_ROOF)
-DEALLOCATE(ZT_ROOF) 
-DEALLOCATE(ZHC_ROAD) 
-DEALLOCATE(ZTC_ROAD) 
-DEALLOCATE(ZD_ROAD) 
-DEALLOCATE(ZT_ROAD) 
+DEALLOCATE(ZT_ROOF)
+DEALLOCATE(ZHC_ROAD)
+DEALLOCATE(ZTC_ROAD)
+DEALLOCATE(ZD_ROAD)
+DEALLOCATE(ZT_ROAD)
 !
 CALL OPEN_CLOSE_BIN_ASC_FORC('CLOSE ','ASCII ',1,'R')
 CLOSE(13)
