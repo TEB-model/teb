@@ -18,7 +18,7 @@ To build the Town Energy Balance (TEB) executable and library, run the following
 
 ```bash
 $ mkdir build && cd build
-$ cmake ..
+$ cmake -DCMAKE_BUILD_TYPE=Release ..
 $ cmake --build .
 ```
 
