@@ -342,7 +342,7 @@ REAL,DIMENSION(1)  :: ZSFCO2             ! Surface Flux of CO2                  
 ! new arguments created after BEM                                                     ! ||   ||
 !                                                                                     ! ||   ||
 CHARACTER(LEN=3)    :: CBEM              ! Building Energy model 'DEF' or 'BEM'       ! ||   ||
-CHARACTER(LEN=6)    :: CCOOL_COIL        ! option for cooling device type             ! ||   ||
+CHARACTER(LEN=12)   :: CCOOL_COIL        ! option for cooling device type             ! ||   ||
 CHARACTER(LEN=6)    :: CHEAT_COIL        ! option for heating device type             ! ||   ||
 REAL, DIMENSION(1)  :: ZF_WATER_COND     ! fraction of evaporation for the condensers ! ||   ||
 CHARACTER(LEN=4), DIMENSION(1) :: HNATVENT                                            ! ||   ||

@@ -40,3 +40,6 @@ build/
 *.exe
 *.out
 *.app
+
+# TEB test output files
+tests/CAPITOUL/output/*.txt

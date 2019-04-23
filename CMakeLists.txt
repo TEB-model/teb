@@ -10,7 +10,7 @@ if (NOT CMAKE_BUILD_TYPE)
 endif()
 
 if (CMAKE_Fortran_COMPILER_ID STREQUAL "GNU")
-    set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} -Wall -fimplicit-none -fdefault-real-8")
+    set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} -Wall -fimplicit-none -fdefault-real-8 -fdefault-double-8")
     set(CMAKE_Fortran_FLAGS_DEBUG "${CMAKE_Fortran_FLAGS_DEBUG} -ffpe-trap=invalid,zero,overflow,underflow -fcheck=all")
 elseif (CMAKE_Fortran_COMPILER_ID STREQUAL "Intel")
     set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} -implicitnone -r8")
@@ -52,6 +52,9 @@ file(GLOB_RECURSE src_proxi_SVAT "src/proxi_SVAT/*")
 file(GLOB_RECURSE src_solar "src/solar/*")
 file(GLOB_RECURSE src_struct "src/struct/*")
 file(GLOB_RECURSE src_teb "src/teb/*")
+file(GLOB_RECURSE minimal_dx "external/minimal-dx/src/*")
+file(GLOB_RECURSE psychrolib "external/minimal-dx/external/psychrolib/src/fortran/*")
+file(GLOB_RECURSE energy_plus "external/minimal-dx/external/EnergyPlus/src/*")
 
 add_library(teb STATIC
     ${src_driver}
@@ -59,6 +62,9 @@ add_library(teb STATIC
     ${src_solar}
     ${src_struct}
     ${src_teb}
+    ${minimal_dx}
+    ${psychrolib}
+    ${energy_plus}
 )
 
 add_executable(driver src/driver/driver.F90)

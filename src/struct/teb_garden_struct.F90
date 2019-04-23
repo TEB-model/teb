@@ -367,7 +367,7 @@ REAL, DIMENSION(:)  , INTENT(OUT)   :: PG_GREENROOF_ROOF  ! heat flux between ba
 !
 ! new arguments created after BEM
 !
- CHARACTER(LEN=6)    , INTENT(IN)    :: HCOOL_COIL
+ CHARACTER(LEN=12)   , INTENT(IN)    :: HCOOL_COIL
  CHARACTER(LEN=6)    , INTENT(IN)    :: HHEAT_COIL
 REAL, DIMENSION(:)  , INTENT(IN)    :: PF_WATER_COND      ! fraction of evaporation for the condensers
  CHARACTER(LEN=4), DIMENSION(:), INTENT(IN) :: HNATVENT

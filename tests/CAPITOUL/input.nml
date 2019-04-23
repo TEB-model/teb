@@ -60,7 +60,7 @@ ZFRAC_PANEL  = 0.0     ! solar panels fraction on roofs
 LPAR_RD_IRRIG= .FALSE.
 ! Natural Ventilation
 HNATVENT = "NONE"    ! 'NONE', 'MANU', 'AUTO', 'MECH'
-! Cooling system    ! 'DXCOIL','IDEAL '
+! Cooling system    ! 'DXCOIL','IDEAL ', 'MinimalDX'
 CCOOL_COIL = "IDEAL"
 ! Heating system    ! 'FINCAP','IDEAL '
 CHEAT_COIL = "IDEAL"
