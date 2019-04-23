@@ -1,3 +1,6 @@
+# TEB model version x.x.x (https://github.com/dmey/teb-model).
+# Copyright (c) 2018 D. Meyer.
+
 cmake_minimum_required(VERSION 3.1)
 project(TEB Fortran)
 
@@ -7,15 +10,21 @@ if (NOT CMAKE_BUILD_TYPE)
 endif()
 
 if (CMAKE_Fortran_COMPILER_ID STREQUAL "GNU")
-    # -fimplicit-none
-    set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} -Wall -fdefault-real-8")
+    set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} -Wall -fimplicit-none -fdefault-real-8")
     set(CMAKE_Fortran_FLAGS_DEBUG "${CMAKE_Fortran_FLAGS_DEBUG} -ffpe-trap=invalid,zero,overflow,underflow -fcheck=all")
 elseif (CMAKE_Fortran_COMPILER_ID STREQUAL "Intel")
-    # -implicitnone
-    set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} -r8")
+    set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} -implicitnone -r8")
     set(CMAKE_Fortran_FLAGS_DEBUG "${CMAKE_Fortran_FLAGS_DEBUG} -traceback -fpe-all0 -check all")
 else()
     message(FATAL_ERROR "Only gfortran and ifort compilers supported")
+endif()
+
+# Fix for ranlib in MacOS - added -c flag so that ranlib produces the index
+# entry for the global variables which are not initialised.
+# See link below for details:
+# http://forthescience.org/blog/2014/11/01/undefined-symbols-for-fortran-module-variables-in-static-library-on-osx-problem-and-solution/
+if(APPLE)
+    set(CMAKE_Fortran_ARCHIVE_FINISH "<CMAKE_RANLIB> -c <TARGET>")
 endif()
 
 set(CMAKE_Fortran_MODULE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/mod)

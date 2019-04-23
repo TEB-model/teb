@@ -1,4 +1,4 @@
-# Town Energy Balance (TEB) [![Build Status](https://travis-ci.com/dmey/teb-model.svg?token=3tqUbxqJuLtozjxqDymC&branch=master)](https://travis-ci.com/dmey/teb-model)
+# Town Energy Balance (TEB) model [![Build Status](https://travis-ci.com/dmey/teb-model.svg?token=3tqUbxqJuLtozjxqDymC&branch=master)](https://travis-ci.com/dmey/teb-model)
 
 ## Build instructions for Windows, Linux and macOS
 
