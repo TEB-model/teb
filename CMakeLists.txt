@@ -1,6 +1,23 @@
 cmake_minimum_required(VERSION 3.1)
 project(TEB Fortran)
 
+if (NOT CMAKE_BUILD_TYPE)
+    message(STATUS "No build type selected, default to Debug")
+    set(CMAKE_BUILD_TYPE "Debug" CACHE STRING "Build type (default Debug)" FORCE)
+endif()
+
+if (CMAKE_Fortran_COMPILER_ID STREQUAL "GNU")
+    # -fimplicit-none
+    set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} -Wall -fdefault-real-8")
+    set(CMAKE_Fortran_FLAGS_DEBUG "${CMAKE_Fortran_FLAGS_DEBUG} -ffpe-trap=invalid,zero,overflow,underflow -fcheck=all")
+elseif (CMAKE_Fortran_COMPILER_ID STREQUAL "Intel")
+    # -implicitnone
+    set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} -r8")
+    set(CMAKE_Fortran_FLAGS_DEBUG "${CMAKE_Fortran_FLAGS_DEBUG} -traceback -fpe-all0 -check all")
+else()
+    message(FATAL_ERROR "Only gfortran and ifort compilers supported")
+endif()
+
 set(CMAKE_Fortran_MODULE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/mod)
 
 set(src_driver

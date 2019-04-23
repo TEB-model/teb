@@ -35,4 +35,4 @@ cd test/CAPITOUL
 ../../build/driver
 ```
 
-The output files are written to `tests/CAPITOUL/output`. You can compare them with the reference outputs in `tests/CAPITOUL/ref_output`.
+The output files are written to `tests/CAPITOUL/output`. You can compare them with the reference outputs in `tests/CAPITOUL/ref_output`. You can modify parameter-specific values or activate/deactivate part of TEB from the `input.nml` file.
