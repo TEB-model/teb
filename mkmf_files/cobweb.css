@@ -1,5 +1,0 @@
-/* This file is different for www and cobweb! */
-/* on www, blank out elements of class cobweb */
-/* on cobweb, blank out elements of class www */
-/* www includes prineceton and gfdl homepages */
-.cobweb    { display:none; } /* for muse pages shared between cobweb and www */
