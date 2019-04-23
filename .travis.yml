@@ -12,6 +12,7 @@ matrix:
       addons:
         apt:
           packages:
+            - graphviz # for before_deploy
             - gfortran
     - language: python
       os: linux
@@ -41,5 +42,18 @@ install:
 
 script:
   - pushd tests/CAPITOUL
-  - ../../build/driver
+  - ../../build/driver > output.log 2>&1
   - popd
+
+before_deploy:
+  - pip3 install graphviz ford
+  - ford docs/api_docs.md
+
+deploy:
+ provider: pages
+ skip_cleanup: true
+ github_token: $GITHUB_TOKEN
+ local_dir: build/docs
+ on:
+   all_branches: true
+   condition: $TRAVIS_OS_NAME = 'linux' && $BUILD_TYPE = 'Debug'
