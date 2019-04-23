@@ -55,5 +55,5 @@ deploy:
  github_token: $GITHUB_TOKEN
  local_dir: build/docs
  on:
-   all_branches: true
+   branch: master
    condition: $TRAVIS_OS_NAME = 'linux' && $BUILD_TYPE = 'Debug'
