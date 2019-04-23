@@ -1,0 +1,45 @@
+# TEB model version x.x.x (https://github.com/dmey/teb-model).
+# Copyright (c) 2018 D. Meyer.
+
+matrix:
+  include:
+    - language: python
+      os: linux
+      dist: xenial
+      python: "3.7"
+      sudo: false
+      env: BUILD_TYPE=Debug
+      addons:
+        apt:
+          packages:
+            - gfortran
+    - language: python
+      os: linux
+      dist: xenial
+      python: "3.7"
+      sudo: false
+      env: BUILD_TYPE=Release
+      addons:
+        apt:
+          packages:
+            - gfortran
+    - language: generic
+      os: osx
+      env: BUILD_TYPE=Debug
+    - language: generic
+      os: osx
+      env: BUILD_TYPE=Release
+
+before_install:
+  - if [[ $TRAVIS_OS_NAME == osx ]]; then brew update && brew install gcc && brew upgrade python; fi
+
+install:
+  - mkdir build && pushd build
+  - cmake -DCMAKE_BUILD_TYPE=$BUILD_TYPE ..
+  - cmake --build .
+  - popd
+
+script:
+  - pushd tests/CAPITOUL
+  - ../../build/driver
+  - popd
