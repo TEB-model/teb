@@ -102,4 +102,4 @@ if __name__ == "__main__":
         run_teb_coil_case(case, THIS_DIR / 'artefacts')
         df = load_outputs_to_df(case, THIS_DIR / 'artefacts')
         df_list.append(df)
-    plot_results(df_list, THIS_DIR / 'images')
+    plot_results(df_list, THIS_DIR / 'plots')
