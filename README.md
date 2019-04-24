@@ -49,3 +49,15 @@ cd test/CAPITOUL
 ```
 
 The output files are written to `tests/CAPITOUL/output`. You can compare them with the reference outputs in `tests/CAPITOUL/ref_output`. You can modify parameter-specific values or activate/deactivate part of TEB from the `input.nml` file.
+
+
+## Copyright and license
+
+General TEB copyright and license applies for files part of the original TEB distribution and is clearly stated at the top of each source file. Files modified/added after version 3.x are marked with the following header at the beginning of each source file, otherwise the general TEB copyright applies.
+
+```
+Copyright 2018 D. Meyer. Licensed under CeCILL-C version 1.
+
+```
+
+All software released under [CeCILL-C version 1](Licence_CeCILL-C_V1-en.txt).
