@@ -88,7 +88,7 @@ def plot_results(df_list: List[pd.DataFrame], path_to_outdir: Path) -> None:
             df.iloc[:, index].plot(style=styles[idx])
         plt.legend()
         plt.ylabel('See var description')
-        plt.savefig(path_to_outdir / str(col_name.split(':')[1] + '.svg'))
+        plt.savefig(path_to_outdir / str(col_name.split(':')[1] + '.png'))
         plt.close()
 
 
