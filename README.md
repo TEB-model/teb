@@ -37,6 +37,8 @@ E.g. on Windows using Intel® Command-Line Window for Visual Studio 2017:
 > cmake --build .
 ```
 
+By default, we set the real type to an 8 byte wide. This behaviour is controlled by the optional `USE_REAL8` flag (default ON).
+
 ## Testing
 
 You can run a test case using the CAPITOUL data provided in `tests/CAPITOUL`. From your command prompt, execute the `driver` program from the `test/CAPITOUL` folder as you current working directory.
@@ -44,7 +46,7 @@ You can run a test case using the CAPITOUL data provided in `tests/CAPITOUL`. Fr
 E.g. on Linux and macOS:
 
 ``` bash
-cd test/CAPITOUL
+cd tests/CAPITOUL
 ../../build/driver
 ```
 
