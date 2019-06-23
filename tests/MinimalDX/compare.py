@@ -95,6 +95,9 @@ def plot_results(df_list: List[pd.DataFrame], path_to_outdir: Path) -> None:
 if __name__ == "__main__":
     # Clean up from previous runs.
     shutil.rmtree(THIS_DIR / 'artefacts', ignore_errors=True)
+    shutil.rmtree(THIS_DIR / 'plots', ignore_errors=True)
+    # Create plot dir.
+    Path(THIS_DIR / 'plots').mkdir()
     # Run the two cases ('MinimalDX' and 'DXCOIL') separately and compare the results at the end.
     CASES = ['MinimalDX', 'DXCOIL']
     df_list = []
