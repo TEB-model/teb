@@ -9,7 +9,7 @@ The _Minimal_**DX** implementation has already been tested and compared against 
 ``` sh
 # Assumes python3.6 or above
 pip3 install -r requirements.txt
-python3 compare.py
+python3 run_tests.py
 ```
 
 This will run TEB and produce qualitatively graphs of differences between DXCoil and _Minimal_**DX** implementations.
