@@ -47,3 +47,4 @@ tests/CAPITOUL/output/*.txt
 
 # Test artefacts
 artefacts/
+plots/
