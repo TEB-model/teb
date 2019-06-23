@@ -253,6 +253,7 @@ REAL,DIMENSION(1)  :: ZWALL_O_HOR      ! Vertical to horizonal surf ratio       
 ! Urban variables                                                                     ! ||   ||
 REAL,DIMENSION(1)  :: ZU_CANYON = 1.0  ! hor. wind in canyon                          ! ||   ||
 REAL,DIMENSION(1)  :: ZQ_CANYON        ! canyon air humidity ratio                    ! ||   ||
+REAL,DIMENSION(1)  :: ZDIR_CANYON      ! canyon wind direction                        ! ||   ||
 REAL,DIMENSION(1)  :: ZTS_ROOF         ! surface temperature                          ! ||   ||
 REAL,DIMENSION(1)  :: ZTS_ROAD         ! surface temperature                          !\\     //
 REAL,DIMENSION(1)  :: ZTS_WALL_A       ! surface temperature                          ! \\   //
@@ -503,6 +504,8 @@ REAL, DIMENSION(1)  :: ZF_WIN_WIN        ! indoor win to win view factor        
 ! Average urban fluxes variables                                                      ! ||   ||
 REAL,DIMENSION(1)  :: ZTS_TOWN          ! town surface temperature                    ! ||   ||
 REAL,DIMENSION(1)  :: ZEMIS_TOWN        ! town equivalent emissivity                  ! ||   ||
+REAL,DIMENSION(1)  :: ZALB_TOWN         ! town eqivalent albedo                       ! ||   ||
+REAL,DIMENSION(1)  :: ZQ_TOWN           ! town eqivalent specific humidity            ! ||   ||
 REAL,DIMENSION(1)  :: ZESNOW_ROOF  = 1.0! snow roof emissivity                        ! ||   ||
 REAL,DIMENSION(1)  :: ZABS_LW_SNOW_ROOF ! abs. LW rad. by snow                        ! ||   ||
 REAL,DIMENSION(1)  :: ZABS_LW_SNOW_ROAD ! abs. LW rad. by snow                        ! ||   ||
@@ -559,6 +562,15 @@ CHARACTER(LEN=*), PARAMETER       :: LE_TOWN = 'output/LE_TOWN.txt'             
 CHARACTER(LEN=*), PARAMETER       :: RN_TOWN = 'output/RN_TOWN.txt'                   !  \\ //
 CHARACTER(LEN=*), PARAMETER       :: HVAC_COOL = 'output/HVAC_COOL.txt'               !   \\/
 CHARACTER(LEN=*), PARAMETER       :: HVAC_HEAT = 'output/HVAC_HEAT.txt'               !
+!
+CHARACTER(LEN=*), PARAMETER       :: DIR_CANYON = 'output/DIR_CANYON.txt'
+CHARACTER(LEN=*), PARAMETER       :: ALB_TOWN = 'output/ALB_TOWN.txt'
+CHARACTER(LEN=*), PARAMETER       :: EMIS_TOWN = 'output/EMIS_TOWN.txt'
+CHARACTER(LEN=*), PARAMETER       :: EVAP_TOWN = 'output/EVAP_TOWN.txt'
+CHARACTER(LEN=*), PARAMETER       :: GFLUX_TOWN = 'output/GFLUX_TOWN.txt'
+CHARACTER(LEN=*), PARAMETER       :: TS_TOWN = 'output/TS_TOWN.txt'
+CHARACTER(LEN=*), PARAMETER       :: Q_TOWN = 'output/Q_TOWN.txt'
+CHARACTER(LEN=*), PARAMETER       :: USTAR_TOWN = 'output/USTAR_TOWN.txt'
 
 !===========================================================================
 ! Read from namelist file after default values are set.
@@ -761,6 +773,15 @@ OPEN(UNIT=23, FILE = LE_TOWN,   ACCESS = 'APPEND',STATUS = 'REPLACE')
 OPEN(UNIT=24, FILE = RN_TOWN,   ACCESS = 'APPEND',STATUS = 'REPLACE')
 OPEN(UNIT=25, FILE = HVAC_COOL, ACCESS = 'APPEND',STATUS = 'REPLACE')
 OPEN(UNIT=26, FILE = HVAC_HEAT, ACCESS = 'APPEND',STATUS = 'REPLACE')
+!
+OPEN(UNIT=27, FILE = DIR_CANYON, ACCESS = 'APPEND',STATUS = 'REPLACE')
+OPEN(UNIT=28, FILE = ALB_TOWN,   ACCESS = 'APPEND',STATUS = 'REPLACE')
+OPEN(UNIT=29, FILE = EMIS_TOWN,  ACCESS = 'APPEND',STATUS = 'REPLACE')
+OPEN(UNIT=30, FILE = EVAP_TOWN,  ACCESS = 'APPEND',STATUS = 'REPLACE')
+OPEN(UNIT=31, FILE = GFLUX_TOWN, ACCESS = 'APPEND',STATUS = 'REPLACE')
+OPEN(UNIT=32, FILE = TS_TOWN,    ACCESS = 'APPEND',STATUS = 'REPLACE')
+OPEN(UNIT=33, FILE = Q_TOWN,     ACCESS = 'APPEND',STATUS = 'REPLACE')
+OPEN(UNIT=34, FILE = USTAR_TOWN, ACCESS = 'APPEND',STATUS = 'REPLACE')
 !
 ! -----------------------------------------------------------
 ! Temporal loops
@@ -985,6 +1006,18 @@ ZTS_ROOF = ZT_ROOF(1,1)
 ZTS_ROAD = ZT_ROAD(1,1)
 ZTS_WALL_A = ZT_WALL_A(1,1)
 ZTS_WALL_B = ZT_WALL_B(1,1)
+
+! Calucalte the total (direct + diffuse radiaitons)town albedo
+IF (ZTDIR_SW(1,1) == 0.) THEN
+  ZALB_TOWN  = 0.
+ELSE
+  ZALB_TOWN = (ZDIR_ALB_TOWN * ZTDIR_SW(1,1) + ZSCA_ALB_TOWN * ZTSCA_SW(1,1)) / (ZTDIR_SW(1,1) + ZTSCA_SW(1,1))
+END IF
+! TEB does no modify the wind direction
+ZDIR_CANYON = ZDIR(1,1)
+! Town specific humidity assumed to be same as canyon humidity
+ZQ_TOWN = ZQ_CANYON
+
    !
    WRITE(13,*) ZTS_ROOF
    WRITE(14,*) ZT_CANYON
@@ -1002,6 +1035,15 @@ ZTS_WALL_B = ZT_WALL_B(1,1)
      WRITE(25,*) ZHVAC_COOL
      WRITE(26,*) ZHVAC_HEAT
    END IF
+!
+    WRITE(27,*) ZDIR_CANYON
+    WRITE(28,*) ZALB_TOWN
+    WRITE(29,*) ZEMIS_TOWN
+    WRITE(30,*) ZEVAP_TOWN
+    WRITE(31,*) ZGFLUX_TOWN
+    WRITE(32,*) ZTS_TOWN
+    WRITE(33,*) ZQ_TOWN
+    WRITE(34,*) ZUSTAR_TOWN
 !
 END DO
 !
@@ -1050,6 +1092,14 @@ CLOSE(23)
 CLOSE(24)
 CLOSE(25)
 CLOSE(26)
+CLOSE(27)
+CLOSE(28)
+CLOSE(29)
+CLOSE(30)
+CLOSE(31)
+CLOSE(32)
+CLOSE(33)
+CLOSE(34)
 !
     WRITE(*,*) ' '
     WRITE(*,*) '    --------------------------'
