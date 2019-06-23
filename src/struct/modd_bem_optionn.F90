@@ -49,7 +49,7 @@ TYPE BEM_OPTIONS_t
 ! Number of layers
 !
   INTEGER                       :: NFLOOR_LAYER   ! number of layers in walls
-  CHARACTER(LEN=6)              :: CCOOL_COIL    ! type of cooling coil
+  CHARACTER(LEN=12)             :: CCOOL_COIL    ! type of cooling coil
   CHARACTER(LEN=6)              :: CHEAT_COIL    ! type of heating coil
   LOGICAL                       :: LAUTOSIZE     ! Flag to activate autosize calculations
 !
@@ -69,7 +69,7 @@ TYPE(BEM_OPTIONS_t), INTENT(INOUT) :: YBEM_OPTIONS
 REAL(KIND=JPRB) :: ZHOOK_HANDLE
 IF (LHOOK) CALL DR_HOOK("MODD_BEM_N:BEM_OPTIONS_INIT",0,ZHOOK_HANDLE)
 YBEM_OPTIONS%NFLOOR_LAYER = 0
-YBEM_OPTIONS%CCOOL_COIL   = '      '
+YBEM_OPTIONS%CCOOL_COIL   = '            '
 YBEM_OPTIONS%CHEAT_COIL   = '      '
 YBEM_OPTIONS%LAUTOSIZE    = .FALSE.
 IF (LHOOK) CALL DR_HOOK("MODD_BEM_N:BEM_OPTIONS_INIT",1,ZHOOK_HANDLE)

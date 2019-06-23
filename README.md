@@ -37,6 +37,8 @@ E.g. on Windows using Intel® Command-Line Window for Visual Studio 2017:
 > cmake --build .
 ```
 
+By default, we set the real type to an 8 byte wide. This behaviour is controlled by the optional `USE_REAL8` flag (default ON).
+
 ## Testing
 
 You can run a test case using the CAPITOUL data provided in `tests/CAPITOUL`. From your command prompt, execute the `driver` program from the `test/CAPITOUL` folder as you current working directory.
@@ -44,8 +46,20 @@ You can run a test case using the CAPITOUL data provided in `tests/CAPITOUL`. Fr
 E.g. on Linux and macOS:
 
 ``` bash
-cd test/CAPITOUL
+cd tests/CAPITOUL
 ../../build/driver
 ```
 
 The output files are written to `tests/CAPITOUL/output`. You can compare them with the reference outputs in `tests/CAPITOUL/ref_output`. You can modify parameter-specific values or activate/deactivate part of TEB from the `input.nml` file.
+
+
+## Copyright and license
+
+General TEB copyright and license applies for files part of the original TEB distribution and is clearly stated at the top of each source file. Files modified/added after version 3.x are marked with the following header at the beginning of each source file, otherwise the general TEB copyright applies.
+
+```
+Copyright 2018 D. Meyer. Licensed under CeCILL-C version 1.
+
+```
+
+All software released under [CeCILL-C version 1](Licence_CeCILL-C_V1-en.txt).

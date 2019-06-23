@@ -1,0 +1,3 @@
+[submodule "external/minimal-dx"]
+	path = external/minimal-dx
+	url = git@github.com:dmey/minimal-dx.git

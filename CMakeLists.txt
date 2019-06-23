@@ -1,8 +1,10 @@
-# TEB model version x.x.x (https://github.com/dmey/teb-model).
-# Copyright (c) 2018 D. Meyer.
+# TEB model version 4.0.0 (https://github.com/dmey/teb-model).
+# Copyright 2018 D. Meyer. Licensed under CeCILL-C version 1.
 
 cmake_minimum_required(VERSION 3.1)
 project(TEB Fortran)
+
+option(USE_REAL8 "Use real8 instead of real4" ON)
 
 if (NOT CMAKE_BUILD_TYPE)
     message(STATUS "No build type selected, default to Debug")
@@ -10,11 +12,17 @@ if (NOT CMAKE_BUILD_TYPE)
 endif()
 
 if (CMAKE_Fortran_COMPILER_ID STREQUAL "GNU")
-    set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} -Wall -fimplicit-none -fdefault-real-8")
+    set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} -Wall -fimplicit-none")
     set(CMAKE_Fortran_FLAGS_DEBUG "${CMAKE_Fortran_FLAGS_DEBUG} -ffpe-trap=invalid,zero,overflow,underflow -fcheck=all")
+    if (USE_REAL8)
+        set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} -fdefault-real-8 -fdefault-double-8")
+    endif()
 elseif (CMAKE_Fortran_COMPILER_ID STREQUAL "Intel")
-    set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} -implicitnone -r8")
+    set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} -implicitnone")
     set(CMAKE_Fortran_FLAGS_DEBUG "${CMAKE_Fortran_FLAGS_DEBUG} -traceback -fpe-all0 -check all")
+    if (USE_REAL8)
+        set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} -r8")
+    endif()
 else()
     message(FATAL_ERROR "Only gfortran and ifort compilers supported")
 endif()
@@ -52,6 +60,9 @@ file(GLOB_RECURSE src_proxi_SVAT "src/proxi_SVAT/*")
 file(GLOB_RECURSE src_solar "src/solar/*")
 file(GLOB_RECURSE src_struct "src/struct/*")
 file(GLOB_RECURSE src_teb "src/teb/*")
+file(GLOB_RECURSE minimal_dx "external/minimal-dx/src/*")
+file(GLOB_RECURSE psychrolib "external/minimal-dx/external/psychrolib/src/fortran/*")
+file(GLOB_RECURSE energy_plus "external/minimal-dx/external/EnergyPlus/src/*")
 
 add_library(teb STATIC
     ${src_driver}
@@ -59,6 +70,9 @@ add_library(teb STATIC
     ${src_solar}
     ${src_struct}
     ${src_teb}
+    ${minimal_dx}
+    ${psychrolib}
+    ${energy_plus}
 )
 
 add_executable(driver src/driver/driver.F90)

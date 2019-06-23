@@ -1,6 +1,7 @@
 # General
 .vscode/
 *.log
+.mypy_cache/
 
 # Build
 build/
@@ -40,3 +41,10 @@ build/
 *.exe
 *.out
 *.app
+
+# TEB test output files
+tests/CAPITOUL/output/*.txt
+
+# Test artefacts
+artefacts/
+plots/
