@@ -252,7 +252,7 @@ REAL,DIMENSION(1)  :: ZBLD_HEIGHT      ! Canyon height (m)                      
 REAL,DIMENSION(1)  :: ZWALL_O_HOR      ! Vertical to horizonal surf ratio             ! ||   ||
 ! Urban variables                                                                     ! ||   ||
 REAL,DIMENSION(1)  :: ZU_CANYON = 1.0  ! hor. wind in canyon                          ! ||   ||
-REAL,DIMENSION(1)  :: ZQ_CANYON        ! canyon air humidity ratio                    ! ||   ||
+REAL,DIMENSION(1)  :: ZQ_CANYON        ! canyon air specific humidity     (kg/kg)     ! ||   ||
 REAL,DIMENSION(1)  :: ZDIR_CANYON      ! canyon wind direction                        ! ||   ||
 REAL,DIMENSION(1)  :: ZTS_ROOF         ! surface temperature                          ! ||   ||
 REAL,DIMENSION(1)  :: ZTS_ROAD         ! surface temperature                          !\\     //
