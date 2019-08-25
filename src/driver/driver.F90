@@ -571,6 +571,8 @@ CHARACTER(LEN=*), PARAMETER       :: GFLUX_TOWN = 'output/GFLUX_TOWN.txt'
 CHARACTER(LEN=*), PARAMETER       :: TS_TOWN = 'output/TS_TOWN.txt'
 CHARACTER(LEN=*), PARAMETER       :: Q_TOWN = 'output/Q_TOWN.txt'
 CHARACTER(LEN=*), PARAMETER       :: USTAR_TOWN = 'output/USTAR_TOWN.txt'
+CHARACTER(LEN=*), PARAMETER       :: THER_PROD_PANEL = 'output/THER_PROD_PANEL.txt'
+CHARACTER(LEN=*), PARAMETER       :: PHOT_PROD_PANEL = 'output/PHOT_PROD_PANEL.txt'
 
 !===========================================================================
 ! Read from namelist file after default values are set.
@@ -782,6 +784,8 @@ OPEN(UNIT=31, FILE = GFLUX_TOWN, ACCESS = 'APPEND',STATUS = 'REPLACE')
 OPEN(UNIT=32, FILE = TS_TOWN,    ACCESS = 'APPEND',STATUS = 'REPLACE')
 OPEN(UNIT=33, FILE = Q_TOWN,     ACCESS = 'APPEND',STATUS = 'REPLACE')
 OPEN(UNIT=34, FILE = USTAR_TOWN, ACCESS = 'APPEND',STATUS = 'REPLACE')
+OPEN(UNIT=35, FILE = THER_PROD_PANEL, ACCESS = 'APPEND',STATUS = 'REPLACE')
+OPEN(UNIT=36, FILE = PHOT_PROD_PANEL, ACCESS = 'APPEND',STATUS = 'REPLACE')
 !
 ! -----------------------------------------------------------
 ! Temporal loops
@@ -1044,6 +1048,8 @@ ZQ_TOWN = ZQ_CANYON
     WRITE(32,*) ZTS_TOWN
     WRITE(33,*) ZQ_TOWN
     WRITE(34,*) ZUSTAR_TOWN
+    WRITE(35,*) ZTHER_PROD_PANEL
+    WRITE(36,*) ZPHOT_PROD_PANEL
 !
 END DO
 !
@@ -1100,6 +1106,8 @@ CLOSE(31)
 CLOSE(32)
 CLOSE(33)
 CLOSE(34)
+CLOSE(35)
+CLOSE(36)
 !
     WRITE(*,*) ' '
     WRITE(*,*) '    --------------------------'
