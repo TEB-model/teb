@@ -517,7 +517,8 @@ MODULE MODD_WRF_TEB_DRIVER
               STOP
             END IF
             IF ( ZBLD(1)+ZGARDEN(1)>=1.) THEN
-              print*, 'The sum of garden and building fraction is larger than one, so road fraction is negative. Please check their values.'
+              print*, 'The sum of garden and building fraction is larger than one, so road fraction is', &
+              'negative. Please check their values.'
               STOP
             END IF
             IF ( (.NOT. LSOLAR_PANEL) .AND. ZFRAC_PANEL(1)>0.) THEN
