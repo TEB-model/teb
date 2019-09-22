@@ -70,6 +70,7 @@ MODULE MODD_WRF_TEB_DRIVER
                      ZFLOOR_HEIGHT, PU_WIN,                                   &
                      ! outputs
                      ZHVAC_COOL, ZHVAC_HEAT,                                  &
+                     ZTHER_PROD_PANEL, ZPHOT_PROD_PANEL,                      &
                      XU_CANYON,                                               &
                      ZRN_TOWN, ZH_TOWN, ZLE_TOWN, ZGFLUX_TOWN, ZEVAP_TOWN,    &
                      ZUSTAR_TOWN,                                             &
@@ -262,6 +263,8 @@ MODULE MODD_WRF_TEB_DRIVER
       ! Diagnostics
       REAL, DIMENSION(1),                   INTENT(OUT) :: ZHVAC_COOL    ! Energy consumption of the cooling system [W m-2(bld)]
       REAL, DIMENSION(1),                   INTENT(OUT) :: ZHVAC_HEAT    ! Energy consumption of the heating system [W m-2(bld)]
+      REAL, DIMENSION(1),                   INTENT(OUT) :: ZTHER_PROD_PANEL ! Thermal energy production of solar panel on roofs (W/m2 panel)
+      REAL, DIMENSION(1),                   INTENT(OUT) :: ZPHOT_PROD_PANEL ! Photovoltaic Energy production of solar panel on roofs (W/m2 panel)
       REAL, DIMENSION(1),                   INTENT(OUT) :: ZRN_TOWN      ! net radiation over town
       REAL, DIMENSION(1),                   INTENT(OUT) :: ZH_TOWN       ! sensible heat flux over town
       REAL, DIMENSION(1),                   INTENT(OUT) :: ZLE_TOWN      ! latent heat flux over town
@@ -423,8 +426,6 @@ MODULE MODD_WRF_TEB_DRIVER
       REAL, DIMENSION(1) :: ZREF_SW_FAC        ! total solar rad reflected from facade
       REAL, DIMENSION(1) :: ZHU_BLD            ! Indoor relative humidity 0 < (-) < 1
       REAL, DIMENSION(1) :: ZIRRIG_ROAD        ! road irrigation during current time-step
-      REAL, DIMENSION(1) :: ZTHER_PROD_PANEL   ! Thermal energy production of solar panel on roofs (W/m2 panel)
-      REAL, DIMENSION(1) :: ZPHOT_PROD_PANEL   ! Photovoltaic Energy production of solar panel on roofs (W/m2 panel)
       REAL, DIMENSION(1) :: ZPROD_PANEL        ! Averaged energy production of solar panel on roofs (W/m2 panel)
       REAL, DIMENSION(1) :: ZTHER_PROD_BLD     ! Thermal energy production of solar panel on roofs (W/m2 bld)
       REAL, DIMENSION(1) :: ZPHOT_PROD_BLD     ! Photovoltaic energy production of solar panel on roofs (W/m2 bld)
@@ -516,7 +517,7 @@ MODULE MODD_WRF_TEB_DRIVER
               STOP
             END IF
             IF ( ZBLD(1)+ZGARDEN(1)>=1.) THEN
-              print*, 'The sum of garden and building fraction is larger than one, so road fraction is negative. Check values.'
+              print*, 'The sum of garden and building fraction is larger than one, so road fraction is negative. Please check their values.'
               STOP
             END IF
             IF ( (.NOT. LSOLAR_PANEL) .AND. ZFRAC_PANEL(1)>0.) THEN
