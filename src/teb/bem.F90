@@ -592,6 +592,8 @@ DO JJ=1,SIZE(PT_CAN)
         ! *real system
         ELSEIF (BOP%CCOOL_COIL=='DXCOIL') THEN
           !
+          ! FIXME: PQ_CAN is speicifc humidity, model wants mixing ratio. Also output.
+          !        Do as done in MinimalDX below.
           CALL DX_AIR_COOLING_COIL_CV(PT_CAN(JJ), PQ_CAN(JJ), PPS(JJ),  ZRHOI(JJ), ZT_MIX(JJ), &
                                       ZQ_MIX(JJ), B%XCOP_RAT(JJ), B%XCAP_SYS_RAT(JJ),          &
                                       B%XT_ADP(JJ), B%XF_WATER_COND(JJ), DMT%XM_SYS(JJ),      &

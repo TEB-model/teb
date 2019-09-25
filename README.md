@@ -1,6 +1,6 @@
 # Town Energy Balance (TEB) model [![Build Status](https://travis-ci.com/dmey/teb-model.svg?token=3tqUbxqJuLtozjxqDymC&branch=master)](https://travis-ci.com/dmey/teb-model)
 
-This simple driver for the TEB model (Building Energy Balance; Masson 2000 and subsequent papers), is intended to be used by scientists whishing to implement TEB in their own software. This simple driver provides all the source code of TEB alone, making it easier to analyse and to integrate in its own atmospheric model for example.
+This simple driver for the TEBx (Building Energy Balance; Masson 2000 and subsequent papers), is intended to be used by scientists whishing to implement TEB in their own software. This simple driver provides all the source code of TEB alone, making it easier to analyse and to integrate in its own atmospheric model for example.
 
 If you wish to use TEB for physical simulations, wihtout intention to extract all the TEB routines into another software environment, you could use the SURFEX platform. It contains TEB and much more, especially the ISBA scheme for vegetation, or several I/O formats, including Netcdf ( see http://www.cnrm.meteo.fr/surfex/).
 
@@ -12,14 +12,29 @@ Please refer to the [SURFEX website](http://www.umr-cnrm.fr/surfex/IMG/pdf/surfe
 ## Installing
 
 
+### Prerequisites
+
+- [Git](https://git-scm.com/) version 2.13 or above
+- [CMake](https://cmake.org/) version 3.1.0 or above
+- GNU/Intel/Cray Fortran compiler
+
+
+### Clone
+
+```bash
+git clone --recurse-submodules https://github.com/dmey/teb-x.git
+cd teb-x
+```
+
+
 ### Build instructions for Windows, Linux and macOS
 
 To build the Town Energy Balance (TEB) executable and library, run the following commands:
 
 ```bash
-$ mkdir build && cd build
-$ cmake -DCMAKE_BUILD_TYPE=Release ..
-$ cmake --build .
+mkdir build && cd build
+cmake -DCMAKE_BUILD_TYPE=Release ..
+cmake --build .
 ```
 
 
@@ -31,10 +46,10 @@ You may also need to specify the generator flag `-G` in CMake; for example, if y
 
 E.g. on Windows using Intel® Command-Line Window for Visual Studio 2017:
 
-```
-> mkdir build && cd build
-> cmake -G "Visual Studio 15 2017 Win64" ..
-> cmake --build .
+```powershell
+mkdir build && cd build
+cmake -G "Visual Studio 15 2017 Win64" ..
+cmake --build .
 ```
 
 By default, we set the real type to an 8 byte wide. This behaviour is controlled by the optional `USE_REAL8` flag (default ON).
@@ -59,7 +74,6 @@ General TEB copyright and license applies for files part of the original TEB dis
 
 ```
 Copyright 2018 D. Meyer. Licensed under CeCILL-C version 1.
-
 ```
 
 All software released under [CeCILL-C version 1](Licence_CeCILL-C_V1-en.txt).
