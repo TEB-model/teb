@@ -1,7 +1,7 @@
 ---
 project: Town Energy Balance (TEB) model API docs
 author: dmey
-project_github: https://dmey.github.io/teb-model
+project_github: https://dmey.github.io/teb-x
 summary: The Town Energy Balance (TEB) model is an urban land surface model developed to calculate the exchange of energy and water between cities and atmosphere.
 github: https://github.com/dmey
 src_dir: ../src
@@ -21,6 +21,6 @@ display:  public
           private
           protected
 
-This is home to the API documentation for the Town Energy Balance (TEB) model, for the project's website, please go to [https://github.com/dmey/teb-model](https://github.com/dmey/teb-model).
+This is home to the API documentation for the Town Energy Balance (TEB) model, for the project's website, please go to [https://github.com/dmey/teb-x](https://github.com/dmey/teb-x).
 
 ---
