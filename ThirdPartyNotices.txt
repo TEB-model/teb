@@ -1,4 +1,4 @@
-Town Energy Balance (TEB) model version x.x.x (https://github.com/TEB-Model/teb).
+TEBx version 4.0.0 (https://github.com/dmey/teb-x).
 
 THIRD-PARTY SOFTWARE NOTICES AND INFORMATION.
 Do Not Translate or Localize.
