@@ -7,7 +7,7 @@ If you wish to use TEB for physical simulations, wihtout intention to extract al
 
 ## Documentation
 
-Please refer to the [SURFEX website](http://www.umr-cnrm.fr/surfex/IMG/pdf/surfex_scidoc_v8.1.pdf) for the complete documentation on TEB. The API documentation is available [here](https://dmey.github.io/teb-model).
+Please refer to the [SURFEX website](http://www.umr-cnrm.fr/surfex/IMG/pdf/surfex_scidoc_v8.1.pdf) for the complete documentation on TEB. The API documentation is available [here](https://dmey.github.io/teb-x).
 
 ## Installing
 
@@ -19,17 +19,14 @@ Please refer to the [SURFEX website](http://www.umr-cnrm.fr/surfex/IMG/pdf/surfe
 - GNU/Intel/Cray Fortran compiler
 
 
-### Clone
+### Build instructions for Windows, Linux and macOS
+
+To build the Town Energy Balance (TEB) executable and library, run the following commands from the command prompt/terminal window:
 
 ```bash
 git clone --recurse-submodules https://github.com/dmey/teb-x.git
 cd teb-x
 ```
-
-
-### Build instructions for Windows, Linux and macOS
-
-To build the Town Energy Balance (TEB) executable and library, run the following commands:
 
 ```bash
 mkdir build && cd build
