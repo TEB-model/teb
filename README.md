@@ -1,13 +1,13 @@
-# Town Energy Balance (TEB) model [![Build Status](https://travis-ci.com/dmey/teb-model.svg?token=3tqUbxqJuLtozjxqDymC&branch=master)](https://travis-ci.com/dmey/teb-model)
+# Town Energy Balance (TEB) model [![Build Status](https://travis-ci.com/teb-model/teb.svg?branch=master)](https://travis-ci.com/teb-model/teb)
 
-This simple driver for the TEBx (Building Energy Balance; Masson 2000 and subsequent papers), is intended to be used by scientists whishing to implement TEB in their own software. This simple driver provides all the source code of TEB alone, making it easier to analyse and to integrate in its own atmospheric model for example.
+This simple driver for the TEB (Town Energy Balance; [Masson, 2000](https://dx.doi.org/10.1023/A:1002463829265) and subsequent papers), is intended to be used by scientists whishing to implement TEB in their own software. This simple driver provides all the source code of TEB alone, making it easier to analyse and to integrate in its own atmospheric model for example.
 
-If you wish to use TEB for physical simulations, wihtout intention to extract all the TEB routines into another software environment, you could use the SURFEX platform. It contains TEB and much more, especially the ISBA scheme for vegetation, or several I/O formats, including Netcdf ( see http://www.cnrm.meteo.fr/surfex/).
+If you wish to use TEB for physical simulations, without intention to extract all the TEB routines into another software environment, you could use the SURFEX platform. It contains TEB and much more, especially the ISBA scheme for vegetation, or several I/O formats, including NetCDF (see http://www.cnrm.meteo.fr/surfex/).
 
 
 ## Documentation
 
-Please refer to the [SURFEX website](http://www.umr-cnrm.fr/surfex/IMG/pdf/surfex_scidoc_v8.1.pdf) for the complete documentation on TEB. The API documentation is available [here](https://dmey.github.io/teb-x).
+Please refer to the [SURFEX website](http://www.umr-cnrm.fr/surfex/IMG/pdf/surfex_scidoc_v8.1.pdf) for the complete documentation on TEB. The API documentation is available [here](https://teb-model.github.io/teb).
 
 ## Installing
 
@@ -24,8 +24,8 @@ Please refer to the [SURFEX website](http://www.umr-cnrm.fr/surfex/IMG/pdf/surfe
 To build the Town Energy Balance (TEB) executable and library, run the following commands from the command prompt/terminal window:
 
 ```bash
-git clone --recurse-submodules https://github.com/dmey/teb-x.git
-cd teb-x
+git clone --recurse-submodules https://github.com/teb-model/teb.git
+cd teb
 ```
 
 ```bash
@@ -68,9 +68,5 @@ The output files are written to `tests/CAPITOUL/output`. You can compare them wi
 ## Copyright and license
 
 General TEB copyright and license applies for files part of the original TEB distribution and is clearly stated at the top of each source file. Files modified/added after version 3.x are marked with the following header at the beginning of each source file, otherwise the general TEB copyright applies.
-
-```
-Copyright 2018 D. Meyer. Licensed under CeCILL-C version 1.
-```
 
 All software released under [CeCILL-C version 1](Licence_CeCILL-C_V1-en.txt).
