@@ -1,4 +1,4 @@
-# TEBx version 4.0.0 (https://www.github.com/dmey/teb-model).
+# TEB version x.x.x (https://github.com/teb-model/teb).
 # Copyright 2018 D. Meyer. Licensed under CeCILL-C version 1.
 
 import os

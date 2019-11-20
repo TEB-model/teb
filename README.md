@@ -67,6 +67,4 @@ The output files are written to `tests/CAPITOUL/output`. You can compare them wi
 
 ## Copyright and license
 
-General TEB copyright and license applies for files part of the original TEB distribution and is clearly stated at the top of each source file. Files modified/added after version 3.x are marked with the following header at the beginning of each source file, otherwise the general TEB copyright applies.
-
-All software released under [CeCILL-C version 1](Licence_CeCILL-C_V1-en.txt).
+Copyright name and year is clearly stated at the top of each source file. All software released under [CeCILL-C version 1](Licence_CeCILL-C_V1-en.txt).
