@@ -47,7 +47,7 @@ script:
 
 before_deploy:
   - pip3 install graphviz ford
-  - ford docs/api_docs.md
+  - ford docs/api-docs.md
 
 deploy:
  provider: pages
