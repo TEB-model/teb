@@ -2,6 +2,8 @@
 .vscode/
 *.log
 .mypy_cache/
+.ipynb_checkpoints/
+*pyc
 
 # Build
 build/
@@ -48,3 +50,4 @@ tests/CAPITOUL/output/*.txt
 # Test artefacts
 artefacts/
 plots/
+temp/
