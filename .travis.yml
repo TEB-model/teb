@@ -44,6 +44,10 @@ script:
   - pushd tests/CAPITOUL
   - ../../build/driver > output.log 2>&1
   - popd
+  - pushd tests/make_vs_cmake
+  - ./run_test.sh
+  - popd
+
 
 before_deploy:
   - pip3 install graphviz ford
