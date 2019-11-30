@@ -78,7 +78,7 @@ The corresponding reference list should be as follows:
 
 > Masson, V., 2000: A Physically-Based Scheme For The Urban Energy Budget In Atmospheric Models. Boundary-Layer Meteorology, 94, 357–397, https://doi.org/10.1023/A:1002463829265.
 
-> XX et al, XXXX
+> XX et al, XXX
 
 
 *please make sure to cite the same version you are using with the correct DOI. For a list of all avalable versions see the list of versions on [Zenodo](XXXX).
