@@ -1,4 +1,4 @@
-! TEBx version 4.0.0 (https://github.com/dmey/teb-x).
+! TEB version x.x.x (https://github.com/teb-model/teb).
 ! Copyright 2018 D. Meyer. Licensed under CeCILL-C version 1.
 
 MODULE MODD_WRF_TEB_DRIVER

@@ -1,4 +1,4 @@
-TEBx version 4.0.0 (https://github.com/dmey/teb-x).
+TEB version x.x.x (https://github.com/teb-model/teb).
 
 THIRD-PARTY SOFTWARE NOTICES AND INFORMATION.
 Do Not Translate or Localize.
@@ -10,7 +10,7 @@ The original copyright notices and the licenses are included below:
 2.  psychrometrics/psychrolib version 2.1.0 (https://github.com/psychrometrics/psychrolib)
 3.  NREL/EnergyPlusRelease version 8.1.0.009 (https://github.com/NREL/EnergyPlusRelease)
 
-%% psychrometrics/psychrolib NOTICES AND INFORMATION BEGIN HERE
+%% dmey/minimal-dx NOTICES AND INFORMATION BEGIN HERE
 =========================================
 The MIT License (MIT)
 
@@ -34,7 +34,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 =========================================
-END OF psychrometrics/psychrolib NOTICES AND INFORMATION
+END OF dmey/minimal-dx NOTICES AND INFORMATION
 
 %% psychrometrics/psychrolib NOTICES AND INFORMATION BEGIN HERE
 =========================================

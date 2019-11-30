@@ -65,8 +65,25 @@ cd tests/CAPITOUL
 The output files are written to `tests/CAPITOUL/output`. You can compare them with the reference outputs in `tests/CAPITOUL/ref_output`. You can modify parameter-specific values or activate/deactivate part of TEB from the `input.nml` file.
 
 
+## How to cite
+
+When using the TEB software, please cite both model, and software (with version) as follow:
+
+| Model        | Software          | Version*                                              |
+| ------------ | ----------------- | ---------------------------------------------------- |
+| Masson, 2000 | XX et al, XXXX    | [see Zenodo](https://XXXX) |
+
+
+The corresponding reference list should be as follows:
+
+> Masson, V., 2000: A Physically-Based Scheme For The Urban Energy Budget In Atmospheric Models. Boundary-Layer Meteorology, 94, 357–397, https://doi.org/10.1023/A:1002463829265.
+
+> XX et al, XXX
+
+
+*please make sure to cite the same version you are using with the correct DOI. For a list of all avalable versions see the list of versions on [Zenodo](XXXX).
+
+
 ## Copyright and license
 
-General TEB copyright and license applies for files part of the original TEB distribution and is clearly stated at the top of each source file. Files modified/added after version 3.x are marked with the following header at the beginning of each source file, otherwise the general TEB copyright applies.
-
-All software released under [CeCILL-C version 1](Licence_CeCILL-C_V1-en.txt).
+Copyright name and year is clearly stated at the top of each source file. All software released under [CeCILL-C version 1](Licence_CeCILL-C_V1-en.txt).

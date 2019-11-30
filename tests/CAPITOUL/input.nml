@@ -6,7 +6,7 @@ NROAD_LAYER = 5          ! number of road layers
 /
 
 &parameters
-XTSTEP_SURF = 300.      ! Input data time step in s
+XTSTEP_SURF = 1800.      ! Input data time step in s
 IYEAR       = 2004      ! Current year (UTC)
 IMONTH      = 2         ! Current month (UTC)
 IDAY        = 20        ! Current day (UTC)
