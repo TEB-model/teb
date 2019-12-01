@@ -45,6 +45,7 @@ def main():
     df_cmake = df_cmake[df_make.columns]
 
     diff = (df_make - df_cmake)
+    print(diff)
     num_unequal_samples = len(diff[diff.values > 0])
     if num_unequal_samples != 0:
         raise RuntimeError(f"{num_unequal_samples} samples are not equal")
