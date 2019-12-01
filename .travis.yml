@@ -45,7 +45,7 @@ script:
   #- pushd tests/CAPITOUL
   #- ../../build/driver > output.log 2>&1
   #- popd
-  - if [[ $BUILD_TYPE == Debug ]]; then pushd tests/make_vs_cmake && ./run_test.sh && popd; fi
+  - if [[ $BUILD_TYPE == Debug ]] && [[ $TRAVIS_OS_NAME == linux ]]; then pushd tests/make_vs_cmake && ./run_test.sh && popd; fi
 
 
 before_deploy:
