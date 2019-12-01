@@ -42,6 +42,7 @@ def main():
     df_cmake = load_txt(path_to_data / 'output', start, freq, tz=tz)
     # We have more outputs in the newer versions
     # drop any quantity not present in both versions.
+    print(df_make.columns)
     df_cmake = df_cmake[df_make.columns]
 
     diff = (df_make - df_cmake)
