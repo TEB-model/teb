@@ -27,7 +27,9 @@ popd
 # Build TEB CMake variant
 # TODO: git checkout commit
 mkdir teb_cmake && pushd teb_cmake
-cmake ../../../.. -LA
+# Can only compare against Debug as no other congigs were used in
+# original Makefile.
+cmake -DCMAKE_BUILD_TYPE=Debug ../../../.. -LA
 VERBOSE=1 make
 popd
 popd
