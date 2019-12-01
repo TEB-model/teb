@@ -29,7 +29,7 @@ popd
 mkdir teb_cmake && pushd teb_cmake
 # Can only compare against Debug as no other congigs were used in
 # original Makefile.
-cmake -DCMAKE_BUILD_TYPE=Debug ../../../.. -LA
+FC=gfortran cmake -DCMAKE_BUILD_TYPE=Debug ../../../.. -LA
 VERBOSE=1 make
 popd
 popd
