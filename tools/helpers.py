@@ -4,6 +4,7 @@
 import os
 import subprocess
 from pathlib import Path
+import shutil
 
 import datetime
 
@@ -12,8 +13,16 @@ from typing import List
 import pandas as pd
 import f90nml
 
+from urllib.parse import urlparse
+import urllib.request
 
-def run_teb(path_to_case_dir: Path, path_to_exe: Path) -> None:
+import zipfile
+
+THIS_DIR = Path(__file__).parent.resolve()
+PROJ_DIR = THIS_DIR.parent
+
+
+def run_teb(path_to_case_dir: Path, path_to_exe: Path, patch_nml) -> None:
     """Helpers to run teb from python.
 
     Parameters
@@ -40,6 +49,12 @@ def run_teb(path_to_case_dir: Path, path_to_exe: Path) -> None:
     if not (path_to_exe).exists():
         raise RuntimeError(f'{path_to_exe} not found.')
 
+    if patch_nml:
+        path_to_namelist = path_to_case_dir / 'input.nml'
+        path_to_unpatched_namelist = path_to_case_dir / 'input.nml_unpatched'
+        shutil.move(path_to_namelist, path_to_unpatched_namelist)
+        f90nml.patch(str(path_to_unpatched_namelist), patch_nml, str(path_to_namelist))
+
     # TEB needs the output folder to be present.
     Path(path_to_case_dir / 'output').mkdir(parents=True, exist_ok=True)
 
@@ -62,8 +77,8 @@ def get_date_params(path_to_nml: Path):
     [type]
         [description]
     """
-
-    params = path_to_nml['parameters']
+    case_nml = f90nml.read(path_to_nml)
+    params = case_nml['parameters']
     freq = datetime.timedelta(seconds=params['xtstep_surf'])
     sec_from_start = datetime.timedelta(seconds=params['ztime_start'])
     start = datetime.datetime(year=params['iyear'], month=params['imonth'], day=params['iday']) + sec_from_start
@@ -101,6 +116,58 @@ def load_txt(path_to_files: Path, start: datetime.datetime,
         ts_list.append(ts)
     df = pd.concat(ts_list, axis=1)
     return df
+
+def build_teb(commit_id='test'):
+    path_to_exe_dir = PROJ_DIR / 'build' / commit_id
+    path_to_exe_dir.mkdir(parents=True, exist_ok=True)
+    config_command = ['cmake', str(PROJ_DIR), '-LA']
+    build_command = ['make']
+    with open(path_to_exe_dir / str(commit_id + '_config.log'), 'w') as f:
+        print('Configuring TEB for case: ' + commit_id)
+        subprocess.check_call(config_command, cwd=path_to_exe_dir, stdout=f)
+    with open(path_to_exe_dir / str(commit_id + '_build.log'), 'w') as f:
+        print('Building TEB for case: ' + commit_id)
+        subprocess.check_call(build_command, cwd=path_to_exe_dir, stdout=f)
+    path_to_exe = path_to_exe_dir / 'driver'
+    return path_to_exe
+
+def prepare_case(commit_id, case_name):
+    path_to_case_dir = PROJ_DIR / 'temp' / commit_id / case_name
+    if path_to_case_dir.exists():
+        shutil.rmtree(path_to_case_dir)
+    shutil.copytree(PROJ_DIR / 'examples' / case_name, path_to_case_dir)
+    return path_to_case_dir
+
+def git_checkout(commit_id: str):
+    build_folder = PROJ_DIR / 'build' / commit_id
+    build_folder.mkdir(parents=True, exist_ok=True)
+    command = ['git', 'checkout', str(commit_id)]
+    with open(build_folder / str(commit_id + '_git.log'), 'w') as f:
+        print('checking out case' + commit_id)
+        subprocess.check_call(command, cwd=build_folder, stdout=f)
+    return None
+
+def build_teb_make(url: str):
+    url_parsed = urlparse(url)
+    f_name = url_parsed.path.split('/')[-1]
+    commit_id = 'teb_make'
+    path_to_exe_dir = PROJ_DIR / 'build' / 'teb_make'
+    path_to_exe_dir.mkdir(parents=True, exist_ok=True)
+    path_to_f_name = path_to_exe_dir / f_name
+    urllib.request.urlretrieve(url, path_to_f_name)
+    with zipfile.ZipFile(path_to_f_name, 'r') as zip_ref:
+        zip_ref.extractall(path_to_exe_dir)
+    path_to_exe_dir = path_to_exe_dir / 'teb-3_sfx8.1'
+    config_command = ['./mkmf.pl', '-t', 'gfortran_args',  '-p', 'driver.exe', 'src_driver', 'src_struct', 'src_proxi_SVAT', 'src_solar', 'src_teb']
+    build_command = ['make']
+    with open(path_to_exe_dir / str(commit_id + '_config.log'), 'w') as f:
+        print('Configuring TEB for case: ' + commit_id)
+        subprocess.check_call(config_command, cwd=path_to_exe_dir, stdout=f)
+    with open(path_to_exe_dir / str(commit_id + '_build.log'), 'w') as f:
+        print('Building TEB for case: ' + commit_id)
+        subprocess.check_call(build_command, cwd=path_to_exe_dir, stdout=f)
+    path_to_exe = path_to_exe_dir / 'driver.exe'
+    return path_to_exe, commit_id
 
 if __name__ == "__main__":
     pass

@@ -35,6 +35,6 @@ popd
 popd
 
 # CAPITOUL case
-cp -r ../CAPITOUL temp/CAPITOUL
+cp -r ../../examples/CAPITOUL temp/CAPITOUL
 
 python compare_make_cmake.py
