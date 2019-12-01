@@ -42,9 +42,9 @@ install:
   - popd
 
 script:
-  - pushd tests/CAPITOUL
-  - ../../build/driver > output.log 2>&1
-  - popd
+  #- pushd tests/CAPITOUL
+  #- ../../build/driver > output.log 2>&1
+  #- popd
   - if [[ $BUILD_TYPE == Debug ]]; then pushd tests/make_vs_cmake && ./run_test.sh && popd; fi
 
 
