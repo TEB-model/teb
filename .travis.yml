@@ -39,16 +39,9 @@ before_install:
   - python --version
   - python3 -m pip install -r requirements.txt
 
-install:
-  - mkdir build && pushd build
-  - cmake -DCMAKE_BUILD_TYPE=$BUILD_TYPE ..
-  - make -j2
-  - popd
-
 script:
-  - pushd examples/CAPITOUL
-  - ../../build/driver > output.log 2>&1
-  - popd
+  # We always run the integration to inform us when changes in the code also modify the outputs.
+  - python tests/test.py --build_type=$BUILD_TYPE --case=integration
 
 before_deploy:
   - python3 -m pip install graphviz ford
