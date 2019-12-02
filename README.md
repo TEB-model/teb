@@ -55,7 +55,7 @@ By default, we set the real type to an 8 byte wide. This behaviour is controlled
 
 ## Example application
 
-We have included a simple tutorial to show how TEB can be used to to estimate the buildings' energy demand for cooling due to Air Conditioning (AC) using data and parameters to reproduce the CAPITOUL (Canopy and Aerosol Particles Interactions in TOulouse Urban Layer; Masson et al., 2008) campaign.
+[`tutorial.ipynb`](examples/CAPITOUL/tutorial.ipynb) provides a simple tutorial detailing how TEB can be used to to estimate the buildings' energy demand for cooling due to Air Conditioning (AC) using data and parameters to reproduce the CAPITOUL (Canopy and Aerosol Particles Interactions in TOulouse Urban Layer; Masson et al., 2008) campaign.
 
 ## Testing
 
