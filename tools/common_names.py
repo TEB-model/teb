@@ -67,11 +67,11 @@ standard_quantity_names = {
         "unit": "mm\ h^{-1}",
         "symbol": "RR"
     },
-    "Mean buildings\' energy demand for cooling": {
+    "Buildings\' energy demand for cooling": {
         "unit": "W\ m^{-2}",
         "symbol": "E_{\\rm cooling}"
     },
-    "Mean buildings\' energy demand for heating": {
+    "Buildings\' energy demand for heating": {
         "unit": "W\ m^{-2}",
         "symbol": "E_{\\rm heating}"
     },
@@ -169,8 +169,8 @@ teb_quantity_names_output = {
     'Canyon horizontal wind speed': 'U_CANYON',
     'Canyon specific humidity': 'Q_CANYON',
     'Canyon horizontal wind direction': 'DIR_CANYON',
-    'Mean buildings\' energy demand for cooling': 'HVAC_COOL',
-    'Mean buildings\' energy demand for heating': 'HVAC_HEAT',
+    'Buildings\' energy demand for cooling': 'HVAC_COOL',
+    'Buildings\' energy demand for heating': 'HVAC_HEAT',
     'Surface net radiative flux density': 'RN_TOWN',
     'Surface turbulent sensible heat flux density': 'H_TOWN',
     'Surface turbulent latent heat flux density': 'LE_TOWN',
