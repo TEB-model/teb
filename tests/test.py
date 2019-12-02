@@ -15,7 +15,14 @@ from helpers import compare
 
 def main(build_type, case):
 
-    if case == 'make_cmake':
+    if case == 'integration':
+        old_id = 'master'
+        new_id = '__THIS__integration'
+        case_name = 'CAPITOUL'
+        patch_nml = [None, None]
+        make = [False, False]
+
+    elif case == 'make_cmake':
         # This test only works on Linux as TEB make only supported gcc.
         if (not os.name == 'posix') or (build_type != 'Debug'):
             print('test_make_cmake: This test only works on Linux -- skipping')
@@ -30,13 +37,6 @@ def main(build_type, case):
             patch_nml = {'parameters': {'XTSTEP_SURF': 300.}}
             patch_nml = [patch_nml, patch_nml]
             make = [True, False]
-
-    elif case == 'integration':
-        old_id = 'master'
-        new_id = '__THIS__integration'
-        case_name = 'CAPITOUL'
-        patch_nml = [None, None]
-        make = [False, False]
 
     elif case == 'minimal_dx':
         old_id = 'master'
