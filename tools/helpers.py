@@ -117,10 +117,10 @@ def load_txt(path_to_files: Path, start: datetime.datetime,
     df = pd.concat(ts_list, axis=1)
     return df
 
-def build_teb(commit_id='test'):
+def build_teb(commit_id: str, build_type: str):
     path_to_exe_dir = PROJ_DIR / 'build' / commit_id
     path_to_exe_dir.mkdir(parents=True, exist_ok=True)
-    config_command = ['cmake', str(PROJ_DIR), '-LA']
+    config_command = ['cmake', f'-DCMAKE_BUILD_TYPE={build_type}', str(PROJ_DIR), '-LA']
     build_command = ['make']
     with open(path_to_exe_dir / str(commit_id + '_config.log'), 'w') as f:
         print('Configuring TEB for case: ' + commit_id)
@@ -149,15 +149,20 @@ def git_checkout(commit_id: str):
 
 def build_teb_make(url: str):
     url_parsed = urlparse(url)
-    f_name = url_parsed.path.split('/')[-1]
-    commit_id = 'teb_make'
-    path_to_exe_dir = PROJ_DIR / 'build' / 'teb_make'
-    path_to_exe_dir.mkdir(parents=True, exist_ok=True)
-    path_to_f_name = path_to_exe_dir / f_name
-    urllib.request.urlretrieve(url, path_to_f_name)
-    with zipfile.ZipFile(path_to_f_name, 'r') as zip_ref:
-        zip_ref.extractall(path_to_exe_dir)
-    path_to_exe_dir = path_to_exe_dir / 'teb-3_sfx8.1'
+    f = url_parsed.path.split('/')[-1]
+    path_to_f = PROJ_DIR / 'temp' / f
+    path_to_f_dir = path_to_f.parent
+    path_to_f_dir.mkdir(parents=True, exist_ok=True)
+    urllib.request.urlretrieve(url, path_to_f)
+    path_to_f_dir_temp = path_to_f_dir / 'temp'
+    with zipfile.ZipFile(path_to_f, 'r') as zip_ref:
+        zip_ref.extractall(path_to_f_dir_temp)
+    # look inside the temp to get the folder name
+    path_to_temp_unzipped_dir = list(path_to_f_dir_temp.glob('*'))[0]
+    path_to_unzipped_dir = PROJ_DIR / 'build' / path_to_temp_unzipped_dir.name
+    shutil.move(str(path_to_temp_unzipped_dir), path_to_unzipped_dir)
+    commit_id = str(path_to_unzipped_dir.name)
+    path_to_exe_dir = path_to_unzipped_dir
     config_command = ['./mkmf.pl', '-t', 'gfortran_args',  '-p', 'driver.exe', 'src_driver', 'src_struct', 'src_proxi_SVAT', 'src_solar', 'src_teb']
     build_command = ['make']
     with open(path_to_exe_dir / str(commit_id + '_config.log'), 'w') as f:
@@ -168,6 +173,34 @@ def build_teb_make(url: str):
         subprocess.check_call(build_command, cwd=path_to_exe_dir, stdout=f)
     path_to_exe = path_to_exe_dir / 'driver.exe'
     return path_to_exe, commit_id
+
+def checkout_run_load(commit_id: str, case_name: str, build_type: str, patch_nml: dict, download_zip) -> pd.DataFrame:
+    if download_zip:
+        path_to_exe, commit_id = build_teb_make(commit_id)
+    else:
+        git_checkout(commit_id)
+        path_to_exe = build_teb(commit_id, build_type)
+
+    path_to_case_dir = prepare_case(commit_id, case_name)
+    run_teb(path_to_case_dir, path_to_exe, patch_nml)
+    start, freq = get_date_params(path_to_case_dir / 'input.nml')
+    df = load_txt(path_to_case_dir / 'output', start, freq, tz='UTC')
+    return df
+
+def compare(ref_id: str, trial_id: str, case_name: str, build_type: str, patch_nml=None, make=[False, False]) -> pd.DataFrame:
+    df_ref = checkout_run_load(ref_id, case_name, build_type, patch_nml, make[0])
+    df_trial = checkout_run_load(trial_id, case_name, build_type, patch_nml, make[1])
+    # We have more outputs in the newer versions
+    # drop any quantity not present in both versions.
+    df_trial = df_trial[df_ref.columns]
+    df_diff = df_ref - df_trial
+    num_unequal_samples = len(df_diff[df_diff.values > 0])
+    if num_unequal_samples != 0:
+        raise RuntimeError(f"{num_unequal_samples} samples are not equal")
+    else:
+        print("All output samples are equals")
+    return df_diff
+
 
 if __name__ == "__main__":
     pass
