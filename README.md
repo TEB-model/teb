@@ -17,7 +17,7 @@ Please refer to the [SURFEX website](http://www.umr-cnrm.fr/surfex/IMG/pdf/surfe
 - [Git](https://git-scm.com/) version 2.13 or above
 - [CMake](https://cmake.org/) version 3.1.0 or above
 - GNU/Intel/Cray Fortran compiler
-- [Python](https://www.python.org/) 3.6+ [*Optional*: for testing and tutorial]
+- [Python](https://www.python.org/) 3.7+ [*Optional*: for testing and tutorial]
 
 
 ### Build instructions for Windows, Linux and macOS
@@ -52,9 +52,14 @@ cmake --build .
 
 By default, we set the real type to an 8 byte wide. This behaviour is controlled by the optional `USE_REAL8` flag (default ON).
 
+
+## Example application
+
+[`tutorial.ipynb`](examples/CAPITOUL/tutorial.ipynb) provides a simple tutorial detailing how TEB can be used to to estimate the buildings' energy demand for cooling due to Air Conditioning (AC) using data and parameters to reproduce the CAPITOUL (Canopy and Aerosol Particles Interactions in TOulouse Urban Layer; Masson et al., 2008) campaign.
+
 ## Testing
 
-Tests are run using the CAPITOUL data provided in `examples/CAPITOUL`. Tests are found in `tests/tests.py` and an overview is given in `tests/README.md`[tests/README.md]. All tests are automatically run at every commit using Continous Integration. If you are looking to run your tests locally on Linux or macOS, first make sure you have installed all the [prerequisites](#prerequisites), then from the command prompt:
+Tests are run using the CAPITOUL data provided in `examples/CAPITOUL`. Tests are found in `tests/tests.py` and an overview is given in [`tests/README.md`](tests/README.md). All tests are automatically run at every commit using Continous Integration. If you are looking to run your tests locally on Linux or macOS, first make sure you have installed all the [prerequisites](#prerequisites), then from the command prompt:
 
 ``` bash
 python -m pip install -r requirements.txt
@@ -93,3 +98,10 @@ The corresponding reference list should be as follows:
 ## Copyright and license
 
 Copyright name and year is clearly stated at the top of each source file. All software released under [CeCILL-C version 1](Licence_CeCILL-C_V1-en.txt).
+
+
+## References
+
+> Masson, V., 2000: A Physically-Based Scheme For The Urban Energy Budget In Atmospheric Models. Boundary-Layer Meteorology, 94, 357–397, https://doi.org/10.1023/A:1002463829265.
+
+> Masson, V., and Coauthors, 2008: The Canopy and Aerosol Particles Interactions in TOulouse Urban Layer (CAPITOUL) experiment. Meteorol Atmos Phys, 102, 135–157, https://doi.org/10.1007/s00703-008-0289-4.

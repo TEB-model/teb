@@ -1,6 +1,9 @@
 # TEB version x.x.x (https://github.com/teb-model/teb).
 # Copyright 2018 D. Meyer. Licensed under CeCILL-C version 1.
 
+git:
+  depth: false
+
 matrix:
   include:
     - language: python
@@ -34,20 +37,14 @@ matrix:
       env: BUILD_TYPE=Release
 
 before_install:
-  - if [[ $TRAVIS_OS_NAME == osx ]]; then brew update && brew install gcc && brew upgrade python; fi
+  - if [[ $TRAVIS_OS_NAME == osx ]]; then brew update && brew upgrade gcc python; fi
   - which python3
+  - python --version
   - python3 -m pip install -r requirements.txt
 
-install:
-  - mkdir build && pushd build
-  - cmake -DCMAKE_BUILD_TYPE=$BUILD_TYPE ..
-  - make -j2
-  - popd
-
 script:
-  - pushd examples/CAPITOUL
-  - ../../build/driver > output.log 2>&1
-  - popd
+  # We always run the integration to inform us when changes in the code also modify the outputs.
+  - python3 tests/test.py --build_type=$BUILD_TYPE --case=integration
 
 before_deploy:
   - python3 -m pip install graphviz ford

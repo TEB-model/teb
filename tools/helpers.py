@@ -159,7 +159,10 @@ def compare(ref_id: str, trial_id: str, case_name: str, build_type: str, patch_n
             print(f"{num_unequal_samples} samples are not equal.")
             print('Ignoring, --allow_failure was used.')
         else:
-            raise RuntimeError(f"{num_unequal_samples} samples are not equal")
+            raise RuntimeError(f"{num_unequal_samples} samples are not equal \n \
+                If you are merging this in, or submitting a PR, please make sure that you understand \n \
+                why the results have changed. Please make sure to add a remark in your PR to describe \n \
+                what parts of the code result in this change.")
     else:
         print("All output samples are equals")
     return df_diff
