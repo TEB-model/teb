@@ -58,10 +58,10 @@ Tests are run using the CAPITOUL data provided in `examples/CAPITOUL`. Tests are
 
 ``` bash
 python -m pip install -r requirements.txt
-python tests/test.py --build_type=<BUILD_TYPE>
+python tests/test.py --build_type=<BUILD_TYPE> --case=<TEST_CASE>
 ```
 
-where `<BUILD_TYPE>` is either `Debug` or `Release`. The output files are written to `temp`. Plots are written to `plots`.
+where `<BUILD_TYPE>` is either `Debug` or `Release` and `<TEST_CASE>` is the test case currently supported in `tests/test.py` -- see [`tests/README.md`](tests/README.md) for more information. The output files are written to `temp`. Plots are written to `plots`.
 
 
 ## How to cite

@@ -89,12 +89,13 @@ def prepare_case(commit_id, case_name):
     return path_to_case_dir
 
 def git_checkout(commit_id: str):
-    build_folder = PROJ_DIR / 'build' / commit_id
-    build_folder.mkdir(parents=True, exist_ok=True)
-    command = ['git', 'checkout', str(commit_id)]
-    with open(build_folder / str(commit_id + '_git.log'), 'w') as f:
-        print('checking out case' + commit_id)
-        subprocess.check_call(command, cwd=build_folder, stdout=f)
+    if not commit_id.startswith('__THIS__'):
+        build_folder = PROJ_DIR / 'build' / commit_id
+        build_folder.mkdir(parents=True, exist_ok=True)
+        command = ['git', 'checkout', str(commit_id)]
+        with open(build_folder / str(commit_id + '_git.log'), 'w') as f:
+            print('checking out case' + commit_id)
+            subprocess.check_call(command, cwd=build_folder, stdout=f)
     return None
 
 def download_and_uncompress_teb(url: str) -> Path:

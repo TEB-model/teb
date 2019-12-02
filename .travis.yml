@@ -37,7 +37,7 @@ before_install:
 
 script:
   - pushd tests
-  - python test.py --build_type=$BUILD_TYPE
+  - python tests/test.py --build_type=Debug --case=make_cmake
   - popd
 
 before_deploy:
