@@ -34,27 +34,27 @@ USE YOMHOOK   ,ONLY : LHOOK,   DR_HOOK
 USE PARKIND1  ,ONLY : JPRB
 !
 interface PE_FROM_PQ
-        module procedure PE_FROM_PQ_0D
-        module procedure PE_FROM_PQ_1D
-end interface
+module procedure PE_FROM_PQ_0D
+module procedure PE_FROM_PQ_1D
+end interface PE_FROM_PQ
 interface TD_FROM_TQ
-        module procedure TD_FROM_TQ_0D
-        module procedure TD_FROM_TQ_1D
-end interface
+module procedure TD_FROM_TQ_0D
+module procedure TD_FROM_TQ_1D
+end interface TD_FROM_TQ
 interface RV_FROM_TPTWB
-        module procedure RV_FROM_TPTWB_0D
-        module procedure RV_FROM_TPTWB_1D
-end interface
+module procedure RV_FROM_TPTWB_0D
+module procedure RV_FROM_TPTWB_1D
+end interface RV_FROM_TPTWB
 interface TWB_FROM_TPQ
-        module procedure TWB_FROM_TPQ_0D
-        module procedure TWB_FROM_TPQ_1D
-end interface
+module procedure TWB_FROM_TPQ_0D
+module procedure TWB_FROM_TPQ_1D
+end interface TWB_FROM_TPQ
 INTERFACE ENTH_FN_T_Q
-  MODULE PROCEDURE ENTH_FN_T_Q
-END INTERFACE
+MODULE PROCEDURE ENTH_FN_T_Q
+END INTERFACE ENTH_FN_T_Q
 INTERFACE Q_FN_T_ENTH
-  MODULE PROCEDURE Q_FN_T_ENTH
-END INTERFACE
+MODULE PROCEDURE Q_FN_T_ENTH
+END INTERFACE Q_FN_T_ENTH
 
 contains
 !PE_FROM_PQ
@@ -83,12 +83,13 @@ end function PE_FROM_PQ_1D
 !-------------------------
 
 !TD_FROM_TQ
-function TD_FROM_TQ_0D(PT, PQ) RESULT(PTD)
+function TD_FROM_TQ_0D(PT, PQ, PP) RESULT(PTD)
 USE MODD_CSTS
 USE MODD_SURF_PAR, ONLY: XUNDEF
 !arguments and result
-REAL, INTENT(IN) :: PT !Air Temp. (K)
-REAL, INTENT(IN) :: PQ !Specific humidity (kg/kg)
+REAL, INTENT(IN) :: PT ! Air Temp. (K)
+REAL, INTENT(IN) :: PQ ! Specific humidity (kg/kg)
+REAL, INTENT(IN) :: PP ! Atmospheric pressure (Pa)
 REAL :: PTD !Dew Point Air Temp. (K)
 !local variables
 REAL :: ALPHA
@@ -96,11 +97,11 @@ REAL :: ZPE !water vapour pressure
 REAL(KIND=JPRB) :: ZHOOK_HANDLE
 
 IF (LHOOK) CALL DR_HOOK('MODE_PSYCHRO:TD_FROM_TQ_0D',0,ZHOOK_HANDLE)
-ZPE = PE_FROM_PQ(PT, PQ)
+ZPE   = PE_FROM_PQ(PP,PQ)
 ALPHA = LOG(ZPE/1000.)
-IF (PT .GE. XTT .AND. PT .GE. 93.+XTT) THEN
+IF ( (PT.GE.XTT).AND.(PT.LE.(93.+XTT)) ) THEN
         PTD = XTT+6.54+14.526*ALPHA+0.7389*ALPHA*ALPHA+0.09486*ALPHA**3 &
-              +0.4569*(ZPE/1000.)**0.1984
+        +0.4569*(ZPE/1000.)**0.1984
 ELSE IF (PT .LT. XTT) THEN
         PTD = XTT+6.09+12.608*ALPHA+0.4959*ALPHA*ALPHA
 ELSE
@@ -110,12 +111,13 @@ PTD = MIN(PTD, PT)
 IF (LHOOK) CALL DR_HOOK('MODE_PSYCHRO:TD_FROM_TQ_0D',1,ZHOOK_HANDLE)
 end function TD_FROM_TQ_0D
 
-function TD_FROM_TQ_1D(PT, PQ) RESULT(PTD)
+function TD_FROM_TQ_1D(PT, PQ, PP) RESULT(PTD)
 USE MODD_CSTS
 USE MODD_SURF_PAR, ONLY: XUNDEF
 !arguments and result
 REAL, DIMENSION(:), INTENT(IN) :: PT !Air Temp. (K)
 REAL, DIMENSION(:), INTENT(IN) :: PQ !Specific humidity (kg/kg)
+REAL, DIMENSION(:), INTENT(IN) :: PP ! Atmospheric pressure (Pa)
 REAL, DIMENSION(SIZE(PQ))      :: PTD !Dew Point Air Temp. (K)
 !local variables
 REAL, DIMENSION(SIZE(PQ)) :: ALPHA
@@ -123,17 +125,17 @@ REAL, DIMENSION(SIZE(PQ)) :: ZPE !water vapour pressure
 REAL(KIND=JPRB) :: ZHOOK_HANDLE
 
 IF (LHOOK) CALL DR_HOOK('MODE_PSYCHRO:TD_FROM_TQ_1D',0,ZHOOK_HANDLE)
-ZPE = PE_FROM_PQ(PT, PQ)
+ZPE(:) = PE_FROM_PQ(PP(:), PQ(:))
 ALPHA(:) = LOG(ZPE(:)/1000.)
-WHERE (PT .GE. XTT .AND. PT .GE. 93.+XTT)
+WHERE ( (PT(:).GE.XTT) .AND. (PT(:).LE.(93.+XTT)) )
         PTD = XTT+6.54+14.526*ALPHA+0.7389*ALPHA*ALPHA+0.09486*ALPHA**3 &
-              +0.4569*(ZPE/1000.)**0.1984
-      ELSEWHERE (PT .LT. XTT)
+        +0.4569*(ZPE/1000.)**0.1984
+ELSEWHERE (PT .LT. XTT)
         PTD = XTT+6.09+12.608*ALPHA+0.4959*ALPHA*ALPHA
 ELSEWHERE
         PTD = XUNDEF
 END WHERE
-PTD(:) = MIN(PTD(:), PT(:))
+WHERE(PTD(:).GT.PT(:)) PTD(:) = PT(:)
 IF (LHOOK) CALL DR_HOOK('MODE_PSYCHRO:TD_FROM_TQ_1D',1,ZHOOK_HANDLE)
 end function TD_FROM_TQ_1D
 !-------------------------
@@ -151,9 +153,9 @@ REAL :: ZRVSAT !saturation water vapor mixing ratio
 REAL(KIND=JPRB) :: ZHOOK_HANDLE
 
 IF (LHOOK) CALL DR_HOOK('MODE_PSYCHRO:RV_FROM_TPTWB_0D',0,ZHOOK_HANDLE)
-ZRVSAT = QSAT(PT, PP) / (1 - QSAT(PT, PP))
+ZRVSAT = QSAT(PT, PP) / (1. - QSAT(PT, PP))
 PRV = ((2501. - 2.326*(PTWB-XTT))*ZRVSAT - 1.006*(PT - PTWB)) &
-       / (2501. + 1.86*(PT - XTT) -4.186*(PTWB - XTT))
+        / (2501. + 1.86*(PT - XTT) -4.186*(PTWB - XTT))
 IF (LHOOK) CALL DR_HOOK('MODE_PSYCHRO:RV_FROM_TPTWB_0D',1,ZHOOK_HANDLE)
 end function RV_FROM_TPTWB_0D
 
@@ -169,9 +171,9 @@ REAL, DIMENSION(SIZE(PT)) :: ZRVSAT !saturation water vapor mixing ratio
 REAL(KIND=JPRB) :: ZHOOK_HANDLE
 
 IF (LHOOK) CALL DR_HOOK('MODE_PSYCHRO:RV_FROM_TPTWB_1D',0,ZHOOK_HANDLE)
-ZRVSAT = QSAT(PT, PP) / (1 - QSAT(PT, PP))
+ZRVSAT = QSAT(PT(:), PP(:)) / (1 - QSAT(PT(:), PP(:)))
 PRV(:) = ((2501. - 2.326*(PTWB(:)-XTT))*ZRVSAT(:) - 1.006*(PT(:) - PTWB(:))) &
-       / (2501. + 1.86*(PT(:) - XTT) -4.186*(PTWB(:) - XTT))
+        / (2501. + 1.86*(PT(:) - XTT) -4.186*(PTWB(:) - XTT))
 IF (LHOOK) CALL DR_HOOK('MODE_PSYCHRO:RV_FROM_TPTWB_1D',1,ZHOOK_HANDLE)       
 end function RV_FROM_TPTWB_1D
 !----------------------------
@@ -191,24 +193,24 @@ INTEGER :: JITER
 REAL(KIND=JPRB) :: ZHOOK_HANDLE
 IF (LHOOK) CALL DR_HOOK('MODE_PSYCHRO:TWB_FROM_TPQ_0D',0,ZHOOK_HANDLE)
 JITER = 1
-ZTD = TD_FROM_TQ(PT, PQ) 
+ZTD = TD_FROM_TQ(PT, PQ, PP)
 !initial guess
 ZTWBSUP = PT
 ZTWBINF = ZTD
 PTWB = 0.5 * (ZTWBSUP + ZTWBINF)
-DO WHILE (ZTWBSUP - ZTWBINF > 0.001 .OR. JITER .LE. 50)
-   ZRV = RV_FROM_TPTWB(PT, PP, PTWB)
-   IF (ZRV .GT. PQ/(1 - PQ)) THEN
-           ZTWBSUP = PTWB
-   ELSE
-           ZTWBINF = PTWB
-   ENDIF
-   PTWB = 0.5 * (ZTWBINF + ZTWBSUP)
-   JITER = JITER + 1
+DO WHILE ( (ABS(ZTWBSUP - ZTWBINF).GT.0.01) .AND. (JITER .LE. 50) )
+        ZRV = RV_FROM_TPTWB(PT, PP, PTWB)
+        IF (ZRV .GT. PQ/(1 - PQ)) THEN
+        ZTWBSUP = PTWB
+        ELSE
+        ZTWBINF = PTWB
+        ENDIF
+        PTWB = 0.5 * (ZTWBINF + ZTWBSUP)
+        JITER = JITER + 1
 END DO
+IF (JITER.GE.49) STOP ("Maximum number of iterations exceeded in twb_from_tpq_0d")
 IF (LHOOK) CALL DR_HOOK('MODE_PSYCHRO:TWB_FROM_TPQ_0D',1,ZHOOK_HANDLE)
 end function TWB_FROM_TPQ_0D
-
 function TWB_FROM_TPQ_1D(PT, PP, PQ) RESULT(PTWB)
 !arguments and results
 REAL, DIMENSION(:), INTENT(IN) :: PT !air temperature (K)
@@ -221,29 +223,30 @@ REAL, DIMENSION(SIZE(PT)) :: ZTWBINF, ZTWBSUP, ZRV
 INTEGER :: JITER, JI
 REAL(KIND=JPRB) :: ZHOOK_HANDLE
 IF (LHOOK) CALL DR_HOOK('MODE_PSYCHRO:TWB_FROM_TPQ_1D',0,ZHOOK_HANDLE)
-ZTD = TD_FROM_TQ(PT, PQ) 
+ZTD = TD_FROM_TQ(PT, PQ, PP)
 !initial guess
 ZTWBSUP = PT
 ZTWBINF = ZTD
 PTWB = 0.5 * (ZTWBSUP + ZTWBINF)
 DO JI=1,SIZE(PT)
-   JITER = 1
-   DO WHILE (ZTWBSUP(JI) - ZTWBINF(JI) > 0.001 .OR. JITER .LE. 50)
-      ZRV(JI) = RV_FROM_TPTWB(PT(JI), PP(JI), PTWB(JI))
-      IF (ZRV(JI) .GT. PQ(JI)/(1 - PQ(JI))) THEN
-              ZTWBSUP(JI) = PTWB(JI)
-      ELSE
-              ZTWBINF(JI) = PTWB(JI)
-      ENDIF
-      PTWB(JI) = 0.5 * (ZTWBINF(JI) + ZTWBSUP(JI))
-   END DO
+        JITER = 1
+        DO WHILE ( (ABS(ZTWBSUP(JI) - ZTWBINF(JI)) .GT. 0.01) .AND. (JITER .LE. 50))
+        ZRV(JI) = RV_FROM_TPTWB(PT(JI), PP(JI), PTWB(JI))
+        IF (ZRV(JI) .GT. PQ(JI)/(1 - PQ(JI))) THEN
+                ZTWBSUP(JI) = PTWB(JI)
+        ELSE
+                ZTWBINF(JI) = PTWB(JI)
+        ENDIF
+        PTWB(JI) = 0.5 * (ZTWBINF(JI) + ZTWBSUP(JI))
+        END DO
+        IF (JITER.GE.49) STOP ("Maximum number of iterations exceeded in twb_from_tpq_1d")
 END DO
 IF (LHOOK) CALL DR_HOOK('MODE_PSYCHRO:TWB_FROM_TPQ_1D',1,ZHOOK_HANDLE)
 end function TWB_FROM_TPQ_1D
 !-------------------------------------------------------------------------------
 !
 !     ######################################
-      FUNCTION ENTH_FN_T_Q(PT,PQ) RESULT(PENTH)
+FUNCTION ENTH_FN_T_Q(PT,PQ) RESULT(PENTH)
 !     ######################################
 !
 !!
@@ -271,7 +274,7 @@ end function TWB_FROM_TPQ_1D
 !!
 !!    AUTHOR
 !!    ------
-!!      
+!!	
 !!
 !!    MODIFICATIONS
 !!    -------------
@@ -281,6 +284,8 @@ end function TWB_FROM_TPQ_1D
 !
 !*       0.    DECLARATIONS
 !              ------------
+!
+USE MODD_CSTS, ONLY: XTT
 !
 IMPLICIT NONE
 !
@@ -297,13 +302,16 @@ REAL        :: ZT                          ! Temperature (C)
 REAL        :: ZRV                         ! Mixing ratio (kg/kg_da)
 REAL(KIND=JPRB) :: ZHOOK_HANDLE
 !
-      IF (LHOOK) CALL DR_HOOK('MODE_PSYCHRO:ENTH_FN_T_Q',0,ZHOOK_HANDLE)
-! calculate enthalpy
-      ZT = PT - 273.15
-      ZRV=MAX(PQ/(1-PQ),1.0E-5)
-      PENTH=1.00484d3*ZT+ZRV*(2.50094d6+1.85895d3*ZT)
+IF (LHOOK) CALL DR_HOOK('MODE_PSYCHRO:ENTH_FN_T_Q',0,ZHOOK_HANDLE)
 !
-      IF (LHOOK) CALL DR_HOOK('MODE_PSYCHRO:ENTH_FN_T_Q',1,ZHOOK_HANDLE)
+ZT  = PT - XTT
+ZRV = PQ/(1.0-PQ)
+!
+IF (ZRV.LT.1.0E-5) ZRV = 1.0E-5
+!
+PENTH=1.00484E3*ZT+ZRV*(2.50094E6+1.85895E3*ZT)
+!
+IF (LHOOK) CALL DR_HOOK('MODE_PSYCHRO:ENTH_FN_T_Q',1,ZHOOK_HANDLE)
 !-------------------------------------------------------------------------------
 !
 END FUNCTION ENTH_FN_T_Q
@@ -313,7 +321,7 @@ END FUNCTION ENTH_FN_T_Q
 !-------------------------------------------------------------------------------
 !
 !     ######################################
-      FUNCTION Q_FN_T_ENTH(PT,PENTH) RESULT(PQ)
+FUNCTION Q_FN_T_ENTH(PT,PENTH) RESULT(PQ)
 !     ######################################
 !
 !!
@@ -341,7 +349,7 @@ END FUNCTION ENTH_FN_T_Q
 !!
 !!    AUTHOR
 !!    ------
-!!      
+!!	
 !!
 !!    MODIFICATIONS
 !!    -------------
@@ -350,6 +358,8 @@ END FUNCTION ENTH_FN_T_Q
 !
 !*       0.    DECLARATIONS
 !              ------------
+!
+USE MODD_CSTS, ONLY: XTT
 !
 IMPLICIT NONE
 !
@@ -366,22 +376,20 @@ REAL        :: ZT                          ! Temperature (C)
 REAL        :: ZRV                         ! Mixing ratio (kg/kg_da)
 REAL(KIND=JPRB) :: ZHOOK_HANDLE
 !
-      IF (LHOOK) CALL DR_HOOK('MODE_PSYCHRO:Q_FN_T_ENTH',0,ZHOOK_HANDLE)
+IF (LHOOK) CALL DR_HOOK('MODE_PSYCHRO:Q_FN_T_ENTH',0,ZHOOK_HANDLE)
 !
-      ZT = PT - 273.15
+ZT = PT - XTT
 !
 !    calculate mixing ratio
-      ZRV=(PENTH-1.00484d3*ZT)/(2.50094d6+1.85895d3*ZT)
+ZRV=(PENTH-1.00484E3*ZT)/(2.50094E6+1.85895E3*ZT)
 !
 !    validity test
-      IF (ZRV < 0.0d0) THEN
-        ZRV=1.d-5
-      ENDIF
+IF (ZRV .LT. 0.0) ZRV=1.E-5
 !
 !    calculate humidity content
-      PQ = ZRV/(1+ZRV)
+PQ = ZRV/(1.0+ZRV)
 !
-     IF (LHOOK) CALL DR_HOOK('MODE_PSYCHRO:Q_FN_T_ENTH',1,ZHOOK_HANDLE)
+IF (LHOOK) CALL DR_HOOK('MODE_PSYCHRO:Q_FN_T_ENTH',1,ZHOOK_HANDLE)
 !
 !-------------------------------------------------------------------------------
 !
