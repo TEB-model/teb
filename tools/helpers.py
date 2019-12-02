@@ -8,15 +8,11 @@ import shutil
 
 import datetime
 
-from typing import List
-
 import pandas as pd
 import f90nml
 
 from urllib.parse import urlparse
 import urllib.request
-
-import zipfile
 
 import matplotlib.pyplot as plt
 
@@ -25,24 +21,6 @@ PROJ_DIR = THIS_DIR.parent
 
 
 def run_teb(path_to_case_dir: Path, path_to_exe: Path, patch_nml) -> None:
-    """Helpers to run teb from python.
-
-    Parameters
-    ----------
-    path_to_case_dir : Path
-        [description]
-    path_to_exe : Path
-        [description]
-
-    Raises
-    ------
-    RuntimeError
-        [description]
-    RuntimeError
-        [description]
-    RuntimeError
-        [description]
-    """
     # Sanity check
     if not list(path_to_case_dir.glob('*.nml')):
         raise RuntimeError(f'Namelist not found in {path_to_case_dir}')
@@ -67,18 +45,6 @@ def run_teb(path_to_case_dir: Path, path_to_exe: Path, patch_nml) -> None:
 
 
 def get_date_params(path_to_nml: Path):
-    """Returns start and freq from a teb namelist file.
-    
-    Parameters
-    ----------
-    path_to_nml : Path
-        [description]
-    
-    Returns
-    -------
-    [type]
-        [description]
-    """
     case_nml = f90nml.read(path_to_nml)
     params = case_nml['parameters']
     freq = datetime.timedelta(seconds=params['xtstep_surf'])
@@ -89,24 +55,6 @@ def get_date_params(path_to_nml: Path):
 
 def load_txt(path_to_files: Path, start: datetime.datetime,
                             freq: datetime.timedelta, tz: str) -> pd.DataFrame:
-    """Returns a Pandas DataFrame given the path contaning teb inputs/outputs.
-
-    Parameters
-    ----------
-    path_to_files : Path
-        Path to teb input/output folder
-    start : datetime.datetime
-        Start date
-    freq : datetime.timedelta
-        Frequency of data/time step
-    tz : str
-        Timezone
-
-    Returns
-    -------
-    pd.DataFrame
-        Timezone localized Pandas DataFrame contaning teb inputs/outputs.
-    """
     ts_list = []
     for filename in path_to_files.glob('*.txt'):
         ts = pd.read_csv(filename, delim_whitespace=True, skip_blank_lines=True,
@@ -149,7 +97,7 @@ def git_checkout(commit_id: str):
         subprocess.check_call(command, cwd=build_folder, stdout=f)
     return None
 
-def build_teb_make(url: str):
+def download_and_uncompress_teb(url: str) -> Path:
     url_parsed = urlparse(url)
     f = url_parsed.path.split('/')[-1]
     path_to_f = PROJ_DIR / 'temp' / f
@@ -162,18 +110,23 @@ def build_teb_make(url: str):
     path_to_temp_unzipped_dir = list(path_to_f_dir_temp.glob('*'))[0]
     path_to_unzipped_dir = PROJ_DIR / 'build' / path_to_temp_unzipped_dir.name
     shutil.move(str(path_to_temp_unzipped_dir), path_to_unzipped_dir)
-    commit_id = str(path_to_unzipped_dir.name)
-    path_to_exe_dir = path_to_unzipped_dir
-    config_command = ['./mkmf.pl', '-t', 'gfortran_args',  '-p', 'driver.exe', 'src_driver', 'src_struct', 'src_proxi_SVAT', 'src_solar', 'src_teb']
+    return path_to_unzipped_dir
+
+def build_teb_make(url: str):
+    path_to_exe_dir = download_and_uncompress_teb(url)
+    dir_name = path_to_exe_dir.name
+    config_command = ['./mkmf.pl', '-t', 'gfortran_args',  '-p',
+                    'driver.exe', 'src_driver', 'src_struct', 'src_proxi_SVAT',
+                    'src_solar', 'src_teb']
     build_command = ['make']
-    with open(path_to_exe_dir / str(commit_id + '_config.log'), 'w') as f:
-        print('Configuring TEB for case: ' + commit_id)
+    with open(path_to_exe_dir / str(dir_name + '_config.log'), 'w') as f:
+        print('Configuring TEB for case: ' + dir_name)
         subprocess.check_call(config_command, cwd=path_to_exe_dir, stdout=f)
-    with open(path_to_exe_dir / str(commit_id + '_build.log'), 'w') as f:
-        print('Building TEB for case: ' + commit_id)
+    with open(path_to_exe_dir / str(dir_name + '_build.log'), 'w') as f:
+        print('Building TEB for case: ' + dir_name)
         subprocess.check_call(build_command, cwd=path_to_exe_dir, stdout=f)
     path_to_exe = path_to_exe_dir / 'driver.exe'
-    return path_to_exe, commit_id
+    return path_to_exe, dir_name
 
 def checkout_run_load(commit_id: str, case_name: str, build_type: str, patch_nml: dict, download_zip) -> pd.DataFrame:
     if download_zip:
@@ -206,15 +159,15 @@ def compare(ref_id: str, trial_id: str, case_name: str, build_type: str, patch_n
         print("All output samples are equals")
     return df_diff
 
-def plot_diff(df_diff, out_dir):
+def plot_diff(df_diff: pd.DataFrame, out_dir: pd.DataFrame) -> None:
     for name in df_diff.columns:
         df_diff[[name]].plot()
         out_dir.mkdir(parents=True, exist_ok=True)
         plt.savefig(out_dir / f'{name}.png')
 
-
-def rmse(df_ref, df_trial):
-    return ((df_ref - df_trial) ** 2).mean() ** .5
+def rmse(df_ref: pd.DataFrame, df_trial:pd.DataFrame) -> pd.DataFrame:
+    df_rmse = ((df_ref - df_trial) ** 2).mean() ** .5
+    return df_rmse
 
 if __name__ == "__main__":
     pass

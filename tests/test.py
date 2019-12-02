@@ -3,9 +3,6 @@ import os
 from pathlib import Path
 import shutil
 import argparse
-import datetime
-import pandas as pd
-import f90nml
 
 
 THIS_DIR = Path(__file__).parent.resolve()
