@@ -49,8 +49,8 @@ def main(build_type, case, allow_failure):
         trial = '__THIS__psychrometrics'
         ref = '2aa67d0e961890704516567571a84e3e74776b59'
         case_name = 'CAPITOUL'
-        patch_nml_trial = {'parameters': {'CCOOL_COIL': 'DXCOIL'}}
-        patch_nml_ref = {'parameters': {'CCOOL_COIL': 'DXCOIL'}}
+        patch_nml_trial = {'parameters': {'CCOOL_COIL': 'DXCOIL', 'LSOLAR_PANEL': True}}
+        patch_nml_ref = {'parameters': {'CCOOL_COIL': 'DXCOIL', 'LSOLAR_PANEL': True}}
         patch_nml = [patch_nml_trial, patch_nml_ref]
         make = [False, False]
 
@@ -58,8 +58,8 @@ def main(build_type, case, allow_failure):
         trial = '__THIS__minimal_dx'
         ref = 'master'
         case_name = 'CAPITOUL'
-        patch_nml_trial = {'parameters': {'CCOOL_COIL': 'MinimalDX'}}
-        patch_nml_ref = {'parameters': {'CCOOL_COIL': 'DXCOIL'}}
+        patch_nml_trial = {'parameters': {'CCOOL_COIL': 'MinimalDX', 'LSOLAR_PANEL': True}}
+        patch_nml_ref = {'parameters': {'CCOOL_COIL': 'DXCOIL', 'LSOLAR_PANEL': True}}
         patch_nml = [patch_nml_trial, patch_nml_ref]
         make = [False, False]
 
