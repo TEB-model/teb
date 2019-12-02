@@ -46,7 +46,7 @@ def main(build_type, case, allow_failure):
             make = [True, False]
 
     elif case == 'psychrometrics':
-        trial = '__THIS__psychrometrics'
+        trial = 'a9c4c46889dca998ea9ca40e5e0edc62ecc75715'
         ref = '2aa67d0e961890704516567571a84e3e74776b59'
         case_name = 'CAPITOUL'
         patch_nml_trial = {'parameters': {'CCOOL_COIL': 'DXCOIL', 'LSOLAR_PANEL': True}}

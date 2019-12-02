@@ -11,21 +11,25 @@ The self-contained tests that have been implemented to this date are:
 Compares change in build system from Perl/Make to CMake/Make on Linux and Debug mode only.
 The test passes with no discernable differences.
 
-``` bash
+```sh
 # Only avalable in Debug mode and for Linux only.
 python tests/test.py --build_type=Debug --case=make_cmake
 ```
 
 ## Psychrometric functions
 
-TODO:
-
+Compares changes due to a bug fixes in the psychrometric functions used by `DXCOIL`.
+Changes are as expected given the fixes.
+```sh
+python tests/test.py --build_type=Debug --case=psychrometrics
+python tests/test.py --build_type=Release --case=psychrometrics
+```
 ## MinimalDX
 
 Compares changes due to a new DX cooling coil as implemented in the MinimalDX library.
-Changes are large as expected given the different typo of coils and improvements in the calculations.
+Changes are large as expected given the different type of coil used and improvements in the calculations.
 
-``` bash
+```sh
 python tests/test.py --build_type=Debug --case=minimal_dx
 python tests/test.py --build_type=Release --case=minimal_dx
 ```
