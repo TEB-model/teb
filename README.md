@@ -17,7 +17,7 @@ Please refer to the [SURFEX website](http://www.umr-cnrm.fr/surfex/IMG/pdf/surfe
 - [Git](https://git-scm.com/) version 2.13 or above
 - [CMake](https://cmake.org/) version 3.1.0 or above
 - GNU/Intel/Cray Fortran compiler
-- [Python](https://www.python.org/) 3.6+ [*Optional*: for testing and tutorial]
+- [Python](https://www.python.org/) 3.7+ [*Optional*: for testing and tutorial]
 
 
 ### Build instructions for Windows, Linux and macOS
