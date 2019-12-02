@@ -59,7 +59,7 @@ By default, we set the real type to an 8 byte wide. This behaviour is controlled
 
 ## Testing
 
-Tests are run using the CAPITOUL data provided in `examples/CAPITOUL`. Tests are found in `tests/tests.py` and an overview is given in `tests/README.md`[tests/README.md]. All tests are automatically run at every commit using Continous Integration. If you are looking to run your tests locally on Linux or macOS, first make sure you have installed all the [prerequisites](#prerequisites), then from the command prompt:
+Tests are run using the CAPITOUL data provided in `examples/CAPITOUL`. Tests are found in `tests/tests.py` and an overview is given in [`tests/README.md`](tests/README.md). All tests are automatically run at every commit using Continous Integration. If you are looking to run your tests locally on Linux or macOS, first make sure you have installed all the [prerequisites](#prerequisites), then from the command prompt:
 
 ``` bash
 python -m pip install -r requirements.txt
