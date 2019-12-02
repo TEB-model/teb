@@ -26,6 +26,6 @@ Compares changes due to a new DX cooling coil as implemented in the MinimalDX li
 Changes are large as expected given the different typo of coils and improvements in the calculations.
 
 ``` bash
-python tests/test.py --build_type=Debug --case=integration
-python tests/test.py --build_type=Release --case=integration
+python tests/test.py --build_type=Debug --case=minimal_dx
+python tests/test.py --build_type=Release --case=minimal_dx
 ```
