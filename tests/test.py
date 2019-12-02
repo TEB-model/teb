@@ -33,11 +33,10 @@ def test_make_cmake(build_type: str) -> None:
     return None
 
 def test_integration(build_type: str) -> None:
-    old_id = 'master'
-    new_id = 'test-make-cmake'
+    old_id = 'test-make-cmake'
+    new_id = 'fix-psychrometrics'
     case_name = 'CAPITOUL'
-    diff = compare(old_id, new_id, case_name, build_type, [False, False])
-    print(diff)
+    diff = compare(old_id, new_id, case_name, build_type, None, [False, False])
     return None
 
 

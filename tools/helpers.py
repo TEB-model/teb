@@ -18,6 +18,8 @@ import urllib.request
 
 import zipfile
 
+import matplotlib.pyplot as plt
+
 THIS_DIR = Path(__file__).parent.resolve()
 PROJ_DIR = THIS_DIR.parent
 
@@ -194,12 +196,20 @@ def compare(ref_id: str, trial_id: str, case_name: str, build_type: str, patch_n
     # drop any quantity not present in both versions.
     df_trial = df_trial[df_ref.columns]
     df_diff = df_ref - df_trial
+    plot_diff(df_diff)
     num_unequal_samples = len(df_diff[df_diff.values > 0])
     if num_unequal_samples != 0:
         raise RuntimeError(f"{num_unequal_samples} samples are not equal")
     else:
         print("All output samples are equals")
     return df_diff
+
+def plot_diff(df_diff):
+    for name in df_diff.columns:
+        df_diff[[name]].plot()
+        path_to_plots_dir = PROJ_DIR / 'temp' / 'plots'
+        path_to_plots_dir.mkdir(parents=True, exist_ok=True)
+        plt.savefig(path_to_plots_dir / f'{name}.png')
 
 
 if __name__ == "__main__":
