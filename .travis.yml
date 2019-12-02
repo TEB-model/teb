@@ -36,9 +36,7 @@ before_install:
   - pip3 install -r requirements.txt
 
 script:
-  - pushd tests
   - python tests/test.py --build_type=Debug --case=make_cmake
-  - popd
 
 before_deploy:
   - pip3 install graphviz ford
