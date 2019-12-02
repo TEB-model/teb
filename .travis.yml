@@ -33,16 +33,11 @@ matrix:
 
 before_install:
   - if [[ $TRAVIS_OS_NAME == osx ]]; then brew update && brew install gcc && brew upgrade python; fi
-
-install:
-  - mkdir build && pushd build
-  - cmake -DCMAKE_BUILD_TYPE=$BUILD_TYPE ..
-  - cmake --build .
-  - popd
+  - pip3 install -r requirements.txt
 
 script:
-  - pushd tests/CAPITOUL
-  - ../../build/driver > output.log 2>&1
+  - pushd tests
+  - python test.py --build_type=$BUILD_TYPE
   - popd
 
 before_deploy:

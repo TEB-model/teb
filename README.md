@@ -17,6 +17,7 @@ Please refer to the [SURFEX website](http://www.umr-cnrm.fr/surfex/IMG/pdf/surfe
 - [Git](https://git-scm.com/) version 2.13 or above
 - [CMake](https://cmake.org/) version 3.1.0 or above
 - GNU/Intel/Cray Fortran compiler
+- [Python](https://www.python.org/) 3.6+ [*Optional*: for testing and tutorial]
 
 
 ### Build instructions for Windows, Linux and macOS
@@ -53,16 +54,14 @@ By default, we set the real type to an 8 byte wide. This behaviour is controlled
 
 ## Testing
 
-You can run a test case using the CAPITOUL data provided in `tests/CAPITOUL`. From your command prompt, execute the `driver` program from the `test/CAPITOUL` folder as you current working directory.
-
-E.g. on Linux and macOS:
+Tests are run using the CAPITOUL data provided in `examples/CAPITOUL`. Tests are found in `tests/tests.py` and an overview is given in `tests/README.md`[tests/README.md]. All tests are automatically run at every commit using Continous Integration. If you are looking to run your tests locally on Linux or macOS, first make sure you have installed all the [prerequisites](#prerequisites), then from the command prompt:
 
 ``` bash
-cd tests/CAPITOUL
-../../build/driver
+python -m pip install -r requirements.txt
+python tests/test.py --build_type=<BUILD_TYPE>
 ```
 
-The output files are written to `tests/CAPITOUL/output`. You can compare them with the reference outputs in `tests/CAPITOUL/ref_output`. You can modify parameter-specific values or activate/deactivate part of TEB from the `input.nml` file.
+where `<BUILD_TYPE>` is either `Debug` or `Release`. The output files are written to `temp`. Plots are written to `plots`.
 
 
 ## How to cite
