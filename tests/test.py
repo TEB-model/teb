@@ -21,8 +21,8 @@ def main(build_type, case, allow_failure):
     shutil.rmtree(PROJ_DIR / 'plots', ignore_errors=True)
 
     if case == 'integration':
-        old_id = 'master'
-        new_id = '__THIS__integration'
+        trial = '__THIS__integration'
+        ref = 'master'
         case_name = 'CAPITOUL'
         patch_nml = [None, None]
         make = [False, False]
@@ -33,8 +33,8 @@ def main(build_type, case, allow_failure):
             print('test_make_cmake: This test only works on Linux -- skipping')
             return
         else:
-            old_id = 'https://github.com/teb-model/teb/archive/3_sfx8.1.tar.gz'
-            new_id = '__THIS__make_cmake'
+            trial = '__THIS__make_cmake'
+            ref = 'https://github.com/teb-model/teb/archive/3_sfx8.1.tar.gz'
             case_name = 'CAPITOUL'
             # In the old TEB, XTSTEP_SURF was hardcoded in the driver to
             # 300 s instead of 1800 s. Here we simply patch the namelist
@@ -44,8 +44,8 @@ def main(build_type, case, allow_failure):
             make = [True, False]
 
     elif case == 'minimal_dx':
-        old_id = 'master'
-        new_id = '__THIS__minimal_dx'
+        trial = '__THIS__minimal_dx'
+        ref = 'master'
         case_name = 'CAPITOUL'
         patch_nml = {'parameters': {'CCOOL_COIL': 'MinimalDX'}}
         patch_nml = [None, patch_nml]
@@ -54,9 +54,9 @@ def main(build_type, case, allow_failure):
     else:
         raise RuntimeError('The correct case was not selected')
 
-    print(f'Using configuration: {old_id}, {new_id}, {case_name}, {build_type}, {patch_nml}, {make}, {allow_failure}')
+    print(f'Using configuration: {trial}, {ref}, {case_name}, {build_type}, {patch_nml}, {make}, {allow_failure}')
 
-    compare(old_id, new_id, case_name, build_type, patch_nml, make, allow_failure)
+    compare(trial, ref, case_name, build_type, patch_nml, make, allow_failure)
 
 
 if __name__ == "__main__":
