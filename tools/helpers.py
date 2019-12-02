@@ -196,6 +196,7 @@ def compare(ref_id: str, trial_id: str, case_name: str, build_type: str, patch_n
     df_trial = df_trial[df_ref.columns]
     df_diff = df_ref - df_trial
     print(df_diff)
+    print(rmse(df_ref, df_trial))
     path_to_plots_dir = PROJ_DIR / 'plots' / trial_id
     plot_diff(df_diff, path_to_plots_dir)
     num_unequal_samples = len(df_diff[df_diff.values > 0])
@@ -211,6 +212,9 @@ def plot_diff(df_diff, out_dir):
         out_dir.mkdir(parents=True, exist_ok=True)
         plt.savefig(out_dir / f'{name}.png')
 
+
+def rmse(df_ref, df_trial):
+    return ((df_ref - df_trial) ** 2).mean() ** .5
 
 if __name__ == "__main__":
     pass

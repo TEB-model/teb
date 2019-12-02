@@ -1,10 +1,18 @@
-# TEB Tests
+# Tests
 
 This folder contains regression and integrations tests used to develop TEB. All tests are based on data from the CAPITOUL experiment.
 
-All tests are executed using with the following syntax
+The current tests and results are as follows:
 
+- [x] Make v CMake
+- [ ] Psychrometric functions
+- [ ] MinimalDX
 
-path_to_exe_ref = build_teb(commit_id_ref)
-path_to_exe_this = build_teb(commit_id_this)
-compare_teb(path_to_exe_ref, path_to_exe_this, threshold=0, plots=True)
+## Make v CMake
+
+## Psychrometric functions
+TODO:
+
+## MinimalDX
+
+TODO:
