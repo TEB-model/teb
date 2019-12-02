@@ -1,6 +1,9 @@
 # TEB version x.x.x (https://github.com/teb-model/teb).
 # Copyright 2018 D. Meyer. Licensed under CeCILL-C version 1.
 
+git:
+  depth: false
+
 matrix:
   include:
     - language: python
