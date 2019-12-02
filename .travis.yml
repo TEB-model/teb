@@ -44,7 +44,7 @@ before_install:
 
 script:
   # We always run the integration to inform us when changes in the code also modify the outputs.
-  - python tests/test.py --build_type=$BUILD_TYPE --case=integration
+  - python3 tests/test.py --build_type=$BUILD_TYPE --case=integration
 
 before_deploy:
   - python3 -m pip install graphviz ford
