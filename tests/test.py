@@ -24,7 +24,9 @@ def main(build_type, case, allow_failure):
         trial = '__THIS__integration'
         ref = 'master'
         case_name = 'CAPITOUL'
-        patch_nml = [None, None]
+        patch_nml_trial = {'parameters': {'CCOOL_COIL': 'MinimalDX', 'LSOLAR_PANEL': True}}
+        patch_nml_ref = {'parameters': {'CCOOL_COIL': 'MinimalDX', 'LSOLAR_PANEL': True}}
+        patch_nml = [patch_nml_trial, patch_nml_ref]
         make = [False, False]
 
     elif case == 'make_cmake':
@@ -33,7 +35,7 @@ def main(build_type, case, allow_failure):
             print('test_make_cmake: This test only works on Linux -- skipping')
             return
         else:
-            trial = '__THIS__make_cmake'
+            trial = '2aa67d0e961890704516567571a84e3e74776b59' # Last commit before psychrometric fixes
             ref = 'https://github.com/teb-model/teb/archive/3_sfx8.1.tar.gz'
             case_name = 'CAPITOUL'
             # In the old TEB, XTSTEP_SURF was hardcoded in the driver to
@@ -42,6 +44,15 @@ def main(build_type, case, allow_failure):
             patch_nml = {'parameters': {'XTSTEP_SURF': 300.}}
             patch_nml = [patch_nml, patch_nml]
             make = [True, False]
+
+    elif case == 'psychrometrics':
+        trial = '__THIS__psychrometrics'
+        ref = '2aa67d0e961890704516567571a84e3e74776b59'
+        case_name = 'CAPITOUL'
+        patch_nml_trial = {'parameters': {'CCOOL_COIL': 'DXCOIL'}}
+        patch_nml_ref = {'parameters': {'CCOOL_COIL': 'DXCOIL'}}
+        patch_nml = [patch_nml_trial, patch_nml_ref]
+        make = [False, False]
 
     elif case == 'minimal_dx':
         trial = '__THIS__minimal_dx'
@@ -65,7 +76,7 @@ if __name__ == "__main__":
     parser.add_argument('--build_type', required=True, choices=['Debug', 'Release'],
                         help='CMAKE_BUILD_TYPE')
     parser.add_argument('--case', required=True, choices=['make_cmake', 'integration',
-                                                          'minimal_dx'],
+                                                          'psychrometrics', 'minimal_dx'],
                         help='The test case to run')
     parser.add_argument('--allow_failure', required=False, type=bool, nargs='?', const=True, default=False)
     args = parser.parse_args()
