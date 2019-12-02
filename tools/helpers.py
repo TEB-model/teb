@@ -123,7 +123,7 @@ def build_teb(commit_id: str, build_type: str):
     path_to_exe_dir = PROJ_DIR / 'build' / commit_id
     path_to_exe_dir.mkdir(parents=True, exist_ok=True)
     config_command = ['cmake', f'-DCMAKE_BUILD_TYPE={build_type}', str(PROJ_DIR), '-LA']
-    build_command = ['make']
+    build_command = ['make', '-j2']
     with open(path_to_exe_dir / str(commit_id + '_config.log'), 'w') as f:
         print('Configuring TEB for case: ' + commit_id)
         subprocess.check_call(config_command, cwd=path_to_exe_dir, stdout=f)
@@ -189,14 +189,16 @@ def checkout_run_load(commit_id: str, case_name: str, build_type: str, patch_nml
     df = load_txt(path_to_case_dir / 'output', start, freq, tz='UTC')
     return df
 
-def compare(ref_id: str, trial_id: str, case_name: str, build_type: str, patch_nml=None, make=[False, False]) -> pd.DataFrame:
-    df_ref = checkout_run_load(ref_id, case_name, build_type, patch_nml, make[0])
-    df_trial = checkout_run_load(trial_id, case_name, build_type, patch_nml, make[1])
+def compare(ref_id: str, trial_id: str, case_name: str, build_type: str, patch_nml=[None, None], make=[False, False]) -> pd.DataFrame:
+    df_ref = checkout_run_load(ref_id, case_name, build_type, patch_nml[0], make[0])
+    df_trial = checkout_run_load(trial_id, case_name, build_type, patch_nml[1], make[1])
     # We have more outputs in the newer versions
     # drop any quantity not present in both versions.
     df_trial = df_trial[df_ref.columns]
     df_diff = df_ref - df_trial
-    plot_diff(df_diff)
+    print(df_diff)
+    path_to_plots_dir = PROJ_DIR / 'plots' / trial_id
+    plot_diff(df_diff, path_to_plots_dir)
     num_unequal_samples = len(df_diff[df_diff.values > 0])
     if num_unequal_samples != 0:
         raise RuntimeError(f"{num_unequal_samples} samples are not equal")
@@ -204,12 +206,11 @@ def compare(ref_id: str, trial_id: str, case_name: str, build_type: str, patch_n
         print("All output samples are equals")
     return df_diff
 
-def plot_diff(df_diff):
+def plot_diff(df_diff, out_dir):
     for name in df_diff.columns:
         df_diff[[name]].plot()
-        path_to_plots_dir = PROJ_DIR / 'temp' / 'plots'
-        path_to_plots_dir.mkdir(parents=True, exist_ok=True)
-        plt.savefig(path_to_plots_dir / f'{name}.png')
+        out_dir.mkdir(parents=True, exist_ok=True)
+        plt.savefig(out_dir / f'{name}.png')
 
 
 if __name__ == "__main__":

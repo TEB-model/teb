@@ -35,18 +35,8 @@ before_install:
   - if [[ $TRAVIS_OS_NAME == osx ]]; then brew update && brew install gcc && brew upgrade python; fi
   - pip3 install -r tests/requirements.txt
 
-install:
-  - mkdir build && pushd build
-  - cmake -DCMAKE_BUILD_TYPE=$BUILD_TYPE ..
-  - cmake --build .
-  - popd
-
 script:
-  #- pushd tests/CAPITOUL
-  #- ../../build/driver > output.log 2>&1
-  #- popd
-  - if [[ $BUILD_TYPE == Debug ]] && [[ $TRAVIS_OS_NAME == linux ]]; then pushd tests/make_vs_cmake && ./run_test.sh && popd; fi
-
+  - python test.py --build_type=$BUILD_TYPE
 
 before_deploy:
   - pip3 install graphviz ford
