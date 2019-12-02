@@ -22,7 +22,7 @@ def test_make_cmake(build_type: str) -> None:
         print('test_make_cmake: This test only works on Linux -- skipping')
         return
 
-    old_id = 'https://github.com/teb-model/teb/archive/3_sfx8.1.zip'
+    old_id = 'https://github.com/teb-model/teb/archive/3_sfx8.1.tar.gz'
     new_id = 'test-make-cmake'
     case_name = 'CAPITOUL'
     # In the old TEB, XTSTEP_SURF was hardcoded in the driver to

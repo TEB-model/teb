@@ -157,8 +157,7 @@ def build_teb_make(url: str):
     path_to_f_dir.mkdir(parents=True, exist_ok=True)
     urllib.request.urlretrieve(url, path_to_f)
     path_to_f_dir_temp = path_to_f_dir / 'temp'
-    with zipfile.ZipFile(path_to_f, 'r') as zip_ref:
-        zip_ref.extractall(path_to_f_dir_temp)
+    shutil.unpack_archive(path_to_f, path_to_f_dir_temp)
     # look inside the temp to get the folder name
     path_to_temp_unzipped_dir = list(path_to_f_dir_temp.glob('*'))[0]
     path_to_unzipped_dir = PROJ_DIR / 'build' / path_to_temp_unzipped_dir.name
