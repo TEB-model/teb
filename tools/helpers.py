@@ -142,7 +142,7 @@ def checkout_run_load(commit_id: str, case_name: str, build_type: str, patch_nml
     df = load_txt(path_to_case_dir / 'output', start, freq, tz='UTC')
     return df
 
-def compare(ref_id: str, trial_id: str, case_name: str, build_type: str, patch_nml=[None, None], make=[False, False]) -> pd.DataFrame:
+def compare(ref_id: str, trial_id: str, case_name: str, build_type: str, patch_nml=[None, None], make=[False, False], allow_failure=False) -> pd.DataFrame:
     df_ref = checkout_run_load(ref_id, case_name, build_type, patch_nml[0], make[0])
     df_trial = checkout_run_load(trial_id, case_name, build_type, patch_nml[1], make[1])
     # We have more outputs in the newer versions
@@ -155,7 +155,11 @@ def compare(ref_id: str, trial_id: str, case_name: str, build_type: str, patch_n
     plot_diff(df_diff, path_to_plots_dir)
     num_unequal_samples = len(df_diff[df_diff.values > 0])
     if num_unequal_samples != 0:
-        raise RuntimeError(f"{num_unequal_samples} samples are not equal")
+        if allow_failure:
+            print(f"{num_unequal_samples} samples are not equal.")
+            print('Ignoring, --allow_failure was used.')
+        else:
+            raise RuntimeError(f"{num_unequal_samples} samples are not equal")
     else:
         print("All output samples are equals")
     return df_diff

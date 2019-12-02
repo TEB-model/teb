@@ -13,7 +13,12 @@ sys.path.append(str(PROJ_DIR / 'tools'))
 from helpers import compare
 
 
-def main(build_type, case):
+def main(build_type, case, allow_failure):
+
+    # Make sure there are no previous versions installed
+    shutil.rmtree(PROJ_DIR / 'build', ignore_errors=True)
+    shutil.rmtree(PROJ_DIR / 'temp', ignore_errors=True)
+    shutil.rmtree(PROJ_DIR / 'plots', ignore_errors=True)
 
     if case == 'integration':
         old_id = 'master'
@@ -49,23 +54,22 @@ def main(build_type, case):
     else:
         raise RuntimeError('The correct case was not selected')
 
-    compare(old_id, new_id, case_name, build_type, patch_nml, make)
+    print(f'Using configuration: {old_id}, {new_id}, {case_name}, {build_type}, {patch_nml}, {make}, {allow_failure}')
+
+    compare(old_id, new_id, case_name, build_type, patch_nml, make, allow_failure)
 
 
 if __name__ == "__main__":
-    # Make sure there are no previous versions installed
-    shutil.rmtree(PROJ_DIR / 'build', ignore_errors=True)
-    shutil.rmtree(PROJ_DIR / 'temp', ignore_errors=True)
-    shutil.rmtree(PROJ_DIR / 'plots', ignore_errors=True)
-
     parser = argparse.ArgumentParser()
     parser.add_argument('--build_type', required=True, choices=['Debug', 'Release'],
                         help='CMAKE_BUILD_TYPE')
     parser.add_argument('--case', required=True, choices=['make_cmake', 'integration',
                                                           'minimal_dx'],
                         help='The test case to run')
+    parser.add_argument('--allow_failure', required=False, type=bool, nargs='?', const=True, default=False)
     args = parser.parse_args()
 
     print(f'CMAKE_BUILD_TYPE: {args.build_type}')
     print(f'case: {args.case}')
-    main(args.build_type, str(args.case))
+    print(f'allow-failure: {args.allow_failure}')
+    main(args.build_type, args.case, args.allow_failure)

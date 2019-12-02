@@ -33,14 +33,15 @@ matrix:
 
 before_install:
   - if [[ $TRAVIS_OS_NAME == osx ]]; then brew update && brew install gcc && brew upgrade python; fi
-  - pip3 install -r requirements.txt
+  - which python3
+  - python3 -m pip install -r requirements.txt
 
 script:
-  - python tests/test.py --build_type=Debug --case=integration
-  - python tests/test.py --build_type=Debug --case=make_cmake
+  - # Always run integration test to make sure that changes do not effect results produced in master
+  - python3 tests/test.py --build_type=Debug --case=integration
 
 before_deploy:
-  - pip3 install graphviz ford
+  - python3 -m pip install graphviz ford
   - ford docs/api-docs.md
 
 deploy:
