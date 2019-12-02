@@ -47,8 +47,9 @@ def main(build_type, case, allow_failure):
         trial = '__THIS__minimal_dx'
         ref = 'master'
         case_name = 'CAPITOUL'
-        patch_nml = {'parameters': {'CCOOL_COIL': 'MinimalDX'}}
-        patch_nml = [None, patch_nml]
+        patch_nml_trial = {'parameters': {'CCOOL_COIL': 'MinimalDX'}}
+        patch_nml_ref = {'parameters': {'CCOOL_COIL': 'DXCOIL'}}
+        patch_nml = [patch_nml_trial, patch_nml_ref]
         make = [False, False]
 
     else:
