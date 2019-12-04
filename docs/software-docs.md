@@ -31,7 +31,7 @@ The folder `examples/CAPITOUL` contains input files (`input`) and a configuratio
 
 `output`: directory contains the results of your run once you have executed `driver`
 
-`input.nml`: configuration file used to set user parameters. For configuration options avalable at runtime please refer to [namelist options](docs/namelist-options.md).
+`input.nml`: configuration file used to set user parameters. For configuration options avalable at runtime please refer to [namelist options](namelist-options.md).
 
 
 ## How to run TEB
