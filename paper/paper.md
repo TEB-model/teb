@@ -12,7 +12,7 @@ tags:
 authors:
   - name: D. Meyer
     orcid: 0000-0002-7071-7547
-    affiliation: [1, 2]
+    affiliation: "1, 2"
   - name: R. Schoetter
     orcid: 0000-0002-2284-4592
     affiliation: 3
