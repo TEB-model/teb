@@ -1,6 +1,5 @@
 # TEB Software documentation
 
-## Table of contents
   - [Structure overview](#structure-overview)
     - [Source files](#source-files)
     - [Experiment files](#experiment-files)

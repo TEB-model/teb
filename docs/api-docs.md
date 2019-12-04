@@ -1,7 +1,7 @@
 ---
 project: Town Energy Balance (TEB) model API docs
 author: teb-model
-project_github: https://teb-model.github.io/teb
+project_github: https://github.com/teb-model/teb
 summary: The Town Energy Balance (TEB) model is an urban land surface model developed to calculate the exchange of energy and water between cities and atmosphere.
 github: https://github.com/teb-model/teb
 src_dir: ../src
