@@ -84,6 +84,9 @@ end function PE_FROM_PQ_1D
 
 !TD_FROM_TQ
 function TD_FROM_TQ_0D(PT, PQ, PP) RESULT(PTD)
+!!    MODIFICATIONS
+!!    -------------
+!!       D.Meyer and R. Schoetter 2018: see a9c4c46889dca998ea9ca40e5e0edc62ecc75715
 USE MODD_CSTS
 USE MODD_SURF_PAR, ONLY: XUNDEF
 !arguments and result
@@ -112,6 +115,9 @@ IF (LHOOK) CALL DR_HOOK('MODE_PSYCHRO:TD_FROM_TQ_0D',1,ZHOOK_HANDLE)
 end function TD_FROM_TQ_0D
 
 function TD_FROM_TQ_1D(PT, PQ, PP) RESULT(PTD)
+!!    MODIFICATIONS
+!!    -------------
+!!       D.Meyer and R. Schoetter 2018: see a9c4c46889dca998ea9ca40e5e0edc62ecc75715
 USE MODD_CSTS
 USE MODD_SURF_PAR, ONLY: XUNDEF
 !arguments and result
@@ -142,6 +148,9 @@ end function TD_FROM_TQ_1D
 
 !RV_FROM_TPTWB
 function RV_FROM_TPTWB_0D(PT, PP, PTWB) RESULT(PRV)
+!!    MODIFICATIONS
+!!    -------------
+!!       D.Meyer and R. Schoetter 2018: see a9c4c46889dca998ea9ca40e5e0edc62ecc75715
 USE MODE_THERMOS
 USE MODD_CSTS
 !arguments and result
@@ -181,6 +190,9 @@ end function RV_FROM_TPTWB_1D
 !TWB_FROM_TPQ
 !------------
 function TWB_FROM_TPQ_0D(PT, PP, PQ) RESULT(PTWB)
+!!    MODIFICATIONS
+!!    -------------
+!!       D.Meyer and R. Schoetter 2018: see a9c4c46889dca998ea9ca40e5e0edc62ecc75715
 !arguments and results
 REAL, INTENT(IN) :: PT !air temperature (K)
 REAL, INTENT(IN) :: PQ !mixing ratio (kg/kg)
@@ -212,6 +224,9 @@ IF (JITER.GE.49) STOP ("Maximum number of iterations exceeded in twb_from_tpq_0d
 IF (LHOOK) CALL DR_HOOK('MODE_PSYCHRO:TWB_FROM_TPQ_0D',1,ZHOOK_HANDLE)
 end function TWB_FROM_TPQ_0D
 function TWB_FROM_TPQ_1D(PT, PP, PQ) RESULT(PTWB)
+!!    MODIFICATIONS
+!!    -------------
+!!       D.Meyer and R. Schoetter 2018: see a9c4c46889dca998ea9ca40e5e0edc62ecc75715
 !arguments and results
 REAL, DIMENSION(:), INTENT(IN) :: PT !air temperature (K)
 REAL, DIMENSION(:), INTENT(IN) :: PQ !humidity content (kg/kg)
@@ -280,6 +295,8 @@ FUNCTION ENTH_FN_T_Q(PT,PQ) RESULT(PENTH)
 !!    -------------
 !!      Original    12/04/11 
 !!      A. Alias    01/2013   compi. on Bull : must be 1.0E-5 instead of 1.0D-5
+!!      D.Meyer and R. Schoetter 2018: see a9c4c46889dca998ea9ca40e5e0edc62ecc75715
+!
 !-------------------------------------------------------------------------------
 !
 !*       0.    DECLARATIONS
@@ -354,6 +371,8 @@ FUNCTION Q_FN_T_ENTH(PT,PENTH) RESULT(PQ)
 !!    MODIFICATIONS
 !!    -------------
 !!      Original    12/04/11 
+!!      D.Meyer and R. Schoetter 2018: see a9c4c46889dca998ea9ca40e5e0edc62ecc75715
+!
 !-------------------------------------------------------------------------------
 !
 !*       0.    DECLARATIONS
