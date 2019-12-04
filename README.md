@@ -1,16 +1,25 @@
 # Town Energy Balance (TEB) model [![Build Status](https://travis-ci.com/teb-model/teb.svg?branch=master)](https://travis-ci.com/teb-model/teb)
 
-This simple driver for the TEB (Town Energy Balance; [Masson, 2000](https://dx.doi.org/10.1023/A:1002463829265) and subsequent papers), is intended to be used by scientists whishing to implement TEB in their own software. This simple driver provides all the source code of TEB alone, making it easier to analyse and to integrate in its own atmospheric model for example.
+  - [Overview](#overview)
+  - [Installing](#installing)
+    - [Prerequisites](#prerequisites)
+    - [Build instructions for Windows, Linux and macOS](#build-instructions-for-windows-linux-and-macos)
+      - [Note for Windows Users](#note-for-windows-users)
+  - [Documentation](#documentation)
+    - [Software](#software)
+    - [Scientific](#scientific)
+    - [API and code browser](#api-and-code-browser)
+  - [Example application](#example-application)
+  - [Testing](#testing)
+  - [How to cite](#how-to-cite)
+  - [Copyright and license](#copyright-and-license)
+  - [References](#references)
 
-If you wish to use TEB for physical simulations, without intention to extract all the TEB routines into another software environment, you could use the SURFEX platform. It contains TEB and much more, especially the ISBA scheme for vegetation, or several I/O formats, including NetCDF (see http://www.cnrm.meteo.fr/surfex/).
+## Overview
 
-
-## Documentation
-
-Please refer to the [SURFEX website](http://www.umr-cnrm.fr/surfex/IMG/pdf/surfex_scidoc_v8.1.pdf) for the complete documentation on TEB. The API documentation is available [here](https://teb-model.github.io/teb).
+This enhanced software and platform for TEB (Town Energy Balance; [Masson, 2000](https://dx.doi.org/10.1023/A:1002463829265) and subsequent papers), is intended to help scientists and practitioners wishing to use the TEB model in their research as a standalone software application or as a library to calculate the urban surface energy balance at neighborhood scale assuming a simplified canyon geometry.
 
 ## Installing
-
 
 ### Prerequisites
 
@@ -52,10 +61,26 @@ cmake --build .
 
 By default, we set the real type to an 8 byte wide. This behaviour is controlled by the optional `USE_REAL8` flag (default ON).
 
+## Documentation
+
+This section includes links to software and model documentation. If you are new to TEB and simply looking to easily get started, please refer to the [Example application](#example-application) instead.
+
+### Software
+
+See the [software documentation](docs/software-docs.md) for a general overview. For configuration options avalable at runtime please refer to [namelist options](docs/namelist-options.md).
+
+### Scientific
+The complete scientific documentation is included with the [SURFEX scientific documentation](http://www.umr-cnrm.fr/surfex/IMG/pdf/surfex_scidoc_v8.1.pdf).
+
+
+### API and code browser
+The API documentation and code browser is available at [https://teb-model.github.io/teb](https://teb-model.github.io/teb).
+
 
 ## Example application
 
 [`tutorial.ipynb`](examples/CAPITOUL/tutorial.ipynb) provides a simple tutorial detailing how TEB can be used to to estimate the buildings' energy demand for cooling due to Air Conditioning (AC) using data and parameters to reproduce the CAPITOUL (Canopy and Aerosol Particles Interactions in TOulouse Urban Layer; Masson et al., 2008) campaign.
+
 
 ## Testing
 
@@ -80,16 +105,16 @@ python tests/test.py --build_type=Debug --case=integration
 
 When using the TEB software, please cite both model, and software (with version) as follow:
 
-| Model        | Software          | Version*                                              |
-| ------------ | ----------------- | ---------------------------------------------------- |
-| Masson, 2000 | XX et al, XXXX    | [see Zenodo](https://XXXX) |
+| Model        | Software | Version*                   |
+| ------------ | -------- | -------------------------- |
+| Masson, 2000 | XXXX     | [see Zenodo](https://XXXX) |
 
 
 The corresponding reference list should be as follows:
 
 > Masson, V., 2000: A Physically-Based Scheme For The Urban Energy Budget In Atmospheric Models. Boundary-Layer Meteorology, 94, 357–397, https://doi.org/10.1023/A:1002463829265.
 
-> XX et al, XXX
+> XXXX *In preparation*
 
 
 *please make sure to cite the same version you are using with the correct DOI. For a list of all avalable versions see the list of versions on [Zenodo](XXXX).
@@ -97,7 +122,7 @@ The corresponding reference list should be as follows:
 
 ## Copyright and license
 
-Copyright name and year is clearly stated at the top of each source file. All software released under [CeCILL-C version 1](Licence_CeCILL-C_V1-en.txt).
+General copyright name and year is clearly stated at the top of each source file. All software released under [CeCILL-C version 1](Licence_CeCILL-C_V1-en.txt).
 
 
 ## References
