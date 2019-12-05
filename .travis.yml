@@ -39,7 +39,7 @@ matrix:
 before_install:
   - if [[ $TRAVIS_OS_NAME == osx ]]; then brew update && brew upgrade gcc python; fi
   - which python3
-  - python --version
+  - python3 --version
   - python3 -m pip install -r requirements.txt
 
 script:
