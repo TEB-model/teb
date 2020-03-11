@@ -122,7 +122,7 @@ The corresponding reference list should be as follows:
 
 ## Copyright and license
 
-General copyright name and year is clearly stated at the top of each source file. All software released under [CeCILL-C version 1](Licence_CeCILL-C_V1-en.txt).
+General copyright name and year is clearly stated at the top of each source file. All software released under [CeCILL version 2.1](Licence_CeCILL_V2.1-en.txt).
 
 
 ## References
