@@ -1,10 +1,9 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 ! Copyright 1998-2013 Meteo-France
-! This is part of the TEB software governed by the CeCILL-C licence version 1.
-! See LICENCE, CeCILL-C_V1-en.txt and CeCILL-C_V1-fr.txt for details.
-! http://www.cecill.info/licences/Licence_CeCILL-C_V1-en.txt
-! http://www.cecill.info/licences/Licence_CeCILL-C_V1-fr.txt
-! The CeCILL-C licence is compatible with L-GPL
+! This is part of the TEB software governed by the CeCILL licence version 2.1.
+! See the following links for details:
+! https://cecill.info/licences/Licence_CeCILL_V2.1-en.txt
+! https://cecill.info/licences/Licence_CeCILL_V2.1-fr.txt
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !     ######################
 MODULE MODD_FORC_ATM
