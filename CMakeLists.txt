@@ -1,5 +1,5 @@
 # TEB version 4.0.0 (https://github.com/teb-model/teb).
-# Copyright 2018 D. Meyer. Licensed under CeCILL-C version 1.
+# Copyright 2018 D. Meyer. Licensed under CeCILL version 2.1.
 
 cmake_minimum_required(VERSION 3.1)
 project(TEB Fortran)
