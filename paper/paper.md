@@ -41,15 +41,16 @@ The Town Energy Balance (TEB) model [@masson_2000_Boundary-LayerMeteorology] is 
 Here, we present an enhanced software and platform for the TEB model to help scientists and practitioners wishing to use the TEB model in their research as a standalone software application or as a library in their own software. This includes several features such as cross-platform support for Windows, Linux, and macOS using CMake[^2], static and dynamic library generation for integration with other software/models, namelist-based configuration, integration with MinimalDX [@meyer_d_2019_3562311] and PsychroLib [@meyer_2019_JOSS] to improve the modelling of air conditioners (AC) and psychrometric calculations respectively, a thin interface used in the coupling with WRF-CMake [@riechert_2019_JOSS], helper functions for Python for pre- and post-processing inputs and outputs files, and a tutorial in Jupyter Notebook to allow users to quickly become familiar with the general TEB modeling workflow. In the new platform we implement testing at every code commit through continuous integration (CI) and automate the generation of API documentation. The project is developed as a free and open source and community-driven project on GitHub ([https://github.com/teb-model/teb](https://github.com/teb-model/teb)) and represents a significant improvement that supports existing and new model applications with enhanced functionality. We welcome contributions and encourage users to provide feedback, bug reports and feature requests, via GitHub's issue system at [https://github.com/teb-model/teb/issues](https://github.com/teb-model/teb/issues).
 
 
-| Modeling capability                                                   | Reference                                            |
-| --------------------------------------------------------------------- | ---------------------------------------------------- |
-| Urban Surface Energy Balance and Snow                                 | Masson [-@masson_2000_Boundary-LayerMeteorology]     |
-| Building Energy Model (BEM)                                           | Bueno et al. [-@bueno_2012_Geosci.ModelDev]          |
-| In-canyon urban vegetation and variable road orientation              | Lemonsu et al. [-@lemonsu_2012_Geosci.ModelDev]      |
-| Green roofs, irrigation of green roofs, gardens and watering of roads | de Munck et al. [-@demunck_2013_Int.J.Climatol]      |
-| Solar panels for hot water and/or photo-voltaic (PV)                  | Masson et al.  [-@masson_2014_Front.Environ.Sci]     |
-| Human behavior related to building energy consumption*                | Schoetter et al. [-@schoetter_2017_Geosci.ModelDev]  |
-| Calculation of urban carbon dioxide fluxes*                           | Goret et al. [-@goret_2019_AtmosphericEnvironment:X] |
+| Modeling capability                                                   | Reference                                                                 |
+| --------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| Urban Surface Energy Balance and Snow                                 | Masson [-@masson_2000_Boundary-LayerMeteorology]                          |
+| Building Energy Model (BEM)                                           | Bueno et al. [-@bueno_2012_Geosci.ModelDev], Pigeon et al. [-@Pigeon2014] |
+| In-canyon urban vegetation and variable road orientation              | Lemonsu et al. [-@lemonsu_2012_Geosci.ModelDev]                           |
+| Green roofs, irrigation of green roofs, gardens and watering of roads | de Munck et al. [-@demunck_2013_Int.J.Climatol]                           |
+| Solar panels for hot water and/or photo-voltaic (PV)                  | Masson et al.  [-@masson_2014_Front.Environ.Sci]                          |
+| Human behavior related to building energy consumption*                | Schoetter et al. [-@schoetter_2017_Geosci.ModelDev]                       |
+| Calculation of urban carbon dioxide fluxes*                           | Goret et al. [-@goret_2019_AtmosphericEnvironment:X]                      |
+| Urban trees*                                                          | Redon et al. [-@Redon2017, -@Redon2020]                                   |
 
 Table: Main capabilities available in the Town Energy Balance (TEB) model [@masson_2000_Boundary-LayerMeteorology]. The number of features available in TEB has increased since its first version published in 2000. (*) Capability not currently available in the TEB software.
 
