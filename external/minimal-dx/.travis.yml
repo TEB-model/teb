@@ -1,0 +1,69 @@
+# MinimalDX version 0.1.1 (https://www.github.com/dmey/minimal-dx).
+# Copyright 2018 D. Meyer and R. Raustad. Licensed under MIT.
+
+matrix:
+  include:
+    - language: python # python needed for before_deploy
+      os: linux
+      dist: xenial
+      python: "3.7"
+      sudo: false
+      addons:
+        apt:
+          packages:
+            - graphviz # for before_deploy
+            - gfortran
+      env:
+        BUILD_TYPE=Debug
+    - language: python # python needed for before_deploy
+      os: linux
+      dist: xenial
+      python: "3.7"
+      sudo: false
+      addons:
+        apt:
+          packages:
+            - graphviz # for before_deploy
+            - gfortran
+      env:
+        BUILD_TYPE=Release
+    - language: minimal
+      os: osx
+      osx_image: xcode11.2
+      env:
+        BUILD_TYPE=Debug
+    - language: minimal
+      os: osx
+      osx_image: xcode11.2
+      env:
+        BUILD_TYPE=Release
+
+before_install:
+  - gfortran --version
+  - python3 --version
+  - pip3 freeze
+  - pip3 install -r tests/requirements.txt
+
+install:
+  - mkdir build && pushd build
+  - cmake -DBUILD_TESTING=ON -DCMAKE_BUILD_TYPE=$BUILD_TYPE -DCMAKE_INSTALL_PREFIX=install ..
+  - cmake --build . --target install -- -j2
+  - popd
+
+script:
+  - pushd tests
+  - python3 run_tests.py
+  - popd
+
+before_deploy:
+  - pip3 install graphviz ford
+  - ford docs/MinimalDX.md
+
+deploy:
+ provider: pages
+ skip_cleanup: true
+ github_token: $GITHUB_TOKEN
+ local_dir: build/docs/html
+ on:
+   branch: master
+   condition: $TRAVIS_OS_NAME = linux && $BUILD_TYPE = Debug

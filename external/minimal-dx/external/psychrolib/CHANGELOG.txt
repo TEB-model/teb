@@ -1,0 +1,25 @@
+2.4.0
+- Add R language support (#49, #53, #54).
+- Update licence headers.
+- General `README.md`/docs improvements.
+
+2.3.0
+- Add `GetTDryBulbFromMoistAirVolumeAndHumRatio`.
+- Add `GetTFahrenheitFromTRankine` and `GetTCelsiusFromTKelvin`.
+- Define `ZERO_FAHRENHEIT_AS_RANKINE` and `ZERO_CELSIUS_AS_KELVIN`.
+
+2.2.0
+- Add C# support with .NET Standard 1.0 (.NET Core >= 1.0 & .NET Framework >= 4.5).
+
+2.1.2
+- Fix coefficient in `dLnPws_` (2 -> 3 -- 1st order derivative T^3 in GetSatVapPres; #40).
+
+2.1.1
+- Use of triple point of water in GetSatVapPres (#36).
+
+2.1.0
+- Add functions to convert between specific humidity and humidity ratio (aka mixing ratio).
+- Add functions to convert to dry bulb temperature or humidity ratio from enthalpy.
+- Restrict minimum value of humidity ratio to `1e-7`
+- Fix bug with `GetTDewPointFromVapPres` not always converging due to discontinuity about the freezing point of water in `GetSatVapPres` formulae.
+- General `README.md`/docs improvements.
