@@ -23,18 +23,15 @@ This enhanced software and platform for TEB (Town Energy Balance; [Masson, 2000]
 
 ## Installation
 
-To build the Town Energy Balance (TEB) executable and library on Windows, Linux and macOS, run the following commands from the command prompt/terminal window:
-
-```bash
-git clone --recurse-submodules https://github.com/teb-model/teb.git
-cd teb
-```
+To build the Town Energy Balance (TEB) executable and library on Windows, Linux and macOS, clone this repository and run the following commands from your command prompt:
 
 ```bash
 mkdir build && cd build
 cmake -DCMAKE_BUILD_TYPE=Release ..
 cmake --build .
 ```
+
+By default, we set the real type to an 8 byte wide. This behaviour is controlled by the optional `USE_REAL8` flag (default ON).
 
 <details>
 <summary>Note for Windows Users</summary>
@@ -50,10 +47,8 @@ mkdir build && cd build
 cmake -G "Visual Studio 15 2017 Win64" ..
 cmake --build .
 ```
-
 </details>
 
-By default, we set the real type to an 8 byte wide. This behaviour is controlled by the optional `USE_REAL8` flag (default ON).
 
 ## Documentation
 
