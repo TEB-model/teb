@@ -6,8 +6,8 @@ Do Not Translate or Localize.
 This project incorporates components from the projects listed below.
 The original copyright notices and the licenses are included below:
 
-1.  dmey/minimal-dx version 0.1.0 (https://www.github.com/dmey/minimal-dx)
-2.  psychrometrics/psychrolib version 2.1.0 (https://github.com/psychrometrics/psychrolib)
+1.  dmey/minimal-dx version 0.1.1 (https://www.github.com/dmey/minimal-dx)
+2.  psychrometrics/psychrolib version 2.4.0 (https://github.com/psychrometrics/psychrolib)
 3.  NREL/EnergyPlusRelease version 8.1.0.009 (https://github.com/NREL/EnergyPlusRelease)
 
 %% dmey/minimal-dx NOTICES AND INFORMATION BEGIN HERE
@@ -40,7 +40,7 @@ END OF dmey/minimal-dx NOTICES AND INFORMATION
 =========================================
 The MIT License (MIT)
 
-Copyright (c) 2018 D. Thevenard and D. Meyer.
+Copyright (c) 2018-2020 The PsychroLib Contributors.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
