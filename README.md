@@ -1,37 +1,29 @@
-# Town Energy Balance (TEB) model [![Build Status](https://travis-ci.com/teb-model/teb.svg?branch=master)](https://travis-ci.com/teb-model/teb)
+<div align="center">
 
-  - [Overview](#overview)
-  - [Installing](#installing)
-    - [Prerequisites](#prerequisites)
-    - [Build instructions for Windows, Linux and macOS](#build-instructions-for-windows-linux-and-macos)
-      - [Note for Windows Users](#note-for-windows-users)
-  - [Documentation](#documentation)
-    - [Software](#software)
-    - [Scientific](#scientific)
-    - [API and code browser](#api-and-code-browser)
-  - [Example application](#example-application)
-  - [Testing](#testing)
-  - [How to cite](#how-to-cite)
-  - [Copyright and license](#copyright-and-license)
-  - [References](#references)
+<!-- omit in toc -->
+# The Town Energy Balance (TEB) model
+
+[![Build Status](https://travis-ci.com/teb-model/teb.svg?branch=master)](https://travis-ci.com/teb-model/teb)
+
+[Overview](#overview) | [Prerequisites](#prerequisites) | [Installation](#installation) | [Documentation](#documentation) | [Example application](#example-application) | [Testing](#testing) | [How to cite](#how-to-cite) | [Contributing](#contributing) | [Copyright and license](#copyright-and-license) | [References](#references)
+</div>
 
 ## Overview
 
 This enhanced software and platform for TEB (Town Energy Balance; [Masson, 2000](https://dx.doi.org/10.1023/A:1002463829265) and subsequent papers), is intended to help scientists and practitioners wishing to use the TEB model in their research as a standalone software application or as a library to calculate the urban surface energy balance at neighborhood scale assuming a simplified canyon geometry.
 
-## Installing
 
-### Prerequisites
+## Prerequisites
 
-- [Git](https://git-scm.com/) version 2.13 or above
-- [CMake](https://cmake.org/) version 3.1.0 or above
-- GNU/Intel/Cray Fortran compiler
-- [Python](https://www.python.org/) 3.7+ [*Optional*: for testing and tutorial]
+- [Git](https://git-scm.com/) >= 2
+- [CMake](https://cmake.org/) >= 3.1
+- A Recent version of GNU/Intel/Cray Fortran compiler
+- [Python](https://www.python.org/) >= 3.7 [*Optional for testing and tutorial*]
 
 
-### Build instructions for Windows, Linux and macOS
+## Installation
 
-To build the Town Energy Balance (TEB) executable and library, run the following commands from the command prompt/terminal window:
+To build the Town Energy Balance (TEB) executable and library on Windows, Linux and macOS, run the following commands from the command prompt/terminal window:
 
 ```bash
 git clone --recurse-submodules https://github.com/teb-model/teb.git
@@ -44,8 +36,8 @@ cmake -DCMAKE_BUILD_TYPE=Release ..
 cmake --build .
 ```
 
-
-#### Note for Windows Users
+<details>
+<summary>Note for Windows Users</summary>
 
 Make sure you have installed the Intel® Visual Studio Integration plugins or CMake will not be able to identify your compiler (`No CMAKE_Fortran_COMPILER could be found` error).
 Make sure that you use Intel® Command-Line Window when launching CMake - The Intel® compiler provides a command-line window with the appropriate environment variables already set (see: [Using the Intel® Command-Line Window](https://software.intel.com/en-us/node/522358)).
@@ -58,6 +50,8 @@ mkdir build && cd build
 cmake -G "Visual Studio 15 2017 Win64" ..
 cmake --build .
 ```
+
+</details>
 
 By default, we set the real type to an 8 byte wide. This behaviour is controlled by the optional `USE_REAL8` flag (default ON).
 
@@ -73,7 +67,7 @@ See the [software documentation](docs/software-docs.md) for a general overview. 
 The complete scientific documentation is included with the [SURFEX scientific documentation](http://www.umr-cnrm.fr/surfex/IMG/pdf/surfex_scidoc_v8.1.pdf).
 
 
-### API and code browser
+### Code browser
 The API documentation and code browser is available at [https://teb-model.github.io/teb](https://teb-model.github.io/teb).
 
 
@@ -118,6 +112,11 @@ The corresponding reference list should be as follows:
 
 
 *please make sure to cite the same version you are using with the correct DOI. For a list of all avalable versions see the list of versions on [Zenodo](XXXX).
+
+
+## Contributing
+
+Please see the [CONTRIBUTING.md](CONTRIBUTING.md) file.
 
 
 ## Copyright and license
