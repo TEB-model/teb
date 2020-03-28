@@ -50,7 +50,7 @@ Here, we present an enhanced software and platform for the TEB model to help sci
 | Solar panels for hot water and/or photo-voltaic (PV)                  | Masson et al.  [-@masson_2014_Front.Environ.Sci]                          |
 | Human behavior related to building energy consumption*                | Schoetter et al. [-@schoetter_2017_Geosci.ModelDev]                       |
 | Calculation of urban carbon dioxide fluxes*                           | Goret et al. [-@goret_2019_AtmosphericEnvironment:X]                      |
-| Urban trees*                                                          | Redon et al. [-@Redon2017, -@Redon2020]                                   |
+| Urban trees*                                                          | Redon et al. [-@Redon2017; -@Redon2020]                                   |
 
 Table: Main capabilities available in the Town Energy Balance (TEB) model [@masson_2000_Boundary-LayerMeteorology]. The number of features available in TEB has increased since its first version published in 2000. (*) Capability not currently available in the TEB software.
 
