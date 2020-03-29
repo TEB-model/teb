@@ -1,0 +1,70 @@
+{
+    "title": "The Town Energy Balance (TEB) model",
+    "description": "<p>This enhanced software and platform for TEB (Town Energy Balance; Masson, 2000 and subsequent papers), is intended to help scientists and practitioners wishing to use the TEB model in their research as a standalone software application or as a library to calculate the urban surface energy balance at neighborhood scale assuming a simplified canyon geometry. For information about TEB, please refer to the <a href='https://github.com/teb-model/teb#readme'>TEB repository on GitHub</a>.</p>",
+    "keywords": [
+        "energy-balance-model",
+        "fortran",
+        "meteorology",
+        "land-surface",
+        "modelling",
+        "energy-model",
+        "environmental-model"
+    ],
+    "upload_type": "software",
+    "access_right": "open",
+    "license": "CECILL-2.1",
+    "creators": [
+        {
+            "orcid": "0000-0001-8807-0545",
+            "name": "Masson, V."
+        },
+        {
+            "orcid": "",
+            "name": "Lemonsu, A."
+        },
+        {
+            "orcid": "",
+            "name": "Pigeon, G."
+        },
+        {
+            "orcid": "0000-0002-2284-4592",
+            "name": "Schoetter, R."
+        },
+        {
+            "orcid": "",
+            "name": "de Munck, C."
+        },
+        {
+            "orcid": "",
+            "name": "Bueno, B."
+        },
+        {
+            "orcid": "",
+            "name": "Faroux, S."
+        },
+        {
+            "orcid": "",
+            "name": "Goret, M."
+        },
+        {
+            "orcid": "",
+            "name": "Redon, E."
+        },
+        {
+            "orcid": "",
+            "name": "Chancibault, K."
+        },
+        {
+            "orcid": "",
+            "name": "Stavropulos-Laffaille, X."
+        },
+        {
+            "orcid": "",
+            "name": "Leroyer, S."
+        },
+        {
+            "orcid": "0000-0002-7071-7547",
+            "name": "Meyer, D."
+        }
+    ]
+}
