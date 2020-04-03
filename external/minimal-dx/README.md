@@ -77,4 +77,4 @@ If you are using _Minimal_**DX**, please make sure to cite the specific version 
 
 ## Copyright and License
 
-Copyright 2018 D. Meyer and R. Raustad. Licensed under [MIT](LICENSE.txt).
+Copyright 2018-2020 D. Meyer and R. Raustad. Licensed under [MIT](LICENSE.txt).

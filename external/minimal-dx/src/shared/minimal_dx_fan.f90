@@ -1,5 +1,5 @@
-! MinimalDX version 0.1.1 (https://www.github.com/dmey/minimal-dx).
-! Copyright 2018 D. Meyer and R. Raustad. Licensed under MIT.
+! MinimalDX version 0.1.2 (https://www.github.com/dmey/minimal-dx).
+! Copyright 2018-2020 D. Meyer and R. Raustad. Licensed under MIT.
 !
 ! Description
 ! This module currently contains one function (SimpleFanOnOff) for simulating a simple on/off fan.
@@ -60,7 +60,7 @@ module MinimalDXFan
   implicit none
 
   contains
-  pure function GetOnOffFan(Mode, MotEff, FanPower, MotInAirFrac, InletAirEnthalpy, AirMassFlowRate) result(OutletAirEnthalpy)
+  function GetOnOffFan(Mode, MotEff, FanPower, MotInAirFrac, InletAirEnthalpy, AirMassFlowRate) result(OutletAirEnthalpy)
     !+ Simplified version of SimOnOffFan subroutine in EnergyPlus
     !+ Given the mode of operation (on or off), fan motor efficiency, power of the fan, fraction of motor heat entering air stream
     !+ moist air enthaply of the air entering the fan, and mass flow rate, it returns the moist air enthaply of the air
