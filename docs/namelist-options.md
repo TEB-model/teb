@@ -1,6 +1,6 @@
 # Namelist options
 
-List of options currently avalable in TEB.
+List of options currently available in TEB.
 
 ## `&dimensions`
 
