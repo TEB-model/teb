@@ -1,5 +1,5 @@
-# MinimalDX version 0.1.1 (https://www.github.com/dmey/minimal-dx).
-# Copyright 2018 D. Meyer and R. Raustad. Licensed under MIT.
+# MinimalDX version 0.1.2 (https://www.github.com/dmey/minimal-dx).
+# Copyright 2018-2020 D. Meyer and R. Raustad. Licensed under MIT.
 
 cmake_minimum_required(VERSION 3.1)
 project(MinimalDX Fortran)
