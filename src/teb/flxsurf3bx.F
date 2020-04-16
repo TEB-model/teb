@@ -1,5 +1,5 @@
 ! MC2 (Mesoscale Compressible Community) model.
-! Copyright (c) 2018-2020 Environment Canada (EC-RPN COMM Group).
+! Copyright (c) 2001-2020 Environment Canada (EC-RPN COMM Group).
 ! Licensed under the MIT license.
 
 ***S/P  FLXSURF3

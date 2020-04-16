@@ -118,7 +118,7 @@ END OF NREL/EnergyPlusRelease NOTICES AND INFORMATION
 =========================================
 The MIT License (MIT)
 
-Copyright (c) 2018-2020 Environment Canada EC-RPN COMM Group.
+Copyright (c) 2001-2020 Environment Canada EC-RPN COMM Group.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
