@@ -1,44 +1,21 @@
-# MinimalDX version 0.1.2 (https://www.github.com/dmey/minimal-dx).
-# Copyright 2018-2020 D. Meyer and R. Raustad. Licensed under MIT.
+# TEB version 4.0.0 (https://github.com/teb-model/teb).
+# Copyright 2018 D. Meyer. Licensed under CeCILL version 2.1.
 
-cmake_minimum_required(VERSION 3.1)
-project(MinimalDX Fortran)
+include(ExternalProject)
 
-option(USE_REAL8 "Use real8 instead of real4 (default)" ON)
-if (NOT USE_REAL8 AND BUILD_TESTING)
-    message(FATAL_ERROR "Tests are only available when building in real8 mode.")
-endif()
+ExternalProject_Add(minimaldx-project
+    GIT_REPOSITORY https://github.com/dmey/minimal-dx.git
+    GIT_TAG origin/master
+    INSTALL_COMMAND ""
+    CMAKE_ARGS
+        -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
+        -DCMAKE_Fortran_COMPILER=${CMAKE_Fortran_COMPILER}
+        -DUSE_REAL8=${USE_REAL8}
+)
 
-if (NOT CMAKE_BUILD_TYPE)
-    message(STATUS "No build type selected, default to Debug")
-    set(CMAKE_BUILD_TYPE "Debug" CACHE STRING "Build type (default Debug)" FORCE)
-endif()
+ExternalProject_Get_Property(minimaldx-project binary_dir)
 
-if(CMAKE_Fortran_COMPILER_ID MATCHES "GNU")
-    set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} -ffree-form -std=gnu")
-    set(CMAKE_Fortran_FLAGS_DEBUG "${CMAKE_Fortran_FLAGS_DEBUG} -fbounds-check -fimplicit-none -fno-unsafe-math-optimizations -frounding-math -fsignaling-nans -ggdb")
-    if (USE_REAL8)
-        set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} -fdefault-real-8 -fdefault-double-8")
-    endif()
-elseif(CMAKE_Fortran_COMPILER_ID MATCHES "Intel")
-    if(WIN32)
-        set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} /stand:f08 /free")
-        set(CMAKE_Fortran_FLAGS_DEBUG "${CMAKE_Fortran_FLAGS_DEBUG} /check:bounds")
-        if (USE_REAL8)
-            set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} /r8")
-        endif()
-    else()
-        set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} -stand f08 -free -implicitnone -fpp")
-        set(CMAKE_Fortran_FLAGS_DEBUG "${CMAKE_Fortran_FLAGS_DEBUG} -check bounds")
-        if (USE_REAL8)
-            set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} -r8")
-        endif()
-    endif()
-else()
-    message(FATAL_ERROR "Only gfortran and ifort compilers supported")
-endif()
-
-add_subdirectory(src)
-if(BUILD_TESTING)
-    add_subdirectory(tests)
-endif()
+add_library(minimaldx INTERFACE)
+add_dependencies(minimaldx minimaldx-project)
+target_include_directories(minimaldx INTERFACE ${binary_dir}/mod)
+target_link_libraries(minimaldx INTERFACE ${binary_dir}/src/${CMAKE_STATIC_LIBRARY_PREFIX}MinimalDX${CMAKE_STATIC_LIBRARY_SUFFIX})

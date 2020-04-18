@@ -34,8 +34,10 @@ endif()
 if(APPLE)
     set(CMAKE_Fortran_ARCHIVE_FINISH "<CMAKE_RANLIB> -c <TARGET>")
 endif()
-
+    
 set(CMAKE_Fortran_MODULE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/mod)
+    
+add_subdirectory(external)
 
 set(src_driver
     src/driver/abor1_sfx.F90
@@ -62,9 +64,6 @@ file(GLOB_RECURSE src_proxi_SVAT "src/proxi_SVAT/*")
 file(GLOB_RECURSE src_solar "src/solar/*")
 file(GLOB_RECURSE src_struct "src/struct/*")
 file(GLOB_RECURSE src_teb "src/teb/*")
-file(GLOB_RECURSE minimal_dx "external/minimal-dx/src/*")
-file(GLOB_RECURSE psychrolib "external/minimal-dx/external/psychrolib/src/fortran/*")
-file(GLOB_RECURSE energy_plus "external/minimal-dx/external/EnergyPlus/src/*")
 
 add_library(teb STATIC
     ${src_driver}
@@ -72,13 +71,13 @@ add_library(teb STATIC
     ${src_solar}
     ${src_struct}
     ${src_teb}
-    ${minimal_dx}
-    ${psychrolib}
-    ${energy_plus}
 )
+
 
 add_executable(driver src/driver/driver.F90)
 target_link_libraries(driver teb)
+
+target_link_libraries(teb minimaldx)
 
 target_include_directories(teb
  INTERFACE ${CMAKE_Fortran_MODULE_DIRECTORY}
