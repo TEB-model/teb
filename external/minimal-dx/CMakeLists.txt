@@ -5,17 +5,17 @@ include(ExternalProject)
 
 ExternalProject_Add(minimaldx-project
     GIT_REPOSITORY https://github.com/dmey/minimal-dx.git
-    GIT_TAG origin/master
-    INSTALL_COMMAND ""
+    GIT_TAG 0.1.3
     CMAKE_ARGS
         -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
         -DCMAKE_Fortran_COMPILER=${CMAKE_Fortran_COMPILER}
         -DUSE_REAL8=${USE_REAL8}
+        -DCMAKE_INSTALL_PREFIX=<INSTALL_DIR>
 )
 
-ExternalProject_Get_Property(minimaldx-project binary_dir)
+ExternalProject_Get_Property(minimaldx-project install_dir)
 
 add_library(minimaldx INTERFACE)
 add_dependencies(minimaldx minimaldx-project)
-target_include_directories(minimaldx INTERFACE ${binary_dir}/mod)
-target_link_libraries(minimaldx INTERFACE ${binary_dir}/src/${CMAKE_STATIC_LIBRARY_PREFIX}MinimalDX${CMAKE_STATIC_LIBRARY_SUFFIX})
+target_include_directories(minimaldx INTERFACE ${install_dir}/mod)
+target_link_libraries(minimaldx INTERFACE ${install_dir}/lib/${CMAKE_STATIC_LIBRARY_PREFIX}MinimalDX${CMAKE_STATIC_LIBRARY_SUFFIX})
