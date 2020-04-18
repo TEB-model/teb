@@ -1,2 +1,0 @@
-dotnet test
-pause
