@@ -64,7 +64,7 @@ file(GLOB_RECURSE src_solar "src/solar/*")
 file(GLOB_RECURSE src_struct "src/struct/*")
 file(GLOB_RECURSE src_teb "src/teb/*")
 
-add_library(teb STATIC
+add_library(teb
     ${src_driver}
     ${src_proxi_SVAT}
     ${src_solar}
