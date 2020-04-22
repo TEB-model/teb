@@ -168,7 +168,7 @@ USE PARKIND1  ,ONLY : JPRB
 USE MODD_CSTS, ONLY : XTT
 !
 use MinimalDXCoolingDriver, only: SimMinimalDXCooling
-use psychrolib, only: GetHumRatioFromSpecificHum, GetSpecificHumFromHumRatio
+use mode_psychrolib, only: SetUnitSystem, SI, GetHumRatioFromSpecificHum, GetSpecificHumFromHumRatio
 !
 IMPLICIT NONE
 !
@@ -272,7 +272,10 @@ REAL(KIND=JPRB) :: ZHOOK_HANDLE
 !
 ! Local variable used for the coupling with MinimalDX
 REAL :: OutdoorHumRatio, InletHumRatio, OutletHumRatio, OutdoorTDryBulb, InletTDryBulb, OutletTemperature
-
+!
+! Psychrolib: use International System of Units
+call SetUnitSystem(SI)
+!
 !!REAL :: ZEXPL = 0.5 !explicit coefficient for internal temperature evol.
 !!REAL :: ZIMPL = 0.5 !implicit coef..
 !
