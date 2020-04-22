@@ -5,7 +5,7 @@ include(ExternalProject)
 
 ExternalProject_Add(minimaldx-project
     GIT_REPOSITORY https://github.com/dmey/minimal-dx.git
-    GIT_TAG dmey/cmake
+    GIT_TAG master
     CMAKE_ARGS
         -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
         -DCMAKE_Fortran_COMPILER=${CMAKE_Fortran_COMPILER}
