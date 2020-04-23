@@ -68,7 +68,7 @@ The API documentation and code browser is available at [https://teb-model.github
 
 ## Example application
 
-[`tutorial.ipynb`](examples/CAPITOUL/tutorial.ipynb) provides a simple tutorial detailing how TEB can be used to to estimate the buildings' energy demand for cooling due to Air Conditioning (AC) using data and parameters to reproduce the CAPITOUL (Canopy and Aerosol Particles Interactions in TOulouse Urban Layer; Masson et al., 2008) campaign.
+[`tutorial.ipynb`](examples/CAPITOUL/tutorial.ipynb) provides a simple tutorial detailing how TEB can be used to to estimate the buildings' energy demand for cooling using sample data and parameters from the CAPITOUL (Canopy and Aerosol Particles Interactions in TOulouse Urban Layer; Masson et al., 2008) campaign.
 
 
 ## Testing
@@ -92,7 +92,7 @@ python tests/test.py --build_type=Debug --case=integration
 
 ## How to cite
 
-When using the TEB software, please cite both model, and software (with version) as follow:
+When using the TEB software, please cite both model, and software (with version) as follows:
 
 | Model        | Software | Version*                   |
 | ------------ | -------- | -------------------------- |

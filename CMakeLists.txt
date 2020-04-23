@@ -56,7 +56,6 @@ set(src_driver
     src/driver/ol_time_interp_atm.F90
     src/driver/open_close_bin_asc_forc.F90
     src/driver/read_surf_atm.F90
-
     src/driver/modd_wrf_teb_driver.F90
 )
 
@@ -65,7 +64,7 @@ file(GLOB_RECURSE src_solar "src/solar/*")
 file(GLOB_RECURSE src_struct "src/struct/*")
 file(GLOB_RECURSE src_teb "src/teb/*")
 
-add_library(teb STATIC
+add_library(teb
     ${src_driver}
     ${src_proxi_SVAT}
     ${src_solar}
