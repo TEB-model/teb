@@ -56,7 +56,7 @@ This section includes links to software and model documentation. If you are new 
 
 ### Software
 
-See the [software documentation](docs/software-docs.md) for a general overview. For configuration options avalable at runtime please refer to [namelist options](docs/namelist-options.md).
+See the [software documentation](docs/software-docs.md) for a general overview. For configuration options available at runtime please refer to [namelist options](docs/namelist-options.md).
 
 ### Scientific
 The complete scientific documentation is included with the [SURFEX scientific documentation](http://www.umr-cnrm.fr/surfex/IMG/pdf/surfex_scidoc_v8.1.pdf).
@@ -68,7 +68,7 @@ The API documentation and code browser is available at [https://teb-model.github
 
 ## Example application
 
-[`tutorial.ipynb`](examples/CAPITOUL/tutorial.ipynb) provides a simple tutorial detailing how TEB can be used to to estimate the buildings' energy demand for cooling due to Air Conditioning (AC) using data and parameters to reproduce the CAPITOUL (Canopy and Aerosol Particles Interactions in TOulouse Urban Layer; Masson et al., 2008) campaign.
+[`tutorial.ipynb`](examples/CAPITOUL/tutorial.ipynb) provides a simple tutorial detailing how TEB can be used to to estimate the buildings' energy demand for cooling using sample data and parameters from the CAPITOUL (Canopy and Aerosol Particles Interactions in TOulouse Urban Layer; Masson et al., 2008) campaign.
 
 
 ## Testing
@@ -92,7 +92,7 @@ python tests/test.py --build_type=Debug --case=integration
 
 ## How to cite
 
-When using the TEB software, please cite both model, and software (with version) as follow:
+When using the TEB software, please cite both model, and software (with version) as follows:
 
 | Model        | Software | Version*                   |
 | ------------ | -------- | -------------------------- |
@@ -106,7 +106,7 @@ The corresponding reference list should be as follows:
 > XXXX *In preparation*
 
 
-*please make sure to cite the same version you are using with the correct DOI. For a list of all avalable versions see the list of versions on [Zenodo](XXXX).
+*please make sure to cite the same version you are using with the correct DOI. For a list of all available versions see the list of versions on [Zenodo](XXXX).
 
 
 ## Contributing
