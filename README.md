@@ -63,7 +63,7 @@ The complete scientific documentation is included with the [SURFEX scientific do
 
 
 ### Code browser
-The API documentation and code browser is available at [https://teb-model.github.io/teb](https://teb-model.github.io/teb).
+The code browser is available at [https://teb-model.github.io/teb](https://teb-model.github.io/teb).
 
 
 ## Example application
