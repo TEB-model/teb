@@ -1,6 +1,0 @@
-C MC2 (Mesoscale Compressible Community) model.
-C Copyright (c) 2001-2020 Environment Canada (EC-RPN COMM Group).
-C Licensed under the MIT license.
-
-      REAL AS,ASX,CI,BS,BETA,FACTN,HMIN,ANGMAX,RAC3
-      COMMON / SURFCON / AS,ASX,CI,BS,BETA,FACTN,HMIN,ANGMAX,RAC3
