@@ -39,7 +39,7 @@ module mode_psychrolib
   !+
   !+ Modifications from original PsychroLib version 2.5.0
   !+ 20200421: `psychrolib` -> `mode_psychrolib` to avoid clashes with psychrolib used in MinimalDX.
-  !+            PsychroLib is used by both TEB and MinimalDX but each use their own.            
+  !+            PsychroLib is used by both TEB and MinimalDX but each use their own separate module file.            
 
 
   implicit none

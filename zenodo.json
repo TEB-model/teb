@@ -1,6 +1,6 @@
 {
     "title": "The Town Energy Balance (TEB) model",
-    "description": "<p>This enhanced software and platform for TEB (Town Energy Balance; Masson, 2000 and subsequent papers), is intended to help scientists and practitioners wishing to use the TEB model in their research as a standalone software application or as a library to calculate the urban surface energy balance at neighborhood scale assuming a simplified canyon geometry. For information about TEB, please refer to the <a href='https://github.com/teb-model/teb#readme'>TEB repository on GitHub</a>.</p>",
+    "description": "<p>This enhanced software and platform for TEB (Town Energy Balance; <a href='https://doi.org/10.1023/A:1002463829265'>Masson, 2000</a> and subsequent papers), is intended to help scientists and practitioners wishing to use the TEB model in their research as a standalone software application or as a library to calculate the urban surface energy balance at neighborhood scale assuming a simplified canyon geometry. For information about TEB, please refer to the <a href='https://github.com/teb-model/teb#readme'>TEB repository on GitHub</a>.</p>",
     "keywords": [
         "energy-balance-model",
         "fortran",
