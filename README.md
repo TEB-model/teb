@@ -32,7 +32,7 @@ cmake -DCMAKE_BUILD_TYPE=Release ..
 cmake --build .
 ```
 
-By default, we set the real type to an 8 byte wide. This behaviour is controlled by the optional `USE_REAL8` flag (default ON).
+By default, we set the real type to an 8 byte wide. This behavior is controlled by the optional `USE_REAL8` flag (default ON).
 
 <details>
 <summary>Note for Windows Users</summary>
@@ -53,14 +53,14 @@ cmake --build .
 
 ## Documentation
 
-This section includes links to software and model documentation. If you are new to TEB and simply looking to easily get started, please refer to the [Example application](#example-application) instead.
+This section includes links to software and model documentation. If you are new to TEB and simply looking to easily get started, please refer to the [example application](#example-application) instead.
 
 ### Software
 
-See the [software documentation](docs/software-docs.md) for a general overview. For configuration options available at runtime please refer to [namelist options](docs/namelist-options.md).
+See [software documentation](docs/software-docs.md) for a general overview. For configuration options available at runtime please refer to [namelist options](docs/namelist-options.md).
 
 ### Scientific
-The complete scientific documentation is included with the [SURFEX scientific documentation](http://www.umr-cnrm.fr/surfex/IMG/pdf/surfex_scidoc_v8.1.pdf).
+The complete scientific documentation is included in the [SURFEX scientific documentation](http://www.umr-cnrm.fr/surfex/IMG/pdf/surfex_scidoc_v8.1.pdf).
 
 
 ### Code browser

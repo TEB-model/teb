@@ -1,6 +1,6 @@
 # CAPITOUL case
 
-In this folder data are provided to run TEB (Masson, 2000) with sample input data from the CAPITOUL (Canopy and Aerosol Particles Interactions in TOulouse Urban Layer; Masson et al., 2008) campaign. Data are provided for demonstration purposes only and are not quality controlled (i.e. should not be used to conduct scientific experiments). Both data and tutorial are only meant to guide the user through setting up a simple experiment in TEB. If you are looking to conduct a scientific experiment, please download and process the data yourself (see the [software documentation page](../../docs/software-docs.md)) and amend the input namelist accordingly (see the [namelist options page](../../docs/namelist-options)). 
+In this folder data are provided to run TEB (Masson, 2000) with sample input data from the CAPITOUL (Canopy and Aerosol Particles Interactions in TOulouse Urban Layer; Masson et al., 2008) campaign. Data are provided for demonstration purposes only and are not quality controlled (i.e. should not be used to conduct scientific experiments). Both data and tutorial are only meant to guide the user through setting up a simple experiment in TEB. If you are looking to conduct a scientific experiment, please download and process the data yourself (see the [software documentation page](../../docs/software-docs.md)) and amend the input namelist accordingly (see the [namelist options page](../../docs/namelist-options.md)). 
 
 ## Install Python packages
 
