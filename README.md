@@ -3,7 +3,7 @@
 <!-- omit in toc -->
 # The Town Energy Balance (TEB) model
 
-[![Build Status](https://travis-ci.com/teb-model/teb.svg?branch=master)](https://travis-ci.com/teb-model/teb)
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/TEB-model/teb) [![Build Status](https://travis-ci.com/teb-model/teb.svg?branch=master)](https://travis-ci.com/teb-model/teb) [![DOI](https://joss.theoj.org/papers/10.21105/joss.02008/status.svg)](https://doi.org/10.21105/joss.02008) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3887080.svg)](https://doi.org/10.5281/zenodo.3887080)
 
 [Overview](#overview) | [Prerequisites](#prerequisites) | [Installation](#installation) | [Documentation](#documentation) | [Example application](#example-application) | [Testing](#testing) | [How to cite](#how-to-cite) | [Contributing](#contributing) | [Copyright and license](#copyright-and-license)
 </div>
@@ -97,16 +97,16 @@ When using the TEB software, please cite both model, and software (with version)
 
 | Physical model                                          | This software                                      | Version*       |
 | ------------------------------------------------------- | -------------------------------------------------- | -------------- |
-| [Masson, 2000](https://doi.org/10.1023/A:1002463829265) | [Meyer, 2020](https://doi.org/10.21105.joss.02008) | [see Zenodo]() |
+| [Masson, 2000](https://doi.org/10.1023/A:1002463829265) | [Meyer, 2020](https://doi.org/10.21105/joss.02008) | [see Zenodo](https://doi.org/10.5281/zenodo.3887080) |
 
 
 The corresponding reference list should be as follows:
 
 > Masson, V., 2000: A Physically-Based Scheme For The Urban Energy Budget In Atmospheric Models. Boundary-Layer Meteorology, 94, 357–397, https://doi.org/10.1023/A:1002463829265.
 
-> Meyer, D., Schoetter, R., Masson, V., Grimmond, S., 2020: Enhanced software and platform for the Town Energy Balance (TEB) model. Journal of Open Source Software. https://doi.org/10.21105.joss.02008.
+> Meyer, D., Schoetter, R., Masson, V., Grimmond, S., 2020: Enhanced software and platform for the Town Energy Balance (TEB) model. Journal of Open Source Software, 5(50), 2008. https://doi.org/10.21105/joss.02008.
 
-*please make sure to cite the same version you are using with the correct DOI. For a list of all available versions see the list of versions on [Zenodo]().
+*please make sure to cite the same version you are using with the correct DOI. For a list of all available versions see the list of versions on [Zenodo](https://doi.org/10.5281/zenodo.3887080).
 
 
 ## Contributing
