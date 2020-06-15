@@ -1,70 +1,73 @@
 {
     "title": "The Town Energy Balance (TEB) model",
-    "description": "<p>This enhanced software and platform for TEB (Town Energy Balance; <a href='https://doi.org/10.1023/A:1002463829265'>Masson, 2000</a> and subsequent papers), is intended to help scientists and practitioners wishing to use the TEB model in their research as a standalone software application or as a library to calculate the urban surface energy balance at neighborhood scale assuming a simplified canyon geometry. For information about TEB, please refer to the <a href='https://github.com/teb-model/teb#readme'>TEB repository on GitHub</a>.</p>",
+    "description": "<p>This enhanced software and platform for TEB (Town Energy Balance; <a href=\"https://doi.org/10.1023/A:1002463829265\">Masson, 2000</a> and subsequent papers), is intended to help scientists and practitioners wishing to use the TEB model in their research as a standalone software application or as a library to calculate the urban surface energy balance at neighborhood scale assuming a simplified canyon geometry. For information about TEB, please refer to the <a href=\"https://github.com/teb-model/teb#readme\">TEB repository on GitHub</a>.</p>", 
     "keywords": [
-        "energy-balance-model",
-        "fortran",
-        "meteorology",
-        "land-surface",
-        "modelling",
-        "energy-model",
+        "energy-balance-model", 
+        "fortran", 
+        "meteorology", 
+        "land-surface", 
+        "modelling", 
+        "energy-model", 
         "environmental-model"
-    ],
-    "upload_type": "software",
-    "access_right": "open",
-    "license": "CECILL-2.1",
+      ],
     "creators": [
         {
-            "orcid": "0000-0001-8807-0545",
-            "name": "Masson, V."
-        },
+          "orcid": "0000-0001-8807-0545", 
+          "name": "Masson, V."
+        }, 
         {
-            "orcid": "",
-            "name": "Lemonsu, A."
-        },
+          "name": "Lemonsu, A."
+        }, 
         {
-            "orcid": "",
-            "name": "Pigeon, G."
-        },
+          "name": "Pigeon, G."
+        }, 
         {
-            "orcid": "0000-0002-2284-4592",
-            "name": "Schoetter, R."
-        },
+          "orcid": "0000-0002-2284-4592", 
+          "name": "Schoetter, R."
+        }, 
         {
-            "orcid": "",
-            "name": "de Munck, C."
-        },
+          "name": "de Munck, C."
+        }, 
         {
-            "orcid": "",
-            "name": "Bueno, B."
-        },
+          "name": "Bueno, B."
+        }, 
         {
-            "orcid": "",
-            "name": "Faroux, S."
-        },
+          "name": "Faroux, S."
+        }, 
         {
-            "orcid": "",
-            "name": "Goret, M."
-        },
+          "name": "Goret, M."
+        }, 
         {
-            "orcid": "",
-            "name": "Redon, E."
-        },
+          "name": "Redon, E."
+        }, 
         {
-            "orcid": "",
-            "name": "Chancibault, K."
-        },
+          "name": "Chancibault, K."
+        }, 
         {
-            "orcid": "",
-            "name": "Stavropulos-Laffaille, X."
-        },
+          "name": "Stavropulos-Laffaille, X."
+        }, 
         {
-            "orcid": "",
-            "name": "Leroyer, S."
-        },
+          "name": "Leroyer, S."
+        }, 
         {
-            "orcid": "0000-0002-7071-7547",
-            "name": "Meyer, D."
+          "orcid": "0000-0002-7071-7547", 
+          "name": "Meyer, D."
         }
-    ]
+      ],
+      "access_right": "open", 
+      "resource_type": {
+        "type": "software", 
+        "title": "Software"
+      },
+      "license": {
+        "id": "CECILL-2.1"
+      },
+      "related_identifiers": [
+        {
+          "scheme": "doi", 
+          "identifier": "10.21105/joss.02008", 
+          "relation": "isSupplementTo", 
+          "resource_type": "publication-article"
+        }
+      ]
 }
