@@ -11,34 +11,34 @@ standard_quantity_names = {
         "symbol": "T"
     },
     "Relative humidity": {
-        "unit": "%",
+        "unit": "\%",
         "symbol": "\\rm RH"
     },
-    "Total sky shortwave radiation flux density": {
+    "Downwelling shortwave radiation flux density": {
         "unit": "\\rm W\ m^{-2}",
-        "symbol": "S⇊"
+        "symbol": "S^{\\downarrow}"
     },
-    "Sky diffuse shortwave radiation flux density": {
+    "Downwelling diffuse shortwave radiation flux density": {
         "unit": "\\rm W\ m^{-2}",
-        "symbol": "S⇓"
+        "symbol": "S^{\\downarrow\\Downarrow}"
     },
-    "Sky direct shortwave radiation flux density": {
+    "Downwelling direct shortwave radiation flux density": {
         "unit": "\\rm W\ m^{-2}",
-        "symbol": "S↓"
+        "symbol": "S^{\\downarrow\\downarrow}"
     },
-    "Surface reflected shortwave radiation flux density": {
+    "Upwelling shortwave radiation flux density": {
         "unit": "\\rm W\ m^{-2}",
-        "symbol": "S↑"
+        "symbol": "S^{\\uparrow}"
     },
-    "Sky longwave radiation flux density": {
+    "Downwelling longwave radiation flux density": {
         "unit": "\\rm W\ m^{-2}",
-        "symbol": "L↓"
+        "symbol": "L^{\\downarrow}"
     },
-    "Surface longwave radiation flux density": {
+    "Upwelling longwave radiation flux density": {
         "unit": "\\rm W\ m^{-2}",
-        "symbol": "L↑"
+        "symbol": "L^{\\uparrow}"
     },
-    "Surface net radiative flux density": {
+    "Net all-wave radiation flux density": {
         "unit": "\\rm W\ m^{-2}",
         "symbol": "Q^*"
     },
@@ -58,33 +58,37 @@ standard_quantity_names = {
         "unit": "\\rm g\ kg^{-1}",
         "symbol": "r"
     },
-    "Surface turbulent sensible heat flux density": {
+    "Turbulent sensible heat flux density": {
         "unit": "\\rm W\ m^{-2}",
-        "symbol": "H"
+        "symbol": "Q_H"
     },
-    "Surface turbulent latent heat flux density": {
+    "Turbulent latent heat flux density": {
         "unit": "\\rm W\ m^{-2}",
-        "symbol": "LE"
+        "symbol": "Q_E"
     },
-    "Rain rate": {
-        "unit": "\\rm mm\ h^{-1}",
-        "symbol": "RR"
+    "Rainfall rate": {
+        "unit": "\\rm kg\ m^{-2}\ s^{-1}",
+        "symbol": "\\rm RR"
     },
-    "Buildings\' energy demand for cooling": {
+    "Snowfall rate": {
+        "unit": "\\rm kg\ m^{-2}\ s^{-1}",
+        "symbol": "\\rm SR"
+    },
+    "Buildings\' power demand for cooling": {
         "unit": "\\rm W\ m^{-2}",
-        "symbol": "E_{\\rm cooling}"
+        "symbol": "Q_{\\rm cooling}"
     },
-    "Buildings\' energy demand for heating": {
+    "Buildings\' power demand for heating": {
         "unit": "\\rm W\ m^{-2}",
-        "symbol": "E_{\\rm heating}"
+        "symbol": "Q_{\\rm heating}"
     },
-    "Thermal energy production of solar panels on roofs": {
+    "Thermal power production of solar panels on roofs": {
         "unit": "\\rm W\ m^{-2}",
-        "symbol": "Q_{\\rm solar}"
+        "symbol": "Q_{\\rm thermal}"
     },
-    "Electrical energy production of solar panels on roofs": {
+    "Electrical power production of solar panels on roofs": {
         "unit": "\\rm W\ m^{-2}",
-        "symbol": "E_{\\rm solar}"
+        "symbol": "Q_{\\rm electrical}"
     },
     "Dry-bulb air temperature at half building height": {
         "unit": "\\rm K",
@@ -126,13 +130,13 @@ standard_quantity_names = {
         "unit": "1",
         "symbol": "\\alpha"
     },
-    "Surface evaporative moisture flux density": {
+    "Evaporation mass flux density": {
         "unit": "\\rm kg\ m^{-2}\ s^{-1}",
         "symbol": "E"
     },
-    "Surface ground heat flux density": {
+    "Ground heat flux density": {
         "unit": "\\rm W\ m^{-2}",
-        "symbol": "G"
+        "symbol": "Q_G"
     },
     "Surface (skin) temperature": {
         "unit": "1",
@@ -155,14 +159,14 @@ standard_quantity_names = {
 
 teb_quantity_names_inputs = {
     'CO2 concentration': 'CO2',
-    'Sky direct shortwave radiation flux density': 'DIR_SW',
+    'Downwelling direct shortwave radiation flux density': 'DIR_SW',
     'Wind direction': 'DIR',
-    'Sky longwave radiation flux density': 'LW',
+    'Downwelling longwave radiation flux density': 'LW',
     'Atmospheric pressure': 'PS',
     'Specific humidity': 'QA',
-    'Rain rate': 'RAIN',
-    'Sky diffuse shortwave radiation flux density': 'SCA_SW',
-    'Snow rate': 'SNOW',
+    'Rainfall rate': 'RAIN',
+    'Downwelling diffuse shortwave radiation flux density': 'SCA_SW',
+    'Snowfall rate': 'SNOW',
     'Dry-bulb air temperature': 'TA',
     'Wind speed': 'WIND'
 }
@@ -172,20 +176,20 @@ teb_quantity_names_output = {
     'Canyon horizontal wind speed': 'U_CANYON',
     'Canyon specific humidity': 'Q_CANYON',
     'Canyon horizontal wind direction': 'DIR_CANYON',
-    'Buildings\' energy demand for cooling': 'HVAC_COOL',
-    'Buildings\' energy demand for heating': 'HVAC_HEAT',
-    'Surface net radiative flux density': 'RN_TOWN',
-    'Surface turbulent sensible heat flux density': 'H_TOWN',
-    'Surface turbulent latent heat flux density': 'LE_TOWN',
-    'Surface evaporative moisture flux density': 'EVAP_TOWN',
-    'Surface ground heat flux density': 'GFLUX_TOWN',
+    'Buildings\' power demand for cooling': 'HVAC_COOL',
+    'Buildings\' power demand for heating': 'HVAC_HEAT',
+    'Net all-wave radiation flux density': 'RN_TOWN',
+    'Turbulent sensible heat flux density': 'H_TOWN',
+    'Turbulent latent heat flux density': 'LE_TOWN',
+    'Evaporation mass flux density': 'EVAP_TOWN',
+    'Ground heat flux density': 'GFLUX_TOWN',
     'Specific humidity': 'Q_TOWN',
     'Surface friction velocity': 'USTAR_TOWN',
     'Surface albedo': 'ALB_TOWN',
     'Surface emissivity': 'EMIS_TOWN',
     'Surface (skin) temperature': 'TS_TOWN',
-    'Thermal energy production of solar panels on roofs': 'THER_PROD_PANEL',
-    'Electrical energy production of solar panels on roofs': 'PHOT_PROD_PANEL',
+    'Thermal power production of solar panels on roofs': 'THER_PROD_PANEL',
+    'Electrical power production of solar panels on roofs': 'PHOT_PROD_PANEL',
     'Canyon atmospheric pressure': 'P_CANYON',
     'Buildings\' internal dry-bulb air temperature': 'TI_BLD',
     'Road surface (skin) temperature': 'T_ROAD1',
