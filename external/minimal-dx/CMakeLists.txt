@@ -1,11 +1,11 @@
-# TEB version 4.0.0 (https://github.com/teb-model/teb).
+# TEB version 4.0.1 (https://github.com/teb-model/teb).
 # Copyright 2018 D. Meyer. Licensed under CeCILL version 2.1.
 
 include(ExternalProject)
 
 ExternalProject_Add(minimaldx-project
     GIT_REPOSITORY https://github.com/dmey/minimal-dx.git
-    GIT_TAG 0.1.3
+    GIT_TAG 0.1.4
     CMAKE_ARGS
         -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
         -DCMAKE_Fortran_COMPILER=${CMAKE_Fortran_COMPILER}

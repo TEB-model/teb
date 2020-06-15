@@ -69,7 +69,7 @@ The code browser is available at [https://teb-model.github.io/teb](https://teb-m
 
 ## Example application
 
-To get started with TEB, see [`examples/CAPITOUL/README.md`](examples/CAPITOUL/README.md). The folder contains a simple tutorial in [Jupyter Notebook](https://jupyter.org/) to estimate the buildings' energy demand for cooling using TEB and data and parameters from the CAPITOUL (Canopy and Aerosol Particles Interactions in TOulouse Urban Layer; [Masson et al., 2008](https://doi.org/10.1007/s00703-008-0289-4)) campaign.
+To get started with TEB, see [`examples/CAPITOUL/README.md`](examples/CAPITOUL/README.md). The folder contains a simple tutorial in [Jupyter Notebook](https://jupyter.org/) to estimate the buildings' power demand for cooling using TEB and data and parameters from the CAPITOUL (Canopy and Aerosol Particles Interactions in TOulouse Urban Layer; [Masson et al., 2008](https://doi.org/10.1007/s00703-008-0289-4)) campaign.
 
 
 ## Testing

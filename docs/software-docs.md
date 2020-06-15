@@ -60,9 +60,9 @@ The following files are produced by the TEB `driver`.
 
 | Name         | Description                                      | Unit  |
 | ------------ | ------------------------------------------------ | ----- |
-| RN_TOWN.txt  | Surface net radiative flux density               | W/m²  |
-| H_TOWN.txt   | Surface turbulent sensible heat flux density     | W/m²  |
-| LE_TOWN.txt  | Surface turbulent latent heat flux density       | W/m²  |
+| RN_TOWN.txt  | Net all-wave radiation flux density              | W/m²  |
+| H_TOWN.txt   | Turbulent sensible heat flux density             | W/m²  |
+| LE_TOWN.txt  | Turbulent latent heat flux density               | W/m²  |
 | P_CANYON.txt | Pressure at road level                           | Pa    |
 | Q_CANYON.txt | Specific humidity at half building height        | kg/kg |
 | T_CANYON.txt | Dry-bulb air temperature at half building height | K     |
@@ -76,17 +76,17 @@ The following files are produced by the TEB `driver`.
 
 If building energy model option is activated (`CBEM = "BEM"`) in `input.nml`, the following outputs will also be present in W/m² of buildings ground surface  (not by m² of floor).
 
-| Name          | Description           | Unit          |
-| ------------- | --------------------- | ------------- |
-| HVAC_COOL.txt | Cooling Energy Demand | W/m² building |
-| HVAC_HEAT.txt | Heating Energy Demand | W/m² building |
+| Name          | Description          | Unit          |
+| ------------- | -------------------- | ------------- |
+| HVAC_COOL.txt | Cooling power demand | W/m² building |
+| HVAC_HEAT.txt | Heating power demand | W/m² building |
 
 If the solar panel option is activated (`LSOLAR_PANEL = .TRUE.`) in `input.nml`, the following outputs will also be present in W/m² panel.
 
-| Name                | Description                                  | Unit       |
-| ------------------- | -------------------------------------------- | ---------- |
-| THER_PROD_PANEL.txt | Thermal energy production of solar panels    | W/m² panel |
-| PHOT_PROD_PANEL.txt | Electrical energy production of solar panels | W/m² panel |
+| Name                | Description                                 | Unit       |
+| ------------------- | ------------------------------------------- | ---------- |
+| THER_PROD_PANEL.txt | Thermal power production of solar panels    | W/m² panel |
+| PHOT_PROD_PANEL.txt | Electrical power production of solar panels | W/m² panel |
 
 
 ## How to run TEB
