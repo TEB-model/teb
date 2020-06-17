@@ -54,11 +54,7 @@
           "name": "Meyer, D."
         }
       ],
-      "access_right": "open", 
-      "resource_type": {
-        "type": "software", 
-        "title": "Software"
-      },
+      "access_right": "open",
       "license": {
         "id": "CECILL-2.1"
       },
