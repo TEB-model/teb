@@ -16,15 +16,15 @@ List of options currently available in TEB.
 
 | Name              | Option          | Unit            | Description                                                 | Example     |
 | ----------------- | --------------- | --------------- | ----------------------------------------------------------- | ----------- |
-| `XTSTEP_SURF`     | -               | s               | Input data time step                                        | `300.`      |
+| `XTSTEP_SURF`     | -               | s               | Time step used in TEB (s)                                   | `300.`      |
 | `IYEAR`           | -               | Year            | Current year (UTC)                                          | `2004`      |
 | `IMONTH`          | -               | Month           | Current month (UTC)                                         | `2`         |
 | `IDAY`            | -               | Day             | Current day (UTC)                                           | `20`        |
-| `ZTIME_START`     | -               | s               | Time at start of the run                                    | `0.`        |
+| `ZTIME_START`     | -               | s               | Time at start of the run (UTC) (s)                          | `82800.`    |
 | `ZLON`            | -               | deg             | Longitude                                                   | `1.3`       |
 | `ZLAT`            | -               | deg             | Latitude                                                    | `43.484`    |
 | `INB_STEP_ATM`    | -               | s               | Number of time steps in input data                          | `17999`     |
-| `INB_ATM`         | -               | -               | Time-step                                                   | `6`         |
+| `INB_ATM`         | -               | -               | Number of TEB calls. Output time-step=XTSTEP_SURF*INB_ATM   | `6`         |
 | `KSW`             | -               | -               | Number of spectral bands in SW forcing                      | `1`         |
 | `ZZREF`           | -               | m               | Atmospheric forcing height above roof level                 | `28.`       |
 | `CBEM`            |                 | -               | Building energy Model                                       | `DEF`       |
