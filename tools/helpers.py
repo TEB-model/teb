@@ -47,14 +47,17 @@ def run_teb(path_to_case_dir: Path, path_to_exe: Path, patch_nml) -> None:
 def get_date_params(path_to_nml: Path):
     case_nml = f90nml.read(path_to_nml)
     params = case_nml['parameters']
-    freq = datetime.timedelta(seconds=params['xtstep_surf'])
+    teb_time_step = params['xtstep_surf']
+    teb_driver_calls = params['inb_atm']
+    teb_output_freq = teb_time_step * teb_driver_calls
+    freq = datetime.timedelta(seconds=teb_output_freq)
     sec_from_start = datetime.timedelta(seconds=params['ztime_start'])
     start = datetime.datetime(year=params['iyear'], month=params['imonth'], day=params['iday']) + sec_from_start
     return start, freq
 
 
 def load_txt(path_to_files: Path, start: datetime.datetime,
-                            freq: datetime.timedelta, tz: str) -> pd.DataFrame:
+                            freq: datetime.timedelta, local_tz: str) -> pd.DataFrame:
     ts_list = []
     for filename in path_to_files.glob('*.txt'):
         ts = pd.read_csv(filename, delim_whitespace=True, skip_blank_lines=True,
@@ -62,9 +65,11 @@ def load_txt(path_to_files: Path, start: datetime.datetime,
         end = start + freq * (len(ts.index) - 1)
         rng = pd.date_range(start=start, end=end, freq=freq)
         ts = ts.set_index(rng)
-        ts = ts.tz_localize(tz=tz)
+        ts = ts.tz_localize(tz='UTC')
         ts_list.append(ts)
     df = pd.concat(ts_list, axis=1)
+    if local_tz:
+        df.index = df.index.tz_convert(local_tz)
     return df
 
 def build_teb(commit_id: str, build_type: str):
