@@ -18,9 +18,8 @@ INB_STEP_ATM = 17999    ! Number of time steps in input data
 INB_ATM     = 6         ! number time the driver calls the TEB
                         ! routines during a forcing time-step
                         ! --> it defines the time-step for TEB
-                        ! The output time step in TEB is calculated
-                        ! as XTSTEP_SURF * INB_ATM. The output
-                        ! time step should be equal to the 
+                        ! Forcing time step=XTSTEP_SURF*INB_ATM.
+                        ! The output time step should be equal to the 
                         ! native time step of the input data.
 KSW         = 1         ! number of spectral bands in SW forcing
 ZZREF       = 28.       ! Atm. Forcing height above roof level
