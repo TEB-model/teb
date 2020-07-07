@@ -144,7 +144,7 @@ def checkout_run_load(commit_id: str, case_name: str, build_type: str, patch_nml
     path_to_case_dir = prepare_case(commit_id, case_name)
     run_teb(path_to_case_dir, path_to_exe, patch_nml)
     start, freq = get_date_params(path_to_case_dir / 'input.nml')
-    df = load_txt(path_to_case_dir / 'output', start, freq, tz='UTC')
+    df = load_txt(path_to_case_dir / 'output', start, freq, local_tz='UTC')
     return df
 
 def compare(ref_id: str, trial_id: str, case_name: str, build_type: str, patch_nml=[None, None], make=[False, False], allow_failure=False) -> pd.DataFrame:
