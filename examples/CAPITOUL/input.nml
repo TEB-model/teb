@@ -6,17 +6,21 @@ NROAD_LAYER = 5          ! number of road layers
 /
 
 &parameters
-XTSTEP_SURF = 1800.      ! Input data time step in s
+XTSTEP_SURF = 300.      ! Time step used in TEB (s)
 IYEAR       = 2004      ! Current year (UTC)
 IMONTH      = 2         ! Current month (UTC)
-IDAY        = 20        ! Current day (UTC)
-ZTIME_START = 0.        ! Time at start of the run (s)
+IDAY        = 19        ! Current day (UTC)
+ZTIME_START = 82800.    ! Time at start of the run (UTC) (s)
+                        ! I.e. 23:00 as Toulouse time zone is UTC + 1
 ZLON        = 1.3       ! Longitude (deg)
 ZLAT        = 43.484    ! Latitude (deg)
-INB_STEP_ATM = 17999     ! Number of time steps in input data
+INB_STEP_ATM = 17999    ! Number of time steps in input data
 INB_ATM     = 6         ! number time the driver calls the TEB
                         ! routines during a forcing time-step
                         ! --> it defines the time-step for TEB
+                        ! Forcing time step=XTSTEP_SURF*INB_ATM.
+                        ! The output time step should be equal to the 
+                        ! native time step of the input data.
 KSW         = 1         ! number of spectral bands in SW forcing
 ZZREF       = 28.       ! Atm. Forcing height above roof level
 
