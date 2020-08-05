@@ -82,6 +82,10 @@ standard_quantity_names = {
         "unit": "\\rm W\ m^{-2}",
         "symbol": "Q_{\\rm heating}"
     },
+    "Coefficient of performance": {
+        "unit": "1",
+        "symbol": "COP"
+    },
     "Thermal power production of solar panels on roofs": {
         "unit": "\\rm W\ m^{-2}",
         "symbol": "Q_{\\rm thermal}"
@@ -178,6 +182,7 @@ teb_quantity_names_output = {
     'Canyon horizontal wind direction': 'DIR_CANYON',
     'Buildings\' power demand for cooling': 'HVAC_COOL',
     'Buildings\' power demand for heating': 'HVAC_HEAT',
+    'Coefficient of performance': 'COP',
     'Net all-wave radiation flux density': 'RN_TOWN',
     'Turbulent sensible heat flux density': 'H_TOWN',
     'Turbulent latent heat flux density': 'LE_TOWN',
