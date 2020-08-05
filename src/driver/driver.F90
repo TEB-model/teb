@@ -372,6 +372,10 @@ REAL, DIMENSION(1) :: ZHVAC_COOL         ! Energy consumption of the cooling sys
                                          ! [W m-2(bld)]                               ! ||   ||
 REAL, DIMENSION(1) :: ZHVAC_HEAT         ! Energy consumption of the heating system   ! ||   ||
                                          ! [W m-2(bld)]                               ! ||   ||
+REAL, DIMENSION(1) :: ZHVAC_COOL_URB     ! Energy consumption of the cooling system   ! ||   ||
+                                         ! [W m-2(urb)]                               ! ||   ||
+REAL, DIMENSION(1) :: ZHVAC_HEAT_URB     ! Energy consumption of the heating system   ! ||   ||
+                                         ! [W m-2(urb)]                               ! ||   ||
 REAL, DIMENSION(1) :: ZQIN               ! Internal heat gains [W m-2(floor)]         ! ||   ||
 REAL, DIMENSION(1) :: ZQIN_FRAD          ! Radiant fraction of internal heat gains    ! ||   ||
 REAL, DIMENSION(1) :: ZQIN_FLAT          ! Latent franction of internal heat gains    ! ||   ||
@@ -1024,10 +1028,8 @@ ZDIR_CANYON = ZDIR(1,1)
 ZQ_TOWN = ZQ_CANYON
 ! The heating and cooling energy demand are converted
 ! from W/m²(bld) to W/m²(urb).
-!
-ZHVAC_COOL = ZBLD * ZHVAC_COOL
-ZHVAC_HEAT = ZBLD * ZHVAC_HEAT
-!
+ZHVAC_COOL_URB = ZBLD * ZHVAC_COOL
+ZHVAC_HEAT_URB = ZBLD * ZHVAC_HEAT
    !
    WRITE(13,*) ZTS_ROOF
    WRITE(14,*) ZT_CANYON
@@ -1042,8 +1044,8 @@ ZHVAC_HEAT = ZBLD * ZHVAC_HEAT
    WRITE(23,*) ZLE_TOWN
    WRITE(24,*) ZRN_TOWN
    IF (CBEM=='BEM') THEN
-     WRITE(25,*) ZHVAC_COOL
-     WRITE(26,*) ZHVAC_HEAT
+     WRITE(25,*) ZHVAC_COOL_URB
+     WRITE(26,*) ZHVAC_HEAT_URB
      WRITE(37,*) ZCOP
    END IF
 !

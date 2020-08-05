@@ -69,7 +69,7 @@ MODULE MODD_WRF_TEB_DRIVER
                      ZDT_RES, ZDT_OFF,                                        &
                      ZFLOOR_HEIGHT, PU_WIN,                                   &
                      ! outputs
-                     ZHVAC_COOL, ZHVAC_HEAT,                                  &
+                     ZHVAC_COOL_URB, ZHVAC_HEAT_URB,                                  &
                      ZTHER_PROD_PANEL, ZPHOT_PROD_PANEL,                      &
                      XU_CANYON,                                               &
                      ZRN_TOWN, ZH_TOWN, ZLE_TOWN, ZGFLUX_TOWN, ZEVAP_TOWN,    &
@@ -261,8 +261,8 @@ MODULE MODD_WRF_TEB_DRIVER
       ! End state
 
       ! Diagnostics
-      REAL, DIMENSION(1),                   INTENT(OUT) :: ZHVAC_COOL    ! Energy consumption of the cooling system [W m-2(bld)]
-      REAL, DIMENSION(1),                   INTENT(OUT) :: ZHVAC_HEAT    ! Energy consumption of the heating system [W m-2(bld)]
+      REAL, DIMENSION(1),                   INTENT(OUT) :: ZHVAC_COOL_URB   ! Energy consumption of the cooling system [W m-2(urb)]
+      REAL, DIMENSION(1),                   INTENT(OUT) :: ZHVAC_HEAT_URB   ! Energy consumption of the heating system [W m-2(urb)]
       REAL, DIMENSION(1),                   INTENT(OUT) :: ZTHER_PROD_PANEL ! Thermal energy production of solar panel on roofs (W/m2 panel)
       REAL, DIMENSION(1),                   INTENT(OUT) :: ZPHOT_PROD_PANEL ! Photovoltaic Energy production of solar panel on roofs (W/m2 panel)
       REAL, DIMENSION(1),                   INTENT(OUT) :: ZRN_TOWN      ! net radiation over town
@@ -480,6 +480,8 @@ MODULE MODD_WRF_TEB_DRIVER
       REAL, DIMENSION(1) :: ZQF_BLD            ! anthropogenic heat flux of domestic heating
       REAL, DIMENSION(1) :: ZFLX_BLD           ! heat flux between inside of the bld and its structure
       REAL, DIMENSION(1) :: ZAC_ROAD           ! road conductance
+      REAL, DIMENSION(1) :: ZHVAC_COOL         ! Energy consumption of the cooling system [W m-2(bld)]
+      REAL, DIMENSION(1) :: ZHVAC_HEAT         ! Energy consumption of the heating system [W m-2(bld)]
       ! End unused model outputs
 
       INTEGER :: JLOOP  ! loop counter
@@ -744,6 +746,11 @@ MODULE MODD_WRF_TEB_DRIVER
       ZQ_TOWN = ZQ_CANYON
 
       XU_CANYON = ZU_CANYON
+
+      ! The heating and cooling energy demand are converted
+      ! from W/m²(bld) to W/m²(urb).
+      ZHVAC_COOL_URB = ZBLD * ZHVAC_COOL
+      ZHVAC_HEAT_URB = ZBLD * ZHVAC_HEAT
 
     END SUBROUTINE TEB_DRIVER
 END MODULE MODD_WRF_TEB_DRIVER
