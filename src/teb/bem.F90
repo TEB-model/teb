@@ -313,7 +313,12 @@ END WHERE
 !
 ! *Int.gains schedule
 !
-ZQIN = DMT%XQIN * B%XN_FLOOR
+! Conversion W/m²/floor -> W/m²(bld)
+! We cacluate the number of floors directly
+! as B%XN_FLOOR may have been rounded thus leading to
+! under/over estimation of interla heat gains.
+ZQIN = B%XQIN * (T%XBLD_HEIGHT / B%XFLOOR_HEIGHT)
+!
 WHERE (PSUNTIME(:) > 0. .AND. PSUNTIME(:) < 25200.) ! night between 0000 and 0700
   ZQIN(:) = ZQIN(:) * ZF_NIGHT(:)
 ELSEWHERE
