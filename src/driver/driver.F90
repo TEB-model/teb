@@ -1022,7 +1022,6 @@ END IF
 ZDIR_CANYON = ZDIR(1,1)
 ! Town specific humidity assumed to be same as canyon humidity
 ZQ_TOWN = ZQ_CANYON
-
 ! The heating and cooling energy demand are converted
 ! from W/m²(bld) to W/m²(urb).
 !
