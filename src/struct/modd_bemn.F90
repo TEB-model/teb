@@ -129,6 +129,16 @@ TYPE BEM_t
   REAL, POINTER, DIMENSION(:) :: XF_MASS_FLOOR   ! View factor mass-floor
   REAL, POINTER, DIMENSION(:) :: XF_MASS_WALL    ! View factor mass-wall
   REAL, POINTER, DIMENSION(:) :: XF_MASS_WIN     ! View factor mass-window
+  ! New arguments from 8.2  (Ventilation)
+  REAL, POINTER, DIMENSION(:) :: XDIAGVENT           ! Is ventilation active?
+  REAL, POINTER, DIMENSION(:) :: XFOPEN              ! Fraction of windows to be opened
+  REAL, POINTER, DIMENSION(:) :: XN50                ! Airtightness [AC/H at 50
+  REAL, POINTER, DIMENSION(:) :: XVENT_BEHAV_ANYWAY  ! Fraction of windows opened in any case
+  REAL, POINTER, DIMENSION(:) :: XVENT_BEHAV_ADAPTI  ! Fraction of windows that could be opened
+  REAL, POINTER, DIMENSION(:) :: XTDESV              ! Desing temperature for ventilation [K]
+  REAL, POINTER, DIMENSION(:) :: XFVSHO              ! Ventilation independent of indoor/outdoor temperature
+  REAL, POINTER, DIMENSION(:) :: XISMECH             ! Presence of mechanical ventilation. OFF: 0.
+  REAL, POINTER, DIMENSION(:) :: XMECHRATE           ! Air exchange rate due to mechanical ventilation [1/h]
 
 
 ! 

@@ -68,6 +68,9 @@ MODULE MODD_WRF_TEB_DRIVER
                      ZRESIDENTIAL,                                            &
                      ZDT_RES, ZDT_OFF,                                        &
                      ZFLOOR_HEIGHT, PU_WIN,                                   &
+                     PDIAGVENT, PFOPEN, PN50, PVENT_BEHAV_ANYWAY,             &
+                     PVENT_BEHAV_ADAPTI, PTDESV, PFVSHO,                      &
+                     PISMECH, PMECHRATE,                                      &
                      ! outputs
                      ZHVAC_COOL, ZHVAC_HEAT,                                  &
                      ZTHER_PROD_PANEL, ZPHOT_PROD_PANEL,                      &
@@ -227,6 +230,18 @@ MODULE MODD_WRF_TEB_DRIVER
       REAL, DIMENSION(1, num_wall_layers), INTENT(IN) :: ZTC_WALL     ! thermal conductivity for wall layers
       REAL, DIMENSION(1, num_wall_layers), INTENT(IN) :: ZD_WALL      ! depth of wall layers
       REAL, DIMENSION(1),                  INTENT(IN) :: ZQA_KGKG     ! air humidity at forcing level (kg/kg)
+      !
+      ! New arguments from 8.2  (Ventilation)
+      REAL, DIMENSION(:),   INTENT(IN) :: PDIAGVENT           ! Is ventilation active?
+      REAL, DIMENSION(:),   INTENT(IN) :: PFOPEN              ! Fraction of windows to be opened
+      REAL, DIMENSION(:),   INTENT(IN) :: PN50                ! Airtightness [AC/H at 50
+      REAL, DIMENSION(:),   INTENT(IN) :: PVENT_BEHAV_ANYWAY  ! Fraction of windows opened in any case
+      REAL, DIMENSION(:),   INTENT(IN) :: PVENT_BEHAV_ADAPTI  ! Fraction of windows that could be opened
+      REAL, DIMENSION(:),   INTENT(IN) :: PTDESV              ! Desing temperature for ventilation [K]
+      REAL, DIMENSION(:),   INTENT(IN) :: PFVSHO              ! Ventilation independent of indoor/outdoor temperature
+      REAL, DIMENSION(:),   INTENT(IN) :: PISMECH             ! Presence of mechanical ventilation. OFF: 0.
+      REAL, DIMENSION(:),   INTENT(IN) :: PMECHRATE           ! Air exchange rate due to mechanical ventilation [1/h]
+      !
       ! End variable inputs
 
       ! State
@@ -705,7 +720,7 @@ MODULE MODD_WRF_TEB_DRIVER
                      ZT_MASS, ZH_BLD_COOL, ZT_BLD_COOL, ZH_BLD_HEAT,          &
                      ZLE_BLD_COOL, ZLE_BLD_HEAT, ZH_WASTE, ZLE_WASTE,         &
                      ZF_WASTE_CAN, ZHVAC_COOL, ZHVAC_HEAT, ZQIN, ZQIN_FRAD,   &
-                     ZQIN_FLAT, PFLOOR_HEIGHT, ZGR, ZEFF_HEAT, ZINF,          &
+                     ZQIN_FLAT, PFLOOR_HEIGHT, ZGR, ZEFF_HEAT, ZINF,                         &
                      ZTCOOL_TARGET, ZTHEAT_TARGET, ZHR_TARGET, ZT_WIN2,       &
                      ZQI_BLD, ZV_VENT, ZCAP_SYS_HEAT, ZCAP_SYS_RAT, ZT_ADP,   &
                      ZM_SYS_RAT, ZCOP_RAT, ZCAP_SYS, ZM_SYS, ZCOP, ZQ_SYS,    &
@@ -730,7 +745,10 @@ MODULE MODD_WRF_TEB_DRIVER
                      ZTHER_PROD_BLD  , ZPHOT_PROD_BLD  , ZPROD_BLD  ,         &
                      ZTHER_PRODC_DAY, ZH_PANEL, ZRN_PANEL,                    &
                      ZDT_RES, ZDT_OFF,                                        &
-                     ZCUR_TCOOL_TARGET, ZCUR_THEAT_TARGET, ZCUR_QIN           )
+                     ZCUR_TCOOL_TARGET, ZCUR_THEAT_TARGET, ZCUR_QIN,          &
+                     PDIAGVENT, PFOPEN, PN50, PVENT_BEHAV_ANYWAY,             &
+                     PVENT_BEHAV_ADAPTI, PTDESV, PFVSHO,                      &
+                     PISMECH, PMECHRATE                                       )
 
       ! Calculate the total (direct + diffuse radiations) town albedo
       IF (ZTDIR_SW(1,1) == 0.) THEN

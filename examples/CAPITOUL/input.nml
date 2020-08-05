@@ -63,16 +63,35 @@ ZFRAC_PANEL  = 0.0     ! solar panels fraction on roofs
 ! Road watering
 LPAR_RD_IRRIG= .FALSE.
 ! Natural Ventilation
-HNATVENT = "NONE"    ! 'NONE', 'MANU', 'AUTO', 'MECH'
+HNATVENT = "NONE"    ! 'NONE', 'MANU', 'AUTO'
 ! Cooling system    ! 'DXCOIL','IDEAL ', 'MinimalDX'
-CCOOL_COIL = "IDEAL"
+CCOOL_COIL = 'MinimalDX'
 ! Heating system    ! 'FINCAP','IDEAL '
-CHEAT_COIL = "IDEAL"
+CHEAT_COIL = 'IDEAL '
 ! TEB option for z0h roof & road: 'MASC95' : Mascart et al,1995; 
 !                                 'BRUT82' : Brustaert,1982; 
 !                                 'KAND07' : Kanda,2007
 HZ0H = 'KAND07'
 !
+!
+!============================================================
+!============================================================
+! New vars
+!============================================================
+!============================================================
+!
+! Natural ventilation
+PDIAGVENT = 0.              ! Is ventilation active?
+PFOPEN = 1.                 ! Fraction of windows to be opened
+PN50 = 5.                   ! Air-tightness [AC/H at 50 Pa]
+PVENT_BEHAV_ANYWAY = 0.1    ! Fraction of windows opened in any case
+PVENT_BEHAV_ADAPTI = 0.2    ! Fraction of windows that could be opened
+PTDESV  = 300.              ! Design temperature for ventilation [K]
+PFVSHO = 0.                 ! Ventilation independent of indoor/outdoor temperature
+
+! Mechanical ventilation
+PISMECH = 0.                ! Presence of mechanical ventilation. OFF: 0.
+PMECHRATE = 0.0             ! Air exchange rate due to mechanical ventilation [1/h]
 !
 !============================================================
 !============================================================
@@ -249,6 +268,7 @@ ZSHGC_SH      = 0.025   ! window + shading solar heat gain coef.
 ! Natural ventilation
 !=============================================================
 !
+! TODO: this is unused and should be removed. Use HNATVENT instead.
 ZNATVENT = 0.           ! flag to describe surventilation system for i/o 
                         ! 0 for NONE, 1 for MANU and 2 for AUTO
 !=============================================================
@@ -256,6 +276,7 @@ ZNATVENT = 0.           ! flag to describe surventilation system for i/o
 !=============================================================
 !
 ZV_VENT       = 0.0     ! Ventilation flow rate [AC/H]
+! TODO: add a case in minimal dx to exclude the use of this.
 ZF_WATER_COND = 0.      ! fraction of evaporation for the condensers
 ZF_WASTE_CAN  = 1.0     ! fraction of waste heat released into the canyon
 !

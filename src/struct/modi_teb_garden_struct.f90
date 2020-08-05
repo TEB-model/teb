@@ -99,7 +99,10 @@ INTERFACE
                      PTHER_PROD_BLD  , PPHOT_PROD_BLD  , PPROD_BLD  ,         &
                      PTHER_PRODC_DAY, PH_PANEL, PRN_PANEL,                    &
                      PDT_RES, PDT_OFF,                                        &
-                     PCUR_TCOOL_TARGET, PCUR_THEAT_TARGET, PCUR_QIN           )
+                     PCUR_TCOOL_TARGET, PCUR_THEAT_TARGET, PCUR_QIN,          &
+                     PDIAGVENT, PFOPEN, PN50, PVENT_BEHAV_ANYWAY,             &
+                     PVENT_BEHAV_ADAPTI, PTDESV, PFVSHO,                      &
+                     PISMECH, PMECHRATE                                       )
 !   ##########################################################################
 !
 !!****  *TEB_GARDEN_STRUCT*  
@@ -508,6 +511,17 @@ REAL,                 INTENT(IN)      :: PDT_OFF           ! target temperature 
 REAL, DIMENSION(:),   INTENT(OUT)     :: PCUR_TCOOL_TARGET ! Cooling target temperature at current time (K)
 REAL, DIMENSION(:),   INTENT(OUT)     :: PCUR_THEAT_TARGET ! Heating target temperature at current time (K)
 REAL, DIMENSION(:),   INTENT(OUT)     :: PCUR_QIN          ! Internal heat gains        at current time (W/m2 floor)
+!
+! New arguments from 8.2  (Ventilation)
+REAL, DIMENSION(:),   INTENT(IN) :: PDIAGVENT           ! Is ventilation active?
+REAL, DIMENSION(:),   INTENT(IN) :: PFOPEN              ! Fraction of windows to be opened
+REAL, DIMENSION(:),   INTENT(IN) :: PN50                ! Airtightness [AC/H at 50
+REAL, DIMENSION(:),   INTENT(IN) :: PVENT_BEHAV_ANYWAY  ! Fraction of windows opened in any case
+REAL, DIMENSION(:),   INTENT(IN) :: PVENT_BEHAV_ADAPTI  ! Fraction of windows that could be opened
+REAL, DIMENSION(:),   INTENT(IN) :: PTDESV              ! Desing temperature for ventilation [K]
+REAL, DIMENSION(:),   INTENT(IN) :: PFVSHO              ! Ventilation independent of indoor/outdoor temperature
+REAL, DIMENSION(:),   INTENT(IN) :: PISMECH             ! Presence of mechanical ventilation. OFF: 0.
+REAL, DIMENSION(:),   INTENT(IN) :: PMECHRATE           ! Air exchange rate due to mechanical ventilation [1/h]
 !
 !-------------------------------------------------------------------------------
 !

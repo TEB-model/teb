@@ -123,7 +123,9 @@ namelist /parameters/   XTSTEP_SURF, IYEAR, IMONTH, IDAY, ZTIME_START, ZLON, ZLA
                         ZNATVENT, ZV_VENT, ZF_WATER_COND, ZF_WASTE_CAN, ZTCOOL_TARGET, ZTHEAT_TARGET ,&
                         ZHR_TARGET, ZEFF_HEAT, ZCAP_SYS_HEAT, ZCAP_SYS_RAT, ZT_ADP, ZM_SYS_RAT ,&
                         ZCOP_RAT, CCH_BEM, ZROUGH_ROOF, ZROUGH_WALL, ZT_ROAD, ZT_ROOF, ZT_WALL_A ,&
-                        ZT_FLOOR, ZT_MASS, ZTI_BLD, ZT_CANYON, ZT_WIN1, ZT_WIN2, ZQ_CANYON, ZQI_BLD
+                        ZT_FLOOR, ZT_MASS, ZTI_BLD, ZT_CANYON, ZT_WIN1, ZT_WIN2, ZQ_CANYON, ZQI_BLD, &
+                        PDIAGVENT, PFOPEN, PN50, PVENT_BEHAV_ANYWAY, PVENT_BEHAV_ADAPTI, PTDESV, PFVSHO, &
+                        PISMECH, PMECHRATE
 
 ! ---------------------------------------------------------------
 ! Declarations of local variables (INPUTS)
@@ -525,6 +527,18 @@ REAL,DIMENSION(1)  :: ZH_TOWN           ! sensible heat flux over town          
 REAL,DIMENSION(1)  :: ZLE_TOWN          ! latent heat flux over town                  ! ||   ||
 REAL,DIMENSION(1)  :: ZGFLUX_TOWN       ! flux through the ground for town            ! ||   ||
 REAL,DIMENSION(1)  :: ZEVAP_TOWN        ! evaporation (kg/m2/s)                       ! ||   ||
+!                                                                                     ! ||   ||
+! New arguments from 8.2  (Ventilation)                                               ! ||   ||
+REAL,DIMENSION(1)  :: PDIAGVENT           ! Is ventilation active?                    ! ||   ||
+REAL,DIMENSION(1)  :: PFOPEN              ! Fraction of windows to be opened          ! ||   ||
+REAL,DIMENSION(1)  :: PN50                ! Airtightness [AC/H at 50                  ! ||   ||
+REAL,DIMENSION(1)  :: PVENT_BEHAV_ANYWAY  ! Fraction of windows opened in any case    ! ||   ||
+REAL,DIMENSION(1)  :: PVENT_BEHAV_ADAPTI  ! Fraction of windows that could be opened  ! ||   ||
+REAL,DIMENSION(1)  :: PTDESV              ! Desing temperature for ventilation [K]    ! ||   ||
+REAL,DIMENSION(1)  :: PFVSHO              ! Ventilation independent of indoor/outdoor temperature
+REAL,DIMENSION(1)  :: PISMECH             ! Presence of mechanical ventilation. OFF: 0.
+REAL,DIMENSION(1)  :: PMECHRATE           ! Air exchange rate due to mechanical ventilation [1/h]
+!                                                                                     ! ||   ||
 ! Atmospheric Forcing variables                                                       ! ||   ||
 REAL, DIMENSION(:,:), ALLOCATABLE :: ZTA    ! air temperature forcing (K)             ! ||   ||
 REAL, DIMENSION(:,:), ALLOCATABLE :: ZQA    ! air humidity forcing (kg/m3)            ! ||   ||
@@ -985,7 +999,10 @@ DO JFORC_STEP= 1,INB_STEP_ATM
                      ZTHER_PROD_BLD  , ZPHOT_PROD_BLD  , ZPROD_BLD  ,         &
                      ZTHER_PRODC_DAY, ZH_PANEL, ZRN_PANEL,                    &
                      ZDT_RES, ZDT_OFF,                                        &
-                     ZCUR_TCOOL_TARGET, ZCUR_THEAT_TARGET, ZCUR_QIN           )
+                     ZCUR_TCOOL_TARGET, ZCUR_THEAT_TARGET, ZCUR_QIN ,         &
+                     PDIAGVENT, PFOPEN, PN50, PVENT_BEHAV_ANYWAY,             &
+                     PVENT_BEHAV_ADAPTI, PTDESV, PFVSHO,                      &
+                     PISMECH, PMECHRATE                                       )
 !*****************************************************************************
 !*****************************************************************************
 !*****************************************************************************

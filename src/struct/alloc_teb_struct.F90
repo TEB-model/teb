@@ -173,6 +173,18 @@ ALLOCATE(B%XF_MASS_FLOOR(1))   ! View factor mass-floor
 ALLOCATE(B%XF_MASS_WALL(1))    ! View factor mass-wall
 ALLOCATE(B%XF_MASS_WIN(1))     ! View factor mass-window
 !
+! New arguments from 8.2  (Ventilation)
+ALLOCATE(B%XDIAGVENT(1))          ! Is ventilation active?
+ALLOCATE(B%XFOPEN(1))             ! Fraction of windows to be opened
+ALLOCATE(B%XN50(1))               ! Airtightness [AC/H at 50
+ALLOCATE(B%XVENT_BEHAV_ANYWAY(1)) ! Fraction of windows opened in any case
+ALLOCATE(B%XVENT_BEHAV_ADAPTI(1)) ! Fraction of windows that could be opened
+ALLOCATE(B%XTDESV(1))             ! Desing temperature for ventilation [K]
+ALLOCATE(B%XFVSHO(1))             ! Ventilation independent of indoor/outdoor temperature
+ALLOCATE(B%XISMECH(1))            ! Presence of mechanical ventilation. OFF: 0.
+ALLOCATE(B%XMECHRATE(1))          ! Air exchange rate due to mechanical ventilation [1/h]
+!
+!
 !-------------------------------------------------------------------------------
 !
 ! TEB structure
