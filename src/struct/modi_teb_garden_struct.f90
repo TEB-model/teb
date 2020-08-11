@@ -390,7 +390,6 @@ REAL, DIMENSION(:)  , INTENT(OUT)   :: PHVAC_HEAT         ! Energy consumption o
 REAL, DIMENSION(:)  , INTENT(IN)    :: PQIN               ! Internal heat gains [W m-2(floor)]
 REAL, DIMENSION(:)  , INTENT(IN)    :: PQIN_FRAD          ! Radiant fraction of internal heat gains
 REAL, DIMENSION(:)  , INTENT(IN)    :: PQIN_FLAT          ! Latent franction of internal heat gains
-REAL, DIMENSION(:),   INTENT(IN)    :: PFLOOR_HEIGHT      ! Building floor height [m]
 REAL, DIMENSION(:)  , INTENT(IN)    :: PGR                ! Glazing ratio
 REAL, DIMENSION(:)  , INTENT(IN)    :: PEFF_HEAT          ! Efficiency of the heating system
 REAL, DIMENSION(:)  , INTENT(IN)    :: PINF               ! Infiltration flow rate [AC/H]
