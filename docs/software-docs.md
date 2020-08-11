@@ -76,11 +76,11 @@ The following files are produced by the TEB `driver`.
 
 If building energy model option is activated (`CBEM = "BEM"`) in `input.nml`, the following outputs will also be present in W/m² of buildings ground surface  (not by m² of floor).
 
-| Name          | Description                | Unit          |
-| ------------- | -------------------------- | ------------- |
-| HVAC_COOL.txt | Cooling power demand       | W/m² building |
-| HVAC_HEAT.txt | Heating power demand       | W/m² building |
-| COP.txt       | Coefficient of performance | 1             |
+| Name          | Description                | Unit                      |
+| ------------- | -------------------------- | ------------------------- |
+| HVAC_COOL.txt | Cooling power demand       | W/m² (total surface area) |
+| HVAC_HEAT.txt | Heating power demand       | W/m² (total surface area) |
+| COP.txt       | Coefficient of performance | 1                         |
 
 If the solar panel option is activated (`LSOLAR_PANEL = .TRUE.`) in `input.nml`, the following outputs will also be present in W/m² panel.
 
