@@ -489,7 +489,7 @@ ENDIF
 !* when building in unoccupied, target temperature is modified
 !
 IF (TOP%CBEM=="BEM") THEN
-  CALL BLD_OCC_CALENDAR(TOP%TTIME, PTSUN, T, B, 1., DMT%XTCOOL_TARGET, DMT%XTHEAT_TARGET, DMT%XQIN )
+  CALL BLD_OCC_CALENDAR(TOP%TTIME, PTSUN, T, B, 1., DMT%XTCOOL_TARGET, DMT%XTHEAT_TARGET, B%XQIN )
 ENDIF
 !
 !-------------------------------------------------------------------------------

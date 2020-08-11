@@ -76,7 +76,7 @@ INTERFACE
                      PT_MASS, PH_BLD_COOL, PT_BLD_COOL, PH_BLD_HEAT,          &
                      PLE_BLD_COOL, PLE_BLD_HEAT, PH_WASTE, PLE_WASTE,         &
                      PF_WASTE_CAN, PHVAC_COOL, PHVAC_HEAT, PQIN, PQIN_FRAD,   &
-                     PQIN_FLAT, PFLOOR_HEIGHT, PGR, PEFF_HEAT, PINF,                         &
+                     PQIN_FLAT, PGR, PEFF_HEAT, PINF,                         &
                      PTCOOL_TARGET, PTHEAT_TARGET, PHR_TARGET, PT_WIN2,       &
                      PQI_BLD, PV_VENT, PCAP_SYS_HEAT, PCAP_SYS_RAT, PT_ADP,   &
                      PM_SYS_RAT, PCOP_RAT, PCAP_SYS, PM_SYS, PCOP, PQ_SYS,    &

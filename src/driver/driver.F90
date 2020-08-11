@@ -964,7 +964,7 @@ DO JFORC_STEP= 1,INB_STEP_ATM
                      ZT_MASS, ZH_BLD_COOL, ZT_BLD_COOL, ZH_BLD_HEAT,          &
                      ZLE_BLD_COOL, ZLE_BLD_HEAT, ZH_WASTE, ZLE_WASTE,         &
                      ZF_WASTE_CAN, ZHVAC_COOL, ZHVAC_HEAT, ZQIN, ZQIN_FRAD,   &
-                     ZQIN_FLAT, PFLOOR_HEIGHT, ZGR, ZEFF_HEAT, ZINF,          &
+                     ZQIN_FLAT, ZGR, ZEFF_HEAT, ZINF,                         &
                      ZTCOOL_TARGET, ZTHEAT_TARGET, ZHR_TARGET, ZT_WIN2,       &
                      ZQI_BLD, ZV_VENT, ZCAP_SYS_HEAT, ZCAP_SYS_RAT, ZT_ADP,   &
                      ZM_SYS_RAT, ZCOP_RAT, ZCAP_SYS, ZM_SYS, ZCOP, ZQ_SYS,    &
