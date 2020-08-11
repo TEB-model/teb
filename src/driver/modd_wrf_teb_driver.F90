@@ -69,7 +69,7 @@ MODULE MODD_WRF_TEB_DRIVER
                      ZDT_RES, ZDT_OFF,                                        &
                      ZFLOOR_HEIGHT, PU_WIN,                                   &
                      ! outputs
-                     ZHVAC_COOL_URB, ZHVAC_HEAT_URB,                                  &
+                     ZHVAC_COOL_TOT, ZHVAC_HEAT_TOT,                                  &
                      ZTHER_PROD_PANEL, ZPHOT_PROD_PANEL,                      &
                      XU_CANYON,                                               &
                      ZRN_TOWN, ZH_TOWN, ZLE_TOWN, ZGFLUX_TOWN, ZEVAP_TOWN,    &
@@ -261,8 +261,8 @@ MODULE MODD_WRF_TEB_DRIVER
       ! End state
 
       ! Diagnostics
-      REAL, DIMENSION(1),                   INTENT(OUT) :: ZHVAC_COOL_URB   ! Energy consumption of the cooling system [W m-2(urb)]
-      REAL, DIMENSION(1),                   INTENT(OUT) :: ZHVAC_HEAT_URB   ! Energy consumption of the heating system [W m-2(urb)]
+      REAL, DIMENSION(1),                   INTENT(OUT) :: ZHVAC_COOL_TOT   ! Energy consumption of the cooling system [W m-2(tot)]
+      REAL, DIMENSION(1),                   INTENT(OUT) :: ZHVAC_HEAT_TOT   ! Energy consumption of the heating system [W m-2(tot)]
       REAL, DIMENSION(1),                   INTENT(OUT) :: ZTHER_PROD_PANEL ! Thermal energy production of solar panel on roofs (W/m2 panel)
       REAL, DIMENSION(1),                   INTENT(OUT) :: ZPHOT_PROD_PANEL ! Photovoltaic Energy production of solar panel on roofs (W/m2 panel)
       REAL, DIMENSION(1),                   INTENT(OUT) :: ZRN_TOWN      ! net radiation over town
@@ -748,9 +748,9 @@ MODULE MODD_WRF_TEB_DRIVER
       XU_CANYON = ZU_CANYON
 
       ! The heating and cooling energy demand are converted
-      ! from W/m²(bld) to W/m²(urb).
-      ZHVAC_COOL_URB = ZBLD * ZHVAC_COOL
-      ZHVAC_HEAT_URB = ZBLD * ZHVAC_HEAT
+      ! from W/m²(bld) to W/m²(tot).
+      ZHVAC_COOL_TOT = ZBLD * ZHVAC_COOL
+      ZHVAC_HEAT_TOT = ZBLD * ZHVAC_HEAT
 
     END SUBROUTINE TEB_DRIVER
 END MODULE MODD_WRF_TEB_DRIVER
