@@ -329,7 +329,7 @@ IF (LHOOK) CALL DR_HOOK('BEM',0,ZHOOK_HANDLE)
   ! We cacluate the number of floors directly
   ! as B%XN_FLOOR may have been rounded thus leading to
   ! under/over estimation of interla heat gains.
-  ZQIN = B%XQIN * (T%XBLD_HEIGHT / B%XFLOOR_HEIGHT)
+  ZQIN = B%XQIN * B%XN_FLOOR
   !
   ! Indoor air density
   !

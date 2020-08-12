@@ -76,7 +76,7 @@ INTERFACE
                      PT_MASS, PH_BLD_COOL, PT_BLD_COOL, PH_BLD_HEAT,          &
                      PLE_BLD_COOL, PLE_BLD_HEAT, PH_WASTE, PLE_WASTE,         &
                      PF_WASTE_CAN, PHVAC_COOL, PHVAC_HEAT, PQIN, PQIN_FRAD,   &
-                     PQIN_FLAT, PFLOOR_HEIGHT, PGR, PEFF_HEAT, PINF,                         &
+                     PQIN_FLAT, PGR, PEFF_HEAT, PINF,                         &
                      PTCOOL_TARGET, PTHEAT_TARGET, PHR_TARGET, PT_WIN2,       &
                      PQI_BLD, PV_VENT, PCAP_SYS_HEAT, PCAP_SYS_RAT, PT_ADP,   &
                      PM_SYS_RAT, PCOP_RAT, PCAP_SYS, PM_SYS, PCOP, PQ_SYS,    &
@@ -393,7 +393,6 @@ REAL, DIMENSION(:)  , INTENT(OUT)   :: PHVAC_HEAT         ! Energy consumption o
 REAL, DIMENSION(:)  , INTENT(IN)    :: PQIN               ! Internal heat gains [W m-2(floor)]
 REAL, DIMENSION(:)  , INTENT(IN)    :: PQIN_FRAD          ! Radiant fraction of internal heat gains
 REAL, DIMENSION(:)  , INTENT(IN)    :: PQIN_FLAT          ! Latent franction of internal heat gains
-REAL, DIMENSION(:),   INTENT(IN)    :: PFLOOR_HEIGHT      ! Building floor height [m]
 REAL, DIMENSION(:)  , INTENT(IN)    :: PGR                ! Glazing ratio
 REAL, DIMENSION(:)  , INTENT(IN)    :: PEFF_HEAT          ! Efficiency of the heating system
 REAL, DIMENSION(:)  , INTENT(IN)    :: PINF               ! Infiltration flow rate [AC/H]
