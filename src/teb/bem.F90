@@ -313,7 +313,7 @@ END WHERE
 !
 ! *Int.gains schedule
 !
-ZQIN = DMT%XQIN * B%XN_FLOOR
+ZQIN = B%XQIN * B%XN_FLOOR
 WHERE (PSUNTIME(:) > 0. .AND. PSUNTIME(:) < 25200.) ! night between 0000 and 0700
   ZQIN(:) = ZQIN(:) * ZF_NIGHT(:)
 ELSEWHERE

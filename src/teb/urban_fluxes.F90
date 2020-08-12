@@ -364,7 +364,7 @@ IF (TOP%CBEM == "DEF") THEN
              + 0.5*T%XWALL_O_HOR(:)/T%XBLD(:) * ( DMT%XH_WALL_B(:) + PLE_WL_B(:) + PDQS_WL_B(:) - DMT%XRN_WALL_B(:) )
   DMT%XFLX_BLD(:)= XUNDEF
 ELSEIF (TOP%CBEM == "BEM") THEN
-  DMT%XQF_BLD(:) = DMT%XQIN(:)*B%XN_FLOOR(:) + DMT%XHVAC_COOL(:) + DMT%XHVAC_HEAT(:)
+  DMT%XQF_BLD(:) = B%XQIN(:)*B%XN_FLOOR(:) + DMT%XHVAC_COOL(:) + DMT%XHVAC_HEAT(:)
   DMT%XFLX_BLD(:)=  PFLX_BLD_RF(:) + 0.5*T%XWALL_O_HOR(:)/T%XBLD(:)*PFLX_BLD_WL_A(:) &
                  +                    0.5*T%XWALL_O_HOR(:)/T%XBLD(:)*PFLX_BLD_WL_B(:) &
                  + PFLX_BLD_FL(:) + PFLX_BLD_MA(:)  
