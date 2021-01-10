@@ -24,8 +24,6 @@ INB_ATM     = 6         ! number time the driver calls the TEB
 KSW         = 1         ! number of spectral bands in SW forcing
 ZZREF       = 28.       ! Atm. Forcing height above roof level
 
-LSURF_BUDGET = .TRUE.   ! Output extra diagnostics
-
 !                                                                                     ! ||   ||
 !                                                                                     ! ||   ||
 !============================================================                         ! ||   ||
@@ -54,20 +52,23 @@ HROAD_DIR = 'UNIF'
 !     ! 'UNIF' : uniform walls
 !     ! 'TWO ' : 2 opposite  wall
 HWALL_OPT = 'UNIF'
+! Garden and greenroof options
+VEG_ALB = 0.15
+VEG_EMIS = 0.98
 ! Gardens
 LGARDEN = .TRUE.
+GARDEN_BR = 0.25 ! Bowen ratio for gardens
 ! Green roofs
 LGREENROOF = .TRUE. ! greenroof activation
-ZFRAC_GR   = 0.3      ! greenroof fraction on roofs
+GREENROOF_BR = 0.5 ! Bowen ratio for greenroof
+ZFRAC_GR   = 0.      ! greenroof fraction on roofs
 ! Solar panels
 LSOLAR_PANEL = .FALSE. ! solar panels activation
 ZFRAC_PANEL  = 0.0     ! solar panels fraction on roofs
-! Road watering
-LPAR_RD_IRRIG= .FALSE.
-! Cooling system    ! 'DXCOIL','IDEAL ', 'MinimalDX'
-CCOOL_COIL = "IDEAL"
+! Cooling system    ! 'DXCOIL','IDEAL ', 'MINIDX'
+CCOOL_COIL = "DXCOIL"
 ! Heating system    ! 'FINCAP','IDEAL '
-CHEAT_COIL = "IDEAL"
+CHEAT_COIL = "FINCAP"
 ! TEB option for z0h roof & road: 'MASC95' : Mascart et al,1995; 
 !                                 'BRUT82' : Brustaert,1982; 
 !                                 'KAND07' : Kanda,2007
@@ -184,16 +185,6 @@ ZLE_TRAFFIC  = 0.0  ! heat fluxes due to traffic
 ZH_INDUSTRY  = 0.0  ! heat fluxes due to factories
 ZLE_INDUSTRY = 0.0  ! heat fluxes due to factories
 ! 
-!============================================================
-!============================================================
-! road watering
-!============================================================
-!============================================================
-ZRD_START_MONTH = 6. ! start month for watering of roads (included)
-ZRD_END_MONTH   = 8. ! end   month for watering of roads (included)
-ZRD_START_HOUR  = 6. ! start hour  for watering of roads (included)
-ZRD_END_HOUR    = 9. ! end   hour  for watering of roads (excluded)
-ZRD_24H_IRRIG   = 1. ! 24h quantity of water used for road watering (liter/m2)
 ! 
 !============================================================
 !============================================================
@@ -237,6 +228,12 @@ ZGR           = 0.1     ! Glazing ratio
 ZSHGC         = 0.763   ! window solar transmittance
 PU_WIN        = 2.716   ! window glass-to-glass U-factor [W m-2 K-1]
 !
+!=============================================================
+! Shading devices
+!=============================================================
+!
+ZSHADE        = 1.      ! flag to activate shading devices -> REAL for i/o 0. or 1
+ZSHGC_SH      = 0.025   ! window + shading solar heat gain coef.
 !
 !=============================================================
 ! Natural ventilation
@@ -284,7 +281,7 @@ ZCOP_RAT      = 2.5     ! Rated COP of the cooling system
 ! convection coefficients option
 !=============================================================
 !
-CCH_BEM       = 'DOE-2' ! TEB option for building outside conv. coef : '   ', 'DOE-2'
+CCH_BEM       = 'DOE-2' ! TEB option for building outside conv. coef : 'ROW30', 'DOE-2'
 ZROUGH_ROOF   = 1.52    ! roof roughness coef. in case DOE-2
 ZROUGH_WALL   = 1.52    ! wall roughness coef. in case DOE-2
 !
