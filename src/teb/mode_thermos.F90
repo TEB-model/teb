@@ -1,7 +1,7 @@
 !SFX_LIC Copyright 1994-2014 CNRS, Meteo-France and Universite Paul Sabatier
-!SFX_LIC This is part of the SURFEX software governed by the CeCILL licence
-!SFX_LIC version 2.1. See Licence_CeCILL_V2.1-en.txt and Licence_CeCILL_V2.1-fr.txt  
-!SFX_LIC for details.
+!SFX_LIC This is part of the SURFEX software governed by the CeCILL-C licence
+!SFX_LIC version 1. See LICENSE, CeCILL-C_V1-en.txt and CeCILL-C_V1-fr.txt  
+!SFX_LIC for details. version 1.
 !     ######spl
       MODULE MODE_THERMOS
 !     ####################
@@ -667,7 +667,7 @@ END FUNCTION QSATW_2D
 !!      Book2 of documentation of Meso-NH 
 !!      Zeng, X., Zhao, M., and Dickinson, R. E., 1998 : Intercomparaison of bulk
 !!      aerodynamic algorithm for the computation of sea surface fluxes using
-!!      TOGA COARE and TAO data. Journal of Climate, vol 11, nÂ°10, pp 2628--2644
+!!      TOGA COARE and TAO data. Journal of Climate, vol 11, n°10, pp 2628--2644
 !!
 !!
 !!    AUTHOR
@@ -766,7 +766,7 @@ END FUNCTION QSATSEAW_1D
 !!    REFERENCE
 !!    ---------
 !!      Weiss, R.F., and Price, B.A., 1980 : Nitrous oxide solubility in water
-!!      and seawater. Marine Chemistry, nÂ°8, pp 347-359.
+!!      and seawater. Marine Chemistry, n°8, pp 347-359.
 !!
 !!
 !!    AUTHOR

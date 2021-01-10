@@ -1,7 +1,7 @@
 !SFX_LIC Copyright 1994-2014 CNRS, Meteo-France and Universite Paul Sabatier
-!SFX_LIC This is part of the SURFEX software governed by the CeCILL licence
-!SFX_LIC version 2.1. See Licence_CeCILL_V2.1-en.txt and Licence_CeCILL_V2.1-fr.txt  
-!SFX_LIC for details.
+!SFX_LIC This is part of the SURFEX software governed by the CeCILL-C licence
+!SFX_LIC version 1. See LICENSE, CeCILL-C_V1-en.txt and CeCILL-C_V1-fr.txt  
+!SFX_LIC for details. version 1.
 !     #########
       SUBROUTINE INI_CSTS 
 !     ##################
@@ -59,11 +59,11 @@ USE MODD_CSTS
 USE YOMHOOK   ,ONLY : LHOOK,   DR_HOOK
 USE PARKIND1  ,ONLY : JPRB
 !
-!USE MODI_INI_CTURBS
+USE MODI_INI_CTURBS
 !
-!USE MODI_INI_OCEAN_CSTS
+USE MODI_INI_OCEAN_CSTS
 !
-!USE MODI_INI_SURF_CSTS
+USE MODI_INI_SURF_CSTS
 !
 IMPLICIT NONE
 !  
@@ -77,7 +77,15 @@ REAL(KIND=JPRB) :: ZHOOK_HANDLE
 
 IF (LHOOK) CALL DR_HOOK('INI_CSTS',0,ZHOOK_HANDLE)
 
+#ifdef SFX_MNH
+#ifdef MNH_MPI_DOUBLE_PRECISION
+XSURF_TINY    = 1.0e-80
+#else
 XSURF_TINY    = TINY    (XSURF_TINY    )
+#endif
+#else
+XSURF_TINY    = 1.0e-80
+#endif
 XSURF_TINY_12 = SQRT    (XSURF_TINY    )
 XSURF_EPSILON = EPSILON (XSURF_EPSILON ) * 10.0
 
@@ -160,18 +168,18 @@ XALPI  = LOG(XESTT) + (XBETAI /XTT) + (XGAMI *LOG(XTT))
 !*       7.     TURBULENCE CONSTANTS
 !               --------------------
 !
-! CALL INI_CTURBS
+ CALL INI_CTURBS
 !-------------------------------------------------------------------------------
 !
 !*       8.     OCEAN CONSTANTS
 !               ---------------
 !
-! CALL INI_OCEAN_CSTS
+ CALL INI_OCEAN_CSTS
 !
 !*       9.     SURFACE CONSTANTS
 !               -----------------
 !
-! CALL INI_SURF_CSTS
+ CALL INI_SURF_CSTS
 IF (LHOOK) CALL DR_HOOK('INI_CSTS',1,ZHOOK_HANDLE)
 !
 !-------------------------------------------------------------------------------

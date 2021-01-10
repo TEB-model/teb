@@ -95,8 +95,8 @@ python tests/test.py --build_type=Debug --case=integration
 
 When using the TEB software, please cite both model, and software (with version) as follows:
 
-| Physical model                                          | This software                                      | Version*       |
-| ------------------------------------------------------- | -------------------------------------------------- | -------------- |
+| Physical model                                          | This software                                             | Version*                                             |
+| ------------------------------------------------------- | --------------------------------------------------------- | ---------------------------------------------------- |
 | [Masson, 2000](https://doi.org/10.1023/A:1002463829265) | [Meyer et al., 2020](https://doi.org/10.21105/joss.02008) | [see Zenodo](https://doi.org/10.5281/zenodo.3887080) |
 
 
@@ -117,3 +117,4 @@ Please see the [CONTRIBUTING.md](CONTRIBUTING.md) file.
 ## Copyright and license
 
 Copyright stated at the top of source files. Software released under [CeCILL version 2.1](Licence_CeCILL_V2.1-en.txt).
+Third party files released under MIT or CeCILL-C. See [ThirdPartyNotices.txt](ThirdPartyNotices.txt) for more details.

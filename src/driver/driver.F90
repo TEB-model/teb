@@ -49,7 +49,7 @@ USE MODD_TYPE_DATE_SURF
 USE MODE_THERMOS
 USE MODD_REPROD_OPER, ONLY : CQSAT
 !
-USE MODI_INIT_SURFCONSPHY
+!USE MODI_INIT_SURFCONSPHY
 USE MODI_SUNPOS
 USE MODI_OL_READ_ATM
 USE MODI_OL_ALLOC_ATM
@@ -58,6 +58,7 @@ USE MODI_TEB_GARDEN_STRUCT
 USE MODI_WINDOW_DATA_STRUCT
 USE MODI_BEM_MORPHO_STRUCT
 USE MODI_CIRCUMSOLAR_RAD
+USE MODI_OPEN_CLOSE_BIN_ASC_FORC
 !
 USE MODD_FORC_ATM, ONLY: CSV         ,&! name of all scalar variables
                          XDIR_ALB    ,&! direct albedo for each band
@@ -98,6 +99,8 @@ USE MODD_FORC_ATM, ONLY: CSV         ,&! name of all scalar variables
                          XPEQ_A_COEF ,&
                          XPET_B_COEF ,&
                          XPEQ_B_COEF
+
+USE PROXI_SVAT_CONSTS, ONLY: VEG_ALB, VEG_EMIS, GARDEN_BR, GREENROOF_BR
 !
 IMPLICIT NONE
 ! ---------------------------------------------------------------
@@ -110,7 +113,7 @@ namelist /dimensions/   NROOF_LAYER, NROAD_LAYER, NWALL_LAYER, NFLOOR_LAYER
 namelist /parameters/   XTSTEP_SURF, IYEAR, IMONTH, IDAY, ZTIME_START, ZLON, ZLAT ,&
                         INB_STEP_ATM, INB_ATM, KSW, ZZREF, CBEM, HROAD_DIR ,&
                         HWALL_OPT, LGARDEN, LGREENROOF, ZFRAC_GR, LSOLAR_PANEL ,&
-                        ZFRAC_PANEL, LPAR_RD_IRRIG, HNATVENT, CCOOL_COIL ,&
+                        ZFRAC_PANEL, LPAR_RD_IRRIG, CCOOL_COIL ,&
                         CHEAT_COIL, HZ0H, ZZ0, ZBLD, ZGARDEN, ZBLD_HEIGHT ,&
                         ZWALL_O_HOR, ZROAD_DIR, ZALB_ROOF, ZEMIS_ROOF ,&
                         ZHC_ROOF, ZTC_ROOF, ZD_ROOF, ZALB_ROAD, ZEMIS_ROAD ,&
@@ -119,11 +122,12 @@ namelist /parameters/   XTSTEP_SURF, IYEAR, IMONTH, IDAY, ZTIME_START, ZLON, ZLA
                         ZLE_TRAFFIC, ZH_INDUSTRY, ZLE_INDUSTRY, ZRD_START_MONTH, ZRD_END_MONTH ,&
                         ZRD_START_HOUR, ZRD_END_HOUR, ZRD_24H_IRRIG, ZEMIS_PANEL, ZALB_PANEL ,&
                         ZEFF_PANEL, ZRESIDENTIAL, ZDT_RES, ZDT_OFF, PFLOOR_HEIGHT, ZINF, ZQIN ,&
-                        ZQIN_FRAD, ZQIN_FLAT, ZGR, ZSHGC, PU_WIN, LSHADE, ZSHADE, ZSHGC_SH ,&
+                        ZQIN_FRAD, ZQIN_FLAT, ZGR, ZSHGC, PU_WIN, ZSHADE, ZSHGC_SH ,&
                         ZNATVENT, ZV_VENT, ZF_WATER_COND, ZF_WASTE_CAN, ZTCOOL_TARGET, ZTHEAT_TARGET ,&
                         ZHR_TARGET, ZEFF_HEAT, ZCAP_SYS_HEAT, ZCAP_SYS_RAT, ZT_ADP, ZM_SYS_RAT ,&
                         ZCOP_RAT, CCH_BEM, ZROUGH_ROOF, ZROUGH_WALL, ZT_ROAD, ZT_ROOF, ZT_WALL_A ,&
-                        ZT_FLOOR, ZT_MASS, ZTI_BLD, ZT_CANYON, ZT_WIN1, ZT_WIN2, ZQ_CANYON, ZQI_BLD
+                        ZT_FLOOR, ZT_MASS, ZTI_BLD, ZT_CANYON, ZT_WIN1, ZT_WIN2, ZQ_CANYON, ZQI_BLD, &
+                        VEG_ALB, VEG_EMIS, GARDEN_BR, GREENROOF_BR
 
 ! ---------------------------------------------------------------
 ! Declarations of local variables (INPUTS)
@@ -229,6 +233,8 @@ REAL,DIMENSION(1)  :: ZHSNOW_ROOF                                               
 ! Anthropogenic heat fluxes                                                           !  \\ //
 REAL,DIMENSION(1)  :: ZH_TRAFFIC       ! heat fluxes due to traffic                   !   \\/
 REAL,DIMENSION(1)  :: ZLE_TRAFFIC      ! heat fluxes due to traffic                   !
+REAL,DIMENSION(1)  :: XH_TRAFFIC       ! heat fluxes due to traffic                   !   \\/
+REAL,DIMENSION(1)  :: XLE_TRAFFIC      ! heat fluxes due to traffic
 REAL,DIMENSION(1)  :: ZH_INDUSTRY      ! heat fluxes due to factories                 ! ||   ||
 REAL,DIMENSION(1)  :: ZLE_INDUSTRY     ! heat fluxes due to factories                 ! ||   ||
 ! Urban options                                                                       ! ||   ||
@@ -558,7 +564,6 @@ CHARACTER(LEN=*), PARAMETER       :: T_WALLA1= 'output/T_WALLA1.txt'            
 CHARACTER(LEN=*), PARAMETER       :: T_WALLB1= 'output/T_WALLB1.txt'                  ! ||   ||
 CHARACTER(LEN=*), PARAMETER       :: TI_BLD = 'output/TI_BLD.txt'                     ! ||   ||
 CHARACTER(LEN=*), PARAMETER       :: Q_CANYON = 'output/Q_CANYON.txt'                 ! ||   ||
-CHARACTER(LEN=*), PARAMETER       :: P_CANYON = 'output/P_CANYON.txt'                 ! ||   ||
 CHARACTER(LEN=*), PARAMETER       :: U_CANYON = 'output/U_CANYON.txt'                 ! ||   ||
 CHARACTER(LEN=*), PARAMETER       :: H_TOWN = 'output/H_TOWN.txt'                     !\\     //
 CHARACTER(LEN=*), PARAMETER       :: LE_TOWN = 'output/LE_TOWN.txt'                   ! \\   //
@@ -577,6 +582,32 @@ CHARACTER(LEN=*), PARAMETER       :: Q_TOWN = 'output/Q_TOWN.txt'
 CHARACTER(LEN=*), PARAMETER       :: USTAR_TOWN = 'output/USTAR_TOWN.txt'
 CHARACTER(LEN=*), PARAMETER       :: THER_PROD_PANEL = 'output/THER_PROD_PANEL.txt'
 CHARACTER(LEN=*), PARAMETER       :: PHOT_PROD_PANEL = 'output/PHOT_PROD_PANEL.txt'
+CHARACTER(LEN=*), PARAMETER       :: QF_TOWN = 'output/QF_TOWN.txt'
+CHARACTER(LEN=*), PARAMETER       :: DQS_TOWN = 'output/DQS_TOWN.txt'
+!
+CHARACTER(LEN=*), PARAMETER       :: SWD = 'output/SWD.txt'
+CHARACTER(LEN=*), PARAMETER       :: SWU = 'output/SWU.txt'
+CHARACTER(LEN=*), PARAMETER       :: LWD = 'output/LWD.txt'
+CHARACTER(LEN=*), PARAMETER       :: LWU = 'output/LWU.txt'
+!
+CHARACTER(LEN=*), PARAMETER       :: Forc_TA    = 'output/Forc_TA.txt'
+CHARACTER(LEN=*), PARAMETER       :: Forc_PS    = 'output/Forc_PS.txt'
+CHARACTER(LEN=*), PARAMETER       :: Forc_QA    = 'output/Forc_QA.txt'
+CHARACTER(LEN=*), PARAMETER       :: Forc_WIND  = 'output/Forc_WIND.txt'
+CHARACTER(LEN=*), PARAMETER       :: Forc_RAIN  = 'output/Forc_RAIN.txt'
+CHARACTER(LEN=*), PARAMETER       :: Forc_SNOW  = 'output/Forc_SNOW.txt'
+
+INTEGER                           :: ID_FORC
+REAL, DIMENSION(1) :: ZSUMZEN
+REAL, DIMENSION(1) :: ZSW
+REAL                 :: ZBEGIN_TRAFFIC_TIME ! start traffic time (solar time, s)
+REAL                 :: ZEND_TRAFFIC_TIME   ! end traffic time   (solar time, s)
+INTEGER                           :: IYEAR2              ! current year at end of timestep(UTC)
+INTEGER                           :: IMONTH2             ! current month at end of timestep(UTC)
+INTEGER                           :: IDAY2               ! current day at end of timestep(UTC)
+REAL                              :: ZTIME2              ! current time since start of the day at end of timestep (s)
+
+logical :: exist ! TODO: testing remove
 
 !===========================================================================
 ! Read from namelist file after default values are set.
@@ -632,6 +663,35 @@ ZT_WALL_B = ZT_WALL_A    ! wall layers temperatures
 
 GSHAD_DAY = .FALSE. ! has shading been necessary this day ?
 GNATVENT_NIGHT =.FALSE. ! has natural ventilation been necessary/possible this night ?
+
+! irrigation not supported currently
+LPAR_RD_IRRIG = .FALSE.
+ZRD_START_MONTH = 6
+ZRD_END_MONTH = 6
+ZRD_START_HOUR = 6
+ZRD_END_HOUR = 6
+ZRD_24H_IRRIG = 0
+
+IF (ZNATVENT(1) >= 0.0 .AND. ZNATVENT(1) < 0.5) THEN
+  HNATVENT = 'NONE'
+ELSEIF (ZNATVENT(1) >= 0.5 .AND. ZNATVENT(1) < 1.5) THEN
+  HNATVENT = 'MANU'
+ELSEIF (ZNATVENT(1) >= 1.5 .AND. ZNATVENT(1) <= 2.5) THEN
+  HNATVENT = 'AUTO'        
+ELSEIF (ZNATVENT(1) >= 2.5 .AND. ZNATVENT(1) <= 3.5) THEN
+  HNATVENT = 'MECH'        
+ELSE
+  HNATVENT = 'NONE'        
+ENDIF
+
+IF (ZSHADE(1) >= 0.0 .AND. ZSHADE(1) < 0.5) THEN
+  LSHADE = .FALSE.
+ELSEIF (ZSHADE(1) >= 0.5 .AND. ZSHADE(1) <= 1.0) THEN
+  LSHADE = .TRUE.
+ELSE
+  LSHADE = .FALSE.
+ENDIF
+
 !
 ! coherence check
 IF ( (.NOT. LGREENROOF) .AND. ZFRAC_GR(1)>0.) THEN
@@ -663,9 +723,9 @@ LCANOPY= .FALSE.  ! is canopy active ?  ** DO NOT CHANGE **
 !
 CALL INI_CSTS
 !
-CALL INIT_SURFCONSPHY
+!CALL INIT_SURFCONSPHY
 !
-CQSAT='OLD' ! saturation is computed relative to water above 0°C, and relative to ice below 0°C
+CQSAT='NEW' ! saturation is computed relative to water above 0°C, and relative to ice below 0°C
 !
 !* various thresholds
 !
@@ -676,7 +736,7 @@ XRIMAX = 0.2 ! Maximum richardson number for exchange coefficients computations
 !
 !* Open atmospheric forcing files
 !
-CALL OPEN_CLOSE_BIN_ASC_FORC('OPEN ','ASCII ',1,'R')
+CALL OPEN_CLOSE_BIN_ASC_FORC('OPEN ','ASCII ','R')
 !
 ! allocation of variables
 !
@@ -689,25 +749,25 @@ ZTIME = ZTIME_START
 CALL SUNPOS(IYEAR, IMONTH, IDAY, ZTIME, ZLON, ZLAT, XTSUN, XZENITH, XAZIM)
 !
 ! allocate local atmospheric variables
-ALLOCATE(ZTA    (2,1))
-ALLOCATE(ZQA    (2,1))
-ALLOCATE(ZWIND  (2,1))
-ALLOCATE(ZDIR_SW(2,1))
-ALLOCATE(ZSCA_SW(2,1))
-ALLOCATE(ZLW    (2,1))
-ALLOCATE(ZSNOW  (2,1))
-ALLOCATE(ZRAIN  (2,1))
-ALLOCATE(ZPS    (2,1))
-ALLOCATE(ZCO2   (2,1))
-ALLOCATE(ZDIR   (2,1))
+ALLOCATE(ZTA    (1,2))
+ALLOCATE(ZQA    (1,2))
+ALLOCATE(ZWIND  (1,2))
+ALLOCATE(ZDIR_SW(1,2))
+ALLOCATE(ZSCA_SW(1,2))
+ALLOCATE(ZLW    (1,2))
+ALLOCATE(ZSNOW  (1,2))
+ALLOCATE(ZRAIN  (1,2))
+ALLOCATE(ZPS    (1,2))
+ALLOCATE(ZCO2   (1,2))
+ALLOCATE(ZDIR   (1,2))
 !
 !* reads atmospheric forcing for first time-step
 !
 CALL OL_READ_ATM('ASCII ', 'ASCII ', 1,    &
                     ZTA,ZQA,ZWIND,ZDIR_SW,ZSCA_SW,ZLW,ZSNOW,ZRAIN,ZPS,&
-                    ZCO2,ZDIR )
-XCO2(:)  = ZCO2(1,:)
-XRHOA(:) = ZPS(1,:) / ( ZTA(1,:)*XRD * ( 1.+((XRV/XRD)-1.)*ZQA(1,:) ) + XZREF(:)*XG )
+                    ZCO2,ZDIR,.false. )
+XCO2(:)  = ZCO2(:,1)
+XRHOA(:) = ZPS(:,1) / ( ZTA(:,1)*XRD * ( 1.+((XRV/XRD)-1.)*ZQA(:,1) ) + XZREF(:)*XG )
 !
 ! -----------------------------------------------------------
 ! Geometric parameters
@@ -772,7 +832,6 @@ OPEN(UNIT=16, FILE = T_WALLA1,  ACCESS = 'APPEND',STATUS = 'REPLACE')
 OPEN(UNIT=17, FILE = T_WALLB1,  ACCESS = 'APPEND',STATUS = 'REPLACE')
 OPEN(UNIT=18, FILE = TI_BLD,    ACCESS = 'APPEND',STATUS = 'REPLACE')
 OPEN(UNIT=19, FILE = Q_CANYON,  ACCESS = 'APPEND',STATUS = 'REPLACE')
-OPEN(UNIT=20, FILE = P_CANYON,  ACCESS = 'APPEND',STATUS = 'REPLACE')
 OPEN(UNIT=21, FILE = U_CANYON,  ACCESS = 'APPEND',STATUS = 'REPLACE')
 OPEN(UNIT=22, FILE = H_TOWN,    ACCESS = 'APPEND',STATUS = 'REPLACE')
 OPEN(UNIT=23, FILE = LE_TOWN,   ACCESS = 'APPEND',STATUS = 'REPLACE')
@@ -791,6 +850,20 @@ OPEN(UNIT=33, FILE = Q_TOWN,     ACCESS = 'APPEND',STATUS = 'REPLACE')
 OPEN(UNIT=34, FILE = USTAR_TOWN, ACCESS = 'APPEND',STATUS = 'REPLACE')
 OPEN(UNIT=35, FILE = THER_PROD_PANEL, ACCESS = 'APPEND',STATUS = 'REPLACE')
 OPEN(UNIT=36, FILE = PHOT_PROD_PANEL, ACCESS = 'APPEND',STATUS = 'REPLACE')
+OPEN(UNIT=38, FILE = QF_TOWN, ACCESS = 'APPEND',STATUS = 'REPLACE')
+OPEN(UNIT=39, FILE = DQS_TOWN, ACCESS = 'APPEND',STATUS = 'REPLACE')
+!
+OPEN(UNIT=40, FILE = SWD, ACCESS = 'APPEND',STATUS = 'REPLACE')
+OPEN(UNIT=41, FILE = SWU, ACCESS = 'APPEND',STATUS = 'REPLACE')
+OPEN(UNIT=42, FILE = LWD, ACCESS = 'APPEND',STATUS = 'REPLACE')
+OPEN(UNIT=43, FILE = LWU, ACCESS = 'APPEND',STATUS = 'REPLACE')
+
+OPEN(UNIT=50, FILE = Forc_TA, ACCESS = 'APPEND',STATUS = 'REPLACE')
+OPEN(UNIT=51, FILE = Forc_PS, ACCESS = 'APPEND',STATUS = 'REPLACE')
+OPEN(UNIT=52, FILE = Forc_QA, ACCESS = 'APPEND',STATUS = 'REPLACE')
+OPEN(UNIT=53, FILE = Forc_WIND, ACCESS = 'APPEND',STATUS = 'REPLACE')
+OPEN(UNIT=54, FILE = Forc_RAIN, ACCESS = 'APPEND',STATUS = 'REPLACE')
+OPEN(UNIT=55, FILE = Forc_SNOW, ACCESS = 'APPEND',STATUS = 'REPLACE')
 !
 ! -----------------------------------------------------------
 ! Temporal loops
@@ -806,35 +879,75 @@ DO JFORC_STEP= 1,INB_STEP_ATM
    ! read Forcing
    CALL OL_READ_ATM('ASCII ', 'ASCII ', JFORC_STEP,    &
                     ZTA,ZQA,ZWIND,ZDIR_SW,ZSCA_SW,ZLW,ZSNOW,ZRAIN,ZPS,&
-                    ZCO2,ZDIR )
+                    ZCO2,ZDIR,.false. )
    !
+  !COMPUTE SUM ZENITH angle between 2 timestepA
+  ZSUMZEN(:)=0.0
+  DO JSURF_STEP = 1,INB_ATM
+    IDAY2  = IDAY
+    ZTIME2 = ZTIME + (JSURF_STEP-1.)*XTSTEP_SURF
+    IF (ZTIME2>86400.) THEN
+      ZTIME2 = ZTIME2-86400
+      IDAY2  = IDAY+1
+    ENDIF
+    CALL SUNPOS(IYEAR, IMONTH, IDAY2, ZTIME+(JSURF_STEP-1.)*XTSTEP_SURF, &
+                ZLON, ZLAT, XTSUN, XZENITH, XAZIM)
+    !
+    ZSUMZEN(:)= ZSUMZEN(:) + MAX(COS(XZENITH(:)+0.1),0.)/(INB_ATM*1.0)
+    !
+  ENDDO
+  WHERE ( ZSUMZEN<0.01 ) ZSUMZEN = 0.0
+
    !
    DO JSURF_STEP=1,INB_ATM
-       !
-       ! time computations
-       !
-       ! solar time and position
-       CALL SUNPOS(IYEAR, IMONTH, IDAY, ZTIME, ZLON, ZLAT, XTSUN, XZENITH, XAZIM)
-       CALL SUNPOS(IYEAR, IMONTH, IDAY, ZTIME+XTSTEP_SURF, ZLON, ZLAT, XTSUN, &
-                   XZENITH2, XAZIM)
-
-      ! Update time
-       ZTIME_BEG = ZTIME           ! time at beginning of time step
-       ZTIME = ZTIME + XTSTEP_SURF ! time at end of time step
-       ZTIMEC= ZTIMEC+ XTSTEP_SURF
-       CALL ADD_FORECAST_TO_DATE_SURF(IYEAR, IMONTH, IDAY, ZTIME)
+      !
+      ! time interpolation of the forcing
+      !
+      !
+      CALL SUNPOS(IYEAR, IMONTH, IDAY, ZTIME, ZLON, ZLAT, XTSUN, XZENITH, XAZIM)
+      IYEAR2 = IYEAR
+      IMONTH2= IMONTH
+      IDAY2  = IDAY
+      ZTIME2 = ZTIME+XTSTEP_SURF
+      CALL ADD_FORECAST_TO_DATE_SURF(IYEAR2, IMONTH2, IDAY2, ZTIME2)
+      CALL SUNPOS(IYEAR2, IMONTH2, IDAY2, ZTIME2, ZLON, ZLAT, XTSUN, XZENITH2, XAZIM)
        !
        TPTIME%TIME= ZTIME
        TPTIME%TDATE%YEAR =IYEAR
        TPTIME%TDATE%MONTH=IMONTH
        TPTIME%TDATE%DAY  =IDAY
-       !
-       !
-       ! time interpolation of the forcing
-       !
-       CALL OL_TIME_INTERP_ATM(JSURF_STEP,INB_ATM,                               &
-                               ZTA,ZQA,ZWIND,ZDIR_SW,ZSCA_SW,ZLW,ZSNOW,ZRAIN,ZPS,&
-                               ZCO2,ZDIR  )
+
+      !
+      !interpolation between beginning and end of current forcing time step
+       ID_FORC = 1
+    CALL OL_TIME_INTERP_ATM(JSURF_STEP,INB_ATM,                      &
+                            ZTA(:,ID_FORC),ZTA(:,ID_FORC+1),         &
+                            ZQA(:,ID_FORC),ZQA(:,ID_FORC+1),         &
+                            ZWIND(:,ID_FORC),ZWIND(:,ID_FORC+1),     &
+                            ZDIR_SW(:,ID_FORC),ZDIR_SW(:,ID_FORC+1), &
+                            ZSCA_SW(:,ID_FORC),ZSCA_SW(:,ID_FORC+1), &
+                            ZLW(:,ID_FORC),ZLW(:,ID_FORC+1),         &
+                            ZSNOW(:,ID_FORC+1),ZRAIN(:,ID_FORC+1),   &
+                            ZPS(:,ID_FORC),ZPS(:,ID_FORC+1),         &
+                            ZCO2(:,ID_FORC),ZCO2(:,ID_FORC+1),       &
+                            ZDIR(:,ID_FORC),ZDIR(:,ID_FORC+1),       &
+                            XZENITH+0.1,ZSUMZEN                      )
+
+      ZSW(:) = 0.
+      DO JLOOP=1,SIZE(XDIR_SW,2)
+        ZSW(:) = ZSW(:) + XDIR_SW(:,JLOOP) + XSCA_SW(:,JLOOP)
+      END DO
+      WHERE (ZSW(:)>0.)
+        XZENITH  = MIN (XZENITH ,XPI/2.-0.01)
+        XZENITH2 = MIN (XZENITH2,XPI/2.-0.01)
+      ELSEWHERE
+        XZENITH  = MAX (XZENITH ,XPI/2.)
+        XZENITH2 = MAX (XZENITH2,XPI/2.)
+      END WHERE
+    
+      ! updates time
+      ZTIMEC= ZTIMEC+XTSTEP_SURF
+
        ! Exner functions
        !
        ZEXNS = (XPS/XP00)**(XRD/XCPD)
@@ -843,21 +956,7 @@ DO JFORC_STEP= 1,INB_STEP_ATM
        ! specific humidity (conversion from kg/m3 to kg/kg)
        !
        ZQA_KGKG(:) = XQA(:) / XRHOA(:)
-       !
-       ! coherence between solar zenithal angle and radiation
-       ! when solar beam close to horizontal -> reduction of direct radiation to
-       ! the benefit of scattered radiation
-       ! when pi/2 - 0.1 < ZENITH < pi/2 - 0.05 => weight of direct to scattered radiation decreases linearly with zenith
-       ! when pi/2 - 0.05 < ZENITH => all the direct radiation is converted to scattered radiation
-       ! coherence between solar zenithal angle and radiation
-       !
-       ZCOEF(:) = (XPI/2. - XZENITH(:) - 0.05) / 0.05
-       ZCOEF(:) = MAX(MIN(ZCOEF,1.),0.)
-       DO JLOOP=1,SIZE(XDIR_SW,2)
-         XSCA_SW(:,JLOOP) = XSCA_SW(:,JLOOP) + XDIR_SW(:,JLOOP) * (1 - ZCOEF)
-         XDIR_SW(:,JLOOP) = XDIR_SW(:,JLOOP) * ZCOEF(:)
-       ENDDO
-      !
+
        ZTDIR_SW = XDIR_SW(1,1)
        ZTSCA_SW = XSCA_SW(1,1)
        KSW = 1  ! only one spectral band here
@@ -868,6 +967,19 @@ DO JFORC_STEP= 1,INB_STEP_ATM
        CALL CIRCUMSOLAR_RAD(XDIR_SW(:,1), XSCA_SW(:,1), XZENITH, ZF1_o_B)
        ZTDIR_SW(:,1) = XDIR_SW(:,1) + XSCA_SW(:,1) * ZF1_o_B
        ZTSCA_SW(:,1) = XSCA_SW(:,1) * (1. - ZF1_o_B)
+
+
+       ZBEGIN_TRAFFIC_TIME = 21600.
+       ZEND_TRAFFIC_TIME   = 64800.
+       !
+       WHERE( XTSUN>ZBEGIN_TRAFFIC_TIME  .AND.  XTSUN<ZEND_TRAFFIC_TIME  )
+         XH_TRAFFIC  (:) = ZH_TRAFFIC(:)
+         XLE_TRAFFIC (:) = ZLE_TRAFFIC(:)
+       ELSEWHERE
+         XH_TRAFFIC  (:) = 0.
+         XLE_TRAFFIC (:) = 0.   
+       END WHERE
+
        !
        !
        ! Wind speed
@@ -885,8 +997,7 @@ DO JFORC_STEP= 1,INB_STEP_ATM
        ZPEW_A_COEF_LOWCAN = 0.
        ZPEW_B_COEF        = ZVMOD
        ZPEW_B_COEF_LOWCAN = ZU_LOWCAN
-!
-!
+
 !*****************************************************************************
 !*****************************************************************************
 !                  Call of physical routines of TEB is here                  !
@@ -914,7 +1025,7 @@ DO JFORC_STEP= 1,INB_STEP_ATM
                      XZENITH, XAZIM,                                          &
                      XRAIN, XSNOW,                                            &
                      ZZREF, ZZREF, ZVMOD,                                     &
-                     ZH_TRAFFIC, ZLE_TRAFFIC, ZH_INDUSTRY, ZLE_INDUSTRY,      &
+                     XH_TRAFFIC, XLE_TRAFFIC, ZH_INDUSTRY, ZLE_INDUSTRY,      &
                      XTSTEP_SURF,                                             &
                      ZZ0,                                                     &
                      ZBLD,ZGARDEN,ZROAD_DIR,ZROAD,ZFRAC_GR,                   &
@@ -972,7 +1083,7 @@ DO JFORC_STEP= 1,INB_STEP_ATM
                      ZD_FLOOR, ZT_WIN1, ZABS_SW_WIN, ZABS_LW_WIN, ZSHGC,      &
                      ZSHGC_SH, ZUGG_WIN, ZALB_WIN, ZABS_WIN, ZEMIT_LW_FAC,    &
                      ZEMIT_LW_GRND, ZT_RAD_IND, ZREF_SW_GRND, ZREF_SW_FAC,    &
-                     ZHU_BLD, ZTIME_BEG, LSHADE, ZSHADE, GSHAD_DAY,           &
+                     ZHU_BLD, ZTIME, LSHADE, ZSHADE, GSHAD_DAY,           &
                      GNATVENT_NIGHT,                                          &
                      CBEM,                                                    &
                      ZN_FLOOR, ZWALL_O_BLD, ZGLAZ_O_BLD, ZMASS_O_BLD,         &
@@ -995,21 +1106,13 @@ DO JFORC_STEP= 1,INB_STEP_ATM
 !*****************************************************************************
 !*****************************************************************************
 !
-!* computation of temporaly averaged diagnostics
 
-!       ZTS_ROOF   = ZTS_ROOF   + ZT_ROOF(1,1)       ! surface temperature
-!       ZTS_ROAD   = ZTS_ROAD   + ZT_ROAD(1,1)       ! surface temperature
-!       ZTS_WALL_A = ZTS_WALL_A + ZT_WALL_A(1,1)     ! surface temperature
-!       ZTS_WALL_B = ZTS_WALL_B + ZT_WALL_B(1,1)     ! surface temperature
-      !
-       !
+    ZTIME = ZTIME + XTSTEP_SURF
+    CALL ADD_FORECAST_TO_DATE_SURF(IYEAR, IMONTH, IDAY, ZTIME)
+
+
    END DO
-   ! Calculate average for a forcing time step
-!   ZTS_ROOF   = ZTS_ROOF/INB_ATM       ! surface temperature
-!   ZTS_ROAD   = ZTS_ROAD/INB_ATM       ! surface temperature
-!   ZTS_WALL_A = ZTS_WALL_A/INB_ATM     ! surface temperature
-!   ZTS_WALL_B = ZTS_WALL_B/INB_ATM     ! surface temperature
-!
+
 !  Instantaneous diagnostics
 ZTS_ROOF = ZT_ROOF(1,1)
 ZTS_ROAD = ZT_ROAD(1,1)
@@ -1026,10 +1129,7 @@ END IF
 ZDIR_CANYON = ZDIR(1,1)
 ! Town specific humidity assumed to be same as canyon humidity
 ZQ_TOWN = ZQ_CANYON
-! The heating and cooling energy demand are converted
-! from W/m²(bld) to W/m²(urb).
-ZHVAC_COOL_TOT = ZBLD * ZHVAC_COOL
-ZHVAC_HEAT_TOT = ZBLD * ZHVAC_HEAT
+
    !
    WRITE(13,*) ZTS_ROOF
    WRITE(14,*) ZT_CANYON
@@ -1038,14 +1138,19 @@ ZHVAC_HEAT_TOT = ZBLD * ZHVAC_HEAT
    WRITE(17,*) ZTS_WALL_B
    WRITE(18,*) ZTI_BLD
    WRITE(19,*) ZQ_CANYON
-   WRITE(20,*) XPS
    WRITE(21,*) ZU_CANYON
    WRITE(22,*) ZH_TOWN
    WRITE(23,*) ZLE_TOWN
    WRITE(24,*) ZRN_TOWN
    IF (CBEM=='BEM') THEN
-     WRITE(25,*) ZHVAC_COOL_TOT
-     WRITE(26,*) ZHVAC_HEAT_TOT
+     ! The heating and cooling energy demand are converted
+     ! from W/m²(bld) to W/m²(urb).
+     ! FIXME: this does not seem correct anymore, why?
+     ! it seems that ZHVAC_COOL is already W/m²(urb)...  
+     ZHVAC_COOL_TOT = ZBLD * ZHVAC_COOL
+     ZHVAC_HEAT_TOT = ZBLD * ZHVAC_HEAT
+     WRITE(25,*) ZHVAC_COOL
+     WRITE(26,*) ZHVAC_HEAT
      WRITE(37,*) ZCOP
    END IF
 !
@@ -1057,10 +1162,28 @@ ZHVAC_HEAT_TOT = ZBLD * ZHVAC_HEAT
     WRITE(32,*) ZTS_TOWN
     WRITE(33,*) ZQ_TOWN
     WRITE(34,*) ZUSTAR_TOWN
+    WRITE(38,*) ZQF_TOWN
+    WRITE(39,*) ZDQS_TOWN
     IF (LSOLAR_PANEL) THEN
       WRITE(35,*) ZTHER_PROD_PANEL
       WRITE(36,*) ZPHOT_PROD_PANEL
     END IF
+    WRITE(40,*) ZTDIR_SW(1,1) + ZTSCA_SW(1,1)       
+                      ! PDIR_SW(:,JSWB)                    + PSCA_SW(:,JSWB)
+    WRITE(41,*) ZTDIR_SW(1,1) * ZDIR_ALB_TOWN(1) + ZTSCA_SW(1,1) * ZSCA_ALB_TOWN(1)
+                      ! PDIR_SW(:,JSWB) * PDIR_ALB(:,JSWB) + PSCA_SW(:,JSWB) * PSCA_ALB(:,JSWB) 
+    WRITE(42,*) XLW
+                      ! PLW(:)
+    WRITE(43,*) ZEMIS_TOWN * XSTEFAN *ZTS_TOWN**4 + (1.-ZEMIS_TOWN)*XLW
+      ! PEMIS(:)*XSTEFAN*PTRAD(:)**4 + (1.-PEMIS(:))*PLW(:)
+
+    ! Interpolated forcing variables
+    WRITE(50,*) XTA
+    WRITE(51,*) XPS
+    WRITE(52,*) XQA
+    WRITE(53,*) ZVMOD
+    WRITE(54,*) XRAIN
+    WRITE(55,*) XSNOW
 
 !
 END DO
@@ -1095,7 +1218,7 @@ DEALLOCATE(ZTC_ROAD)
 DEALLOCATE(ZD_ROAD)
 DEALLOCATE(ZT_ROAD)
 !
-CALL OPEN_CLOSE_BIN_ASC_FORC('CLOSE ','ASCII ',1,'R')
+CALL OPEN_CLOSE_BIN_ASC_FORC('CLOSE ','ASCII ','R')
 CLOSE(13)
 CLOSE(14)
 CLOSE(15)
@@ -1103,7 +1226,6 @@ CLOSE(16)
 CLOSE(17)
 CLOSE(18)
 CLOSE(19)
-CLOSE(20)
 CLOSE(21)
 CLOSE(22)
 CLOSE(23)
@@ -1121,6 +1243,19 @@ CLOSE(33)
 CLOSE(34)
 CLOSE(35)
 CLOSE(36)
+CLOSE(38)
+CLOSE(39)
+CLOSE(40)
+CLOSE(41)
+CLOSE(42)
+CLOSE(43)
+
+CLOSE(50)
+CLOSE(51)
+CLOSE(52)
+CLOSE(53)
+CLOSE(54)
+CLOSE(55)
 !
     WRITE(*,*) ' '
     WRITE(*,*) '    --------------------------'

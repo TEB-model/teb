@@ -1,10 +1,7 @@
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-! Copyright 1998-2013 Meteo-France
-! This is part of the TEB software governed by the CeCILL licence version 2.1.
-! See the following links for details:
-! https://cecill.info/licences/Licence_CeCILL_V2.1-en.txt
-! https://cecill.info/licences/Licence_CeCILL_V2.1-fr.txt
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!SFX_LIC Copyright 1994-2014 CNRS, Meteo-France and Universite Paul Sabatier
+!SFX_LIC This is part of the SURFEX software governed by the CeCILL-C licence
+!SFX_LIC version 1. See LICENSE, CeCILL-C_V1-en.txt and CeCILL-C_V1-fr.txt  
+!SFX_LIC for details. version 1.
 !     ######################
 MODULE MODD_FORC_ATM
 !     ######################
@@ -24,7 +21,7 @@ MODULE MODD_FORC_ATM
 !!
 !!    AUTHOR
 !!    ------
-!!	F. Habets   *Meteo France*
+!!      F. Habets   *Meteo France*
 !!
 !!    MODIFICATIONS
 !!    -------------
@@ -37,7 +34,7 @@ MODULE MODD_FORC_ATM
 IMPLICIT NONE
 !------------------------------------------------------------------------------
 !
-CHARACTER(LEN=6), DIMENSION(:),  ALLOCATABLE :: CSV       ! name of all scalar variables
+ CHARACTER(LEN=6), DIMENSION(:),  ALLOCATABLE :: CSV       ! name of all scalar variables
 REAL,             DIMENSION(:,:),ALLOCATABLE :: XDIR_ALB  ! direct albedo for each band
 REAL,             DIMENSION(:,:),ALLOCATABLE :: XSCA_ALB  ! diffuse albedo for each band
 REAL,             DIMENSION(:),  ALLOCATABLE :: XEMIS     ! emissivity
@@ -75,7 +72,7 @@ REAL, DIMENSION(:), ALLOCATABLE :: XSFTH     ! flux of heat                     
 REAL, DIMENSION(:), ALLOCATABLE :: XSFTQ     ! flux of water vapor                   (kg/m2/s)
 REAL, DIMENSION(:), ALLOCATABLE :: XSFU      ! zonal momentum flux                   (pa)
 REAL, DIMENSION(:), ALLOCATABLE :: XSFV      ! meridian momentum flux                (pa)
-REAL, DIMENSION(:), ALLOCATABLE :: XSFCO2    ! flux of CO2                           (kg/m2/s)
+REAL, DIMENSION(:), ALLOCATABLE :: XSFCO2    ! flux of CO2                           (m/s*kg_CO2/kg_air)
 REAL, DIMENSION(:,:),ALLOCATABLE:: XSFTS     ! flux of scalar var.                   (kg/m2/s)
 !
 REAL, DIMENSION(:), ALLOCATABLE :: XPEW_A_COEF ! implicit coefficients
@@ -84,7 +81,12 @@ REAL, DIMENSION(:), ALLOCATABLE :: XPET_A_COEF
 REAL, DIMENSION(:), ALLOCATABLE :: XPEQ_A_COEF
 REAL, DIMENSION(:), ALLOCATABLE :: XPET_B_COEF
 REAL, DIMENSION(:), ALLOCATABLE :: XPEQ_B_COEF
-
+!
+REAL, DIMENSION(:), ALLOCATABLE :: XTSURF   ! effective temperature                  (K)
+REAL, DIMENSION(:), ALLOCATABLE :: XZ0      ! surface roughness length for momentum  (m)
+REAL, DIMENSION(:), ALLOCATABLE :: XZ0H     ! surface roughness length for heat      (m)
+REAL, DIMENSION(:), ALLOCATABLE :: XQSURF   ! specific humidity at surface           (kg/kg)
+!
 !------------------------------------------------------------------------------
 !
 END MODULE MODD_FORC_ATM

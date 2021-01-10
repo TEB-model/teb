@@ -1,10 +1,7 @@
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-! Copyright 1998-2013 Meteo-France
-! This is part of the TEB software governed by the CeCILL licence version 2.1.
-! See the following links for details:
-! https://cecill.info/licences/Licence_CeCILL_V2.1-en.txt
-! https://cecill.info/licences/Licence_CeCILL_V2.1-fr.txt
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!SFX_LIC Copyright 1994-2014 CNRS, Meteo-France and Universite Paul Sabatier
+!SFX_LIC This is part of the SURFEX software governed by the CeCILL-C licence
+!SFX_LIC version 1. See LICENSE, CeCILL-C_V1-en.txt and CeCILL-C_V1-fr.txt  
+!SFX_LIC for details. version 1.
 !     #####################
       MODULE MODD_SURF_CONF
 !     #####################
@@ -25,7 +22,7 @@
 !!
 !!    AUTHOR
 !!    ------
-!!	P. Le Moigne *Meteo France*
+!!      P. Le Moigne *Meteo France*
 !!
 !!    MODIFICATIONS
 !!    -------------

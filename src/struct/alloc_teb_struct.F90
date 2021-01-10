@@ -4,7 +4,7 @@
 !SFX_LIC for details.
 !   ##########################################################################
     SUBROUTINE ALLOC_TEB_STRUCT(KROOF_LAYER,KROAD_LAYER,KWALL_LAYER,KFLOOR_LAYER,&
-                               TOP,T,BOP,B,TPN,TIR,DMT                           )
+                               DTCO, G, TOP, T, BOP, B, TPN, TIR, DMT, GDM, GRM )
 !   ##########################################################################
 !
 !!****  *ALLOC_TEB_STRUCT*
@@ -43,6 +43,8 @@
 !*       0.     DECLARATIONS
 !               ------------
 !
+USE MODD_DATA_COVER_n, ONLY : DATA_COVER_t, DATA_COVER_INIT
+USE MODD_SFX_GRID_n, ONLY : GRID_t, GRID_INIT
 USE MODD_TEB_OPTION_n, ONLY : TEB_OPTIONS_t, TEB_OPTIONS_INIT
 USE MODD_TEB_n, ONLY : TEB_t, TEB_INIT
 USE MODD_BEM_OPTION_n, ONLY : BEM_OPTIONS_t, BEM_OPTIONS_INIT
@@ -50,6 +52,8 @@ USE MODD_BEM_n, ONLY : BEM_t, BEM_INIT
 USE MODD_TEB_PANEL_n, ONLY : TEB_PANEL_t, TEB_PANEL_INIT
 USE MODD_TEB_IRRIG_n, ONLY : TEB_IRRIG_t, TEB_IRRIG_INIT
 USE MODD_DIAG_MISC_TEB_n, ONLY : DIAG_MISC_TEB_t, DIAG_MISC_TEB_INIT
+USE MODD_SURFEX_n, ONLY : TEB_GARDEN_MODEL_t
+USE MODD_SURFEX_n, ONLY : TEB_GREENROOF_MODEL_t
 !
 !
 IMPLICIT NONE
@@ -63,6 +67,8 @@ INTEGER, INTENT(IN) :: KROOF_LAYER   ! number of roof layers
 INTEGER, INTENT(IN) :: KROAD_LAYER   ! number of road layers
 INTEGER, INTENT(IN) :: KWALL_LAYER   ! number of wall layers
 INTEGER, INTENT(IN) :: KFLOOR_LAYER  ! number of floor layers
+TYPE(DATA_COVER_t), INTENT(INOUT) :: DTCO
+TYPE(GRID_t), INTENT(INOUT) :: G
 TYPE(TEB_OPTIONS_t),   INTENT(INOUT) :: TOP
 TYPE(TEB_t),           INTENT(INOUT) :: T
 TYPE(BEM_OPTIONS_t),   INTENT(INOUT) :: BOP
@@ -70,6 +76,8 @@ TYPE(BEM_t),           INTENT(INOUT) :: B
 TYPE(TEB_PANEL_t),     INTENT(INOUT) :: TPN
 TYPE(TEB_IRRIG_t),     INTENT(INOUT) :: TIR
 TYPE(DIAG_MISC_TEB_t), INTENT(INOUT) :: DMT
+TYPE(TEB_GARDEN_MODEL_t), INTENT(INOUT) :: GDM
+TYPE(TEB_GREENROOF_MODEL_t), INTENT(INOUT) :: GRM
 !
 !
 !*      0.2    Declarations of local variables
@@ -77,6 +85,7 @@ TYPE(DIAG_MISC_TEB_t), INTENT(INOUT) :: DMT
 !
 !-------------------------------------------------------------------------------
 !
+CALL GRID_INIT(G)
 CALL TEB_INIT(T)
 CALL TEB_PANEL_INIT(TPN)
 CALL TEB_OPTIONS_INIT(TOP)
@@ -84,6 +93,7 @@ CALL TEB_IRRIG_INIT(TIR)
 CALL DIAG_MISC_TEB_INIT(DMT)
 CALL BEM_INIT(B)
 CALL BEM_OPTIONS_INIT(BOP)
+CALL DATA_COVER_INIT(DTCO)
 !
 !-------------------------------------------------------------------------------
 !
@@ -418,6 +428,17 @@ ALLOCATE(DMT%XHU_BLD(1))           !Indoor relative humidity
 ALLOCATE(DMT%XTCOOL_TARGET(1))     ! current cooling setpoint of indoor air
 ALLOCATE(DMT%XTHEAT_TARGET(1))     ! current heating setpoint of indoor air
 ALLOCATE(DMT%XQIN(1))              ! current internal heat gains [W m-2(floor)]
+
+! New fields
+ALLOCATE(GDM%VD%ND%AL(1))
+ALLOCATE(GDM%VD%NDE%AL(1))
+ALLOCATE(GDM%VD%NDM%AL(1))
+ALLOCATE(GDM%NPE%AL(1))
+
+ALLOCATE(GRM%VD%ND%AL(1))
+ALLOCATE(GRM%VD%NDE%AL(1))
+ALLOCATE(GRM%VD%NDM%AL(1))
+ALLOCATE(GRM%NPE%AL(1))
 
 !-------------------------------------------------------------------------------
 !

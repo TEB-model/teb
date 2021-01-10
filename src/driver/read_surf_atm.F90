@@ -9,26 +9,24 @@ MODULE MODI_READ_SURF_ATM
 INTERFACE
 
 !**************************************************************************
-SUBROUTINE READ_SURF_ATM     (HPROGRAM, HFILE, PFIELD,                    &
-                              KFORC_STEP, KNB, KRESP, KINIT               )
+SUBROUTINE READ_SURF_ATM     (HPROGRAM, PFIELD,                    &
+                              KFORC_STEP, KNB, KINIT               )
 !**************************************************************************
 IMPLICIT NONE
 !
 ! global variables
 INTEGER,             INTENT(IN)  :: KFORC_STEP
 INTEGER,             INTENT(IN)  :: KNB  
-INTEGER,             INTENT(IN)  :: KRESP
 INTEGER,             INTENT(IN)  :: KINIT
 CHARACTER(LEN=6)    ,INTENT(IN)  :: HPROGRAM
-CHARACTER(LEN=15)   ,INTENT(IN)  :: HFILE
 REAL, DIMENSION(:,:),INTENT(OUT) :: PFIELD
 END SUBROUTINE READ_SURF_ATM
 END INTERFACE
 END MODULE MODI_READ_SURF_ATM
 !
 !**************************************************************************
-SUBROUTINE READ_SURF_ATM     (HPROGRAM, HFILE, PFIELD,                    &
-                              KFORC_STEP, KNB, KRESP, KINIT               )
+SUBROUTINE READ_SURF_ATM     (HPROGRAM, PFIELD,                    &
+                              KFORC_STEP, KNB, KINIT               )
 !**************************************************************************
 !
 !!    PURPOSE
@@ -70,10 +68,8 @@ IMPLICIT NONE
 REAL, DIMENSION(:,:),INTENT(INOUT) :: PFIELD
 INTEGER,INTENT(IN)               :: KFORC_STEP
 INTEGER,INTENT(IN)               :: KNB 
-INTEGER,INTENT(IN)               :: KRESP
 INTEGER,INTENT(IN)               :: KINIT
 CHARACTER(LEN=6)    ,INTENT(IN)  :: HPROGRAM
-CHARACTER(LEN=15)   ,INTENT(IN)  :: HFILE
 
 ! local variables
 INTEGER                          :: I
@@ -85,13 +81,13 @@ IF (HPROGRAM == 'ASCII ') THEN
  IF (KFORC_STEP .EQ. 1) THEN
   REWIND(KINIT)
   DO I=1,KNB
-    READ(KINIT,*) PFIELD(I,:)
+    READ(KINIT,*) PFIELD(:,I)
   ENDDO
  ELSE
   DO I=1,KNB-1
-   PFIELD(I,:) = PFIELD(I+1,:)
+   PFIELD(:,I) = PFIELD(:,I+1)
   ENDDO     
-  READ(KINIT,*) PFIELD(KNB,:)
+  READ(KINIT,*) PFIELD(:,KNB)
  ENDIF
 !
 ENDIF

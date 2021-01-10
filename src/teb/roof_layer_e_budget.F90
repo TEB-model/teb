@@ -1,7 +1,7 @@
 !SFX_LIC Copyright 1994-2014 CNRS, Meteo-France and Universite Paul Sabatier
-!SFX_LIC This is part of the SURFEX software governed by the CeCILL licence
-!SFX_LIC version 2.1. See Licence_CeCILL_V2.1-en.txt and Licence_CeCILL_V2.1-fr.txt  
-!SFX_LIC for details.
+!SFX_LIC This is part of the SURFEX software governed by the CeCILL-C licence
+!SFX_LIC version 1. See LICENSE, CeCILL-C_V1-en.txt and CeCILL-C_V1-fr.txt  
+!SFX_LIC for details. version 1.
 !     #########
     SUBROUTINE ROOF_LAYER_E_BUDGET(TOP, T, B, PQSAT_ROOF, PAC_BLD, PTSTEP, PDN_ROOF,   &
                                    PRHOA, PAC_ROOF, PAC_ROOF_WAT, PLW_RAD, PPS,        &
@@ -315,7 +315,6 @@ DO JJ=1,SIZE(T%XT_ROOF,1)
   !
   !* absorbed LW
   PABS_LW_ROOF(JJ) = T%XEMIS_ROOF(JJ) * (PLW_RAD(JJ) - XSTEFAN * ZTRAD_ROOF(JJ)** 4)
-
   !
   !*      9.     Sensible heat flux between snow free roof and air
   !              -------------------------------------------------

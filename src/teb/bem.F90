@@ -1,7 +1,7 @@
 !SFX_LIC Copyright 1994-2014 CNRS, Meteo-France and Universite Paul Sabatier
-!SFX_LIC This is part of the SURFEX software governed by the CeCILL licence
-!SFX_LIC version 2.1. See Licence_CeCILL_V2.1-en.txt and Licence_CeCILL_V2.1-fr.txt  
-!SFX_LIC for details.
+!SFX_LIC This is part of the SURFEX software governed by the CeCILL-C licence
+!SFX_LIC version 1. See LICENSE, CeCILL-C_V1-en.txt and CeCILL-C_V1-fr.txt  
+!SFX_LIC for details. version 1.
 !   ##########################################################################
         SUBROUTINE BEM(BOP, T, B, DMT, PTSTEP, PSUNTIME, KDAY, PPS, PRHOA, PT_CAN,  &
                        PQ_CAN, PU_CAN, PHU_BLD, PT_RAD_IND, PFLX_BLD_FL, PFLX_BLD_MA,&
@@ -313,7 +313,7 @@ END WHERE
 !
 ! *Int.gains schedule
 !
-ZQIN = B%XQIN * B%XN_FLOOR
+ZQIN = DMT%XQIN * B%XN_FLOOR
 WHERE (PSUNTIME(:) > 0. .AND. PSUNTIME(:) < 25200.) ! night between 0000 and 0700
   ZQIN(:) = ZQIN(:) * ZF_NIGHT(:)
 ELSEWHERE
@@ -595,8 +595,6 @@ DO JJ=1,SIZE(PT_CAN)
         ! *real system
         ELSEIF (BOP%CCOOL_COIL=='DXCOIL') THEN
           !
-          ! FIXME: PQ_CAN is speicifc humidity, model wants mixing ratio. Also output.
-          !        Do as done in MinimalDX below.
           CALL DX_AIR_COOLING_COIL_CV(PT_CAN(JJ), PQ_CAN(JJ), PPS(JJ),  ZRHOI(JJ), ZT_MIX(JJ), &
                                       ZQ_MIX(JJ), B%XCOP_RAT(JJ), B%XCAP_SYS_RAT(JJ),          &
                                       B%XT_ADP(JJ), B%XF_WATER_COND(JJ), DMT%XM_SYS(JJ),      &
@@ -604,7 +602,7 @@ DO JJ=1,SIZE(PT_CAN)
                                       DMT%XCOP(JJ), DMT%XCAP_SYS(JJ), DMT%XT_SYS(JJ), & 
                                       DMT%XQ_SYS(JJ), DMT%XHVAC_COOL(JJ), DMT%XT_BLD_COOL(JJ) )
 
-        ELSEIF (BOP%CCOOL_COIL=='MinimalDX') THEN
+        ELSEIF (BOP%CCOOL_COIL=='MINIDX') THEN
           ! Notes:
           ! B%XT_ADP(JJ) -- i.e. PT_ADP in dx_air_cooling_coil_cv.F90 -- is no loger needed as the ADP is now calculated.
           ! B%XF_WATER_COND(JJ) -- i.e. PF_WATER_COND in dx_air_cooling_coil_cv.F90 -- is no longer used as

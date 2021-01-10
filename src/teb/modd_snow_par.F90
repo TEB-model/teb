@@ -1,7 +1,7 @@
 !SFX_LIC Copyright 1994-2014 CNRS, Meteo-France and Universite Paul Sabatier
-!SFX_LIC This is part of the SURFEX software governed by the CeCILL licence
-!SFX_LIC version 2.1. See Licence_CeCILL_V2.1-en.txt and Licence_CeCILL_V2.1-fr.txt  
-!SFX_LIC for details.
+!SFX_LIC This is part of the SURFEX software governed by the CeCILL-C licence
+!SFX_LIC version 1. See LICENSE, CeCILL-C_V1-en.txt and CeCILL-C_V1-fr.txt  
+!SFX_LIC for details. version 1.
 !     ######################
       MODULE MODD_SNOW_PAR
 !     ######################
@@ -44,12 +44,12 @@ IMPLICIT NONE
 !
 ! Snow emissivity:
 !
-REAL, SAVE       :: XEMISSN = 1.0
+REAL, SAVE       :: XEMISSN
 !
 ! Minimum and maximum values of the albedo of snow:
 !
-REAL, SAVE       :: XANSMIN = 0.50
-REAL, SAVE       :: XANSMAX = 0.85
+REAL, SAVE       :: XANSMIN
+REAL, SAVE       :: XANSMAX 
 !
 ! Minimum and maximum values of the albedo of permanet snow/ice:
 !
@@ -96,11 +96,11 @@ REAL, SAVE       :: XWSNV
 !
 ! Roughness length of pure snow surface (m)
 !
-REAL, SAVE       :: XZ0SN = 0.001
+REAL, SAVE       :: XZ0SN  
 !
 ! Roughness length for heat of pure snow surface (m)
 !
-REAL, SAVE       :: XZ0HSN = 0.0001
+REAL, SAVE       :: XZ0HSN
 !
 ! Roughness length ratio between ice and snow
 REAL, SAVE       :: XZ0ICEZ0SNOW
@@ -108,7 +108,7 @@ REAL, SAVE       :: XZ0ICEZ0SNOW
 ! Snow Melt timescale with D95 (s): needed to prevent time step 
 ! dependence of melt when snow fraction < unity.
 !
-REAL, SAVE       :: XTAU_SMELT = 300.
+REAL, SAVE       :: XTAU_SMELT
 !
 !--------------------------------------------------------------------------------
 ! Snow on the ground: PARAMETER

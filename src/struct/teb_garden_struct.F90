@@ -138,6 +138,8 @@
 USE MODD_TYPE_DATE_SURF
 USE MODD_SURF_PAR, ONLY : XUNDEF
 !
+USE MODD_DATA_COVER_n, ONLY : DATA_COVER_t
+USE MODD_SFX_GRID_n, ONLY : GRID_t
 USE MODD_TEB_OPTION_n, ONLY : TEB_OPTIONS_t
 USE MODD_TEB_n, ONLY : TEB_t
 USE MODD_BEM_OPTION_n, ONLY : BEM_OPTIONS_t
@@ -145,6 +147,8 @@ USE MODD_BEM_n, ONLY : BEM_t
 USE MODD_TEB_PANEL_n, ONLY : TEB_PANEL_t
 USE MODD_TEB_IRRIG_n, ONLY : TEB_IRRIG_t
 USE MODD_DIAG_MISC_TEB_n, ONLY : DIAG_MISC_TEB_t
+USE MODD_SURFEX_n, ONLY : TEB_GARDEN_MODEL_t
+USE MODD_SURFEX_n, ONLY : TEB_GREENROOF_MODEL_t
 !
 USE MODI_ALLOC_TEB_STRUCT
 USE MODI_DEALLOC_TEB_STRUCT
@@ -516,10 +520,13 @@ REAL,                 INTENT(IN)      :: PDT_OFF           ! target temperature 
 REAL, DIMENSION(:),   INTENT(OUT)     :: PCUR_TCOOL_TARGET ! Cooling target temperature at current time (K)
 REAL, DIMENSION(:),   INTENT(OUT)     :: PCUR_THEAT_TARGET ! Heating target temperature at current time (K)
 REAL, DIMENSION(:),   INTENT(OUT)     :: PCUR_QIN          ! Internal heat gains        at current time (W/m2 floor)
+LOGICAL :: debug = .FALSE.
 !
 !
 !*      0.2    Declarations of local variables
 !
+TYPE(DATA_COVER_t) :: DTCO
+TYPE(GRID_t) :: G
 TYPE(TEB_OPTIONS_t) :: TOP
 TYPE(TEB_t) :: T
 TYPE(BEM_OPTIONS_t) :: BOP
@@ -527,6 +534,13 @@ TYPE(BEM_t) :: B
 TYPE(TEB_PANEL_t) :: TPN
 TYPE(TEB_IRRIG_t) :: TIR
 TYPE(DIAG_MISC_TEB_t) :: DMT
+TYPE(TEB_GARDEN_MODEL_t) :: GDM
+TYPE(TEB_GREENROOF_MODEL_t) :: GRM
+!
+INTEGER :: KTEB_P                             ! TEB current patch number 
+
+logical :: exist ! TODO: testing remove
+
 !
 !-------------------------------------------------------------------------------
 !
@@ -694,7 +708,7 @@ PCUR_QIN          = XUNDEF! Internal heat gains        at current time (W/m2 flo
 !* Allocate all the local structure variables
 !
 CALL ALLOC_TEB_STRUCT(SIZE(PT_ROOF,2),SIZE(PT_ROAD,2),SIZE(PT_WALL_A,2),SIZE(PT_FLOOR,2), &
-                      TOP,T,BOP,B,TPN,TIR,DMT) 
+                      DTCO, G, TOP, T, BOP, B, TPN, TIR, DMT, GDM, GRM) 
 !
 ! This is of course not optimized here, because at each time step, the structures are allocated, set and deallocated at the end.
 !  This is done so only to show that the structures can be independant from the rest of the code above (here the driver.F90 program).
@@ -707,6 +721,7 @@ CALL ALLOC_TEB_STRUCT(SIZE(PT_ROOF,2),SIZE(PT_ROAD,2),SIZE(PT_WALL_A,2),SIZE(PT_
 BOP%NFLOOR_LAYER = SIZE(PT_FLOOR,2)
 BOP%CCOOL_COIL   = HCOOL_COIL
 BOP%CHEAT_COIL   = HHEAT_COIL
+! Not supported as hvac_autosize.F90 is not included
 BOP%LAUTOSIZE    = .FALSE.
 
 !-------------------------------------------------------------------------------
@@ -968,7 +983,33 @@ TIR%XRD_24H_IRRIG   = PRD_24H_IRRIG   ! roads : total irrigation over 24 hours (
 DMT%XZ0_TOWN = PZ0_TOWN   ! town roughness length
 !-------------------------------------------------------------------------------
 !
-CALL TEB_GARDEN           (TOP, T, BOP, B, TPN, TIR, DMT,                                                          &
+
+if (debug) then
+  ! TODO remove when not needed anymore
+  inquire(file="trace_before.csv", exist=exist)
+  if (exist) then
+    open(12, file="trace_before.csv", status="old", position="append", action="write")
+  else
+    open(12, file="trace_before.csv", status="new", action="write")
+  end if
+  write(12, *) PTSUN, PT_CAN, PQ_CAN, PU_CAN, PT_LOWCAN, PQ_LOWCAN,                    &
+  PU_LOWCAN, PZ_LOWCAN, PPEW_A_COEF, PPEW_B_COEF, PPEW_A_COEF_LOWCAN,                     &
+  PPEW_B_COEF_LOWCAN, PPS, PPA, PEXNS, PEXNA, PTA, PQA, PRHOA, PCO2,                      &
+  PLW_RAD, PDIR_SW, PSCA_SW, PSW_BANDS, KSW, PZENITH, PAZIM, PRR, PSR,                    &
+  PZREF, PUREF, PVMOD, PH_TRAFFIC, PLE_TRAFFIC, PTSTEP, PLEW_ROOF, PLEW_ROAD,             &
+  PLE_WALL_A, PLE_WALL_B, PRNSNOW_ROOF, PHSNOW_ROOF, PLESNOW_ROOF, PGSNOW_ROOF,PMELT_ROOF,&
+  PRNSNOW_ROAD, PHSNOW_ROAD, PLESNOW_ROAD, PGSNOW_ROAD, PMELT_ROAD, PRN_GRND, PH_GRND,    &
+  PLE_GRND, PGFLUX_GRND, PRN_TOWN, PH_TOWN, PLE_TOWN, PGFLUX_TOWN, PEVAP_TOWN,            &
+  PSFCO2, PUW_GRND, PUW_ROOF, PDUWDU_GRND, PDUWDU_ROOF,                                   &
+  PUSTAR_TOWN, PCD, PCDN, PCH_TOWN, PRI_TOWN, PTS_TOWN, PEMIS_TOWN,                       &
+  PDIR_ALB_TOWN, PSCA_ALB_TOWN, PRESA_TOWN, PAC_ROAD, PAC_GARDEN, PAC_GREENROOF,          &
+  PAC_ROAD_WAT, PAC_GARDEN_WAT, PAC_GREENROOF_WAT, KDAY, PEMIT_LW_FAC, PEMIT_LW_GRND,     &
+  PT_RAD_IND, PREF_SW_GRND, PREF_SW_FAC, PHU_BLD, PTIME, PPROD_BLD  
+  close(12)
+end if
+
+KTEB_P = 1
+CALL TEB_GARDEN           (DTCO, G, TOP, T, BOP, B, TPN, TIR, DMT, GDM, GRM, KTEB_P,                                              &
                            HIMPLICIT_WIND, PTSUN, PT_CAN, PQ_CAN, PU_CAN, PT_LOWCAN, PQ_LOWCAN,                    &
                            PU_LOWCAN, PZ_LOWCAN, PPEW_A_COEF, PPEW_B_COEF, PPEW_A_COEF_LOWCAN,                     &
                            PPEW_B_COEF_LOWCAN, PPS, PPA, PEXNS, PEXNA, PTA, PQA, PRHOA, PCO2,                      &
@@ -982,6 +1023,30 @@ CALL TEB_GARDEN           (TOP, T, BOP, B, TPN, TIR, DMT,                       
                            PDIR_ALB_TOWN, PSCA_ALB_TOWN, PRESA_TOWN, PAC_ROAD, PAC_GARDEN, PAC_GREENROOF,          &
                            PAC_ROAD_WAT, PAC_GARDEN_WAT, PAC_GREENROOF_WAT, KDAY, PEMIT_LW_FAC, PEMIT_LW_GRND,     &
                            PT_RAD_IND, PREF_SW_GRND, PREF_SW_FAC, PHU_BLD, PTIME, PPROD_BLD                        )
+if (debug) then
+  ! TODO remove when not needed anymore
+  inquire(file="trace_after.csv", exist=exist)
+  if (exist) then
+    open(12, file="trace_after.csv", status="old", position="append", action="write")
+  else
+    open(12, file="trace_after.csv", status="new", action="write")
+  end if
+  write(12, *) PTSUN, PT_CAN, PQ_CAN, PU_CAN, PT_LOWCAN, PQ_LOWCAN,                    &
+  PU_LOWCAN, PZ_LOWCAN, PPEW_A_COEF, PPEW_B_COEF, PPEW_A_COEF_LOWCAN,                     &
+  PPEW_B_COEF_LOWCAN, PPS, PPA, PEXNS, PEXNA, PTA, PQA, PRHOA, PCO2,                      &
+  PLW_RAD, PDIR_SW, PSCA_SW, PSW_BANDS, KSW, PZENITH, PAZIM, PRR, PSR,                    &
+  PZREF, PUREF, PVMOD, PH_TRAFFIC, PLE_TRAFFIC, PTSTEP, PLEW_ROOF, PLEW_ROAD,             &
+  PLE_WALL_A, PLE_WALL_B, PRNSNOW_ROOF, PHSNOW_ROOF, PLESNOW_ROOF, PGSNOW_ROOF,PMELT_ROOF,&
+  PRNSNOW_ROAD, PHSNOW_ROAD, PLESNOW_ROAD, PGSNOW_ROAD, PMELT_ROAD, PRN_GRND, PH_GRND,    &
+  PLE_GRND, PGFLUX_GRND, PRN_TOWN, PH_TOWN, PLE_TOWN, PGFLUX_TOWN, PEVAP_TOWN,            &
+  PSFCO2, PUW_GRND, PUW_ROOF, PDUWDU_GRND, PDUWDU_ROOF,                                   &
+  PUSTAR_TOWN, PCD, PCDN, PCH_TOWN, PRI_TOWN, PTS_TOWN, PEMIS_TOWN,                       &
+  PDIR_ALB_TOWN, PSCA_ALB_TOWN, PRESA_TOWN, PAC_ROAD, PAC_GARDEN, PAC_GREENROOF,          &
+  PAC_ROAD_WAT, PAC_GARDEN_WAT, PAC_GREENROOF_WAT, KDAY, PEMIT_LW_FAC, PEMIT_LW_GRND,     &
+  PT_RAD_IND, PREF_SW_GRND, PREF_SW_FAC, PHU_BLD, PTIME, PPROD_BLD  
+  close(12)
+end if 
+
 !
 !-------------------------------------------------------------------------------
 !
@@ -1148,7 +1213,7 @@ CALL TEB_GARDEN           (TOP, T, BOP, B, TPN, TIR, DMT,                       
 !
 !-------------------------------------------------------------------------------
 !
-CALL DEALLOC_TEB_STRUCT(TOP,T,BOP,B,TPN,TIR,DMT) 
+CALL DEALLOC_TEB_STRUCT(TOP,T,BOP,B,TPN,TIR,DMT,GDM,GRM) 
 !
 !-------------------------------------------------------------------------------
 !
