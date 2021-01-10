@@ -165,6 +165,11 @@ USE MODE_CONV_DOE
 USE YOMHOOK   ,ONLY : LHOOK,   DR_HOOK
 USE PARKIND1  ,ONLY : JPRB
 !
+USE MODD_CSTS, ONLY : XTT
+!
+use MinimalDXCoolingDriver, only: SimMinimalDXCooling
+use mode_psychrolib, only: SetUnitSystem, SI, GetHumRatioFromSpecificHum, GetSpecificHumFromHumRatio
+!
 IMPLICIT NONE
 !
 !*      0.1    Declarations of arguments
@@ -264,6 +269,12 @@ REAL, DIMENSION(SIZE(B%XTI_BLD)):: ZRHOI  ! indoor air density
 !
 INTEGER :: JJ                                  ! Loop counter
 REAL(KIND=JPRB) :: ZHOOK_HANDLE
+!
+! Local variable used for the coupling with MinimalDX
+REAL :: OutdoorHumRatio, InletHumRatio, OutletHumRatio, OutdoorTDryBulb, InletTDryBulb, OutletTemperature
+!
+! Psychrolib: use International System of Units
+call SetUnitSystem(SI)
 !
 !!REAL :: ZEXPL = 0.5 !explicit coefficient for internal temperature evol.
 !!REAL :: ZIMPL = 0.5 !implicit coef..
@@ -590,7 +601,43 @@ DO JJ=1,SIZE(PT_CAN)
                                       DMT%XH_BLD_COOL(JJ), DMT%XH_WASTE(JJ), DMT%XLE_WASTE(JJ), &
                                       DMT%XCOP(JJ), DMT%XCAP_SYS(JJ), DMT%XT_SYS(JJ), & 
                                       DMT%XQ_SYS(JJ), DMT%XHVAC_COOL(JJ), DMT%XT_BLD_COOL(JJ) )
-          !
+
+        ELSEIF (BOP%CCOOL_COIL=='MINIDX') THEN
+          ! Notes:
+          ! B%XT_ADP(JJ) -- i.e. PT_ADP in dx_air_cooling_coil_cv.F90 -- is no loger needed as the ADP is now calculated.
+          ! B%XF_WATER_COND(JJ) -- i.e. PF_WATER_COND in dx_air_cooling_coil_cv.F90 -- is no longer used as
+          ! MinimalDX only supoorts dry evaporators.
+          B%XF_WATER_COND(JJ) = 0.
+
+          ! In TEB the humidity is specified in terms of speicifc humidity, in MinimalDX the mixing ratio is used instead.
+          OutdoorHumRatio = GetHumRatioFromSpecificHum(PQ_CAN(JJ))
+          InletHumRatio = GetHumRatioFromSpecificHum(ZQ_MIX(JJ))
+
+          ! In TEB the temperature is specified in K, in MinimalDX in degree C.
+          OutdoorTDryBulb = PT_CAN(JJ) - XTT
+          InletTDryBulb = ZT_MIX(JJ)  - XTT
+
+          call SimMinimalDXCooling( OutdoorTDryBulb,      &   ! PT_CANYON   : OutdoorTDryBulb
+                                    OutdoorHumRatio,      &   ! PQ_CANYON   : OutdoorSpecificHum
+                                    PPS(JJ),              &   ! PPS         : OutdoorPressure
+                                    InletTDryBulb,        &   ! PT_IN       : InletTDryBulb
+                                    InletHumRatio,        &   ! PQ_IN       : InletHumRatio
+                                    B%XCOP_RAT(JJ),       &   ! PCOP_RAT    : RatedCOP
+                                    B%XCAP_SYS_RAT(JJ),   &   ! PCAP_SYS_RAT: RatedTotCap
+                                    DMT%XH_BLD_COOL(JJ),  &   ! PH_BLD_COOL : SensibleCoolingLoad
+                                    DMT%XM_SYS(JJ),       &   ! PM_SYS      : RatedAirMassFlowRate
+                                    DMT%XCOP(JJ),         &   ! PCOP        : COP
+                                    DMT%XCAP_SYS(JJ),     &   ! PCAP_SYS    : TotalCoolingCapacity
+                                    OutletTemperature,    &   ! PT_OUT      : OutletTemperature
+                                    OutletHumRatio,       &   ! PQ_OUT      : OutletHumRatio
+                                    DMT%XHVAC_COOL(JJ),   &   ! PDX_POWER   : ElecCoolingPower
+                                    DMT%XLE_WASTE(JJ),    &   ! LE_WASTE    : LatCoolingEnergyRate
+                                    DMT%XT_BLD_COOL(JJ),  &   ! PT_BLD_COOL : TotalCoolingEnergyRate
+                                    DMT%XH_WASTE(JJ) )        ! PH_WASTE    : TotalSensibleHeatOut
+
+          DMT%XT_SYS(JJ) = OutletTemperature + XTT
+          DMT%XQ_SYS(JJ) = GetSpecificHumFromHumRatio(OutletHumRatio)
+
         ENDIF !end type of cooling system
 
         !!! case of system without atmospheric releases. I-e releases in soil/water F_WATER_COND < 0 
