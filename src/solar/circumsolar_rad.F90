@@ -2,17 +2,16 @@
 !SFX_LIC This is part of the SURFEX software governed by the CeCILL licence
 !SFX_LIC version 2.1. See Licence_CeCILL_V2.1-en.txt and Licence_CeCILL_V2.1-fr.txt  
 !SFX_LIC for details.
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 MODULE MODI_CIRCUMSOLAR_RAD
-INTERFACE
-SUBROUTINE CIRCUMSOLAR_RAD(PDIR_SW, PSCA_SW, PZENITH, PF1_o_B)
-REAL, DIMENSION(:), INTENT(IN) :: PDIR_SW ! direct radiation
-REAL, DIMENSION(:), INTENT(IN) :: PSCA_SW ! scattered radiation
-REAL, DIMENSION(:), INTENT(IN) :: PZENITH ! solar zenith angle
-REAL, DIMENSION(:), INTENT(OUT) :: PF1_o_B ! coef
-END SUBROUTINE CIRCUMSOLAR_RAD
-END INTERFACE
-END MODULE MODI_CIRCUMSOLAR_RAD
+   INTERFACE
+   SUBROUTINE CIRCUMSOLAR_RAD(PDIR_SW, PSCA_SW, PZENITH, PF1_o_B)
+   REAL, DIMENSION(:), INTENT(IN) :: PDIR_SW ! direct radiation
+   REAL, DIMENSION(:), INTENT(IN) :: PSCA_SW ! scattered radiation
+   REAL, DIMENSION(:), INTENT(IN) :: PZENITH ! solar zenith angle
+   REAL, DIMENSION(:), INTENT(OUT) :: PF1_o_B ! coef
+   END SUBROUTINE CIRCUMSOLAR_RAD
+   END INTERFACE
+   END MODULE MODI_CIRCUMSOLAR_RAD
 !     ###############################################################################
 SUBROUTINE CIRCUMSOLAR_RAD(PDIR_SW, PSCA_SW, PZENITH, PF1_o_B)
 !     ###############################################################################

@@ -1,7 +1,7 @@
 !SFX_LIC Copyright 1994-2014 CNRS, Meteo-France and Universite Paul Sabatier
-!SFX_LIC This is part of the SURFEX software governed by the CeCILL licence
-!SFX_LIC version 2.1. See Licence_CeCILL_V2.1-en.txt and Licence_CeCILL_V2.1-fr.txt  
-!SFX_LIC for details.
+!SFX_LIC This is part of the SURFEX software governed by the CeCILL-C licence
+!SFX_LIC version 1. See LICENSE, CeCILL-C_V1-en.txt and CeCILL-C_V1-fr.txt  
+!SFX_LIC for details. version 1.
 !   ##########################################################################
         SUBROUTINE BEM(BOP, T, B, DMT, PTSTEP, PSUNTIME, KDAY, PPS, PRHOA, PT_CAN,  &
                        PQ_CAN, PU_CAN, PHU_BLD, PT_RAD_IND, PFLX_BLD_FL, PFLX_BLD_MA,&
@@ -165,11 +165,6 @@ USE MODE_CONV_DOE
 USE YOMHOOK   ,ONLY : LHOOK,   DR_HOOK
 USE PARKIND1  ,ONLY : JPRB
 !
-USE MODD_CSTS, ONLY : XTT
-!
-use MinimalDXCoolingDriver, only: SimMinimalDXCooling
-use mode_psychrolib, only: SetUnitSystem, SI, GetHumRatioFromSpecificHum, GetSpecificHumFromHumRatio
-!
 IMPLICIT NONE
 !
 !*      0.1    Declarations of arguments
@@ -270,12 +265,6 @@ REAL, DIMENSION(SIZE(B%XTI_BLD)):: ZRHOI  ! indoor air density
 INTEGER :: JJ                                  ! Loop counter
 REAL(KIND=JPRB) :: ZHOOK_HANDLE
 !
-! Local variable used for the coupling with MinimalDX
-REAL :: OutdoorHumRatio, InletHumRatio, OutletHumRatio, OutdoorTDryBulb, InletTDryBulb, OutletTemperature
-!
-! Psychrolib: use International System of Units
-call SetUnitSystem(SI)
-!
 !!REAL :: ZEXPL = 0.5 !explicit coefficient for internal temperature evol.
 !!REAL :: ZIMPL = 0.5 !implicit coef..
 !
@@ -313,7 +302,7 @@ END WHERE
 !
 ! *Int.gains schedule
 !
-ZQIN = B%XQIN * B%XN_FLOOR
+ZQIN = DMT%XQIN * B%XN_FLOOR
 WHERE (PSUNTIME(:) > 0. .AND. PSUNTIME(:) < 25200.) ! night between 0000 and 0700
   ZQIN(:) = ZQIN(:) * ZF_NIGHT(:)
 ELSEWHERE
@@ -595,51 +584,13 @@ DO JJ=1,SIZE(PT_CAN)
         ! *real system
         ELSEIF (BOP%CCOOL_COIL=='DXCOIL') THEN
           !
-          ! FIXME: PQ_CAN is speicifc humidity, model wants mixing ratio. Also output.
-          !        Do as done in MinimalDX below.
           CALL DX_AIR_COOLING_COIL_CV(PT_CAN(JJ), PQ_CAN(JJ), PPS(JJ),  ZRHOI(JJ), ZT_MIX(JJ), &
                                       ZQ_MIX(JJ), B%XCOP_RAT(JJ), B%XCAP_SYS_RAT(JJ),          &
                                       B%XT_ADP(JJ), B%XF_WATER_COND(JJ), DMT%XM_SYS(JJ),      &
                                       DMT%XH_BLD_COOL(JJ), DMT%XH_WASTE(JJ), DMT%XLE_WASTE(JJ), &
                                       DMT%XCOP(JJ), DMT%XCAP_SYS(JJ), DMT%XT_SYS(JJ), & 
                                       DMT%XQ_SYS(JJ), DMT%XHVAC_COOL(JJ), DMT%XT_BLD_COOL(JJ) )
-
-        ELSEIF (BOP%CCOOL_COIL=='MinimalDX') THEN
-          ! Notes:
-          ! B%XT_ADP(JJ) -- i.e. PT_ADP in dx_air_cooling_coil_cv.F90 -- is no loger needed as the ADP is now calculated.
-          ! B%XF_WATER_COND(JJ) -- i.e. PF_WATER_COND in dx_air_cooling_coil_cv.F90 -- is no longer used as
-          ! MinimalDX only supoorts dry evaporators.
-          B%XF_WATER_COND(JJ) = 0.
-
-          ! In TEB the humidity is specified in terms of speicifc humidity, in MinimalDX the mixing ratio is used instead.
-          OutdoorHumRatio = GetHumRatioFromSpecificHum(PQ_CAN(JJ))
-          InletHumRatio = GetHumRatioFromSpecificHum(ZQ_MIX(JJ))
-
-          ! In TEB the temperature is specified in K, in MinimalDX in degree C.
-          OutdoorTDryBulb = PT_CAN(JJ) - XTT
-          InletTDryBulb = ZT_MIX(JJ)  - XTT
-
-          call SimMinimalDXCooling( OutdoorTDryBulb,      &   ! PT_CANYON   : OutdoorTDryBulb
-                                    OutdoorHumRatio,      &   ! PQ_CANYON   : OutdoorSpecificHum
-                                    PPS(JJ),              &   ! PPS         : OutdoorPressure
-                                    InletTDryBulb,        &   ! PT_IN       : InletTDryBulb
-                                    InletHumRatio,        &   ! PQ_IN       : InletHumRatio
-                                    B%XCOP_RAT(JJ),       &   ! PCOP_RAT    : RatedCOP
-                                    B%XCAP_SYS_RAT(JJ),   &   ! PCAP_SYS_RAT: RatedTotCap
-                                    DMT%XH_BLD_COOL(JJ),  &   ! PH_BLD_COOL : SensibleCoolingLoad
-                                    DMT%XM_SYS(JJ),       &   ! PM_SYS      : RatedAirMassFlowRate
-                                    DMT%XCOP(JJ),         &   ! PCOP        : COP
-                                    DMT%XCAP_SYS(JJ),     &   ! PCAP_SYS    : TotalCoolingCapacity
-                                    OutletTemperature,    &   ! PT_OUT      : OutletTemperature
-                                    OutletHumRatio,       &   ! PQ_OUT      : OutletHumRatio
-                                    DMT%XHVAC_COOL(JJ),   &   ! PDX_POWER   : ElecCoolingPower
-                                    DMT%XLE_WASTE(JJ),    &   ! LE_WASTE    : LatCoolingEnergyRate
-                                    DMT%XT_BLD_COOL(JJ),  &   ! PT_BLD_COOL : TotalCoolingEnergyRate
-                                    DMT%XH_WASTE(JJ) )        ! PH_WASTE    : TotalSensibleHeatOut
-
-          DMT%XT_SYS(JJ) = OutletTemperature + XTT
-          DMT%XQ_SYS(JJ) = GetSpecificHumFromHumRatio(OutletHumRatio)
-
+          !
         ENDIF !end type of cooling system
 
         !!! case of system without atmospheric releases. I-e releases in soil/water F_WATER_COND < 0 

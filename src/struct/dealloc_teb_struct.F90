@@ -3,7 +3,7 @@
 !SFX_LIC version 2.1. See Licence_CeCILL_V2.1-en.txt and Licence_CeCILL_V2.1-fr.txt  
 !SFX_LIC for details.
 !   ##########################################################################
-    SUBROUTINE DEALLOC_TEB_STRUCT(TOP,T,BOP,B,TPN,TIR,DMT)
+    SUBROUTINE DEALLOC_TEB_STRUCT(TOP,T,BOP,B,TPN,TIR,DMT,GDM,GRM)
 !   ##########################################################################
 !
 !!****  *DEALLOC_TEB_STRUCT*
@@ -49,6 +49,8 @@ USE MODD_BEM_n, ONLY : BEM_t, BEM_INIT
 USE MODD_TEB_PANEL_n, ONLY : TEB_PANEL_t, TEB_PANEL_INIT
 USE MODD_TEB_IRRIG_n, ONLY : TEB_IRRIG_t, TEB_IRRIG_INIT
 USE MODD_DIAG_MISC_TEB_n, ONLY : DIAG_MISC_TEB_t, DIAG_MISC_TEB_INIT
+USE MODD_SURFEX_n, ONLY : TEB_GARDEN_MODEL_t
+USE MODD_SURFEX_n, ONLY : TEB_GREENROOF_MODEL_t
 !
 !
 IMPLICIT NONE
@@ -64,6 +66,8 @@ TYPE(BEM_t),           INTENT(INOUT) :: B
 TYPE(TEB_PANEL_t),     INTENT(INOUT) :: TPN
 TYPE(TEB_IRRIG_t),     INTENT(INOUT) :: TIR
 TYPE(DIAG_MISC_TEB_t), INTENT(INOUT) :: DMT
+TYPE(TEB_GARDEN_MODEL_t), INTENT(INOUT) :: GDM
+TYPE(TEB_GREENROOF_MODEL_t), INTENT(INOUT) :: GRM
 !
 !
 !*      0.2    Declarations of local variables
@@ -403,6 +407,17 @@ DEALLOCATE(DMT%XHU_BLD)           !Indoor relative humidity
 DEALLOCATE(DMT%XTCOOL_TARGET)     ! current cooling setpoint of indoor air
 DEALLOCATE(DMT%XTHEAT_TARGET)     ! current heating setpoint of indoor air
 DEALLOCATE(DMT%XQIN)              ! current internal heat gains [W m-2(floor)]
+
+! New fields
+DEALLOCATE(GDM%VD%ND%AL)
+DEALLOCATE(GDM%VD%NDE%AL)
+DEALLOCATE(GDM%VD%NDM%AL)
+DEALLOCATE(GDM%NPE%AL)
+
+DEALLOCATE(GRM%VD%ND%AL)
+DEALLOCATE(GRM%VD%NDE%AL)
+DEALLOCATE(GRM%VD%NDM%AL)
+DEALLOCATE(GRM%NPE%AL)
 
 !-------------------------------------------------------------------------------
 !

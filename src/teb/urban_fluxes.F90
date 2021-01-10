@@ -1,7 +1,7 @@
 !SFX_LIC Copyright 1994-2014 CNRS, Meteo-France and Universite Paul Sabatier
-!SFX_LIC This is part of the SURFEX software governed by the CeCILL licence
-!SFX_LIC version 2.1. See Licence_CeCILL_V2.1-en.txt and Licence_CeCILL_V2.1-fr.txt  
-!SFX_LIC for details.
+!SFX_LIC This is part of the SURFEX software governed by the CeCILL-C licence
+!SFX_LIC version 1. See LICENSE, CeCILL-C_V1-en.txt and CeCILL-C_V1-fr.txt  
+!SFX_LIC for details. version 1.
 !     #########
     SUBROUTINE URBAN_FLUXES(TOP, T, B, DMT, HIMPLICIT_WIND, PT_CANYON, PPEW_A_COEF, PPEW_B_COEF,      &
                             PEXNS, PRHOA, PVMOD, PH_TRAFFIC, PLE_TRAFFIC, PAC_WL, PCD, PDF_RF,        &
@@ -364,7 +364,7 @@ IF (TOP%CBEM == "DEF") THEN
              + 0.5*T%XWALL_O_HOR(:)/T%XBLD(:) * ( DMT%XH_WALL_B(:) + PLE_WL_B(:) + PDQS_WL_B(:) - DMT%XRN_WALL_B(:) )
   DMT%XFLX_BLD(:)= XUNDEF
 ELSEIF (TOP%CBEM == "BEM") THEN
-  DMT%XQF_BLD(:) = B%XQIN(:)*B%XN_FLOOR(:) + DMT%XHVAC_COOL(:) + DMT%XHVAC_HEAT(:)
+  DMT%XQF_BLD(:) = DMT%XQIN(:)*B%XN_FLOOR(:) + DMT%XHVAC_COOL(:) + DMT%XHVAC_HEAT(:)
   DMT%XFLX_BLD(:)=  PFLX_BLD_RF(:) + 0.5*T%XWALL_O_HOR(:)/T%XBLD(:)*PFLX_BLD_WL_A(:) &
                  +                    0.5*T%XWALL_O_HOR(:)/T%XBLD(:)*PFLX_BLD_WL_B(:) &
                  + PFLX_BLD_FL(:) + PFLX_BLD_MA(:)  

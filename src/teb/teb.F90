@@ -1,7 +1,7 @@
 !SFX_LIC Copyright 1994-2014 CNRS, Meteo-France and Universite Paul Sabatier
-!SFX_LIC This is part of the SURFEX software governed by the CeCILL licence
-!SFX_LIC version 2.1. See Licence_CeCILL_V2.1-en.txt and Licence_CeCILL_V2.1-fr.txt  
-!SFX_LIC for details.
+!SFX_LIC This is part of the SURFEX software governed by the CeCILL-C licence
+!SFX_LIC version 1. See LICENSE, CeCILL-C_V1-en.txt and CeCILL-C_V1-fr.txt  
+!SFX_LIC for details. version 1.
 !   ##########################################################################
     SUBROUTINE TEB  (TOP, T, BOP, B, TIR, DMT, HIMPLICIT_WIND, PTSUN,                   &
                      PT_CANYON, PQ_CANYON, PU_CANYON, PT_LOWCAN, PQ_LOWCAN, PU_LOWCAN,  &
@@ -481,15 +481,15 @@ ZTS_RF    (:)=T%XT_ROOF     (:,1)
 !
 IF (TOP%CBEM=='BEM') THEN
   !
-  ZLOAD_IN_RF = B%XF_FLOOR_WIN * DMT%XTR_SW_WIN + B%XQIN * B%XN_FLOOR * (1-B%XQIN_FLAT) * B%XQIN_FRAD  &
+  ZLOAD_IN_RF = B%XF_FLOOR_WIN * DMT%XTR_SW_WIN + DMT%XQIN * B%XN_FLOOR * (1-B%XQIN_FLAT) * B%XQIN_FRAD  &
            / (2 + T%XWALL_O_BLD + B%XGLAZ_O_BLD + B%XMASS_O_BLD ) ! W/m2 [ROOF]
-  ZLOAD_IN_FL = B%XF_FLOOR_WIN * DMT%XTR_SW_WIN + B%XQIN * B%XN_FLOOR * (1-B%XQIN_FLAT) * B%XQIN_FRAD  &
+  ZLOAD_IN_FL = B%XF_FLOOR_WIN * DMT%XTR_SW_WIN + DMT%XQIN * B%XN_FLOOR * (1-B%XQIN_FLAT) * B%XQIN_FRAD  &
            / (2 + T%XWALL_O_BLD + B%XGLAZ_O_BLD + B%XMASS_O_BLD )
-  ZLOAD_IN_MA = B%XF_MASS_WIN * DMT%XTR_SW_WIN + B%XQIN * B%XN_FLOOR * (1-B%XQIN_FLAT) * B%XQIN_FRAD  &
+  ZLOAD_IN_MA = B%XF_MASS_WIN * DMT%XTR_SW_WIN + DMT%XQIN * B%XN_FLOOR * (1-B%XQIN_FLAT) * B%XQIN_FRAD  &
            / (2 + T%XWALL_O_BLD + B%XGLAZ_O_BLD + B%XMASS_O_BLD )
-  ZLOAD_IN_WL = B%XF_WALL_WIN * DMT%XTR_SW_WIN + B%XQIN * B%XN_FLOOR * (1-B%XQIN_FLAT) * B%XQIN_FRAD  &
+  ZLOAD_IN_WL = B%XF_WALL_WIN * DMT%XTR_SW_WIN + DMT%XQIN * B%XN_FLOOR * (1-B%XQIN_FLAT) * B%XQIN_FRAD  &
            / (2 + T%XWALL_O_BLD + B%XGLAZ_O_BLD + B%XMASS_O_BLD )
-  ZLOAD_IN_WIN = B%XF_WIN_WIN * DMT%XTR_SW_WIN + B%XQIN * B%XN_FLOOR * (1-B%XQIN_FLAT) * B%XQIN_FRAD  &
+  ZLOAD_IN_WIN = B%XF_WIN_WIN * DMT%XTR_SW_WIN + DMT%XQIN * B%XN_FLOOR * (1-B%XQIN_FLAT) * B%XQIN_FRAD  &
            / (2 + T%XWALL_O_BLD + B%XGLAZ_O_BLD + B%XMASS_O_BLD )
 ELSE
   ZLOAD_IN_RF = 0.
@@ -524,7 +524,6 @@ ZWS_RD_MAX(:) = ZWS_RD_MAX(:) * PDF_RD(:)
                  PAC_RF, PAC_RF_WAT, PAC_WL, PAC_RD, PAC_RD_WAT,        &
                  PAC_TOP, PAC_GARDEN, PRI_TWN, PUW_RD, PUW_RF,          &
                  PDUWDU_RD, PDUWDU_RF, PUSTAR_TWN, ZAC_WIN    )
-
 !
 !* area-averaged heat transfer coefficient
 !
@@ -542,12 +541,8 @@ WHERE (PVMOD(:)/=0.) PDUWDU_RF(:) = 2. * PUW_RF(:) / PVMOD(:)
 !*      4.     Extrapolation of atmospheric T and q at roof level (for fluxes computation)
 !              --------------------------------------------------
 !
-! difference compared to surfex v8.1 official code: bug correction
-!ZTA(:) = PTA(:) * PEXNS(:) / PEXNA(:)
-!ZQA(:) = PQA(:) * QSAT(PTA(:),PPS(:)) / QSAT(ZTA(:),PPA(:))
-!
 ZTA(:) = PTA(:) * PEXNS(:) / PEXNA(:)
-ZQA(:) = PQA(:) * QSAT(ZTA(:),PPS(:)) / QSAT(PTA(:),PPA(:))
+ZQA(:) = PQA(:) * QSAT(PTA(:),PPS(:)) / QSAT(ZTA(:),PPA(:))
 !
 !-------------------------------------------------------------------------------
 !
@@ -630,7 +625,6 @@ END SELECT
                           PLW_WIN_TO_R, PEMIT_LW_RD, ZDQS_RD, DMT%XABS_LW_ROAD,  &
                           DMT%XH_ROAD, PLEW_RD, ZIMB_RD, PRR+DMT%XIRRIG_ROAD    )
 !
-
 !-------------------------------------------------------------------------------
 !
 !*      8.     Wall Ts computations
@@ -731,7 +725,6 @@ ENDIF
 !
 PRESA_TWN(:) = 1. / ( T%XBLD(:) * PAC_RF(:)  + ( 1. - T%XBLD(:)) * PAC_TOP (:))
 !
-
 IF (LHOOK) CALL DR_HOOK('TEB',1,ZHOOK_HANDLE)
 !-------------------------------------------------------------------------------
 !

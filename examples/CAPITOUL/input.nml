@@ -24,6 +24,8 @@ INB_ATM     = 6         ! number time the driver calls the TEB
 KSW         = 1         ! number of spectral bands in SW forcing
 ZZREF       = 28.       ! Atm. Forcing height above roof level
 
+LSURF_BUDGET = .TRUE.   ! Output extra diagnostics
+
 !                                                                                     ! ||   ||
 !                                                                                     ! ||   ||
 !============================================================                         ! ||   ||
@@ -62,8 +64,6 @@ LSOLAR_PANEL = .FALSE. ! solar panels activation
 ZFRAC_PANEL  = 0.0     ! solar panels fraction on roofs
 ! Road watering
 LPAR_RD_IRRIG= .FALSE.
-! Natural Ventilation
-HNATVENT = "NONE"    ! 'NONE', 'MANU', 'AUTO', 'MECH'
 ! Cooling system    ! 'DXCOIL','IDEAL ', 'MinimalDX'
 CCOOL_COIL = "IDEAL"
 ! Heating system    ! 'FINCAP','IDEAL '
@@ -237,13 +237,6 @@ ZGR           = 0.1     ! Glazing ratio
 ZSHGC         = 0.763   ! window solar transmittance
 PU_WIN        = 2.716   ! window glass-to-glass U-factor [W m-2 K-1]
 !
-!=============================================================
-! Shading devices
-!=============================================================
-!
-LSHADE        = .FALSE. ! Are shading devices being used ?
-ZSHADE        = 0.      ! flag to activate shading devices -> REAL for i/o 0. or 1
-ZSHGC_SH      = 0.025   ! window + shading solar heat gain coef.
 !
 !=============================================================
 ! Natural ventilation

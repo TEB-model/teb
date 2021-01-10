@@ -1,30 +1,31 @@
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-! Copyright 1998-2013 Meteo-France
-! This is part of the TEB software governed by the CeCILL licence version 2.1.
-! See the following links for details:
-! https://cecill.info/licences/Licence_CeCILL_V2.1-en.txt
-! https://cecill.info/licences/Licence_CeCILL_V2.1-fr.txt
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!SFX_LIC Copyright 1994-2014 CNRS, Meteo-France and Universite Paul Sabatier
+!SFX_LIC This is part of the SURFEX software governed by the CeCILL-C licence
+!SFX_LIC version 1. See LICENSE, CeCILL-C_V1-en.txt and CeCILL-C_V1-fr.txt  
+!SFX_LIC for details. version 1.
 MODULE MODE_CHAR2REAL
-
-IMPLICIT NONE
-
+!
+USE MODI_ABOR1_SFX
+!
+USE YOMHOOK   ,ONLY : LHOOK,   DR_HOOK
+USE PARKIND1  ,ONLY : JPRB
+!
 INTERFACE ASSIGNMENT (=)
   MODULE PROCEDURE CHAR_TO_REAL
 END INTERFACE
-
-
+!
 CONTAINS 
-
+!
 SUBROUTINE CHAR_TO_REAL(KOUT,HSTR) 
 USE MODD_ARCH, ONLY : LITTLE_ENDIAN_ARCH
-CHARACTER(LEN=*),DIMENSION(:),INTENT(IN)  :: HSTR
+IMPLICIT NONE
+ CHARACTER(LEN=*),DIMENSION(:),INTENT(IN)  :: HSTR
 REAL,DIMENSION(SIZE(HSTR)),   INTENT(OUT) :: KOUT
-INTEGER :: JI
-INTEGER :: ISIZE
-CHARACTER(LEN=8),DIMENSION(:),ALLOCATABLE :: YTEMP
-CHARACTER(LEN=4),DIMENSION(:),ALLOCATABLE :: YTEMP2
+INTEGER :: ISIZE, JI
+ CHARACTER(LEN=8),DIMENSION(:),ALLOCATABLE :: YTEMP
+ CHARACTER(LEN=4),DIMENSION(:),ALLOCATABLE :: YTEMP2
+REAL(KIND=JPRB) :: ZHOOK_HANDLE
 
+IF (LHOOK) CALL DR_HOOK('MODE_CHAR2REAL:CHAR_TO_REAL',0,ZHOOK_HANDLE)
 SELECT CASE(LEN(HSTR(1)))
 CASE (8)
   ISIZE = SIZE(HSTR)
@@ -82,5 +83,6 @@ CASE(1)
 CASE default
   CALL ABOR1_SFX('MODE_CHAR2REAL: CONVERSION ERROR IN READ_DIRECT SUBROUTINE')
 END SELECT
+IF (LHOOK) CALL DR_HOOK('MODE_CHAR2REAL:CHAR_TO_REAL',1,ZHOOK_HANDLE)
 END SUBROUTINE CHAR_TO_REAL
 END MODULE MODE_CHAR2REAL

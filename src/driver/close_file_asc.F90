@@ -1,25 +1,8 @@
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-! Copyright 1998-2013 Meteo-France
-! This is part of the TEB software governed by the CeCILL licence version 2.1.
-! See the following links for details:
-! https://cecill.info/licences/Licence_CeCILL_V2.1-en.txt
-! https://cecill.info/licences/Licence_CeCILL_V2.1-fr.txt
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-!     #############################
-      MODULE MODI_CLOSE_FILE_ASC
-!     #############################
-INTERFACE
-      SUBROUTINE CLOSE_FILE_ASC(HPROGRAM,KUNIT )
-!
-CHARACTER(LEN=6),  INTENT(IN)  :: HPROGRAM ! main program
-INTEGER,           INTENT(IN)  :: KUNIT    ! logical unit of file
-!
-END SUBROUTINE CLOSE_FILE_ASC
-!
-END INTERFACE
-END MODULE MODI_CLOSE_FILE_ASC
-!
-!     #######################################################
+!SFX_LIC Copyright 1994-2014 CNRS, Meteo-France and Universite Paul Sabatier
+!SFX_LIC This is part of the SURFEX software governed by the CeCILL-C licence
+!SFX_LIC version 1. See LICENSE, CeCILL-C_V1-en.txt and CeCILL-C_V1-fr.txt  
+!SFX_LIC for details. version 1.
+!     #########
       SUBROUTINE CLOSE_FILE_ASC(HPROGRAM,KUNIT )
 !     #######################################################
 !
@@ -44,7 +27,7 @@ END MODULE MODI_CLOSE_FILE_ASC
 !!
 !!    AUTHOR
 !!    ------
-!!	V. Masson   *Meteo France*	
+!!      V. Masson   *Meteo France*
 !!
 !!    MODIFICATIONS
 !!    -------------
@@ -54,13 +37,18 @@ END MODULE MODI_CLOSE_FILE_ASC
 !*       0.    DECLARATIONS
 !              ------------
 !
+!
+USE YOMHOOK   ,ONLY : LHOOK,   DR_HOOK
+USE PARKIND1  ,ONLY : JPRB
+!
 IMPLICIT NONE
 !
 !*       0.1   Declarations of arguments
 !              -------------------------
 !
-CHARACTER(LEN=6),  INTENT(IN)  :: HPROGRAM ! main program
+ CHARACTER(LEN=6),  INTENT(IN)  :: HPROGRAM ! main program
 INTEGER,           INTENT(IN)  :: KUNIT    ! logical unit of file
+REAL(KIND=JPRB) :: ZHOOK_HANDLE
 !
 !*       0.2   Declarations of local variables
 !              -------------------------------
@@ -70,7 +58,9 @@ INTEGER,           INTENT(IN)  :: KUNIT    ! logical unit of file
 !* closes the file
 !  -------------------
 !
+IF (LHOOK) CALL DR_HOOK('CLOSE_FILE_ASC',0,ZHOOK_HANDLE)
 CLOSE(KUNIT)
+IF (LHOOK) CALL DR_HOOK('CLOSE_FILE_ASC',1,ZHOOK_HANDLE)
 !
 !-------------------------------------------------------------------------------
 !

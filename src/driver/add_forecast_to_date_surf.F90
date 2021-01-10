@@ -1,26 +1,8 @@
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-! Copyright 1998-2013 Meteo-France
-! This is part of the TEB software governed by the CeCILL licence version 2.1.
-! See the following links for details:
-! https://cecill.info/licences/Licence_CeCILL_V2.1-en.txt
-! https://cecill.info/licences/Licence_CeCILL_V2.1-fr.txt
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-!     ################################
-      MODULE MODI_ADD_FORECAST_TO_DATE_SURF
-!     ################################
-INTERFACE
-      SUBROUTINE ADD_FORECAST_TO_DATE_SURF(KYEAR,KMONTH,KDAY,PSEC)
-!
-INTEGER, INTENT(INOUT) :: KYEAR  ! year of date
-INTEGER, INTENT(INOUT) :: KMONTH ! month of date
-INTEGER, INTENT(INOUT) :: KDAY   ! day of date
-REAL,    INTENT(INOUT) :: PSEC   ! number of seconds since date at 00 UTC
-!
-END SUBROUTINE ADD_FORECAST_TO_DATE_SURF
-END INTERFACE
-END MODULE MODI_ADD_FORECAST_TO_DATE_SURF
-!
-!     #######################################################
+!SFX_LIC Copyright 1994-2014 CNRS, Meteo-France and Universite Paul Sabatier
+!SFX_LIC This is part of the SURFEX software governed by the CeCILL-C licence
+!SFX_LIC version 1. See LICENSE, CeCILL-C_V1-en.txt and CeCILL-C_V1-fr.txt  
+!SFX_LIC for details. version 1.
+!     #########
       SUBROUTINE ADD_FORECAST_TO_DATE_SURF(KYEAR,KMONTH,KDAY,PSEC)
 !     #######################################################
 !
@@ -54,7 +36,7 @@ END MODULE MODI_ADD_FORECAST_TO_DATE_SURF
 !!
 !!    AUTHOR
 !!    ------
-!!	
+!!      
 !     V.Masson  Meteo-France
 !!
 !!    MODIFICATIONS
@@ -64,6 +46,10 @@ END MODULE MODI_ADD_FORECAST_TO_DATE_SURF
 !
 !*       0.    DECLARATIONS
 !              ------------
+!
+!
+USE YOMHOOK   ,ONLY : LHOOK,   DR_HOOK
+USE PARKIND1  ,ONLY : JPRB
 !
 IMPLICIT NONE
 !
@@ -78,11 +64,13 @@ REAL,    INTENT(INOUT) :: PSEC   ! number of seconds since date at 00 UTC
 !              ------------------------------
 !
 INTEGER :: IDAYS ! number of days in KMONTH
+REAL(KIND=JPRB) :: ZHOOK_HANDLE
 !-------------------------------------------------------------------------------
 !
 !*       1.    Return condition: less than one day to add
 !              ------------------------------------------
 !
+IF (LHOOK) CALL DR_HOOK('ADD_FORECAST_TO_DATE_SURF',0,ZHOOK_HANDLE)
 DO 
   IF (86400.-PSEC > 1.E-6) EXIT
 !
@@ -134,6 +122,7 @@ DO
 !              --------------
 !
 ENDDO
+IF (LHOOK) CALL DR_HOOK('ADD_FORECAST_TO_DATE_SURF',1,ZHOOK_HANDLE)
 !
 !-------------------------------------------------------------------------------
 !

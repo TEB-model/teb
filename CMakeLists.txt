@@ -47,16 +47,22 @@ set(src_driver
     src/driver/driver.F90
     src/driver/modd_arch.F90
     src/driver/modd_forc_atm.F90
-    src/driver/modd_reprod_oper.F90
     src/driver/modd_surf_conf.F90
     src/driver/mode_char2real.F90
+    src/driver/modi_abor1_sfx.F90
+    src/driver/modi_close_file.F90
+    src/driver/modi_ol_alloc_atm.F90
+    src/driver/modi_ol_read_atm_ascii.F90
+    src/driver/modi_ol_read_atm.F90
+    src/driver/modi_ol_time_interp_atm.F90
+    src/driver/modi_open_close_bin_asc_forc.F90
     src/driver/ol_alloc_atm.F90
     src/driver/ol_read_atm.F90
     src/driver/ol_read_atm_ascii.F90
     src/driver/ol_time_interp_atm.F90
     src/driver/open_close_bin_asc_forc.F90
     src/driver/read_surf_atm.F90
-    src/driver/modd_wrf_teb_driver.F90
+    #src/driver/modd_wrf_teb_driver.F90
 )
 
 file(GLOB_RECURSE src_proxi_SVAT "src/proxi_SVAT/*")

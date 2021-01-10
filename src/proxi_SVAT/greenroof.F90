@@ -1,40 +1,25 @@
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-! Copyright 1998-2013 Meteo-France
-! This is part of the TEB software governed by the CeCILL licence version 2.1.
-! See the following links for details:
-! https://cecill.info/licences/Licence_CeCILL_V2.1-en.txt
-! https://cecill.info/licences/Licence_CeCILL_V2.1-fr.txt
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!SFX_LIC Copyright 1994-2014 CNRS, Meteo-France and Universite Paul Sabatier
+!SFX_LIC This is part of the SURFEX software governed by the CeCILL-C licence
+!SFX_LIC version 1. See LICENSE, CeCILL-C_V1-en.txt and CeCILL-C_V1-fr.txt  
+!SFX_LIC for details. version 1.
 !     #########
-    SUBROUTINE GREENROOF(HIMPLICIT_WIND, TPTIME, PTSUN, PPEW_A_COEF, PPEW_B_COEF,    &
-                PPET_A_COEF, PPEQ_A_COEF, PPET_B_COEF, PPEQ_B_COEF,                  &
-                PTSTEP, PZREF, PUREF,                                                &
-                PTA, PQA, PEXNS, PEXNA,PRHOA, PCO2, PPS, PRR, PSR, PZENITH,          &
-                PSW,PLW, PVMOD,                                                      &
-                PRN_GREENROOF,PH_GREENROOF,PLE_GREENROOF,PGFLUX_GREENROOF,           &
-                PSFCO2,PEVAP_GREENROOF, PUW_GREENROOF,                               &
-                PAC_GREENROOF,PQSAT_GREENROOF,PTS_GREENROOF,                         &
-                PAC_AGG_GREENROOF, PHU_AGG_GREENROOF,PDEEP_FLUX,                     &
-                PRUNOFF_GREENROOF, PDRAIN_GREENROOF, PIRRIG_GREENROOF                )  
+    SUBROUTINE GREENROOF (DTCO, G, T, TOP, TIR, DTV, GB, DK, DEK, DMK, GRO, S, K, P, PEK,    &
+                          HIMPLICIT_WIND, TPTIME, PTSUN, PPEW_A_COEF, PPEW_B_COEF,  &
+                          PPET_A_COEF, PPEQ_A_COEF, PPET_B_COEF, PPEQ_B_COEF,       &
+                          PTSTEP, PZREF, PUREF, PALB_GD, PTA, PQA, PEXNS, PEXNA, PRHOA,      &
+                          PCO2, PPS, PRR, PSR, PZENITH, PSW, PLW, PVMOD,            &
+                          PALBNIR_TVEG, PALBVIS_TVEG, PALBNIR_TSOIL, PALBVIS_TSOIL, &                
+                          PRN, PH, PLE, PGFLUX, PSFCO2, PEVAP, PUW, PRUNOFF, PDRAIN,&
+                          PAC, PQSAT, PTSRAD, PAC_AGG, PHU_AGG, PDEEP_FLUX, PIRRIG )  
 !   ##################################################################################
 !
 !!****  *GREENROOF*  
 !!
 !!    PURPOSE
 !!    -------
-!
-!!call  a proxi of green roof scheme inside TEB
-!
-!!========================================================================
-!!========================================================================
-!!========================================================================
 !!
-!! ==> YOU ARE (MORE THAN) WELCOME TO USE YOUR OWN GREEN ROOF SCHEME HERE
-!!
-!!========================================================================
-!!========================================================================
-!!========================================================================
-!
+!!    call the vegetation scheme (ISBA) inside TEB for greenroofs
+!!     
 !!**  METHOD
 !!     ------
 !!    based on subroutine "garden" 
@@ -54,24 +39,84 @@
 !!    AUTHOR
 !!    ------
 !!
-!!	C. de Munck & A. Lemonsu          * Meteo-France *
+!!      C. de Munck & A. Lemonsu          * Meteo-France *
 !!
 !!    MODIFICATIONS
 !!    -------------
 !     Original    09/2011 
+!     C. de Munck   02/2013  irrigation (drip irrigation)
+!     B. decharme 04/2013 : Variables required in TEB to allow coupling with AROME/ALADIN/ARPEGE
+!                           phasing call isba
+!                           calculation of vegetation CO2 flux
+!                           dummy for water table / surface coupling
+!!    P. Samuelsson  10/2014  Introduced dummy variables in call to ISBA for MEB
 !-------------------------------------------------------------------------------
 !
 !*       0.     DECLARATIONS
 !               ------------
 !
-USE MODD_CSTS, ONLY : XLVTT , &   ! Latent heat constant for evaporation
-                      XKARMAN     ! Von Karman constant
-USE MODE_THERMOS                  ! Function to compute humidity at saturation
-USE MODD_TYPE_DATE_SURF,    ONLY: DATE_TIME
+USE MODD_DATA_COVER_n, ONLY : DATA_COVER_t
+USE MODD_DATA_ISBA_n, ONLY : DATA_ISBA_t
+USE MODD_SFX_GRID_n, ONLY : GRID_t
+USE MODD_SSO_n, ONLY : SSO_t, SSO_INIT
+USE MODD_TEB_n, ONLY : TEB_t
+USE MODD_TEB_OPTION_n, ONLY : TEB_OPTIONS_t
+USE MODD_TEB_IRRIG_n, ONLY : TEB_IRRIG_t
+!
+USE MODD_DATA_ISBA_n, ONLY : DATA_ISBA_t
+USE MODD_GR_BIOG_n, ONLY : GR_BIOG_t
+!
+USE MODD_DIAG_n, ONLY : DIAG_t
+USE MODD_DIAG_EVAP_ISBA_n, ONLY : DIAG_EVAP_ISBA_t
+USE MODD_DIAG_MISC_ISBA_n, ONLY : DIAG_MISC_ISBA_t
+!
+USE MODD_ISBA_OPTIONS_n, ONLY : ISBA_OPTIONS_t
+USE MODD_ISBA_n, ONLY : ISBA_S_t, ISBA_K_t, ISBA_P_t, ISBA_PE_t
+!
+USE MODD_AGRI_n, ONLY : AGRI_t, AGRI_INIT
+!
+USE MODD_SURF_PAR,             ONLY: XUNDEF
+USE MODD_TYPE_DATE_SURF,       ONLY: DATE_TIME
+USE MODD_CSTS,                 ONLY: XCPD, XLVTT, XKARMAN
+!
+USE MODI_ISBA
+USE MODI_VEGETATION_UPDATE
+USE MODI_VEGETATION_EVOL
+USE MODI_CARBON_EVOL
+USE MODE_THERMOS
+USE MODI_ROOF_IMPL_COEF
+USE MODI_TEB_IRRIG
+USE MODI_FLAG_TEB_VEG_n
+
+USE PROXI_SVAT_CONSTS, ONLY: GREENROOF_BR
+!
+USE YOMHOOK   ,ONLY : LHOOK,   DR_HOOK
+USE PARKIND1  ,ONLY : JPRB
 !
 IMPLICIT NONE
 !
 !*      0.1    Declarations of arguments
+!
+!
+!
+TYPE(DATA_COVER_t), INTENT(INOUT) :: DTCO
+TYPE(GRID_t), INTENT(INOUT) :: G
+TYPE(TEB_t), INTENT(INOUT) :: T
+TYPE(TEB_OPTIONS_t), INTENT(INOUT) :: TOP
+TYPE(TEB_IRRIG_t), INTENT(INOUT) :: TIR
+!
+TYPE(DATA_ISBA_t), INTENT(INOUT) :: DTV
+TYPE(GR_BIOG_t), INTENT(INOUT) :: GB
+!
+TYPE(DIAG_t), INTENT(INOUT) :: DK
+TYPE(DIAG_EVAP_ISBA_t), INTENT(INOUT) :: DEK
+TYPE(DIAG_MISC_ISBA_t), INTENT(INOUT) :: DMK
+!
+TYPE(ISBA_OPTIONS_t), INTENT(INOUT) :: GRO
+TYPE(ISBA_S_t), INTENT(INOUT) :: S
+TYPE(ISBA_K_t), INTENT(INOUT) :: K
+TYPE(ISBA_P_t), INTENT(INOUT) :: P
+TYPE(ISBA_PE_t), INTENT(INOUT) :: PEK
 !
  CHARACTER(LEN=*),     INTENT(IN)  :: HIMPLICIT_WIND   ! wind implicitation option
 !                                                     ! 'OLD' = direct
@@ -85,8 +130,9 @@ REAL, DIMENSION(:)  , INTENT(IN)    :: PPEQ_B_COEF        ! for humidity
 REAL, DIMENSION(:)  , INTENT(IN)    :: PPET_A_COEF        ! implicit coefficients
 REAL, DIMENSION(:)  , INTENT(IN)    :: PPET_B_COEF        ! for temperature
 REAL                , INTENT(IN)    :: PTSTEP             ! time step
-REAL, DIMENSION(:)  , INTENT(IN)    :: PZREF              ! height of the first atmospheric level                                                !
+REAL, DIMENSION(:)  , INTENT(IN)    :: PZREF              ! height of the first atmospheric level
 REAL, DIMENSION(:)  , INTENT(IN)    :: PUREF              ! reference height for the wind
+REAL, DIMENSION(:)  , INTENT(IN)    :: PALB_GD            ! green areas albedo
 REAL, DIMENSION(:)  , INTENT(IN)    :: PTA                ! temperature at first atm. level 
 REAL, DIMENSION(:)  , INTENT(IN)    :: PQA                ! specific humidity at first atm. level
 REAL, DIMENSION(:)  , INTENT(IN)    :: PPS                ! pressure at the surface
@@ -100,23 +146,27 @@ REAL, DIMENSION(:)  , INTENT(IN)    :: PZENITH            ! solar zenithal angle
 REAL, DIMENSION(:)  , INTENT(IN)    :: PSW                ! incoming total solar rad on an horizontal surface
 REAL, DIMENSION(:)  , INTENT(IN)    :: PLW                ! atmospheric infrared radiation
 REAL, DIMENSION(:)  , INTENT(IN)    :: PVMOD              ! module of horizontal wind near first atm. level
-
-REAL, DIMENSION(:)  , INTENT(OUT)   :: PRN_GREENROOF         ! net radiation over greenroofs
-REAL, DIMENSION(:)  , INTENT(OUT)   :: PH_GREENROOF          ! sensible heat flux over greenroofs
-REAL, DIMENSION(:)  , INTENT(OUT)   :: PLE_GREENROOF         ! latent heat flux over greenroofs
-REAL, DIMENSION(:)  , INTENT(OUT)   :: PGFLUX_GREENROOF      ! flux through the greenroofs
-REAL, DIMENSION(:)  , INTENT(OUT)   :: PSFCO2                ! flux of greenroof CO2       (kg/m2/s)
-REAL, DIMENSION(:)  , INTENT(OUT)   :: PEVAP_GREENROOF       ! total evaporation over greenroofs (kg/m2/s)
-REAL, DIMENSION(:)  , INTENT(OUT)   :: PUW_GREENROOF         ! friction flux (m2/s2)
-REAL, DIMENSION(:)  , INTENT(OUT)   :: PAC_GREENROOF         ! greenroof aerodynamical conductance
-REAL, DIMENSION(:)  , INTENT(OUT)   :: PQSAT_GREENROOF       ! saturation humidity
-REAL, DIMENSION(:)  , INTENT(INOUT) :: PTS_GREENROOF         ! greenroof radiative surface temp. (snow free)
-REAL, DIMENSION(:)  , INTENT(OUT)   :: PAC_AGG_GREENROOF     ! aggreg. aeodynamic resistance for greenroofs for latent heat flux
-REAL, DIMENSION(:)  , INTENT(OUT)   :: PHU_AGG_GREENROOF     ! aggreg. relative humidity for greenroofs for latent heat flux
-REAL, DIMENSION(:)  , INTENT(OUT)   :: PDEEP_FLUX            ! Heat Flux at the bottom layer of the greenroof
-REAL, DIMENSION(:)  , INTENT(OUT)   :: PRUNOFF_GREENROOF     ! greenroof surface runoff
-REAL, DIMENSION(:)  , INTENT(OUT)   :: PDRAIN_GREENROOF      ! greenroof total (vertical) drainage
-REAL, DIMENSION(:)  , INTENT(OUT)   :: PIRRIG_GREENROOF      ! greenroof irrigation during time step
+REAL, DIMENSION(:)  , INTENT(IN)    :: PALBNIR_TVEG       ! nearIR  veg tot albedo
+REAL, DIMENSION(:)  , INTENT(IN)    :: PALBVIS_TVEG       ! visible veg tot albedo
+REAL, DIMENSION(:)  , INTENT(IN)    :: PALBNIR_TSOIL      ! nearIR  soil tot albedo
+REAL, DIMENSION(:)  , INTENT(IN)    :: PALBVIS_TSOIL      ! visible soil tot albedo
+!
+REAL, DIMENSION(:)  , INTENT(OUT)   :: PRN         ! net radiation over greenroofs
+REAL, DIMENSION(:)  , INTENT(OUT)   :: PH          ! sensible heat flux over greenroofs
+REAL, DIMENSION(:)  , INTENT(OUT)   :: PLE         ! latent heat flux over greenroofs
+REAL, DIMENSION(:)  , INTENT(OUT)   :: PGFLUX      ! flux through the greenroofs
+REAL, DIMENSION(:)  , INTENT(OUT)   :: PSFCO2      ! flux of greenroof CO2       (m/s*kg_CO2/kg_air)
+REAL, DIMENSION(:)  , INTENT(OUT)   :: PEVAP       ! total evaporation over greenroofs (kg/m2/s)
+REAL, DIMENSION(:)  , INTENT(OUT)   :: PUW         ! friction flux (m2/s2)
+REAL, DIMENSION(:)  , INTENT(OUT)   :: PRUNOFF     ! greenroof surface runoff
+REAL, DIMENSION(:)  , INTENT(OUT)   :: PDRAIN      ! greenroof surface drainage
+REAL, DIMENSION(:)  , INTENT(OUT)   :: PAC         ! greenroof aerodynamical conductance
+REAL, DIMENSION(:)  , INTENT(OUT)   :: PQSAT       ! saturation humidity
+REAL, DIMENSION(:)  , INTENT(OUT)   :: PTSRAD      ! greenroof radiative surface temp. (snow free)
+REAL, DIMENSION(:)  , INTENT(OUT)   :: PAC_AGG     ! aggreg. aeodynamic resistance for greenroofs for latent heat flux
+REAL, DIMENSION(:)  , INTENT(OUT)   :: PHU_AGG     ! aggreg. relative humidity for greenroofs for latent heat flux
+REAL, DIMENSION(:)  , INTENT(OUT)   :: PDEEP_FLUX  ! Heat Flux at the bottom layer of the greenroof
+REAL, DIMENSION(:)  , INTENT(OUT)   :: PIRRIG      ! greenroof summer irrigation rate
 !
 !
 !*      0.2    Declarations of local variables
@@ -127,48 +177,47 @@ REAL, DIMENSION(:)  , INTENT(OUT)   :: PIRRIG_GREENROOF      ! greenroof irrigat
 !*      1.     Proxi model based on a fixed Bowen ratio
 !              ----------------------------------------
 !
-!* albedo fixed to 0.15
-PRN_GREENROOF(:) = (1.-0.15) * PSW(:)
 !
-!* Bowen ratio fixed to 1.
-PH_GREENROOF (:) = 0.5 * PRN_GREENROOF(:)
-PLE_GREENROOF(:) = 0.5 * PRN_GREENROOF(:)
+PRN(:) = (1.-PALB_GD) * PSW(:)
+!
+PH (:) = GREENROOF_BR * PRN(:)
+PLE(:) = (1 - GREENROOF_BR) * PRN(:)
 !
 !* Conduction heat flux is neglected
-PGFLUX_GREENROOF(:) = 0.
+PGFLUX(:) = 0.
 !
 !* CO2 flux is neglected
 PSFCO2(:) = 0.
 !
 !* evaporation
-PEVAP_GREENROOF(:) = PLE_GREENROOF(:) / XLVTT
+PEVAP(:) = PLE(:) / XLVTT
 !
 !* Friction flux: assumes neutral formulation with roughness length of 0.01m
-PUW_GREENROOF(:) = - (XKARMAN/LOG(PUREF(:)/0.01))**2 * PVMOD(:)**2
+PUW(:) = - (XKARMAN/LOG(PUREF(:)/0.01))**2 * PVMOD(:)**2
 !
 !* Aerodynamical conductance: neglected because used further only for
 !  implicitation of canyon air temperature when the heat flux depends on the
 !  surface temperature
 !
-PAC_GREENROOF(:) = 0.
+PAC(:) = 0.
 !
 !* surface saturation humidity
-PQSAT_GREENROOF(:) = QSAT(PTA(:),PPS(:))
+PQSAT(:) = QSAT(PTA(:),PPS(:))
 !
 !* Surface temperature : set equal to air temperature
-PTS_GREENROOF(:) = PTA(:)
+PTSRAD(:) = PTA(:)
 !
 !* aerocynamical conductance for latent heat and surface humidity
-PAC_AGG_GREENROOF(:) = 0.    ! neglected (latent flux does not depend on surface humidity)
-PHU_AGG_GREENROOF(:) = 0.3   ! surface humidity set to 30%
+PAC_AGG(:) = 0.    ! neglected (latent flux does not depend on surface humidity)
+PHU_AGG(:) = 0.3   ! surface humidity set to 30%
 !
 !* Heat Flux at the bottom layer of the greenroof
 PDEEP_FLUX(:) = 0.
 !
 !* greenroof hydrological diagnostics
-PRUNOFF_GREENROOF(:) = 0.    ! greenroof surface runoff
-PDRAIN_GREENROOF (:) = 0.    ! greenroof total (vertical) drainage
-PIRRIG_GREENROOF (:) = 0.    ! greenroof irrigation during time step
+PRUNOFF(:) = 0.    ! greenroof surface runoff
+PDRAIN (:) = 0.    ! greenroof total (vertical) drainage
+PIRRIG (:) = 0.    ! greenroof irrigation during time step
 !-------------------------------------------------------------------------------
 !
 !

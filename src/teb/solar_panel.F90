@@ -1,7 +1,7 @@
 !SFX_LIC Copyright 1994-2014 CNRS, Meteo-France and Universite Paul Sabatier
-!SFX_LIC This is part of the SURFEX software governed by the CeCILL licence
-!SFX_LIC version 2.1. See Licence_CeCILL_V2.1-en.txt and Licence_CeCILL_V2.1-fr.txt  
-!SFX_LIC for details.
+!SFX_LIC This is part of the SURFEX software governed by the CeCILL-C licence
+!SFX_LIC version 1. See LICENSE, CeCILL-C_V1-en.txt and CeCILL-C_V1-fr.txt  
+!SFX_LIC for details. version 1.
 !     #########
     SUBROUTINE SOLAR_PANEL(TPN, DMT, PTSTEP, PTSUN, PRESIDENTIAL, PEMIT_LW_ROOF, &
                            PEMIT_LWDN_PANEL, PLW_RAD, PTA, PN_FLOOR, PPROD_BLD )
@@ -121,7 +121,6 @@ IF (LHOOK) CALL DR_HOOK('SOLAR_PANEL',0,ZHOOK_HANDLE)
 !*      0.4    Default values for output variables
 !              -----------------------------------
 !
-
 DMT%XABS_LW_PANEL   = XUNDEF ! Absorbed LW enerby by solar panel         (W/m2)
 DMT%XH_PANEL        = XUNDEF ! Sensible heat released by the solar panel (W/m2)
 DMT%XRN_PANEL       = XUNDEF ! Net radiation     of the solar panel      (W/m2)

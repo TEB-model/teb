@@ -1,9 +1,9 @@
 !SFX_LIC Copyright 1994-2014 CNRS, Meteo-France and Universite Paul Sabatier
-!SFX_LIC This is part of the SURFEX software governed by the CeCILL licence
-!SFX_LIC version 2.1. See Licence_CeCILL_V2.1-en.txt and Licence_CeCILL_V2.1-fr.txt  
-!SFX_LIC for details.
+!SFX_LIC This is part of the SURFEX software governed by the CeCILL-C licence
+!SFX_LIC version 1. See LICENSE, CeCILL-C_V1-en.txt and CeCILL-C_V1-fr.txt  
+!SFX_LIC for details. version 1.
 !     #########
-    SUBROUTINE TEB_GARDEN (TOP, T, BOP, B, TPN, TIR, DMT,                                         &
+    SUBROUTINE TEB_GARDEN (DTCO, G, TOP, T, BOP, B, TPN, TIR, DMT, GDM, GRM, KTEB_P,              &
                            HIMPLICIT_WIND, PTSUN, PT_CAN, PQ_CAN, PU_CAN, PT_LOWCAN, PQ_LOWCAN,   &
                            PU_LOWCAN, PZ_LOWCAN, PPEW_A_COEF, PPEW_B_COEF, PPEW_A_COEF_LOWCAN,    &
                            PPEW_B_COEF_LOWCAN, PPS, PPA, PEXNS, PEXNA, PTA, PQA, PRHOA, PCO2,     &
@@ -57,6 +57,8 @@
 !*       0.     DECLARATIONS
 !               ------------
 !
+USE MODD_DATA_COVER_n, ONLY : DATA_COVER_t
+USE MODD_SFX_GRID_n, ONLY : GRID_t
 USE MODD_TEB_OPTION_n, ONLY : TEB_OPTIONS_t
 USE MODD_TEB_n, ONLY : TEB_t
 USE MODD_BEM_OPTION_n, ONLY : BEM_OPTIONS_t
@@ -64,6 +66,13 @@ USE MODD_BEM_n, ONLY : BEM_t
 USE MODD_TEB_PANEL_n, ONLY : TEB_PANEL_t
 USE MODD_TEB_IRRIG_n, ONLY : TEB_IRRIG_t
 USE MODD_DIAG_MISC_TEB_n, ONLY : DIAG_MISC_TEB_t
+!
+USE MODD_DIAG_n, ONLY : DIAG_t
+USE MODD_DIAG_EVAP_ISBA_n, ONLY : DIAG_EVAP_ISBA_t
+USE MODD_DIAG_MISC_ISBA_n, ONLY : DIAG_MISC_ISBA_t
+!
+USE MODD_SURFEX_n, ONLY : TEB_GARDEN_MODEL_t
+USE MODD_SURFEX_n, ONLY : TEB_GREENROOF_MODEL_t
 !
 USE MODD_TYPE_DATE_SURF,    ONLY: DATE_TIME
 USE MODD_CSTS,              ONLY: XTT, XSTEFAN
@@ -91,6 +100,10 @@ IMPLICIT NONE
 !
 !*      0.1    Declarations of arguments
 !
+TYPE(DATA_COVER_t), INTENT(INOUT) :: DTCO
+!
+TYPE(GRID_t), INTENT(INOUT) :: G
+!
 TYPE(TEB_OPTIONS_t), INTENT(INOUT) :: TOP
 TYPE(TEB_t), INTENT(INOUT) :: T
 TYPE(BEM_OPTIONS_t), INTENT(INOUT) :: BOP
@@ -98,6 +111,11 @@ TYPE(BEM_t), INTENT(INOUT) :: B
 TYPE(TEB_PANEL_t), INTENT(INOUT) :: TPN
 TYPE(TEB_IRRIG_t), INTENT(INOUT) :: TIR
 TYPE(DIAG_MISC_TEB_t), INTENT(INOUT) :: DMT
+!
+TYPE(TEB_GARDEN_MODEL_t), INTENT(INOUT) :: GDM
+TYPE(TEB_GREENROOF_MODEL_t), INTENT(INOUT) :: GRM
+!
+INTEGER, INTENT(IN) :: KTEB_P                             ! TEB current patch number 
 !
  CHARACTER(LEN=*),     INTENT(IN)  :: HIMPLICIT_WIND      ! wind implicitation option
 !                                                         ! 'OLD' = direct
@@ -208,6 +226,14 @@ REAL, DIMENSION(:),   INTENT(OUT)     :: PPROD_BLD        ! Averaged     Energy 
 !
 !*      0.2    Declarations of local variables
 !
+TYPE(DIAG_t), POINTER :: GDDK
+TYPE(DIAG_EVAP_ISBA_t), POINTER :: GDDEK
+TYPE(DIAG_MISC_ISBA_t), POINTER :: GDDMK
+!
+TYPE(DIAG_t), POINTER :: GRDK
+TYPE(DIAG_EVAP_ISBA_t), POINTER :: GRDEK
+TYPE(DIAG_MISC_ISBA_t), POINTER :: GRDMK
+!
 REAL, DIMENSION(SIZE(PTA)) :: ZTA            ! air temperature extrapolated at roof level
 REAL, DIMENSION(SIZE(PTA)) :: ZQA            ! air humidity extrapolated at roof level
 !
@@ -245,6 +271,16 @@ REAL, DIMENSION(SIZE(PTA)) :: ZALB_GD    ! albedo     for green areas
 REAL, DIMENSION(SIZE(PTA)) :: ZEMIS_GD   ! emissivity for green areas
 REAL, DIMENSION(SIZE(PTA)) :: ZALB_GR    ! albedo     for green roofs
 REAL, DIMENSION(SIZE(PTA)) :: ZEMIS_GR   ! emissivity for green roofs
+!
+REAL, DIMENSION(SIZE(PTA)) :: ZALBNIR_TVEG_GD      ! nearIR  veg tot albedo
+REAL, DIMENSION(SIZE(PTA)) :: ZALBVIS_TVEG_GD      ! visible veg tot albedo
+REAL, DIMENSION(SIZE(PTA)) :: ZALBNIR_TSOIL_GD     ! nearIR  soil tot albedo
+REAL, DIMENSION(SIZE(PTA)) :: ZALBVIS_TSOIL_GD     ! visible soil tot albedo
+!
+REAL, DIMENSION(SIZE(PTA)) :: ZALBNIR_TVEG_GR      ! nearIR  veg tot albedo
+REAL, DIMENSION(SIZE(PTA)) :: ZALBVIS_TVEG_GR      ! visible veg tot albedo
+REAL, DIMENSION(SIZE(PTA)) :: ZALBNIR_TSOIL_GR     ! nearIR  soil tot albedo
+REAL, DIMENSION(SIZE(PTA)) :: ZALBVIS_TSOIL_GR     ! visible soil tot albedo
 !
 ! radiation received by surfaces
 !
@@ -351,16 +387,15 @@ REAL, DIMENSION(SIZE(PTA)) :: ZEMIT_LWDN_PANEL  ! LW flux emitted DOWNWARDS by t
 REAL, DIMENSION(SIZE(PTA)) :: ZEMIT_LWUP_PANEL  ! LW flux emitted UPWARDS   by the solar panel (W/m2 panel)
 REAL, DIMENSION(SIZE(PTA)) :: ZEMIT_LW_RF       ! LW flux emitted UPWARDS   by the roof        (W/m2 roof )
 !
-REAL, DIMENSION(SIZE(PTA)) :: ZRN_GD, ZH_GD, ZLE_GD, ZGFLUX_GD, ZEVAP_GD, ZTSRAD_GD, ZRUNOFF_GD, ZDRAIN_GD, ZIRRIG_GD
+REAL, DIMENSION(SIZE(PTA)) :: ZRN_GD, ZH_GD, ZLE_GD, ZGFLUX_GD, ZEVAP_GD, ZTSRAD_GD, ZRUNOFF_GD
 REAL, DIMENSIOn(SIZE(PTA)) :: ZRN_GR, ZH_GR, ZLE_GR, ZGFLUX_GR
-REAL, DIMENSION(SIZE(PTA)) :: ZEVAP_GR, ZTSRAD_GR, ZRUNOFF_GR, ZDRAIN_GR, ZIRRIG_GR
+REAL, DIMENSION(SIZE(PTA)) :: ZEVAP_GR, ZTSRAD_GR, ZRUNOFF_GR, ZDRAIN_GR 
 !
 !new local variables for shading
 REAL, DIMENSION(SIZE(PTA)) :: ZE_SHADING          ! energy not ref., nor absorbed, nor
                                                   ! trans. by glazing [Wm-2(win)]
 LOGICAL, DIMENSION(SIZE(PTA)) :: GSHADE           ! describes if one encounters the
 !                                                 ! conditions to close windows
-
 INTEGER :: JJ
 
 REAL(KIND=JPRB) :: ZHOOK_HANDLE
@@ -373,6 +408,14 @@ REAL(KIND=JPRB) :: ZHOOK_HANDLE
 !              --------------------------
 !
 IF (LHOOK) CALL DR_HOOK('TEB_GARDEN',0,ZHOOK_HANDLE)
+!
+GDDK   => GDM%VD%ND%AL(KTEB_P)
+GDDEK  => GDM%VD%NDE%AL(KTEB_P)
+GDDMK  => GDM%VD%NDM%AL(KTEB_P)
+!
+GRDK   => GRM%VD%ND%AL(KTEB_P)
+GRDEK  => GRM%VD%NDE%AL(KTEB_P)
+GRDMK  => GRM%VD%NDM%AL(KTEB_P)
 !
 ZDIR_SW(:) = 0.
 ZSCA_SW(:) = 0.
@@ -464,9 +507,14 @@ ZEMIS_GD  = XUNDEF
 ZTSRAD_GD = XUNDEF
 !
 IF (TOP%LGARDEN) THEN
- CALL TEB_VEG_PROPERTIES(PDIR_SW, PSCA_SW, PSW_BANDS, KSW,   &
+ CALL TEB_VEG_PROPERTIES(T%XGARDEN, GDM%O, GDM%NPE%AL(KTEB_P), &
+                        PDIR_SW, PSCA_SW, PSW_BANDS, KSW,   &
                         ZTSRAD_GD, ZEMIS_GD, ZALB_GD,       &
-                        PTA=PT_LOWCAN                       )
+                        PTA=PT_LOWCAN,                      &
+                        PALBNIR_TVEG=ZALBNIR_TVEG_GD,       &
+                        PALBVIS_TVEG=ZALBVIS_TVEG_GD,       &
+                        PALBNIR_TSOIL=ZALBNIR_TSOIL_GD,     &
+                        PALBVIS_TSOIL=ZALBVIS_TSOIL_GD     )
 ENDIF
 !
 ! for greenroofs :
@@ -476,9 +524,14 @@ ZEMIS_GR  = XUNDEF
 ZTSRAD_GR = XUNDEF
 !
 IF (TOP%LGREENROOF) THEN
- CALL TEB_VEG_PROPERTIES(  PDIR_SW, PSCA_SW, PSW_BANDS, KSW,    &
+ CALL TEB_VEG_PROPERTIES(T%XGREENROOF, GRM%O, GRM%NPE%AL(KTEB_P), &
+                           PDIR_SW, PSCA_SW, PSW_BANDS, KSW,    &
                            ZTSRAD_GR, ZEMIS_GR, ZALB_GR,        &
-                           PTA=PTA                              )
+                           PTA=PTA,                             &
+                           PALBNIR_TVEG=ZALBNIR_TVEG_GR,        &
+                           PALBVIS_TVEG=ZALBVIS_TVEG_GR,        &
+                           PALBNIR_TSOIL=ZALBNIR_TSOIL_GR,      &
+                           PALBVIS_TSOIL=ZALBVIS_TSOIL_GR  ) 
 ENDIF
 !
 !-------------------------------------------------------------------------------
@@ -489,7 +542,7 @@ ENDIF
 !* when building in unoccupied, target temperature is modified
 !
 IF (TOP%CBEM=="BEM") THEN
-  CALL BLD_OCC_CALENDAR(TOP%TTIME, PTSUN, T, B, 1., DMT%XTCOOL_TARGET, DMT%XTHEAT_TARGET, B%XQIN )
+  CALL BLD_OCC_CALENDAR(TOP%TTIME, PTSUN, T, B, 1., DMT%XTCOOL_TARGET, DMT%XTHEAT_TARGET, DMT%XQIN )
 ENDIF
 !
 !-------------------------------------------------------------------------------
@@ -542,7 +595,6 @@ END IF
                      ZLW_WIN_TO_WA, ZLW_WIN_TO_WB, ZLW_WIN_TO_R,        &
                      ZLW_WIN_TO_NR, ZLW_WIN_TO_G, ZLW_NR_TO_WA,         &
                      ZLW_NR_TO_WB, ZLW_NR_TO_WIN          )
-
 !
 !-------------------------------------------------------------------------------
 !
@@ -612,12 +664,15 @@ ZPEQ_B_COEF(:) = PQ_LOWCAN(:)
 !
 IF (TOP%LGARDEN) THEN
 !
-  CALL GARDEN(HIMPLICIT_WIND, TOP%TTIME, PTSUN, PPEW_A_COEF_LOWCAN, PPEW_B_COEF_LOWCAN, &
-              ZPET_A_COEF, ZPEQ_A_COEF, ZPET_B_COEF, ZPEQ_B_COEF, PTSTEP, PZ_LOWCAN,    &
+  CALL GARDEN(DTCO, G, T, TOP, TIR, GDM%DTV, GDM%GB, GDDK, GDDEK, GDDMK,                &
+              GDM%O, GDM%S, GDM%K, GDM%P, GDM%NPE%AL(KTEB_P),                           &
+              HIMPLICIT_WIND, TOP%TTIME, PTSUN, PPEW_A_COEF_LOWCAN, PPEW_B_COEF_LOWCAN, &
+              ZPET_A_COEF, ZPEQ_A_COEF, ZPET_B_COEF, ZPEQ_B_COEF, PTSTEP, PZREF, ZALB_GD, &
               PT_LOWCAN, PQ_LOWCAN, PEXNS, PRHOA, PCO2, PPS, PRR, PSR, PZENITH,         &
-              ZREC_SW_GD, ZREC_LW_GD, PU_LOWCAN,  ZRN_GD, ZH_GD, ZLE_GD, ZGFLUX_GD,     &
+              ZREC_SW_GD, ZREC_LW_GD, PU_LOWCAN, ZALBNIR_TVEG_GD, ZALBVIS_TVEG_GD,      &
+              ZALBNIR_TSOIL_GD, ZALBVIS_TSOIL_GD, ZRN_GD, ZH_GD, ZLE_GD, ZGFLUX_GD,     &
               ZSFCO2_GD, ZEVAP_GD, ZUW_GD, ZRUNOFF_GD, PAC_GD, ZQSAT_GD, ZTSRAD_GD,     &
-              ZAC_AGG_GD, ZHU_AGG_GD, ZDRAIN_GD, ZIRRIG_GD )
+              ZAC_AGG_GD, ZHU_AGG_GD, DMT%XIRRIG_GARDEN )  
 
   PAC_GD_WAT(:) = PAC_GD(:)
   DMT%XABS_SW_GARDEN(:) = (1.-ZALB_GD(:)) * ZREC_SW_GD
@@ -647,6 +702,8 @@ ELSE
   DMT%XABS_SW_GARDEN (:) = XUNDEF
   DMT%XABS_LW_GARDEN (:) = XUNDEF
   !
+  DMT%XIRRIG_GARDEN  (:) = 0.
+  !
 ENDIF
 !
 !*      8.3    Call ISBA for greenroofs
@@ -654,13 +711,16 @@ ENDIF
 !
 IF (TOP%LGREENROOF) THEN
   !
-  CALL GREENROOF(HIMPLICIT_WIND, TOP%TTIME, PTSUN, PPEW_A_COEF, PPEW_B_COEF,         &
+  CALL GREENROOF(DTCO, G, T, TOP, TIR, GRM%DTV, GRM%GB, GRDK, GRDEK,                 &
+                 GRDMK, GRM%O, GRM%S, GRM%K, GRM%P, GRM%NPE%AL(KTEB_P),              &
+                 HIMPLICIT_WIND, TOP%TTIME, PTSUN, PPEW_A_COEF, PPEW_B_COEF,         &
                  ZPET_A_COEF, ZPEQ_A_COEF, ZPET_B_COEF, ZPEQ_B_COEF, PTSTEP, PZREF,  &
-                 PUREF, PTA, PQA, PEXNS, PEXNA,PRHOA, PCO2, PPS, PRR, PSR, PZENITH,  &
-                 ZREC_SW_RF, ZREC_LW_RF, PVMOD, ZRN_GR, ZH_GR, ZLE_GR,               &
-                 ZGFLUX_GR, ZSFCO2_GR, ZEVAP_GR, ZUW_GR,                             &
+                 PUREF, ZALB_GD, PTA, PQA, PEXNS, PEXNA,PRHOA, PCO2, PPS, PRR, PSR, PZENITH,  &
+                 ZREC_SW_RF, ZREC_LW_RF, PVMOD,ZALBNIR_TVEG_GR, ZALBVIS_TVEG_GR,     &
+                 ZALBNIR_TSOIL_GR, ZALBVIS_TSOIL_GR, ZRN_GR, ZH_GR, ZLE_GR,          &
+                 ZGFLUX_GR, ZSFCO2_GR, ZEVAP_GR, ZUW_GR, ZRUNOFF_GR, ZDRAIN_GR,      &
                  PAC_GR, ZQSAT_GR, ZTSRAD_GR, ZAC_AGG_GR, ZHU_AGG_GR,                &
-                 DMT%XG_GREENROOF_ROOF, ZRUNOFF_GR, ZDRAIN_GR, ZIRRIG_GR ) 
+                 DMT%XG_GREENROOF_ROOF, DMT%XIRRIG_GREENROOF ) 
   !
   PAC_GR_WAT(:) = PAC_GR(:)
   DMT%XABS_SW_GREENROOF(:) = (1.-ZALB_GR(:)) * ZREC_SW_RF
@@ -733,7 +793,6 @@ IF (TOP%LSOLAR_PANEL) THEN
      - (        T%XGREENROOF(:)  *             DMT%XABS_LW_GREENROOF(:)  &
           + (1.-T%XGREENROOF(:)) * ZDF_RF(:) * DMT%XABS_LW_ROOF(:)       &
           + (1.-T%XGREENROOF(:)) * ZDN_RF(:) * DMT%XABS_LW_SNOW_ROOF(:) )
-
   !
   ! note that, for the time being, one considers that the solar panel 
   ! intercept radiation both above roof and greenroofs (if any)
