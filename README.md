@@ -117,3 +117,4 @@ Please see the [CONTRIBUTING.md](CONTRIBUTING.md) file.
 ## Copyright and license
 
 Copyright stated at the top of source files. Software released under [CeCILL version 2.1](Licence_CeCILL_V2.1-en.txt).
+Third party files released under MIT or CeCILL-C. See [ThirdPartyNotices.txt](ThirdPartyNotices.txt) for more details.
