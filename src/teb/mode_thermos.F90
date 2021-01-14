@@ -667,7 +667,7 @@ END FUNCTION QSATW_2D
 !!      Book2 of documentation of Meso-NH 
 !!      Zeng, X., Zhao, M., and Dickinson, R. E., 1998 : Intercomparaison of bulk
 !!      aerodynamic algorithm for the computation of sea surface fluxes using
-!!      TOGA COARE and TAO data. Journal of Climate, vol 11, n°10, pp 2628--2644
+!!      TOGA COARE and TAO data. Journal of Climate, vol 11, nï¿½10, pp 2628--2644
 !!
 !!
 !!    AUTHOR
@@ -766,7 +766,7 @@ END FUNCTION QSATSEAW_1D
 !!    REFERENCE
 !!    ---------
 !!      Weiss, R.F., and Price, B.A., 1980 : Nitrous oxide solubility in water
-!!      and seawater. Marine Chemistry, n°8, pp 347-359.
+!!      and seawater. Marine Chemistry, nï¿½8, pp 347-359.
 !!
 !!
 !!    AUTHOR

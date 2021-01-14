@@ -44,7 +44,7 @@ TYPE DIAG_OCEAN_t
 !
 !* averaged variables
 !
-  REAL, POINTER, DIMENSION(:)   :: XTOCMOY  ! mean temperature in CMO (°C)
+  REAL, POINTER, DIMENSION(:)   :: XTOCMOY  ! mean temperature in CMO (ï¿½C)
   REAL, POINTER, DIMENSION(:)   :: XSOCMOY  ! mean salinity in CMO (psu)
   REAL, POINTER, DIMENSION(:)   :: XUOCMOY  ! mean zonal current in CMO (m/s)
   REAL, POINTER, DIMENSION(:)   :: XVOCMOY  ! mean meridian current in CMO (m/s)

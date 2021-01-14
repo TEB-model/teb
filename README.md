@@ -3,7 +3,7 @@
 <!-- omit in toc -->
 # The Town Energy Balance (TEB) model
 
-[![GitHub release (latest by date)](https://img.shields.io/github/v/release/TEB-model/teb)](https://github.com/TEB-model/teb/releases/latest) [![Build Status](https://travis-ci.com/teb-model/teb.svg?branch=master)](https://travis-ci.com/teb-model/teb) [![DOI](https://joss.theoj.org/papers/10.21105/joss.02008/status.svg)](https://doi.org/10.21105/joss.02008) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3887080.svg)](https://doi.org/10.5281/zenodo.3887080)
+[![GitHub release (latest by date)](https://img.shields.io/github/v/release/TEB-model/teb)](https://github.com/TEB-model/teb/releases/latest) [![CI](https://github.com/TEB-model/teb/workflows/CI/badge.svg)](https://github.com/TEB-model/teb/actions) [![DOI](https://joss.theoj.org/papers/10.21105/joss.02008/status.svg)](https://doi.org/10.21105/joss.02008) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3887080.svg)](https://doi.org/10.5281/zenodo.3887080)
 
 [Overview](#overview) | [Prerequisites](#prerequisites) | [Installation](#installation) | [Documentation](#documentation) | [Example application](#example-application) | [Testing](#testing) | [How to cite](#how-to-cite) | [Contributing](#contributing) | [Copyright and license](#copyright-and-license)
 </div>

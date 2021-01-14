@@ -1,0 +1,40 @@
+name: CI
+
+on: [push, pull_request]
+
+jobs:
+  main:
+    name: ${{ matrix.os }} ${{ matrix.build-type }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: ['ubuntu-latest', 'macos-latest']
+        build-type: ['Debug', 'Release']
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.8
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        python -m pip install -r requirements.txt
+    - name: Build and test
+      run: |
+        if [ ${{ matrix.os }} = 'macos-latest' ]; then export FC=gfortran-10; fi
+        python -u tests/test.py --build_type=${{ matrix.build-type}} --case=integration
+    - name: Build docs
+      if: matrix.os == 'ubuntu-latest' && matrix.build-type == 'Release'
+      run: |
+        python -m pip install graphviz ford
+        ford docs/api-docs.md
+    - name: Publish docs
+      if: matrix.os == 'ubuntu-latest' && matrix.build-type == 'Release' && github.event_name == 'push' && github.ref == 'refs/heads/master'
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: build/docs
+        force_orphan: true
