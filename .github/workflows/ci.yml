@@ -14,6 +14,12 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    - name: Set up repository
+      # Clone all history leading to the tip of a single branch
+      # See https://stackoverflow.com/a/44036486.
+      run: |
+        git remote set-branches --add origin master
+        git fetch origin master
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
