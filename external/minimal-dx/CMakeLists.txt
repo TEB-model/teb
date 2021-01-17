@@ -11,6 +11,7 @@ ExternalProject_Add(minimaldx-project
         -DCMAKE_Fortran_COMPILER=${CMAKE_Fortran_COMPILER}
         -DUSE_REAL8=${USE_REAL8}
         -DCMAKE_INSTALL_PREFIX=<INSTALL_DIR>
+    BUILD_BYPRODUCTS <INSTALL_DIR>/lib/${CMAKE_STATIC_LIBRARY_PREFIX}MinimalDX${CMAKE_STATIC_LIBRARY_SUFFIX}
 )
 
 ExternalProject_Get_Property(minimaldx-project install_dir)
