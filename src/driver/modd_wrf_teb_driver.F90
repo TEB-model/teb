@@ -51,7 +51,7 @@ MODULE MODD_WRF_TEB_DRIVER
                      ZALB_WALL, ZEMIS_WALL,                                   &
                      ZHC_WALL, ZTC_WALL, ZD_WALL,                             &
                      CCOOL_COIL, ZF_WATER_COND, CHEAT_COIL,                   &
-                     HNATVENT, ZNATVENT,                                      &
+                     ZNATVENT,                                                &
                      XF_WASTE_CAN, ZQIN, ZQIN_FRAD,                           &
                      ZQIN_FLAT, ZGR, ZEFF_HEAT, ZINF,                         &
                      ZTCOOL_TARGET, ZTHEAT_TARGET, ZHR_TARGET,                &
@@ -59,7 +59,7 @@ MODULE MODD_WRF_TEB_DRIVER
                      XM_SYS_RAT, ZCOP_RAT, ZHC_FLOOR, ZTC_FLOOR,              &
                      ZD_FLOOR,  ZSHGC,                                        &
                      ZSHGC_SH,                                                &
-                     LSHADE, ZSHADE,                                          &
+                     ZSHADE,                                                  &
                      CBEM,                                                    &
                      CCH_BEM, ZROUGH_ROOF, ZROUGH_WALL,                       &
                      LPAR_RD_IRRIG, ZRD_START_MONTH, ZRD_END_MONTH,           &
@@ -128,7 +128,6 @@ MODULE MODD_WRF_TEB_DRIVER
       CHARACTER(LEN=12),                    INTENT(IN) :: CCOOL_COIL      ! option for cooling device type
       CHARACTER(LEN=6),                     INTENT(IN) :: CHEAT_COIL      ! option for heating device type
       REAL, DIMENSION(1),                   INTENT(IN) :: ZF_WATER_COND   ! fraction of evaporation for the condensers
-      CHARACTER(LEN=4), DIMENSION(1),       INTENT(IN) :: HNATVENT
       REAL, DIMENSION(1),                   INTENT(IN) :: ZNATVENT        ! flag to describe surventilation system for
                                                                           ! i/o 0 for NONE, 1 for MANU and 2 for AUTO
       REAL, DIMENSION(1),                   INTENT(IN) :: XF_WASTE_CAN    ! fraction of waste heat released into the canyon
@@ -152,7 +151,6 @@ MODULE MODD_WRF_TEB_DRIVER
       REAL, DIMENSION(1, num_floor_layers), INTENT(IN) :: ZD_FLOOR        ! depth of floor layers
       REAL, DIMENSION(1),                   INTENT(IN) :: ZSHGC           ! window solar transmittance
       REAL, DIMENSION(1),                   INTENT(IN) :: ZSHGC_SH        ! window + shading solar heat gain coef.
-      LOGICAL, DIMENSION(1),                INTENT(IN) :: LSHADE          ! Flag to use shading devices
       REAL, DIMENSION(1),                   INTENT(IN) :: PU_WIN          ! window U-factor [K m W-2]
       REAL, DIMENSION(1),                   INTENT(IN) :: ZSHADE          ! flag to activate shading devices -> REAL for i/o 0. or 1
       REAL, DIMENSION(1),                   INTENT(IN) :: ZFLOOR_HEIGHT   ! Floor height (m)
@@ -290,7 +288,16 @@ MODULE MODD_WRF_TEB_DRIVER
       ! Local variables
       REAL                  :: ZTIME_BEG       ! Time at beginning of time step
       REAL                  :: ZTIME           ! Time at end       of time step
+      INTEGER               :: IYEAR2          ! current year at end of timestep(UTC)
+      INTEGER               :: IMONTH2         ! current month at end of timestep(UTC)
+      INTEGER               :: IDAY2           ! current day at end of timestep(UTC)
+      REAL                  :: ZTIME2          ! current time since start of the day at end of timestep (s)
       TYPE(DATE_TIME)       :: TPTIME
+      REAL, DIMENSION(1)    :: ZSW
+      REAL                  :: ZBEGIN_TRAFFIC_TIME ! start traffic time (solar time, s)
+      REAL                  :: ZEND_TRAFFIC_TIME   ! end traffic time   (solar time, s)
+      REAL, DIMENSION(1)    :: XH_TRAFFIC       ! heat fluxes due to traffic                   !   \\/
+      REAL, DIMENSION(1)    :: XLE_TRAFFIC      ! heat fluxes due to traffic
       REAL, DIMENSION(1)    :: ZU_CANYON       ! canyon hor. wind
       REAL, DIMENSION(1)    :: ZU_LOWCAN       ! wind near the road
       REAL, DIMENSION(1)    :: ZT_LOWCAN       ! temp. near the road
@@ -362,6 +369,8 @@ MODULE MODD_WRF_TEB_DRIVER
       REAL, DIMENSION(1)    :: ZF_WASTE_CAN    ! fraction of waste heat released into the canyon
       REAL, DIMENSION(1)    :: ZCAP_SYS_RAT    ! Rated capacity of the cooling system [W m-2(bld)]
       REAL, DIMENSION(1)    :: ZM_SYS_RAT      ! Rated HVAC mass flow rate [kg s-1 m-2(bld)]
+      LOGICAL, DIMENSION(1) :: LSHADE          ! Flag to use shading devices
+      CHARACTER(LEN=4), DIMENSION(1)  :: HNATVENT
       ! End local variables
 
       ! Unused model outputs
@@ -508,6 +517,27 @@ MODULE MODD_WRF_TEB_DRIVER
             !
             GSHAD_DAY = .FALSE. ! has shading been necessary this day ?
             GNATVENT_NIGHT =.FALSE. ! has natural ventilation been necessary/possible this night ?
+           
+            IF (ZNATVENT(1) >= 0.0 .AND. ZNATVENT(1) < 0.5) THEN
+              HNATVENT = 'NONE'
+            ELSEIF (ZNATVENT(1) >= 0.5 .AND. ZNATVENT(1) < 1.5) THEN
+              HNATVENT = 'MANU'
+            ELSEIF (ZNATVENT(1) >= 1.5 .AND. ZNATVENT(1) <= 2.5) THEN
+              HNATVENT = 'AUTO'        
+            ELSEIF (ZNATVENT(1) >= 2.5 .AND. ZNATVENT(1) <= 3.5) THEN
+              HNATVENT = 'MECH'        
+            ELSE
+              HNATVENT = 'NONE'        
+            ENDIF
+            
+            IF (ZSHADE(1) >= 0.0 .AND. ZSHADE(1) < 0.5) THEN
+              LSHADE = .FALSE.
+            ELSEIF (ZSHADE(1) >= 0.5 .AND. ZSHADE(1) <= 1.0) THEN
+              LSHADE = .TRUE.
+            ELSE
+              LSHADE = .FALSE.
+            ENDIF
+            
             !
             ! coherence check
             IF ( (.NOT. LGREENROOF) .AND. ZFRAC_GR(1)>0.) THEN
@@ -536,7 +566,7 @@ MODULE MODD_WRF_TEB_DRIVER
             LCANOPY= .FALSE.  ! DO NOT CHANGE: whether multi-layer canopy is active.
             !
 
-            CQSAT='OLD' ! saturation is computed relative to water above 0°C, and relative to ice below 0°C
+            CQSAT='NEW' ! saturation is computed relative to water above 0°C, and relative to ice below 0°C
             !
             ! Thresholds
             XCISMIN = 0.5           ! Minimum wind shear
@@ -576,40 +606,36 @@ MODULE MODD_WRF_TEB_DRIVER
             CALL WINDOW_DATA_STRUCT(1, ZSHGC, PU_WIN, ZALB_WIN, ZABS_WIN, ZUGG_WIN, ZTRAN_WIN)
             !
             !
-                ! Solar time and position
-                  CALL SUNPOS(IYEAR, IMONTH, IDAY, ZTIME, ZLON, ZLAT, XTSUN, XZENITH, XAZIM)
-                  CALL SUNPOS(IYEAR, IMONTH, IDAY, ZTIME+XTSTEP_SURF, ZLON, ZLAT, XTSUN, &
-                   XZENITH2, XAZIM)
-                  !
-                  ! Update time
-                  ZTIME_BEG = ZTIME               ! Time at beginning of time step
-                  ZTIME = ZTIME + XTSTEP_SURF     ! Time at end of time step
-                  CALL ADD_FORECAST_TO_DATE_SURF(IYEAR, IMONTH, IDAY, ZTIME)
+            CALL SUNPOS(IYEAR, IMONTH, IDAY, ZTIME, ZLON, ZLAT, XTSUN, XZENITH, XAZIM)
+            IYEAR2 = IYEAR
+            IMONTH2= IMONTH
+            IDAY2  = IDAY
+            ZTIME2 = ZTIME+XTSTEP_SURF
+            CALL ADD_FORECAST_TO_DATE_SURF(IYEAR2, IMONTH2, IDAY2, ZTIME2)
+            CALL SUNPOS(IYEAR2, IMONTH2, IDAY2, ZTIME2, ZLON, ZLAT, XTSUN, XZENITH2, XAZIM)
                   !
                   TPTIME%TIME= ZTIME
                   TPTIME%TDATE%YEAR =IYEAR
                   TPTIME%TDATE%MONTH=IMONTH
                   TPTIME%TDATE%DAY  =IDAY
+
+                  ZSW(:) = 0.
+                  DO JLOOP=1,SIZE(XDIR_SW,2)
+                    ZSW(:) = ZSW(:) + XDIR_SW(:,JLOOP) + XSCA_SW(:,JLOOP)
+                  END DO
+                  WHERE (ZSW(:)>0.)
+                    XZENITH  = MIN (XZENITH ,XPI/2.-0.01)
+                    XZENITH2 = MIN (XZENITH2,XPI/2.-0.01)
+                  ELSEWHERE
+                    XZENITH  = MAX (XZENITH ,XPI/2.)
+                    XZENITH2 = MAX (XZENITH2,XPI/2.)
+                  END WHERE
+            
                   !
                   ! Exner functions
                   ZEXNS = (XPS/XP00)**(XRD/XCPD)
                   ZEXNA = (XPA/XP00)**(XRD/XCPD)
-                  !
-                  !
-                  ! Coherence between solar zenithal angle and radiation
-                  ! when solar beam close to horizontal -> reduction of direct radiation to
-                  ! the benefit of scattered radiation
-                  ! when pi/2 - 0.1 < ZENITH < pi/2 - 0.05 => weight of direct to scattered radiation decreases linearly with zenith
-                  ! when pi/2 - 0.05 < ZENITH => all the direct radiation is converted to scattered radiation
-                  ! coherence between solar zenithal angle and radiation
-                  !
-                  ZCOEF(:) = (XPI/2. - XZENITH(:) - 0.05) / 0.05
-                  ZCOEF(:) = MAX(MIN(ZCOEF,1.),0.)
-                  DO JLOOP=1,SIZE(XDIR_SW,2)
-                    XSCA_SW(:,JLOOP) = XSCA_SW(:,JLOOP) + XDIR_SW(:,JLOOP) * (1 - ZCOEF)
-                    XDIR_SW(:,JLOOP) = XDIR_SW(:,JLOOP) * ZCOEF(:)
-                  ENDDO
-                  !
+
                   ZTDIR_SW = XDIR_SW(1,1)
                   ZTSCA_SW = XSCA_SW(1,1)
                   KSW = 1  ! Only one spectral band here
@@ -619,6 +645,17 @@ MODULE MODD_WRF_TEB_DRIVER
                   CALL CIRCUMSOLAR_RAD(XDIR_SW(:,1), XSCA_SW(:,1), XZENITH, ZF1_o_B)
                   ZTDIR_SW(:,1) = XDIR_SW(:,1) + XSCA_SW(:,1) * ZF1_o_B
                   ZTSCA_SW(:,1) = XSCA_SW(:,1) * (1. - ZF1_o_B)
+
+                  ZBEGIN_TRAFFIC_TIME = 21600.
+                  ZEND_TRAFFIC_TIME   = 64800.
+                  !
+                  WHERE( XTSUN>ZBEGIN_TRAFFIC_TIME  .AND.  XTSUN<ZEND_TRAFFIC_TIME  )
+                    XH_TRAFFIC  (:) = ZH_TRAFFIC(:)
+                    XLE_TRAFFIC (:) = ZLE_TRAFFIC(:)
+                  ELSEWHERE
+                    XH_TRAFFIC  (:) = 0.
+                    XLE_TRAFFIC (:) = 0.   
+                  END WHERE
                   !
                   ! Wind speed
                   ZVMOD = ZWIND(1)
@@ -657,7 +694,7 @@ MODULE MODD_WRF_TEB_DRIVER
                      XZENITH, XAZIM,                                          &
                      XRAIN, XSNOW,                                            &
                      ZZREF, ZZREF, ZVMOD,                                     &
-                     ZH_TRAFFIC, ZLE_TRAFFIC, ZH_INDUSTRY, ZLE_INDUSTRY,      &
+                     XH_TRAFFIC, XLE_TRAFFIC, ZH_INDUSTRY, ZLE_INDUSTRY,      &
                      XTSTEP_SURF,                                             &
                      ZZ0,                                                     &
                      ZBLD,ZGARDEN,ZROAD_DIR,ZROAD,ZFRAC_GR,                   &
@@ -715,7 +752,7 @@ MODULE MODD_WRF_TEB_DRIVER
                      ZD_FLOOR, ZT_WIN1, ZABS_SW_WIN, ZABS_LW_WIN, ZSHGC,      &
                      ZSHGC_SH, ZUGG_WIN, ZALB_WIN, ZABS_WIN, ZEMIT_LW_FAC,    &
                      ZEMIT_LW_GRND, ZT_RAD_IND, ZREF_SW_GRND, ZREF_SW_FAC,    &
-                     ZHU_BLD, ZTIME_BEG, LSHADE, ZSHADE, GSHAD_DAY,           &
+                     ZHU_BLD, ZTIME, LSHADE, ZSHADE, GSHAD_DAY,           &
                      GNATVENT_NIGHT,                                          &
                      CBEM,                                                    &
                      ZN_FLOOR, ZWALL_O_BLD, ZGLAZ_O_BLD, ZMASS_O_BLD,         &
