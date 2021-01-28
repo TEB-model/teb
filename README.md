@@ -10,7 +10,7 @@
 
 ## Overview
 
-This enhanced software and platform for TEB (Town Energy Balance; [Masson, 2000](https://dx.doi.org/10.1023/A:1002463829265) and subsequent papers), is intended to help scientists and practitioners wishing to use the TEB model in their research as a standalone software application or as a library to calculate the urban surface energy balance at neighborhood scale assuming a simplified canyon geometry.
+This enhanced software and platform for TEB (Town Energy Balance; [Masson, 2000](https://dx.doi.org/10.1023/A:1002463829265) and subsequent papers), is intended to help scientists and practitioners wishing to use the TEB model in their research as a standalone software application or as a library (e.g. [WRF-TEB](https://doi.org/10.1029/2019MS001961)) to calculate the urban surface energy balance at neighborhood scale assuming a simplified canyon geometry.
 
 
 ## Prerequisites
