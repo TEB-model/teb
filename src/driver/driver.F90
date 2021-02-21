@@ -127,7 +127,7 @@ namelist /parameters/   XTSTEP_SURF, IYEAR, IMONTH, IDAY, ZTIME_START, ZLON, ZLA
                         ZQIN_FRAD, ZQIN_FLAT, ZGR, ZSHGC, PU_WIN, ZSHADE, ZSHGC_SH ,&
                         ZNATVENT, ZV_VENT, ZF_WATER_COND, ZF_WASTE_CAN, ZTCOOL_TARGET, ZTHEAT_TARGET ,&
                         ZHR_TARGET, ZEFF_HEAT, ZCAP_SYS_HEAT, ZCAP_SYS_RAT, ZT_ADP, ZM_SYS_RAT ,&
-                        ZCOP_RAT, CCH_BEM, ZROUGH_ROOF, ZROUGH_WALL, ZT_ROAD, ZT_ROOF, ZT_WALL_A ,&
+                        ZCOP_RAT, CCH_BEM, ZROUGH_ROOF, ZROUGH_WALL, ZT_ROAD, ZT_ROOF, ZT_WALL ,&
                         ZT_FLOOR, ZT_MASS, ZTI_BLD, ZT_CANYON, ZT_WIN1, ZT_WIN2, ZQ_CANYON, ZQI_BLD, &
                         VEG_ALB, VEG_EMIS, GARDEN_BR, GREENROOF_BR
 
@@ -180,7 +180,7 @@ REAL,DIMENSION(:,:), ALLOCATABLE :: ZTC_ROAD ! Thermal conductivity of road laye
 REAL,DIMENSION(:,:), ALLOCATABLE :: ZD_ROAD  ! Thickness            of road layers    ! ||   ||
 REAL,DIMENSION(:,:), ALLOCATABLE :: ZT_ROAD  ! road layers temperatures               ! || F ||
 REAL,DIMENSION(:,:), ALLOCATABLE :: ZT_ROOF  ! roof layers temperatures               ! || O ||
-REAL,DIMENSION(:,:), ALLOCATABLE :: ZT_WALL_A! wall layers temperatures (wall 'A')    ! || R ||
+REAL,DIMENSION(:,:), ALLOCATABLE :: ZT_WALL! wall layers temperatures (wall 'A')    ! || R ||
 REAL,DIMENSION(:,:), ALLOCATABLE :: ZT_WALL_B! wall layers temperatures (wall 'B')    ! ||   ||
 REAL,DIMENSION(1)  :: ZROAD_DIR         ! road direction (° from North, clockwise)    ! || U ||
 REAL,DIMENSION(1)  :: ZFRAC_GR          ! fraction of greenroofs on roofs             ! || R ||
@@ -631,7 +631,7 @@ ALLOCATE(ZT_ROAD     (1,NROAD_LAYER))
 ALLOCATE(ZHC_WALL    (1,NWALL_LAYER))
 ALLOCATE(ZTC_WALL    (1,NWALL_LAYER))
 ALLOCATE(ZD_WALL     (1,NWALL_LAYER))
-ALLOCATE(ZT_WALL_A   (1,NWALL_LAYER))
+ALLOCATE(ZT_WALL   (1,NWALL_LAYER))
 ALLOCATE(ZT_WALL_B   (1,NWALL_LAYER))
 
 ALLOCATE(ZHC_FLOOR   (1,NFLOOR_LAYER))
@@ -660,7 +660,7 @@ CLOSE(99)
 ! Inizializations (SYSTEM)
 ! -----------------------------------------------------------
 
-ZT_WALL_B = ZT_WALL_A    ! wall layers temperatures
+ZT_WALL_B = ZT_WALL    ! wall layers temperatures
 !
 
 GSHAD_DAY = .FALSE. ! has shading been necessary this day ?
@@ -1011,7 +1011,7 @@ DO JFORC_STEP= 1,INB_STEP_ATM
                      XTSUN, ZT_CANYON, ZQ_CANYON, ZU_CANYON,                  &
                      ZT_LOWCAN, ZQ_LOWCAN, ZU_LOWCAN, ZZ_LOWCAN,              &
                      ZTI_BLD,                                                 &
-                     ZT_ROOF, ZT_ROAD, ZT_WALL_A, ZT_WALL_B,                  &
+                     ZT_ROOF, ZT_ROAD, ZT_WALL, ZT_WALL_B,                  &
                      ZWS_ROOF,ZWS_ROAD,                                       &
                      HSNOW_ROOF,                                              &
                      ZWSNOW_ROOF, ZTSNOW_ROOF, ZRSNOW_ROOF, ZASNOW_ROOF,      &
@@ -1118,7 +1118,7 @@ DO JFORC_STEP= 1,INB_STEP_ATM
 !  Instantaneous diagnostics
 ZTS_ROOF = ZT_ROOF(1,1)
 ZTS_ROAD = ZT_ROAD(1,1)
-ZTS_WALL_A = ZT_WALL_A(1,1)
+ZTS_WALL_A = ZT_WALL(1,1)
 ZTS_WALL_B = ZT_WALL_B(1,1)
 
 ! Calucalte the total (direct + diffuse radiaitons)town albedo
@@ -1209,7 +1209,7 @@ DEALLOCATE(ZDIR)
 DEALLOCATE(ZHC_WALL)
 DEALLOCATE(ZTC_WALL)
 DEALLOCATE(ZD_WALL)
-DEALLOCATE(ZT_WALL_A)
+DEALLOCATE(ZT_WALL)
 DEALLOCATE(ZT_WALL_B)
 DEALLOCATE(ZHC_ROOF)
 DEALLOCATE(ZTC_ROOF)
