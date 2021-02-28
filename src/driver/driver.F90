@@ -567,6 +567,7 @@ CHARACTER(LEN=*), PARAMETER       :: T_MASS1 = 'output/T_MASS1.txt'             
 CHARACTER(LEN=*), PARAMETER       :: T_WALLA1= 'output/T_WALLA1.txt'                  ! ||   ||
 CHARACTER(LEN=*), PARAMETER       :: T_WALLB1= 'output/T_WALLB1.txt'                  ! ||   ||
 CHARACTER(LEN=*), PARAMETER       :: TI_BLD = 'output/TI_BLD.txt'                     ! ||   ||
+CHARACTER(LEN=*), PARAMETER       :: QI_BLD = 'output/QI_BLD.txt'                     ! ||   ||
 CHARACTER(LEN=*), PARAMETER       :: Q_CANYON = 'output/Q_CANYON.txt'                 ! ||   ||
 CHARACTER(LEN=*), PARAMETER       :: U_CANYON = 'output/U_CANYON.txt'                 ! ||   ||
 CHARACTER(LEN=*), PARAMETER       :: H_TOWN = 'output/H_TOWN.txt'                     !\\     //
@@ -871,6 +872,7 @@ OPEN(UNIT=55, FILE = Forc_SNOW, ACCESS = 'APPEND',STATUS = 'REPLACE')
 
 OPEN(UNIT=56, FILE = T_FLOOR1,   ACCESS = 'APPEND',STATUS = 'REPLACE')
 OPEN(UNIT=57, FILE = T_MASS1,   ACCESS = 'APPEND',STATUS = 'REPLACE')
+OPEN(UNIT=58, FILE = QI_BLD,   ACCESS = 'APPEND',STATUS = 'REPLACE')
 !
 ! -----------------------------------------------------------
 ! Temporal loops
@@ -1194,6 +1196,7 @@ ZQ_TOWN = ZQ_CANYON
 
     WRITE(56,*) ZT_FLOOR(1,1)
     WRITE(57,*) ZT_MASS(1,1)
+    WRITE(58,*) ZQI_BLD
 
 !
 END DO
@@ -1269,6 +1272,7 @@ CLOSE(55)
 
 CLOSE(56)
 CLOSE(57)
+CLOSE(58)
 
 
 !
