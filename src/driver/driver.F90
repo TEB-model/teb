@@ -562,6 +562,8 @@ REAL                :: ZTIME                ! Time at end       of time step    
 CHARACTER(LEN=*), PARAMETER       :: T_ROOF1 = 'output/T_ROOF1.txt'                   ! ||   ||
 CHARACTER(LEN=*), PARAMETER       :: T_CANYON = 'output/T_CANYON.txt'                 ! ||   ||
 CHARACTER(LEN=*), PARAMETER       :: T_ROAD1 = 'output/T_ROAD1.txt'                   ! ||   ||
+CHARACTER(LEN=*), PARAMETER       :: T_FLOOR1 = 'output/T_FLOOR1.txt'                   ! ||   ||
+CHARACTER(LEN=*), PARAMETER       :: T_MASS1 = 'output/T_MASS1.txt'                   ! ||   ||
 CHARACTER(LEN=*), PARAMETER       :: T_WALLA1= 'output/T_WALLA1.txt'                  ! ||   ||
 CHARACTER(LEN=*), PARAMETER       :: T_WALLB1= 'output/T_WALLB1.txt'                  ! ||   ||
 CHARACTER(LEN=*), PARAMETER       :: TI_BLD = 'output/TI_BLD.txt'                     ! ||   ||
@@ -866,6 +868,9 @@ OPEN(UNIT=52, FILE = Forc_QA, ACCESS = 'APPEND',STATUS = 'REPLACE')
 OPEN(UNIT=53, FILE = Forc_WIND, ACCESS = 'APPEND',STATUS = 'REPLACE')
 OPEN(UNIT=54, FILE = Forc_RAIN, ACCESS = 'APPEND',STATUS = 'REPLACE')
 OPEN(UNIT=55, FILE = Forc_SNOW, ACCESS = 'APPEND',STATUS = 'REPLACE')
+
+OPEN(UNIT=56, FILE = T_FLOOR1,   ACCESS = 'APPEND',STATUS = 'REPLACE')
+OPEN(UNIT=57, FILE = T_MASS1,   ACCESS = 'APPEND',STATUS = 'REPLACE')
 !
 ! -----------------------------------------------------------
 ! Temporal loops
@@ -1187,6 +1192,9 @@ ZQ_TOWN = ZQ_CANYON
     WRITE(54,*) XRAIN
     WRITE(55,*) XSNOW
 
+    WRITE(56,*) ZT_FLOOR(1,1)
+    WRITE(57,*) ZT_MASS(1,1)
+
 !
 END DO
 !
@@ -1258,6 +1266,11 @@ CLOSE(52)
 CLOSE(53)
 CLOSE(54)
 CLOSE(55)
+
+CLOSE(56)
+CLOSE(57)
+
+
 !
     WRITE(*,*) ' '
     WRITE(*,*) '    --------------------------'
