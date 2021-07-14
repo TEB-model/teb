@@ -123,7 +123,7 @@ List of options currently available in TEB.
 | `ZROUGH_WALL`   | -               | -               | Wall roughness coeff. (`DOE-2`)                                                                      | `1.52`     |
 | `ZT_ROAD`       | -               | K               | Initial road layers temperatures (`NROAD_LAYER`)                                                     | `274.`     |
 | `ZT_ROOF`       | -               | K               | Initial roof layers temperatures (`NROOF_LAYER`)                                                     | `274.`     |
-| `ZT_WALL_A`     | -               | K               | Initial wall layers temperatures (`NWALL_LAYER`)                                                     | `274.`     |
+| `ZT_WALL`     | -               | K               | Initial wall layers temperatures (`NWALL_LAYER`)                                                     | `274.`     |
 | `ZT_FLOOR`      | -               | K               | Initial building floor layers temperatures (`NFLOOR_LAYER`)                                          | `274.`     |
 | `ZT_MASS`       | -               | K               | Initial building mass layers temperatures (`NFLOOR_LAYER`)                                           | `274.`     |
 | `ZTI_BLD`       | -               | K               | Initial indoor air temperature                                                                       | `292.15`   |
