@@ -1,8 +1,8 @@
 MODULE PROXI_SVAT_CONSTS
 IMPLICIT NONE
  
-REAL :: VEG_ALB = 0.15
-REAL :: VEG_EMIS = 0.98
+REAL :: VEG_ALB = 0.25 ! Default for grass 
+REAL :: VEG_EMIS = 0.98 ! Default for grass
 REAL :: GARDEN_BR = 0.25
 REAL :: GREENROOF_BR = 0.5
 
