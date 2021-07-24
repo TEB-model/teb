@@ -1,0 +1,2657 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   
+   <meta name="description" content="The Town Energy Balance (TEB) model is an urban land surface model developed to calculate the exchange of energy and water between cities and atmosphere.">
+    
+    <meta name="author" content="teb-model" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>DATA_ISBA_t &ndash; Town Energy Balance (TEB) model API docs </title>
+
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+    
+    <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+    
+    
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <script src="../js/jquery-2.1.3.min.js"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../index.html">Town Energy Balance (TEB) model API docs </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+        
+            <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
+              <a href="#" class="dropdown-toggle"
+              data-toggle="dropdown" role="button"
+              aria-haspopup="true"
+     aria-expanded="false">Contents <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          
+              
+            <li><a href="../lists/files.html">Source Files</a></li>
+        
+        
+        
+            <li><a href="../lists/modules.html">Modules</a></li>
+        
+            
+                                
+            <li><a href="../lists/procedures.html">Procedures</a></li>
+        
+               
+            <li><a href="../lists/types.html">Derived Types</a></li>
+        
+        
+            <li><a href="../program/driver.html">Program</a></li>
+               
+        
+        
+            </ul>
+        
+            </li>
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/files.html">Source Files</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
+
+                             
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/types.html">Derived Types</a></li>
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../program/driver.html">Program</a></li>
+
+
+
+          </ul>
+        
+        <form action="../search.html" class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+        </div>
+<!--
+        <button type="submit" class="btn btn-default">Submit</button>
+-->
+        </form>
+        
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+    
+  
+  <div class="row">
+    <h1>DATA_ISBA_t
+    <small>Derived Type</small>
+    
+    </h1>
+    
+<div class="row">
+  <div class="col-lg-12">
+<div class="well well-sm">
+  <ul class="list-inline" style="margin-bottom:0px;display:inline">
+     
+     
+     
+    <li><i class="fa fa-legal"></i> CeCILL</li> 
+     
+     
+     
+    
+    
+     <li><i class="fa fa-list-ol"></i>
+       <a data-toggle="tooltip"
+    data-placement="bottom" data-html="true"
+    title="<p> 6.6% of total for derived types.</p>Including implementation: 118 statements,  6.6% of total for derived types.">118 statements</a>
+     </li> 
+     
+     
+     
+    <li><i class="fa fa-code"></i><a href="../src/modd_data_isban.F90"> Source File</a></li>
+     
+     
+  </ul>
+  <ol class="breadcrumb in-well text-right">
+  
+    
+     <li><a href='../sourcefile/modd_data_isban.f90.html'>modd_data_isban.F90</a></li>
+    
+     <li><a href='../module/modd_data_isba_n.html'>MODD_DATA_ISBA_n</a></li>
+    
+  
+     <li class="active">DATA_ISBA_t</li>
+  </ol>
+</div>
+</div>
+</div>
+<script>
+  $(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+  })
+</script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+    
+<div id="sidebar">
+  
+<h3>Contents</h3>
+ 
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#vars-0">Variables</a></h3></div>
+  <div id="vars-0" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-xpar_vegtype">XPAR_VEGTYPE</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-nvegtype">NVEGTYPE</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-ntime~3">NTIME</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-ldata_mixpar">LDATA_MIXPAR</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-ldata_vegtype">LDATA_VEGTYPE</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-ldata_lai">LDATA_LAI</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-ldata_veg">LDATA_VEG</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-ldata_z0">LDATA_Z0</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-ldata_emis">LDATA_EMIS</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-ldata_albnir_veg">LDATA_ALBNIR_VEG</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-ldata_albvis_veg">LDATA_ALBVIS_VEG</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-ldata_albuv_veg">LDATA_ALBUV_VEG</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-ldata_irrig">LDATA_IRRIG</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-ldata_watsup">LDATA_WATSUP</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-ldata_albnir_soil">LDATA_ALBNIR_SOIL</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-ldata_albvis_soil">LDATA_ALBVIS_SOIL</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-ldata_albuv_soil">LDATA_ALBUV_SOIL</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-ldata_gndlitter">LDATA_GNDLITTER</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-ldata_z0litter">LDATA_Z0LITTER</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-ldata_h_veg">LDATA_H_VEG</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-ldata_dg">LDATA_DG</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-ldata_rootfrac">LDATA_ROOTFRAC</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-ldata_h_tree">LDATA_H_TREE</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-ldata_dice">LDATA_DICE</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-ldata_ground_depth">LDATA_GROUND_DEPTH</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-ldata_root_depth">LDATA_ROOT_DEPTH</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-ldata_root_extinction">LDATA_ROOT_EXTINCTION</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-ldata_root_lin">LDATA_ROOT_LIN</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-ldata_rsmin">LDATA_RSMIN</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-ldata_gamma">LDATA_GAMMA</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-ldata_wrmax_cf">LDATA_WRMAX_CF</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-ldata_cv">LDATA_CV</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-ldata_z0_o_z0h">LDATA_Z0_O_Z0H</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-ldata_rgl">LDATA_RGL</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-ldata_bslai">LDATA_BSLAI</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-ldata_laimin">LDATA_LAIMIN</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-ldata_sefold">LDATA_SEFOLD</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-ldata_gmes">LDATA_GMES</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-ldata_re25">LDATA_RE25</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-ldata_stress">LDATA_STRESS</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-ldata_f2i">LDATA_F2I</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-ldata_gc">LDATA_GC</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-ldata_dmax">LDATA_DMAX</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-ldata_ce_nitro">LDATA_CE_NITRO</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-ldata_cf_nitro">LDATA_CF_NITRO</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-ldata_cna_nitro">LDATA_CNA_NITRO</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-ldata_seed_m">LDATA_SEED_M</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-ldata_seed_d">LDATA_SEED_D</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-ldata_reap_m">LDATA_REAP_M</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-ldata_reap_d">LDATA_REAP_D</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-ldata_condsat">LDATA_CONDSAT</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-ldata_mpotsat">LDATA_MPOTSAT</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-ldata_bcoef">LDATA_BCOEF</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-ldata_wwilt">LDATA_WWILT</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-ldata_wfc">LDATA_WFC</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-ldata_wsat">LDATA_WSAT</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-limp_veg">LIMP_VEG</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-limp_z0">LIMP_Z0</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-limp_emis">LIMP_EMIS</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-xpar_z0_o_z0h">XPAR_Z0_O_Z0H</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-xpar_emis">XPAR_EMIS</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-xpar_z0">XPAR_Z0</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-xpar_albnir_veg">XPAR_ALBNIR_VEG</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-xpar_albvis_veg">XPAR_ALBVIS_VEG</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-xpar_albuv_veg">XPAR_ALBUV_VEG</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-xpar_veg">XPAR_VEG</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-xpar_wrmax_cf">XPAR_WRMAX_CF</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-xpar_rsmin">XPAR_RSMIN</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-xpar_gamma">XPAR_GAMMA</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-xpar_cv">XPAR_CV</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-xpar_rgl">XPAR_RGL</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-xpar_rootfrac">XPAR_ROOTFRAC</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-xpar_root_depth">XPAR_ROOT_DEPTH</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-xpar_root_extinction">XPAR_ROOT_EXTINCTION</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-xpar_root_lin">XPAR_ROOT_LIN</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-xpar_gndlitter">XPAR_GNDLITTER</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-xpar_z0litter">XPAR_Z0LITTER</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-xpar_h_veg">XPAR_H_VEG</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-xpar_bslai">XPAR_BSLAI</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-xpar_laimin">XPAR_LAIMIN</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-xpar_sefold">XPAR_SEFOLD</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-xpar_h_tree">XPAR_H_TREE</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-xpar_gmes">XPAR_GMES</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-xpar_re25">XPAR_RE25</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-lpar_stress">LPAR_STRESS</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-xpar_f2i">XPAR_F2I</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-xpar_gc">XPAR_GC</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-xpar_dmax">XPAR_DMAX</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-xpar_ce_nitro">XPAR_CE_NITRO</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-xpar_cf_nitro">XPAR_CF_NITRO</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-xpar_cna_nitro">XPAR_CNA_NITRO</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-xpar_dg">XPAR_DG</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-xpar_ground_depth">XPAR_GROUND_DEPTH</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-xpar_dice">XPAR_DICE</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-xpar_albnir_soil">XPAR_ALBNIR_SOIL</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-xpar_albvis_soil">XPAR_ALBVIS_SOIL</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-xpar_albuv_soil">XPAR_ALBUV_SOIL</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-xpar_condsat">XPAR_CONDSAT</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-xpar_mpotsat">XPAR_MPOTSAT</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-xpar_bcoef">XPAR_BCOEF</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-xpar_wwilt">XPAR_WWILT</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-xpar_wfc">XPAR_WFC</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-xpar_wsat">XPAR_WSAT</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-xpar_lai">XPAR_LAI</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-xpar_irrig">XPAR_IRRIG</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-xpar_watsup">XPAR_WATSUP</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-xpar_seed_m">XPAR_SEED_M</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-xpar_seed_d">XPAR_SEED_D</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-xpar_reap_m">XPAR_REAP_M</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-xpar_reap_d">XPAR_REAP_D</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-xpar_frac_hveg">XPAR_FRAC_HVEG</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-xpar_frac_lveg">XPAR_FRAC_LVEG</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-xpar_frac_nveg">XPAR_FRAC_NVEG</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-xpar_lai_hveg">XPAR_LAI_HVEG</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-xpar_lai_lveg">XPAR_LAI_LVEG</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-xpar_h_hveg">XPAR_H_HVEG</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+  <div class="list-group">
+    <a class="list-group-item" href="../type/data_isba_t.html#src">DATA_ISBA_t</a>
+  </div>
+</div>
+
+
+
+</div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+      <h2>type, public :: DATA_ISBA_t</h2>
+    
+    
+    
+    
+    <br>
+
+    <section class="visible-xs visible-sm hidden-md">
+      
+<h3>Contents</h3>
+ 
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#vars-1">Variables</a></h3></div>
+  <div id="vars-1" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-xpar_vegtype">XPAR_VEGTYPE</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-nvegtype">NVEGTYPE</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-ntime~3">NTIME</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-ldata_mixpar">LDATA_MIXPAR</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-ldata_vegtype">LDATA_VEGTYPE</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-ldata_lai">LDATA_LAI</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-ldata_veg">LDATA_VEG</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-ldata_z0">LDATA_Z0</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-ldata_emis">LDATA_EMIS</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-ldata_albnir_veg">LDATA_ALBNIR_VEG</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-ldata_albvis_veg">LDATA_ALBVIS_VEG</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-ldata_albuv_veg">LDATA_ALBUV_VEG</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-ldata_irrig">LDATA_IRRIG</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-ldata_watsup">LDATA_WATSUP</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-ldata_albnir_soil">LDATA_ALBNIR_SOIL</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-ldata_albvis_soil">LDATA_ALBVIS_SOIL</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-ldata_albuv_soil">LDATA_ALBUV_SOIL</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-ldata_gndlitter">LDATA_GNDLITTER</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-ldata_z0litter">LDATA_Z0LITTER</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-ldata_h_veg">LDATA_H_VEG</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-ldata_dg">LDATA_DG</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-ldata_rootfrac">LDATA_ROOTFRAC</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-ldata_h_tree">LDATA_H_TREE</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-ldata_dice">LDATA_DICE</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-ldata_ground_depth">LDATA_GROUND_DEPTH</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-ldata_root_depth">LDATA_ROOT_DEPTH</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-ldata_root_extinction">LDATA_ROOT_EXTINCTION</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-ldata_root_lin">LDATA_ROOT_LIN</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-ldata_rsmin">LDATA_RSMIN</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-ldata_gamma">LDATA_GAMMA</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-ldata_wrmax_cf">LDATA_WRMAX_CF</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-ldata_cv">LDATA_CV</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-ldata_z0_o_z0h">LDATA_Z0_O_Z0H</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-ldata_rgl">LDATA_RGL</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-ldata_bslai">LDATA_BSLAI</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-ldata_laimin">LDATA_LAIMIN</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-ldata_sefold">LDATA_SEFOLD</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-ldata_gmes">LDATA_GMES</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-ldata_re25">LDATA_RE25</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-ldata_stress">LDATA_STRESS</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-ldata_f2i">LDATA_F2I</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-ldata_gc">LDATA_GC</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-ldata_dmax">LDATA_DMAX</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-ldata_ce_nitro">LDATA_CE_NITRO</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-ldata_cf_nitro">LDATA_CF_NITRO</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-ldata_cna_nitro">LDATA_CNA_NITRO</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-ldata_seed_m">LDATA_SEED_M</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-ldata_seed_d">LDATA_SEED_D</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-ldata_reap_m">LDATA_REAP_M</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-ldata_reap_d">LDATA_REAP_D</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-ldata_condsat">LDATA_CONDSAT</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-ldata_mpotsat">LDATA_MPOTSAT</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-ldata_bcoef">LDATA_BCOEF</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-ldata_wwilt">LDATA_WWILT</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-ldata_wfc">LDATA_WFC</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-ldata_wsat">LDATA_WSAT</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-limp_veg">LIMP_VEG</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-limp_z0">LIMP_Z0</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-limp_emis">LIMP_EMIS</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-xpar_z0_o_z0h">XPAR_Z0_O_Z0H</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-xpar_emis">XPAR_EMIS</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-xpar_z0">XPAR_Z0</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-xpar_albnir_veg">XPAR_ALBNIR_VEG</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-xpar_albvis_veg">XPAR_ALBVIS_VEG</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-xpar_albuv_veg">XPAR_ALBUV_VEG</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-xpar_veg">XPAR_VEG</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-xpar_wrmax_cf">XPAR_WRMAX_CF</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-xpar_rsmin">XPAR_RSMIN</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-xpar_gamma">XPAR_GAMMA</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-xpar_cv">XPAR_CV</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-xpar_rgl">XPAR_RGL</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-xpar_rootfrac">XPAR_ROOTFRAC</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-xpar_root_depth">XPAR_ROOT_DEPTH</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-xpar_root_extinction">XPAR_ROOT_EXTINCTION</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-xpar_root_lin">XPAR_ROOT_LIN</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-xpar_gndlitter">XPAR_GNDLITTER</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-xpar_z0litter">XPAR_Z0LITTER</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-xpar_h_veg">XPAR_H_VEG</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-xpar_bslai">XPAR_BSLAI</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-xpar_laimin">XPAR_LAIMIN</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-xpar_sefold">XPAR_SEFOLD</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-xpar_h_tree">XPAR_H_TREE</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-xpar_gmes">XPAR_GMES</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-xpar_re25">XPAR_RE25</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-lpar_stress">LPAR_STRESS</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-xpar_f2i">XPAR_F2I</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-xpar_gc">XPAR_GC</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-xpar_dmax">XPAR_DMAX</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-xpar_ce_nitro">XPAR_CE_NITRO</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-xpar_cf_nitro">XPAR_CF_NITRO</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-xpar_cna_nitro">XPAR_CNA_NITRO</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-xpar_dg">XPAR_DG</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-xpar_ground_depth">XPAR_GROUND_DEPTH</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-xpar_dice">XPAR_DICE</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-xpar_albnir_soil">XPAR_ALBNIR_SOIL</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-xpar_albvis_soil">XPAR_ALBVIS_SOIL</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-xpar_albuv_soil">XPAR_ALBUV_SOIL</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-xpar_condsat">XPAR_CONDSAT</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-xpar_mpotsat">XPAR_MPOTSAT</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-xpar_bcoef">XPAR_BCOEF</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-xpar_wwilt">XPAR_WWILT</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-xpar_wfc">XPAR_WFC</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-xpar_wsat">XPAR_WSAT</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-xpar_lai">XPAR_LAI</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-xpar_irrig">XPAR_IRRIG</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-xpar_watsup">XPAR_WATSUP</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-xpar_seed_m">XPAR_SEED_M</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-xpar_seed_d">XPAR_SEED_D</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-xpar_reap_m">XPAR_REAP_M</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-xpar_reap_d">XPAR_REAP_D</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-xpar_frac_hveg">XPAR_FRAC_HVEG</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-xpar_frac_lveg">XPAR_FRAC_LVEG</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-xpar_frac_nveg">XPAR_FRAC_NVEG</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-xpar_lai_hveg">XPAR_LAI_HVEG</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-xpar_lai_lveg">XPAR_LAI_LVEG</a>
+      
+      <a class="list-group-item" href="../type/data_isba_t.html#variable-xpar_h_hveg">XPAR_H_HVEG</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+  <div class="list-group">
+    <a class="list-group-item" href="../type/data_isba_t.html#src">DATA_ISBA_t</a>
+  </div>
+</div>
+
+
+
+    </section>
+    <br class="visible-xs visible-sm hidden-md">
+
+    
+    <section>
+    <h2>Components</h2>
+    
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th><th>Visibility</th>
+
+<th>Attributes</th><th></th><th>Name</th><th></th><th>Initial</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xpar_vegtype"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:)</td><td>::</td>
+  <td><strong>XPAR_VEGTYPE</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-nvegtype"></span>integer,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>NVEGTYPE</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-ntime~3"></span>integer,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>NTIME</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-ldata_mixpar"></span>logical,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>LDATA_MIXPAR</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-ldata_vegtype"></span>logical,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>LDATA_VEGTYPE</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-ldata_lai"></span>logical,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>LDATA_LAI</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-ldata_veg"></span>logical,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>LDATA_VEG</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-ldata_z0"></span>logical,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>LDATA_Z0</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-ldata_emis"></span>logical,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>LDATA_EMIS</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-ldata_albnir_veg"></span>logical,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>LDATA_ALBNIR_VEG</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-ldata_albvis_veg"></span>logical,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>LDATA_ALBVIS_VEG</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-ldata_albuv_veg"></span>logical,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>LDATA_ALBUV_VEG</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-ldata_irrig"></span>logical,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>LDATA_IRRIG</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-ldata_watsup"></span>logical,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>LDATA_WATSUP</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-ldata_albnir_soil"></span>logical,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>LDATA_ALBNIR_SOIL</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-ldata_albvis_soil"></span>logical,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>LDATA_ALBVIS_SOIL</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-ldata_albuv_soil"></span>logical,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>LDATA_ALBUV_SOIL</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-ldata_gndlitter"></span>logical,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>LDATA_GNDLITTER</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-ldata_z0litter"></span>logical,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>LDATA_Z0LITTER</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-ldata_h_veg"></span>logical,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>LDATA_H_VEG</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-ldata_dg"></span>logical,</td>
+  
+  <td>public,</td>
+  <td>DIMENSION(MAX(NVEGTYPE_OLD,NVEGTYPE_ECOSG))</td><td>::</td>
+  <td><strong>LDATA_DG</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-ldata_rootfrac"></span>logical,</td>
+  
+  <td>public,</td>
+  <td>DIMENSION(MAX(NVEGTYPE_OLD,NVEGTYPE_ECOSG))</td><td>::</td>
+  <td><strong>LDATA_ROOTFRAC</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-ldata_h_tree"></span>logical,</td>
+  
+  <td>public,</td>
+  <td>DIMENSION(MAX(NVEGTYPE_OLD,NVEGTYPE_ECOSG))</td><td>::</td>
+  <td><strong>LDATA_H_TREE</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-ldata_dice"></span>logical,</td>
+  
+  <td>public,</td>
+  <td>DIMENSION(MAX(NVEGTYPE_OLD,NVEGTYPE_ECOSG))</td><td>::</td>
+  <td><strong>LDATA_DICE</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-ldata_ground_depth"></span>logical,</td>
+  
+  <td>public,</td>
+  <td>DIMENSION(MAX(NVEGTYPE_OLD,NVEGTYPE_ECOSG))</td><td>::</td>
+  <td><strong>LDATA_GROUND_DEPTH</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-ldata_root_depth"></span>logical,</td>
+  
+  <td>public,</td>
+  <td>DIMENSION(MAX(NVEGTYPE_OLD,NVEGTYPE_ECOSG))</td><td>::</td>
+  <td><strong>LDATA_ROOT_DEPTH</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-ldata_root_extinction"></span>logical,</td>
+  
+  <td>public,</td>
+  <td>DIMENSION(MAX(NVEGTYPE_OLD,NVEGTYPE_ECOSG))</td><td>::</td>
+  <td><strong>LDATA_ROOT_EXTINCTION</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-ldata_root_lin"></span>logical,</td>
+  
+  <td>public,</td>
+  <td>DIMENSION(MAX(NVEGTYPE_OLD,NVEGTYPE_ECOSG))</td><td>::</td>
+  <td><strong>LDATA_ROOT_LIN</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-ldata_rsmin"></span>logical,</td>
+  
+  <td>public,</td>
+  <td>DIMENSION(MAX(NVEGTYPE_OLD,NVEGTYPE_ECOSG))</td><td>::</td>
+  <td><strong>LDATA_RSMIN</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-ldata_gamma"></span>logical,</td>
+  
+  <td>public,</td>
+  <td>DIMENSION(MAX(NVEGTYPE_OLD,NVEGTYPE_ECOSG))</td><td>::</td>
+  <td><strong>LDATA_GAMMA</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-ldata_wrmax_cf"></span>logical,</td>
+  
+  <td>public,</td>
+  <td>DIMENSION(MAX(NVEGTYPE_OLD,NVEGTYPE_ECOSG))</td><td>::</td>
+  <td><strong>LDATA_WRMAX_CF</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-ldata_cv"></span>logical,</td>
+  
+  <td>public,</td>
+  <td>DIMENSION(MAX(NVEGTYPE_OLD,NVEGTYPE_ECOSG))</td><td>::</td>
+  <td><strong>LDATA_CV</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-ldata_z0_o_z0h"></span>logical,</td>
+  
+  <td>public,</td>
+  <td>DIMENSION(MAX(NVEGTYPE_OLD,NVEGTYPE_ECOSG))</td><td>::</td>
+  <td><strong>LDATA_Z0_O_Z0H</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-ldata_rgl"></span>logical,</td>
+  
+  <td>public,</td>
+  <td>DIMENSION(MAX(NVEGTYPE_OLD,NVEGTYPE_ECOSG))</td><td>::</td>
+  <td><strong>LDATA_RGL</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-ldata_bslai"></span>logical,</td>
+  
+  <td>public,</td>
+  <td>DIMENSION(MAX(NVEGTYPE_OLD,NVEGTYPE_ECOSG))</td><td>::</td>
+  <td><strong>LDATA_BSLAI</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-ldata_laimin"></span>logical,</td>
+  
+  <td>public,</td>
+  <td>DIMENSION(MAX(NVEGTYPE_OLD,NVEGTYPE_ECOSG))</td><td>::</td>
+  <td><strong>LDATA_LAIMIN</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-ldata_sefold"></span>logical,</td>
+  
+  <td>public,</td>
+  <td>DIMENSION(MAX(NVEGTYPE_OLD,NVEGTYPE_ECOSG))</td><td>::</td>
+  <td><strong>LDATA_SEFOLD</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-ldata_gmes"></span>logical,</td>
+  
+  <td>public,</td>
+  <td>DIMENSION(MAX(NVEGTYPE_OLD,NVEGTYPE_ECOSG))</td><td>::</td>
+  <td><strong>LDATA_GMES</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-ldata_re25"></span>logical,</td>
+  
+  <td>public,</td>
+  <td>DIMENSION(MAX(NVEGTYPE_OLD,NVEGTYPE_ECOSG))</td><td>::</td>
+  <td><strong>LDATA_RE25</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-ldata_stress"></span>logical,</td>
+  
+  <td>public,</td>
+  <td>DIMENSION(MAX(NVEGTYPE_OLD,NVEGTYPE_ECOSG))</td><td>::</td>
+  <td><strong>LDATA_STRESS</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-ldata_f2i"></span>logical,</td>
+  
+  <td>public,</td>
+  <td>DIMENSION(MAX(NVEGTYPE_OLD,NVEGTYPE_ECOSG))</td><td>::</td>
+  <td><strong>LDATA_F2I</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-ldata_gc"></span>logical,</td>
+  
+  <td>public,</td>
+  <td>DIMENSION(MAX(NVEGTYPE_OLD,NVEGTYPE_ECOSG))</td><td>::</td>
+  <td><strong>LDATA_GC</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-ldata_dmax"></span>logical,</td>
+  
+  <td>public,</td>
+  <td>DIMENSION(MAX(NVEGTYPE_OLD,NVEGTYPE_ECOSG))</td><td>::</td>
+  <td><strong>LDATA_DMAX</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-ldata_ce_nitro"></span>logical,</td>
+  
+  <td>public,</td>
+  <td>DIMENSION(MAX(NVEGTYPE_OLD,NVEGTYPE_ECOSG))</td><td>::</td>
+  <td><strong>LDATA_CE_NITRO</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-ldata_cf_nitro"></span>logical,</td>
+  
+  <td>public,</td>
+  <td>DIMENSION(MAX(NVEGTYPE_OLD,NVEGTYPE_ECOSG))</td><td>::</td>
+  <td><strong>LDATA_CF_NITRO</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-ldata_cna_nitro"></span>logical,</td>
+  
+  <td>public,</td>
+  <td>DIMENSION(MAX(NVEGTYPE_OLD,NVEGTYPE_ECOSG))</td><td>::</td>
+  <td><strong>LDATA_CNA_NITRO</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-ldata_seed_m"></span>logical,</td>
+  
+  <td>public,</td>
+  <td>DIMENSION(MAX(NVEGTYPE_OLD,NVEGTYPE_ECOSG))</td><td>::</td>
+  <td><strong>LDATA_SEED_M</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-ldata_seed_d"></span>logical,</td>
+  
+  <td>public,</td>
+  <td>DIMENSION(MAX(NVEGTYPE_OLD,NVEGTYPE_ECOSG))</td><td>::</td>
+  <td><strong>LDATA_SEED_D</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-ldata_reap_m"></span>logical,</td>
+  
+  <td>public,</td>
+  <td>DIMENSION(MAX(NVEGTYPE_OLD,NVEGTYPE_ECOSG))</td><td>::</td>
+  <td><strong>LDATA_REAP_M</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-ldata_reap_d"></span>logical,</td>
+  
+  <td>public,</td>
+  <td>DIMENSION(MAX(NVEGTYPE_OLD,NVEGTYPE_ECOSG))</td><td>::</td>
+  <td><strong>LDATA_REAP_D</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-ldata_condsat"></span>logical,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>LDATA_CONDSAT</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-ldata_mpotsat"></span>logical,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>LDATA_MPOTSAT</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-ldata_bcoef"></span>logical,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>LDATA_BCOEF</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-ldata_wwilt"></span>logical,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>LDATA_WWILT</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-ldata_wfc"></span>logical,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>LDATA_WFC</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-ldata_wsat"></span>logical,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>LDATA_WSAT</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-limp_veg"></span>logical,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>LIMP_VEG</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-limp_z0"></span>logical,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>LIMP_Z0</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-limp_emis"></span>logical,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>LIMP_EMIS</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xpar_z0_o_z0h"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:)</td><td>::</td>
+  <td><strong>XPAR_Z0_O_Z0H</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xpar_emis"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:,:)</td><td>::</td>
+  <td><strong>XPAR_EMIS</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xpar_z0"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:,:)</td><td>::</td>
+  <td><strong>XPAR_Z0</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xpar_albnir_veg"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:,:)</td><td>::</td>
+  <td><strong>XPAR_ALBNIR_VEG</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xpar_albvis_veg"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:,:)</td><td>::</td>
+  <td><strong>XPAR_ALBVIS_VEG</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xpar_albuv_veg"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:,:)</td><td>::</td>
+  <td><strong>XPAR_ALBUV_VEG</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xpar_veg"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:,:)</td><td>::</td>
+  <td><strong>XPAR_VEG</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xpar_wrmax_cf"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:)</td><td>::</td>
+  <td><strong>XPAR_WRMAX_CF</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xpar_rsmin"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:)</td><td>::</td>
+  <td><strong>XPAR_RSMIN</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xpar_gamma"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:)</td><td>::</td>
+  <td><strong>XPAR_GAMMA</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xpar_cv"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:)</td><td>::</td>
+  <td><strong>XPAR_CV</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xpar_rgl"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:)</td><td>::</td>
+  <td><strong>XPAR_RGL</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xpar_rootfrac"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:,:)</td><td>::</td>
+  <td><strong>XPAR_ROOTFRAC</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xpar_root_depth"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:)</td><td>::</td>
+  <td><strong>XPAR_ROOT_DEPTH</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xpar_root_extinction"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:)</td><td>::</td>
+  <td><strong>XPAR_ROOT_EXTINCTION</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xpar_root_lin"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:)</td><td>::</td>
+  <td><strong>XPAR_ROOT_LIN</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xpar_gndlitter"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:,:)</td><td>::</td>
+  <td><strong>XPAR_GNDLITTER</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xpar_z0litter"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:,:)</td><td>::</td>
+  <td><strong>XPAR_Z0LITTER</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xpar_h_veg"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:,:)</td><td>::</td>
+  <td><strong>XPAR_H_VEG</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xpar_bslai"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:)</td><td>::</td>
+  <td><strong>XPAR_BSLAI</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xpar_laimin"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:)</td><td>::</td>
+  <td><strong>XPAR_LAIMIN</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xpar_sefold"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:)</td><td>::</td>
+  <td><strong>XPAR_SEFOLD</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xpar_h_tree"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:)</td><td>::</td>
+  <td><strong>XPAR_H_TREE</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xpar_gmes"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:)</td><td>::</td>
+  <td><strong>XPAR_GMES</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xpar_re25"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:)</td><td>::</td>
+  <td><strong>XPAR_RE25</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-lpar_stress"></span>logical,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:)</td><td>::</td>
+  <td><strong>LPAR_STRESS</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xpar_f2i"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:)</td><td>::</td>
+  <td><strong>XPAR_F2I</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xpar_gc"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:)</td><td>::</td>
+  <td><strong>XPAR_GC</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xpar_dmax"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:)</td><td>::</td>
+  <td><strong>XPAR_DMAX</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xpar_ce_nitro"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:)</td><td>::</td>
+  <td><strong>XPAR_CE_NITRO</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xpar_cf_nitro"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:)</td><td>::</td>
+  <td><strong>XPAR_CF_NITRO</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xpar_cna_nitro"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:)</td><td>::</td>
+  <td><strong>XPAR_CNA_NITRO</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xpar_dg"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:,:)</td><td>::</td>
+  <td><strong>XPAR_DG</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xpar_ground_depth"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:)</td><td>::</td>
+  <td><strong>XPAR_GROUND_DEPTH</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xpar_dice"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:)</td><td>::</td>
+  <td><strong>XPAR_DICE</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xpar_albnir_soil"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:,:)</td><td>::</td>
+  <td><strong>XPAR_ALBNIR_SOIL</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xpar_albvis_soil"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:,:)</td><td>::</td>
+  <td><strong>XPAR_ALBVIS_SOIL</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xpar_albuv_soil"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:,:)</td><td>::</td>
+  <td><strong>XPAR_ALBUV_SOIL</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xpar_condsat"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:)</td><td>::</td>
+  <td><strong>XPAR_CONDSAT</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xpar_mpotsat"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:)</td><td>::</td>
+  <td><strong>XPAR_MPOTSAT</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xpar_bcoef"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:)</td><td>::</td>
+  <td><strong>XPAR_BCOEF</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xpar_wwilt"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:)</td><td>::</td>
+  <td><strong>XPAR_WWILT</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xpar_wfc"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:)</td><td>::</td>
+  <td><strong>XPAR_WFC</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xpar_wsat"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:)</td><td>::</td>
+  <td><strong>XPAR_WSAT</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xpar_lai"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:,:)</td><td>::</td>
+  <td><strong>XPAR_LAI</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xpar_irrig"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:,:)</td><td>::</td>
+  <td><strong>XPAR_IRRIG</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xpar_watsup"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:,:)</td><td>::</td>
+  <td><strong>XPAR_WATSUP</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xpar_seed_m"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:)</td><td>::</td>
+  <td><strong>XPAR_SEED_M</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xpar_seed_d"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:)</td><td>::</td>
+  <td><strong>XPAR_SEED_D</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xpar_reap_m"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:)</td><td>::</td>
+  <td><strong>XPAR_REAP_M</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xpar_reap_d"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:)</td><td>::</td>
+  <td><strong>XPAR_REAP_D</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xpar_frac_hveg"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XPAR_FRAC_HVEG</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xpar_frac_lveg"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XPAR_FRAC_LVEG</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xpar_frac_nveg"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XPAR_FRAC_NVEG</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xpar_lai_hveg"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:)</td><td>::</td>
+  <td><strong>XPAR_LAI_HVEG</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xpar_lai_lveg"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:)</td><td>::</td>
+  <td><strong>XPAR_LAI_LVEG</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xpar_h_hveg"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XPAR_H_HVEG</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+    </section>
+    <br>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <section>
+    <h3><span class="anchor" id="src"></span>Source Code</h3>
+    <div class="highlight"><pre><span></span><span class="k">TYPE </span><span class="n">DATA_ISBA_t</span>
+<span class="c">!-------------------------------------------------------------------------------</span>
+<span class="c">!</span>
+<span class="c">! Mask and number of grid elements containing patches/tiles:</span>
+<span class="c">!</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:)</span>  <span class="kd">::</span> <span class="n">XPAR_VEGTYPE</span>   <span class="c">! fraction of each vegetation type for</span>
+<span class="c">!                                                  ! each grid mesh                          (-)</span>
+<span class="c">!</span>
+<span class="c">!-------------------------------------------------------------------------------</span>
+<span class="c">!</span>
+  <span class="kt">INTEGER</span>                       <span class="kd">::</span> <span class="n">NVEGTYPE</span>
+<span class="c">!</span>
+  <span class="kt">INTEGER</span>                       <span class="kd">::</span> <span class="n">NTIME</span>               <span class="c">! number of time data</span>
+<span class="c">!                                                      ! for VEG, LAI, EMIS, Z0</span>
+  <span class="kt">LOGICAL</span>                        <span class="kd">::</span> <span class="n">LDATA_MIXPAR</span>
+<span class="c">!</span>
+  <span class="kt">LOGICAL</span>                        <span class="kd">::</span> <span class="n">LDATA_VEGTYPE</span>
+<span class="c">!</span>
+  <span class="kt">LOGICAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>   <span class="kd">::</span> <span class="n">LDATA_LAI</span>
+  <span class="kt">LOGICAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>   <span class="kd">::</span> <span class="n">LDATA_VEG</span>
+  <span class="kt">LOGICAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>   <span class="kd">::</span> <span class="n">LDATA_Z0</span>
+  <span class="kt">LOGICAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>   <span class="kd">::</span> <span class="n">LDATA_EMIS</span>
+  <span class="kt">LOGICAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>   <span class="kd">::</span> <span class="n">LDATA_ALBNIR_VEG</span>
+  <span class="kt">LOGICAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>   <span class="kd">::</span> <span class="n">LDATA_ALBVIS_VEG</span>
+  <span class="kt">LOGICAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>   <span class="kd">::</span> <span class="n">LDATA_ALBUV_VEG</span> 
+  <span class="kt">LOGICAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>   <span class="kd">::</span> <span class="n">LDATA_IRRIG</span>  
+  <span class="kt">LOGICAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>   <span class="kd">::</span> <span class="n">LDATA_WATSUP</span>  
+  <span class="kt">LOGICAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>   <span class="kd">::</span> <span class="n">LDATA_ALBNIR_SOIL</span>
+  <span class="kt">LOGICAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>   <span class="kd">::</span> <span class="n">LDATA_ALBVIS_SOIL</span>
+  <span class="kt">LOGICAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>   <span class="kd">::</span> <span class="n">LDATA_ALBUV_SOIL</span>
+<span class="c">! - For multi-energy balance (MEB)</span>
+<span class="c">!</span>
+  <span class="kt">LOGICAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>   <span class="kd">::</span> <span class="n">LDATA_GNDLITTER</span>
+  <span class="kt">LOGICAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>   <span class="kd">::</span> <span class="n">LDATA_Z0LITTER</span>
+  <span class="kt">LOGICAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>   <span class="kd">::</span> <span class="n">LDATA_H_VEG</span>  
+  <span class="c">!</span>
+  <span class="kt">LOGICAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(</span><span class="nb">MAX</span><span class="p">(</span><span class="n">NVEGTYPE_OLD</span><span class="p">,</span><span class="n">NVEGTYPE_ECOSG</span><span class="p">))</span>   <span class="kd">::</span> <span class="n">LDATA_DG</span>
+  <span class="kt">LOGICAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(</span><span class="nb">MAX</span><span class="p">(</span><span class="n">NVEGTYPE_OLD</span><span class="p">,</span><span class="n">NVEGTYPE_ECOSG</span><span class="p">))</span>   <span class="kd">::</span> <span class="n">LDATA_ROOTFRAC</span>
+  <span class="kt">LOGICAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(</span><span class="nb">MAX</span><span class="p">(</span><span class="n">NVEGTYPE_OLD</span><span class="p">,</span><span class="n">NVEGTYPE_ECOSG</span><span class="p">))</span>   <span class="kd">::</span> <span class="n">LDATA_H_TREE</span>
+  <span class="kt">LOGICAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(</span><span class="nb">MAX</span><span class="p">(</span><span class="n">NVEGTYPE_OLD</span><span class="p">,</span><span class="n">NVEGTYPE_ECOSG</span><span class="p">))</span>   <span class="kd">::</span> <span class="n">LDATA_DICE</span>  
+  <span class="kt">LOGICAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(</span><span class="nb">MAX</span><span class="p">(</span><span class="n">NVEGTYPE_OLD</span><span class="p">,</span><span class="n">NVEGTYPE_ECOSG</span><span class="p">))</span>   <span class="kd">::</span> <span class="n">LDATA_GROUND_DEPTH</span>
+  <span class="kt">LOGICAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(</span><span class="nb">MAX</span><span class="p">(</span><span class="n">NVEGTYPE_OLD</span><span class="p">,</span><span class="n">NVEGTYPE_ECOSG</span><span class="p">))</span>   <span class="kd">::</span> <span class="n">LDATA_ROOT_DEPTH</span>
+  <span class="kt">LOGICAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(</span><span class="nb">MAX</span><span class="p">(</span><span class="n">NVEGTYPE_OLD</span><span class="p">,</span><span class="n">NVEGTYPE_ECOSG</span><span class="p">))</span>   <span class="kd">::</span> <span class="n">LDATA_ROOT_EXTINCTION</span>
+  <span class="kt">LOGICAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(</span><span class="nb">MAX</span><span class="p">(</span><span class="n">NVEGTYPE_OLD</span><span class="p">,</span><span class="n">NVEGTYPE_ECOSG</span><span class="p">))</span>   <span class="kd">::</span> <span class="n">LDATA_ROOT_LIN</span>
+  <span class="kt">LOGICAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(</span><span class="nb">MAX</span><span class="p">(</span><span class="n">NVEGTYPE_OLD</span><span class="p">,</span><span class="n">NVEGTYPE_ECOSG</span><span class="p">))</span>   <span class="kd">::</span> <span class="n">LDATA_RSMIN</span>
+  <span class="kt">LOGICAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(</span><span class="nb">MAX</span><span class="p">(</span><span class="n">NVEGTYPE_OLD</span><span class="p">,</span><span class="n">NVEGTYPE_ECOSG</span><span class="p">))</span>   <span class="kd">::</span> <span class="n">LDATA_GAMMA</span>
+  <span class="kt">LOGICAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(</span><span class="nb">MAX</span><span class="p">(</span><span class="n">NVEGTYPE_OLD</span><span class="p">,</span><span class="n">NVEGTYPE_ECOSG</span><span class="p">))</span>   <span class="kd">::</span> <span class="n">LDATA_WRMAX_CF</span>
+  <span class="kt">LOGICAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(</span><span class="nb">MAX</span><span class="p">(</span><span class="n">NVEGTYPE_OLD</span><span class="p">,</span><span class="n">NVEGTYPE_ECOSG</span><span class="p">))</span>   <span class="kd">::</span> <span class="n">LDATA_CV</span>
+  <span class="kt">LOGICAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(</span><span class="nb">MAX</span><span class="p">(</span><span class="n">NVEGTYPE_OLD</span><span class="p">,</span><span class="n">NVEGTYPE_ECOSG</span><span class="p">))</span>   <span class="kd">::</span> <span class="n">LDATA_Z0_O_Z0H</span>
+  <span class="kt">LOGICAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(</span><span class="nb">MAX</span><span class="p">(</span><span class="n">NVEGTYPE_OLD</span><span class="p">,</span><span class="n">NVEGTYPE_ECOSG</span><span class="p">))</span>   <span class="kd">::</span> <span class="n">LDATA_RGL</span>
+  <span class="kt">LOGICAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(</span><span class="nb">MAX</span><span class="p">(</span><span class="n">NVEGTYPE_OLD</span><span class="p">,</span><span class="n">NVEGTYPE_ECOSG</span><span class="p">))</span>   <span class="kd">::</span> <span class="n">LDATA_BSLAI</span>
+  <span class="kt">LOGICAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(</span><span class="nb">MAX</span><span class="p">(</span><span class="n">NVEGTYPE_OLD</span><span class="p">,</span><span class="n">NVEGTYPE_ECOSG</span><span class="p">))</span>   <span class="kd">::</span> <span class="n">LDATA_LAIMIN</span>
+  <span class="kt">LOGICAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(</span><span class="nb">MAX</span><span class="p">(</span><span class="n">NVEGTYPE_OLD</span><span class="p">,</span><span class="n">NVEGTYPE_ECOSG</span><span class="p">))</span>   <span class="kd">::</span> <span class="n">LDATA_SEFOLD</span>
+  <span class="kt">LOGICAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(</span><span class="nb">MAX</span><span class="p">(</span><span class="n">NVEGTYPE_OLD</span><span class="p">,</span><span class="n">NVEGTYPE_ECOSG</span><span class="p">))</span>   <span class="kd">::</span> <span class="n">LDATA_GMES</span>
+  <span class="kt">LOGICAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(</span><span class="nb">MAX</span><span class="p">(</span><span class="n">NVEGTYPE_OLD</span><span class="p">,</span><span class="n">NVEGTYPE_ECOSG</span><span class="p">))</span>   <span class="kd">::</span> <span class="n">LDATA_RE25</span>
+  <span class="kt">LOGICAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(</span><span class="nb">MAX</span><span class="p">(</span><span class="n">NVEGTYPE_OLD</span><span class="p">,</span><span class="n">NVEGTYPE_ECOSG</span><span class="p">))</span>   <span class="kd">::</span> <span class="n">LDATA_STRESS</span>
+  <span class="kt">LOGICAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(</span><span class="nb">MAX</span><span class="p">(</span><span class="n">NVEGTYPE_OLD</span><span class="p">,</span><span class="n">NVEGTYPE_ECOSG</span><span class="p">))</span>   <span class="kd">::</span> <span class="n">LDATA_F2I</span>
+  <span class="kt">LOGICAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(</span><span class="nb">MAX</span><span class="p">(</span><span class="n">NVEGTYPE_OLD</span><span class="p">,</span><span class="n">NVEGTYPE_ECOSG</span><span class="p">))</span>   <span class="kd">::</span> <span class="n">LDATA_GC</span>
+  <span class="kt">LOGICAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(</span><span class="nb">MAX</span><span class="p">(</span><span class="n">NVEGTYPE_OLD</span><span class="p">,</span><span class="n">NVEGTYPE_ECOSG</span><span class="p">))</span>   <span class="kd">::</span> <span class="n">LDATA_DMAX</span>
+  <span class="kt">LOGICAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(</span><span class="nb">MAX</span><span class="p">(</span><span class="n">NVEGTYPE_OLD</span><span class="p">,</span><span class="n">NVEGTYPE_ECOSG</span><span class="p">))</span>   <span class="kd">::</span> <span class="n">LDATA_CE_NITRO</span>
+  <span class="kt">LOGICAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(</span><span class="nb">MAX</span><span class="p">(</span><span class="n">NVEGTYPE_OLD</span><span class="p">,</span><span class="n">NVEGTYPE_ECOSG</span><span class="p">))</span>   <span class="kd">::</span> <span class="n">LDATA_CF_NITRO</span>
+  <span class="kt">LOGICAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(</span><span class="nb">MAX</span><span class="p">(</span><span class="n">NVEGTYPE_OLD</span><span class="p">,</span><span class="n">NVEGTYPE_ECOSG</span><span class="p">))</span>   <span class="kd">::</span> <span class="n">LDATA_CNA_NITRO</span>
+  <span class="kt">LOGICAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(</span><span class="nb">MAX</span><span class="p">(</span><span class="n">NVEGTYPE_OLD</span><span class="p">,</span><span class="n">NVEGTYPE_ECOSG</span><span class="p">))</span>   <span class="kd">::</span> <span class="n">LDATA_SEED_M</span>
+  <span class="kt">LOGICAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(</span><span class="nb">MAX</span><span class="p">(</span><span class="n">NVEGTYPE_OLD</span><span class="p">,</span><span class="n">NVEGTYPE_ECOSG</span><span class="p">))</span>   <span class="kd">::</span> <span class="n">LDATA_SEED_D</span>
+  <span class="kt">LOGICAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(</span><span class="nb">MAX</span><span class="p">(</span><span class="n">NVEGTYPE_OLD</span><span class="p">,</span><span class="n">NVEGTYPE_ECOSG</span><span class="p">))</span>   <span class="kd">::</span> <span class="n">LDATA_REAP_M</span>
+  <span class="kt">LOGICAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(</span><span class="nb">MAX</span><span class="p">(</span><span class="n">NVEGTYPE_OLD</span><span class="p">,</span><span class="n">NVEGTYPE_ECOSG</span><span class="p">))</span>   <span class="kd">::</span> <span class="n">LDATA_REAP_D</span>
+<span class="c">!</span>
+  <span class="kt">LOGICAL</span> <span class="kd">::</span> <span class="n">LDATA_CONDSAT</span>
+  <span class="kt">LOGICAL</span> <span class="kd">::</span> <span class="n">LDATA_MPOTSAT</span>
+  <span class="kt">LOGICAL</span> <span class="kd">::</span> <span class="n">LDATA_BCOEF</span>
+  <span class="kt">LOGICAL</span> <span class="kd">::</span> <span class="n">LDATA_WWILT</span>
+  <span class="kt">LOGICAL</span> <span class="kd">::</span> <span class="n">LDATA_WFC</span>
+  <span class="kt">LOGICAL</span> <span class="kd">::</span> <span class="n">LDATA_WSAT</span>
+<span class="c">!</span>
+  <span class="kt">LOGICAL</span>   <span class="kd">::</span> <span class="n">LIMP_VEG</span>
+  <span class="kt">LOGICAL</span>   <span class="kd">::</span> <span class="n">LIMP_Z0</span>
+  <span class="kt">LOGICAL</span>   <span class="kd">::</span> <span class="n">LIMP_EMIS</span>
+<span class="c">!  </span>
+<span class="c">! Input Parameters, per patch:</span>
+<span class="c">!</span>
+<span class="c">! - vegetation + bare soil:</span>
+<span class="c">!</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:)</span> <span class="kd">::</span> <span class="n">XPAR_Z0_O_Z0H</span>         <span class="c">! ratio of surface roughness lengths</span>
+<span class="c">!                                                      ! (momentum to heat)                      (-)</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:,:)</span> <span class="kd">::</span> <span class="n">XPAR_EMIS</span>             <span class="c">! surface emissivity                      (-)</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:,:)</span> <span class="kd">::</span> <span class="n">XPAR_Z0</span>               <span class="c">! surface roughness length                (m)</span>
+<span class="c">!</span>
+<span class="c">! - vegetation:</span>
+<span class="c">!</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:,:)</span> <span class="kd">::</span> <span class="n">XPAR_ALBNIR_VEG</span>       <span class="c">! vegetation near-infra-red albedo        (-)</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:,:)</span> <span class="kd">::</span> <span class="n">XPAR_ALBVIS_VEG</span>       <span class="c">! vegetation visible albedo               (-)</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:,:)</span> <span class="kd">::</span> <span class="n">XPAR_ALBUV_VEG</span>        <span class="c">! vegetation UV albedo                    (-)</span>
+<span class="c">!</span>
+<span class="c">! - vegetation: default option (Jarvis) and general parameters:</span>
+<span class="c">!</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:,:)</span> <span class="kd">::</span> <span class="n">XPAR_VEG</span>            <span class="c">! vegetation cover fraction               (-)</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:)</span> <span class="kd">::</span> <span class="n">XPAR_WRMAX_CF</span>         <span class="c">! coefficient for maximum water </span>
+<span class="c">!                                                      ! interception </span>
+<span class="c">!                                                      ! storage capacity on the vegetation      (-)</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:)</span> <span class="kd">::</span> <span class="n">XPAR_RSMIN</span>            <span class="c">! minimum stomatal resistance             (s/m)</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:)</span> <span class="kd">::</span> <span class="n">XPAR_GAMMA</span>            <span class="c">! coefficient for the calculation</span>
+<span class="c">!                                                      ! of the surface stomatal</span>
+<span class="c">!                                                      ! resistance</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:)</span> <span class="kd">::</span> <span class="n">XPAR_CV</span>               <span class="c">! vegetation thermal inertia coefficient  (K m2/J)</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:)</span> <span class="kd">::</span> <span class="n">XPAR_RGL</span>              <span class="c">! maximum solar radiation</span>
+<span class="c">!                                                      ! usable in photosynthesis                (W/m2)</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:,:)</span> <span class="kd">::</span> <span class="n">XPAR_ROOTFRAC</span>       <span class="c">! root fraction profile (&#39;DIF&#39; option)</span>
+<span class="c">!</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:)</span> <span class="kd">::</span> <span class="n">XPAR_ROOT_DEPTH</span>       <span class="c">! root depth (&#39;DIF&#39; option)</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:)</span> <span class="kd">::</span> <span class="n">XPAR_ROOT_EXTINCTION</span>  <span class="c">! root extinction parameter (&#39;DIF&#39; option)</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:)</span> <span class="kd">::</span> <span class="n">XPAR_ROOT_LIN</span>         <span class="c">! root linear parameter (&#39;DIF&#39; option)</span>
+<span class="c">!</span>
+<span class="c">! - For multi-energy balance (MEB)</span>
+<span class="c">!</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:,:)</span> <span class="kd">::</span> <span class="n">XPAR_GNDLITTER</span>      <span class="c">! ground litter fraction</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:,:)</span> <span class="kd">::</span> <span class="n">XPAR_Z0LITTER</span>       <span class="c">! ground litter roughness length</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:,:)</span> <span class="kd">::</span> <span class="n">XPAR_H_VEG</span>          <span class="c">! height of canopy vegetation</span>
+<span class="c">!  </span>
+<span class="c">!-------------------------------------------------------------------------------</span>
+<span class="c">!</span>
+<span class="c">! - vegetation: Ags parameters (&#39;AGS&#39;, &#39;LAI&#39;, &#39;AST&#39;, &#39;LST&#39;, &#39;NIT&#39;, &#39;NCB&#39; options)</span>
+<span class="c">!</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:)</span>    <span class="kd">::</span> <span class="n">XPAR_BSLAI</span>        <span class="c">! ratio d(biomass)/d(lai)                 (kg/m2)</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:)</span>    <span class="kd">::</span> <span class="n">XPAR_LAIMIN</span>       <span class="c">! minimum LAI (Leaf Area Index)           (m2/m2)</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:)</span>    <span class="kd">::</span> <span class="n">XPAR_SEFOLD</span>       <span class="c">! e-folding time for senescence           (s)</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:)</span>    <span class="kd">::</span> <span class="n">XPAR_H_TREE</span>       <span class="c">! height of trees                         (m)</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:)</span>    <span class="kd">::</span> <span class="n">XPAR_GMES</span>         <span class="c">! mesophyll conductance                   (m s-1)</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:)</span>    <span class="kd">::</span> <span class="n">XPAR_RE25</span>         <span class="c">! Ecosystem respiration parameter         (kg m2 s-1)</span>
+<span class="c">!</span>
+<span class="c">!-------------------------------------------------------------------------------</span>
+<span class="c">!</span>
+<span class="c">! - vegetation: Ags Stress parameters (&#39;AST&#39;, &#39;LST&#39;, &#39;NIT&#39;, &#39;NCB&#39; options)</span>
+<span class="c">!</span>
+  <span class="kt">LOGICAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:)</span> <span class="kd">::</span> <span class="n">LPAR_STRESS</span>       <span class="c">! vegetation response type to water</span>
+<span class="c">!                                                     ! stress (true:defensive false:offensive) (-)</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:)</span>    <span class="kd">::</span> <span class="n">XPAR_F2I</span>          <span class="c">! critical normilized soil water </span>
+<span class="c">!                                                     ! content for stress parameterisation</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:)</span>    <span class="kd">::</span> <span class="n">XPAR_GC</span>           <span class="c">! cuticular conductance                   (m s-1)</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:)</span>    <span class="kd">::</span> <span class="n">XPAR_DMAX</span>         <span class="c">! maximum air saturation deficit</span>
+<span class="c">!                                                     ! tolerate by vegetation                  (kg/kg)</span>
+<span class="c">!</span>
+<span class="c">!-------------------------------------------------------------------------------</span>
+<span class="c">!</span>
+<span class="c">! - vegetation: Ags Nitrogen-model parameters (&#39;NIT&#39;, &#39;NCB&#39; option)</span>
+<span class="c">!</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:)</span>    <span class="kd">::</span> <span class="n">XPAR_CE_NITRO</span>       <span class="c">! leaf aera ratio sensitivity to </span>
+<span class="c">!                                                       ! nitrogen concentration                (m2/kg)</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:)</span>    <span class="kd">::</span> <span class="n">XPAR_CF_NITRO</span>       <span class="c">! lethal minimum value of leaf area</span>
+<span class="c">!                                                       ! ratio                                 (m2/kg)</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:)</span>    <span class="kd">::</span> <span class="n">XPAR_CNA_NITRO</span>      <span class="c">! nitrogen concentration of active </span>
+<span class="c">!                                                       ! biomass                               (kg/kg)</span>
+<span class="c">!</span>
+<span class="c">!-------------------------------------------------------------------------------</span>
+<span class="c">!</span>
+<span class="c">! - soil: primary parameters</span>
+<span class="c">!</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:,:)</span>  <span class="kd">::</span> <span class="n">XPAR_DG</span>          <span class="c">! soil layer depth                        (m)</span>
+<span class="c">!                                                      ! NOTE: in Force-Restore mode, the </span>
+<span class="c">!                                                      ! uppermost layer thickness is superficial</span>
+<span class="c">!                                                      ! and is only explicitly used for soil </span>
+<span class="c">!                                                      ! water phase changes                     (m)</span>
+<span class="c">!</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span><span class="k">DIMENSION</span><span class="p">(:,:)</span>     <span class="kd">::</span> <span class="n">XPAR_GROUND_DEPTH</span> <span class="c">! ground depth (DIF option)</span>
+<span class="c">!</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span><span class="k">DIMENSION</span><span class="p">(:,:)</span>     <span class="kd">::</span> <span class="n">XPAR_DICE</span>        <span class="c">! depth of the soil column for the calculation</span>
+<span class="c">!                                                        of the frozen soil fraction (m) (Force restore)</span>
+<span class="c">!</span>
+<span class="c">! - bare soil albedo</span>
+<span class="c">!</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:,:)</span> <span class="kd">::</span> <span class="n">XPAR_ALBNIR_SOIL</span>      <span class="c">! soil near-infra-red albedo        (-)</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:,:)</span> <span class="kd">::</span> <span class="n">XPAR_ALBVIS_SOIL</span>      <span class="c">! soil visible albedo               (-)</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:,:)</span> <span class="kd">::</span> <span class="n">XPAR_ALBUV_SOIL</span>       <span class="c">! soil UV albedo                    (-)</span>
+<span class="c">!</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:)</span> <span class="kd">::</span> <span class="n">XPAR_CONDSAT</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:)</span> <span class="kd">::</span> <span class="n">XPAR_MPOTSAT</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:)</span> <span class="kd">::</span> <span class="n">XPAR_BCOEF</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:)</span> <span class="kd">::</span> <span class="n">XPAR_WWILT</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:)</span> <span class="kd">::</span> <span class="n">XPAR_WFC</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:)</span> <span class="kd">::</span> <span class="n">XPAR_WSAT</span>
+<span class="c">!</span>
+<span class="c">!-------------------------------------------------------------------------------</span>
+<span class="c">!</span>
+<span class="c">! - Vegetation: Ags Prognostic (YPHOTO = (&#39;NIT&#39; or &#39;NCB&#39;) or prescribed (YPHOTO=&#39;NON&#39; or &#39;AST&#39;)</span>
+<span class="c">!</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:,:)</span>     <span class="kd">::</span> <span class="n">XPAR_LAI</span>          <span class="c">! Leaf Area Index                         (m2/m2)</span>
+<span class="c">!</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:,:)</span>     <span class="kd">::</span> <span class="n">XPAR_IRRIG</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:,:)</span>     <span class="kd">::</span> <span class="n">XPAR_WATSUP</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:)</span>     <span class="kd">::</span> <span class="n">XPAR_SEED_M</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:)</span>     <span class="kd">::</span> <span class="n">XPAR_SEED_D</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:)</span>     <span class="kd">::</span> <span class="n">XPAR_REAP_M</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:)</span>     <span class="kd">::</span> <span class="n">XPAR_REAP_D</span>  
+<span class="c">!</span>
+<span class="c">!-------------------------------------------------------------------------------</span>
+<span class="c">!</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>   <span class="kd">::</span> <span class="n">XPAR_FRAC_HVEG</span>        <span class="c">! fraction of high vegetation</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>   <span class="kd">::</span> <span class="n">XPAR_FRAC_LVEG</span>        <span class="c">! fraction of low  vegetation</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>   <span class="kd">::</span> <span class="n">XPAR_FRAC_NVEG</span>        <span class="c">! fraction of bare soil</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:)</span> <span class="kd">::</span> <span class="n">XPAR_LAI_HVEG</span>         <span class="c">! LAI      of high vegetation</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:)</span> <span class="kd">::</span> <span class="n">XPAR_LAI_LVEG</span>         <span class="c">! LAI      of low  vegetation</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>   <span class="kd">::</span> <span class="n">XPAR_H_HVEG</span>           <span class="c">! height of trees</span>
+<span class="c">!</span>
+<span class="k">END TYPE </span><span class="n">DATA_ISBA_t</span>
+</pre></div>
+
+    </section>
+    
+    
+    </div>
+  </div>
+
+
+    <hr>    
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+      <div class="row">
+        <div class="col-xs-6 col-md-6"><p>Town Energy Balance (TEB) model API docs was developed by teb-model<br>&copy; 2021 CeCILL
+                                          </p>
+        </div>
+        <div class="col-xs-6 col-md-6">
+          <p class="text-right">
+            Documentation generated by 
+            <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+            
+            
+          </p>
+        </div>
+      </div>
+      <br>
+      </div> <!-- /container -->    
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+<!--
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+-->
+    <script src="../js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../js/ie10-viewport-bug-workaround.js"></script>
+
+    <!-- MathJax JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+        jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+        extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+      });
+    </script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    
+    <script src="../tipuesearch/tipuesearch_content.js"></script>
+    <script src="../tipuesearch/tipuesearch_set.js"></script>
+    <script src="../tipuesearch/tipuesearch.js"></script>
+    
+    
+  </body>
+</html>

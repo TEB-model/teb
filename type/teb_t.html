@@ -1,0 +1,1607 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   
+   <meta name="description" content="The Town Energy Balance (TEB) model is an urban land surface model developed to calculate the exchange of energy and water between cities and atmosphere.">
+    
+    <meta name="author" content="teb-model" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>TEB_t &ndash; Town Energy Balance (TEB) model API docs </title>
+
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+    
+    <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+    
+    
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <script src="../js/jquery-2.1.3.min.js"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../index.html">Town Energy Balance (TEB) model API docs </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+        
+            <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
+              <a href="#" class="dropdown-toggle"
+              data-toggle="dropdown" role="button"
+              aria-haspopup="true"
+     aria-expanded="false">Contents <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          
+              
+            <li><a href="../lists/files.html">Source Files</a></li>
+        
+        
+        
+            <li><a href="../lists/modules.html">Modules</a></li>
+        
+            
+                                
+            <li><a href="../lists/procedures.html">Procedures</a></li>
+        
+               
+            <li><a href="../lists/types.html">Derived Types</a></li>
+        
+        
+            <li><a href="../program/driver.html">Program</a></li>
+               
+        
+        
+            </ul>
+        
+            </li>
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/files.html">Source Files</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
+
+                             
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/types.html">Derived Types</a></li>
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../program/driver.html">Program</a></li>
+
+
+
+          </ul>
+        
+        <form action="../search.html" class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+        </div>
+<!--
+        <button type="submit" class="btn btn-default">Submit</button>
+-->
+        </form>
+        
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+    
+  
+  <div class="row">
+    <h1>TEB_t
+    <small>Derived Type</small>
+    
+    </h1>
+    
+<div class="row">
+  <div class="col-lg-12">
+<div class="well well-sm">
+  <ul class="list-inline" style="margin-bottom:0px;display:inline">
+     
+     
+     
+    <li><i class="fa fa-legal"></i> CeCILL</li> 
+     
+     
+     
+    
+    
+     <li><i class="fa fa-list-ol"></i>
+       <a data-toggle="tooltip"
+    data-placement="bottom" data-html="true"
+    title="<p> 3.6% of total for derived types.</p>Including implementation: 64 statements,  3.6% of total for derived types.">64 statements</a>
+     </li> 
+     
+     
+     
+    <li><i class="fa fa-code"></i><a href="../src/modd_tebn.F90"> Source File</a></li>
+     
+     
+  </ul>
+  <ol class="breadcrumb in-well text-right">
+  
+    
+     <li><a href='../sourcefile/modd_tebn.f90.html'>modd_tebn.F90</a></li>
+    
+     <li><a href='../module/modd_teb_n.html'>MODD_TEB_n</a></li>
+    
+  
+     <li class="active">TEB_t</li>
+  </ol>
+</div>
+</div>
+</div>
+<script>
+  $(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+  })
+</script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+    
+<div id="sidebar">
+  
+<h3>Contents</h3>
+ 
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#vars-0">Variables</a></h3></div>
+  <div id="vars-0" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../type/teb_t.html#variable-xroad_dir">XROAD_DIR</a>
+      
+      <a class="list-group-item" href="../type/teb_t.html#variable-xgarden">XGARDEN</a>
+      
+      <a class="list-group-item" href="../type/teb_t.html#variable-xgreenroof">XGREENROOF</a>
+      
+      <a class="list-group-item" href="../type/teb_t.html#variable-xbld">XBLD</a>
+      
+      <a class="list-group-item" href="../type/teb_t.html#variable-xroad">XROAD</a>
+      
+      <a class="list-group-item" href="../type/teb_t.html#variable-xcan_hw_ratio">XCAN_HW_RATIO</a>
+      
+      <a class="list-group-item" href="../type/teb_t.html#variable-xbld_height">XBLD_HEIGHT</a>
+      
+      <a class="list-group-item" href="../type/teb_t.html#variable-xwall_o_hor">XWALL_O_HOR</a>
+      
+      <a class="list-group-item" href="../type/teb_t.html#variable-xroad_o_grnd">XROAD_O_GRND</a>
+      
+      <a class="list-group-item" href="../type/teb_t.html#variable-xgarden_o_grnd">XGARDEN_O_GRND</a>
+      
+      <a class="list-group-item" href="../type/teb_t.html#variable-xwall_o_grnd">XWALL_O_GRND</a>
+      
+      <a class="list-group-item" href="../type/teb_t.html#variable-xwall_o_bld">XWALL_O_BLD</a>
+      
+      <a class="list-group-item" href="../type/teb_t.html#variable-xz0_town~2">XZ0_TOWN</a>
+      
+      <a class="list-group-item" href="../type/teb_t.html#variable-xsvf_road">XSVF_ROAD</a>
+      
+      <a class="list-group-item" href="../type/teb_t.html#variable-xsvf_garden">XSVF_GARDEN</a>
+      
+      <a class="list-group-item" href="../type/teb_t.html#variable-xsvf_wall">XSVF_WALL</a>
+      
+      <a class="list-group-item" href="../type/teb_t.html#variable-xalb_roof">XALB_ROOF</a>
+      
+      <a class="list-group-item" href="../type/teb_t.html#variable-xemis_roof">XEMIS_ROOF</a>
+      
+      <a class="list-group-item" href="../type/teb_t.html#variable-xhc_roof">XHC_ROOF</a>
+      
+      <a class="list-group-item" href="../type/teb_t.html#variable-xtc_roof">XTC_ROOF</a>
+      
+      <a class="list-group-item" href="../type/teb_t.html#variable-xd_roof">XD_ROOF</a>
+      
+      <a class="list-group-item" href="../type/teb_t.html#variable-xrough_roof">XROUGH_ROOF</a>
+      
+      <a class="list-group-item" href="../type/teb_t.html#variable-xalb_road">XALB_ROAD</a>
+      
+      <a class="list-group-item" href="../type/teb_t.html#variable-xemis_road">XEMIS_ROAD</a>
+      
+      <a class="list-group-item" href="../type/teb_t.html#variable-xhc_road">XHC_ROAD</a>
+      
+      <a class="list-group-item" href="../type/teb_t.html#variable-xtc_road">XTC_ROAD</a>
+      
+      <a class="list-group-item" href="../type/teb_t.html#variable-xd_road">XD_ROAD</a>
+      
+      <a class="list-group-item" href="../type/teb_t.html#variable-xalb_wall">XALB_WALL</a>
+      
+      <a class="list-group-item" href="../type/teb_t.html#variable-xemis_wall">XEMIS_WALL</a>
+      
+      <a class="list-group-item" href="../type/teb_t.html#variable-xhc_wall">XHC_WALL</a>
+      
+      <a class="list-group-item" href="../type/teb_t.html#variable-xtc_wall">XTC_WALL</a>
+      
+      <a class="list-group-item" href="../type/teb_t.html#variable-xd_wall">XD_WALL</a>
+      
+      <a class="list-group-item" href="../type/teb_t.html#variable-xrough_wall">XROUGH_WALL</a>
+      
+      <a class="list-group-item" href="../type/teb_t.html#variable-xresidential">XRESIDENTIAL</a>
+      
+      <a class="list-group-item" href="../type/teb_t.html#variable-xdt_res">XDT_RES</a>
+      
+      <a class="list-group-item" href="../type/teb_t.html#variable-xdt_off">XDT_OFF</a>
+      
+      <a class="list-group-item" href="../type/teb_t.html#variable-xh_traffic">XH_TRAFFIC</a>
+      
+      <a class="list-group-item" href="../type/teb_t.html#variable-xle_traffic">XLE_TRAFFIC</a>
+      
+      <a class="list-group-item" href="../type/teb_t.html#variable-xh_industry">XH_INDUSTRY</a>
+      
+      <a class="list-group-item" href="../type/teb_t.html#variable-xle_industry">XLE_INDUSTRY</a>
+      
+      <a class="list-group-item" href="../type/teb_t.html#variable-xti_road">XTI_ROAD</a>
+      
+      <a class="list-group-item" href="../type/teb_t.html#variable-xws_roof">XWS_ROOF</a>
+      
+      <a class="list-group-item" href="../type/teb_t.html#variable-xws_road">XWS_ROAD</a>
+      
+      <a class="list-group-item" href="../type/teb_t.html#variable-xt_roof">XT_ROOF</a>
+      
+      <a class="list-group-item" href="../type/teb_t.html#variable-xt_road">XT_ROAD</a>
+      
+      <a class="list-group-item" href="../type/teb_t.html#variable-xt_wall_a">XT_WALL_A</a>
+      
+      <a class="list-group-item" href="../type/teb_t.html#variable-xt_wall_b">XT_WALL_B</a>
+      
+      <a class="list-group-item" href="../type/teb_t.html#variable-xac_roof">XAC_ROOF</a>
+      
+      <a class="list-group-item" href="../type/teb_t.html#variable-xac_road">XAC_ROAD</a>
+      
+      <a class="list-group-item" href="../type/teb_t.html#variable-xac_wall">XAC_WALL</a>
+      
+      <a class="list-group-item" href="../type/teb_t.html#variable-xac_top">XAC_TOP</a>
+      
+      <a class="list-group-item" href="../type/teb_t.html#variable-xac_roof_wat">XAC_ROOF_WAT</a>
+      
+      <a class="list-group-item" href="../type/teb_t.html#variable-xac_road_wat">XAC_ROAD_WAT</a>
+      
+      <a class="list-group-item" href="../type/teb_t.html#variable-xqsat_roof">XQSAT_ROOF</a>
+      
+      <a class="list-group-item" href="../type/teb_t.html#variable-xqsat_road">XQSAT_ROAD</a>
+      
+      <a class="list-group-item" href="../type/teb_t.html#variable-xdelt_roof">XDELT_ROOF</a>
+      
+      <a class="list-group-item" href="../type/teb_t.html#variable-xdelt_road">XDELT_ROAD</a>
+      
+      <a class="list-group-item" href="../type/teb_t.html#variable-xt_canyon">XT_CANYON</a>
+      
+      <a class="list-group-item" href="../type/teb_t.html#variable-xq_canyon">XQ_CANYON</a>
+      
+      <a class="list-group-item" href="../type/teb_t.html#variable-tsnow_roof">TSNOW_ROOF</a>
+      
+      <a class="list-group-item" href="../type/teb_t.html#variable-tsnow_road">TSNOW_ROAD</a>
+      
+      <a class="list-group-item" href="../type/teb_t.html#variable-tsnow_garden">TSNOW_GARDEN</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+  <div class="list-group">
+    <a class="list-group-item" href="../type/teb_t.html#src">TEB_t</a>
+  </div>
+</div>
+
+
+
+</div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+      <h2>type, public :: TEB_t</h2>
+    
+    
+    
+    
+    <br>
+
+    <section class="visible-xs visible-sm hidden-md">
+      
+<h3>Contents</h3>
+ 
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#vars-1">Variables</a></h3></div>
+  <div id="vars-1" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../type/teb_t.html#variable-xroad_dir">XROAD_DIR</a>
+      
+      <a class="list-group-item" href="../type/teb_t.html#variable-xgarden">XGARDEN</a>
+      
+      <a class="list-group-item" href="../type/teb_t.html#variable-xgreenroof">XGREENROOF</a>
+      
+      <a class="list-group-item" href="../type/teb_t.html#variable-xbld">XBLD</a>
+      
+      <a class="list-group-item" href="../type/teb_t.html#variable-xroad">XROAD</a>
+      
+      <a class="list-group-item" href="../type/teb_t.html#variable-xcan_hw_ratio">XCAN_HW_RATIO</a>
+      
+      <a class="list-group-item" href="../type/teb_t.html#variable-xbld_height">XBLD_HEIGHT</a>
+      
+      <a class="list-group-item" href="../type/teb_t.html#variable-xwall_o_hor">XWALL_O_HOR</a>
+      
+      <a class="list-group-item" href="../type/teb_t.html#variable-xroad_o_grnd">XROAD_O_GRND</a>
+      
+      <a class="list-group-item" href="../type/teb_t.html#variable-xgarden_o_grnd">XGARDEN_O_GRND</a>
+      
+      <a class="list-group-item" href="../type/teb_t.html#variable-xwall_o_grnd">XWALL_O_GRND</a>
+      
+      <a class="list-group-item" href="../type/teb_t.html#variable-xwall_o_bld">XWALL_O_BLD</a>
+      
+      <a class="list-group-item" href="../type/teb_t.html#variable-xz0_town~2">XZ0_TOWN</a>
+      
+      <a class="list-group-item" href="../type/teb_t.html#variable-xsvf_road">XSVF_ROAD</a>
+      
+      <a class="list-group-item" href="../type/teb_t.html#variable-xsvf_garden">XSVF_GARDEN</a>
+      
+      <a class="list-group-item" href="../type/teb_t.html#variable-xsvf_wall">XSVF_WALL</a>
+      
+      <a class="list-group-item" href="../type/teb_t.html#variable-xalb_roof">XALB_ROOF</a>
+      
+      <a class="list-group-item" href="../type/teb_t.html#variable-xemis_roof">XEMIS_ROOF</a>
+      
+      <a class="list-group-item" href="../type/teb_t.html#variable-xhc_roof">XHC_ROOF</a>
+      
+      <a class="list-group-item" href="../type/teb_t.html#variable-xtc_roof">XTC_ROOF</a>
+      
+      <a class="list-group-item" href="../type/teb_t.html#variable-xd_roof">XD_ROOF</a>
+      
+      <a class="list-group-item" href="../type/teb_t.html#variable-xrough_roof">XROUGH_ROOF</a>
+      
+      <a class="list-group-item" href="../type/teb_t.html#variable-xalb_road">XALB_ROAD</a>
+      
+      <a class="list-group-item" href="../type/teb_t.html#variable-xemis_road">XEMIS_ROAD</a>
+      
+      <a class="list-group-item" href="../type/teb_t.html#variable-xhc_road">XHC_ROAD</a>
+      
+      <a class="list-group-item" href="../type/teb_t.html#variable-xtc_road">XTC_ROAD</a>
+      
+      <a class="list-group-item" href="../type/teb_t.html#variable-xd_road">XD_ROAD</a>
+      
+      <a class="list-group-item" href="../type/teb_t.html#variable-xalb_wall">XALB_WALL</a>
+      
+      <a class="list-group-item" href="../type/teb_t.html#variable-xemis_wall">XEMIS_WALL</a>
+      
+      <a class="list-group-item" href="../type/teb_t.html#variable-xhc_wall">XHC_WALL</a>
+      
+      <a class="list-group-item" href="../type/teb_t.html#variable-xtc_wall">XTC_WALL</a>
+      
+      <a class="list-group-item" href="../type/teb_t.html#variable-xd_wall">XD_WALL</a>
+      
+      <a class="list-group-item" href="../type/teb_t.html#variable-xrough_wall">XROUGH_WALL</a>
+      
+      <a class="list-group-item" href="../type/teb_t.html#variable-xresidential">XRESIDENTIAL</a>
+      
+      <a class="list-group-item" href="../type/teb_t.html#variable-xdt_res">XDT_RES</a>
+      
+      <a class="list-group-item" href="../type/teb_t.html#variable-xdt_off">XDT_OFF</a>
+      
+      <a class="list-group-item" href="../type/teb_t.html#variable-xh_traffic">XH_TRAFFIC</a>
+      
+      <a class="list-group-item" href="../type/teb_t.html#variable-xle_traffic">XLE_TRAFFIC</a>
+      
+      <a class="list-group-item" href="../type/teb_t.html#variable-xh_industry">XH_INDUSTRY</a>
+      
+      <a class="list-group-item" href="../type/teb_t.html#variable-xle_industry">XLE_INDUSTRY</a>
+      
+      <a class="list-group-item" href="../type/teb_t.html#variable-xti_road">XTI_ROAD</a>
+      
+      <a class="list-group-item" href="../type/teb_t.html#variable-xws_roof">XWS_ROOF</a>
+      
+      <a class="list-group-item" href="../type/teb_t.html#variable-xws_road">XWS_ROAD</a>
+      
+      <a class="list-group-item" href="../type/teb_t.html#variable-xt_roof">XT_ROOF</a>
+      
+      <a class="list-group-item" href="../type/teb_t.html#variable-xt_road">XT_ROAD</a>
+      
+      <a class="list-group-item" href="../type/teb_t.html#variable-xt_wall_a">XT_WALL_A</a>
+      
+      <a class="list-group-item" href="../type/teb_t.html#variable-xt_wall_b">XT_WALL_B</a>
+      
+      <a class="list-group-item" href="../type/teb_t.html#variable-xac_roof">XAC_ROOF</a>
+      
+      <a class="list-group-item" href="../type/teb_t.html#variable-xac_road">XAC_ROAD</a>
+      
+      <a class="list-group-item" href="../type/teb_t.html#variable-xac_wall">XAC_WALL</a>
+      
+      <a class="list-group-item" href="../type/teb_t.html#variable-xac_top">XAC_TOP</a>
+      
+      <a class="list-group-item" href="../type/teb_t.html#variable-xac_roof_wat">XAC_ROOF_WAT</a>
+      
+      <a class="list-group-item" href="../type/teb_t.html#variable-xac_road_wat">XAC_ROAD_WAT</a>
+      
+      <a class="list-group-item" href="../type/teb_t.html#variable-xqsat_roof">XQSAT_ROOF</a>
+      
+      <a class="list-group-item" href="../type/teb_t.html#variable-xqsat_road">XQSAT_ROAD</a>
+      
+      <a class="list-group-item" href="../type/teb_t.html#variable-xdelt_roof">XDELT_ROOF</a>
+      
+      <a class="list-group-item" href="../type/teb_t.html#variable-xdelt_road">XDELT_ROAD</a>
+      
+      <a class="list-group-item" href="../type/teb_t.html#variable-xt_canyon">XT_CANYON</a>
+      
+      <a class="list-group-item" href="../type/teb_t.html#variable-xq_canyon">XQ_CANYON</a>
+      
+      <a class="list-group-item" href="../type/teb_t.html#variable-tsnow_roof">TSNOW_ROOF</a>
+      
+      <a class="list-group-item" href="../type/teb_t.html#variable-tsnow_road">TSNOW_ROAD</a>
+      
+      <a class="list-group-item" href="../type/teb_t.html#variable-tsnow_garden">TSNOW_GARDEN</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+  <div class="list-group">
+    <a class="list-group-item" href="../type/teb_t.html#src">TEB_t</a>
+  </div>
+</div>
+
+
+
+    </section>
+    <br class="visible-xs visible-sm hidden-md">
+
+    
+    <section>
+    <h2>Components</h2>
+    
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th><th>Visibility</th>
+
+<th>Attributes</th><th></th><th>Name</th><th></th><th>Initial</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xroad_dir"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XROAD_DIR</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xgarden"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XGARDEN</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xgreenroof"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XGREENROOF</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xbld"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XBLD</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xroad"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XROAD</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xcan_hw_ratio"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XCAN_HW_RATIO</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xbld_height"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XBLD_HEIGHT</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xwall_o_hor"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XWALL_O_HOR</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xroad_o_grnd"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XROAD_O_GRND</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xgarden_o_grnd"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XGARDEN_O_GRND</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xwall_o_grnd"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XWALL_O_GRND</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xwall_o_bld"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XWALL_O_BLD</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xz0_town~2"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XZ0_TOWN</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xsvf_road"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XSVF_ROAD</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xsvf_garden"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XSVF_GARDEN</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xsvf_wall"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XSVF_WALL</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xalb_roof"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XALB_ROOF</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xemis_roof"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XEMIS_ROOF</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xhc_roof"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:)</td><td>::</td>
+  <td><strong>XHC_ROOF</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xtc_roof"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:)</td><td>::</td>
+  <td><strong>XTC_ROOF</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xd_roof"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:)</td><td>::</td>
+  <td><strong>XD_ROOF</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xrough_roof"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XROUGH_ROOF</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xalb_road"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XALB_ROAD</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xemis_road"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XEMIS_ROAD</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xhc_road"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:)</td><td>::</td>
+  <td><strong>XHC_ROAD</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xtc_road"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:)</td><td>::</td>
+  <td><strong>XTC_ROAD</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xd_road"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:)</td><td>::</td>
+  <td><strong>XD_ROAD</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xalb_wall"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XALB_WALL</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xemis_wall"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XEMIS_WALL</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xhc_wall"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:)</td><td>::</td>
+  <td><strong>XHC_WALL</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xtc_wall"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:)</td><td>::</td>
+  <td><strong>XTC_WALL</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xd_wall"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:)</td><td>::</td>
+  <td><strong>XD_WALL</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xrough_wall"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XROUGH_WALL</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xresidential"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XRESIDENTIAL</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xdt_res"></span>real,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>XDT_RES</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xdt_off"></span>real,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>XDT_OFF</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xh_traffic"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XH_TRAFFIC</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xle_traffic"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XLE_TRAFFIC</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xh_industry"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XH_INDUSTRY</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xle_industry"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XLE_INDUSTRY</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xti_road"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XTI_ROAD</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xws_roof"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XWS_ROOF</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xws_road"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XWS_ROAD</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xt_roof"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:)</td><td>::</td>
+  <td><strong>XT_ROOF</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xt_road"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:)</td><td>::</td>
+  <td><strong>XT_ROAD</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xt_wall_a"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:)</td><td>::</td>
+  <td><strong>XT_WALL_A</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xt_wall_b"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:)</td><td>::</td>
+  <td><strong>XT_WALL_B</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xac_roof"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XAC_ROOF</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xac_road"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XAC_ROAD</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xac_wall"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XAC_WALL</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xac_top"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XAC_TOP</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xac_roof_wat"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XAC_ROOF_WAT</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xac_road_wat"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XAC_ROAD_WAT</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xqsat_roof"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XQSAT_ROOF</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xqsat_road"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XQSAT_ROAD</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xdelt_roof"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XDELT_ROOF</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xdelt_road"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XDELT_ROAD</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xt_canyon"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XT_CANYON</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xq_canyon"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XQ_CANYON</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-tsnow_roof"></span>type(SURF_SNOW),</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>TSNOW_ROOF</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-tsnow_road"></span>type(SURF_SNOW),</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>TSNOW_ROAD</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-tsnow_garden"></span>type(SURF_SNOW),</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>TSNOW_GARDEN</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+    </section>
+    <br>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <section>
+    <h3><span class="anchor" id="src"></span>Source Code</h3>
+    <div class="highlight"><pre><span></span><span class="k">TYPE </span><span class="n">TEB_t</span>
+<span class="c">! TEB scheme option</span>
+<span class="c">!</span>
+<span class="c">! Geometric Parameters:</span>
+<span class="c">!</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>   <span class="kd">::</span> <span class="n">XROAD_DIR</span>     <span class="c">! Road direction (deg from North, clockwise)</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>   <span class="kd">::</span> <span class="n">XGARDEN</span>       <span class="c">! fraction of veg in the streets   (-)</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>   <span class="kd">::</span> <span class="n">XGREENROOF</span>    <span class="c">! fraction of greenroofs on roofs  (-)</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>   <span class="kd">::</span> <span class="n">XBLD</span>          <span class="c">! fraction of buildings            (-)</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>   <span class="kd">::</span> <span class="n">XROAD</span>         <span class="c">! fraction of roads                (-)</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>   <span class="kd">::</span> <span class="n">XCAN_HW_RATIO</span> <span class="c">! canyon    h/W                    (-)</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>   <span class="kd">::</span> <span class="n">XBLD_HEIGHT</span>   <span class="c">! buildings height &#39;h&#39;             (m)</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>   <span class="kd">::</span> <span class="n">XWALL_O_HOR</span>   <span class="c">! wall surf. / hor. surf.          (-)</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>   <span class="kd">::</span> <span class="n">XROAD_O_GRND</span>  <span class="c">! road surf. / (road + garden surf.) (-)</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>   <span class="kd">::</span> <span class="n">XGARDEN_O_GRND</span><span class="c">! gard. surf. / (road + garden surf.)(-)</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>   <span class="kd">::</span> <span class="n">XWALL_O_GRND</span>  <span class="c">! wall surf. / (road + garden surf.) (-)</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>   <span class="kd">::</span> <span class="n">XWALL_O_BLD</span>   <span class="c">! wall surf. / bld surf. (-)</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>   <span class="kd">::</span> <span class="n">XZ0_TOWN</span>      <span class="c">! roughness length for momentum    (m)</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>   <span class="kd">::</span> <span class="n">XSVF_ROAD</span>     <span class="c">! road sky view factor             (-)</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>   <span class="kd">::</span> <span class="n">XSVF_GARDEN</span>   <span class="c">! green area sky view factor       (-)</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>   <span class="kd">::</span> <span class="n">XSVF_WALL</span>     <span class="c">! wall sky view factor             (-)</span>
+<span class="c">!</span>
+<span class="c">! Roof parameters</span>
+<span class="c">!</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>   <span class="kd">::</span> <span class="n">XALB_ROOF</span>     <span class="c">! roof albedo                      (-)</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>   <span class="kd">::</span> <span class="n">XEMIS_ROOF</span>    <span class="c">! roof emissivity                  (-)</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:)</span> <span class="kd">::</span> <span class="n">XHC_ROOF</span>      <span class="c">! roof layers heat capacity        (J/K/m3)</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:)</span> <span class="kd">::</span> <span class="n">XTC_ROOF</span>      <span class="c">! roof layers thermal conductivity (W/K/m)</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:)</span> <span class="kd">::</span> <span class="n">XD_ROOF</span>       <span class="c">! depth of roof layers             (m)</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>   <span class="kd">::</span> <span class="n">XROUGH_ROOF</span>   <span class="c">! roof roughness coef</span>
+<span class="c">!</span>
+<span class="c">!</span>
+<span class="c">! Road parameters</span>
+<span class="c">!</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>   <span class="kd">::</span> <span class="n">XALB_ROAD</span>     <span class="c">! road albedo                      (-)</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>   <span class="kd">::</span> <span class="n">XEMIS_ROAD</span>    <span class="c">! road emissivity                  (-)</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:)</span> <span class="kd">::</span> <span class="n">XHC_ROAD</span>      <span class="c">! road layers heat capacity        (J/K/m3)</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:)</span> <span class="kd">::</span> <span class="n">XTC_ROAD</span>      <span class="c">! road layers thermal conductivity (W/K/m)</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:)</span> <span class="kd">::</span> <span class="n">XD_ROAD</span>       <span class="c">! depth of road layers             (m)</span>
+<span class="c">!</span>
+<span class="c">! Wall parameters</span>
+<span class="c">!</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>   <span class="kd">::</span> <span class="n">XALB_WALL</span>     <span class="c">! wall albedo                      (-)</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>   <span class="kd">::</span> <span class="n">XEMIS_WALL</span>    <span class="c">! wall emissivity                  (-)</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:)</span> <span class="kd">::</span> <span class="n">XHC_WALL</span>      <span class="c">! wall layers heat capacity        (J/K/m3)</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:)</span> <span class="kd">::</span> <span class="n">XTC_WALL</span>      <span class="c">! wall layers thermal conductivity (W/K/m)</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:)</span> <span class="kd">::</span> <span class="n">XD_WALL</span>       <span class="c">! depth of wall layers             (m)</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>   <span class="kd">::</span> <span class="n">XROUGH_WALL</span>   <span class="c">! wall roughness coef</span>
+<span class="c">!</span>
+<span class="c">! Building&#39;s use type</span>
+<span class="c">!</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>   <span class="kd">::</span> <span class="n">XRESIDENTIAL</span>  <span class="c">! fraction of Residential use      (-)</span>
+  <span class="kt">REAL</span>                          <span class="kd">::</span> <span class="n">XDT_RES</span>       <span class="c">! target temperature change when unoccupied (K) (residential buildings)</span>
+  <span class="kt">REAL</span>                          <span class="kd">::</span> <span class="n">XDT_OFF</span>       <span class="c">! target temperature change when unoccupied (K) (offices buildings)</span>
+  
+<span class="c">!</span>
+<span class="c">! anthropogenic fluxes</span>
+<span class="c">!</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>   <span class="kd">::</span> <span class="n">XH_TRAFFIC</span>    <span class="c">! anthropogenic sensible</span>
+<span class="c">!                                                  ! heat fluxes due to traffic       (W/m2)</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>   <span class="kd">::</span> <span class="n">XLE_TRAFFIC</span>   <span class="c">! anthropogenic latent</span>
+<span class="c">!                                                  ! heat fluxes due to traffic       (W/m2)</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>   <span class="kd">::</span> <span class="n">XH_INDUSTRY</span>   <span class="c">! anthropogenic sensible                   </span>
+<span class="c">!                                                  ! heat fluxes due to factories     (W/m2)</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>   <span class="kd">::</span> <span class="n">XLE_INDUSTRY</span>  <span class="c">! anthropogenic latent</span>
+<span class="c">!                                                  ! heat fluxes due to factories     (W/m2)</span>
+<span class="c">!</span>
+<span class="c">! temperatures for boundary conditions</span>
+<span class="c">!</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>   <span class="kd">::</span> <span class="n">XTI_ROAD</span>      <span class="c">! road interior temperature        (K)</span>
+<span class="c">!</span>
+<span class="c">! Prognostic variables:</span>
+<span class="c">!</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>   <span class="kd">::</span> <span class="n">XWS_ROOF</span>      <span class="c">! roof water reservoir             (kg/m2)</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>   <span class="kd">::</span> <span class="n">XWS_ROAD</span>      <span class="c">! road water reservoir             (kg/m2)</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:)</span> <span class="kd">::</span> <span class="n">XT_ROOF</span>       <span class="c">! roof layer temperatures          (K)</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:)</span> <span class="kd">::</span> <span class="n">XT_ROAD</span>       <span class="c">! road layer temperatures          (K)</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:)</span> <span class="kd">::</span> <span class="n">XT_WALL_A</span>     <span class="c">! wall layer temperatures          (K)</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:)</span> <span class="kd">::</span> <span class="n">XT_WALL_B</span>     <span class="c">! wall layer temperatures          (K)</span>
+<span class="c">!</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>   <span class="kd">::</span> <span class="n">XAC_ROOF</span>      <span class="c">! roof aerodynamic conductance     ()</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>   <span class="kd">::</span> <span class="n">XAC_ROAD</span>      <span class="c">! road aerodynamic conductance     ()</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>   <span class="kd">::</span> <span class="n">XAC_WALL</span>      <span class="c">! wall aerodynamic conductance     ()</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>   <span class="kd">::</span> <span class="n">XAC_TOP</span>       <span class="c">! top  aerodynamic conductance     ()</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>   <span class="kd">::</span> <span class="n">XAC_ROOF_WAT</span>  <span class="c">! water aerodynamic conductance    ()</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>   <span class="kd">::</span> <span class="n">XAC_ROAD_WAT</span>  <span class="c">! water aerodynamic conductance    ()</span>
+<span class="c">!</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>   <span class="kd">::</span> <span class="n">XQSAT_ROOF</span>    <span class="c">! humidity of saturation for roofs (kg/kg)</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>   <span class="kd">::</span> <span class="n">XQSAT_ROAD</span>    <span class="c">! humidity of saturation for roads (kg/kg)</span>
+<span class="c">!</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>   <span class="kd">::</span> <span class="n">XDELT_ROOF</span>    <span class="c">! humidity of saturation for roofs (-)</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>   <span class="kd">::</span> <span class="n">XDELT_ROAD</span>    <span class="c">! humidity of saturation for roads (-)</span>
+<span class="c">!</span>
+<span class="c">! Semi-prognostic variables:</span>
+<span class="c">!</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>   <span class="kd">::</span> <span class="n">XT_CANYON</span>     <span class="c">! canyon air temperature           (K)</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>   <span class="kd">::</span> <span class="n">XQ_CANYON</span>     <span class="c">! canyon air specific humidity     (kg/kg)</span>
+<span class="c">!</span>
+<span class="c">!</span>
+<span class="c">! Prognostic snow:</span>
+<span class="c">!</span>
+  <span class="k">TYPE</span><span class="p">(</span><span class="n">SURF_SNOW</span><span class="p">)</span>                 <span class="kd">::</span> <span class="n">TSNOW_ROOF</span>      <span class="c">! snow state on roofs: </span>
+<span class="c">!                                                  ! scheme type/option               (-)</span>
+<span class="c">!                                                  ! number of layers                 (-)</span>
+<span class="c">!                                                  ! snow (&amp; liq. water) content      (kg/m2)</span>
+<span class="c">!                                                  ! heat content                     (J/m2)</span>
+<span class="c">!                                                  ! temperature                      (K)</span>
+<span class="c">!                                                  ! density                          (kg m-3)</span>
+  <span class="k">TYPE</span><span class="p">(</span><span class="n">SURF_SNOW</span><span class="p">)</span>                 <span class="kd">::</span> <span class="n">TSNOW_ROAD</span>      <span class="c">! snow state on roads: </span>
+<span class="c">!                                                  ! scheme type/option               (-)</span>
+<span class="c">!                                                  ! number of layers                 (-)</span>
+<span class="c">!                                                  ! snow (&amp; liq. water) content      (kg/m2)</span>
+<span class="c">!                                                  ! heat content                     (J/m2)</span>
+<span class="c">!                                                  ! temperature                      (K)</span>
+<span class="c">!                                                  ! density                          (kg m-3)</span>
+<span class="c">!                                                  ! density                          (kg m-3)</span>
+  <span class="k">TYPE</span><span class="p">(</span><span class="n">SURF_SNOW</span><span class="p">)</span>                 <span class="kd">::</span> <span class="n">TSNOW_GARDEN</span>    <span class="c">! snow state on green areas:</span>
+<span class="c">!                                                  ! scheme type/option               (-)</span>
+<span class="c">!                                                  ! number of layers                 (-)</span>
+<span class="c">!                                                  ! snow (&amp; liq. water) content      (kg/m2)</span>
+<span class="c">!                                                  ! heat content                     (J/m2)</span>
+<span class="c">!                                                  ! temperature                      (K)</span>
+<span class="c">!                                                  ! density                          (kg m-3)</span>
+<span class="c">!</span>
+<span class="k">END TYPE </span><span class="n">TEB_t</span>
+</pre></div>
+
+    </section>
+    
+    
+    </div>
+  </div>
+
+
+    <hr>    
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+      <div class="row">
+        <div class="col-xs-6 col-md-6"><p>Town Energy Balance (TEB) model API docs was developed by teb-model<br>&copy; 2021 CeCILL
+                                          </p>
+        </div>
+        <div class="col-xs-6 col-md-6">
+          <p class="text-right">
+            Documentation generated by 
+            <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+            
+            
+          </p>
+        </div>
+      </div>
+      <br>
+      </div> <!-- /container -->    
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+<!--
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+-->
+    <script src="../js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../js/ie10-viewport-bug-workaround.js"></script>
+
+    <!-- MathJax JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+        jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+        extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+      });
+    </script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    
+    <script src="../tipuesearch/tipuesearch_content.js"></script>
+    <script src="../tipuesearch/tipuesearch_set.js"></script>
+    <script src="../tipuesearch/tipuesearch.js"></script>
+    
+    
+  </body>
+</html>

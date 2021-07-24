@@ -1,0 +1,1541 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   
+   <meta name="description" content="The Town Energy Balance (TEB) model is an urban land surface model developed to calculate the exchange of energy and water between cities and atmosphere.">
+    
+    <meta name="author" content="teb-model" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>MODD_CO2V_PAR &ndash; Town Energy Balance (TEB) model API docs</title>
+
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+    
+    <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+    
+    
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <script src="../js/jquery-2.1.3.min.js"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../index.html">Town Energy Balance (TEB) model API docs </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+        
+            <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
+              <a href="#" class="dropdown-toggle"
+              data-toggle="dropdown" role="button"
+              aria-haspopup="true"
+     aria-expanded="false">Contents <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          
+              
+            <li><a href="../lists/files.html">Source Files</a></li>
+        
+        
+        
+            <li><a href="../lists/modules.html">Modules</a></li>
+        
+            
+                                
+            <li><a href="../lists/procedures.html">Procedures</a></li>
+        
+               
+            <li><a href="../lists/types.html">Derived Types</a></li>
+        
+        
+            <li><a href="../program/driver.html">Program</a></li>
+               
+        
+        
+            </ul>
+        
+            </li>
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/files.html">Source Files</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
+
+                             
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/types.html">Derived Types</a></li>
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../program/driver.html">Program</a></li>
+
+
+
+          </ul>
+        
+        <form action="../search.html" class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+        </div>
+<!--
+        <button type="submit" class="btn btn-default">Submit</button>
+-->
+        </form>
+        
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+    
+  
+  <div class="row">
+    <h1>MODD_CO2V_PAR 
+    <small>Module</small>
+    
+    </h1>
+    
+<div class="row">
+  <div class="col-lg-12">
+<div class="well well-sm">
+  <ul class="list-inline" style="margin-bottom:0px;display:inline">
+     
+     
+     
+    <li><i class="fa fa-legal"></i> CeCILL</li> 
+     
+     
+     
+    
+    
+     <li><i class="fa fa-list-ol"></i>
+       <a data-toggle="tooltip"
+    data-placement="bottom" data-html="true"
+    title=" 0.7% of total for modules and submodules.">64 statements</a>
+     </li> 
+     
+     
+     
+    <li><i class="fa fa-code"></i><a href="../src/modd_co2v_par.F90"> Source File</a></li>
+     
+     
+  </ul>
+  <ol class="breadcrumb in-well text-right">
+  
+    
+     <li><a href='../sourcefile/modd_co2v_par.f90.html'>modd_co2v_par.F90</a></li>
+    
+  
+     <li class="active">MODD_CO2V_PAR</li>
+  </ol>
+</div>
+</div>
+</div>
+<script>
+  $(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+  })
+</script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+    
+<div id="sidebar">
+  
+<h3>Contents</h3>
+ 
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#vars-0">Variables</a></h3></div>
+  <div id="vars-0" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xspin_co2">XSPIN_CO2</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xmco2">XMCO2</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xmc">XMC</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xparcf">XPARCF</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xraccf">XRACCF</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xpcco2">XPCCO2</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xiaopt">XIAOPT</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xdspopt">XDSPOPT</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xxgt">XXGT</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xdifracf">XDIFRACF</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xxbomega">XXBOMEGA</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xrdcf">XRDCF</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xcondctmin">XCONDCTMIN</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xcondstmin">XCONDSTMIN</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xanfminit">XANFMINIT</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xairtoh2o">XAIRTOH2O</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xco2toh2o">XCO2TOH2O</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xaw">XAW</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xasw">XASW</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xbw">XBW</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xdmaxn">XDMAXN</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xdmaxx">XDMAXX</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xtopt">XTOPT</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xfzero1">XFZERO1</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xfzero2">XFZERO2</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xfzerotrop">XFZEROTROP</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xepso~2">XEPSO</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xgamm~2">XGAMM</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xqdgamm~2">XQDGAMM</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xqdgmes~2">XQDGMES</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xt1gmes~2">XT1GMES</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xt2gmes~2">XT2GMES</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xqdamax~2">XQDAMAX</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xt1amax~2">XT1AMAX</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xt2amax~2">XT2AMAX</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xah~2">XAH</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xbh~2">XBH</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xrespfactor_nit">XRESPFACTOR_NIT</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xca_nit">XCA_NIT</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xcc_nit">XCC_NIT</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xcc_nitro">XCC_NITRO</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xbiomasst_lim">XBIOMASST_LIM</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xcoeff_maint_resp_zero">XCOEFF_MAINT_RESP_ZERO</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xslope_maint_resp">XSLOPE_MAINT_RESP</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xtau_wood~2">XTAU_WOOD</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xcn">XCN</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xlc">XLC</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xfrac_litter">XFRAC_LITTER</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xtau_litter">XTAU_LITTER</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xfrac_soilcarb">XFRAC_SOILCARB</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xtau_soilcarb">XTAU_SOILCARB</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xssa_sup">XSSA_SUP</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xssa_inf">XSSA_INF</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xssa_sup_pir">XSSA_SUP_PIR</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xssa_inf_pir">XSSA_INF_PIR</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xk_sup">XK_SUP</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xxsi_sup">XXSI_SUP</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xk_inf">XK_INF</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xxsi_inf">XXSI_INF</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xlai_shade">XLAI_SHADE</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xxb_sup">XXB_SUP</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xxb_inf">XXB_INF</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xdiludec">XDILUDEC</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xamax~2">XAMAX</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-itransfert_esg">ITRANSFERT_ESG</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+    
+      <br>
+    
+  
+    <div class="panel panel-default">
+      <div class="panel-heading">
+  <h3 class="panel-title">Uses</h3>
+      </div>
+      <ul class="list-group">
+      
+      <li class="list-group-item">
+  <ul class="list-inline">
+    
+    <li><a href='../module/modd_data_cover_par.html'>MODD_DATA_COVER_PAR</a></li>
+    
+  </ul>
+      </li>
+      
+      
+      
+      </ul>
+    </div>
+    
+
+    
+    
+
+    <br>
+
+    <section class="visible-xs visible-sm hidden-md">
+      
+<h3>Contents</h3>
+ 
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#vars-1">Variables</a></h3></div>
+  <div id="vars-1" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xspin_co2">XSPIN_CO2</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xmco2">XMCO2</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xmc">XMC</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xparcf">XPARCF</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xraccf">XRACCF</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xpcco2">XPCCO2</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xiaopt">XIAOPT</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xdspopt">XDSPOPT</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xxgt">XXGT</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xdifracf">XDIFRACF</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xxbomega">XXBOMEGA</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xrdcf">XRDCF</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xcondctmin">XCONDCTMIN</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xcondstmin">XCONDSTMIN</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xanfminit">XANFMINIT</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xairtoh2o">XAIRTOH2O</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xco2toh2o">XCO2TOH2O</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xaw">XAW</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xasw">XASW</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xbw">XBW</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xdmaxn">XDMAXN</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xdmaxx">XDMAXX</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xtopt">XTOPT</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xfzero1">XFZERO1</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xfzero2">XFZERO2</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xfzerotrop">XFZEROTROP</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xepso~2">XEPSO</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xgamm~2">XGAMM</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xqdgamm~2">XQDGAMM</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xqdgmes~2">XQDGMES</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xt1gmes~2">XT1GMES</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xt2gmes~2">XT2GMES</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xqdamax~2">XQDAMAX</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xt1amax~2">XT1AMAX</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xt2amax~2">XT2AMAX</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xah~2">XAH</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xbh~2">XBH</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xrespfactor_nit">XRESPFACTOR_NIT</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xca_nit">XCA_NIT</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xcc_nit">XCC_NIT</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xcc_nitro">XCC_NITRO</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xbiomasst_lim">XBIOMASST_LIM</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xcoeff_maint_resp_zero">XCOEFF_MAINT_RESP_ZERO</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xslope_maint_resp">XSLOPE_MAINT_RESP</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xtau_wood~2">XTAU_WOOD</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xcn">XCN</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xlc">XLC</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xfrac_litter">XFRAC_LITTER</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xtau_litter">XTAU_LITTER</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xfrac_soilcarb">XFRAC_SOILCARB</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xtau_soilcarb">XTAU_SOILCARB</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xssa_sup">XSSA_SUP</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xssa_inf">XSSA_INF</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xssa_sup_pir">XSSA_SUP_PIR</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xssa_inf_pir">XSSA_INF_PIR</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xk_sup">XK_SUP</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xxsi_sup">XXSI_SUP</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xk_inf">XK_INF</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xxsi_inf">XXSI_INF</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xlai_shade">XLAI_SHADE</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xxb_sup">XXB_SUP</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xxb_inf">XXB_INF</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xdiludec">XDILUDEC</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-xamax~2">XAMAX</a>
+      
+      <a class="list-group-item" href="../module/modd_co2v_par.html#variable-itransfert_esg">ITRANSFERT_ESG</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </section>
+    <br class="visible-xs visible-sm hidden-md">
+
+    
+
+    
+    <section>
+    <h2>Variables</h2>
+    
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th><th>Visibility</th>
+
+<th>Attributes</th><th></th><th>Name</th><th></th><th>Initial</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xspin_co2"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XSPIN_CO2</strong></td><td> =</td><td>0.1</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xmco2"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XMCO2</strong></td><td> =</td><td>44.0E-3</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xmc"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XMC</strong></td><td> =</td><td>12.0E-3</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xparcf"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XPARCF</strong></td><td> =</td><td>0.48</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xraccf"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XRACCF</strong></td><td> =</td><td>1.00</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xpcco2"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XPCCO2</strong></td><td> =</td><td>0.40</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xiaopt"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XIAOPT</strong></td><td> =</td><td>500.</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xdspopt"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XDSPOPT</strong></td><td> =</td><td>0.0</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xxgt"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XXGT</strong></td><td> =</td><td>0.5</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xdifracf"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XDIFRACF</strong></td><td> =</td><td>0.25</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xxbomega"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XXBOMEGA</strong></td><td> =</td><td>0.9442719</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xrdcf"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XRDCF</strong></td><td> =</td><td>1./9.</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xcondctmin"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XCONDCTMIN</strong></td><td> =</td><td>0.0002</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xcondstmin"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XCONDSTMIN</strong></td><td> =</td><td>1.0E-5</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xanfminit"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XANFMINIT</strong></td><td> =</td><td>1.E-8</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xairtoh2o"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XAIRTOH2O</strong></td><td> =</td><td>1.606</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xco2toh2o"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XCO2TOH2O</strong></td><td> =</td><td>1.6</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xaw"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XAW</strong></td><td> =</td><td>4.7</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xasw"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XASW</strong></td><td> =</td><td>2.8</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xbw"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XBW</strong></td><td> =</td><td>7.0</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xdmaxn"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XDMAXN</strong></td><td> =</td><td>3.0E-2</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xdmaxx"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XDMAXX</strong></td><td> =</td><td>3.0E-1</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xtopt"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter, DIMENSION(2)</td><td>::</td>
+  <td><strong>XTOPT</strong></td><td> =</td><td>(/25.0, 35.0/)</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xfzero1"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter, DIMENSION(2)</td><td>::</td>
+  <td><strong>XFZERO1</strong></td><td> =</td><td>(/0.85, 0.50/)</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xfzero2"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter, DIMENSION(2)</td><td>::</td>
+  <td><strong>XFZERO2</strong></td><td> =</td><td>(/0.95, 0.60/)</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xfzerotrop"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter, DIMENSION(2)</td><td>::</td>
+  <td><strong>XFZEROTROP</strong></td><td> =</td><td>(/0.74, 0.74/)</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xepso~2"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter, DIMENSION(2)</td><td>::</td>
+  <td><strong>XEPSO</strong></td><td> =</td><td>(/0.017E-6, 0.014E-6/)</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xgamm~2"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter, DIMENSION(2)</td><td>::</td>
+  <td><strong>XGAMM</strong></td><td> =</td><td>(/45.0, 2.8/)</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xqdgamm~2"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter, DIMENSION(2)</td><td>::</td>
+  <td><strong>XQDGAMM</strong></td><td> =</td><td>(/1.5, 1.5/)</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xqdgmes~2"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter, DIMENSION(2)</td><td>::</td>
+  <td><strong>XQDGMES</strong></td><td> =</td><td>(/2.0, 2.0/)</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xt1gmes~2"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter, DIMENSION(2)</td><td>::</td>
+  <td><strong>XT1GMES</strong></td><td> =</td><td>(/5.0, 13.0/)</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xt2gmes~2"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter, DIMENSION(2)</td><td>::</td>
+  <td><strong>XT2GMES</strong></td><td> =</td><td>(/36.0, 36.0/)</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xqdamax~2"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter, DIMENSION(2)</td><td>::</td>
+  <td><strong>XQDAMAX</strong></td><td> =</td><td>(/2.0, 2.0/)</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xt1amax~2"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter, DIMENSION(2)</td><td>::</td>
+  <td><strong>XT1AMAX</strong></td><td> =</td><td>(/8.0, 13.0/)</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xt2amax~2"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter, DIMENSION(2)</td><td>::</td>
+  <td><strong>XT2AMAX</strong></td><td> =</td><td>(/38.0, 38.0/)</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xah~2"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter, DIMENSION(2)</td><td>::</td>
+  <td><strong>XAH</strong></td><td> =</td><td>(/2.381, 5.323/)</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xbh~2"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter, DIMENSION(2)</td><td>::</td>
+  <td><strong>XBH</strong></td><td> =</td><td>(/-0.6103, -0.8929/)</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xrespfactor_nit"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XRESPFACTOR_NIT</strong></td><td> =</td><td>1.16E-7</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xca_nit"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XCA_NIT</strong></td><td> =</td><td>0.38</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xcc_nit"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XCC_NIT</strong></td><td> =</td><td>0.753846</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xcc_nitro"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XCC_NITRO</strong></td><td> =</td><td>0.31425531725</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xbiomasst_lim"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XBIOMASST_LIM</strong></td><td> =</td><td>4.7540042445E-2</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xcoeff_maint_resp_zero"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XCOEFF_MAINT_RESP_ZERO</strong></td><td> =</td><td>1.19E-4/86400.</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xslope_maint_resp"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XSLOPE_MAINT_RESP</strong></td><td> =</td><td>0.16</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xtau_wood~2"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter, DIMENSION(NVEGTYPE_OLD)</td><td>::</td>
+  <td><strong>XTAU_WOOD</strong></td><td> =</td><td>(/0., 0., 0., 40.*365.*86400., 50.*365.*86400., 30.*365.*86400., 0., 0., 0., 0., 0., 0., 40.*365.*86400., 40.*365.*86400., 50.*365.*86400., 40.*365.*86400., 50.*365.*86400., 0., 40.*365.*86400./)</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xcn"></span>real,</td>
+  
+  <td>public,</td>
+  <td>DIMENSION(6)</td><td>::</td>
+  <td><strong>XCN</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xlc"></span>real,</td>
+  
+  <td>public,</td>
+  <td>DIMENSION(6)</td><td>::</td>
+  <td><strong>XLC</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xfrac_litter"></span>real,</td>
+  
+  <td>public,</td>
+  <td>DIMENSION(6,2)</td><td>::</td>
+  <td><strong>XFRAC_LITTER</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xtau_litter"></span>real,</td>
+  
+  <td>public,</td>
+  <td>DIMENSION(2)</td><td>::</td>
+  <td><strong>XTAU_LITTER</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xfrac_soilcarb"></span>real,</td>
+  
+  <td>public,</td>
+  <td>DIMENSION(2,3,6)</td><td>::</td>
+  <td><strong>XFRAC_SOILCARB</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xtau_soilcarb"></span>real,</td>
+  
+  <td>public,</td>
+  <td>DIMENSION(3)</td><td>::</td>
+  <td><strong>XTAU_SOILCARB</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xssa_sup"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XSSA_SUP</strong></td><td> =</td><td>0.15</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xssa_inf"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XSSA_INF</strong></td><td> =</td><td>0.15</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xssa_sup_pir"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XSSA_SUP_PIR</strong></td><td> =</td><td>0.80</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xssa_inf_pir"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XSSA_INF_PIR</strong></td><td> =</td><td>0.80</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xk_sup"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XK_SUP</strong></td><td> =</td><td>2.</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xxsi_sup"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XXSI_SUP</strong></td><td> =</td><td>2.</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xk_inf"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XK_INF</strong></td><td> =</td><td>1.</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xxsi_inf"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XXSI_INF</strong></td><td> =</td><td>7.</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xlai_shade"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter, DIMENSION(NVEGTYPE_OLD)</td><td>::</td>
+  <td><strong>XLAI_SHADE</strong></td><td> =</td><td>(/0., 0., 0., 2., 3., 6., 2., 2., 2., 2., 2., 2., 2., 2., 3., 2., 3., 2., 2./)</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xxb_sup"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter, DIMENSION(NVEGTYPE_OLD)</td><td>::</td>
+  <td><strong>XXB_SUP</strong></td><td> =</td><td>(/1., 1., 1., 1., 2., 3., 2., 2., 2., 2., 2., 2., 1., 1., 2., 1., 2., 2., 1./)</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xxb_inf"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter, DIMENSION(NVEGTYPE_OLD)</td><td>::</td>
+  <td><strong>XXB_INF</strong></td><td> =</td><td>(/1., 1., 1., 4., 2., 4., 1., 1.5, 1.5, 1., 1., 1., 4., 4., 2., 4., 2., 1., 4./)</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xdiludec"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter, DIMENSION(NVEGTYPE_OLD)</td><td>::</td>
+  <td><strong>XDILUDEC</strong></td><td> =</td><td>(/0., 0., 0., 1., 0., 0., 1., 1., 1., 1., 1., 0., 1., 0., 0., 1., 1., 0., 1./)</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xamax~2"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter, DIMENSION(NVEGTYPE_OLD)</td><td>::</td>
+  <td><strong>XAMAX</strong></td><td> =</td><td>(/1., 1., 1., 1.3E-6, 1.4E-6, 0.484E-6, 2.2E-6, 1.7E-6, 1.7E-6, 1.7E-6, 1.7E-6, 1.7E-6, 0.9E-6, 1.3E-6, 1.4E-6, 1.3E-6, 0.9E-6, 1.7E-6, 1.2E-6/)</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-itransfert_esg"></span>integer,</td>
+  
+  <td>public,</td>
+  <td>parameter, DIMENSION(NVEGTYPE_ECOSG)</td><td>::</td>
+  <td><strong>ITRANSFERT_ESG</strong></td><td> =</td><td>(/1, 2, 3, 16, 4, 13, 14, 6, 5, 15, 17, 19, 18, 10, 11, 7, 7, 8, 4, 12/)</td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+    </section>
+    <br>
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+
+    
+    
+    
+    </div>
+  </div>
+
+  
+    <hr>    
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+      <div class="row">
+        <div class="col-xs-6 col-md-6"><p>Town Energy Balance (TEB) model API docs was developed by teb-model<br>&copy; 2021 CeCILL
+                                          </p>
+        </div>
+        <div class="col-xs-6 col-md-6">
+          <p class="text-right">
+            Documentation generated by 
+            <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+            
+            
+          </p>
+        </div>
+      </div>
+      <br>
+      </div> <!-- /container -->    
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+<!--
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+-->
+    <script src="../js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../js/ie10-viewport-bug-workaround.js"></script>
+
+    <!-- MathJax JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+        jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+        extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+      });
+    </script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    
+    <script src="../tipuesearch/tipuesearch_content.js"></script>
+    <script src="../tipuesearch/tipuesearch_set.js"></script>
+    <script src="../tipuesearch/tipuesearch.js"></script>
+    
+    
+  </body>
+</html>

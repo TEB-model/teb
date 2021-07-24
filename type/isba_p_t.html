@@ -1,0 +1,1423 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   
+   <meta name="description" content="The Town Energy Balance (TEB) model is an urban land surface model developed to calculate the exchange of energy and water between cities and atmosphere.">
+    
+    <meta name="author" content="teb-model" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>ISBA_P_t &ndash; Town Energy Balance (TEB) model API docs </title>
+
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+    
+    <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+    
+    
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <script src="../js/jquery-2.1.3.min.js"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../index.html">Town Energy Balance (TEB) model API docs </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+        
+            <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
+              <a href="#" class="dropdown-toggle"
+              data-toggle="dropdown" role="button"
+              aria-haspopup="true"
+     aria-expanded="false">Contents <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          
+              
+            <li><a href="../lists/files.html">Source Files</a></li>
+        
+        
+        
+            <li><a href="../lists/modules.html">Modules</a></li>
+        
+            
+                                
+            <li><a href="../lists/procedures.html">Procedures</a></li>
+        
+               
+            <li><a href="../lists/types.html">Derived Types</a></li>
+        
+        
+            <li><a href="../program/driver.html">Program</a></li>
+               
+        
+        
+            </ul>
+        
+            </li>
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/files.html">Source Files</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
+
+                             
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/types.html">Derived Types</a></li>
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../program/driver.html">Program</a></li>
+
+
+
+          </ul>
+        
+        <form action="../search.html" class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+        </div>
+<!--
+        <button type="submit" class="btn btn-default">Submit</button>
+-->
+        </form>
+        
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+    
+  
+  <div class="row">
+    <h1>ISBA_P_t
+    <small>Derived Type</small>
+    
+    </h1>
+    
+<div class="row">
+  <div class="col-lg-12">
+<div class="well well-sm">
+  <ul class="list-inline" style="margin-bottom:0px;display:inline">
+     
+     
+     
+    <li><i class="fa fa-legal"></i> CeCILL</li> 
+     
+     
+     
+    
+    
+     <li><i class="fa fa-list-ol"></i>
+       <a data-toggle="tooltip"
+    data-placement="bottom" data-html="true"
+    title="<p> 3.0% of total for derived types.</p>Including implementation: 54 statements,  3.0% of total for derived types.">54 statements</a>
+     </li> 
+     
+     
+     
+    <li><i class="fa fa-code"></i><a href="../src/modd_isban.F90"> Source File</a></li>
+     
+     
+  </ul>
+  <ol class="breadcrumb in-well text-right">
+  
+    
+     <li><a href='../sourcefile/modd_isban.f90.html'>modd_isban.F90</a></li>
+    
+     <li><a href='../module/modd_isba_n.html'>MODD_ISBA_n</a></li>
+    
+  
+     <li class="active">ISBA_P_t</li>
+  </ol>
+</div>
+</div>
+</div>
+<script>
+  $(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+  })
+</script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+    
+<div id="sidebar">
+  
+<h3>Contents</h3>
+ 
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#vars-0">Variables</a></h3></div>
+  <div id="vars-0" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../type/isba_p_t.html#variable-nsize_p">NSIZE_P</a>
+      
+      <a class="list-group-item" href="../type/isba_p_t.html#variable-xpatch~2">XPATCH</a>
+      
+      <a class="list-group-item" href="../type/isba_p_t.html#variable-xvegtype_patch~2">XVEGTYPE_PATCH</a>
+      
+      <a class="list-group-item" href="../type/isba_p_t.html#variable-nr_p">NR_P</a>
+      
+      <a class="list-group-item" href="../type/isba_p_t.html#variable-xpatch_old">XPATCH_OLD</a>
+      
+      <a class="list-group-item" href="../type/isba_p_t.html#variable-xanmax">XANMAX</a>
+      
+      <a class="list-group-item" href="../type/isba_p_t.html#variable-xfzero">XFZERO</a>
+      
+      <a class="list-group-item" href="../type/isba_p_t.html#variable-xepso">XEPSO</a>
+      
+      <a class="list-group-item" href="../type/isba_p_t.html#variable-xgamm">XGAMM</a>
+      
+      <a class="list-group-item" href="../type/isba_p_t.html#variable-xqdgamm">XQDGAMM</a>
+      
+      <a class="list-group-item" href="../type/isba_p_t.html#variable-xqdgmes">XQDGMES</a>
+      
+      <a class="list-group-item" href="../type/isba_p_t.html#variable-xt1gmes">XT1GMES</a>
+      
+      <a class="list-group-item" href="../type/isba_p_t.html#variable-xt2gmes">XT2GMES</a>
+      
+      <a class="list-group-item" href="../type/isba_p_t.html#variable-xamax">XAMAX</a>
+      
+      <a class="list-group-item" href="../type/isba_p_t.html#variable-xqdamax">XQDAMAX</a>
+      
+      <a class="list-group-item" href="../type/isba_p_t.html#variable-xt1amax">XT1AMAX</a>
+      
+      <a class="list-group-item" href="../type/isba_p_t.html#variable-xt2amax">XT2AMAX</a>
+      
+      <a class="list-group-item" href="../type/isba_p_t.html#variable-xah">XAH</a>
+      
+      <a class="list-group-item" href="../type/isba_p_t.html#variable-xbh">XBH</a>
+      
+      <a class="list-group-item" href="../type/isba_p_t.html#variable-xtau_wood">XTAU_WOOD</a>
+      
+      <a class="list-group-item" href="../type/isba_p_t.html#variable-xincrease">XINCREASE</a>
+      
+      <a class="list-group-item" href="../type/isba_p_t.html#variable-xturnover">XTURNOVER</a>
+      
+      <a class="list-group-item" href="../type/isba_p_t.html#variable-xcondsat">XCONDSAT</a>
+      
+      <a class="list-group-item" href="../type/isba_p_t.html#variable-xtauice">XTAUICE</a>
+      
+      <a class="list-group-item" href="../type/isba_p_t.html#variable-xc1sat">XC1SAT</a>
+      
+      <a class="list-group-item" href="../type/isba_p_t.html#variable-xc2ref">XC2REF</a>
+      
+      <a class="list-group-item" href="../type/isba_p_t.html#variable-xc3">XC3</a>
+      
+      <a class="list-group-item" href="../type/isba_p_t.html#variable-xc4ref">XC4REF</a>
+      
+      <a class="list-group-item" href="../type/isba_p_t.html#variable-xbslai_nitro">XBSLAI_NITRO</a>
+      
+      <a class="list-group-item" href="../type/isba_p_t.html#variable-xcps">XCPS</a>
+      
+      <a class="list-group-item" href="../type/isba_p_t.html#variable-xlvtt">XLVTT</a>
+      
+      <a class="list-group-item" href="../type/isba_p_t.html#variable-xlstt">XLSTT</a>
+      
+      <a class="list-group-item" href="../type/isba_p_t.html#variable-xrunoffd">XRUNOFFD</a>
+      
+      <a class="list-group-item" href="../type/isba_p_t.html#variable-xdzg">XDZG</a>
+      
+      <a class="list-group-item" href="../type/isba_p_t.html#variable-xdzdif">XDZDIF</a>
+      
+      <a class="list-group-item" href="../type/isba_p_t.html#variable-xsoilwght">XSOILWGHT</a>
+      
+      <a class="list-group-item" href="../type/isba_p_t.html#variable-xksat_ice">XKSAT_ICE</a>
+      
+      <a class="list-group-item" href="../type/isba_p_t.html#variable-xtopqs">XTOPQS</a>
+      
+      <a class="list-group-item" href="../type/isba_p_t.html#variable-xdg">XDG</a>
+      
+      <a class="list-group-item" href="../type/isba_p_t.html#variable-xdg_old">XDG_OLD</a>
+      
+      <a class="list-group-item" href="../type/isba_p_t.html#variable-xdg2">XDG2</a>
+      
+      <a class="list-group-item" href="../type/isba_p_t.html#variable-nwg_layer">NWG_LAYER</a>
+      
+      <a class="list-group-item" href="../type/isba_p_t.html#variable-xdroot">XDROOT</a>
+      
+      <a class="list-group-item" href="../type/isba_p_t.html#variable-xrootfrac">XROOTFRAC</a>
+      
+      <a class="list-group-item" href="../type/isba_p_t.html#variable-xd_ice">XD_ICE</a>
+      
+      <a class="list-group-item" href="../type/isba_p_t.html#variable-xh_tree">XH_TREE</a>
+      
+      <a class="list-group-item" href="../type/isba_p_t.html#variable-xz0_o_z0h">XZ0_O_Z0H</a>
+      
+      <a class="list-group-item" href="../type/isba_p_t.html#variable-xre25">XRE25</a>
+      
+      <a class="list-group-item" href="../type/isba_p_t.html#variable-xdmax">XDMAX</a>
+      
+      <a class="list-group-item" href="../type/isba_p_t.html#variable-xred_noise">XRED_NOISE</a>
+      
+      <a class="list-group-item" href="../type/isba_p_t.html#variable-xincr">XINCR</a>
+      
+      <a class="list-group-item" href="../type/isba_p_t.html#variable-xho">XHO</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+  <div class="list-group">
+    <a class="list-group-item" href="../type/isba_p_t.html#src">ISBA_P_t</a>
+  </div>
+</div>
+
+
+
+</div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+      <h2>type, public :: ISBA_P_t</h2>
+    
+    
+    
+    
+    <br>
+
+    <section class="visible-xs visible-sm hidden-md">
+      
+<h3>Contents</h3>
+ 
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#vars-1">Variables</a></h3></div>
+  <div id="vars-1" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../type/isba_p_t.html#variable-nsize_p">NSIZE_P</a>
+      
+      <a class="list-group-item" href="../type/isba_p_t.html#variable-xpatch~2">XPATCH</a>
+      
+      <a class="list-group-item" href="../type/isba_p_t.html#variable-xvegtype_patch~2">XVEGTYPE_PATCH</a>
+      
+      <a class="list-group-item" href="../type/isba_p_t.html#variable-nr_p">NR_P</a>
+      
+      <a class="list-group-item" href="../type/isba_p_t.html#variable-xpatch_old">XPATCH_OLD</a>
+      
+      <a class="list-group-item" href="../type/isba_p_t.html#variable-xanmax">XANMAX</a>
+      
+      <a class="list-group-item" href="../type/isba_p_t.html#variable-xfzero">XFZERO</a>
+      
+      <a class="list-group-item" href="../type/isba_p_t.html#variable-xepso">XEPSO</a>
+      
+      <a class="list-group-item" href="../type/isba_p_t.html#variable-xgamm">XGAMM</a>
+      
+      <a class="list-group-item" href="../type/isba_p_t.html#variable-xqdgamm">XQDGAMM</a>
+      
+      <a class="list-group-item" href="../type/isba_p_t.html#variable-xqdgmes">XQDGMES</a>
+      
+      <a class="list-group-item" href="../type/isba_p_t.html#variable-xt1gmes">XT1GMES</a>
+      
+      <a class="list-group-item" href="../type/isba_p_t.html#variable-xt2gmes">XT2GMES</a>
+      
+      <a class="list-group-item" href="../type/isba_p_t.html#variable-xamax">XAMAX</a>
+      
+      <a class="list-group-item" href="../type/isba_p_t.html#variable-xqdamax">XQDAMAX</a>
+      
+      <a class="list-group-item" href="../type/isba_p_t.html#variable-xt1amax">XT1AMAX</a>
+      
+      <a class="list-group-item" href="../type/isba_p_t.html#variable-xt2amax">XT2AMAX</a>
+      
+      <a class="list-group-item" href="../type/isba_p_t.html#variable-xah">XAH</a>
+      
+      <a class="list-group-item" href="../type/isba_p_t.html#variable-xbh">XBH</a>
+      
+      <a class="list-group-item" href="../type/isba_p_t.html#variable-xtau_wood">XTAU_WOOD</a>
+      
+      <a class="list-group-item" href="../type/isba_p_t.html#variable-xincrease">XINCREASE</a>
+      
+      <a class="list-group-item" href="../type/isba_p_t.html#variable-xturnover">XTURNOVER</a>
+      
+      <a class="list-group-item" href="../type/isba_p_t.html#variable-xcondsat">XCONDSAT</a>
+      
+      <a class="list-group-item" href="../type/isba_p_t.html#variable-xtauice">XTAUICE</a>
+      
+      <a class="list-group-item" href="../type/isba_p_t.html#variable-xc1sat">XC1SAT</a>
+      
+      <a class="list-group-item" href="../type/isba_p_t.html#variable-xc2ref">XC2REF</a>
+      
+      <a class="list-group-item" href="../type/isba_p_t.html#variable-xc3">XC3</a>
+      
+      <a class="list-group-item" href="../type/isba_p_t.html#variable-xc4ref">XC4REF</a>
+      
+      <a class="list-group-item" href="../type/isba_p_t.html#variable-xbslai_nitro">XBSLAI_NITRO</a>
+      
+      <a class="list-group-item" href="../type/isba_p_t.html#variable-xcps">XCPS</a>
+      
+      <a class="list-group-item" href="../type/isba_p_t.html#variable-xlvtt">XLVTT</a>
+      
+      <a class="list-group-item" href="../type/isba_p_t.html#variable-xlstt">XLSTT</a>
+      
+      <a class="list-group-item" href="../type/isba_p_t.html#variable-xrunoffd">XRUNOFFD</a>
+      
+      <a class="list-group-item" href="../type/isba_p_t.html#variable-xdzg">XDZG</a>
+      
+      <a class="list-group-item" href="../type/isba_p_t.html#variable-xdzdif">XDZDIF</a>
+      
+      <a class="list-group-item" href="../type/isba_p_t.html#variable-xsoilwght">XSOILWGHT</a>
+      
+      <a class="list-group-item" href="../type/isba_p_t.html#variable-xksat_ice">XKSAT_ICE</a>
+      
+      <a class="list-group-item" href="../type/isba_p_t.html#variable-xtopqs">XTOPQS</a>
+      
+      <a class="list-group-item" href="../type/isba_p_t.html#variable-xdg">XDG</a>
+      
+      <a class="list-group-item" href="../type/isba_p_t.html#variable-xdg_old">XDG_OLD</a>
+      
+      <a class="list-group-item" href="../type/isba_p_t.html#variable-xdg2">XDG2</a>
+      
+      <a class="list-group-item" href="../type/isba_p_t.html#variable-nwg_layer">NWG_LAYER</a>
+      
+      <a class="list-group-item" href="../type/isba_p_t.html#variable-xdroot">XDROOT</a>
+      
+      <a class="list-group-item" href="../type/isba_p_t.html#variable-xrootfrac">XROOTFRAC</a>
+      
+      <a class="list-group-item" href="../type/isba_p_t.html#variable-xd_ice">XD_ICE</a>
+      
+      <a class="list-group-item" href="../type/isba_p_t.html#variable-xh_tree">XH_TREE</a>
+      
+      <a class="list-group-item" href="../type/isba_p_t.html#variable-xz0_o_z0h">XZ0_O_Z0H</a>
+      
+      <a class="list-group-item" href="../type/isba_p_t.html#variable-xre25">XRE25</a>
+      
+      <a class="list-group-item" href="../type/isba_p_t.html#variable-xdmax">XDMAX</a>
+      
+      <a class="list-group-item" href="../type/isba_p_t.html#variable-xred_noise">XRED_NOISE</a>
+      
+      <a class="list-group-item" href="../type/isba_p_t.html#variable-xincr">XINCR</a>
+      
+      <a class="list-group-item" href="../type/isba_p_t.html#variable-xho">XHO</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+  <div class="list-group">
+    <a class="list-group-item" href="../type/isba_p_t.html#src">ISBA_P_t</a>
+  </div>
+</div>
+
+
+
+    </section>
+    <br class="visible-xs visible-sm hidden-md">
+
+    
+    <section>
+    <h2>Components</h2>
+    
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th><th>Visibility</th>
+
+<th>Attributes</th><th></th><th>Name</th><th></th><th>Initial</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-nsize_p"></span>integer,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>NSIZE_P</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xpatch~2"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XPATCH</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xvegtype_patch~2"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:)</td><td>::</td>
+  <td><strong>XVEGTYPE_PATCH</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-nr_p"></span>integer,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>NR_P</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xpatch_old"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XPATCH_OLD</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xanmax"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XANMAX</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xfzero"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XFZERO</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xepso"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XEPSO</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xgamm"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XGAMM</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xqdgamm"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XQDGAMM</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xqdgmes"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XQDGMES</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xt1gmes"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XT1GMES</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xt2gmes"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XT2GMES</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xamax"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XAMAX</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xqdamax"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XQDAMAX</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xt1amax"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XT1AMAX</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xt2amax"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XT2AMAX</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xah"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XAH</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xbh"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XBH</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xtau_wood"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XTAU_WOOD</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xincrease"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:)</td><td>::</td>
+  <td><strong>XINCREASE</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xturnover"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:)</td><td>::</td>
+  <td><strong>XTURNOVER</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xcondsat"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:)</td><td>::</td>
+  <td><strong>XCONDSAT</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xtauice"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XTAUICE</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xc1sat"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XC1SAT</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xc2ref"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XC2REF</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xc3"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:)</td><td>::</td>
+  <td><strong>XC3</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xc4ref"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XC4REF</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xbslai_nitro"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XBSLAI_NITRO</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xcps"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XCPS</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xlvtt"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XLVTT</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xlstt"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XLSTT</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xrunoffd"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XRUNOFFD</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xdzg"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:)</td><td>::</td>
+  <td><strong>XDZG</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xdzdif"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:)</td><td>::</td>
+  <td><strong>XDZDIF</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xsoilwght"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:)</td><td>::</td>
+  <td><strong>XSOILWGHT</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xksat_ice"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XKSAT_ICE</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xtopqs"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:)</td><td>::</td>
+  <td><strong>XTOPQS</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xdg"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:)</td><td>::</td>
+  <td><strong>XDG</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xdg_old"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:)</td><td>::</td>
+  <td><strong>XDG_OLD</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xdg2"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XDG2</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-nwg_layer"></span>integer,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>NWG_LAYER</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xdroot"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XDROOT</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xrootfrac"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:)</td><td>::</td>
+  <td><strong>XROOTFRAC</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xd_ice"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XD_ICE</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xh_tree"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XH_TREE</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xz0_o_z0h"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XZ0_O_Z0H</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xre25"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XRE25</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xdmax"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XDMAX</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xred_noise"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:)</td><td>::</td>
+  <td><strong>XRED_NOISE</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xincr"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:)</td><td>::</td>
+  <td><strong>XINCR</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xho"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:,:)</td><td>::</td>
+  <td><strong>XHO</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+    </section>
+    <br>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <section>
+    <h3><span class="anchor" id="src"></span>Source Code</h3>
+    <div class="highlight"><pre><span></span><span class="k">TYPE </span><span class="n">ISBA_P_t</span>
+<span class="c">!</span>
+<span class="kt">INTEGER</span>  <span class="kd">::</span> <span class="n">NSIZE_P</span> <span class="c">! number of sub-patchs/tiles              (-)</span>
+<span class="c">!</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>    <span class="kd">::</span> <span class="n">XPATCH</span>         <span class="c">! fraction of each tile/patch   (-)</span>
+<span class="c">!</span>
+<span class="c">! Mask and number of grid elements containing patches/tiles:</span>
+<span class="c">!</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:)</span>  <span class="kd">::</span> <span class="n">XVEGTYPE_PATCH</span> <span class="c">! fraction of each vegetation type for</span>
+<span class="c">!</span>
+<span class="kt">INTEGER</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span> <span class="kd">::</span> <span class="n">NR_P</span>    <span class="c">! patch/tile mask  </span>
+<span class="c">!</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>    <span class="kd">::</span> <span class="n">XPATCH_OLD</span>     <span class="c">! fraction of each tile/patchfor land use (-)</span>
+<span class="c">!</span>
+<span class="c">!</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>    <span class="kd">::</span> <span class="n">XANMAX</span>         <span class="c">! maximum photosynthesis rate             (</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>    <span class="kd">::</span> <span class="n">XFZERO</span>         <span class="c">! ideal value of F, no photo- </span>
+<span class="c">!                                                ! respiration or saturation deficit  </span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>    <span class="kd">::</span> <span class="n">XEPSO</span>          <span class="c">! maximum initial quantum use             </span>
+<span class="c">!                                                ! efficiency                              (mg J-1 PAR)</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>    <span class="kd">::</span> <span class="n">XGAMM</span>          <span class="c">! CO2 conpensation concentration          (ppm)</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>    <span class="kd">::</span> <span class="n">XQDGAMM</span>        <span class="c">! Log of Q10 function for CO2 conpensation </span>
+<span class="c">!                                               ! concentration                           (-)</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>    <span class="kd">::</span> <span class="n">XQDGMES</span>        <span class="c">! Log of Q10 function for mesophyll conductance  (-)</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>    <span class="kd">::</span> <span class="n">XT1GMES</span>        <span class="c">! reference temperature for computing </span>
+<span class="c">!                                                ! compensation concentration function for </span>
+<span class="c">!                                                ! mesophyll conductance: minimum</span>
+<span class="c">!                                                ! temperature                             (K)</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>    <span class="kd">::</span> <span class="n">XT2GMES</span>        <span class="c">! reference temperature for computing </span>
+<span class="c">!                                                ! compensation concentration function for </span>
+<span class="c">!                                                ! mesophyll conductance: maximum</span>
+<span class="c">!                                                ! temperature                             (K)</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>    <span class="kd">::</span> <span class="n">XAMAX</span>          <span class="c">! leaf photosynthetic capacity            (mg m-2 s-1)</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>    <span class="kd">::</span> <span class="n">XQDAMAX</span>        <span class="c">! Log of Q10 function for leaf photosynthetic </span>
+<span class="c">!                                                ! capacity                                (-)</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>    <span class="kd">::</span> <span class="n">XT1AMAX</span>        <span class="c">! reference temperature for computing </span>
+<span class="c">!                                                ! compensation concentration function for </span>
+<span class="c">!                                                ! leaf photosynthetic capacity: minimum</span>
+<span class="c">!                                                ! temperature                             (K)</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>    <span class="kd">::</span> <span class="n">XT2AMAX</span>        <span class="c">! reference temperature for computing </span>
+<span class="c">!                                                ! compensation concentration function for </span>
+<span class="c">!                                                ! leaf photosynthetic capacity: maximum</span>
+<span class="c">!                                                ! temperature                             (K)</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>    <span class="kd">::</span> <span class="n">XAH</span>            <span class="c">! coefficients for herbaceous water stress </span>
+<span class="c">!                                                ! response (offensive or defensive)       (log(mm/s))</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>    <span class="kd">::</span> <span class="n">XBH</span>            <span class="c">! coefficients for herbaceous water stress </span>
+<span class="c">!                                                ! response (offensive or defensive)</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>    <span class="kd">::</span> <span class="n">XTAU_WOOD</span>      <span class="c">! residence time in woody biomass         (s)</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:)</span>   <span class="kd">::</span> <span class="n">XINCREASE</span>     <span class="c">! biomass increase                     (kg/m2/day)</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:)</span>   <span class="kd">::</span> <span class="n">XTURNOVER</span>     <span class="c">! turnover rates from biomass to litter (gC/m2/s)</span>
+<span class="c">!</span>
+<span class="c">! *Soil hydraulic characteristics</span>
+<span class="c">!</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:)</span>  <span class="kd">::</span> <span class="n">XCONDSAT</span>       <span class="c">! hydraulic conductivity at saturation    (m/s)</span>
+<span class="c">!</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>      <span class="kd">::</span> <span class="n">XTAUICE</span>        <span class="c">! soil freezing characteristic timescale  (s)</span>
+<span class="c">!</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>    <span class="kd">::</span> <span class="n">XC1SAT</span>         <span class="c">! &#39;Force-Restore&#39; C1 coefficient at </span>
+<span class="c">!                                                ! saturation                              (-)</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>    <span class="kd">::</span> <span class="n">XC2REF</span>         <span class="c">! &#39;Force-Restore&#39; reference value of C2   (-)</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:)</span>  <span class="kd">::</span> <span class="n">XC3</span>            <span class="c">! &#39;Force-Restore&#39; C3 drainage coefficient (m)</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>    <span class="kd">::</span> <span class="n">XC4REF</span>         <span class="c">! &#39;Force-Restore&#39; sub-surface vertical </span>
+<span class="c">!                                                ! for lateral drainage (&#39;DIF&#39; option)</span>
+<span class="c">!</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>    <span class="kd">::</span> <span class="n">XBSLAI_NITRO</span>   <span class="c">! biomass/LAI ratio from nitrogen </span>
+<span class="c">!                                                  ! decline theory                        (kg/m2)</span>
+<span class="c">! * Soil thermal characteristics</span>
+<span class="c">!</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>    <span class="kd">::</span> <span class="n">XCPS</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>    <span class="kd">::</span> <span class="n">XLVTT</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>    <span class="kd">::</span> <span class="n">XLSTT</span>
+<span class="c">!</span>
+<span class="c">! * Initialize hydrology</span>
+<span class="c">!</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>    <span class="kd">::</span> <span class="n">XRUNOFFD</span>     <span class="c">! depth over which sub-grid runoff is</span>
+<span class="c">!                                                ! computed: in Force-Restore this is the</span>
+<span class="c">!                                                ! total soil column (&#39;2-L&#39;), or root zone</span>
+<span class="c">!                                                ! (&#39;3-L&#39;). For the &#39;DIF&#39; option, it can</span>
+<span class="c">!                                                ! be any depth within soil column         (m)</span>
+<span class="c">!</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:)</span>  <span class="kd">::</span> <span class="n">XDZG</span>           <span class="c">! soil layers thicknesses (DIF option)</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:)</span>  <span class="kd">::</span> <span class="n">XDZDIF</span>         <span class="c">! distance between consecuative layer mid-points (DIF option)</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:)</span>  <span class="kd">::</span> <span class="n">XSOILWGHT</span>      <span class="c">! VEG-DIF: weights for vertical</span>
+<span class="c">!                                                ! integration of soil water and properties</span>
+<span class="c">!</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>  <span class="kd">::</span> <span class="n">XKSAT_ICE</span>        <span class="c">! hydraulic conductivity at saturation</span>
+<span class="c">!                                                    over frozen area (m s-1)</span>
+<span class="c">!</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:)</span> <span class="kd">::</span> <span class="n">XTOPQS</span>  <span class="c">! Topmodel subsurface flow by layer (m/s)</span>
+<span class="c">!</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:)</span> <span class="kd">::</span> <span class="n">XDG</span>           <span class="c">! soil layer depth                  (m)</span>
+<span class="c">!                                                ! NOTE: in Force-Restore mode, the </span>
+<span class="c">!                                                ! uppermost layer depth is superficial</span>
+<span class="c">!                                                ! and is only explicitly used for soil </span>
+<span class="c">!                                                ! water phase changes                     (m)</span>
+<span class="c">!</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:)</span>  <span class="kd">::</span> <span class="n">XDG_OLD</span>      <span class="c">! For land use</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>    <span class="kd">::</span> <span class="n">XDG2</span>
+<span class="kt">INTEGER</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span> <span class="kd">::</span> <span class="n">NWG_LAYER</span>    <span class="c">! Number of soil moisture layers for DIF</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>    <span class="kd">::</span> <span class="n">XDROOT</span>       <span class="c">! effective root depth for DIF (m)</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:)</span>  <span class="kd">::</span> <span class="n">XROOTFRAC</span>    <span class="c">! root fraction profile (&#39;DIF&#39; option)</span>
+<span class="c">!</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span> <span class="kd">::</span> <span class="n">XD_ICE</span>          <span class="c">! depth of the soil column for the calculation</span>
+<span class="c">!                                                 of the frozen soil fraction (m)</span>
+<span class="c">!</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span> <span class="kd">::</span> <span class="n">XH_TREE</span>         <span class="c">! height of trees                         (m)</span>
+<span class="c">!</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span> <span class="kd">::</span> <span class="n">XZ0_O_Z0H</span>       <span class="c">! ratio of surface roughness lengths</span>
+<span class="c">!                                                ! (momentum to heat)                      (-)</span>
+<span class="c">!</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span> <span class="kd">::</span> <span class="n">XRE25</span>           <span class="c">! Ecosystem respiration parameter         (kg/kg.m.s-1)</span>
+<span class="c">!</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span> <span class="kd">::</span> <span class="n">XDMAX</span>           <span class="c">! maximum air saturation deficit</span>
+<span class="c">!                                                ! tolerate by vegetation</span>
+<span class="c">!                                                (kg/kg)</span>
+<span class="c">!</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:)</span>     <span class="kd">::</span> <span class="n">XRED_NOISE</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:)</span>     <span class="kd">::</span> <span class="n">XINCR</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:,:)</span>   <span class="kd">::</span> <span class="n">XHO</span>
+<span class="c">!</span>
+<span class="k">END TYPE </span><span class="n">ISBA_P_t</span>
+</pre></div>
+
+    </section>
+    
+    
+    </div>
+  </div>
+
+
+    <hr>    
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+      <div class="row">
+        <div class="col-xs-6 col-md-6"><p>Town Energy Balance (TEB) model API docs was developed by teb-model<br>&copy; 2021 CeCILL
+                                          </p>
+        </div>
+        <div class="col-xs-6 col-md-6">
+          <p class="text-right">
+            Documentation generated by 
+            <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+            
+            
+          </p>
+        </div>
+      </div>
+      <br>
+      </div> <!-- /container -->    
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+<!--
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+-->
+    <script src="../js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../js/ie10-viewport-bug-workaround.js"></script>
+
+    <!-- MathJax JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+        jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+        extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+      });
+    </script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    
+    <script src="../tipuesearch/tipuesearch_content.js"></script>
+    <script src="../tipuesearch/tipuesearch_set.js"></script>
+    <script src="../tipuesearch/tipuesearch.js"></script>
+    
+    
+  </body>
+</html>

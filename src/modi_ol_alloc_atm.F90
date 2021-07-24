@@ -1,0 +1,11 @@
+!auto_modi:spll_ol_alloc_atm.D
+MODULE MODI_OL_ALLOC_ATM
+INTERFACE
+SUBROUTINE OL_ALLOC_ATM(KNI,KBANDS,KSCAL)
+IMPLICIT NONE
+INTEGER,            INTENT(IN)  :: KNI       ! grid dimension
+INTEGER,            INTENT(IN)  :: KBANDS    ! grid dimension
+INTEGER,            INTENT(IN)  :: KSCAL     ! grid dimension
+END SUBROUTINE OL_ALLOC_ATM
+END INTERFACE
+END MODULE MODI_OL_ALLOC_ATM
