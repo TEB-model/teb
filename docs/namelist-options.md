@@ -27,6 +27,7 @@ List of options currently available in TEB.
 | `INB_ATM`       | -               | -               | Number of TEB calls within one atmospheric forcing time step. Forcing time step=XTSTEP_SURF*INB_ATM. | `6`        |
 | `KSW`           | -               | -               | Number of spectral bands in SW forcing                                                               | `1`        |
 | `ZZREF`         | -               | m               | Atmospheric forcing height above roof level                                                          | `28.`      |
+| `NO_OUTPUT`     | `{TRUE, FALSE}` | -               | Whether to output results to file                                                                    | `.FALSE.`  |
 | `CBEM`          |                 | -               | Building energy Model                                                                                | `DEF`      |
 |                 | `DEF`           | -               | No Building Energy Model (BEM)                                                                       | -          |
 |                 | `BEM`           | -               | Building Energy Model (BEM)                                                                          | -          |

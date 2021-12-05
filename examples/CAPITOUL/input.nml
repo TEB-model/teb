@@ -23,6 +23,7 @@ INB_ATM     = 6         ! number time the driver calls the TEB
                         ! native time step of the input data.
 KSW         = 1         ! number of spectral bands in SW forcing
 ZZREF       = 28.       ! Atm. Forcing height above roof level
+NO_OUTPUT   = .FALSE.   ! Whether to output results to file
 
 !                                                                                     ! ||   ||
 !                                                                                     ! ||   ||

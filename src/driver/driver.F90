@@ -129,7 +129,7 @@ namelist /parameters/   XTSTEP_SURF, IYEAR, IMONTH, IDAY, ZTIME_START, ZLON, ZLA
                         ZHR_TARGET, ZEFF_HEAT, ZCAP_SYS_HEAT, ZCAP_SYS_RAT, ZT_ADP, ZM_SYS_RAT ,&
                         ZCOP_RAT, CCH_BEM, ZROUGH_ROOF, ZROUGH_WALL, ZT_ROAD, ZT_ROOF, ZT_WALL ,&
                         ZT_FLOOR, ZT_MASS, ZTI_BLD, ZT_CANYON, ZT_WIN1, ZT_WIN2, ZQ_CANYON, ZQI_BLD, &
-                        VEG_ALB, VEG_EMIS, GARDEN_BR, GREENROOF_BR
+                        VEG_ALB, VEG_EMIS, GARDEN_BR, GREENROOF_BR, NO_OUTPUT
 
 ! ---------------------------------------------------------------
 ! Declarations of local variables (INPUTS)
@@ -613,6 +613,7 @@ INTEGER                           :: IDAY2               ! current day at end of
 REAL                              :: ZTIME2              ! current time since start of the day at end of timestep (s)
 
 logical :: exist ! TODO: testing remove
+LOGICAL :: NO_OUTPUT ! Whether to output results to file
 
 !===========================================================================
 ! Read from namelist file after default values are set.
@@ -830,49 +831,51 @@ ZTSSNOW_ROAD= XUNDEF
 ! Outputs
 ! -----------------------------------------------------------
 !
-OPEN(UNIT=13, FILE = T_ROOF1,   ACCESS = 'APPEND',STATUS = 'REPLACE')
-OPEN(UNIT=14, FILE = T_CANYON,  ACCESS = 'APPEND',STATUS = 'REPLACE')
-OPEN(UNIT=15, FILE = T_ROAD1,   ACCESS = 'APPEND',STATUS = 'REPLACE')
-OPEN(UNIT=16, FILE = T_WALLA1,  ACCESS = 'APPEND',STATUS = 'REPLACE')
-OPEN(UNIT=17, FILE = T_WALLB1,  ACCESS = 'APPEND',STATUS = 'REPLACE')
-OPEN(UNIT=18, FILE = TI_BLD,    ACCESS = 'APPEND',STATUS = 'REPLACE')
-OPEN(UNIT=19, FILE = Q_CANYON,  ACCESS = 'APPEND',STATUS = 'REPLACE')
-OPEN(UNIT=21, FILE = U_CANYON,  ACCESS = 'APPEND',STATUS = 'REPLACE')
-OPEN(UNIT=22, FILE = H_TOWN,    ACCESS = 'APPEND',STATUS = 'REPLACE')
-OPEN(UNIT=23, FILE = LE_TOWN,   ACCESS = 'APPEND',STATUS = 'REPLACE')
-OPEN(UNIT=24, FILE = RN_TOWN,   ACCESS = 'APPEND',STATUS = 'REPLACE')
-OPEN(UNIT=25, FILE = HVAC_COOL, ACCESS = 'APPEND',STATUS = 'REPLACE')
-OPEN(UNIT=26, FILE = HVAC_HEAT, ACCESS = 'APPEND',STATUS = 'REPLACE')
-OPEN(UNIT=37, FILE = COP,       ACCESS = 'APPEND',STATUS = 'REPLACE')
-!
-OPEN(UNIT=27, FILE = DIR_CANYON, ACCESS = 'APPEND',STATUS = 'REPLACE')
-OPEN(UNIT=28, FILE = ALB_TOWN,   ACCESS = 'APPEND',STATUS = 'REPLACE')
-OPEN(UNIT=29, FILE = EMIS_TOWN,  ACCESS = 'APPEND',STATUS = 'REPLACE')
-OPEN(UNIT=30, FILE = EVAP_TOWN,  ACCESS = 'APPEND',STATUS = 'REPLACE')
-OPEN(UNIT=31, FILE = GFLUX_TOWN, ACCESS = 'APPEND',STATUS = 'REPLACE')
-OPEN(UNIT=32, FILE = TS_TOWN,    ACCESS = 'APPEND',STATUS = 'REPLACE')
-OPEN(UNIT=33, FILE = Q_TOWN,     ACCESS = 'APPEND',STATUS = 'REPLACE')
-OPEN(UNIT=34, FILE = USTAR_TOWN, ACCESS = 'APPEND',STATUS = 'REPLACE')
-OPEN(UNIT=35, FILE = THER_PROD_PANEL, ACCESS = 'APPEND',STATUS = 'REPLACE')
-OPEN(UNIT=36, FILE = PHOT_PROD_PANEL, ACCESS = 'APPEND',STATUS = 'REPLACE')
-OPEN(UNIT=38, FILE = QF_TOWN, ACCESS = 'APPEND',STATUS = 'REPLACE')
-OPEN(UNIT=39, FILE = DQS_TOWN, ACCESS = 'APPEND',STATUS = 'REPLACE')
-!
-OPEN(UNIT=40, FILE = SWD, ACCESS = 'APPEND',STATUS = 'REPLACE')
-OPEN(UNIT=41, FILE = SWU, ACCESS = 'APPEND',STATUS = 'REPLACE')
-OPEN(UNIT=42, FILE = LWD, ACCESS = 'APPEND',STATUS = 'REPLACE')
-OPEN(UNIT=43, FILE = LWU, ACCESS = 'APPEND',STATUS = 'REPLACE')
+IF (.NOT. NO_OUTPUT) THEN
+  OPEN(UNIT=13, FILE = T_ROOF1,   ACCESS = 'APPEND',STATUS = 'REPLACE')
+  OPEN(UNIT=14, FILE = T_CANYON,  ACCESS = 'APPEND',STATUS = 'REPLACE')
+  OPEN(UNIT=15, FILE = T_ROAD1,   ACCESS = 'APPEND',STATUS = 'REPLACE')
+  OPEN(UNIT=16, FILE = T_WALLA1,  ACCESS = 'APPEND',STATUS = 'REPLACE')
+  OPEN(UNIT=17, FILE = T_WALLB1,  ACCESS = 'APPEND',STATUS = 'REPLACE')
+  OPEN(UNIT=18, FILE = TI_BLD,    ACCESS = 'APPEND',STATUS = 'REPLACE')
+  OPEN(UNIT=19, FILE = Q_CANYON,  ACCESS = 'APPEND',STATUS = 'REPLACE')
+  OPEN(UNIT=21, FILE = U_CANYON,  ACCESS = 'APPEND',STATUS = 'REPLACE')
+  OPEN(UNIT=22, FILE = H_TOWN,    ACCESS = 'APPEND',STATUS = 'REPLACE')
+  OPEN(UNIT=23, FILE = LE_TOWN,   ACCESS = 'APPEND',STATUS = 'REPLACE')
+  OPEN(UNIT=24, FILE = RN_TOWN,   ACCESS = 'APPEND',STATUS = 'REPLACE')
+  OPEN(UNIT=25, FILE = HVAC_COOL, ACCESS = 'APPEND',STATUS = 'REPLACE')
+  OPEN(UNIT=26, FILE = HVAC_HEAT, ACCESS = 'APPEND',STATUS = 'REPLACE')
+  OPEN(UNIT=37, FILE = COP,       ACCESS = 'APPEND',STATUS = 'REPLACE')
+  !
+  OPEN(UNIT=27, FILE = DIR_CANYON, ACCESS = 'APPEND',STATUS = 'REPLACE')
+  OPEN(UNIT=28, FILE = ALB_TOWN,   ACCESS = 'APPEND',STATUS = 'REPLACE')
+  OPEN(UNIT=29, FILE = EMIS_TOWN,  ACCESS = 'APPEND',STATUS = 'REPLACE')
+  OPEN(UNIT=30, FILE = EVAP_TOWN,  ACCESS = 'APPEND',STATUS = 'REPLACE')
+  OPEN(UNIT=31, FILE = GFLUX_TOWN, ACCESS = 'APPEND',STATUS = 'REPLACE')
+  OPEN(UNIT=32, FILE = TS_TOWN,    ACCESS = 'APPEND',STATUS = 'REPLACE')
+  OPEN(UNIT=33, FILE = Q_TOWN,     ACCESS = 'APPEND',STATUS = 'REPLACE')
+  OPEN(UNIT=34, FILE = USTAR_TOWN, ACCESS = 'APPEND',STATUS = 'REPLACE')
+  OPEN(UNIT=35, FILE = THER_PROD_PANEL, ACCESS = 'APPEND',STATUS = 'REPLACE')
+  OPEN(UNIT=36, FILE = PHOT_PROD_PANEL, ACCESS = 'APPEND',STATUS = 'REPLACE')
+  OPEN(UNIT=38, FILE = QF_TOWN, ACCESS = 'APPEND',STATUS = 'REPLACE')
+  OPEN(UNIT=39, FILE = DQS_TOWN, ACCESS = 'APPEND',STATUS = 'REPLACE')
+  !
+  OPEN(UNIT=40, FILE = SWD, ACCESS = 'APPEND',STATUS = 'REPLACE')
+  OPEN(UNIT=41, FILE = SWU, ACCESS = 'APPEND',STATUS = 'REPLACE')
+  OPEN(UNIT=42, FILE = LWD, ACCESS = 'APPEND',STATUS = 'REPLACE')
+  OPEN(UNIT=43, FILE = LWU, ACCESS = 'APPEND',STATUS = 'REPLACE')
 
-OPEN(UNIT=50, FILE = Forc_TA, ACCESS = 'APPEND',STATUS = 'REPLACE')
-OPEN(UNIT=51, FILE = Forc_PS, ACCESS = 'APPEND',STATUS = 'REPLACE')
-OPEN(UNIT=52, FILE = Forc_QA, ACCESS = 'APPEND',STATUS = 'REPLACE')
-OPEN(UNIT=53, FILE = Forc_WIND, ACCESS = 'APPEND',STATUS = 'REPLACE')
-OPEN(UNIT=54, FILE = Forc_RAIN, ACCESS = 'APPEND',STATUS = 'REPLACE')
-OPEN(UNIT=55, FILE = Forc_SNOW, ACCESS = 'APPEND',STATUS = 'REPLACE')
+  OPEN(UNIT=50, FILE = Forc_TA, ACCESS = 'APPEND',STATUS = 'REPLACE')
+  OPEN(UNIT=51, FILE = Forc_PS, ACCESS = 'APPEND',STATUS = 'REPLACE')
+  OPEN(UNIT=52, FILE = Forc_QA, ACCESS = 'APPEND',STATUS = 'REPLACE')
+  OPEN(UNIT=53, FILE = Forc_WIND, ACCESS = 'APPEND',STATUS = 'REPLACE')
+  OPEN(UNIT=54, FILE = Forc_RAIN, ACCESS = 'APPEND',STATUS = 'REPLACE')
+  OPEN(UNIT=55, FILE = Forc_SNOW, ACCESS = 'APPEND',STATUS = 'REPLACE')
 
-OPEN(UNIT=56, FILE = T_FLOOR1,   ACCESS = 'APPEND',STATUS = 'REPLACE')
-OPEN(UNIT=57, FILE = T_MASS1,   ACCESS = 'APPEND',STATUS = 'REPLACE')
-OPEN(UNIT=58, FILE = QI_BLD,   ACCESS = 'APPEND',STATUS = 'REPLACE')
+  OPEN(UNIT=56, FILE = T_FLOOR1,   ACCESS = 'APPEND',STATUS = 'REPLACE')
+  OPEN(UNIT=57, FILE = T_MASS1,   ACCESS = 'APPEND',STATUS = 'REPLACE')
+  OPEN(UNIT=58, FILE = QI_BLD,   ACCESS = 'APPEND',STATUS = 'REPLACE')
+END IF
 !
 ! -----------------------------------------------------------
 ! Temporal loops
@@ -1122,83 +1125,84 @@ DO JFORC_STEP= 1,INB_STEP_ATM
 
    END DO
 
-!  Instantaneous diagnostics
-ZTS_ROOF = ZT_ROOF(1,1)
-ZTS_ROAD = ZT_ROAD(1,1)
-ZTS_WALL_A = ZT_WALL(1,1)
-ZTS_WALL_B = ZT_WALL_B(1,1)
+  IF (.NOT. NO_OUTPUT) THEN
+    !  Instantaneous diagnostics
+    ZTS_ROOF = ZT_ROOF(1,1)
+    ZTS_ROAD = ZT_ROAD(1,1)
+    ZTS_WALL_A = ZT_WALL(1,1)
+    ZTS_WALL_B = ZT_WALL_B(1,1)
 
-! Calucalte the total (direct + diffuse radiaitons)town albedo
-IF (ZTDIR_SW(1,1) == 0.) THEN
-  ZALB_TOWN  = 0.
-ELSE
-  ZALB_TOWN = (ZDIR_ALB_TOWN * ZTDIR_SW(1,1) + ZSCA_ALB_TOWN * ZTSCA_SW(1,1)) / (ZTDIR_SW(1,1) + ZTSCA_SW(1,1))
-END IF
-! TEB does no modify the wind direction
-ZDIR_CANYON = ZDIR(1,1)
-! Town specific humidity assumed to be same as canyon humidity
-ZQ_TOWN = ZQ_CANYON
-
-   !
-   WRITE(13,*) ZTS_ROOF
-   WRITE(14,*) ZT_CANYON
-   WRITE(15,*) ZTS_ROAD
-   WRITE(16,*) ZTS_WALL_A
-   WRITE(17,*) ZTS_WALL_B
-   WRITE(18,*) ZTI_BLD
-   WRITE(19,*) ZQ_CANYON
-   WRITE(21,*) ZU_CANYON
-   WRITE(22,*) ZH_TOWN
-   WRITE(23,*) ZLE_TOWN
-   WRITE(24,*) ZRN_TOWN
-   IF (CBEM=='BEM') THEN
-     ! The heating and cooling energy demand are converted
-     ! from W/m²(bld) to W/m²(urb).
-     ! FIXME: this does not seem correct anymore, why?
-     ! it seems that ZHVAC_COOL is already W/m²(urb)...  
-     ZHVAC_COOL_TOT = ZBLD * ZHVAC_COOL
-     ZHVAC_HEAT_TOT = ZBLD * ZHVAC_HEAT
-     WRITE(25,*) ZHVAC_COOL
-     WRITE(26,*) ZHVAC_HEAT
-     WRITE(37,*) ZCOP
-   END IF
-!
-    WRITE(27,*) ZDIR_CANYON
-    WRITE(28,*) ZALB_TOWN
-    WRITE(29,*) ZEMIS_TOWN
-    WRITE(30,*) ZEVAP_TOWN
-    WRITE(31,*) ZGFLUX_TOWN
-    WRITE(32,*) ZTS_TOWN
-    WRITE(33,*) ZQ_TOWN
-    WRITE(34,*) ZUSTAR_TOWN
-    WRITE(38,*) ZQF_TOWN
-    WRITE(39,*) ZDQS_TOWN
-    IF (LSOLAR_PANEL) THEN
-      WRITE(35,*) ZTHER_PROD_PANEL
-      WRITE(36,*) ZPHOT_PROD_PANEL
+    ! Calucalte the total (direct + diffuse radiaitons)town albedo
+    IF (ZTDIR_SW(1,1) == 0.) THEN
+      ZALB_TOWN  = 0.
+    ELSE
+      ZALB_TOWN = (ZDIR_ALB_TOWN * ZTDIR_SW(1,1) + ZSCA_ALB_TOWN * ZTSCA_SW(1,1)) / (ZTDIR_SW(1,1) + ZTSCA_SW(1,1))
     END IF
-    WRITE(40,*) ZTDIR_SW(1,1) + ZTSCA_SW(1,1)       
-                      ! PDIR_SW(:,JSWB)                    + PSCA_SW(:,JSWB)
-    WRITE(41,*) ZTDIR_SW(1,1) * ZDIR_ALB_TOWN(1) + ZTSCA_SW(1,1) * ZSCA_ALB_TOWN(1)
-                      ! PDIR_SW(:,JSWB) * PDIR_ALB(:,JSWB) + PSCA_SW(:,JSWB) * PSCA_ALB(:,JSWB) 
-    WRITE(42,*) XLW
-                      ! PLW(:)
-    WRITE(43,*) ZEMIS_TOWN * XSTEFAN *ZTS_TOWN**4 + (1.-ZEMIS_TOWN)*XLW
-      ! PEMIS(:)*XSTEFAN*PTRAD(:)**4 + (1.-PEMIS(:))*PLW(:)
+    ! TEB does no modify the wind direction
+    ZDIR_CANYON = ZDIR(1,1)
+    ! Town specific humidity assumed to be same as canyon humidity
+    ZQ_TOWN = ZQ_CANYON
 
-    ! Interpolated forcing variables
-    WRITE(50,*) XTA
-    WRITE(51,*) XPS
-    WRITE(52,*) XQA
-    WRITE(53,*) ZVMOD
-    WRITE(54,*) XRAIN
-    WRITE(55,*) XSNOW
+      !
+      WRITE(13,*) ZTS_ROOF
+      WRITE(14,*) ZT_CANYON
+      WRITE(15,*) ZTS_ROAD
+      WRITE(16,*) ZTS_WALL_A
+      WRITE(17,*) ZTS_WALL_B
+      WRITE(18,*) ZTI_BLD
+      WRITE(19,*) ZQ_CANYON
+      WRITE(21,*) ZU_CANYON
+      WRITE(22,*) ZH_TOWN
+      WRITE(23,*) ZLE_TOWN
+      WRITE(24,*) ZRN_TOWN
+      IF (CBEM=='BEM') THEN
+        ! The heating and cooling energy demand are converted
+        ! from W/m²(bld) to W/m²(urb).
+        ! FIXME: this does not seem correct anymore, why?
+        ! it seems that ZHVAC_COOL is already W/m²(urb)...  
+        ZHVAC_COOL_TOT = ZBLD * ZHVAC_COOL
+        ZHVAC_HEAT_TOT = ZBLD * ZHVAC_HEAT
+        WRITE(25,*) ZHVAC_COOL
+        WRITE(26,*) ZHVAC_HEAT
+        WRITE(37,*) ZCOP
+      END IF
+    !
+        WRITE(27,*) ZDIR_CANYON
+        WRITE(28,*) ZALB_TOWN
+        WRITE(29,*) ZEMIS_TOWN
+        WRITE(30,*) ZEVAP_TOWN
+        WRITE(31,*) ZGFLUX_TOWN
+        WRITE(32,*) ZTS_TOWN
+        WRITE(33,*) ZQ_TOWN
+        WRITE(34,*) ZUSTAR_TOWN
+        WRITE(38,*) ZQF_TOWN
+        WRITE(39,*) ZDQS_TOWN
+        IF (LSOLAR_PANEL) THEN
+          WRITE(35,*) ZTHER_PROD_PANEL
+          WRITE(36,*) ZPHOT_PROD_PANEL
+        END IF
+        WRITE(40,*) ZTDIR_SW(1,1) + ZTSCA_SW(1,1)       
+                          ! PDIR_SW(:,JSWB)                    + PSCA_SW(:,JSWB)
+        WRITE(41,*) ZTDIR_SW(1,1) * ZDIR_ALB_TOWN(1) + ZTSCA_SW(1,1) * ZSCA_ALB_TOWN(1)
+                          ! PDIR_SW(:,JSWB) * PDIR_ALB(:,JSWB) + PSCA_SW(:,JSWB) * PSCA_ALB(:,JSWB) 
+        WRITE(42,*) XLW
+                          ! PLW(:)
+        WRITE(43,*) ZEMIS_TOWN * XSTEFAN *ZTS_TOWN**4 + (1.-ZEMIS_TOWN)*XLW
+          ! PEMIS(:)*XSTEFAN*PTRAD(:)**4 + (1.-PEMIS(:))*PLW(:)
 
-    WRITE(56,*) ZT_FLOOR(1,1)
-    WRITE(57,*) ZT_MASS(1,1)
-    WRITE(58,*) ZQI_BLD
+        ! Interpolated forcing variables
+        WRITE(50,*) XTA
+        WRITE(51,*) XPS
+        WRITE(52,*) XQA
+        WRITE(53,*) ZVMOD
+        WRITE(54,*) XRAIN
+        WRITE(55,*) XSNOW
 
-!
+        WRITE(56,*) ZT_FLOOR(1,1)
+        WRITE(57,*) ZT_MASS(1,1)
+        WRITE(58,*) ZQI_BLD
+      END IF
+    !
 END DO
 !
 ! --------------------------------------------------------------------------------------
@@ -1232,55 +1236,58 @@ DEALLOCATE(ZD_ROAD)
 DEALLOCATE(ZT_ROAD)
 !
 CALL OPEN_CLOSE_BIN_ASC_FORC('CLOSE ','ASCII ','R')
-CLOSE(13)
-CLOSE(14)
-CLOSE(15)
-CLOSE(16)
-CLOSE(17)
-CLOSE(18)
-CLOSE(19)
-CLOSE(21)
-CLOSE(22)
-CLOSE(23)
-CLOSE(24)
-CLOSE(25)
-CLOSE(26)
-CLOSE(37)
-CLOSE(27)
-CLOSE(28)
-CLOSE(29)
-CLOSE(30)
-CLOSE(31)
-CLOSE(32)
-CLOSE(33)
-CLOSE(34)
-CLOSE(35)
-CLOSE(36)
-CLOSE(38)
-CLOSE(39)
-CLOSE(40)
-CLOSE(41)
-CLOSE(42)
-CLOSE(43)
-
-CLOSE(50)
-CLOSE(51)
-CLOSE(52)
-CLOSE(53)
-CLOSE(54)
-CLOSE(55)
-
-CLOSE(56)
-CLOSE(57)
-CLOSE(58)
-
-
 !
-    WRITE(*,*) ' '
-    WRITE(*,*) '    --------------------------'
-    WRITE(*,*) '    |  DRIVER ENDS CORRECTLY |'
-    WRITE(*,*) '    --------------------------'
-    WRITE(*,*) ' '
+IF (.NOT. NO_OUTPUT) THEN
+  CLOSE(13)
+  CLOSE(14)
+  CLOSE(15)
+  CLOSE(16)
+  CLOSE(17)
+  CLOSE(18)
+  CLOSE(19)
+  CLOSE(21)
+  CLOSE(22)
+  CLOSE(23)
+  CLOSE(24)
+  CLOSE(25)
+  CLOSE(26)
+  CLOSE(37)
+  CLOSE(27)
+  CLOSE(28)
+  CLOSE(29)
+  CLOSE(30)
+  CLOSE(31)
+  CLOSE(32)
+  CLOSE(33)
+  CLOSE(34)
+  CLOSE(35)
+  CLOSE(36)
+  CLOSE(38)
+  CLOSE(39)
+  CLOSE(40)
+  CLOSE(41)
+  CLOSE(42)
+  CLOSE(43)
+
+  CLOSE(50)
+  CLOSE(51)
+  CLOSE(52)
+  CLOSE(53)
+  CLOSE(54)
+  CLOSE(55)
+
+  CLOSE(56)
+  CLOSE(57)
+  CLOSE(58)
+
+
+  !
+      WRITE(*,*) ' '
+      WRITE(*,*) '    --------------------------'
+      WRITE(*,*) '    |  DRIVER ENDS CORRECTLY |'
+      WRITE(*,*) '    --------------------------'
+      WRITE(*,*) ' '
+END IF
 !
 ! --------------------------------------------------------------------------------------
 !
