@@ -32,7 +32,7 @@ cmake -DCMAKE_BUILD_TYPE=Release ..
 cmake --build .
 ```
 
-By default, we set the real type to an 8 byte wide. This behavior is controlled by the optional `USE_REAL8` flag (default ON).
+By default, we set the real type to an 8 byte wide. This behavior is controlled by the optional `USE_REAL8` flag (default ON). [Ninja](https://ninja-build.org/) support is  avalable and can be specified with the generator flag `-G` at configure time (e.g. `cmake -GNinja -DCMAKE_BUILD_TYPE=Release ..`).
 
 <details>
 <summary>Note for Windows Users</summary>
