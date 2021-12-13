@@ -54,7 +54,7 @@ HROAD_DIR = 'UNIF'
 !     ! 'TWO ' : 2 opposite  wall
 HWALL_OPT = 'UNIF'
 ! Garden and greenroof options
-VEG_ALB = 0.15
+VEG_ALB = 0.25
 VEG_EMIS = 0.98
 ! Gardens
 LGARDEN = .TRUE.
