@@ -1,0 +1,2615 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   
+   <meta name="description" content="The Town Energy Balance (TEB) model is an urban land surface model developed to calculate the exchange of energy and water between cities and atmosphere.">
+    
+    <meta name="author" content="teb-model" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>MODD_WRF_TEB_DRIVER &ndash; Town Energy Balance (TEB) model API docs</title>
+
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+    
+    <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+    
+    
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <script src="../js/jquery-2.1.3.min.js"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../index.html">Town Energy Balance (TEB) model API docs </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+        
+            <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
+              <a href="#" class="dropdown-toggle"
+              data-toggle="dropdown" role="button"
+              aria-haspopup="true"
+     aria-expanded="false">Contents <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          
+              
+            <li><a href="../lists/files.html">Source Files</a></li>
+        
+        
+        
+            <li><a href="../lists/modules.html">Modules</a></li>
+        
+            
+                                
+            <li><a href="../lists/procedures.html">Procedures</a></li>
+        
+               
+            <li><a href="../lists/types.html">Derived Types</a></li>
+        
+        
+            <li><a href="../program/driver.html">Program</a></li>
+               
+        
+        
+            </ul>
+        
+            </li>
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/files.html">Source Files</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
+
+                             
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/types.html">Derived Types</a></li>
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../program/driver.html">Program</a></li>
+
+
+
+          </ul>
+        
+        <form action="../search.html" class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+        </div>
+<!--
+        <button type="submit" class="btn btn-default">Submit</button>
+-->
+        </form>
+        
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+    
+  
+  <div class="row">
+    <h1>MODD_WRF_TEB_DRIVER 
+    <small>Module</small>
+    
+    </h1>
+    
+<div class="row">
+  <div class="col-lg-12">
+<div class="well well-sm">
+  <ul class="list-inline" style="margin-bottom:0px;display:inline">
+     
+     
+     
+    <li><i class="fa fa-legal"></i> CeCILL</li> 
+     
+     
+     
+    
+    
+     <li><i class="fa fa-list-ol"></i>
+       <a data-toggle="tooltip"
+    data-placement="bottom" data-html="true"
+    title=" 5.1% of total for modules and submodules.">500 statements</a>
+     </li> 
+     
+     
+     
+    <li><i class="fa fa-code"></i><a href="../src/modd_wrf_teb_driver.F90"> Source File</a></li>
+     
+     
+  </ul>
+  <ol class="breadcrumb in-well text-right">
+  
+    
+     <li><a href='../sourcefile/modd_wrf_teb_driver.f90.html'>modd_wrf_teb_driver.F90</a></li>
+    
+  
+     <li class="active">MODD_WRF_TEB_DRIVER</li>
+  </ol>
+</div>
+</div>
+</div>
+<script>
+  $(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+  })
+</script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+    
+<div id="sidebar">
+  
+<h3>Contents</h3>
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#subs-0">Subroutines</a></h3></div>
+  <div class="list-group">
+    <div id="subs-0" class="panel-collapse collapse">
+      
+      <a class="list-group-item" href="../module/modd_wrf_teb_driver.html#proc-teb_driver">TEB_DRIVER</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+</div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+    
+      
+    
+  
+
+    
+    
+
+    <br>
+
+    <section class="visible-xs visible-sm hidden-md">
+      
+<h3>Contents</h3>
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#subs-1">Subroutines</a></h3></div>
+  <div class="list-group">
+    <div id="subs-1" class="panel-collapse collapse">
+      
+      <a class="list-group-item" href="../module/modd_wrf_teb_driver.html#proc-teb_driver">TEB_DRIVER</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+    </section>
+    <br class="visible-xs visible-sm hidden-md">
+
+    
+
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+
+    
+    <section>
+    <h2>Subroutines</h2>
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="proc-teb_driver"></span><h3>
+public subroutine <a href='../proc/teb_driver.html'>TEB_DRIVER</a>(num_roof_layers, num_wall_layers, num_road_layers, num_snow_layers, num_floor_layers, ZLON, ZLAT, IYEAR, IMONTH, IDAY, ZTIME_START, XTSTEP_SURF, XPS, XPA, XTA, ZQA_KGKG, XRHOA, XCO2, XLW, XRAIN, XSNOW, ZZREF, ZDIR_SW, ZSCA_SW, ZWIND, ZDIR, ZT_CANYON, ZQ_CANYON, ZTI_BLD, ZT_ROOF, ZT_ROAD, ZT_WALL_A, ZT_WALL_B, ZWS_ROOF, ZWS_ROAD, ZWSNOW_ROOF, ZTSNOW_ROOF, ZRSNOW_ROOF, ZASNOW_ROOF, ZTSSNOW_ROOF, ZESNOW_ROOF, ZWSNOW_ROAD, ZTSNOW_ROAD, ZRSNOW_ROAD, ZASNOW_ROAD, ZTSSNOW_ROAD, ZESNOW_ROAD, ZAUX_MAX, ZT_FLOOR, ZT_MASS, ZT_WIN1, ZT_WIN2, ZQI_BLD, ZTHER_PRODC_DAY, LGARDEN, LGREENROOF, LSOLAR_PANEL, HZ0H, HROAD_DIR, HWALL_OPT, HSNOW_ROAD, HSNOW_ROOF, ZH_TRAFFIC, ZLE_TRAFFIC, ZH_INDUSTRY, ZLE_INDUSTRY, ZZ0, ZBLD, ZGARDEN, ZROAD_DIR, ZFRAC_GR, ZBLD_HEIGHT, ZWALL_O_HOR, ZALB_ROOF, ZEMIS_ROOF, ZHC_ROOF, ZTC_ROOF, ZD_ROOF, ZALB_ROAD, ZEMIS_ROAD, ZHC_ROAD, ZTC_ROAD, ZD_ROAD, ZALB_WALL, ZEMIS_WALL, ZHC_WALL, ZTC_WALL, ZD_WALL, CCOOL_COIL, ZF_WATER_COND, CHEAT_COIL, ZNATVENT, XF_WASTE_CAN, ZQIN, ZQIN_FRAD, ZQIN_FLAT, ZGR, ZEFF_HEAT, ZINF, ZTCOOL_TARGET, ZTHEAT_TARGET, ZHR_TARGET, ZV_VENT, ZCAP_SYS_HEAT, XCAP_SYS_RAT, ZT_ADP, XM_SYS_RAT, ZCOP_RAT, ZHC_FLOOR, ZTC_FLOOR, ZD_FLOOR, ZSHGC, ZSHGC_SH, ZSHADE, CBEM, CCH_BEM, ZROUGH_ROOF, ZROUGH_WALL, LPAR_RD_IRRIG, ZRD_START_MONTH, ZRD_END_MONTH, ZRD_START_HOUR, ZRD_END_HOUR, ZRD_24H_IRRIG, ZEMIS_PANEL, ZALB_PANEL, ZEFF_PANEL, ZFRAC_PANEL, ZRESIDENTIAL, ZDT_RES, ZDT_OFF, ZFLOOR_HEIGHT, PU_WIN, ZHVAC_COOL_TOT, ZHVAC_HEAT_TOT, ZTHER_PROD_PANEL, ZPHOT_PROD_PANEL, XU_CANYON, ZRN_TOWN, ZH_TOWN, ZLE_TOWN, ZGFLUX_TOWN, ZEVAP_TOWN, ZUSTAR_TOWN, ZTS_TOWN, ZEMIS_TOWN, ZALB_TOWN, ZDIR_CANYON, ZQ_TOWN)
+    
+    
+   
+</h3></div>
+  <div class="panel-body">
+       
+    
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>integer,</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>num_roof_layers</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>integer,</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>num_wall_layers</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>integer,</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>num_road_layers</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>integer,</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>num_snow_layers</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>integer,</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>num_floor_layers</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(1)</td><td>::</td>
+  <td><strong>ZLON</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(1)</td><td>::</td>
+  <td><strong>ZLAT</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>integer,</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>IYEAR</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>integer,</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>IMONTH</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>integer,</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>IDAY</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>ZTIME_START</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>XTSTEP_SURF</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(1)</td><td>::</td>
+  <td><strong>XPS</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(1)</td><td>::</td>
+  <td><strong>XPA</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(1)</td><td>::</td>
+  <td><strong>XTA</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(1)</td><td>::</td>
+  <td><strong>ZQA_KGKG</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(1)</td><td>::</td>
+  <td><strong>XRHOA</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(1)</td><td>::</td>
+  <td><strong>XCO2</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(1)</td><td>::</td>
+  <td><strong>XLW</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(1)</td><td>::</td>
+  <td><strong>XRAIN</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(1)</td><td>::</td>
+  <td><strong>XSNOW</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(1)</td><td>::</td>
+  <td><strong>ZZREF</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(1,1)</td><td>::</td>
+  <td><strong>ZDIR_SW</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(1,1)</td><td>::</td>
+  <td><strong>ZSCA_SW</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(1)</td><td>::</td>
+  <td><strong>ZWIND</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(1)</td><td>::</td>
+  <td><strong>ZDIR</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(inout),</td>
+  <td></td>
+  
+  <td>DIMENSION(1)</td><td>::</td>
+  <td><strong>ZT_CANYON</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(inout),</td>
+  <td></td>
+  
+  <td>DIMENSION(1)</td><td>::</td>
+  <td><strong>ZQ_CANYON</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(inout),</td>
+  <td></td>
+  
+  <td>DIMENSION(1)</td><td>::</td>
+  <td><strong>ZTI_BLD</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(inout),</td>
+  <td></td>
+  
+  <td>DIMENSION(1, num_roof_layers)</td><td>::</td>
+  <td><strong>ZT_ROOF</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(inout),</td>
+  <td></td>
+  
+  <td>DIMENSION(1, num_road_layers)</td><td>::</td>
+  <td><strong>ZT_ROAD</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(inout),</td>
+  <td></td>
+  
+  <td>DIMENSION(1, num_wall_layers)</td><td>::</td>
+  <td><strong>ZT_WALL_A</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(inout),</td>
+  <td></td>
+  
+  <td>DIMENSION(1, num_wall_layers)</td><td>::</td>
+  <td><strong>ZT_WALL_B</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(inout),</td>
+  <td></td>
+  
+  <td>DIMENSION(1)</td><td>::</td>
+  <td><strong>ZWS_ROOF</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(inout),</td>
+  <td></td>
+  
+  <td>DIMENSION(1)</td><td>::</td>
+  <td><strong>ZWS_ROAD</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(inout),</td>
+  <td></td>
+  
+  <td>DIMENSION(1, num_snow_layers)</td><td>::</td>
+  <td><strong>ZWSNOW_ROOF</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(inout),</td>
+  <td></td>
+  
+  <td>DIMENSION(1, num_snow_layers)</td><td>::</td>
+  <td><strong>ZTSNOW_ROOF</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(inout),</td>
+  <td></td>
+  
+  <td>DIMENSION(1, num_snow_layers)</td><td>::</td>
+  <td><strong>ZRSNOW_ROOF</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(inout),</td>
+  <td></td>
+  
+  <td>DIMENSION(1)</td><td>::</td>
+  <td><strong>ZASNOW_ROOF</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(inout),</td>
+  <td></td>
+  
+  <td>DIMENSION(1)</td><td>::</td>
+  <td><strong>ZTSSNOW_ROOF</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(inout),</td>
+  <td></td>
+  
+  <td>DIMENSION(1)</td><td>::</td>
+  <td><strong>ZESNOW_ROOF</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(inout),</td>
+  <td></td>
+  
+  <td>DIMENSION(1, num_snow_layers)</td><td>::</td>
+  <td><strong>ZWSNOW_ROAD</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(inout),</td>
+  <td></td>
+  
+  <td>DIMENSION(1, num_snow_layers)</td><td>::</td>
+  <td><strong>ZTSNOW_ROAD</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(inout),</td>
+  <td></td>
+  
+  <td>DIMENSION(1, num_snow_layers)</td><td>::</td>
+  <td><strong>ZRSNOW_ROAD</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(inout),</td>
+  <td></td>
+  
+  <td>DIMENSION(1)</td><td>::</td>
+  <td><strong>ZASNOW_ROAD</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(inout),</td>
+  <td></td>
+  
+  <td>DIMENSION(1)</td><td>::</td>
+  <td><strong>ZTSSNOW_ROAD</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(inout),</td>
+  <td></td>
+  
+  <td>DIMENSION(1)</td><td>::</td>
+  <td><strong>ZESNOW_ROAD</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(inout),</td>
+  <td></td>
+  
+  <td>DIMENSION(1)</td><td>::</td>
+  <td><strong>ZAUX_MAX</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(inout),</td>
+  <td></td>
+  
+  <td>DIMENSION(1, num_floor_layers)</td><td>::</td>
+  <td><strong>ZT_FLOOR</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(inout),</td>
+  <td></td>
+  
+  <td>DIMENSION(1, num_floor_layers)</td><td>::</td>
+  <td><strong>ZT_MASS</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(inout),</td>
+  <td></td>
+  
+  <td>DIMENSION(1)</td><td>::</td>
+  <td><strong>ZT_WIN1</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(inout),</td>
+  <td></td>
+  
+  <td>DIMENSION(1)</td><td>::</td>
+  <td><strong>ZT_WIN2</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(inout),</td>
+  <td></td>
+  
+  <td>DIMENSION(1)</td><td>::</td>
+  <td><strong>ZQI_BLD</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(inout),</td>
+  <td></td>
+  
+  <td>DIMENSION(1)</td><td>::</td>
+  <td><strong>ZTHER_PRODC_DAY</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>logical,</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>LGARDEN</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>logical,</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>LGREENROOF</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>logical,</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>LSOLAR_PANEL</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>character(len=6),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>HZ0H</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>character(len=4),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>HROAD_DIR</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>character(len=4),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>HWALL_OPT</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>character(len=4),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>HSNOW_ROAD</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>character(len=4),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>HSNOW_ROOF</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(1)</td><td>::</td>
+  <td><strong>ZH_TRAFFIC</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(1)</td><td>::</td>
+  <td><strong>ZLE_TRAFFIC</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(1)</td><td>::</td>
+  <td><strong>ZH_INDUSTRY</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(1)</td><td>::</td>
+  <td><strong>ZLE_INDUSTRY</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(1)</td><td>::</td>
+  <td><strong>ZZ0</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(1)</td><td>::</td>
+  <td><strong>ZBLD</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(1)</td><td>::</td>
+  <td><strong>ZGARDEN</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(1)</td><td>::</td>
+  <td><strong>ZROAD_DIR</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(1)</td><td>::</td>
+  <td><strong>ZFRAC_GR</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(1)</td><td>::</td>
+  <td><strong>ZBLD_HEIGHT</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(1)</td><td>::</td>
+  <td><strong>ZWALL_O_HOR</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(1)</td><td>::</td>
+  <td><strong>ZALB_ROOF</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(1)</td><td>::</td>
+  <td><strong>ZEMIS_ROOF</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(1, num_roof_layers)</td><td>::</td>
+  <td><strong>ZHC_ROOF</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(1, num_roof_layers)</td><td>::</td>
+  <td><strong>ZTC_ROOF</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(1, num_roof_layers)</td><td>::</td>
+  <td><strong>ZD_ROOF</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(1)</td><td>::</td>
+  <td><strong>ZALB_ROAD</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(1)</td><td>::</td>
+  <td><strong>ZEMIS_ROAD</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(1, num_road_layers)</td><td>::</td>
+  <td><strong>ZHC_ROAD</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(1, num_road_layers)</td><td>::</td>
+  <td><strong>ZTC_ROAD</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(1, num_road_layers)</td><td>::</td>
+  <td><strong>ZD_ROAD</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(1)</td><td>::</td>
+  <td><strong>ZALB_WALL</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(1)</td><td>::</td>
+  <td><strong>ZEMIS_WALL</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(1, num_wall_layers)</td><td>::</td>
+  <td><strong>ZHC_WALL</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(1, num_wall_layers)</td><td>::</td>
+  <td><strong>ZTC_WALL</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(1, num_wall_layers)</td><td>::</td>
+  <td><strong>ZD_WALL</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>character(len=12),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>CCOOL_COIL</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(1)</td><td>::</td>
+  <td><strong>ZF_WATER_COND</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>character(len=6),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>CHEAT_COIL</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(1)</td><td>::</td>
+  <td><strong>ZNATVENT</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(1)</td><td>::</td>
+  <td><strong>XF_WASTE_CAN</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(1)</td><td>::</td>
+  <td><strong>ZQIN</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(1)</td><td>::</td>
+  <td><strong>ZQIN_FRAD</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(1)</td><td>::</td>
+  <td><strong>ZQIN_FLAT</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(1)</td><td>::</td>
+  <td><strong>ZGR</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(1)</td><td>::</td>
+  <td><strong>ZEFF_HEAT</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(1)</td><td>::</td>
+  <td><strong>ZINF</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(1)</td><td>::</td>
+  <td><strong>ZTCOOL_TARGET</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(1)</td><td>::</td>
+  <td><strong>ZTHEAT_TARGET</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(1)</td><td>::</td>
+  <td><strong>ZHR_TARGET</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(1)</td><td>::</td>
+  <td><strong>ZV_VENT</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(1)</td><td>::</td>
+  <td><strong>ZCAP_SYS_HEAT</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(1)</td><td>::</td>
+  <td><strong>XCAP_SYS_RAT</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(1)</td><td>::</td>
+  <td><strong>ZT_ADP</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(1)</td><td>::</td>
+  <td><strong>XM_SYS_RAT</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(1)</td><td>::</td>
+  <td><strong>ZCOP_RAT</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(1, num_floor_layers)</td><td>::</td>
+  <td><strong>ZHC_FLOOR</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(1, num_floor_layers)</td><td>::</td>
+  <td><strong>ZTC_FLOOR</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(1, num_floor_layers)</td><td>::</td>
+  <td><strong>ZD_FLOOR</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(1)</td><td>::</td>
+  <td><strong>ZSHGC</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(1)</td><td>::</td>
+  <td><strong>ZSHGC_SH</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(1)</td><td>::</td>
+  <td><strong>ZSHADE</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>character(len=3),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>CBEM</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>character(len=5),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>CCH_BEM</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(1)</td><td>::</td>
+  <td><strong>ZROUGH_ROOF</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(1)</td><td>::</td>
+  <td><strong>ZROUGH_WALL</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>logical,</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>LPAR_RD_IRRIG</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(1)</td><td>::</td>
+  <td><strong>ZRD_START_MONTH</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(1)</td><td>::</td>
+  <td><strong>ZRD_END_MONTH</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(1)</td><td>::</td>
+  <td><strong>ZRD_START_HOUR</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(1)</td><td>::</td>
+  <td><strong>ZRD_END_HOUR</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(1)</td><td>::</td>
+  <td><strong>ZRD_24H_IRRIG</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(1)</td><td>::</td>
+  <td><strong>ZEMIS_PANEL</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(1)</td><td>::</td>
+  <td><strong>ZALB_PANEL</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(1)</td><td>::</td>
+  <td><strong>ZEFF_PANEL</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(1)</td><td>::</td>
+  <td><strong>ZFRAC_PANEL</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(1)</td><td>::</td>
+  <td><strong>ZRESIDENTIAL</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>ZDT_RES</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>ZDT_OFF</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(1)</td><td>::</td>
+  <td><strong>ZFLOOR_HEIGHT</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(1)</td><td>::</td>
+  <td><strong>PU_WIN</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(out),</td>
+  <td></td>
+  
+  <td>DIMENSION(1)</td><td>::</td>
+  <td><strong>ZHVAC_COOL_TOT</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(out),</td>
+  <td></td>
+  
+  <td>DIMENSION(1)</td><td>::</td>
+  <td><strong>ZHVAC_HEAT_TOT</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(out),</td>
+  <td></td>
+  
+  <td>DIMENSION(1)</td><td>::</td>
+  <td><strong>ZTHER_PROD_PANEL</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(out),</td>
+  <td></td>
+  
+  <td>DIMENSION(1)</td><td>::</td>
+  <td><strong>ZPHOT_PROD_PANEL</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(out),</td>
+  <td></td>
+  
+  <td>DIMENSION(1)</td><td>::</td>
+  <td><strong>XU_CANYON</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(out),</td>
+  <td></td>
+  
+  <td>DIMENSION(1)</td><td>::</td>
+  <td><strong>ZRN_TOWN</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(out),</td>
+  <td></td>
+  
+  <td>DIMENSION(1)</td><td>::</td>
+  <td><strong>ZH_TOWN</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(out),</td>
+  <td></td>
+  
+  <td>DIMENSION(1)</td><td>::</td>
+  <td><strong>ZLE_TOWN</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(out),</td>
+  <td></td>
+  
+  <td>DIMENSION(1)</td><td>::</td>
+  <td><strong>ZGFLUX_TOWN</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(out),</td>
+  <td></td>
+  
+  <td>DIMENSION(1)</td><td>::</td>
+  <td><strong>ZEVAP_TOWN</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(out),</td>
+  <td></td>
+  
+  <td>DIMENSION(1)</td><td>::</td>
+  <td><strong>ZUSTAR_TOWN</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(out),</td>
+  <td></td>
+  
+  <td>DIMENSION(1)</td><td>::</td>
+  <td><strong>ZTS_TOWN</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(out),</td>
+  <td></td>
+  
+  <td>DIMENSION(1)</td><td>::</td>
+  <td><strong>ZEMIS_TOWN</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(out),</td>
+  <td></td>
+  
+  <td>DIMENSION(1)</td><td>::</td>
+  <td><strong>ZALB_TOWN</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(out),</td>
+  <td></td>
+  
+  <td>DIMENSION(1)</td><td>::</td>
+  <td><strong>ZDIR_CANYON</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real,</td>
+  <td>intent(out),</td>
+  <td></td>
+  
+  <td>DIMENSION(1)</td><td>::</td>
+  <td><strong>ZQ_TOWN</strong></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  </div>
+  </div>
+
+    
+    </section>    
+    <br>
+    
+    
+    
+    </div>
+  </div>
+
+  
+    <hr>    
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+      <div class="row">
+        <div class="col-xs-6 col-md-6"><p>Town Energy Balance (TEB) model API docs was developed by teb-model<br>&copy; 2021 CeCILL
+                                          </p>
+        </div>
+        <div class="col-xs-6 col-md-6">
+          <p class="text-right">
+            Documentation generated by 
+            <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+            
+            
+          </p>
+        </div>
+      </div>
+      <br>
+      </div> <!-- /container -->    
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+<!--
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+-->
+    <script src="../js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../js/ie10-viewport-bug-workaround.js"></script>
+
+    <!-- MathJax JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+        jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+        extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+      });
+    </script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    
+    <script src="../tipuesearch/tipuesearch_content.js"></script>
+    <script src="../tipuesearch/tipuesearch_set.js"></script>
+    <script src="../tipuesearch/tipuesearch.js"></script>
+    
+    
+  </body>
+</html>

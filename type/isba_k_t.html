@@ -1,0 +1,1200 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   
+   <meta name="description" content="The Town Energy Balance (TEB) model is an urban land surface model developed to calculate the exchange of energy and water between cities and atmosphere.">
+    
+    <meta name="author" content="teb-model" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>ISBA_K_t &ndash; Town Energy Balance (TEB) model API docs </title>
+
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+    
+    <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+    
+    
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <script src="../js/jquery-2.1.3.min.js"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../index.html">Town Energy Balance (TEB) model API docs </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+        
+            <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
+              <a href="#" class="dropdown-toggle"
+              data-toggle="dropdown" role="button"
+              aria-haspopup="true"
+     aria-expanded="false">Contents <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          
+              
+            <li><a href="../lists/files.html">Source Files</a></li>
+        
+        
+        
+            <li><a href="../lists/modules.html">Modules</a></li>
+        
+            
+                                
+            <li><a href="../lists/procedures.html">Procedures</a></li>
+        
+               
+            <li><a href="../lists/types.html">Derived Types</a></li>
+        
+        
+            <li><a href="../program/driver.html">Program</a></li>
+               
+        
+        
+            </ul>
+        
+            </li>
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/files.html">Source Files</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
+
+                             
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/types.html">Derived Types</a></li>
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../program/driver.html">Program</a></li>
+
+
+
+          </ul>
+        
+        <form action="../search.html" class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+        </div>
+<!--
+        <button type="submit" class="btn btn-default">Submit</button>
+-->
+        </form>
+        
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+    
+  
+  <div class="row">
+    <h1>ISBA_K_t
+    <small>Derived Type</small>
+    
+    </h1>
+    
+<div class="row">
+  <div class="col-lg-12">
+<div class="well well-sm">
+  <ul class="list-inline" style="margin-bottom:0px;display:inline">
+     
+     
+     
+    <li><i class="fa fa-legal"></i> CeCILL</li> 
+     
+     
+     
+    
+    
+     <li><i class="fa fa-list-ol"></i>
+       <a data-toggle="tooltip"
+    data-placement="bottom" data-html="true"
+    title="<p> 2.5% of total for derived types.</p>Including implementation: 44 statements,  2.5% of total for derived types.">44 statements</a>
+     </li> 
+     
+     
+     
+    <li><i class="fa fa-code"></i><a href="../src/modd_isban.F90"> Source File</a></li>
+     
+     
+  </ul>
+  <ol class="breadcrumb in-well text-right">
+  
+    
+     <li><a href='../sourcefile/modd_isban.f90.html'>modd_isban.F90</a></li>
+    
+     <li><a href='../module/modd_isba_n.html'>MODD_ISBA_n</a></li>
+    
+  
+     <li class="active">ISBA_K_t</li>
+  </ol>
+</div>
+</div>
+</div>
+<script>
+  $(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+  })
+</script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+    
+<div id="sidebar">
+  
+<h3>Contents</h3>
+ 
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#vars-0">Variables</a></h3></div>
+  <div id="vars-0" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../type/isba_k_t.html#variable-xsand">XSAND</a>
+      
+      <a class="list-group-item" href="../type/isba_k_t.html#variable-xclay">XCLAY</a>
+      
+      <a class="list-group-item" href="../type/isba_k_t.html#variable-xperm">XPERM</a>
+      
+      <a class="list-group-item" href="../type/isba_k_t.html#variable-xrunoffb">XRUNOFFB</a>
+      
+      <a class="list-group-item" href="../type/isba_k_t.html#variable-xwdrain">XWDRAIN</a>
+      
+      <a class="list-group-item" href="../type/isba_k_t.html#variable-xtdeep">XTDEEP</a>
+      
+      <a class="list-group-item" href="../type/isba_k_t.html#variable-xgammat">XGAMMAT</a>
+      
+      <a class="list-group-item" href="../type/isba_k_t.html#variable-xmpotsat">XMPOTSAT</a>
+      
+      <a class="list-group-item" href="../type/isba_k_t.html#variable-xbcoef">XBCOEF</a>
+      
+      <a class="list-group-item" href="../type/isba_k_t.html#variable-xwwilt">XWWILT</a>
+      
+      <a class="list-group-item" href="../type/isba_k_t.html#variable-xwfc">XWFC</a>
+      
+      <a class="list-group-item" href="../type/isba_k_t.html#variable-xwsat">XWSAT</a>
+      
+      <a class="list-group-item" href="../type/isba_k_t.html#variable-xcgsat">XCGSAT</a>
+      
+      <a class="list-group-item" href="../type/isba_k_t.html#variable-xc4b">XC4B</a>
+      
+      <a class="list-group-item" href="../type/isba_k_t.html#variable-xacoef">XACOEF</a>
+      
+      <a class="list-group-item" href="../type/isba_k_t.html#variable-xpcoef">XPCOEF</a>
+      
+      <a class="list-group-item" href="../type/isba_k_t.html#variable-xhcapsoil">XHCAPSOIL</a>
+      
+      <a class="list-group-item" href="../type/isba_k_t.html#variable-xconddry">XCONDDRY</a>
+      
+      <a class="list-group-item" href="../type/isba_k_t.html#variable-xcondsld">XCONDSLD</a>
+      
+      <a class="list-group-item" href="../type/isba_k_t.html#variable-xfwtd">XFWTD</a>
+      
+      <a class="list-group-item" href="../type/isba_k_t.html#variable-xwtd">XWTD</a>
+      
+      <a class="list-group-item" href="../type/isba_k_t.html#variable-xalbnir_dry">XALBNIR_DRY</a>
+      
+      <a class="list-group-item" href="../type/isba_k_t.html#variable-xalbvis_dry">XALBVIS_DRY</a>
+      
+      <a class="list-group-item" href="../type/isba_k_t.html#variable-xalbuv_dry">XALBUV_DRY</a>
+      
+      <a class="list-group-item" href="../type/isba_k_t.html#variable-xalbnir_wet">XALBNIR_WET</a>
+      
+      <a class="list-group-item" href="../type/isba_k_t.html#variable-xalbvis_wet">XALBVIS_WET</a>
+      
+      <a class="list-group-item" href="../type/isba_k_t.html#variable-xalbuv_wet">XALBUV_WET</a>
+      
+      <a class="list-group-item" href="../type/isba_k_t.html#variable-xwd0">XWD0</a>
+      
+      <a class="list-group-item" href="../type/isba_k_t.html#variable-xkaniso">XKANISO</a>
+      
+      <a class="list-group-item" href="../type/isba_k_t.html#variable-xmuf">XMUF</a>
+      
+      <a class="list-group-item" href="../type/isba_k_t.html#variable-xfsat~2">XFSAT</a>
+      
+      <a class="list-group-item" href="../type/isba_k_t.html#variable-xfflood">XFFLOOD</a>
+      
+      <a class="list-group-item" href="../type/isba_k_t.html#variable-xpiflood">XPIFLOOD</a>
+      
+      <a class="list-group-item" href="../type/isba_k_t.html#variable-xff~2">XFF</a>
+      
+      <a class="list-group-item" href="../type/isba_k_t.html#variable-xffg~2">XFFG</a>
+      
+      <a class="list-group-item" href="../type/isba_k_t.html#variable-xffv~2">XFFV</a>
+      
+      <a class="list-group-item" href="../type/isba_k_t.html#variable-xffrozen">XFFROZEN</a>
+      
+      <a class="list-group-item" href="../type/isba_k_t.html#variable-xalbf">XALBF</a>
+      
+      <a class="list-group-item" href="../type/isba_k_t.html#variable-xemisf">XEMISF</a>
+      
+      <a class="list-group-item" href="../type/isba_k_t.html#variable-xdir_alb_with_snow">XDIR_ALB_WITH_SNOW</a>
+      
+      <a class="list-group-item" href="../type/isba_k_t.html#variable-xsca_alb_with_snow">XSCA_ALB_WITH_SNOW</a>
+      
+      <a class="list-group-item" href="../type/isba_k_t.html#variable-xvegtype~2">XVEGTYPE</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+  <div class="list-group">
+    <a class="list-group-item" href="../type/isba_k_t.html#src">ISBA_K_t</a>
+  </div>
+</div>
+
+
+
+</div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+      <h2>type, public :: ISBA_K_t</h2>
+    
+    
+    
+    
+    <br>
+
+    <section class="visible-xs visible-sm hidden-md">
+      
+<h3>Contents</h3>
+ 
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#vars-1">Variables</a></h3></div>
+  <div id="vars-1" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../type/isba_k_t.html#variable-xsand">XSAND</a>
+      
+      <a class="list-group-item" href="../type/isba_k_t.html#variable-xclay">XCLAY</a>
+      
+      <a class="list-group-item" href="../type/isba_k_t.html#variable-xperm">XPERM</a>
+      
+      <a class="list-group-item" href="../type/isba_k_t.html#variable-xrunoffb">XRUNOFFB</a>
+      
+      <a class="list-group-item" href="../type/isba_k_t.html#variable-xwdrain">XWDRAIN</a>
+      
+      <a class="list-group-item" href="../type/isba_k_t.html#variable-xtdeep">XTDEEP</a>
+      
+      <a class="list-group-item" href="../type/isba_k_t.html#variable-xgammat">XGAMMAT</a>
+      
+      <a class="list-group-item" href="../type/isba_k_t.html#variable-xmpotsat">XMPOTSAT</a>
+      
+      <a class="list-group-item" href="../type/isba_k_t.html#variable-xbcoef">XBCOEF</a>
+      
+      <a class="list-group-item" href="../type/isba_k_t.html#variable-xwwilt">XWWILT</a>
+      
+      <a class="list-group-item" href="../type/isba_k_t.html#variable-xwfc">XWFC</a>
+      
+      <a class="list-group-item" href="../type/isba_k_t.html#variable-xwsat">XWSAT</a>
+      
+      <a class="list-group-item" href="../type/isba_k_t.html#variable-xcgsat">XCGSAT</a>
+      
+      <a class="list-group-item" href="../type/isba_k_t.html#variable-xc4b">XC4B</a>
+      
+      <a class="list-group-item" href="../type/isba_k_t.html#variable-xacoef">XACOEF</a>
+      
+      <a class="list-group-item" href="../type/isba_k_t.html#variable-xpcoef">XPCOEF</a>
+      
+      <a class="list-group-item" href="../type/isba_k_t.html#variable-xhcapsoil">XHCAPSOIL</a>
+      
+      <a class="list-group-item" href="../type/isba_k_t.html#variable-xconddry">XCONDDRY</a>
+      
+      <a class="list-group-item" href="../type/isba_k_t.html#variable-xcondsld">XCONDSLD</a>
+      
+      <a class="list-group-item" href="../type/isba_k_t.html#variable-xfwtd">XFWTD</a>
+      
+      <a class="list-group-item" href="../type/isba_k_t.html#variable-xwtd">XWTD</a>
+      
+      <a class="list-group-item" href="../type/isba_k_t.html#variable-xalbnir_dry">XALBNIR_DRY</a>
+      
+      <a class="list-group-item" href="../type/isba_k_t.html#variable-xalbvis_dry">XALBVIS_DRY</a>
+      
+      <a class="list-group-item" href="../type/isba_k_t.html#variable-xalbuv_dry">XALBUV_DRY</a>
+      
+      <a class="list-group-item" href="../type/isba_k_t.html#variable-xalbnir_wet">XALBNIR_WET</a>
+      
+      <a class="list-group-item" href="../type/isba_k_t.html#variable-xalbvis_wet">XALBVIS_WET</a>
+      
+      <a class="list-group-item" href="../type/isba_k_t.html#variable-xalbuv_wet">XALBUV_WET</a>
+      
+      <a class="list-group-item" href="../type/isba_k_t.html#variable-xwd0">XWD0</a>
+      
+      <a class="list-group-item" href="../type/isba_k_t.html#variable-xkaniso">XKANISO</a>
+      
+      <a class="list-group-item" href="../type/isba_k_t.html#variable-xmuf">XMUF</a>
+      
+      <a class="list-group-item" href="../type/isba_k_t.html#variable-xfsat~2">XFSAT</a>
+      
+      <a class="list-group-item" href="../type/isba_k_t.html#variable-xfflood">XFFLOOD</a>
+      
+      <a class="list-group-item" href="../type/isba_k_t.html#variable-xpiflood">XPIFLOOD</a>
+      
+      <a class="list-group-item" href="../type/isba_k_t.html#variable-xff~2">XFF</a>
+      
+      <a class="list-group-item" href="../type/isba_k_t.html#variable-xffg~2">XFFG</a>
+      
+      <a class="list-group-item" href="../type/isba_k_t.html#variable-xffv~2">XFFV</a>
+      
+      <a class="list-group-item" href="../type/isba_k_t.html#variable-xffrozen">XFFROZEN</a>
+      
+      <a class="list-group-item" href="../type/isba_k_t.html#variable-xalbf">XALBF</a>
+      
+      <a class="list-group-item" href="../type/isba_k_t.html#variable-xemisf">XEMISF</a>
+      
+      <a class="list-group-item" href="../type/isba_k_t.html#variable-xdir_alb_with_snow">XDIR_ALB_WITH_SNOW</a>
+      
+      <a class="list-group-item" href="../type/isba_k_t.html#variable-xsca_alb_with_snow">XSCA_ALB_WITH_SNOW</a>
+      
+      <a class="list-group-item" href="../type/isba_k_t.html#variable-xvegtype~2">XVEGTYPE</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+  <div class="list-group">
+    <a class="list-group-item" href="../type/isba_k_t.html#src">ISBA_K_t</a>
+  </div>
+</div>
+
+
+
+    </section>
+    <br class="visible-xs visible-sm hidden-md">
+
+    
+    <section>
+    <h2>Components</h2>
+    
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th><th>Visibility</th>
+
+<th>Attributes</th><th></th><th>Name</th><th></th><th>Initial</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xsand"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:)</td><td>::</td>
+  <td><strong>XSAND</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xclay"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:)</td><td>::</td>
+  <td><strong>XCLAY</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xperm"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XPERM</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xrunoffb"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XRUNOFFB</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xwdrain"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XWDRAIN</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xtdeep"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XTDEEP</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xgammat"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XGAMMAT</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xmpotsat"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:)</td><td>::</td>
+  <td><strong>XMPOTSAT</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xbcoef"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:)</td><td>::</td>
+  <td><strong>XBCOEF</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xwwilt"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:)</td><td>::</td>
+  <td><strong>XWWILT</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xwfc"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:)</td><td>::</td>
+  <td><strong>XWFC</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xwsat"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:)</td><td>::</td>
+  <td><strong>XWSAT</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xcgsat"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XCGSAT</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xc4b"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XC4B</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xacoef"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XACOEF</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xpcoef"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XPCOEF</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xhcapsoil"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:)</td><td>::</td>
+  <td><strong>XHCAPSOIL</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xconddry"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:)</td><td>::</td>
+  <td><strong>XCONDDRY</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xcondsld"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:)</td><td>::</td>
+  <td><strong>XCONDSLD</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xfwtd"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XFWTD</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xwtd"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XWTD</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xalbnir_dry"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XALBNIR_DRY</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xalbvis_dry"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XALBVIS_DRY</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xalbuv_dry"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XALBUV_DRY</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xalbnir_wet"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XALBNIR_WET</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xalbvis_wet"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XALBVIS_WET</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xalbuv_wet"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XALBUV_WET</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xwd0"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:)</td><td>::</td>
+  <td><strong>XWD0</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xkaniso"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:)</td><td>::</td>
+  <td><strong>XKANISO</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xmuf"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XMUF</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xfsat~2"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XFSAT</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xfflood"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XFFLOOD</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xpiflood"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XPIFLOOD</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xff~2"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XFF</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xffg~2"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XFFG</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xffv~2"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XFFV</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xffrozen"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XFFROZEN</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xalbf"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XALBF</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xemisf"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XEMISF</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xdir_alb_with_snow"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:)</td><td>::</td>
+  <td><strong>XDIR_ALB_WITH_SNOW</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xsca_alb_with_snow"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:)</td><td>::</td>
+  <td><strong>XSCA_ALB_WITH_SNOW</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xvegtype~2"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:)</td><td>::</td>
+  <td><strong>XVEGTYPE</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+    </section>
+    <br>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <section>
+    <h3><span class="anchor" id="src"></span>Source Code</h3>
+    <div class="highlight"><pre><span></span><span class="k">TYPE </span><span class="n">ISBA_K_t</span>
+<span class="c">!</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:)</span>    <span class="kd">::</span> <span class="n">XSAND</span>          <span class="c">! sand fraction                           (-)</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:)</span>    <span class="kd">::</span> <span class="n">XCLAY</span>          <span class="c">! clay fraction                           (-)</span>
+<span class="c">!</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>      <span class="kd">::</span> <span class="n">XPERM</span>          <span class="c">! permafrost distribution                 (-)</span>
+<span class="c">!</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>      <span class="kd">::</span> <span class="n">XRUNOFFB</span>       <span class="c">! sub-grid dt92 surface runoff slope parameter (-)  </span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>      <span class="kd">::</span> <span class="n">XWDRAIN</span>        <span class="c">! continuous drainage parameter           (-)</span>
+<span class="c">!</span>
+<span class="c">!</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>      <span class="kd">::</span> <span class="n">XTDEEP</span>         <span class="c">! prescribed deep soil temperature </span>
+<span class="c">!                                                  ! (optional)</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>      <span class="kd">::</span> <span class="n">XGAMMAT</span>        <span class="c">! &#39;Force-Restore&#39; timescale when using a</span>
+<span class="c">!                                                  ! prescribed lower boundary temperature   (1/days)</span>
+<span class="c">!</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:)</span>    <span class="kd">::</span> <span class="n">XMPOTSAT</span>       <span class="c">! matric potential at saturation          (m)</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:)</span>    <span class="kd">::</span> <span class="n">XBCOEF</span>         <span class="c">! soil water CH78 b-parameter             (-)</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:)</span>    <span class="kd">::</span> <span class="n">XWWILT</span>         <span class="c">! wilting point volumetric water content </span>
+<span class="c">!                                                  ! profile                                 (m3/m3)</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:)</span>    <span class="kd">::</span> <span class="n">XWFC</span>           <span class="c">! field capacity volumetric water content</span>
+<span class="c">!                                                  ! profile                                 (m3/m3)</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:)</span>    <span class="kd">::</span> <span class="n">XWSAT</span>          <span class="c">! porosity profile                        (m3/m3) </span>
+<span class="c">!</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>      <span class="kd">::</span> <span class="n">XCGSAT</span>         <span class="c">! soil thermal inertia coefficient at </span>
+<span class="c">!                                                  ! saturation</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>      <span class="kd">::</span> <span class="n">XC4B</span>           <span class="c">! &#39;Force-Restore&#39; sub-surface vertical </span>
+<span class="c">!                                                  ! diffusion coefficient (slope parameter) (-)</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>      <span class="kd">::</span> <span class="n">XACOEF</span>         <span class="c">! &#39;Force-Restore&#39; surface vertical </span>
+<span class="c">!                                                  ! diffusion coefficient                   (-)</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>      <span class="kd">::</span> <span class="n">XPCOEF</span>         <span class="c">! &#39;Force-Restore&#39; surface vertical </span>
+<span class="c">!                                                  ! diffusion coefficient                   (-)</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:)</span>    <span class="kd">::</span> <span class="n">XHCAPSOIL</span>      <span class="c">! soil heat capacity                      (J/K/m3)</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:)</span>    <span class="kd">::</span> <span class="n">XCONDDRY</span>       <span class="c">! soil dry thermal conductivity           (W/m/K)</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:)</span>    <span class="kd">::</span> <span class="n">XCONDSLD</span>       <span class="c">! soil solids thermal conductivity        (W/m/K)</span>
+<span class="c">!</span>
+<span class="c">! - Water table depth coupling</span>
+<span class="c">!  </span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>  <span class="kd">::</span> <span class="n">XFWTD</span>         <span class="c">! grid-cell fraction of water table rise</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>  <span class="kd">::</span> <span class="n">XWTD</span>          <span class="c">! water table depth (negative below soil surface) (m)</span>
+<span class="c">!</span>
+<span class="c">! * Physiographic radiative fields</span>
+<span class="c">!</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>   <span class="kd">::</span> <span class="n">XALBNIR_DRY</span>       <span class="c">! dry soil near-infra-red albedo          (-)</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>   <span class="kd">::</span> <span class="n">XALBVIS_DRY</span>       <span class="c">! dry soil visible albedo                 (-)</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>   <span class="kd">::</span> <span class="n">XALBUV_DRY</span>        <span class="c">! dry soil UV albedo                      (-)</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>   <span class="kd">::</span> <span class="n">XALBNIR_WET</span>       <span class="c">! wet soil near-infra-red albedo          (-)</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>   <span class="kd">::</span> <span class="n">XALBVIS_WET</span>       <span class="c">! wet soil visible albedo                 (-)</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>   <span class="kd">::</span> <span class="n">XALBUV_WET</span>        <span class="c">! wet soil UV albedo                      (-)</span>
+<span class="c">!</span>
+<span class="c">! * SGH initializations</span>
+<span class="c">!</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:)</span>  <span class="kd">::</span> <span class="n">XWD0</span>     <span class="c">! water content equivalent to TOPMODEL maximum deficit</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:)</span>  <span class="kd">::</span> <span class="n">XKANISO</span>  <span class="c">! Anisotropy coeficient for hydraulic conductivity</span>
+<span class="c">!</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>    <span class="kd">::</span> <span class="n">XMUF</span>     <span class="c">! fraction of the grid cell reached by the rainfall</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>    <span class="kd">::</span> <span class="n">XFSAT</span>    <span class="c">! Topmodel or dt92 saturated fracti</span>
+<span class="c">!</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>  <span class="kd">::</span> <span class="n">XFFLOOD</span>      <span class="c">! Grid-cell flood fraction</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>  <span class="kd">::</span> <span class="n">XPIFLOOD</span>     <span class="c">! flood potential infiltration (kg/m2/s)</span>
+<span class="c">!</span>
+<span class="c">! - Flood scheme</span>
+<span class="c">!</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span> <span class="kd">::</span> <span class="n">XFF</span>         <span class="c">! Total Flood fraction  </span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span> <span class="kd">::</span> <span class="n">XFFG</span>        <span class="c">! Flood fraction over ground</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span> <span class="kd">::</span> <span class="n">XFFV</span>        <span class="c">! Flood fraction over vegetation</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span> <span class="kd">::</span> <span class="n">XFFROZEN</span>    <span class="c">! Fraction of frozen floodplains</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span> <span class="kd">::</span> <span class="n">XALBF</span>       <span class="c">! Flood albedo</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span> <span class="kd">::</span> <span class="n">XEMISF</span>      <span class="c">! Flood emissivity</span>
+<span class="c">!</span>
+<span class="c">! - Snow and flood fractions and total albedo at time t:                             (-)</span>
+<span class="c">!</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:)</span> <span class="kd">::</span> <span class="n">XDIR_ALB_WITH_SNOW</span> <span class="c">! total direct albedo by bands</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:)</span> <span class="kd">::</span> <span class="n">XSCA_ALB_WITH_SNOW</span> <span class="c">! total diffuse albedo by bands</span>
+<span class="c">!</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:)</span> <span class="kd">::</span> <span class="n">XVEGTYPE</span>
+<span class="c">!</span>
+<span class="k">END TYPE </span><span class="n">ISBA_K_t</span>
+</pre></div>
+
+    </section>
+    
+    
+    </div>
+  </div>
+
+
+    <hr>    
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+      <div class="row">
+        <div class="col-xs-6 col-md-6"><p>Town Energy Balance (TEB) model API docs was developed by teb-model<br>&copy; 2021 CeCILL
+                                          </p>
+        </div>
+        <div class="col-xs-6 col-md-6">
+          <p class="text-right">
+            Documentation generated by 
+            <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+            
+            
+          </p>
+        </div>
+      </div>
+      <br>
+      </div> <!-- /container -->    
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+<!--
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+-->
+    <script src="../js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../js/ie10-viewport-bug-workaround.js"></script>
+
+    <!-- MathJax JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+        jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+        extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+      });
+    </script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    
+    <script src="../tipuesearch/tipuesearch_content.js"></script>
+    <script src="../tipuesearch/tipuesearch_set.js"></script>
+    <script src="../tipuesearch/tipuesearch.js"></script>
+    
+    
+  </body>
+</html>

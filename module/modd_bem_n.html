@@ -1,0 +1,1448 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   
+   <meta name="description" content="The Town Energy Balance (TEB) model is an urban land surface model developed to calculate the exchange of energy and water between cities and atmosphere.">
+    
+    <meta name="author" content="teb-model" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>MODD_BEM_n &ndash; Town Energy Balance (TEB) model API docs</title>
+
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+    
+    <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+    
+    
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <script src="../js/jquery-2.1.3.min.js"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../index.html">Town Energy Balance (TEB) model API docs </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+        
+            <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
+              <a href="#" class="dropdown-toggle"
+              data-toggle="dropdown" role="button"
+              aria-haspopup="true"
+     aria-expanded="false">Contents <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          
+              
+            <li><a href="../lists/files.html">Source Files</a></li>
+        
+        
+        
+            <li><a href="../lists/modules.html">Modules</a></li>
+        
+            
+                                
+            <li><a href="../lists/procedures.html">Procedures</a></li>
+        
+               
+            <li><a href="../lists/types.html">Derived Types</a></li>
+        
+        
+            <li><a href="../program/driver.html">Program</a></li>
+               
+        
+        
+            </ul>
+        
+            </li>
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/files.html">Source Files</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
+
+                             
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/types.html">Derived Types</a></li>
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../program/driver.html">Program</a></li>
+
+
+
+          </ul>
+        
+        <form action="../search.html" class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+        </div>
+<!--
+        <button type="submit" class="btn btn-default">Submit</button>
+-->
+        </form>
+        
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+    
+  
+  <div class="row">
+    <h1>MODD_BEM_n 
+    <small>Module</small>
+    
+    </h1>
+    
+<div class="row">
+  <div class="col-lg-12">
+<div class="well well-sm">
+  <ul class="list-inline" style="margin-bottom:0px;display:inline">
+     
+     
+     
+    <li><i class="fa fa-legal"></i> CeCILL</li> 
+     
+     
+     
+    
+    
+     <li><i class="fa fa-list-ol"></i>
+       <a data-toggle="tooltip"
+    data-placement="bottom" data-html="true"
+    title=" 1.6% of total for modules and submodules.">158 statements</a>
+     </li> 
+     
+     
+     
+    <li><i class="fa fa-code"></i><a href="../src/modd_bemn.F90"> Source File</a></li>
+     
+     
+  </ul>
+  <ol class="breadcrumb in-well text-right">
+  
+    
+     <li><a href='../sourcefile/modd_bemn.f90.html'>modd_bemn.F90</a></li>
+    
+  
+     <li class="active">MODD_BEM_n</li>
+  </ol>
+</div>
+</div>
+</div>
+<script>
+  $(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+  })
+</script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+    
+<div id="sidebar">
+  
+<h3>Contents</h3>
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#types-0">Derived Types</a></h3></div>
+  <div id="types-0" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../module/modd_bem_n.html#type-bem_t">BEM_t</a>
+      
+      <a class="list-group-item" href="../module/modd_bem_n.html#type-bem_np_t">BEM_NP_t</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#subs-0">Subroutines</a></h3></div>
+  <div class="list-group">
+    <div id="subs-0" class="panel-collapse collapse">
+      
+      <a class="list-group-item" href="../module/modd_bem_n.html#proc-bem_init">BEM_INIT</a>
+      
+      <a class="list-group-item" href="../module/modd_bem_n.html#proc-bem_np_init">BEM_NP_INIT</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+</div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+    
+      <br>
+    
+  
+    <div class="panel panel-default">
+      <div class="panel-heading">
+  <h3 class="panel-title">Uses</h3>
+      </div>
+      <ul class="list-group">
+      
+      <li class="list-group-item">
+  <ul class="list-inline">
+    
+    <li><a href='../module/parkind1.html'>PARKIND1</a></li>
+    
+    <li><a href='../module/yomhook.html'>YOMHOOK</a></li>
+    
+  </ul>
+      </li>
+      
+      
+      
+      </ul>
+    </div>
+    
+
+    
+    
+
+    <br>
+
+    <section class="visible-xs visible-sm hidden-md">
+      
+<h3>Contents</h3>
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#types-1">Derived Types</a></h3></div>
+  <div id="types-1" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../module/modd_bem_n.html#type-bem_t">BEM_t</a>
+      
+      <a class="list-group-item" href="../module/modd_bem_n.html#type-bem_np_t">BEM_NP_t</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#subs-1">Subroutines</a></h3></div>
+  <div class="list-group">
+    <div id="subs-1" class="panel-collapse collapse">
+      
+      <a class="list-group-item" href="../module/modd_bem_n.html#proc-bem_init">BEM_INIT</a>
+      
+      <a class="list-group-item" href="../module/modd_bem_n.html#proc-bem_np_init">BEM_NP_INIT</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+    </section>
+    <br class="visible-xs visible-sm hidden-md">
+
+    
+
+    
+    
+    
+    
+    
+
+    
+    
+    
+    <section>
+     <h2>Derived Types</h2>
+   
+     
+<div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="type-bem_t"></span><h3>type, public :: <a href='../type/bem_t.html'>BEM_t</a>
+    
+  </h3></div>
+  <div class="panel-body">
+    
+     
+     <h4>Components</h4>
+    
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th><th>Visibility</th>
+
+<th>Attributes</th><th></th><th>Name</th><th></th><th>Initial</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xhc_floor"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:)</td><td>::</td>
+  <td><strong>XHC_FLOOR</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xtc_floor"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:)</td><td>::</td>
+  <td><strong>XTC_FLOOR</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xd_floor"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:)</td><td>::</td>
+  <td><strong>XD_FLOOR</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xtcool_target~2"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XTCOOL_TARGET</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xtheat_target~2"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XTHEAT_TARGET</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xf_waste_can"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XF_WASTE_CAN</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xeff_heat"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XEFF_HEAT</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xti_bld"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XTI_BLD</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xt_floor"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:)</td><td>::</td>
+  <td><strong>XT_FLOOR</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xt_mass"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:)</td><td>::</td>
+  <td><strong>XT_MASS</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xqin~2"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XQIN</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xqin_frad"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XQIN_FRAD</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xshgc"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XSHGC</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xshgc_sh"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XSHGC_SH</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xu_win"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XU_WIN</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xtran_win"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XTRAN_WIN</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xgr"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XGR</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xfloor_height"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XFLOOR_HEIGHT</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xinf"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XINF</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xf_water_cond"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XF_WATER_COND</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xaux_max"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XAUX_MAX</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xqin_flat"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XQIN_FLAT</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xhr_target"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XHR_TARGET</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xt_win2"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XT_WIN2</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xqi_bld"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XQI_BLD</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xv_vent"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XV_VENT</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xcap_sys_heat"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XCAP_SYS_HEAT</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xcap_sys_rat"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XCAP_SYS_RAT</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xt_adp"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XT_ADP</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xm_sys_rat"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XM_SYS_RAT</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xcop_rat"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XCOP_RAT</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xt_win1"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XT_WIN1</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xalb_win"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XALB_WIN</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xabs_win"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XABS_WIN</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xt_size_max"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XT_SIZE_MAX</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xt_size_min"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XT_SIZE_MIN</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xugg_win"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XUGG_WIN</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-lshade"></span>logical,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>LSHADE</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xshade"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XSHADE</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-cnatvent"></span>character(len=4),</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>CNATVENT</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xnatvent"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XNATVENT</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-lshad_day"></span>logical,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>LSHAD_DAY</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-lnatvent_night"></span>logical,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>LNATVENT_NIGHT</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xn_floor"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XN_FLOOR</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xglaz_o_bld"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XGLAZ_O_BLD</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xmass_o_bld"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XMASS_O_BLD</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xfloor_hw_ratio"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XFLOOR_HW_RATIO</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xf_floor_mass"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XF_FLOOR_MASS</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xf_floor_wall"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XF_FLOOR_WALL</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xf_floor_win"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XF_FLOOR_WIN</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xf_floor_roof"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XF_FLOOR_ROOF</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xf_wall_floor"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XF_WALL_FLOOR</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xf_wall_mass"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XF_WALL_MASS</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xf_wall_win"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XF_WALL_WIN</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xf_win_floor"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XF_WIN_FLOOR</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xf_win_mass"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XF_WIN_MASS</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xf_win_wall"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XF_WIN_WALL</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xf_win_win"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XF_WIN_WIN</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xf_mass_floor"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XF_MASS_FLOOR</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xf_mass_wall"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XF_MASS_WALL</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xf_mass_win"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XF_MASS_WIN</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+     
+     
+          
+     
+  </div>
+</div>
+
+     
+     
+<div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="type-bem_np_t"></span><h3>type, public :: <a href='../type/bem_np_t.html'>BEM_NP_t</a>
+    
+  </h3></div>
+  <div class="panel-body">
+    
+     
+     <h4>Components</h4>
+    
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th><th>Visibility</th>
+
+<th>Attributes</th><th></th><th>Name</th><th></th><th>Initial</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-al~9"></span>type(<a href='../type/bem_t.html'>BEM_t</a>),</td>
+  
+  <td>public,</td>
+  <td>POINTER</td><td>::</td>
+  <td><strong>AL</strong>(:)</td><td>=> </td><td>NULL()</td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+     
+     
+          
+     
+  </div>
+</div>
+
+     
+    </section>
+  <br>
+    
+    
+    
+
+    
+    <section>
+    <h2>Subroutines</h2>
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="proc-bem_init"></span><h3>
+public subroutine <a href='../proc/bem_init.html'>BEM_INIT</a>(YBEM)
+    
+    
+   
+</h3></div>
+  <div class="panel-body">
+       
+    
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>type(<a href='../type/bem_t.html'>BEM_t</a>),</td>
+  <td>intent(inout)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>YBEM</strong></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  </div>
+  </div>
+
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="proc-bem_np_init"></span><h3>
+public subroutine <a href='../proc/bem_np_init.html'>BEM_NP_INIT</a>(YNBEM, KPATCH)
+    
+    
+   
+</h3></div>
+  <div class="panel-body">
+       
+    
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>type(<a href='../type/bem_np_t.html'>BEM_NP_t</a>),</td>
+  <td>intent(inout)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>YNBEM</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>integer,</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>KPATCH</strong></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  </div>
+  </div>
+
+    
+    </section>    
+    <br>
+    
+    
+    
+    </div>
+  </div>
+
+  
+    <hr>    
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+      <div class="row">
+        <div class="col-xs-6 col-md-6"><p>Town Energy Balance (TEB) model API docs was developed by teb-model<br>&copy; 2021 CeCILL
+                                          </p>
+        </div>
+        <div class="col-xs-6 col-md-6">
+          <p class="text-right">
+            Documentation generated by 
+            <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+            
+            
+          </p>
+        </div>
+      </div>
+      <br>
+      </div> <!-- /container -->    
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+<!--
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+-->
+    <script src="../js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../js/ie10-viewport-bug-workaround.js"></script>
+
+    <!-- MathJax JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+        jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+        extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+      });
+    </script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    
+    <script src="../tipuesearch/tipuesearch_content.js"></script>
+    <script src="../tipuesearch/tipuesearch_set.js"></script>
+    <script src="../tipuesearch/tipuesearch.js"></script>
+    
+    
+  </body>
+</html>

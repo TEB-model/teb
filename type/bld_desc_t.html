@@ -1,0 +1,1438 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   
+   <meta name="description" content="The Town Energy Balance (TEB) model is an urban land surface model developed to calculate the exchange of energy and water between cities and atmosphere.">
+    
+    <meta name="author" content="teb-model" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>BLD_DESC_t &ndash; Town Energy Balance (TEB) model API docs </title>
+
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+    
+    <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+    
+    
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <script src="../js/jquery-2.1.3.min.js"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../index.html">Town Energy Balance (TEB) model API docs </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+        
+            <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
+              <a href="#" class="dropdown-toggle"
+              data-toggle="dropdown" role="button"
+              aria-haspopup="true"
+     aria-expanded="false">Contents <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          
+              
+            <li><a href="../lists/files.html">Source Files</a></li>
+        
+        
+        
+            <li><a href="../lists/modules.html">Modules</a></li>
+        
+            
+                                
+            <li><a href="../lists/procedures.html">Procedures</a></li>
+        
+               
+            <li><a href="../lists/types.html">Derived Types</a></li>
+        
+        
+            <li><a href="../program/driver.html">Program</a></li>
+               
+        
+        
+            </ul>
+        
+            </li>
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/files.html">Source Files</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
+
+                             
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/types.html">Derived Types</a></li>
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../program/driver.html">Program</a></li>
+
+
+
+          </ul>
+        
+        <form action="../search.html" class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+        </div>
+<!--
+        <button type="submit" class="btn btn-default">Submit</button>
+-->
+        </form>
+        
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+    
+  
+  <div class="row">
+    <h1>BLD_DESC_t
+    <small>Derived Type</small>
+    
+    </h1>
+    
+<div class="row">
+  <div class="col-lg-12">
+<div class="well well-sm">
+  <ul class="list-inline" style="margin-bottom:0px;display:inline">
+     
+     
+     
+    <li><i class="fa fa-legal"></i> CeCILL</li> 
+     
+     
+     
+    
+    
+     <li><i class="fa fa-list-ol"></i>
+       <a data-toggle="tooltip"
+    data-placement="bottom" data-html="true"
+    title="<p> 3.3% of total for derived types.</p>Including implementation: 58 statements,  3.3% of total for derived types.">58 statements</a>
+     </li> 
+     
+     
+     
+    <li><i class="fa fa-code"></i><a href="../src/modd_bld_descriptionn.F90"> Source File</a></li>
+     
+     
+  </ul>
+  <ol class="breadcrumb in-well text-right">
+  
+    
+     <li><a href='../sourcefile/modd_bld_descriptionn.f90.html'>modd_bld_descriptionn.F90</a></li>
+    
+     <li><a href='../module/modd_bld_description_n.html'>MODD_BLD_DESCRIPTION_n</a></li>
+    
+  
+     <li class="active">BLD_DESC_t</li>
+  </ol>
+</div>
+</div>
+</div>
+<script>
+  $(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+  })
+</script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+    
+<div id="sidebar">
+  
+<h3>Contents</h3>
+ 
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#vars-0">Variables</a></h3></div>
+  <div id="vars-0" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../type/bld_desc_t.html#variable-ndesc_bld">NDESC_BLD</a>
+      
+      <a class="list-group-item" href="../type/bld_desc_t.html#variable-ndesc_age">NDESC_AGE</a>
+      
+      <a class="list-group-item" href="../type/bld_desc_t.html#variable-ndesc_code">NDESC_CODE</a>
+      
+      <a class="list-group-item" href="../type/bld_desc_t.html#variable-ndesc_use">NDESC_USE</a>
+      
+      <a class="list-group-item" href="../type/bld_desc_t.html#variable-ndesc_roof_layer">NDESC_ROOF_LAYER</a>
+      
+      <a class="list-group-item" href="../type/bld_desc_t.html#variable-ndesc_road_layer">NDESC_ROAD_LAYER</a>
+      
+      <a class="list-group-item" href="../type/bld_desc_t.html#variable-ndesc_wall_layer">NDESC_WALL_LAYER</a>
+      
+      <a class="list-group-item" href="../type/bld_desc_t.html#variable-ndesc_floor_layer">NDESC_FLOOR_LAYER</a>
+      
+      <a class="list-group-item" href="../type/bld_desc_t.html#variable-ndesc_bld_list">NDESC_BLD_LIST</a>
+      
+      <a class="list-group-item" href="../type/bld_desc_t.html#variable-ndesc_age_date">NDESC_AGE_DATE</a>
+      
+      <a class="list-group-item" href="../type/bld_desc_t.html#variable-ndesc_code_list">NDESC_CODE_LIST</a>
+      
+      <a class="list-group-item" href="../type/bld_desc_t.html#variable-ndesc_age_list">NDESC_AGE_LIST</a>
+      
+      <a class="list-group-item" href="../type/bld_desc_t.html#variable-ndesc_use_list">NDESC_USE_LIST</a>
+      
+      <a class="list-group-item" href="../type/bld_desc_t.html#variable-xdesc_alb_roof">XDESC_ALB_ROOF</a>
+      
+      <a class="list-group-item" href="../type/bld_desc_t.html#variable-xdesc_alb_road">XDESC_ALB_ROAD</a>
+      
+      <a class="list-group-item" href="../type/bld_desc_t.html#variable-xdesc_alb_wall">XDESC_ALB_WALL</a>
+      
+      <a class="list-group-item" href="../type/bld_desc_t.html#variable-xdesc_emis_roof">XDESC_EMIS_ROOF</a>
+      
+      <a class="list-group-item" href="../type/bld_desc_t.html#variable-xdesc_emis_road">XDESC_EMIS_ROAD</a>
+      
+      <a class="list-group-item" href="../type/bld_desc_t.html#variable-xdesc_emis_wall">XDESC_EMIS_WALL</a>
+      
+      <a class="list-group-item" href="../type/bld_desc_t.html#variable-xdesc_tcool_target">XDESC_TCOOL_TARGET</a>
+      
+      <a class="list-group-item" href="../type/bld_desc_t.html#variable-xdesc_theat_target">XDESC_THEAT_TARGET</a>
+      
+      <a class="list-group-item" href="../type/bld_desc_t.html#variable-xdesc_f_waste_can">XDESC_F_WASTE_CAN</a>
+      
+      <a class="list-group-item" href="../type/bld_desc_t.html#variable-xdesc_eff_heat">XDESC_EFF_HEAT</a>
+      
+      <a class="list-group-item" href="../type/bld_desc_t.html#variable-xdesc_hc_floor">XDESC_HC_FLOOR</a>
+      
+      <a class="list-group-item" href="../type/bld_desc_t.html#variable-xdesc_tc_floor">XDESC_TC_FLOOR</a>
+      
+      <a class="list-group-item" href="../type/bld_desc_t.html#variable-xdesc_d_floor">XDESC_D_FLOOR</a>
+      
+      <a class="list-group-item" href="../type/bld_desc_t.html#variable-xdesc_hc_roof">XDESC_HC_ROOF</a>
+      
+      <a class="list-group-item" href="../type/bld_desc_t.html#variable-xdesc_tc_roof">XDESC_TC_ROOF</a>
+      
+      <a class="list-group-item" href="../type/bld_desc_t.html#variable-xdesc_d_roof">XDESC_D_ROOF</a>
+      
+      <a class="list-group-item" href="../type/bld_desc_t.html#variable-xdesc_hc_road">XDESC_HC_ROAD</a>
+      
+      <a class="list-group-item" href="../type/bld_desc_t.html#variable-xdesc_tc_road">XDESC_TC_ROAD</a>
+      
+      <a class="list-group-item" href="../type/bld_desc_t.html#variable-xdesc_d_road">XDESC_D_ROAD</a>
+      
+      <a class="list-group-item" href="../type/bld_desc_t.html#variable-xdesc_hc_wall">XDESC_HC_WALL</a>
+      
+      <a class="list-group-item" href="../type/bld_desc_t.html#variable-xdesc_tc_wall">XDESC_TC_WALL</a>
+      
+      <a class="list-group-item" href="../type/bld_desc_t.html#variable-xdesc_d_wall">XDESC_D_WALL</a>
+      
+      <a class="list-group-item" href="../type/bld_desc_t.html#variable-xdesc_qin">XDESC_QIN</a>
+      
+      <a class="list-group-item" href="../type/bld_desc_t.html#variable-xdesc_qin_frad">XDESC_QIN_FRAD</a>
+      
+      <a class="list-group-item" href="../type/bld_desc_t.html#variable-xdesc_shgc">XDESC_SHGC</a>
+      
+      <a class="list-group-item" href="../type/bld_desc_t.html#variable-xdesc_u_win">XDESC_U_WIN</a>
+      
+      <a class="list-group-item" href="../type/bld_desc_t.html#variable-xdesc_gr">XDESC_GR</a>
+      
+      <a class="list-group-item" href="../type/bld_desc_t.html#variable-xdesc_shgc_sh">XDESC_SHGC_SH</a>
+      
+      <a class="list-group-item" href="../type/bld_desc_t.html#variable-xdesc_floor_height">XDESC_FLOOR_HEIGHT</a>
+      
+      <a class="list-group-item" href="../type/bld_desc_t.html#variable-xdesc_inf">XDESC_INF</a>
+      
+      <a class="list-group-item" href="../type/bld_desc_t.html#variable-xdesc_f_water_cond">XDESC_F_WATER_COND</a>
+      
+      <a class="list-group-item" href="../type/bld_desc_t.html#variable-xdesc_shade">XDESC_SHADE</a>
+      
+      <a class="list-group-item" href="../type/bld_desc_t.html#variable-xdesc_natvent">XDESC_NATVENT</a>
+      
+      <a class="list-group-item" href="../type/bld_desc_t.html#variable-xdesc_qin_flat">XDESC_QIN_FLAT</a>
+      
+      <a class="list-group-item" href="../type/bld_desc_t.html#variable-xdesc_hr_target">XDESC_HR_TARGET</a>
+      
+      <a class="list-group-item" href="../type/bld_desc_t.html#variable-xdesc_v_vent">XDESC_V_VENT</a>
+      
+      <a class="list-group-item" href="../type/bld_desc_t.html#variable-xdesc_cop_rat">XDESC_COP_RAT</a>
+      
+      <a class="list-group-item" href="../type/bld_desc_t.html#variable-xdesc_greenroof">XDESC_GREENROOF</a>
+      
+      <a class="list-group-item" href="../type/bld_desc_t.html#variable-xdesc_emis_panel">XDESC_EMIS_PANEL</a>
+      
+      <a class="list-group-item" href="../type/bld_desc_t.html#variable-xdesc_alb_panel">XDESC_ALB_PANEL</a>
+      
+      <a class="list-group-item" href="../type/bld_desc_t.html#variable-xdesc_eff_panel">XDESC_EFF_PANEL</a>
+      
+      <a class="list-group-item" href="../type/bld_desc_t.html#variable-xdesc_frac_panel">XDESC_FRAC_PANEL</a>
+      
+      <a class="list-group-item" href="../type/bld_desc_t.html#variable-xdesc_residential">XDESC_RESIDENTIAL</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+  <div class="list-group">
+    <a class="list-group-item" href="../type/bld_desc_t.html#src">BLD_DESC_t</a>
+  </div>
+</div>
+
+
+
+</div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+      <h2>type, public :: BLD_DESC_t</h2>
+    
+    
+    
+    
+    <br>
+
+    <section class="visible-xs visible-sm hidden-md">
+      
+<h3>Contents</h3>
+ 
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#vars-1">Variables</a></h3></div>
+  <div id="vars-1" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../type/bld_desc_t.html#variable-ndesc_bld">NDESC_BLD</a>
+      
+      <a class="list-group-item" href="../type/bld_desc_t.html#variable-ndesc_age">NDESC_AGE</a>
+      
+      <a class="list-group-item" href="../type/bld_desc_t.html#variable-ndesc_code">NDESC_CODE</a>
+      
+      <a class="list-group-item" href="../type/bld_desc_t.html#variable-ndesc_use">NDESC_USE</a>
+      
+      <a class="list-group-item" href="../type/bld_desc_t.html#variable-ndesc_roof_layer">NDESC_ROOF_LAYER</a>
+      
+      <a class="list-group-item" href="../type/bld_desc_t.html#variable-ndesc_road_layer">NDESC_ROAD_LAYER</a>
+      
+      <a class="list-group-item" href="../type/bld_desc_t.html#variable-ndesc_wall_layer">NDESC_WALL_LAYER</a>
+      
+      <a class="list-group-item" href="../type/bld_desc_t.html#variable-ndesc_floor_layer">NDESC_FLOOR_LAYER</a>
+      
+      <a class="list-group-item" href="../type/bld_desc_t.html#variable-ndesc_bld_list">NDESC_BLD_LIST</a>
+      
+      <a class="list-group-item" href="../type/bld_desc_t.html#variable-ndesc_age_date">NDESC_AGE_DATE</a>
+      
+      <a class="list-group-item" href="../type/bld_desc_t.html#variable-ndesc_code_list">NDESC_CODE_LIST</a>
+      
+      <a class="list-group-item" href="../type/bld_desc_t.html#variable-ndesc_age_list">NDESC_AGE_LIST</a>
+      
+      <a class="list-group-item" href="../type/bld_desc_t.html#variable-ndesc_use_list">NDESC_USE_LIST</a>
+      
+      <a class="list-group-item" href="../type/bld_desc_t.html#variable-xdesc_alb_roof">XDESC_ALB_ROOF</a>
+      
+      <a class="list-group-item" href="../type/bld_desc_t.html#variable-xdesc_alb_road">XDESC_ALB_ROAD</a>
+      
+      <a class="list-group-item" href="../type/bld_desc_t.html#variable-xdesc_alb_wall">XDESC_ALB_WALL</a>
+      
+      <a class="list-group-item" href="../type/bld_desc_t.html#variable-xdesc_emis_roof">XDESC_EMIS_ROOF</a>
+      
+      <a class="list-group-item" href="../type/bld_desc_t.html#variable-xdesc_emis_road">XDESC_EMIS_ROAD</a>
+      
+      <a class="list-group-item" href="../type/bld_desc_t.html#variable-xdesc_emis_wall">XDESC_EMIS_WALL</a>
+      
+      <a class="list-group-item" href="../type/bld_desc_t.html#variable-xdesc_tcool_target">XDESC_TCOOL_TARGET</a>
+      
+      <a class="list-group-item" href="../type/bld_desc_t.html#variable-xdesc_theat_target">XDESC_THEAT_TARGET</a>
+      
+      <a class="list-group-item" href="../type/bld_desc_t.html#variable-xdesc_f_waste_can">XDESC_F_WASTE_CAN</a>
+      
+      <a class="list-group-item" href="../type/bld_desc_t.html#variable-xdesc_eff_heat">XDESC_EFF_HEAT</a>
+      
+      <a class="list-group-item" href="../type/bld_desc_t.html#variable-xdesc_hc_floor">XDESC_HC_FLOOR</a>
+      
+      <a class="list-group-item" href="../type/bld_desc_t.html#variable-xdesc_tc_floor">XDESC_TC_FLOOR</a>
+      
+      <a class="list-group-item" href="../type/bld_desc_t.html#variable-xdesc_d_floor">XDESC_D_FLOOR</a>
+      
+      <a class="list-group-item" href="../type/bld_desc_t.html#variable-xdesc_hc_roof">XDESC_HC_ROOF</a>
+      
+      <a class="list-group-item" href="../type/bld_desc_t.html#variable-xdesc_tc_roof">XDESC_TC_ROOF</a>
+      
+      <a class="list-group-item" href="../type/bld_desc_t.html#variable-xdesc_d_roof">XDESC_D_ROOF</a>
+      
+      <a class="list-group-item" href="../type/bld_desc_t.html#variable-xdesc_hc_road">XDESC_HC_ROAD</a>
+      
+      <a class="list-group-item" href="../type/bld_desc_t.html#variable-xdesc_tc_road">XDESC_TC_ROAD</a>
+      
+      <a class="list-group-item" href="../type/bld_desc_t.html#variable-xdesc_d_road">XDESC_D_ROAD</a>
+      
+      <a class="list-group-item" href="../type/bld_desc_t.html#variable-xdesc_hc_wall">XDESC_HC_WALL</a>
+      
+      <a class="list-group-item" href="../type/bld_desc_t.html#variable-xdesc_tc_wall">XDESC_TC_WALL</a>
+      
+      <a class="list-group-item" href="../type/bld_desc_t.html#variable-xdesc_d_wall">XDESC_D_WALL</a>
+      
+      <a class="list-group-item" href="../type/bld_desc_t.html#variable-xdesc_qin">XDESC_QIN</a>
+      
+      <a class="list-group-item" href="../type/bld_desc_t.html#variable-xdesc_qin_frad">XDESC_QIN_FRAD</a>
+      
+      <a class="list-group-item" href="../type/bld_desc_t.html#variable-xdesc_shgc">XDESC_SHGC</a>
+      
+      <a class="list-group-item" href="../type/bld_desc_t.html#variable-xdesc_u_win">XDESC_U_WIN</a>
+      
+      <a class="list-group-item" href="../type/bld_desc_t.html#variable-xdesc_gr">XDESC_GR</a>
+      
+      <a class="list-group-item" href="../type/bld_desc_t.html#variable-xdesc_shgc_sh">XDESC_SHGC_SH</a>
+      
+      <a class="list-group-item" href="../type/bld_desc_t.html#variable-xdesc_floor_height">XDESC_FLOOR_HEIGHT</a>
+      
+      <a class="list-group-item" href="../type/bld_desc_t.html#variable-xdesc_inf">XDESC_INF</a>
+      
+      <a class="list-group-item" href="../type/bld_desc_t.html#variable-xdesc_f_water_cond">XDESC_F_WATER_COND</a>
+      
+      <a class="list-group-item" href="../type/bld_desc_t.html#variable-xdesc_shade">XDESC_SHADE</a>
+      
+      <a class="list-group-item" href="../type/bld_desc_t.html#variable-xdesc_natvent">XDESC_NATVENT</a>
+      
+      <a class="list-group-item" href="../type/bld_desc_t.html#variable-xdesc_qin_flat">XDESC_QIN_FLAT</a>
+      
+      <a class="list-group-item" href="../type/bld_desc_t.html#variable-xdesc_hr_target">XDESC_HR_TARGET</a>
+      
+      <a class="list-group-item" href="../type/bld_desc_t.html#variable-xdesc_v_vent">XDESC_V_VENT</a>
+      
+      <a class="list-group-item" href="../type/bld_desc_t.html#variable-xdesc_cop_rat">XDESC_COP_RAT</a>
+      
+      <a class="list-group-item" href="../type/bld_desc_t.html#variable-xdesc_greenroof">XDESC_GREENROOF</a>
+      
+      <a class="list-group-item" href="../type/bld_desc_t.html#variable-xdesc_emis_panel">XDESC_EMIS_PANEL</a>
+      
+      <a class="list-group-item" href="../type/bld_desc_t.html#variable-xdesc_alb_panel">XDESC_ALB_PANEL</a>
+      
+      <a class="list-group-item" href="../type/bld_desc_t.html#variable-xdesc_eff_panel">XDESC_EFF_PANEL</a>
+      
+      <a class="list-group-item" href="../type/bld_desc_t.html#variable-xdesc_frac_panel">XDESC_FRAC_PANEL</a>
+      
+      <a class="list-group-item" href="../type/bld_desc_t.html#variable-xdesc_residential">XDESC_RESIDENTIAL</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+  <div class="list-group">
+    <a class="list-group-item" href="../type/bld_desc_t.html#src">BLD_DESC_t</a>
+  </div>
+</div>
+
+
+
+    </section>
+    <br class="visible-xs visible-sm hidden-md">
+
+    
+    <section>
+    <h2>Components</h2>
+    
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th><th>Visibility</th>
+
+<th>Attributes</th><th></th><th>Name</th><th></th><th>Initial</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-ndesc_bld"></span>integer,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>NDESC_BLD</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-ndesc_age"></span>integer,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>NDESC_AGE</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-ndesc_code"></span>integer,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>NDESC_CODE</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-ndesc_use"></span>integer,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>NDESC_USE</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-ndesc_roof_layer"></span>integer,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>NDESC_ROOF_LAYER</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-ndesc_road_layer"></span>integer,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>NDESC_ROAD_LAYER</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-ndesc_wall_layer"></span>integer,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>NDESC_WALL_LAYER</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-ndesc_floor_layer"></span>integer,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>NDESC_FLOOR_LAYER</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-ndesc_bld_list"></span>integer,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>NDESC_BLD_LIST</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-ndesc_age_date"></span>integer,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>NDESC_AGE_DATE</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-ndesc_code_list"></span>integer,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>NDESC_CODE_LIST</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-ndesc_age_list"></span>integer,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>NDESC_AGE_LIST</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-ndesc_use_list"></span>integer,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>NDESC_USE_LIST</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xdesc_alb_roof"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XDESC_ALB_ROOF</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xdesc_alb_road"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XDESC_ALB_ROAD</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xdesc_alb_wall"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XDESC_ALB_WALL</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xdesc_emis_roof"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XDESC_EMIS_ROOF</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xdesc_emis_road"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XDESC_EMIS_ROAD</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xdesc_emis_wall"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XDESC_EMIS_WALL</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xdesc_tcool_target"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XDESC_TCOOL_TARGET</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xdesc_theat_target"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XDESC_THEAT_TARGET</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xdesc_f_waste_can"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XDESC_F_WASTE_CAN</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xdesc_eff_heat"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XDESC_EFF_HEAT</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xdesc_hc_floor"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:)</td><td>::</td>
+  <td><strong>XDESC_HC_FLOOR</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xdesc_tc_floor"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:)</td><td>::</td>
+  <td><strong>XDESC_TC_FLOOR</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xdesc_d_floor"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:)</td><td>::</td>
+  <td><strong>XDESC_D_FLOOR</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xdesc_hc_roof"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:)</td><td>::</td>
+  <td><strong>XDESC_HC_ROOF</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xdesc_tc_roof"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:)</td><td>::</td>
+  <td><strong>XDESC_TC_ROOF</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xdesc_d_roof"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:)</td><td>::</td>
+  <td><strong>XDESC_D_ROOF</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xdesc_hc_road"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:)</td><td>::</td>
+  <td><strong>XDESC_HC_ROAD</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xdesc_tc_road"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:)</td><td>::</td>
+  <td><strong>XDESC_TC_ROAD</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xdesc_d_road"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:)</td><td>::</td>
+  <td><strong>XDESC_D_ROAD</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xdesc_hc_wall"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:)</td><td>::</td>
+  <td><strong>XDESC_HC_WALL</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xdesc_tc_wall"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:)</td><td>::</td>
+  <td><strong>XDESC_TC_WALL</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xdesc_d_wall"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:)</td><td>::</td>
+  <td><strong>XDESC_D_WALL</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xdesc_qin"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XDESC_QIN</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xdesc_qin_frad"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XDESC_QIN_FRAD</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xdesc_shgc"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XDESC_SHGC</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xdesc_u_win"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XDESC_U_WIN</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xdesc_gr"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XDESC_GR</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xdesc_shgc_sh"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XDESC_SHGC_SH</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xdesc_floor_height"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XDESC_FLOOR_HEIGHT</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xdesc_inf"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XDESC_INF</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xdesc_f_water_cond"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XDESC_F_WATER_COND</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xdesc_shade"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XDESC_SHADE</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xdesc_natvent"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XDESC_NATVENT</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xdesc_qin_flat"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XDESC_QIN_FLAT</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xdesc_hr_target"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XDESC_HR_TARGET</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xdesc_v_vent"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XDESC_V_VENT</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xdesc_cop_rat"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XDESC_COP_RAT</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xdesc_greenroof"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XDESC_GREENROOF</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xdesc_emis_panel"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XDESC_EMIS_PANEL</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xdesc_alb_panel"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XDESC_ALB_PANEL</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xdesc_eff_panel"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XDESC_EFF_PANEL</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xdesc_frac_panel"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XDESC_FRAC_PANEL</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xdesc_residential"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XDESC_RESIDENTIAL</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+    </section>
+    <br>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <section>
+    <h3><span class="anchor" id="src"></span>Source Code</h3>
+    <div class="highlight"><pre><span></span><span class="k">TYPE </span><span class="n">BLD_DESC_t</span>
+<span class="c">!</span>
+<span class="c">! Number of layers</span>
+<span class="c">!</span>
+  <span class="kt">INTEGER</span>                       <span class="kd">::</span> <span class="n">NDESC_BLD</span>          <span class="c">! number of types of buildings</span>
+  <span class="kt">INTEGER</span>                       <span class="kd">::</span> <span class="n">NDESC_AGE</span>          <span class="c">! number of building&#39;s construction dates ranges</span>
+  <span class="kt">INTEGER</span>                       <span class="kd">::</span> <span class="n">NDESC_CODE</span>         <span class="c">! number of codes for buildings (merges type &amp; age)</span>
+  <span class="kt">INTEGER</span>                       <span class="kd">::</span> <span class="n">NDESC_USE</span>          <span class="c">! number of types of building&#39;s uses</span>
+  <span class="kt">INTEGER</span>                       <span class="kd">::</span> <span class="n">NDESC_ROOF_LAYER</span>   <span class="c">! number of layers in roofs</span>
+  <span class="kt">INTEGER</span>                       <span class="kd">::</span> <span class="n">NDESC_ROAD_LAYER</span>   <span class="c">! number of layers in roads</span>
+  <span class="kt">INTEGER</span>                       <span class="kd">::</span> <span class="n">NDESC_WALL_LAYER</span>   <span class="c">! number of layers in walls</span>
+  <span class="kt">INTEGER</span>                       <span class="kd">::</span> <span class="n">NDESC_FLOOR_LAYER</span>  <span class="c">! number of layers in floor</span>
+  <span class="kt">INTEGER</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span><span class="kd">::</span> <span class="n">NDESC_BLD_LIST</span>     <span class="c">! list of the types for buildings</span>
+  <span class="kt">INTEGER</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span><span class="kd">::</span> <span class="n">NDESC_AGE_DATE</span>     <span class="c">! list of the contruction dates for buildings</span>
+  <span class="kt">INTEGER</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span><span class="kd">::</span> <span class="n">NDESC_CODE_LIST</span>    <span class="c">! list of the codes for buildings</span>
+  <span class="kt">INTEGER</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span><span class="kd">::</span> <span class="n">NDESC_AGE_LIST</span>     <span class="c">! list of the contruction dates&#39; codes</span>
+  <span class="kt">INTEGER</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span><span class="kd">::</span> <span class="n">NDESC_USE_LIST</span>     <span class="c">! list of the codes for building&#39;s uses</span>
+  <span class="c">!</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>   <span class="kd">::</span> <span class="n">XDESC_ALB_ROOF</span>     <span class="c">! Roof albedo</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>   <span class="kd">::</span> <span class="n">XDESC_ALB_ROAD</span>     <span class="c">! Road albedo</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>   <span class="kd">::</span> <span class="n">XDESC_ALB_WALL</span>     <span class="c">! Wall albedo</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>   <span class="kd">::</span> <span class="n">XDESC_EMIS_ROOF</span>    <span class="c">! Roof emissivity</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>   <span class="kd">::</span> <span class="n">XDESC_EMIS_ROAD</span>    <span class="c">! Road emissivity</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>   <span class="kd">::</span> <span class="n">XDESC_EMIS_WALL</span>    <span class="c">! Wall emissivity</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>   <span class="kd">::</span> <span class="n">XDESC_TCOOL_TARGET</span> <span class="c">! cooling setpoint of indoor air</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>   <span class="kd">::</span> <span class="n">XDESC_THEAT_TARGET</span> <span class="c">! heating setpoint of indoor air  </span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>   <span class="kd">::</span> <span class="n">XDESC_F_WASTE_CAN</span>  <span class="c">! fraction of waste heat into the canyon</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>   <span class="kd">::</span> <span class="n">XDESC_EFF_HEAT</span>     <span class="c">! efficiency of the heating system</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:)</span> <span class="kd">::</span> <span class="n">XDESC_HC_FLOOR</span>     <span class="c">! heat capacity of floor layers [J m-3 K-1]</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:)</span> <span class="kd">::</span> <span class="n">XDESC_TC_FLOOR</span>     <span class="c">! thermal conductivity of floor layers [W m-1 K-1]</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:)</span> <span class="kd">::</span> <span class="n">XDESC_D_FLOOR</span>      <span class="c">! thickness of floor layers [m]</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:)</span> <span class="kd">::</span> <span class="n">XDESC_HC_ROOF</span>      <span class="c">! heat capacity of roof layers [J m-3 K-1]</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:)</span> <span class="kd">::</span> <span class="n">XDESC_TC_ROOF</span>      <span class="c">! thermal conductivity of roof layers [W m-1 K-1]</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:)</span> <span class="kd">::</span> <span class="n">XDESC_D_ROOF</span>       <span class="c">! thickness of roof layers [m]</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:)</span> <span class="kd">::</span> <span class="n">XDESC_HC_ROAD</span>      <span class="c">! heat capacity of road layers [J m-3 K-1]</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:)</span> <span class="kd">::</span> <span class="n">XDESC_TC_ROAD</span>      <span class="c">! thermal conductivity of road layers [W m-1 K-1]</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:)</span> <span class="kd">::</span> <span class="n">XDESC_D_ROAD</span>       <span class="c">! thickness of road layers [m]</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:)</span> <span class="kd">::</span> <span class="n">XDESC_HC_WALL</span>      <span class="c">! heat capacity of wall layers [J m-3 K-1]</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:)</span> <span class="kd">::</span> <span class="n">XDESC_TC_WALL</span>      <span class="c">! thermal conductivity of wall layers [W m-1 K-1]</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:)</span> <span class="kd">::</span> <span class="n">XDESC_D_WALL</span>       <span class="c">! thickness of wall layers [m]</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>   <span class="kd">::</span> <span class="n">XDESC_QIN</span>          <span class="c">! internal heat gains [W m-2(floor)]</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>   <span class="kd">::</span> <span class="n">XDESC_QIN_FRAD</span>     <span class="c">! radiant fraction of internal heat gains</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>   <span class="kd">::</span> <span class="n">XDESC_SHGC</span>         <span class="c">! solar transmitance of windows</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>   <span class="kd">::</span> <span class="n">XDESC_U_WIN</span>        <span class="c">! glazing thermal resistance [K m W-2]</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>   <span class="kd">::</span> <span class="n">XDESC_GR</span>           <span class="c">! glazing ratio</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>   <span class="kd">::</span> <span class="n">XDESC_SHGC_SH</span>      <span class="c">! solar transmitance of windows + shading</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>   <span class="kd">::</span> <span class="n">XDESC_FLOOR_HEIGHT</span> <span class="c">! building floor height [m]</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>   <span class="kd">::</span> <span class="n">XDESC_INF</span>          <span class="c">! infiltration/ventilation flow rate [AC/H]</span>
+<span class="c">!</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>   <span class="kd">::</span> <span class="n">XDESC_F_WATER_COND</span> <span class="c">! fraction of evaporation for condensers</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>   <span class="kd">::</span> <span class="n">XDESC_SHADE</span>        <span class="c">! Flag to activate shading devices 0-&gt;inactivated , 1-&gt;activated</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>   <span class="kd">::</span> <span class="n">XDESC_NATVENT</span>      <span class="c">! Flag to describe bld surventilation solution 0-&gt; NONE ; 1 -&gt; MANU ; 2-&gt; AUTO</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>   <span class="kd">::</span> <span class="n">XDESC_QIN_FLAT</span>     <span class="c">! Latent franction of internal heat gains</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>   <span class="kd">::</span> <span class="n">XDESC_HR_TARGET</span>    <span class="c">! Relative humidity setpoint  </span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>   <span class="kd">::</span> <span class="n">XDESC_V_VENT</span>       <span class="c">! Ventilation flow rate [AC/H]</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>   <span class="kd">::</span> <span class="n">XDESC_COP_RAT</span>      <span class="c">! Rated COP of the cooling system</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>   <span class="kd">::</span> <span class="n">XDESC_GREENROOF</span>    <span class="c">! Greenroof fraction</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>   <span class="kd">::</span> <span class="n">XDESC_EMIS_PANEL</span>   <span class="c">! Emissivity of Solar panels</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>   <span class="kd">::</span> <span class="n">XDESC_ALB_PANEL</span>    <span class="c">! Albedo     of Solar panels</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>   <span class="kd">::</span> <span class="n">XDESC_EFF_PANEL</span>    <span class="c">! Efficiency of Solar panels</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>   <span class="kd">::</span> <span class="n">XDESC_FRAC_PANEL</span>   <span class="c">! Fraction   of Solar panels on roofs</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>   <span class="kd">::</span> <span class="n">XDESC_RESIDENTIAL</span>  <span class="c">! Fraction of residential use</span>
+<span class="c">!</span>
+<span class="k">END TYPE </span><span class="n">BLD_DESC_t</span>
+</pre></div>
+
+    </section>
+    
+    
+    </div>
+  </div>
+
+
+    <hr>    
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+      <div class="row">
+        <div class="col-xs-6 col-md-6"><p>Town Energy Balance (TEB) model API docs was developed by teb-model<br>&copy; 2021 CeCILL
+                                          </p>
+        </div>
+        <div class="col-xs-6 col-md-6">
+          <p class="text-right">
+            Documentation generated by 
+            <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+            
+            
+          </p>
+        </div>
+      </div>
+      <br>
+      </div> <!-- /container -->    
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+<!--
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+-->
+    <script src="../js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../js/ie10-viewport-bug-workaround.js"></script>
+
+    <!-- MathJax JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+        jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+        extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+      });
+    </script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    
+    <script src="../tipuesearch/tipuesearch_content.js"></script>
+    <script src="../tipuesearch/tipuesearch_set.js"></script>
+    <script src="../tipuesearch/tipuesearch.js"></script>
+    
+    
+  </body>
+</html>

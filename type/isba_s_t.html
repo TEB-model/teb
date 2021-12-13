@@ -1,0 +1,1332 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   
+   <meta name="description" content="The Town Energy Balance (TEB) model is an urban land surface model developed to calculate the exchange of energy and water between cities and atmosphere.">
+    
+    <meta name="author" content="teb-model" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>ISBA_S_t &ndash; Town Energy Balance (TEB) model API docs </title>
+
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+    
+    <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+    
+    
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <script src="../js/jquery-2.1.3.min.js"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../index.html">Town Energy Balance (TEB) model API docs </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+        
+            <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
+              <a href="#" class="dropdown-toggle"
+              data-toggle="dropdown" role="button"
+              aria-haspopup="true"
+     aria-expanded="false">Contents <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          
+              
+            <li><a href="../lists/files.html">Source Files</a></li>
+        
+        
+        
+            <li><a href="../lists/modules.html">Modules</a></li>
+        
+            
+                                
+            <li><a href="../lists/procedures.html">Procedures</a></li>
+        
+               
+            <li><a href="../lists/types.html">Derived Types</a></li>
+        
+        
+            <li><a href="../program/driver.html">Program</a></li>
+               
+        
+        
+            </ul>
+        
+            </li>
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/files.html">Source Files</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
+
+                             
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/types.html">Derived Types</a></li>
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../program/driver.html">Program</a></li>
+
+
+
+          </ul>
+        
+        <form action="../search.html" class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+        </div>
+<!--
+        <button type="submit" class="btn btn-default">Submit</button>
+-->
+        </form>
+        
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+    
+  
+  <div class="row">
+    <h1>ISBA_S_t
+    <small>Derived Type</small>
+    
+    </h1>
+    
+<div class="row">
+  <div class="col-lg-12">
+<div class="well well-sm">
+  <ul class="list-inline" style="margin-bottom:0px;display:inline">
+     
+     
+     
+    <li><i class="fa fa-legal"></i> CeCILL</li> 
+     
+     
+     
+    
+    
+     <li><i class="fa fa-list-ol"></i>
+       <a data-toggle="tooltip"
+    data-placement="bottom" data-html="true"
+    title="<p> 2.6% of total for derived types.</p>Including implementation: 47 statements,  2.6% of total for derived types.">47 statements</a>
+     </li> 
+     
+     
+     
+    <li><i class="fa fa-code"></i><a href="../src/modd_isban.F90"> Source File</a></li>
+     
+     
+  </ul>
+  <ol class="breadcrumb in-well text-right">
+  
+    
+     <li><a href='../sourcefile/modd_isban.f90.html'>modd_isban.F90</a></li>
+    
+     <li><a href='../module/modd_isba_n.html'>MODD_ISBA_n</a></li>
+    
+  
+     <li class="active">ISBA_S_t</li>
+  </ol>
+</div>
+</div>
+</div>
+<script>
+  $(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+  })
+</script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+    
+<div id="sidebar">
+  
+<h3>Contents</h3>
+ 
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#vars-0">Variables</a></h3></div>
+  <div id="vars-0" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../type/isba_s_t.html#variable-xzs~5">XZS</a>
+      
+      <a class="list-group-item" href="../type/isba_s_t.html#variable-xcover~5">XCOVER</a>
+      
+      <a class="list-group-item" href="../type/isba_s_t.html#variable-lcover~5">LCOVER</a>
+      
+      <a class="list-group-item" href="../type/isba_s_t.html#variable-xti_min">XTI_MIN</a>
+      
+      <a class="list-group-item" href="../type/isba_s_t.html#variable-xti_max">XTI_MAX</a>
+      
+      <a class="list-group-item" href="../type/isba_s_t.html#variable-xti_mean">XTI_MEAN</a>
+      
+      <a class="list-group-item" href="../type/isba_s_t.html#variable-xti_std">XTI_STD</a>
+      
+      <a class="list-group-item" href="../type/isba_s_t.html#variable-xti_skew">XTI_SKEW</a>
+      
+      <a class="list-group-item" href="../type/isba_s_t.html#variable-xsoc">XSOC</a>
+      
+      <a class="list-group-item" href="../type/isba_s_t.html#variable-xph">XPH</a>
+      
+      <a class="list-group-item" href="../type/isba_s_t.html#variable-xfert">XFERT</a>
+      
+      <a class="list-group-item" href="../type/isba_s_t.html#variable-xabc">XABC</a>
+      
+      <a class="list-group-item" href="../type/isba_s_t.html#variable-xpoi">XPOI</a>
+      
+      <a class="list-group-item" href="../type/isba_s_t.html#variable-ttime~5">TTIME</a>
+      
+      <a class="list-group-item" href="../type/isba_s_t.html#variable-xtab_fsat">XTAB_FSAT</a>
+      
+      <a class="list-group-item" href="../type/isba_s_t.html#variable-xtab_wtop">XTAB_WTOP</a>
+      
+      <a class="list-group-item" href="../type/isba_s_t.html#variable-xtab_qtop">XTAB_QTOP</a>
+      
+      <a class="list-group-item" href="../type/isba_s_t.html#variable-xf_param">XF_PARAM</a>
+      
+      <a class="list-group-item" href="../type/isba_s_t.html#variable-xc_depth_ratio">XC_DEPTH_RATIO</a>
+      
+      <a class="list-group-item" href="../type/isba_s_t.html#variable-xcpl_drain">XCPL_DRAIN</a>
+      
+      <a class="list-group-item" href="../type/isba_s_t.html#variable-xcpl_runoff">XCPL_RUNOFF</a>
+      
+      <a class="list-group-item" href="../type/isba_s_t.html#variable-xcpl_iceflux">XCPL_ICEFLUX</a>
+      
+      <a class="list-group-item" href="../type/isba_s_t.html#variable-xcpl_eflood">XCPL_EFLOOD</a>
+      
+      <a class="list-group-item" href="../type/isba_s_t.html#variable-xcpl_pflood">XCPL_PFLOOD</a>
+      
+      <a class="list-group-item" href="../type/isba_s_t.html#variable-xcpl_iflood">XCPL_IFLOOD</a>
+      
+      <a class="list-group-item" href="../type/isba_s_t.html#variable-xpertveg">XPERTVEG</a>
+      
+      <a class="list-group-item" href="../type/isba_s_t.html#variable-xpertlai">XPERTLAI</a>
+      
+      <a class="list-group-item" href="../type/isba_s_t.html#variable-xpertcv">XPERTCV</a>
+      
+      <a class="list-group-item" href="../type/isba_s_t.html#variable-xpertalb">XPERTALB</a>
+      
+      <a class="list-group-item" href="../type/isba_s_t.html#variable-xpertz0">XPERTZ0</a>
+      
+      <a class="list-group-item" href="../type/isba_s_t.html#variable-xtsrad_nat">XTSRAD_NAT</a>
+      
+      <a class="list-group-item" href="../type/isba_s_t.html#variable-xemis_nat">XEMIS_NAT</a>
+      
+      <a class="list-group-item" href="../type/isba_s_t.html#variable-xfracsoc">XFRACSOC</a>
+      
+      <a class="list-group-item" href="../type/isba_s_t.html#variable-xvegtype">XVEGTYPE</a>
+      
+      <a class="list-group-item" href="../type/isba_s_t.html#variable-xpatch">XPATCH</a>
+      
+      <a class="list-group-item" href="../type/isba_s_t.html#variable-xvegtype_patch">XVEGTYPE_PATCH</a>
+      
+      <a class="list-group-item" href="../type/isba_s_t.html#variable-xinnov">XINNOV</a>
+      
+      <a class="list-group-item" href="../type/isba_s_t.html#variable-xresid">XRESID</a>
+      
+      <a class="list-group-item" href="../type/isba_s_t.html#variable-xwork_wr">XWORK_WR</a>
+      
+      <a class="list-group-item" href="../type/isba_s_t.html#variable-xwsn_wr">XWSN_WR</a>
+      
+      <a class="list-group-item" href="../type/isba_s_t.html#variable-xrho_wr">XRHO_WR</a>
+      
+      <a class="list-group-item" href="../type/isba_s_t.html#variable-xhea_wr">XHEA_WR</a>
+      
+      <a class="list-group-item" href="../type/isba_s_t.html#variable-xage_wr">XAGE_WR</a>
+      
+      <a class="list-group-item" href="../type/isba_s_t.html#variable-xsg1_wr">XSG1_WR</a>
+      
+      <a class="list-group-item" href="../type/isba_s_t.html#variable-xsg2_wr">XSG2_WR</a>
+      
+      <a class="list-group-item" href="../type/isba_s_t.html#variable-xhis_wr">XHIS_WR</a>
+      
+      <a class="list-group-item" href="../type/isba_s_t.html#variable-xt_wr">XT_WR</a>
+      
+      <a class="list-group-item" href="../type/isba_s_t.html#variable-xalb_wr">XALB_WR</a>
+      
+      <a class="list-group-item" href="../type/isba_s_t.html#variable-tdate_wr">TDATE_WR</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+  <div class="list-group">
+    <a class="list-group-item" href="../type/isba_s_t.html#src">ISBA_S_t</a>
+  </div>
+</div>
+
+
+
+</div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+      <h2>type, public :: ISBA_S_t</h2>
+    
+    
+    
+    
+    <br>
+
+    <section class="visible-xs visible-sm hidden-md">
+      
+<h3>Contents</h3>
+ 
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#vars-1">Variables</a></h3></div>
+  <div id="vars-1" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../type/isba_s_t.html#variable-xzs~5">XZS</a>
+      
+      <a class="list-group-item" href="../type/isba_s_t.html#variable-xcover~5">XCOVER</a>
+      
+      <a class="list-group-item" href="../type/isba_s_t.html#variable-lcover~5">LCOVER</a>
+      
+      <a class="list-group-item" href="../type/isba_s_t.html#variable-xti_min">XTI_MIN</a>
+      
+      <a class="list-group-item" href="../type/isba_s_t.html#variable-xti_max">XTI_MAX</a>
+      
+      <a class="list-group-item" href="../type/isba_s_t.html#variable-xti_mean">XTI_MEAN</a>
+      
+      <a class="list-group-item" href="../type/isba_s_t.html#variable-xti_std">XTI_STD</a>
+      
+      <a class="list-group-item" href="../type/isba_s_t.html#variable-xti_skew">XTI_SKEW</a>
+      
+      <a class="list-group-item" href="../type/isba_s_t.html#variable-xsoc">XSOC</a>
+      
+      <a class="list-group-item" href="../type/isba_s_t.html#variable-xph">XPH</a>
+      
+      <a class="list-group-item" href="../type/isba_s_t.html#variable-xfert">XFERT</a>
+      
+      <a class="list-group-item" href="../type/isba_s_t.html#variable-xabc">XABC</a>
+      
+      <a class="list-group-item" href="../type/isba_s_t.html#variable-xpoi">XPOI</a>
+      
+      <a class="list-group-item" href="../type/isba_s_t.html#variable-ttime~5">TTIME</a>
+      
+      <a class="list-group-item" href="../type/isba_s_t.html#variable-xtab_fsat">XTAB_FSAT</a>
+      
+      <a class="list-group-item" href="../type/isba_s_t.html#variable-xtab_wtop">XTAB_WTOP</a>
+      
+      <a class="list-group-item" href="../type/isba_s_t.html#variable-xtab_qtop">XTAB_QTOP</a>
+      
+      <a class="list-group-item" href="../type/isba_s_t.html#variable-xf_param">XF_PARAM</a>
+      
+      <a class="list-group-item" href="../type/isba_s_t.html#variable-xc_depth_ratio">XC_DEPTH_RATIO</a>
+      
+      <a class="list-group-item" href="../type/isba_s_t.html#variable-xcpl_drain">XCPL_DRAIN</a>
+      
+      <a class="list-group-item" href="../type/isba_s_t.html#variable-xcpl_runoff">XCPL_RUNOFF</a>
+      
+      <a class="list-group-item" href="../type/isba_s_t.html#variable-xcpl_iceflux">XCPL_ICEFLUX</a>
+      
+      <a class="list-group-item" href="../type/isba_s_t.html#variable-xcpl_eflood">XCPL_EFLOOD</a>
+      
+      <a class="list-group-item" href="../type/isba_s_t.html#variable-xcpl_pflood">XCPL_PFLOOD</a>
+      
+      <a class="list-group-item" href="../type/isba_s_t.html#variable-xcpl_iflood">XCPL_IFLOOD</a>
+      
+      <a class="list-group-item" href="../type/isba_s_t.html#variable-xpertveg">XPERTVEG</a>
+      
+      <a class="list-group-item" href="../type/isba_s_t.html#variable-xpertlai">XPERTLAI</a>
+      
+      <a class="list-group-item" href="../type/isba_s_t.html#variable-xpertcv">XPERTCV</a>
+      
+      <a class="list-group-item" href="../type/isba_s_t.html#variable-xpertalb">XPERTALB</a>
+      
+      <a class="list-group-item" href="../type/isba_s_t.html#variable-xpertz0">XPERTZ0</a>
+      
+      <a class="list-group-item" href="../type/isba_s_t.html#variable-xtsrad_nat">XTSRAD_NAT</a>
+      
+      <a class="list-group-item" href="../type/isba_s_t.html#variable-xemis_nat">XEMIS_NAT</a>
+      
+      <a class="list-group-item" href="../type/isba_s_t.html#variable-xfracsoc">XFRACSOC</a>
+      
+      <a class="list-group-item" href="../type/isba_s_t.html#variable-xvegtype">XVEGTYPE</a>
+      
+      <a class="list-group-item" href="../type/isba_s_t.html#variable-xpatch">XPATCH</a>
+      
+      <a class="list-group-item" href="../type/isba_s_t.html#variable-xvegtype_patch">XVEGTYPE_PATCH</a>
+      
+      <a class="list-group-item" href="../type/isba_s_t.html#variable-xinnov">XINNOV</a>
+      
+      <a class="list-group-item" href="../type/isba_s_t.html#variable-xresid">XRESID</a>
+      
+      <a class="list-group-item" href="../type/isba_s_t.html#variable-xwork_wr">XWORK_WR</a>
+      
+      <a class="list-group-item" href="../type/isba_s_t.html#variable-xwsn_wr">XWSN_WR</a>
+      
+      <a class="list-group-item" href="../type/isba_s_t.html#variable-xrho_wr">XRHO_WR</a>
+      
+      <a class="list-group-item" href="../type/isba_s_t.html#variable-xhea_wr">XHEA_WR</a>
+      
+      <a class="list-group-item" href="../type/isba_s_t.html#variable-xage_wr">XAGE_WR</a>
+      
+      <a class="list-group-item" href="../type/isba_s_t.html#variable-xsg1_wr">XSG1_WR</a>
+      
+      <a class="list-group-item" href="../type/isba_s_t.html#variable-xsg2_wr">XSG2_WR</a>
+      
+      <a class="list-group-item" href="../type/isba_s_t.html#variable-xhis_wr">XHIS_WR</a>
+      
+      <a class="list-group-item" href="../type/isba_s_t.html#variable-xt_wr">XT_WR</a>
+      
+      <a class="list-group-item" href="../type/isba_s_t.html#variable-xalb_wr">XALB_WR</a>
+      
+      <a class="list-group-item" href="../type/isba_s_t.html#variable-tdate_wr">TDATE_WR</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+  <div class="list-group">
+    <a class="list-group-item" href="../type/isba_s_t.html#src">ISBA_S_t</a>
+  </div>
+</div>
+
+
+
+    </section>
+    <br class="visible-xs visible-sm hidden-md">
+
+    
+    <section>
+    <h2>Components</h2>
+    
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th><th>Visibility</th>
+
+<th>Attributes</th><th></th><th>Name</th><th></th><th>Initial</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xzs~5"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XZS</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xcover~5"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:)</td><td>::</td>
+  <td><strong>XCOVER</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-lcover~5"></span>logical,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>LCOVER</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xti_min"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XTI_MIN</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xti_max"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XTI_MAX</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xti_mean"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XTI_MEAN</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xti_std"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XTI_STD</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xti_skew"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XTI_SKEW</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xsoc"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:)</td><td>::</td>
+  <td><strong>XSOC</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xph"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XPH</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xfert"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XFERT</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xabc"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XABC</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xpoi"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XPOI</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-ttime~5"></span>type(DATE_TIME),</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>TTIME</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xtab_fsat"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:)</td><td>::</td>
+  <td><strong>XTAB_FSAT</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xtab_wtop"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:)</td><td>::</td>
+  <td><strong>XTAB_WTOP</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xtab_qtop"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:)</td><td>::</td>
+  <td><strong>XTAB_QTOP</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xf_param"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XF_PARAM</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xc_depth_ratio"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XC_DEPTH_RATIO</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xcpl_drain"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XCPL_DRAIN</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xcpl_runoff"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XCPL_RUNOFF</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xcpl_iceflux"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XCPL_ICEFLUX</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xcpl_eflood"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XCPL_EFLOOD</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xcpl_pflood"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XCPL_PFLOOD</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xcpl_iflood"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XCPL_IFLOOD</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xpertveg"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XPERTVEG</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xpertlai"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XPERTLAI</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xpertcv"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XPERTCV</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xpertalb"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XPERTALB</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xpertz0"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XPERTZ0</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xtsrad_nat"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XTSRAD_NAT</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xemis_nat"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XEMIS_NAT</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xfracsoc"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:)</td><td>::</td>
+  <td><strong>XFRACSOC</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xvegtype"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:)</td><td>::</td>
+  <td><strong>XVEGTYPE</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xpatch"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:)</td><td>::</td>
+  <td><strong>XPATCH</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xvegtype_patch"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:,:)</td><td>::</td>
+  <td><strong>XVEGTYPE_PATCH</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xinnov"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:)</td><td>::</td>
+  <td><strong>XINNOV</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xresid"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:)</td><td>::</td>
+  <td><strong>XRESID</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xwork_wr"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:)</td><td>::</td>
+  <td><strong>XWORK_WR</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xwsn_wr"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:,:)</td><td>::</td>
+  <td><strong>XWSN_WR</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xrho_wr"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:,:)</td><td>::</td>
+  <td><strong>XRHO_WR</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xhea_wr"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:,:)</td><td>::</td>
+  <td><strong>XHEA_WR</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xage_wr"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:,:)</td><td>::</td>
+  <td><strong>XAGE_WR</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xsg1_wr"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:,:)</td><td>::</td>
+  <td><strong>XSG1_WR</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xsg2_wr"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:,:)</td><td>::</td>
+  <td><strong>XSG2_WR</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xhis_wr"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:,:)</td><td>::</td>
+  <td><strong>XHIS_WR</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xt_wr"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:,:)</td><td>::</td>
+  <td><strong>XT_WR</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xalb_wr"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:)</td><td>::</td>
+  <td><strong>XALB_WR</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-tdate_wr"></span>type(DATE_TIME),</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:)</td><td>::</td>
+  <td><strong>TDATE_WR</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+    </section>
+    <br>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <section>
+    <h3><span class="anchor" id="src"></span>Source Code</h3>
+    <div class="highlight"><pre><span></span><span class="k">TYPE </span><span class="n">ISBA_S_t</span>
+<span class="c">!</span>
+<span class="c">! General surface parameters:</span>
+<span class="c">!</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>   <span class="kd">::</span> <span class="n">XZS</span>               <span class="c">! relief                                  (m)</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:)</span> <span class="kd">::</span> <span class="n">XCOVER</span>            <span class="c">! fraction of each ecosystem              (-)</span>
+<span class="kt">LOGICAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span><span class="kd">::</span> <span class="n">LCOVER</span>            <span class="c">! GCOVER(i)=T --&gt; ith cover field is not 0.</span>
+<span class="c">!</span>
+<span class="c">! Topmodel statistics</span>
+<span class="c">!</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>      <span class="kd">::</span> <span class="n">XTI_MIN</span><span class="p">,</span><span class="n">XTI_MAX</span><span class="p">,</span><span class="n">XTI_MEAN</span><span class="p">,</span><span class="n">XTI_STD</span><span class="p">,</span><span class="n">XTI_SKEW</span>
+<span class="c">!</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:)</span>    <span class="kd">::</span> <span class="n">XSOC</span>           <span class="c">! soil organic carbon content             (kg/m2)</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>      <span class="kd">::</span> <span class="n">XPH</span>            <span class="c">! soil pH</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>      <span class="kd">::</span> <span class="n">XFERT</span>          <span class="c">! soil fertilisation rate (kgN/ha/h)</span>
+<span class="c">!</span>
+<span class="c">!</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>      <span class="kd">::</span> <span class="n">XABC</span>           <span class="c">! abscissa needed for integration</span>
+<span class="c">!                                                  ! of net assimilation and stomatal</span>
+<span class="c">!                                                  ! conductance over canopy depth           (-)</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>      <span class="kd">::</span> <span class="n">XPOI</span>           <span class="c">! Gaussian weights for integration</span>
+<span class="c">!                                                  ! of net assimilation and stomatal</span>
+<span class="c">!                                                  ! conductance over canopy depth           (-)</span>
+<span class="c">!</span>
+<span class="k">TYPE</span> <span class="p">(</span><span class="n">DATE_TIME</span><span class="p">)</span> <span class="kd">::</span> <span class="n">TTIME</span>
+<span class="c">!</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:)</span> <span class="kd">::</span> <span class="n">XTAB_FSAT</span> <span class="c">!Satured fraction array</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:)</span> <span class="kd">::</span> <span class="n">XTAB_WTOP</span> <span class="c">!Active TOPMODEL-layer array</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:)</span> <span class="kd">::</span> <span class="n">XTAB_QTOP</span> <span class="c">!Subsurface flow TOPMODEL array</span>
+<span class="c">!</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span> <span class="kd">::</span> <span class="n">XF_PARAM</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span> <span class="kd">::</span> <span class="n">XC_DEPTH_RATIO</span>
+<span class="c">!</span>
+<span class="c">! - Coupling with river routing model</span>
+<span class="c">!  </span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>  <span class="kd">::</span> <span class="n">XCPL_DRAIN</span>   <span class="c">! Surface runoff</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>  <span class="kd">::</span> <span class="n">XCPL_RUNOFF</span>  <span class="c">! Deep drainage or gourdwater recharge</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>  <span class="kd">::</span> <span class="n">XCPL_ICEFLUX</span> <span class="c">! Calving flux</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>  <span class="kd">::</span> <span class="n">XCPL_EFLOOD</span>  <span class="c">! floodplains evaporation</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>  <span class="kd">::</span> <span class="n">XCPL_PFLOOD</span>  <span class="c">! floodplains precipitation interception</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>  <span class="kd">::</span> <span class="n">XCPL_IFLOOD</span>  <span class="c">! floodplains infiltration</span>
+<span class="c">!</span>
+<span class="c">!  - Random perturbations</span>
+<span class="c">!</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>     <span class="kd">::</span> <span class="n">XPERTVEG</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>     <span class="kd">::</span> <span class="n">XPERTLAI</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>     <span class="kd">::</span> <span class="n">XPERTCV</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>     <span class="kd">::</span> <span class="n">XPERTALB</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>     <span class="kd">::</span> <span class="n">XPERTZ0</span>
+<span class="c">!</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>   <span class="kd">::</span> <span class="n">XTSRAD_NAT</span>        <span class="c">! patch averaged radiative temperature    (K)</span>
+<span class="c">!</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>   <span class="kd">::</span> <span class="n">XEMIS_NAT</span>         <span class="c">! patch averaged emissivity               (-)</span>
+<span class="c">!</span>
+<span class="c">!  - Assimilation: ENKF</span>
+<span class="c">!</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:)</span> <span class="kd">::</span> <span class="n">XFRACSOC</span> <span class="c">! Fraction of organic carbon in each soil layer</span>
+<span class="c">!</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:)</span> <span class="kd">::</span> <span class="n">XVEGTYPE</span>
+<span class="c">!</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:)</span>    <span class="kd">::</span> <span class="n">XPATCH</span>         <span class="c">! fraction of each tile/patch   (-)</span>
+<span class="c">!</span>
+<span class="c">! Mask and number of grid elements containing patches/tiles:</span>
+<span class="c">!</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:,:)</span>  <span class="kd">::</span> <span class="n">XVEGTYPE_PATCH</span> <span class="c">! fraction of each vegetation type for</span>
+<span class="c">!</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:)</span>     <span class="kd">::</span> <span class="n">XINNOV</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:)</span>     <span class="kd">::</span> <span class="n">XRESID</span>
+<span class="c">!</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:)</span> <span class="kd">::</span> <span class="n">XWORK_WR</span>
+<span class="c">!</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:,:)</span> <span class="kd">::</span> <span class="n">XWSN_WR</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:,:)</span> <span class="kd">::</span> <span class="n">XRHO_WR</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:,:)</span> <span class="kd">::</span> <span class="n">XHEA_WR</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:,:)</span> <span class="kd">::</span> <span class="n">XAGE_WR</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:,:)</span> <span class="kd">::</span> <span class="n">XSG1_WR</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:,:)</span> <span class="kd">::</span> <span class="n">XSG2_WR</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:,:)</span> <span class="kd">::</span> <span class="n">XHIS_WR</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:,:)</span> <span class="kd">::</span> <span class="n">XT_WR</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:)</span> <span class="kd">::</span> <span class="n">XALB_WR</span>
+<span class="c">!</span>
+<span class="k">TYPE</span><span class="p">(</span><span class="n">DATE_TIME</span><span class="p">),</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:)</span> <span class="kd">::</span> <span class="n">TDATE_WR</span>
+<span class="c">!</span>
+<span class="k">END TYPE </span><span class="n">ISBA_S_t</span>
+</pre></div>
+
+    </section>
+    
+    
+    </div>
+  </div>
+
+
+    <hr>    
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+      <div class="row">
+        <div class="col-xs-6 col-md-6"><p>Town Energy Balance (TEB) model API docs was developed by teb-model<br>&copy; 2021 CeCILL
+                                          </p>
+        </div>
+        <div class="col-xs-6 col-md-6">
+          <p class="text-right">
+            Documentation generated by 
+            <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+            
+            
+          </p>
+        </div>
+      </div>
+      <br>
+      </div> <!-- /container -->    
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+<!--
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+-->
+    <script src="../js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../js/ie10-viewport-bug-workaround.js"></script>
+
+    <!-- MathJax JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+        jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+        extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+      });
+    </script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    
+    <script src="../tipuesearch/tipuesearch_content.js"></script>
+    <script src="../tipuesearch/tipuesearch_set.js"></script>
+    <script src="../tipuesearch/tipuesearch.js"></script>
+    
+    
+  </body>
+</html>

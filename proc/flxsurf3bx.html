@@ -1,0 +1,1077 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   
+   <meta name="description" content="The Town Energy Balance (TEB) model is an urban land surface model developed to calculate the exchange of energy and water between cities and atmosphere.">
+    
+    <meta name="author" content="teb-model" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>FLXSURF3BX &ndash; Town Energy Balance (TEB) model API docs</title>
+
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+    
+    <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+    
+    
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <script src="../js/jquery-2.1.3.min.js"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../index.html">Town Energy Balance (TEB) model API docs </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+        
+            <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
+              <a href="#" class="dropdown-toggle"
+              data-toggle="dropdown" role="button"
+              aria-haspopup="true"
+     aria-expanded="false">Contents <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          
+              
+            <li><a href="../lists/files.html">Source Files</a></li>
+        
+        
+        
+            <li><a href="../lists/modules.html">Modules</a></li>
+        
+            
+                                
+            <li><a href="../lists/procedures.html">Procedures</a></li>
+        
+               
+            <li><a href="../lists/types.html">Derived Types</a></li>
+        
+        
+            <li><a href="../program/driver.html">Program</a></li>
+               
+        
+        
+            </ul>
+        
+            </li>
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/files.html">Source Files</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
+
+                             
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/types.html">Derived Types</a></li>
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../program/driver.html">Program</a></li>
+
+
+
+          </ul>
+        
+        <form action="../search.html" class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+        </div>
+<!--
+        <button type="submit" class="btn btn-default">Submit</button>
+-->
+        </form>
+        
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+    
+  
+  <div class="row">
+    <h1>FLXSURF3BX
+      <small>Subroutine</small>
+    
+    </h1>
+    
+<div class="row">
+  <div class="col-lg-12">
+<div class="well well-sm">
+  <ul class="list-inline" style="margin-bottom:0px;display:inline">
+     
+     
+     
+    <li><i class="fa fa-legal"></i> CeCILL</li> 
+     
+     
+     
+    
+    
+     <li><i class="fa fa-list-ol"></i>
+       <a data-toggle="tooltip"
+    data-placement="bottom" data-html="true"
+    title=" 1.4% of total for procedures.">197 statements</a>
+     </li> 
+     
+     
+     
+    <li><i class="fa fa-code"></i><a href="../src/flxsurf3bx.F90"> Source File</a></li>
+     
+     
+  </ul>
+  <ol class="breadcrumb in-well text-right">
+  
+    
+     <li><a href='../sourcefile/flxsurf3bx.f90.html'>flxsurf3bx.F90</a></li>
+    
+  
+     <li class="active">FLXSURF3BX</li>
+  </ol>
+</div>
+</div>
+</div>
+<script>
+  $(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+  })
+</script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+    
+<div id="sidebar">
+  
+<h3>Contents</h3>
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+  <div class="list-group">
+    <a class="list-group-item" href="../proc/flxsurf3bx.html#src">FLXSURF3BX</a>
+  </div>
+</div>
+
+
+
+</div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+    <h2>
+subroutine FLXSURF3BX(CMU, CTU, RIB, FTEMP, FVAP, ILMO, UE, FCOR, TA, QA, ZU, ZT, VA, TG, QG, H, Z0, Z0T, LZZ0, LZZ0T, fm, fh, N)
+    
+    
+   
+</h2>
+    
+  
+    <div class="panel panel-default">
+      <div class="panel-heading">
+  <h3 class="panel-title">Uses</h3>
+      </div>
+      <ul class="list-group">
+      
+      <li class="list-group-item">
+  <ul class="list-inline">
+    
+    <li><a href='../module/modi_vslog.html'>MODI_VSLOG</a></li>
+    
+    <li><a href='../module/parkind1.html'>PARKIND1</a></li>
+    
+    <li><a href='../module/yomhook.html'>YOMHOOK</a></li>
+    
+  </ul>
+      </li>
+      
+      
+      
+      </ul>
+    </div>
+    
+
+
+    
+
+    <h3>Arguments</h3>
+    
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-cmu"></span>real</td>
+  <td></td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>CMU</strong>(N)</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-ctu"></span>real</td>
+  <td></td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>CTU</strong>(N)</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-rib"></span>real</td>
+  <td></td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>RIB</strong>(N)</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-ftemp"></span>real</td>
+  <td></td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>FTEMP</strong>(N)</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-fvap"></span>real</td>
+  <td></td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>FVAP</strong>(N)</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-ilmo"></span>real</td>
+  <td></td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>ILMO</strong>(N)</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-ue"></span>real</td>
+  <td></td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>UE</strong>(N)</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-fcor"></span>real</td>
+  <td></td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>FCOR</strong>(N)</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-ta"></span>real</td>
+  <td></td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>TA</strong>(N)</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-qa"></span>real</td>
+  <td></td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>QA</strong>(N)</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-zu"></span>real</td>
+  <td></td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>ZU</strong>(N)</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-zt"></span>real</td>
+  <td></td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>ZT</strong>(N)</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-va"></span>real</td>
+  <td></td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>VA</strong>(N)</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-tg"></span>real</td>
+  <td></td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>TG</strong>(N)</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-qg"></span>real</td>
+  <td></td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>QG</strong>(N)</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-h"></span>real</td>
+  <td></td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>H</strong>(N)</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-z0"></span>real</td>
+  <td></td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>Z0</strong>(N)</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-z0t"></span>real</td>
+  <td></td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>Z0T</strong>(N)</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-lzz0"></span>real</td>
+  <td></td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>LZZ0</strong>(N)</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-lzz0t"></span>real</td>
+  <td></td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>LZZ0T</strong>(N)</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-fm"></span>real</td>
+  <td></td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>fm</strong>(N)</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-fh"></span>real</td>
+  <td></td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>fh</strong>(N)</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-n~2"></span>integer</td>
+  <td></td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>N</strong></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+    
+    
+    
+    
+     
+    <br>
+
+    <section class="visible-xs visible-sm hidden-md">
+      
+<h3>Contents</h3>
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+  <div class="list-group">
+    <a class="list-group-item" href="../proc/flxsurf3bx.html#src">FLXSURF3BX</a>
+  </div>
+</div>
+
+
+
+    </section>
+    <br class="visible-xs visible-sm hidden-md">
+
+    
+
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+
+
+    
+    
+    
+    <section>
+    <h2><span class="anchor" id="src"></span>Source Code</h2>
+    <div class="highlight"><pre><span></span>      <span class="k">SUBROUTINE </span><span class="n">FLXSURF3BX</span><span class="p">(</span><span class="n">CMU</span><span class="p">,</span> <span class="n">CTU</span><span class="p">,</span> <span class="n">RIB</span><span class="p">,</span> <span class="n">FTEMP</span><span class="p">,</span> <span class="n">FVAP</span><span class="p">,</span> <span class="n">ILMO</span><span class="p">,</span>           <span class="p">&amp;</span>
+     <span class="p">&amp;</span>                   <span class="n">UE</span><span class="p">,</span> <span class="n">FCOR</span><span class="p">,</span> <span class="n">TA</span> <span class="p">,</span> <span class="n">QA</span> <span class="p">,</span> <span class="n">ZU</span><span class="p">,</span> <span class="n">ZT</span><span class="p">,</span> <span class="n">VA</span><span class="p">,</span>                <span class="p">&amp;</span>
+     <span class="p">&amp;</span>                   <span class="n">TG</span> <span class="p">,</span> <span class="n">QG</span> <span class="p">,</span> <span class="n">H</span> <span class="p">,</span> <span class="n">Z0</span> <span class="p">,</span> <span class="n">Z0T</span><span class="p">,</span>                        <span class="p">&amp;</span>
+     <span class="p">&amp;</span>                   <span class="n">LZZ0</span><span class="p">,</span> <span class="n">LZZ0T</span><span class="p">,</span> <span class="n">FM</span><span class="p">,</span> <span class="n">FH</span><span class="p">,</span> <span class="n">N</span> <span class="p">)</span>
+<span class="c">!</span>
+      <span class="k">USE </span><span class="n">YOMHOOK</span>   <span class="p">,</span><span class="k">ONLY</span> <span class="p">:</span> <span class="n">LHOOK</span><span class="p">,</span>   <span class="n">DR_HOOK</span>
+      <span class="k">USE </span><span class="n">PARKIND1</span>  <span class="p">,</span><span class="k">ONLY</span> <span class="p">:</span> <span class="n">JPRB</span>
+<span class="c">!RJ: added modi, after freeform conversion</span>
+      <span class="k">USE </span><span class="n">MODI_VSLOG</span>
+<span class="c">!</span>
+      <span class="k">IMPLICIT NONE</span>
+<span class="k">      </span><span class="kt">INTEGER</span> <span class="kd">::</span> <span class="n">N</span>
+      <span class="kt">REAL</span> <span class="kd">::</span> <span class="n">CMU</span><span class="p">(</span><span class="n">N</span><span class="p">),</span><span class="n">CTU</span><span class="p">(</span><span class="n">N</span><span class="p">),</span><span class="n">RIB</span><span class="p">(</span><span class="n">N</span><span class="p">),</span><span class="n">FCOR</span><span class="p">(</span><span class="n">N</span><span class="p">),</span><span class="n">ILMO</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+      <span class="kt">REAL</span> <span class="kd">::</span> <span class="n">FTEMP</span><span class="p">(</span><span class="n">N</span><span class="p">),</span><span class="n">FVAP</span><span class="p">(</span><span class="n">N</span><span class="p">),</span><span class="n">TA</span><span class="p">(</span><span class="n">N</span><span class="p">),</span><span class="n">QA</span><span class="p">(</span><span class="n">N</span><span class="p">),</span><span class="n">ZU</span><span class="p">(</span><span class="n">N</span><span class="p">),</span><span class="n">ZT</span><span class="p">(</span><span class="n">N</span><span class="p">),</span><span class="n">VA</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+      <span class="kt">REAL</span> <span class="kd">::</span> <span class="n">TG</span><span class="p">(</span><span class="n">N</span><span class="p">),</span><span class="n">QG</span><span class="p">(</span><span class="n">N</span><span class="p">),</span><span class="n">H</span><span class="p">(</span><span class="n">N</span><span class="p">),</span><span class="n">Z0</span><span class="p">(</span><span class="n">N</span><span class="p">),</span><span class="n">UE</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+      <span class="kt">REAL</span> <span class="kd">::</span> <span class="n">Z0T</span><span class="p">(</span><span class="n">N</span><span class="p">),</span><span class="n">LZZ0</span><span class="p">(</span><span class="n">N</span><span class="p">),</span><span class="n">LZZ0T</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+      <span class="kt">REAL</span> <span class="kd">::</span> <span class="n">fm</span><span class="p">(</span><span class="n">N</span><span class="p">),</span><span class="n">fh</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+<span class="c">!</span>
+<span class="c">!Author</span>
+<span class="c">!          Y.Delage (Jul 1990)</span>
+<span class="c">!Revision</span>
+<span class="c">! 001      G. Pellerin (Jun 94) New function for unstable case</span>
+<span class="c">! 002      G. Pellerin (Jui 94) New formulation for stable case</span>
+<span class="c">! 003      B. Bilodeau (Nov 95) Replace VK by KARMAN</span>
+<span class="c">! 004      M. Desgagne (Dec 95) Add safety code in function ff</span>
+<span class="c">!                               and ensures that RIB is non zero</span>
+<span class="c">! 005      R. Sarrazin (Jan 96) Correction for H</span>
+<span class="c">! 006      C. Girard (Nov 95) - Diffuse T instead of Tv</span>
+<span class="c">! 007      G. Pellerin (Feb 96) Revised calculation for H (stable)</span>
+<span class="c">! 008      G. Pellerin (Feb 96) Remove corrective terms to CTU</span>
+<span class="c">! 009      Y. Delage and B. Bilodeau (Jul 97) - Cleanup</span>
+<span class="c">! 010      Y. Delage (Feb 98) - Addition of HMIN</span>
+<span class="c">! 011      D. Talbot and Y. Delage (Jan 02) -</span>
+<span class="c">!             Correct bug of zero divide by dg in loop 35</span>
+<span class="c">! 012      Y. Delage (Oct 03) - Set top of surface layer at ZU +Z0</span>
+<span class="c">!                   - Output UE instead of UE**2 and rename subroutine</span>
+<span class="c">!                   - Change iteration scheme for stable case</span>
+<span class="c">!                   - Introduce log-linear profile for near-neutral stable cases</span>
+<span class="c">!                   - set VAMIN inside flxsurf and initialise ILMO and H</span>
+<span class="c">!                   - Put stability functions into local functions via stabfunc.h</span>
+<span class="c">! 013      Y. Delage (Sep 04) - Input of wind and temperature/humidity</span>
+<span class="c">!                                at different levels</span>
+<span class="c">! 014      R. McTaggart-Cowan and B. Bilodeau (May 2006) -</span>
+<span class="c">!             Clean up stabfunc.h</span>
+<span class="c">! 015      L. Spacek (Dec 07) - Correction of the log-linear profile</span>
+<span class="c">!                               Double precision for rib calculations</span>
+<span class="c">!</span>
+<span class="c">!Object</span>
+<span class="c">!          to calculate surface layer transfer coefficients and fluxes</span>
+<span class="c">!</span>
+<span class="c">!Arguments</span>
+<span class="c">!</span>
+<span class="c">!          - Output -</span>
+<span class="c">! CMU      transfer coefficient of momentum times UE</span>
+<span class="c">! CTU      transfer coefficient of temperature times UE</span>
+<span class="c">! RIB      bulk Richardson number</span>
+<span class="c">! FTEMP    temperature flux</span>
+<span class="c">! FVAP     vapor flux</span>
+<span class="c">! ILMO     (1/length of Monin-Obukov)</span>
+<span class="c">! UE       friction velocity</span>
+<span class="c">! H        height of the boundary layer</span>
+<span class="c">! FM       momentum stability function</span>
+<span class="c">! FH       heat stability function</span>
+<span class="c">! LZZ0     log ((zu+z0)/z0)</span>
+<span class="c">! LZZ0T    log ((zt+z0)/z0t)</span>
+<span class="c">!</span>
+<span class="c">!          - Input -</span>
+<span class="c">! FCOR     Coriolis factor</span>
+<span class="c">! ZU       height of wind input (measured from model base at topo height + Z0)</span>
+<span class="c">! ZT       height of temperature and humidity input</span>
+<span class="c">! TA       potential temperature at ZT</span>
+<span class="c">! QA       specific humidity at ZT</span>
+<span class="c">! VA       wind speed at ZU</span>
+<span class="c">! TG       surface temperature</span>
+<span class="c">! QG       specific humidity at the surface</span>
+<span class="c">! Z0       roughness length for momentum      flux calculations</span>
+<span class="c">! Z0T      roughness length for heat/moisture flux calculations</span>
+<span class="c">! N        horizontal dimension</span>
+<span class="c">!</span>
+<span class="c">!</span>
+<span class="c">!RJ #include &quot;surfcon.h&quot;</span>
+<span class="c">!RJ       LOGICAL :: INIT</span>
+<span class="c">!     PHYSICAL CONSTANTS</span>
+       <span class="kt">REAL</span><span class="p">,</span><span class="k">PARAMETER</span> <span class="kd">::</span> <span class="n">CPD</span>      <span class="o">=</span><span class="p">.</span><span class="mi">10054</span><span class="mf">6e+4</span>        <span class="c">! J K-1 kg-1    ! specific heat of dry air</span>
+       <span class="kt">REAL</span><span class="p">,</span><span class="k">PARAMETER</span> <span class="kd">::</span> <span class="n">CPV</span>      <span class="o">=</span><span class="p">.</span><span class="mi">18694</span><span class="mf">6e+4</span>        <span class="c">! J K-1 kg-1    ! specific heat of water vapour</span>
+       <span class="kt">REAL</span><span class="p">,</span><span class="k">PARAMETER</span> <span class="kd">::</span> <span class="n">RGASD</span>    <span class="o">=</span><span class="p">.</span><span class="mi">2870</span><span class="mf">5e+3</span>         <span class="c">! J K-1 kg-1    ! gas constant for dry air</span>
+       <span class="kt">REAL</span><span class="p">,</span><span class="k">PARAMETER</span> <span class="kd">::</span> <span class="n">RGASV</span>    <span class="o">=</span><span class="p">.</span><span class="mi">4615</span><span class="mf">1e+3</span>         <span class="c">! J K-1 kg-1    ! gas constant for water vapour</span>
+       <span class="kt">REAL</span><span class="p">,</span><span class="k">PARAMETER</span> <span class="kd">::</span> <span class="n">TRPL</span>     <span class="o">=</span><span class="p">.</span><span class="mi">2731</span><span class="mf">6e+3</span>         <span class="c">! K             ! triple point of water</span>
+       <span class="kt">REAL</span><span class="p">,</span><span class="k">PARAMETER</span> <span class="kd">::</span> <span class="n">TCDK</span>     <span class="o">=</span><span class="p">.</span><span class="mi">2731</span><span class="mf">5e+3</span>         <span class="c">!               ! conversion from kelvin to celsius</span>
+       <span class="kt">REAL</span><span class="p">,</span><span class="k">PARAMETER</span> <span class="kd">::</span> <span class="n">RAUW</span>     <span class="o">=</span><span class="p">.</span><span class="mf">1e+4</span>             <span class="c">!               ! density of liquid H2O</span>
+       <span class="kt">REAL</span><span class="p">,</span><span class="k">PARAMETER</span> <span class="kd">::</span> <span class="n">EPS1</span>     <span class="o">=</span><span class="p">.</span><span class="mi">62194800221014</span>   <span class="c">!               ! RGASD/RGASV</span>
+       <span class="kt">REAL</span><span class="p">,</span><span class="k">PARAMETER</span> <span class="kd">::</span> <span class="n">EPS2</span>     <span class="o">=</span><span class="p">.</span><span class="mi">3780199778986</span>    <span class="c">!               ! 1 - EPS1</span>
+       <span class="kt">REAL</span><span class="p">,</span><span class="k">PARAMETER</span> <span class="kd">::</span> <span class="n">DELTA</span>    <span class="o">=</span><span class="p">.</span><span class="mi">6077686814144</span>    <span class="c">!               ! 1/EPS1 - 1</span>
+       <span class="kt">REAL</span><span class="p">,</span><span class="k">PARAMETER</span> <span class="kd">::</span> <span class="n">CAPPA</span>    <span class="o">=</span><span class="p">.</span><span class="mi">28549121795</span>      <span class="c">!               ! RGASD/CPD</span>
+       <span class="kt">REAL</span><span class="p">,</span><span class="k">PARAMETER</span> <span class="kd">::</span> <span class="n">TGL</span>      <span class="o">=</span><span class="p">.</span><span class="mi">2731</span><span class="mf">6e+3</span>         <span class="c">! K             ! ice temperature in the atmosphere</span>
+       <span class="kt">REAL</span><span class="p">,</span><span class="k">PARAMETER</span> <span class="kd">::</span> <span class="n">CONSOL</span>   <span class="o">=</span><span class="p">.</span><span class="mi">136</span><span class="mf">7e+4</span>          <span class="c">! W m-2         ! solar constant</span>
+       <span class="kt">REAL</span><span class="p">,</span><span class="k">PARAMETER</span> <span class="kd">::</span> <span class="n">GRAV</span>     <span class="o">=</span><span class="p">.</span><span class="mi">98061</span><span class="mf">6e+1</span>        <span class="c">! M s-2         ! gravitational acceleration</span>
+       <span class="kt">REAL</span><span class="p">,</span><span class="k">PARAMETER</span> <span class="kd">::</span> <span class="n">RAYT</span>     <span class="o">=</span><span class="p">.</span><span class="mi">63712</span><span class="mf">2e+7</span>        <span class="c">! M             ! mean radius of the earth</span>
+       <span class="kt">REAL</span><span class="p">,</span><span class="k">PARAMETER</span> <span class="kd">::</span> <span class="n">STEFAN</span>   <span class="o">=</span><span class="p">.</span><span class="mi">56694</span><span class="mf">8e-7</span>        <span class="c">! J m-2 s-1 K-4 ! Stefan-Boltzmann constant</span>
+       <span class="kt">REAL</span><span class="p">,</span><span class="k">PARAMETER</span> <span class="kd">::</span> <span class="n">PI</span>       <span class="o">=</span><span class="p">.</span><span class="mi">31415926535</span><span class="mf">9e+1</span>  <span class="c">!               ! PI constant = ACOS(-1)</span>
+       <span class="kt">REAL</span><span class="p">,</span><span class="k">PARAMETER</span> <span class="kd">::</span> <span class="n">OMEGA</span>    <span class="o">=</span><span class="p">.</span><span class="mi">729</span><span class="mf">2e-4</span>          <span class="c">! s-1           ! angular speed of rotation of the earth</span>
+       <span class="kt">REAL</span><span class="p">,</span><span class="k">PARAMETER</span> <span class="kd">::</span> <span class="n">KNAMS</span>    <span class="o">=</span><span class="p">.</span><span class="mi">514791</span>           <span class="c">!               ! conversion from knots to m/s</span>
+       <span class="kt">REAL</span><span class="p">,</span><span class="k">PARAMETER</span> <span class="kd">::</span> <span class="n">STLO</span>     <span class="o">=</span><span class="p">.</span><span class="mi">662848658394</span><span class="mf">3e-3</span> <span class="c">! K s2 m-2      ! Schuman-Newell Lapse Rate</span>
+       <span class="kt">REAL</span><span class="p">,</span><span class="k">PARAMETER</span> <span class="kd">::</span> <span class="n">KARMAN</span>   <span class="o">=</span><span class="p">.</span><span class="mi">35</span>               <span class="c">!               ! Von Karman constant</span>
+       <span class="kt">REAL</span><span class="p">,</span><span class="k">PARAMETER</span> <span class="kd">::</span> <span class="n">RIC</span>      <span class="o">=</span><span class="p">.</span><span class="mi">2</span>                <span class="c">!               ! Critical Richardson number</span>
+       <span class="kt">REAL</span><span class="p">,</span><span class="k">PARAMETER</span> <span class="kd">::</span> <span class="n">CHLC</span>     <span class="o">=</span><span class="p">.</span><span class="mi">250</span><span class="mf">1e+7</span>          <span class="c">! J kg-1        ! latent heat of condensation</span>
+       <span class="kt">REAL</span><span class="p">,</span><span class="k">PARAMETER</span> <span class="kd">::</span> <span class="n">CHLF</span>     <span class="o">=</span><span class="p">.</span><span class="mi">33</span><span class="mf">4e+6</span>           <span class="c">! J kg-1        ! latent heat of fusion</span>
+       <span class="kt">REAL</span><span class="p">,</span><span class="k">PARAMETER</span> <span class="kd">::</span> <span class="n">T1S</span>      <span class="o">=</span><span class="p">.</span><span class="mi">2731</span><span class="mf">6e+3</span>         <span class="c">! K             ! constant used to calculate L/Cp in fcn HTVOCP</span>
+       <span class="kt">REAL</span><span class="p">,</span><span class="k">PARAMETER</span> <span class="kd">::</span> <span class="n">T2S</span>      <span class="o">=</span><span class="p">.</span><span class="mi">2581</span><span class="mf">6e+3</span>         <span class="c">! K             ! constant used to calculate L/Cp in fcn HTVOCP</span>
+       <span class="kt">REAL</span><span class="p">,</span><span class="k">PARAMETER</span> <span class="kd">::</span> <span class="n">AW</span>       <span class="o">=</span><span class="p">.</span><span class="mi">313501282994</span><span class="mf">8e+4</span> <span class="c">!               ! constant used to calculate L/Cp in fcn HTVOCP</span>
+       <span class="kt">REAL</span><span class="p">,</span><span class="k">PARAMETER</span> <span class="kd">::</span> <span class="n">BW</span>       <span class="o">=</span><span class="p">.</span><span class="mi">236707576631</span><span class="mf">6e+1</span> <span class="c">!               ! constant used to calculate L/Cp in fcn HTVOCP</span>
+       <span class="kt">REAL</span><span class="p">,</span><span class="k">PARAMETER</span> <span class="kd">::</span> <span class="n">AI</span>       <span class="o">=</span><span class="p">.</span><span class="mi">286488771308</span><span class="mf">7e+4</span> <span class="c">!               ! constant used to calculate L/Cp in fcn HTVOCP</span>
+       <span class="kt">REAL</span><span class="p">,</span><span class="k">PARAMETER</span> <span class="kd">::</span> <span class="n">BI</span>       <span class="o">=</span><span class="p">.</span><span class="mi">166093131502</span>     <span class="c">!               ! constant used to calculate L/Cp in fcn HTVOCP</span>
+       <span class="kt">REAL</span><span class="p">,</span><span class="k">PARAMETER</span> <span class="kd">::</span> <span class="n">SLP</span>      <span class="o">=</span><span class="p">.</span><span class="mi">666666666666</span><span class="mf">7e-1</span> <span class="c">!               ! constant used to calculate L/Cp in fcn HTVOCP</span>
+
+<span class="c">!RJ #include &quot;consphy.h&quot;</span>
+<span class="c">!     INITIALIZES THE CONSTANTS FOR THE COMMONS OF THE FLXSURF3 ROUTINE FROM</span>
+<span class="c">!     CANADIAN METEOROLOGICAL CENTER</span>
+      <span class="kt">REAL</span><span class="p">,</span><span class="k">PARAMETER</span> <span class="kd">::</span> <span class="n">AS</span>    <span class="o">=</span> <span class="mi">1</span><span class="mf">2.</span>
+      <span class="kt">REAL</span><span class="p">,</span><span class="k">PARAMETER</span> <span class="kd">::</span> <span class="n">ASX</span>   <span class="o">=</span> <span class="mf">5.</span>
+      <span class="kt">REAL</span><span class="p">,</span><span class="k">PARAMETER</span> <span class="kd">::</span> <span class="n">CI</span>    <span class="o">=</span> <span class="mi">4</span><span class="mf">0.</span>
+      <span class="kt">REAL</span><span class="p">,</span><span class="k">PARAMETER</span> <span class="kd">::</span> <span class="n">BS</span>    <span class="o">=</span> <span class="mf">1.0</span>
+      <span class="kt">REAL</span><span class="p">,</span><span class="k">PARAMETER</span> <span class="kd">::</span> <span class="n">BETA</span>  <span class="o">=</span> <span class="mf">1.0</span>
+      <span class="kt">REAL</span><span class="p">,</span><span class="k">PARAMETER</span> <span class="kd">::</span> <span class="n">FACTN</span> <span class="o">=</span> <span class="mf">1.2</span>
+      <span class="kt">REAL</span><span class="p">,</span><span class="k">PARAMETER</span> <span class="kd">::</span> <span class="n">HMIN</span>  <span class="o">=</span> <span class="mi">3</span><span class="mf">0.</span>
+      <span class="kt">REAL</span><span class="p">,</span><span class="k">PARAMETER</span> <span class="kd">::</span> <span class="n">ANGMAX</span><span class="o">=</span> <span class="mf">0.85</span>
+      <span class="kt">REAL</span><span class="p">,</span><span class="k">PARAMETER</span> <span class="kd">::</span> <span class="n">RAC3</span>  <span class="o">=</span> <span class="nb">SQRT</span><span class="p">(</span><span class="mf">3.</span><span class="p">)</span>
+<span class="c">!</span>
+<span class="c">!*</span>
+<span class="c">!</span>
+      <span class="kt">INTEGER</span><span class="p">,</span><span class="k">PARAMETER</span> <span class="kd">::</span> <span class="n">JDBL</span><span class="o">=</span><span class="mi">8</span>
+<span class="c">!</span>
+      <span class="kt">INTEGER</span> <span class="kd">::</span> <span class="n">J</span>
+      <span class="kt">INTEGER</span> <span class="kd">::</span> <span class="n">IT</span>
+      <span class="kt">INTEGER</span><span class="p">,</span><span class="k">PARAMETER</span> <span class="kd">::</span> <span class="n">ITMAX</span> <span class="o">=</span> <span class="mi">3</span>
+      <span class="kt">REAL</span><span class="p">,</span><span class="k">PARAMETER</span> <span class="kd">::</span> <span class="n">HMAX</span> <span class="o">=</span> <span class="mi">150</span><span class="mf">0.0</span>
+      <span class="kt">REAL</span><span class="p">,</span><span class="k">PARAMETER</span> <span class="kd">::</span> <span class="n">CORMIN</span> <span class="o">=</span> <span class="mf">0.7E-4</span>
+      <span class="kt">REAL</span><span class="p">,</span><span class="k">PARAMETER</span> <span class="kd">::</span> <span class="n">EPSLN</span> <span class="o">=</span> <span class="mf">1.0e-05</span>
+      <span class="kt">REAL</span><span class="p">,</span><span class="k">PARAMETER</span> <span class="kd">::</span> <span class="n">VAMIN</span> <span class="o">=</span> <span class="mf">0.1</span>
+      <span class="kt">REAL</span> <span class="kd">::</span> <span class="n">CM</span><span class="p">,</span><span class="n">CT</span><span class="p">,</span><span class="n">ZP</span>
+      <span class="kt">REAL</span> <span class="kd">::</span> <span class="n">F</span><span class="p">,</span><span class="n">G</span><span class="p">,</span><span class="n">DG</span>
+      <span class="kt">REAL</span> <span class="kd">::</span> <span class="n">hi</span><span class="p">,</span><span class="n">HE</span><span class="p">,</span><span class="n">HS</span><span class="p">,</span><span class="n">unsl</span>
+      <span class="kt">REAL</span><span class="p">(</span><span class="nb">KIND</span><span class="o">=</span><span class="n">JDBL</span><span class="p">)</span> <span class="kd">::</span> <span class="n">DTHV</span><span class="p">,</span><span class="n">TVA</span><span class="p">,</span><span class="n">TVS</span>
+      <span class="kt">REAL</span> <span class="kd">::</span> <span class="n">HL</span><span class="p">,</span><span class="n">U</span>
+      <span class="kt">REAL</span> <span class="kd">::</span> <span class="n">CS</span><span class="p">,</span><span class="n">XX</span><span class="p">,</span><span class="n">XX0</span><span class="p">,</span><span class="n">YY</span><span class="p">,</span><span class="n">YY0</span>
+      <span class="kt">REAL</span> <span class="kd">::</span> <span class="n">ZB</span><span class="p">,</span><span class="n">DD</span><span class="p">,</span><span class="n">ILMOX</span>
+      <span class="kt">REAL</span> <span class="kd">::</span> <span class="n">DF</span><span class="p">,</span><span class="n">ZZ</span><span class="p">,</span><span class="n">betsasx</span>
+      <span class="kt">REAL</span> <span class="kd">::</span> <span class="n">aa</span><span class="p">,</span><span class="n">bb</span><span class="p">,</span><span class="n">cc</span>
+      <span class="kt">REAL</span><span class="p">(</span><span class="nb">KIND</span><span class="o">=</span><span class="n">JPRB</span><span class="p">)</span> <span class="kd">::</span> <span class="n">ZHOOK_HANDLE</span>
+<span class="c">!</span>
+      <span class="n">DF</span><span class="p">(</span><span class="n">ZZ</span><span class="p">)</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">ZZ</span><span class="o">*</span><span class="n">hi</span><span class="p">)</span><span class="o">*</span><span class="nb">sqrt</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="mi">4</span><span class="o">*</span><span class="n">AS</span><span class="o">*</span><span class="n">BETA</span><span class="o">*</span><span class="n">unsl</span><span class="o">*</span><span class="n">ZZ</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">ZZ</span><span class="o">*</span><span class="n">hi</span><span class="p">))</span>
+      <span class="n">CS</span><span class="o">=</span><span class="n">AS</span><span class="o">*</span><span class="mf">2.5</span>
+      <span class="n">betsasx</span><span class="o">=</span><span class="mf">1.</span><span class="o">/</span><span class="n">asx</span>
+<span class="c">!</span>
+      <span class="k">IF</span> <span class="p">(</span><span class="n">LHOOK</span><span class="p">)</span> <span class="k">CALL </span><span class="n">DR_HOOK</span><span class="p">(</span><span class="s1">&#39;FLXSURF3BX&#39;</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">ZHOOK_HANDLE</span><span class="p">)</span>
+<span class="c">!</span>
+      <span class="k">DO </span><span class="n">J</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">N</span>
+        <span class="n">LZZ0</span> <span class="p">(</span><span class="n">J</span><span class="p">)</span><span class="o">=</span><span class="mi">1</span><span class="o">+</span><span class="n">ZU</span><span class="p">(</span><span class="n">J</span><span class="p">)</span><span class="o">/</span><span class="n">Z0</span><span class="p">(</span><span class="n">J</span><span class="p">)</span>
+        <span class="n">LZZ0T</span><span class="p">(</span><span class="n">J</span><span class="p">)</span><span class="o">=</span><span class="p">(</span><span class="n">ZT</span><span class="p">(</span><span class="n">J</span><span class="p">)</span><span class="o">+</span><span class="n">Z0</span><span class="p">(</span><span class="n">J</span><span class="p">))</span><span class="o">/</span><span class="n">Z0T</span><span class="p">(</span><span class="n">J</span><span class="p">)</span>
+      <span class="k">ENDDO</span>
+<span class="c">!</span>
+      <span class="k">call </span><span class="n">vslog</span><span class="p">(</span><span class="n">LZZ0T</span><span class="p">,</span><span class="n">LZZ0T</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>
+      <span class="k">call </span><span class="n">vslog</span><span class="p">(</span><span class="n">LZZ0</span> <span class="p">,</span><span class="n">LZZ0</span> <span class="p">,</span><span class="n">N</span><span class="p">)</span>
+<span class="c">!</span>
+      <span class="k">DO </span><span class="n">J</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">N</span>
+<span class="c">!</span>
+<span class="c">!  CALCULATE THE RICHARDSON NUMBER</span>
+        <span class="n">ZP</span><span class="o">=</span><span class="n">ZU</span><span class="p">(</span><span class="n">J</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="p">(</span><span class="n">ZT</span><span class="p">(</span><span class="n">J</span><span class="p">)</span><span class="o">+</span><span class="n">Z0</span><span class="p">(</span><span class="n">J</span><span class="p">)</span><span class="o">-</span><span class="n">Z0T</span><span class="p">(</span><span class="n">J</span><span class="p">))</span>
+        <span class="n">u</span><span class="o">=</span><span class="nb">max</span><span class="p">(</span><span class="n">vamin</span><span class="p">,</span><span class="n">va</span><span class="p">(</span><span class="n">j</span><span class="p">))</span>
+        <span class="n">tva</span><span class="o">=</span><span class="p">(</span><span class="mf">1.0_JDBL</span><span class="o">+</span><span class="n">DELTA</span><span class="o">*</span><span class="n">QA</span><span class="p">(</span><span class="n">J</span><span class="p">))</span><span class="o">*</span><span class="n">TA</span><span class="p">(</span><span class="n">J</span><span class="p">)</span>
+        <span class="n">tvs</span><span class="o">=</span><span class="p">(</span><span class="mf">1.0_JDBL</span><span class="o">+</span><span class="n">DELTA</span><span class="o">*</span><span class="n">QG</span><span class="p">(</span><span class="n">J</span><span class="p">))</span><span class="o">*</span><span class="n">TG</span><span class="p">(</span><span class="n">J</span><span class="p">)</span>
+        <span class="n">dthv</span><span class="o">=</span><span class="n">tva</span><span class="o">-</span><span class="n">tvs</span>
+        <span class="n">RIB</span><span class="p">(</span><span class="n">J</span><span class="p">)</span><span class="o">=</span><span class="n">GRAV</span><span class="o">/</span><span class="p">(</span><span class="n">tvs</span><span class="o">+</span><span class="mf">0.5_JDBL</span><span class="o">*</span><span class="n">dthv</span><span class="p">)</span><span class="o">*</span><span class="n">ZP</span><span class="o">*</span><span class="n">dthv</span><span class="o">/</span><span class="p">(</span><span class="n">u</span><span class="o">*</span><span class="n">u</span><span class="p">)</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">rib</span><span class="p">(</span><span class="n">j</span><span class="p">)</span><span class="o">&gt;=</span><span class="mf">0.0_JDBL</span><span class="p">)</span> <span class="n">rib</span><span class="p">(</span><span class="n">j</span><span class="p">)</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">rib</span><span class="p">(</span><span class="n">j</span><span class="p">),</span> <span class="n">EPSLN</span><span class="p">)</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">rib</span><span class="p">(</span><span class="n">j</span><span class="p">)</span><span class="o">&lt;</span><span class="mf">0.0_JDBL</span><span class="p">)</span> <span class="n">rib</span><span class="p">(</span><span class="n">j</span><span class="p">)</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">rib</span><span class="p">(</span><span class="n">j</span><span class="p">),</span><span class="o">-</span><span class="n">EPSLN</span><span class="p">)</span>
+<span class="c">!</span>
+<span class="c">!  FIRST APPROXIMATION TO ILMO</span>
+        <span class="k">IF</span><span class="p">(</span><span class="n">RIB</span><span class="p">(</span><span class="n">J</span><span class="p">)</span><span class="o">&gt;</span><span class="mf">0.0_JDBL</span><span class="p">)</span>  <span class="k">THEN</span>
+<span class="k">           </span><span class="n">FM</span><span class="p">(</span><span class="n">J</span><span class="p">)</span><span class="o">=</span><span class="n">LZZ0</span><span class="p">(</span><span class="n">J</span><span class="p">)</span><span class="o">+</span><span class="n">CS</span><span class="o">*</span><span class="n">RIB</span><span class="p">(</span><span class="n">J</span><span class="p">)</span><span class="o">/</span><span class="nb">max</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">z0</span><span class="p">(</span><span class="n">j</span><span class="p">),</span><span class="mf">1.0_JDBL</span><span class="p">)</span>
+           <span class="n">FH</span><span class="p">(</span><span class="n">J</span><span class="p">)</span><span class="o">=</span><span class="n">BETA</span><span class="o">*</span><span class="p">(</span><span class="n">LZZ0T</span><span class="p">(</span><span class="n">J</span><span class="p">)</span><span class="o">+</span><span class="n">CS</span><span class="o">*</span><span class="n">RIB</span><span class="p">(</span><span class="n">J</span><span class="p">))</span><span class="o">/</span>                             <span class="p">&amp;</span>
+     <span class="p">&amp;</span>          <span class="nb">max</span><span class="p">(</span><span class="nb">sqrt</span><span class="p">(</span><span class="n">z0</span><span class="p">(</span><span class="n">j</span><span class="p">)</span><span class="o">*</span><span class="n">z0t</span><span class="p">(</span><span class="n">j</span><span class="p">)),</span><span class="mf">1.0_JDBL</span><span class="p">)</span>
+           <span class="n">ILMO</span><span class="p">(</span><span class="n">J</span><span class="p">)</span><span class="o">=</span><span class="n">RIB</span><span class="p">(</span><span class="n">J</span><span class="p">)</span><span class="o">*</span><span class="n">FM</span><span class="p">(</span><span class="n">J</span><span class="p">)</span><span class="o">*</span><span class="n">FM</span><span class="p">(</span><span class="n">J</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">ZP</span><span class="o">*</span><span class="n">FH</span><span class="p">(</span><span class="n">J</span><span class="p">))</span>
+           <span class="n">F</span><span class="o">=</span><span class="nb">MAX</span><span class="p">(</span><span class="nb">ABS</span><span class="p">(</span><span class="n">FCOR</span><span class="p">(</span><span class="n">J</span><span class="p">)),</span><span class="n">CORMIN</span><span class="p">)</span>
+           <span class="n">H</span><span class="p">(</span><span class="n">J</span><span class="p">)</span><span class="o">=</span><span class="n">BS</span><span class="o">*</span><span class="nb">sqrt</span><span class="p">(</span><span class="n">KARMAN</span><span class="o">*</span><span class="n">u</span><span class="o">/</span><span class="p">(</span><span class="n">ILMO</span><span class="p">(</span><span class="n">J</span><span class="p">)</span><span class="o">*</span><span class="n">F</span><span class="o">*</span><span class="n">fm</span><span class="p">(</span><span class="n">j</span><span class="p">)))</span>
+        <span class="k">ELSE</span>
+<span class="k">           </span><span class="n">FM</span><span class="p">(</span><span class="n">J</span><span class="p">)</span><span class="o">=</span><span class="n">LZZ0</span><span class="p">(</span><span class="n">J</span><span class="p">)</span><span class="o">-</span><span class="nb">min</span><span class="p">(</span><span class="mf">0.7_JDBL</span><span class="o">+</span><span class="nb">log</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">rib</span><span class="p">(</span><span class="n">j</span><span class="p">)),</span><span class="n">LZZ0</span><span class="p">(</span><span class="n">J</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+           <span class="n">FH</span><span class="p">(</span><span class="n">J</span><span class="p">)</span><span class="o">=</span><span class="n">BETA</span><span class="o">*</span><span class="p">(</span><span class="n">LZZ0T</span><span class="p">(</span><span class="n">J</span><span class="p">)</span><span class="o">-</span><span class="nb">min</span><span class="p">(</span><span class="mf">0.7_JDBL</span><span class="o">+</span><span class="nb">log</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">rib</span><span class="p">(</span><span class="n">j</span><span class="p">)),</span><span class="n">LZZ0T</span><span class="p">(</span><span class="n">J</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+           <span class="n">ILMO</span><span class="p">(</span><span class="n">J</span><span class="p">)</span><span class="o">=</span><span class="n">RIB</span><span class="p">(</span><span class="n">J</span><span class="p">)</span><span class="o">*</span><span class="n">FM</span><span class="p">(</span><span class="n">J</span><span class="p">)</span><span class="o">*</span><span class="n">FM</span><span class="p">(</span><span class="n">J</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">ZP</span><span class="o">*</span><span class="n">FH</span><span class="p">(</span><span class="n">J</span><span class="p">))</span>
+        <span class="k">ENDIF</span>
+<span class="k">      ENDDO</span>
+<span class="c">!</span>
+<span class="c">! - - - - - - - - -  BEGINNING OF ITERATION LOOP - - - - - - - - - - -</span>
+      <span class="k">DO </span><span class="mi">35</span> <span class="n">IT</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">ITMAX</span>
+      <span class="k">DO </span><span class="mi">35</span> <span class="n">J</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">N</span>
+        <span class="n">u</span><span class="o">=</span><span class="nb">max</span><span class="p">(</span><span class="n">vamin</span><span class="p">,</span><span class="n">va</span><span class="p">(</span><span class="n">j</span><span class="p">))</span>
+        <span class="n">ZP</span><span class="o">=</span><span class="n">ZU</span><span class="p">(</span><span class="n">J</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="p">(</span><span class="n">ZT</span><span class="p">(</span><span class="n">J</span><span class="p">)</span><span class="o">+</span><span class="n">Z0</span><span class="p">(</span><span class="n">J</span><span class="p">)</span><span class="o">-</span><span class="n">Z0T</span><span class="p">(</span><span class="n">J</span><span class="p">))</span>
+        <span class="k">IF</span><span class="p">(</span><span class="n">RIB</span><span class="p">(</span><span class="n">J</span><span class="p">)</span><span class="o">&gt;</span><span class="mf">0.0_JDBL</span><span class="p">)</span>  <span class="k">THEN</span>
+<span class="c">!----------------------------------------------------------------------</span>
+<span class="c">!  STABLE CASE</span>
+        <span class="n">ILMO</span><span class="p">(</span><span class="n">J</span><span class="p">)</span><span class="o">=</span><span class="nb">max</span><span class="p">(</span><span class="n">EPSLN</span><span class="p">,</span><span class="n">ILMO</span><span class="p">(</span><span class="n">J</span><span class="p">))</span>
+        <span class="n">hl</span><span class="o">=</span><span class="p">(</span><span class="n">ZU</span><span class="p">(</span><span class="n">J</span><span class="p">)</span><span class="o">+</span><span class="mi">10</span><span class="o">*</span><span class="n">Z0</span><span class="p">(</span><span class="n">J</span><span class="p">))</span><span class="o">*</span><span class="n">FACTN</span>
+        <span class="n">F</span><span class="o">=</span><span class="nb">MAX</span><span class="p">(</span><span class="nb">ABS</span><span class="p">(</span><span class="n">FCOR</span><span class="p">(</span><span class="n">J</span><span class="p">)),</span><span class="n">CORMIN</span><span class="p">)</span>
+        <span class="n">hs</span><span class="o">=</span><span class="n">BS</span><span class="o">*</span><span class="nb">sqrt</span><span class="p">(</span><span class="n">KARMAN</span><span class="o">*</span><span class="n">u</span><span class="o">/</span><span class="p">(</span><span class="n">ILMO</span><span class="p">(</span><span class="n">J</span><span class="p">)</span><span class="o">*</span><span class="n">F</span><span class="o">*</span><span class="n">fm</span><span class="p">(</span><span class="n">j</span><span class="p">)))</span>
+        <span class="n">H</span><span class="p">(</span><span class="n">J</span><span class="p">)</span><span class="o">=</span><span class="nb">MAX</span><span class="p">(</span><span class="n">HMIN</span><span class="p">,</span><span class="n">hs</span><span class="p">,</span><span class="n">hl</span><span class="p">,</span><span class="n">factn</span><span class="o">/</span><span class="p">(</span><span class="mi">4</span><span class="o">*</span><span class="n">AS</span><span class="o">*</span><span class="n">BETA</span><span class="o">*</span><span class="n">ilmo</span><span class="p">(</span><span class="n">j</span><span class="p">)))</span>
+        <span class="n">hi</span><span class="o">=</span><span class="mi">1</span><span class="o">/</span><span class="n">h</span><span class="p">(</span><span class="n">j</span><span class="p">)</span>
+<span class="c">!CDIR IEXPAND</span>
+        <span class="n">fm</span><span class="p">(</span><span class="n">J</span><span class="p">)</span><span class="o">=</span><span class="n">LZZ0</span><span class="p">(</span><span class="n">J</span><span class="p">)</span><span class="o">+</span><span class="n">psi</span><span class="p">(</span><span class="n">ZU</span><span class="p">(</span><span class="n">J</span><span class="p">)</span><span class="o">+</span><span class="n">Z0</span><span class="p">(</span><span class="n">J</span><span class="p">),</span><span class="n">hi</span><span class="p">,</span><span class="n">ilmo</span><span class="p">(</span><span class="n">j</span><span class="p">))</span><span class="o">-</span><span class="n">psi</span><span class="p">(</span><span class="n">Z0</span><span class="p">(</span><span class="n">J</span><span class="p">),</span><span class="n">hi</span><span class="p">,</span><span class="n">ilmo</span><span class="p">(</span><span class="n">j</span><span class="p">))</span>
+<span class="c">!CDIR IEXPAND</span>
+        <span class="n">fh</span><span class="p">(</span><span class="n">J</span><span class="p">)</span><span class="o">=</span><span class="n">BETA</span><span class="o">*</span><span class="p">(</span><span class="n">LZZ0T</span><span class="p">(</span><span class="n">J</span><span class="p">)</span><span class="o">+</span><span class="n">psi</span><span class="p">(</span><span class="n">ZT</span><span class="p">(</span><span class="n">J</span><span class="p">)</span><span class="o">+</span><span class="n">Z0</span><span class="p">(</span><span class="n">J</span><span class="p">),</span><span class="n">hi</span><span class="p">,</span><span class="n">ilmo</span><span class="p">(</span><span class="n">j</span><span class="p">))</span><span class="o">-</span><span class="n">psi</span><span class="p">(</span><span class="n">Z0T</span><span class="p">(</span><span class="n">J</span><span class="p">),</span><span class="n">hi</span><span class="p">,</span> <span class="p">&amp;</span>
+     <span class="p">&amp;</span>       <span class="n">ilmo</span><span class="p">(</span><span class="n">j</span><span class="p">)))</span>
+        <span class="n">unsl</span><span class="o">=</span><span class="n">ILMO</span><span class="p">(</span><span class="n">J</span><span class="p">)</span>
+        <span class="n">DG</span><span class="o">=-</span><span class="n">ZP</span><span class="o">*</span><span class="n">FH</span><span class="p">(</span><span class="n">J</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">FM</span><span class="p">(</span><span class="n">J</span><span class="p">)</span><span class="o">*</span><span class="n">FM</span><span class="p">(</span><span class="n">J</span><span class="p">))</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">beta</span><span class="o">*</span><span class="p">(</span><span class="n">DF</span><span class="p">(</span><span class="n">ZT</span><span class="p">(</span><span class="n">J</span><span class="p">)</span><span class="o">+</span><span class="n">Z0</span><span class="p">(</span><span class="n">J</span><span class="p">))</span><span class="o">-</span><span class="n">DF</span><span class="p">(</span><span class="n">Z0T</span><span class="p">(</span><span class="n">J</span><span class="p">)))</span><span class="o">/</span><span class="p">&amp;</span>
+     <span class="p">&amp;</span>     <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">FH</span><span class="p">(</span><span class="n">J</span><span class="p">))</span><span class="o">-</span><span class="p">(</span><span class="n">DF</span><span class="p">(</span><span class="n">ZU</span><span class="p">(</span><span class="n">J</span><span class="p">)</span><span class="o">+</span><span class="n">Z0</span><span class="p">(</span><span class="n">J</span><span class="p">))</span><span class="o">-</span><span class="n">DF</span><span class="p">(</span><span class="n">Z0</span><span class="p">(</span><span class="n">J</span><span class="p">)))</span><span class="o">/</span><span class="n">FM</span><span class="p">(</span><span class="n">J</span><span class="p">))</span>
+<span class="c">!----------------------------------------------------------------------</span>
+<span class="c">!  UNSTABLE CASE</span>
+      <span class="k">ELSE</span>
+<span class="k">        </span><span class="n">ILMO</span><span class="p">(</span><span class="n">J</span><span class="p">)</span><span class="o">=</span><span class="nb">MIN</span><span class="p">(</span><span class="mf">0.</span><span class="p">,</span><span class="n">ILMO</span><span class="p">(</span><span class="n">J</span><span class="p">))</span>
+<span class="c">!CDIR IEXPAND</span>
+        <span class="n">FM</span><span class="p">(</span><span class="n">J</span><span class="p">)</span><span class="o">=</span><span class="n">fmi</span><span class="p">(</span><span class="n">zu</span><span class="p">(</span><span class="n">j</span><span class="p">)</span><span class="o">+</span><span class="n">z0</span><span class="p">(</span><span class="n">j</span><span class="p">),</span><span class="n">z0</span> <span class="p">(</span><span class="n">j</span><span class="p">),</span><span class="n">lzz0</span> <span class="p">(</span><span class="n">j</span><span class="p">),</span><span class="n">ilmo</span><span class="p">(</span><span class="n">j</span><span class="p">),</span><span class="n">xx</span><span class="p">,</span><span class="n">xx0</span><span class="p">)</span>
+<span class="c">!CDIR IEXPAND</span>
+        <span class="n">FH</span><span class="p">(</span><span class="n">J</span><span class="p">)</span><span class="o">=</span><span class="n">fhi</span><span class="p">(</span><span class="n">zt</span><span class="p">(</span><span class="n">j</span><span class="p">)</span><span class="o">+</span><span class="n">z0</span><span class="p">(</span><span class="n">j</span><span class="p">),</span><span class="n">z0t</span><span class="p">(</span><span class="n">j</span><span class="p">),</span><span class="n">lzz0t</span><span class="p">(</span><span class="n">j</span><span class="p">),</span><span class="n">ilmo</span><span class="p">(</span><span class="n">j</span><span class="p">),</span><span class="n">yy</span><span class="p">,</span><span class="n">yy0</span><span class="p">)</span>
+         <span class="n">DG</span><span class="o">=-</span><span class="n">ZP</span><span class="o">*</span><span class="n">FH</span><span class="p">(</span><span class="n">J</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">FM</span><span class="p">(</span><span class="n">J</span><span class="p">)</span><span class="o">*</span><span class="n">FM</span><span class="p">(</span><span class="n">J</span><span class="p">))</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">beta</span><span class="o">/</span><span class="n">FH</span><span class="p">(</span><span class="n">J</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">YY</span><span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="n">YY0</span><span class="p">)</span><span class="o">-</span><span class="mi">2</span><span class="o">/</span><span class="n">FM</span><span class="p">(</span><span class="n">J</span><span class="p">)</span><span class="o">*</span> <span class="p">&amp;</span>
+     <span class="p">&amp;</span>               <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">XX</span><span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="n">XX0</span><span class="p">))</span>
+      <span class="k">ENDIF</span>
+<span class="c">!----------------------------------------------------------------------</span>
+      <span class="k">IF</span><span class="p">(</span><span class="n">IT</span><span class="o">&lt;</span><span class="n">ITMAX</span><span class="p">)</span> <span class="k">THEN</span>
+<span class="k">             </span><span class="n">G</span><span class="o">=</span><span class="n">RIB</span><span class="p">(</span><span class="n">J</span><span class="p">)</span><span class="o">-</span><span class="n">FH</span><span class="p">(</span><span class="n">J</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">FM</span><span class="p">(</span><span class="n">J</span><span class="p">)</span><span class="o">*</span><span class="n">FM</span><span class="p">(</span><span class="n">J</span><span class="p">))</span><span class="o">*</span><span class="n">ZP</span><span class="o">*</span><span class="n">ILMO</span><span class="p">(</span><span class="n">J</span><span class="p">)</span>
+             <span class="n">ILMO</span><span class="p">(</span><span class="n">J</span><span class="p">)</span><span class="o">=</span><span class="n">ILMO</span><span class="p">(</span><span class="n">J</span><span class="p">)</span><span class="o">-</span><span class="n">G</span><span class="o">/</span><span class="n">DG</span>
+      <span class="k">ENDIF</span>
+<span class="k">   </span><span class="mi">35</span> <span class="k">CONTINUE</span>
+<span class="c">! - - - - - -  - - - END OF ITERATION LOOP - - - - - - - - - - - - - -</span>
+<span class="c">!</span>
+      <span class="k">DO </span><span class="mi">80</span> <span class="n">J</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">N</span>
+      <span class="n">u</span><span class="o">=</span><span class="nb">max</span><span class="p">(</span><span class="n">vamin</span><span class="p">,</span><span class="n">va</span><span class="p">(</span><span class="n">j</span><span class="p">))</span>
+      <span class="k">if</span><span class="p">(</span><span class="n">asx</span><span class="o">&lt;</span><span class="n">as</span><span class="p">)</span> <span class="k">then</span>
+<span class="c">!----------------------------------------------------------------------</span>
+<span class="c">!  CALCULATE ILMO AND STABILITY FUNCTIONS FROM LOG-LINEAR PROFILE</span>
+<span class="c">!     (SOLUTION OF A QUADRATIC EQATION)</span>
+<span class="c">!</span>
+        <span class="n">zb</span><span class="o">=</span><span class="n">zu</span><span class="p">(</span><span class="n">j</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">zt</span><span class="p">(</span><span class="n">j</span><span class="p">)</span><span class="o">+</span><span class="n">z0</span><span class="p">(</span><span class="n">j</span><span class="p">)</span><span class="o">-</span><span class="n">z0t</span><span class="p">(</span><span class="n">j</span><span class="p">))</span>
+<span class="c">!  DISCRIMINANT</span>
+        <span class="n">dd</span><span class="o">=</span><span class="p">(</span><span class="n">beta</span><span class="o">*</span><span class="n">lzz0t</span><span class="p">(</span><span class="n">j</span><span class="p">)</span><span class="o">*</span><span class="n">zb</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="o">-</span><span class="mi">4</span><span class="o">*</span><span class="n">rib</span><span class="p">(</span><span class="n">j</span><span class="p">)</span><span class="o">*</span><span class="n">asx</span><span class="o">*</span><span class="n">lzz0</span><span class="p">(</span><span class="n">j</span><span class="p">)</span><span class="o">*</span>                  <span class="p">&amp;</span>
+     <span class="p">&amp;</span>       <span class="p">(</span><span class="n">beta</span><span class="o">*</span><span class="n">lzz0t</span><span class="p">(</span><span class="n">j</span><span class="p">)</span><span class="o">*</span><span class="n">zb</span><span class="o">-</span><span class="n">lzz0</span><span class="p">(</span><span class="n">j</span><span class="p">))</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">rib</span><span class="p">(</span><span class="n">j</span><span class="p">)</span><span class="o">&gt;</span><span class="mf">0.0_JDBL</span><span class="p">.</span><span class="nb">and</span><span class="p">.</span><span class="n">rib</span><span class="p">(</span><span class="n">j</span><span class="p">)</span><span class="o">&lt;</span><span class="n">betsasx</span><span class="p">.</span><span class="nb">and</span><span class="p">.</span><span class="n">dd</span><span class="o">&gt;=</span><span class="mf">0.</span><span class="p">)</span> <span class="k">then</span>
+<span class="c">!  COEFFICIENTS</span>
+           <span class="n">aa</span><span class="o">=</span><span class="n">asx</span><span class="o">*</span><span class="n">asx</span><span class="o">*</span><span class="n">rib</span><span class="p">(</span><span class="n">j</span><span class="p">)</span><span class="o">-</span><span class="n">asx</span>
+           <span class="n">bb</span><span class="o">=-</span><span class="n">beta</span><span class="o">*</span><span class="n">lzz0t</span><span class="p">(</span><span class="n">j</span><span class="p">)</span><span class="o">*</span><span class="n">zb</span><span class="o">+</span><span class="mi">2</span><span class="o">*</span><span class="n">rib</span><span class="p">(</span><span class="n">j</span><span class="p">)</span><span class="o">*</span><span class="n">asx</span><span class="o">*</span><span class="n">lzz0</span><span class="p">(</span><span class="n">j</span><span class="p">)</span>
+           <span class="n">cc</span><span class="o">=</span><span class="n">rib</span><span class="p">(</span><span class="n">j</span><span class="p">)</span><span class="o">*</span><span class="n">lzz0</span><span class="p">(</span><span class="n">j</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+<span class="c">!  SOLUTION</span>
+           <span class="k">if</span><span class="p">(</span><span class="n">bb</span><span class="o">&gt;=</span><span class="mi">0</span><span class="p">)</span><span class="k">then</span>
+<span class="k">              </span><span class="n">ilmox</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="n">bb</span><span class="o">-</span><span class="nb">sqrt</span><span class="p">(</span><span class="n">dd</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">zu</span><span class="p">(</span><span class="n">j</span><span class="p">)</span><span class="o">*</span><span class="n">aa</span><span class="p">)</span>
+           <span class="k">else</span>
+<span class="k">              </span><span class="n">ilmox</span><span class="o">=</span><span class="mi">2</span><span class="o">*</span><span class="n">cc</span><span class="o">/</span><span class="p">(</span><span class="n">zu</span><span class="p">(</span><span class="n">j</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="o">-</span><span class="n">bb</span><span class="o">+</span><span class="nb">sqrt</span><span class="p">(</span><span class="n">dd</span><span class="p">)))</span>
+           <span class="k">endif</span>
+<span class="k">           if</span><span class="p">(</span><span class="n">ilmox</span><span class="o">&lt;</span><span class="n">ilmo</span><span class="p">(</span><span class="n">j</span><span class="p">))</span> <span class="k">then</span>
+<span class="k">              </span><span class="n">ilmo</span><span class="p">(</span><span class="n">j</span><span class="p">)</span><span class="o">=</span><span class="n">ilmox</span>
+              <span class="n">fm</span><span class="p">(</span><span class="n">j</span><span class="p">)</span><span class="o">=</span><span class="n">lzz0</span><span class="p">(</span><span class="n">j</span><span class="p">)</span><span class="o">+</span><span class="n">asx</span><span class="o">*</span><span class="n">zu</span><span class="p">(</span><span class="n">j</span><span class="p">)</span><span class="o">*</span><span class="n">ilmox</span>
+              <span class="n">fh</span><span class="p">(</span><span class="n">j</span><span class="p">)</span><span class="o">=</span><span class="n">beta</span><span class="o">*</span><span class="n">lzz0t</span><span class="p">(</span><span class="n">j</span><span class="p">)</span><span class="o">+</span><span class="n">asx</span><span class="o">*</span><span class="p">(</span><span class="n">zt</span><span class="p">(</span><span class="n">j</span><span class="p">)</span><span class="o">+</span><span class="n">z0</span><span class="p">(</span><span class="n">j</span><span class="p">)</span><span class="o">-</span><span class="n">z0t</span><span class="p">(</span><span class="n">j</span><span class="p">))</span><span class="o">*</span><span class="n">ilmox</span>
+           <span class="k">endif</span>
+<span class="k">        endif</span>
+<span class="k">      endif</span>
+<span class="c">!----------------------------------------------------------------------</span>
+        <span class="n">CM</span><span class="o">=</span><span class="n">KARMAN</span><span class="o">/</span><span class="n">FM</span><span class="p">(</span><span class="n">J</span><span class="p">)</span>
+        <span class="n">CT</span><span class="o">=</span><span class="n">KARMAN</span><span class="o">/</span><span class="n">FH</span><span class="p">(</span><span class="n">J</span><span class="p">)</span>
+        <span class="n">UE</span><span class="p">(</span><span class="n">J</span><span class="p">)</span><span class="o">=</span><span class="n">u</span><span class="o">*</span><span class="n">CM</span>
+        <span class="n">CMU</span><span class="p">(</span><span class="n">J</span><span class="p">)</span><span class="o">=</span><span class="n">CM</span><span class="o">*</span><span class="n">UE</span><span class="p">(</span><span class="n">J</span><span class="p">)</span>
+        <span class="n">CTU</span><span class="p">(</span><span class="n">J</span><span class="p">)</span><span class="o">=</span><span class="n">CT</span><span class="o">*</span><span class="n">UE</span><span class="p">(</span><span class="n">J</span><span class="p">)</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">rib</span><span class="p">(</span><span class="n">j</span><span class="p">)</span><span class="o">&gt;</span><span class="mf">0.0_JDBL</span><span class="p">)</span> <span class="k">then</span>
+<span class="c">!          stable case</span>
+              <span class="n">H</span><span class="p">(</span><span class="n">J</span><span class="p">)</span><span class="o">=</span><span class="nb">MIN</span><span class="p">(</span><span class="n">H</span><span class="p">(</span><span class="n">J</span><span class="p">),</span><span class="n">hmax</span><span class="p">)</span>
+        <span class="k">else</span>
+<span class="c">!          unstable case</span>
+              <span class="n">F</span><span class="o">=</span><span class="nb">MAX</span><span class="p">(</span><span class="nb">ABS</span><span class="p">(</span><span class="n">FCOR</span><span class="p">(</span><span class="n">J</span><span class="p">)),</span><span class="n">CORMIN</span><span class="p">)</span>
+              <span class="n">he</span><span class="o">=</span><span class="nb">max</span><span class="p">(</span><span class="n">HMIN</span><span class="p">,</span><span class="mf">0.3_JDBL</span><span class="o">*</span><span class="n">UE</span><span class="p">(</span><span class="n">J</span><span class="p">)</span><span class="o">/</span><span class="n">F</span><span class="p">)</span>
+              <span class="n">H</span><span class="p">(</span><span class="n">J</span><span class="p">)</span><span class="o">=</span><span class="nb">MIN</span><span class="p">(</span><span class="n">he</span><span class="p">,</span><span class="n">hmax</span><span class="p">)</span>
+        <span class="k">endif</span>
+<span class="k">        </span><span class="n">FTEMP</span><span class="p">(</span><span class="n">J</span><span class="p">)</span><span class="o">=-</span><span class="n">CTU</span><span class="p">(</span><span class="n">J</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">TA</span><span class="p">(</span><span class="n">J</span><span class="p">)</span><span class="o">-</span><span class="n">TG</span><span class="p">(</span><span class="n">J</span><span class="p">))</span>
+        <span class="n">FVAP</span><span class="p">(</span><span class="n">J</span><span class="p">)</span><span class="o">=-</span><span class="n">CTU</span><span class="p">(</span><span class="n">J</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">QA</span><span class="p">(</span><span class="n">J</span><span class="p">)</span><span class="o">-</span><span class="n">QG</span><span class="p">(</span><span class="n">J</span><span class="p">))</span>
+   <span class="mi">80</span> <span class="k">CONTINUE</span>
+<span class="k">      IF</span> <span class="p">(</span><span class="n">LHOOK</span><span class="p">)</span> <span class="k">CALL </span><span class="n">DR_HOOK</span><span class="p">(</span><span class="s1">&#39;FLXSURF3BX&#39;</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">ZHOOK_HANDLE</span><span class="p">)</span>
+      <span class="k">CONTAINS</span>
+<span class="c">!RJ: inlining directly</span>
+<span class="c">!RJ #include &quot;stabfunc2.h&quot;</span>
+<span class="c">!</span>
+<span class="c">!   Internal function FMI</span>
+<span class="c">!   Stability function for momentum in the unstable regime (ilmo&lt;0)</span>
+<span class="c">!   Reference: Delage Y. and Girard C. BLM 58 (19-31) Eq. 19</span>
+<span class="c">!</span>
+      <span class="k">FUNCTION </span><span class="n">FMI</span><span class="p">(</span><span class="n">Z2</span><span class="p">,</span><span class="n">Z02</span><span class="p">,</span><span class="n">LZZ02</span><span class="p">,</span><span class="n">ILMO2</span><span class="p">,</span><span class="n">X</span><span class="p">,</span><span class="n">X0</span><span class="p">)</span>
+      <span class="k">IMPLICIT NONE</span>
+<span class="c">!</span>
+      <span class="kt">REAL</span>              <span class="kd">::</span> <span class="n">FMI</span>
+      <span class="kt">REAL</span><span class="p">,</span> <span class="k">INTENT</span><span class="p">(</span><span class="n">IN</span> <span class="p">)</span> <span class="kd">::</span> <span class="n">Z2</span><span class="p">,</span><span class="n">Z02</span><span class="p">,</span><span class="n">LZZ02</span><span class="p">,</span><span class="n">ILMO2</span>
+      <span class="kt">REAL</span><span class="p">,</span> <span class="k">INTENT</span><span class="p">(</span><span class="n">OUT</span><span class="p">)</span> <span class="kd">::</span> <span class="n">X</span><span class="p">,</span><span class="n">X0</span>
+<span class="c">!</span>
+      <span class="n">X</span> <span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">CI</span><span class="o">*</span><span class="n">Z2</span> <span class="o">*</span><span class="n">BETA</span><span class="o">*</span><span class="n">ILMO2</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="mf">0.16666666</span><span class="p">)</span>
+      <span class="n">X0</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">CI</span><span class="o">*</span><span class="n">Z02</span><span class="o">*</span><span class="n">BETA</span><span class="o">*</span><span class="n">ILMO2</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="mf">0.16666666</span><span class="p">)</span>
+      <span class="n">FMI</span><span class="o">=</span><span class="n">LZZ02</span><span class="o">+</span><span class="nb">LOG</span><span class="p">((</span><span class="n">X0</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="nb">SQRT</span><span class="p">(</span><span class="n">X0</span><span class="o">**</span><span class="mi">2</span><span class="o">-</span><span class="n">X0</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">X0</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="n">X0</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">**</span><span class="mf">1.5</span>        <span class="p">&amp;</span>
+     <span class="p">&amp;</span>               <span class="o">/</span><span class="p">((</span><span class="n">X</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="nb">SQRT</span><span class="p">(</span><span class="n">X</span><span class="o">**</span><span class="mi">2</span><span class="o">-</span><span class="n">X</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">X</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="n">X</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">**</span><span class="mf">1.5</span><span class="p">))</span>        <span class="p">&amp;</span>
+     <span class="p">&amp;</span>              <span class="o">+</span><span class="n">RAC3</span><span class="o">*</span><span class="nb">ATAN</span><span class="p">(</span><span class="n">RAC3</span><span class="o">*</span><span class="p">((</span><span class="n">X</span><span class="o">**</span><span class="mi">2</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">X0</span><span class="o">-</span><span class="p">(</span><span class="n">X0</span><span class="o">**</span><span class="mi">2</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">X</span><span class="p">)</span><span class="o">/</span>          <span class="p">&amp;</span>
+     <span class="p">&amp;</span>              <span class="p">((</span><span class="n">X0</span><span class="o">**</span><span class="mi">2</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">X</span><span class="o">**</span><span class="mi">2</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">+</span><span class="mi">3</span><span class="o">*</span><span class="n">X</span><span class="o">*</span><span class="n">X0</span><span class="p">))</span>
+<span class="c">!</span>
+      <span class="k">RETURN</span>
+<span class="k">      END FUNCTION </span><span class="n">FMI</span>
+<span class="c">!</span>
+<span class="c">!   Internal function FHI</span>
+<span class="c">!   Stability function for heat and moisture in the unstable regime (ilmo&lt;0)</span>
+<span class="c">!   Reference: Delage Y. and Girard C. BLM 58 (19-31) Eq. 17</span>
+<span class="c">!</span>
+      <span class="k">FUNCTION </span><span class="n">FHI</span><span class="p">(</span><span class="n">Z2</span><span class="p">,</span><span class="n">Z0T2</span><span class="p">,</span><span class="n">LZZ0T2</span><span class="p">,</span><span class="n">ILMO2</span><span class="p">,</span><span class="n">Y</span><span class="p">,</span><span class="n">Y0</span><span class="p">)</span>
+      <span class="k">IMPLICIT NONE</span>
+<span class="c">!</span>
+      <span class="kt">REAL</span>              <span class="kd">::</span> <span class="n">FHI</span>
+      <span class="kt">REAL</span><span class="p">,</span> <span class="k">INTENT</span><span class="p">(</span><span class="n">IN</span> <span class="p">)</span> <span class="kd">::</span> <span class="n">Z2</span><span class="p">,</span><span class="n">Z0T2</span><span class="p">,</span><span class="n">LZZ0T2</span><span class="p">,</span><span class="n">ILMO2</span>
+      <span class="kt">REAL</span><span class="p">,</span> <span class="k">INTENT</span><span class="p">(</span><span class="n">OUT</span><span class="p">)</span> <span class="kd">::</span> <span class="n">Y</span><span class="p">,</span><span class="n">Y0</span>
+<span class="c">!</span>
+      <span class="n">Y</span> <span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">CI</span><span class="o">*</span><span class="n">Z2</span>  <span class="o">*</span><span class="n">BETA</span><span class="o">*</span><span class="n">ILMO2</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="mf">0.33333333</span><span class="p">)</span>
+      <span class="n">Y0</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">CI</span><span class="o">*</span><span class="n">Z0T2</span><span class="o">*</span><span class="n">BETA</span><span class="o">*</span><span class="n">ILMO2</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="mf">0.33333333</span><span class="p">)</span>
+      <span class="n">FHI</span><span class="o">=</span><span class="n">BETA</span><span class="o">*</span><span class="p">(</span><span class="n">LZZ0T2</span><span class="o">+</span><span class="mf">1.5</span><span class="o">*</span><span class="nb">LOG</span><span class="p">((</span><span class="n">Y0</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="n">Y0</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">Y</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="n">Y</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span><span class="o">+</span><span class="n">RAC3</span><span class="o">*</span>           <span class="p">&amp;</span>
+     <span class="p">&amp;</span>        <span class="nb">ATAN</span><span class="p">(</span><span class="n">RAC3</span><span class="o">*</span><span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="n">Y</span><span class="o">-</span><span class="n">Y0</span><span class="p">)</span><span class="o">/</span><span class="p">((</span><span class="mi">2</span><span class="o">*</span><span class="n">Y0</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">Y</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">+</span><span class="mi">3</span><span class="p">)))</span>
+<span class="c">!</span>
+      <span class="k">RETURN</span>
+<span class="k">      END FUNCTION </span><span class="n">FHI</span>
+<span class="c">!</span>
+<span class="c">!   Internal function psi</span>
+<span class="c">!   Stability function for momentum in the stable regime (unsl&gt;0)</span>
+<span class="c">!   Reference :  Y. Delage, BLM, 82 (p23-48) (Eqs.33-37)</span>
+<span class="c">!</span>
+      <span class="k">FUNCTION </span><span class="n">PSI</span><span class="p">(</span><span class="n">Z2</span><span class="p">,</span><span class="n">HI2</span><span class="p">,</span><span class="n">ILMO2</span><span class="p">)</span>
+      <span class="k">IMPLICIT NONE</span>
+<span class="c">!</span>
+      <span class="kt">REAL</span> <span class="kd">::</span> <span class="n">PSI</span>
+      <span class="kt">REAL</span> <span class="kd">::</span> <span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="p">,</span><span class="n">d</span>
+      <span class="kt">REAL</span><span class="p">,</span> <span class="k">INTENT</span><span class="p">(</span><span class="n">IN</span> <span class="p">)</span> <span class="kd">::</span> <span class="n">ILMO2</span><span class="p">,</span><span class="n">Z2</span><span class="p">,</span><span class="n">HI2</span>
+<span class="c">!</span>
+      <span class="n">d</span> <span class="o">=</span> <span class="mi">4</span><span class="o">*</span><span class="n">AS</span><span class="o">*</span><span class="n">BETA</span><span class="o">*</span><span class="n">ILMO2</span>
+      <span class="n">c</span> <span class="o">=</span> <span class="n">d</span><span class="o">*</span><span class="n">hi2</span> <span class="o">-</span> <span class="n">hi2</span><span class="o">**</span><span class="mi">2</span>
+      <span class="n">b</span> <span class="o">=</span> <span class="n">d</span> <span class="o">-</span> <span class="mi">2</span><span class="o">*</span><span class="n">hi2</span>
+      <span class="n">a</span> <span class="o">=</span> <span class="nb">sqrt</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">b</span><span class="o">*</span><span class="n">z2</span> <span class="o">-</span> <span class="n">c</span><span class="o">*</span><span class="n">z2</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+      <span class="n">psi</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">a</span><span class="o">-</span><span class="n">z2</span><span class="o">*</span><span class="n">hi2</span><span class="o">-</span><span class="nb">log</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">b</span><span class="o">*</span><span class="n">z2</span><span class="o">*</span><span class="mf">0.5</span><span class="o">+</span><span class="n">a</span><span class="p">)</span><span class="o">-</span>                          <span class="p">&amp;</span>
+     <span class="p">&amp;</span>            <span class="n">b</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="nb">sqrt</span><span class="p">(</span><span class="n">c</span><span class="p">))</span><span class="o">*</span><span class="nb">asin</span><span class="p">((</span><span class="n">b</span><span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">c</span><span class="o">*</span><span class="n">z2</span><span class="p">)</span><span class="o">/</span><span class="n">d</span><span class="p">))</span>
+<span class="c">!</span>
+      <span class="k">RETURN</span>
+<span class="k">      END FUNCTION </span><span class="n">PSI</span>
+<span class="c">!</span>
+      <span class="k">END SUBROUTINE </span><span class="n">FLXSURF3BX</span>
+</pre></div>
+
+    </section>
+    <br>
+    
+    
+    </div>
+  </div>
+
+
+    <hr>    
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+      <div class="row">
+        <div class="col-xs-6 col-md-6"><p>Town Energy Balance (TEB) model API docs was developed by teb-model<br>&copy; 2021 CeCILL
+                                          </p>
+        </div>
+        <div class="col-xs-6 col-md-6">
+          <p class="text-right">
+            Documentation generated by 
+            <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+            
+            
+          </p>
+        </div>
+      </div>
+      <br>
+      </div> <!-- /container -->    
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+<!--
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+-->
+    <script src="../js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../js/ie10-viewport-bug-workaround.js"></script>
+
+    <!-- MathJax JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+        jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+        extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+      });
+    </script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    
+    <script src="../tipuesearch/tipuesearch_content.js"></script>
+    <script src="../tipuesearch/tipuesearch_set.js"></script>
+    <script src="../tipuesearch/tipuesearch.js"></script>
+    
+    
+  </body>
+</html>

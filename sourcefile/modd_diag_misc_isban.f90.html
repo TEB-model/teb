@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   
+   <meta name="description" content="The Town Energy Balance (TEB) model is an urban land surface model developed to calculate the exchange of energy and water between cities and atmosphere.">
+    
+    <meta name="author" content="teb-model" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>modd_diag_misc_isban.F90 &ndash; Town Energy Balance (TEB) model API docs</title>
+
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+    
+    <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+    
+    
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <script src="../js/jquery-2.1.3.min.js"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../index.html">Town Energy Balance (TEB) model API docs </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+        
+            <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
+              <a href="#" class="dropdown-toggle"
+              data-toggle="dropdown" role="button"
+              aria-haspopup="true"
+     aria-expanded="false">Contents <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          
+              
+            <li><a href="../lists/files.html">Source Files</a></li>
+        
+        
+        
+            <li><a href="../lists/modules.html">Modules</a></li>
+        
+            
+                                
+            <li><a href="../lists/procedures.html">Procedures</a></li>
+        
+               
+            <li><a href="../lists/types.html">Derived Types</a></li>
+        
+        
+            <li><a href="../program/driver.html">Program</a></li>
+               
+        
+        
+            </ul>
+        
+            </li>
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/files.html">Source Files</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
+
+                             
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/types.html">Derived Types</a></li>
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../program/driver.html">Program</a></li>
+
+
+
+          </ul>
+        
+        <form action="../search.html" class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+        </div>
+<!--
+        <button type="submit" class="btn btn-default">Submit</button>
+-->
+        </form>
+        
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+    
+  
+  <div class="row">
+    <h1>modd_diag_misc_isban.F90
+    <small>Source File</small>
+    
+    </h1>
+    
+<div class="row">
+  <div class="col-lg-12">
+<div class="well well-sm">
+  <ul class="list-inline" style="margin-bottom:0px;display:inline">
+     
+     
+     
+    <li><i class="fa fa-legal"></i> CeCILL</li> 
+     
+     
+     
+    
+    
+     <li><i class="fa fa-list-ol"></i>
+       <a data-toggle="tooltip"
+    data-placement="bottom" data-html="true"
+    title=" 1.0% of total for source files.">184 statements</a>
+     </li> 
+     
+     
+     
+    <li><i class="fa fa-code"></i><a href="../src/modd_diag_misc_isban.F90"> Source File</a></li>
+     
+     
+  </ul>
+  <ol class="breadcrumb in-well text-right">
+  
+    
+  
+     <li class="active">modd_diag_misc_isban.F90</li>
+  </ol>
+</div>
+</div>
+</div>
+<script>
+  $(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+  })
+</script>
+
+  </div>
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+    
+<div id="sidebar">
+  
+<h3>Contents</h3>
+ 
+
+
+
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#mods-0">Modules</a></h3></div>
+  <div id="mods-0" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../module/modd_diag_misc_isba_n.html">MODD_DIAG_MISC_ISBA_n</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+  <div class="list-group">
+    <a class="list-group-item" href="../sourcefile/modd_diag_misc_isban.f90.html#src">modd_diag_misc_isban.F90</a>
+  </div>
+</div>
+
+
+
+</div>
+
+    </div>
+    <div class="col-md-9" id='text'>
+      
+      <br>
+    
+      
+      
+
+    <section class="visible-xs visible-sm hidden-md">
+      
+<h3>Contents</h3>
+ 
+
+
+
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#mods-1">Modules</a></h3></div>
+  <div id="mods-1" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../module/modd_diag_misc_isba_n.html">MODD_DIAG_MISC_ISBA_n</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+  <div class="list-group">
+    <a class="list-group-item" href="../sourcefile/modd_diag_misc_isban.f90.html#src">modd_diag_misc_isban.F90</a>
+  </div>
+</div>
+
+
+
+    </section>
+    <br class="visible-xs visible-sm hidden-md">
+
+    <section>
+      <h2><span class="anchor" id="src"></span>Source Code</h2>
+    <div class="hl"><pre><span></span><a id="ln-1" name="ln-1"></a><span class="c">!SFX_LIC Copyright 1994-2014 CNRS, Meteo-France and Universite Paul Sabatier</span>
+<a id="ln-2" name="ln-2"></a><span class="c">!SFX_LIC This is part of the SURFEX software governed by the CeCILL version 2.1</span>
+<a id="ln-3" name="ln-3"></a><span class="c">!SFX_LIC version 1. See LICENSE, Licence_CeCILL_V2.1-en.txt and Licence_CeCILL_V2.1-fr.txt  </span>
+<a id="ln-4" name="ln-4"></a><span class="c">!SFX_LIC for details. version 1.</span>
+<a id="ln-5" name="ln-5"></a><span class="c">!     ############################</span>
+<a id="ln-6" name="ln-6"></a>      <span class="k">MODULE </span><span class="n">MODD_DIAG_MISC_ISBA_n</span>
+<a id="ln-7" name="ln-7"></a><span class="c">!     ############################</span>
+<a id="ln-8" name="ln-8"></a><span class="c">!</span>
+<a id="ln-9" name="ln-9"></a><span class="c">!!****  *MODD_DIAG_MISC_ISBA - declaration of packed surface parameters for ISBA scheme</span>
+<a id="ln-10" name="ln-10"></a><span class="c">!!</span>
+<a id="ln-11" name="ln-11"></a><span class="c">!!    PURPOSE</span>
+<a id="ln-12" name="ln-12"></a><span class="c">!!    -------</span>
+<a id="ln-13" name="ln-13"></a><span class="c">!</span>
+<a id="ln-14" name="ln-14"></a><span class="c">!!</span>
+<a id="ln-15" name="ln-15"></a><span class="c">!!**  IMPLICIT ARGUMENTS</span>
+<a id="ln-16" name="ln-16"></a><span class="c">!!    ------------------</span>
+<a id="ln-17" name="ln-17"></a><span class="c">!!      None </span>
+<a id="ln-18" name="ln-18"></a><span class="c">!!</span>
+<a id="ln-19" name="ln-19"></a><span class="c">!!    REFERENCE</span>
+<a id="ln-20" name="ln-20"></a><span class="c">!!    ---------</span>
+<a id="ln-21" name="ln-21"></a><span class="c">!!</span>
+<a id="ln-22" name="ln-22"></a><span class="c">!!    AUTHOR</span>
+<a id="ln-23" name="ln-23"></a><span class="c">!!    ------</span>
+<a id="ln-24" name="ln-24"></a><span class="c">!!      P. Le Moigne   *Meteo France*</span>
+<a id="ln-25" name="ln-25"></a><span class="c">!!</span>
+<a id="ln-26" name="ln-26"></a><span class="c">!!    MODIFICATIONS</span>
+<a id="ln-27" name="ln-27"></a><span class="c">!!    -------------</span>
+<a id="ln-28" name="ln-28"></a><span class="c">!!      Original       07/10/04</span>
+<a id="ln-29" name="ln-29"></a><span class="c">!!      A.L. Gibelin 04/2009 : Add respiration diagnostics</span>
+<a id="ln-30" name="ln-30"></a><span class="c">!!      A.L. Gibelin 05/2009 : Add carbon spinup</span>
+<a id="ln-31" name="ln-31"></a><span class="c">!!      A.L. Gibelin 07/2009 : Suppress RDK and transform GPP as a diagnostic</span>
+<a id="ln-32" name="ln-32"></a><span class="c">!!       B. Decharme 05/2012 : Carbon fluxes in diag_evap</span>
+<a id="ln-33" name="ln-33"></a><span class="c">!!       B. Decharme 07/2012 : New diag for DIF under LSURF_MISC_DIF key</span>
+<a id="ln-34" name="ln-34"></a><span class="c">!!                               F2 stress</span>
+<a id="ln-35" name="ln-35"></a><span class="c">!!                               Root zone swi, wg and wgi</span>
+<a id="ln-36" name="ln-36"></a><span class="c">!!                               swi, wg and wgi comparable to ISBA-FR-DG2 and DG3 layers</span>
+<a id="ln-37" name="ln-37"></a><span class="c">!!       B. Decharme 10/2012 : New diag for DIF </span>
+<a id="ln-38" name="ln-38"></a><span class="c">!!                               active layer thickness over permafrost area</span>
+<a id="ln-39" name="ln-39"></a><span class="c">!!                               frozen layer thickness over non-permafrost area</span>
+<a id="ln-40" name="ln-40"></a><span class="c">!!       M. Lafaysse 09/2015 : new Crocus-MEPRA outputs</span>
+<a id="ln-41" name="ln-41"></a><span class="c">!-------------------------------------------------------------------------------</span>
+<a id="ln-42" name="ln-42"></a><span class="c">!</span>
+<a id="ln-43" name="ln-43"></a><span class="c">!*       0.   DECLARATIONS</span>
+<a id="ln-44" name="ln-44"></a><span class="c">!             ------------</span>
+<a id="ln-45" name="ln-45"></a><span class="c">!</span>
+<a id="ln-46" name="ln-46"></a><span class="c">!</span>
+<a id="ln-47" name="ln-47"></a><span class="c">!</span>
+<a id="ln-48" name="ln-48"></a><span class="k">USE </span><span class="n">YOMHOOK</span>   <span class="p">,</span><span class="k">ONLY</span> <span class="p">:</span> <span class="n">LHOOK</span><span class="p">,</span>   <span class="n">DR_HOOK</span>
+<a id="ln-49" name="ln-49"></a><span class="k">USE </span><span class="n">PARKIND1</span>  <span class="p">,</span><span class="k">ONLY</span> <span class="p">:</span> <span class="n">JPRB</span>
+<a id="ln-50" name="ln-50"></a><span class="c">!</span>
+<a id="ln-51" name="ln-51"></a><span class="k">IMPLICIT NONE</span>
+<a id="ln-52" name="ln-52"></a>
+<a id="ln-53" name="ln-53"></a><span class="k">TYPE </span><span class="n">DIAG_MISC_ISBA_t</span>
+<a id="ln-54" name="ln-54"></a><span class="c">!------------------------------------------------------------------------------</span>
+<a id="ln-55" name="ln-55"></a><span class="c">!</span>
+<a id="ln-56" name="ln-56"></a>  <span class="kt">LOGICAL</span> <span class="kd">::</span> <span class="n">LSURF_MISC_BUDGET</span>   <span class="c">! flag for miscellaneous terms of isba scheme</span>
+<a id="ln-57" name="ln-57"></a>  <span class="kt">LOGICAL</span> <span class="kd">::</span> <span class="n">LSURF_DIAG_ALBEDO</span>   <span class="c">! flag to write out diagnostic albedo</span>
+<a id="ln-58" name="ln-58"></a>  <span class="kt">LOGICAL</span> <span class="kd">::</span> <span class="n">LSURF_MISC_DIF</span>      <span class="c">! flag for miscellaneous terms of isba-dif scheme</span>
+<a id="ln-59" name="ln-59"></a>  <span class="kt">LOGICAL</span> <span class="kd">::</span> <span class="n">LPROSNOW</span>            <span class="c">! flag for Crocus-MEPRA outputs</span>
+<a id="ln-60" name="ln-60"></a>  <span class="kt">LOGICAL</span> <span class="kd">::</span> <span class="n">LVOLUMETRIC_SNOWLIQ</span> <span class="c">! volumetric snow liquid water content (kg m-3)  </span>
+<a id="ln-61" name="ln-61"></a><span class="c">!</span>
+<a id="ln-62" name="ln-62"></a><span class="c">!* variables for each patch</span>
+<a id="ln-63" name="ln-63"></a><span class="c">!</span>
+<a id="ln-64" name="ln-64"></a>  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span> <span class="kd">::</span> <span class="n">XHV</span>       <span class="c">! Halstead coefficient</span>
+<a id="ln-65" name="ln-65"></a>  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span> <span class="kd">::</span> <span class="n">XLAI</span>      <span class="c">! leaf average index  </span>
+<a id="ln-66" name="ln-66"></a><span class="c">!      </span>
+<a id="ln-67" name="ln-67"></a>  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:)</span> <span class="kd">::</span> <span class="n">XSWI</span>        <span class="c">! Soil wetness index</span>
+<a id="ln-68" name="ln-68"></a>  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:)</span> <span class="kd">::</span> <span class="n">XTSWI</span>       <span class="c">! Total soil wetness index</span>
+<a id="ln-69" name="ln-69"></a>  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>   <span class="kd">::</span> <span class="n">XSOIL_SWI</span>     <span class="c">! Soil wetness index</span>
+<a id="ln-70" name="ln-70"></a>  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>   <span class="kd">::</span> <span class="n">XSOIL_TSWI</span>    <span class="c">! Total Soil wetness index</span>
+<a id="ln-71" name="ln-71"></a>  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>   <span class="kd">::</span> <span class="n">XSOIL_TWG</span>     <span class="c">! Soil water content (liquid+ice) (kg.m-2)</span>
+<a id="ln-72" name="ln-72"></a>  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>   <span class="kd">::</span> <span class="n">XSOIL_TWGI</span>    <span class="c">! Soil ice content (kg.m-2)</span>
+<a id="ln-73" name="ln-73"></a>  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>   <span class="kd">::</span> <span class="n">XSOIL_WG</span>     <span class="c">! Soil water content (liquid+ice) (m3.m-3)</span>
+<a id="ln-74" name="ln-74"></a>  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>   <span class="kd">::</span> <span class="n">XSOIL_WGI</span>    <span class="c">! Soil ice content (m3.m-3)  </span>
+<a id="ln-75" name="ln-75"></a><span class="c">!     </span>
+<a id="ln-76" name="ln-76"></a>  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span> <span class="kd">::</span> <span class="n">XFRD2_TSWI</span>      <span class="c">! ISBA-FR-DG2 comparable soil wetness index (DIF option)</span>
+<a id="ln-77" name="ln-77"></a>  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span> <span class="kd">::</span> <span class="n">XFRD2_TWG</span>       <span class="c">! ISBA-FR-DG2 comparable soil water content (liquid+ice) (DIF option)</span>
+<a id="ln-78" name="ln-78"></a>  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span> <span class="kd">::</span> <span class="n">XFRD2_TWGI</span>      <span class="c">! ISBA-FR-DG2 comparable soil ice content (DIF option)  </span>
+<a id="ln-79" name="ln-79"></a>  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span> <span class="kd">::</span> <span class="n">XFRD3_TSWI</span>      <span class="c">! ISBA-FR-Deep comparable soil wetness index (DIF option)</span>
+<a id="ln-80" name="ln-80"></a>  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span> <span class="kd">::</span> <span class="n">XFRD3_TWG</span>       <span class="c">! ISBA-FR-Deep comparable soil water content (liquid+ice) (DIF option)</span>
+<a id="ln-81" name="ln-81"></a>  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span> <span class="kd">::</span> <span class="n">XFRD3_TWGI</span>      <span class="c">! ISBA-FR-Deep comparable soil ice content (DIF option)</span>
+<a id="ln-82" name="ln-82"></a><span class="c">!</span>
+<a id="ln-83" name="ln-83"></a>  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>   <span class="kd">::</span> <span class="n">XALT</span>        <span class="c">! Active layer thickness in permafrost area</span>
+<a id="ln-84" name="ln-84"></a>  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>   <span class="kd">::</span> <span class="n">XFLT</span>        <span class="c">! Frozen layer thickness in non-permmafrost area</span>
+<a id="ln-85" name="ln-85"></a><span class="c">!</span>
+<a id="ln-86" name="ln-86"></a>  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span> <span class="kd">::</span> <span class="n">XRNSNOW</span>    <span class="c">! net radiative flux from snow (ISBA-ES:3-L)    (W/m2)</span>
+<a id="ln-87" name="ln-87"></a>  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span> <span class="kd">::</span> <span class="n">XHSNOW</span>     <span class="c">! sensible heat flux from snow (ISBA-ES:3-L)    (W/m2)</span>
+<a id="ln-88" name="ln-88"></a>  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span> <span class="kd">::</span> <span class="n">XHPSNOW</span>    <span class="c">! heat release from rainfall (ISBA-ES:3-L)      (W/m2)</span>
+<a id="ln-89" name="ln-89"></a>  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span> <span class="kd">::</span> <span class="n">XGFLUXSNOW</span> <span class="c">! net surface energy flux into snowpack      </span>
+<a id="ln-90" name="ln-90"></a><span class="c">!                                               ! (ISBA-ES:3-L)                                 (W/m2)</span>
+<a id="ln-91" name="ln-91"></a>  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span> <span class="kd">::</span> <span class="n">XUSTARSNOW</span> <span class="c">! friction velocity  over snow </span>
+<a id="ln-92" name="ln-92"></a><span class="c">!                                               ! (ISBA-ES:3-L)                                 (m/s)</span>
+<a id="ln-93" name="ln-93"></a>  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span> <span class="kd">::</span> <span class="n">XGRNDFLUX</span>  <span class="c">! soil/snow interface heat flux (ISBA-ES:3-L)   (W/m2)</span>
+<a id="ln-94" name="ln-94"></a>  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span> <span class="kd">::</span> <span class="n">XSRSFC</span>     <span class="c">! snowfall over snowpack (ISBA-ES:3-L)          (kg/m2/s)</span>
+<a id="ln-95" name="ln-95"></a>  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span> <span class="kd">::</span> <span class="n">XRRSFC</span>     <span class="c">! rainfall over snowpack (ISBA-ES:3-L)          (kg/m2/s)</span>
+<a id="ln-96" name="ln-96"></a>  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span> <span class="kd">::</span> <span class="n">XCDSNOW</span>    <span class="c">! snow drag coefficient (ISBA-ES:3-L)           (-)</span>
+<a id="ln-97" name="ln-97"></a>  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span> <span class="kd">::</span> <span class="n">XCHSNOW</span>    <span class="c">! heat turbulent transfer coefficient </span>
+<a id="ln-98" name="ln-98"></a><span class="c">!                                               ! (ISBA-ES:3-L)                                 (-)</span>
+<a id="ln-99" name="ln-99"></a>  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:)</span> <span class="kd">::</span> <span class="n">XSNOWDZ</span>     <span class="c">! snow layer thicknesses                        (m)</span>
+<a id="ln-100" name="ln-100"></a>  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:)</span> <span class="kd">::</span> <span class="n">XSNOWDEND</span>   <span class="c">! dendricity (Crocus)</span>
+<a id="ln-101" name="ln-101"></a>  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:)</span> <span class="kd">::</span> <span class="n">XSNOWSPHER</span>  <span class="c">! sphericity (Crocus)</span>
+<a id="ln-102" name="ln-102"></a>  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:)</span> <span class="kd">::</span> <span class="n">XSNOWSIZE</span>   <span class="c">! grain size (Crocus)</span>
+<a id="ln-103" name="ln-103"></a>  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:)</span> <span class="kd">::</span> <span class="n">XSNOWSSA</span>    <span class="c">! snow specific surface area (Crocus)</span>
+<a id="ln-104" name="ln-104"></a>  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:)</span> <span class="kd">::</span> <span class="n">XSNOWTYPEMEPRA</span> <span class="c">! snow grain type (Crocus-MEPRA)</span>
+<a id="ln-105" name="ln-105"></a>  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:)</span> <span class="kd">::</span> <span class="n">XSNOWRAM</span>    <span class="c">! snow ram resistance (Crocus-MEPRA)</span>
+<a id="ln-106" name="ln-106"></a>  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:)</span> <span class="kd">::</span> <span class="n">XSNOWSHEAR</span>  <span class="c">! snow shear resistance (Crocus-MEPRA)  </span>
+<a id="ln-107" name="ln-107"></a><span class="c">!</span>
+<a id="ln-108" name="ln-108"></a>  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span> <span class="kd">::</span> <span class="n">XSNOWHMASS</span> <span class="c">! heat content change due to mass</span>
+<a id="ln-109" name="ln-109"></a><span class="c">!                                           ! changes in snowpack: for budget</span>
+<a id="ln-110" name="ln-110"></a>  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:)</span> <span class="kd">::</span> <span class="n">XSNOWLIQ</span>    <span class="c">! snow liquid water profile (ISBA-ES:3-L)</span>
+<a id="ln-111" name="ln-111"></a>  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:)</span> <span class="kd">::</span> <span class="n">XSNOWTEMP</span>   <span class="c">! snow temperature profile  (ISBA-ES:3-L)</span>
+<a id="ln-112" name="ln-112"></a><span class="c">!     </span>
+<a id="ln-113" name="ln-113"></a>  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span> <span class="kd">::</span> <span class="n">XTWSNOW</span>       <span class="c">! Total snow reservoir</span>
+<a id="ln-114" name="ln-114"></a>  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span> <span class="kd">::</span> <span class="n">XTDSNOW</span>       <span class="c">! Total snow height</span>
+<a id="ln-115" name="ln-115"></a>  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span> <span class="kd">::</span> <span class="n">XTTSNOW</span>       <span class="c">! Total snow temperature</span>
+<a id="ln-116" name="ln-116"></a><span class="c">!</span>
+<a id="ln-117" name="ln-117"></a>  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span> <span class="kd">::</span> <span class="n">XSNDPT_1DY</span><span class="p">,</span> <span class="n">XSNDPT_3DY</span><span class="p">,</span> <span class="n">XSNDPT_5DY</span><span class="p">,</span> <span class="n">XSNDPT_7DY</span> <span class="c">! fresh snow depth in 1, 3, 5, 7 days</span>
+<a id="ln-118" name="ln-118"></a>  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span> <span class="kd">::</span> <span class="n">XSNSWE_1DY</span><span class="p">,</span> <span class="n">XSNSWE_3DY</span><span class="p">,</span> <span class="n">XSNSWE_5DY</span><span class="p">,</span> <span class="n">XSNSWE_7DY</span><span class="c">! fresh snow water equivalent in 1, 3, 5, 7 days</span>
+<a id="ln-119" name="ln-119"></a>  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span> <span class="kd">::</span> <span class="n">XSNRAM_SONDE</span> <span class="c">! penetration depth of the ram resistance sensor (2 DaN)</span>
+<a id="ln-120" name="ln-120"></a>  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span> <span class="kd">::</span> <span class="n">XSN_WETTHCKN</span> <span class="c">! Thickness of wet snow at the top of the snowpack</span>
+<a id="ln-121" name="ln-121"></a>  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span> <span class="kd">::</span> <span class="n">XSN_REFRZNTHCKN</span>  <span class="c">! Thickness of refrozen snow at the top of the snowpack</span>
+<a id="ln-122" name="ln-122"></a>
+<a id="ln-123" name="ln-123"></a>  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span> <span class="kd">::</span> <span class="n">XPSNG</span>         <span class="c">! Snow fraction over ground, diag at time t</span>
+<a id="ln-124" name="ln-124"></a>  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span> <span class="kd">::</span> <span class="n">XPSNV</span>         <span class="c">! Snow fraction over vegetation, diag at time t</span>
+<a id="ln-125" name="ln-125"></a>  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span> <span class="kd">::</span> <span class="n">XPSN</span>          <span class="c">! Total Snow fraction, diag at time t</span>
+<a id="ln-126" name="ln-126"></a><span class="c">!    </span>
+<a id="ln-127" name="ln-127"></a>  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span> <span class="kd">::</span> <span class="n">XFSAT</span>         <span class="c">! Topmodel/dt92 saturated fraction</span>
+<a id="ln-128" name="ln-128"></a><span class="c">!</span>
+<a id="ln-129" name="ln-129"></a>  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span> <span class="kd">::</span> <span class="n">XFFG</span>          <span class="c">! Flood fraction over ground, diag at time t</span>
+<a id="ln-130" name="ln-130"></a>  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span> <span class="kd">::</span> <span class="n">XFFV</span>          <span class="c">! Flood fraction over vegetation, diag at time t</span>
+<a id="ln-131" name="ln-131"></a>  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span> <span class="kd">::</span> <span class="n">XFF</span>           <span class="c">! Total Flood fraction, diag at time t</span>
+<a id="ln-132" name="ln-132"></a><span class="c">!</span>
+<a id="ln-133" name="ln-133"></a>  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span> <span class="kd">::</span> <span class="n">XSEUIL</span>        <span class="c">! Irrigation threshold</span>
+<a id="ln-134" name="ln-134"></a><span class="c">!</span>
+<a id="ln-135" name="ln-135"></a>  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span> <span class="kd">::</span> <span class="n">XFAPAR</span>        <span class="c">! Fapar of vegetation</span>
+<a id="ln-136" name="ln-136"></a>  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span> <span class="kd">::</span> <span class="n">XFAPIR</span>        <span class="c">! Fapir of vegetation</span>
+<a id="ln-137" name="ln-137"></a>  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span> <span class="kd">::</span> <span class="n">XDFAPARC</span>      <span class="c">! Fapar of vegetation (cumul)</span>
+<a id="ln-138" name="ln-138"></a>  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span> <span class="kd">::</span> <span class="n">XDFAPIRC</span>      <span class="c">! Fapir of vegetation (cumul)</span>
+<a id="ln-139" name="ln-139"></a>  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span> <span class="kd">::</span> <span class="n">XFAPAR_BS</span>     <span class="c">! Fapar of bare soil</span>
+<a id="ln-140" name="ln-140"></a>  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span> <span class="kd">::</span> <span class="n">XFAPIR_BS</span>     <span class="c">! Fapir of bare soil</span>
+<a id="ln-141" name="ln-141"></a>  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span> <span class="kd">::</span> <span class="n">XDLAI_EFFC</span>    <span class="c">! Effective LAI (cumul)</span>
+<a id="ln-142" name="ln-142"></a><span class="c">!</span>
+<a id="ln-143" name="ln-143"></a>  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span> <span class="kd">::</span> <span class="n">XCG</span>        <span class="c">! heat capacity of the ground</span>
+<a id="ln-144" name="ln-144"></a>  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span> <span class="kd">::</span> <span class="n">XC1</span>        <span class="c">! coefficients for the moisure</span>
+<a id="ln-145" name="ln-145"></a>  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span> <span class="kd">::</span> <span class="n">XC2</span>        <span class="c">! equation.</span>
+<a id="ln-146" name="ln-146"></a>  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span> <span class="kd">::</span> <span class="n">XWGEQ</span>      <span class="c">! equilibrium volumetric water</span>
+<a id="ln-147" name="ln-147"></a><span class="c">!                                               ! content</span>
+<a id="ln-148" name="ln-148"></a>  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span> <span class="kd">::</span> <span class="n">XCT</span>        <span class="c">! area-averaged heat capacity</span>
+<a id="ln-149" name="ln-149"></a>  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span> <span class="kd">::</span> <span class="n">XRS</span>        <span class="c">! stomatal resistance                            (s/m)</span>
+<a id="ln-150" name="ln-150"></a><span class="c">!</span>
+<a id="ln-151" name="ln-151"></a><span class="c">!------------------------------------------------------------------------------</span>
+<a id="ln-152" name="ln-152"></a><span class="c">!</span>
+<a id="ln-153" name="ln-153"></a><span class="k">END TYPE </span><span class="n">DIAG_MISC_ISBA_t</span>
+<a id="ln-154" name="ln-154"></a><span class="c">!</span>
+<a id="ln-155" name="ln-155"></a><span class="k">TYPE </span><span class="n">DIAG_MISC_ISBA_NP_t</span>
+<a id="ln-156" name="ln-156"></a><span class="c">!</span>
+<a id="ln-157" name="ln-157"></a><span class="k">TYPE</span><span class="p">(</span><span class="n">DIAG_MISC_ISBA_t</span><span class="p">),</span> <span class="k">POINTER</span> <span class="kd">::</span> <span class="n">AL</span><span class="p">(:)</span><span class="o">=&gt;</span><span class="nb">NULL</span><span class="p">()</span> 
+<a id="ln-158" name="ln-158"></a><span class="c">!</span>
+<a id="ln-159" name="ln-159"></a><span class="k">END TYPE </span><span class="n">DIAG_MISC_ISBA_NP_t</span>
+<a id="ln-160" name="ln-160"></a><span class="c">!</span>
+<a id="ln-161" name="ln-161"></a><span class="k">CONTAINS</span>
+<a id="ln-162" name="ln-162"></a><span class="c">!</span>
+<a id="ln-163" name="ln-163"></a><span class="k">SUBROUTINE </span><span class="n">DIAG_MISC_ISBA_NP_INIT</span><span class="p">(</span><span class="n">YNDIAG_MISC_ISBA</span><span class="p">,</span><span class="n">KPATCH</span><span class="p">)</span>
+<a id="ln-164" name="ln-164"></a><span class="k">TYPE</span><span class="p">(</span><span class="n">DIAG_MISC_ISBA_NP_t</span><span class="p">),</span> <span class="k">INTENT</span><span class="p">(</span><span class="n">INOUT</span><span class="p">)</span> <span class="kd">::</span> <span class="n">YNDIAG_MISC_ISBA</span> 
+<a id="ln-165" name="ln-165"></a><span class="kt">INTEGER</span><span class="p">,</span> <span class="k">INTENT</span><span class="p">(</span><span class="n">IN</span><span class="p">)</span> <span class="kd">::</span> <span class="n">KPATCH</span>
+<a id="ln-166" name="ln-166"></a><span class="kt">INTEGER</span> <span class="kd">::</span> <span class="n">JP</span>
+<a id="ln-167" name="ln-167"></a><span class="kt">REAL</span><span class="p">(</span><span class="nb">KIND</span><span class="o">=</span><span class="n">JPRB</span><span class="p">)</span> <span class="kd">::</span> <span class="n">ZHOOK_HANDLE</span>
+<a id="ln-168" name="ln-168"></a><span class="k">IF</span> <span class="p">(</span><span class="n">LHOOK</span><span class="p">)</span> <span class="k">CALL </span><span class="n">DR_HOOK</span><span class="p">(</span><span class="s2">&quot;MODD_DIAG_MISC_ISBA_N:DIAG_MISC_ISBA_NP_INIT&quot;</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">ZHOOK_HANDLE</span><span class="p">)</span>
+<a id="ln-169" name="ln-169"></a><span class="k">IF</span> <span class="p">(.</span><span class="nb">NOT</span><span class="p">.</span><span class="nb">ASSOCIATED</span><span class="p">(</span><span class="n">YNDIAG_MISC_ISBA</span><span class="p">%</span><span class="n">AL</span><span class="p">))</span> <span class="k">THEN</span>
+<a id="ln-170" name="ln-170"></a><span class="k">  ALLOCATE</span><span class="p">(</span><span class="n">YNDIAG_MISC_ISBA</span><span class="p">%</span><span class="n">AL</span><span class="p">(</span><span class="n">KPATCH</span><span class="p">))</span>
+<a id="ln-171" name="ln-171"></a>  <span class="k">DO </span><span class="n">JP</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">KPATCH</span>
+<a id="ln-172" name="ln-172"></a>    <span class="k">CALL </span><span class="n">DIAG_MISC_ISBA_INIT</span><span class="p">(</span><span class="n">YNDIAG_MISC_ISBA</span><span class="p">%</span><span class="n">AL</span><span class="p">(</span><span class="n">JP</span><span class="p">))</span>
+<a id="ln-173" name="ln-173"></a>  <span class="k">ENDDO</span>
+<a id="ln-174" name="ln-174"></a><span class="k">ELSE</span>
+<a id="ln-175" name="ln-175"></a><span class="k">  DO </span><span class="n">JP</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">KPATCH</span>
+<a id="ln-176" name="ln-176"></a>    <span class="k">CALL </span><span class="n">DIAG_MISC_ISBA_INIT</span><span class="p">(</span><span class="n">YNDIAG_MISC_ISBA</span><span class="p">%</span><span class="n">AL</span><span class="p">(</span><span class="n">JP</span><span class="p">))</span>
+<a id="ln-177" name="ln-177"></a>  <span class="k">ENDDO</span>
+<a id="ln-178" name="ln-178"></a><span class="k">  DEALLOCATE</span><span class="p">(</span><span class="n">YNDIAG_MISC_ISBA</span><span class="p">%</span><span class="n">AL</span><span class="p">)</span>        
+<a id="ln-179" name="ln-179"></a><span class="k">ENDIF</span>
+<a id="ln-180" name="ln-180"></a><span class="k">IF</span> <span class="p">(</span><span class="n">LHOOK</span><span class="p">)</span> <span class="k">CALL </span><span class="n">DR_HOOK</span><span class="p">(</span><span class="s2">&quot;MODD_DIAG_MISC_ISBA_N:DIAG_MISC_ISBA_NP_INIT&quot;</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">ZHOOK_HANDLE</span><span class="p">)</span>
+<a id="ln-181" name="ln-181"></a><span class="k">END SUBROUTINE </span><span class="n">DIAG_MISC_ISBA_NP_INIT</span>
+<a id="ln-182" name="ln-182"></a><span class="c">!</span>
+<a id="ln-183" name="ln-183"></a><span class="k">SUBROUTINE </span><span class="n">DIAG_MISC_ISBA_INIT</span><span class="p">(</span><span class="n">DMI</span><span class="p">)</span>
+<a id="ln-184" name="ln-184"></a><span class="k">TYPE</span><span class="p">(</span><span class="n">DIAG_MISC_ISBA_t</span><span class="p">),</span> <span class="k">INTENT</span><span class="p">(</span><span class="n">INOUT</span><span class="p">)</span> <span class="kd">::</span> <span class="n">DMI</span>
+<a id="ln-185" name="ln-185"></a><span class="kt">REAL</span><span class="p">(</span><span class="nb">KIND</span><span class="o">=</span><span class="n">JPRB</span><span class="p">)</span> <span class="kd">::</span> <span class="n">ZHOOK_HANDLE</span>
+<a id="ln-186" name="ln-186"></a><span class="k">IF</span> <span class="p">(</span><span class="n">LHOOK</span><span class="p">)</span> <span class="k">CALL </span><span class="n">DR_HOOK</span><span class="p">(</span><span class="s2">&quot;MODD_DIAG_MISC_ISBA_N:DIAG_MISC_ISBA_INIT&quot;</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">ZHOOK_HANDLE</span><span class="p">)</span>
+<a id="ln-187" name="ln-187"></a>  <span class="k">NULLIFY</span><span class="p">(</span><span class="n">DMI</span><span class="p">%</span><span class="n">XHV</span><span class="p">)</span>
+<a id="ln-188" name="ln-188"></a>  <span class="k">NULLIFY</span><span class="p">(</span><span class="n">DMI</span><span class="p">%</span><span class="n">XLAI</span><span class="p">)</span>  
+<a id="ln-189" name="ln-189"></a>  <span class="k">NULLIFY</span><span class="p">(</span><span class="n">DMI</span><span class="p">%</span><span class="n">XSWI</span><span class="p">)</span>
+<a id="ln-190" name="ln-190"></a>  <span class="k">NULLIFY</span><span class="p">(</span><span class="n">DMI</span><span class="p">%</span><span class="n">XTSWI</span><span class="p">)</span>
+<a id="ln-191" name="ln-191"></a>  <span class="k">NULLIFY</span><span class="p">(</span><span class="n">DMI</span><span class="p">%</span><span class="n">XSOIL_SWI</span><span class="p">)</span>
+<a id="ln-192" name="ln-192"></a>  <span class="k">NULLIFY</span><span class="p">(</span><span class="n">DMI</span><span class="p">%</span><span class="n">XSOIL_TSWI</span><span class="p">)</span>
+<a id="ln-193" name="ln-193"></a>  <span class="k">NULLIFY</span><span class="p">(</span><span class="n">DMI</span><span class="p">%</span><span class="n">XSOIL_TWG</span><span class="p">)</span>
+<a id="ln-194" name="ln-194"></a>  <span class="k">NULLIFY</span><span class="p">(</span><span class="n">DMI</span><span class="p">%</span><span class="n">XSOIL_TWGI</span><span class="p">)</span>
+<a id="ln-195" name="ln-195"></a>  <span class="k">NULLIFY</span><span class="p">(</span><span class="n">DMI</span><span class="p">%</span><span class="n">XSOIL_WG</span><span class="p">)</span>
+<a id="ln-196" name="ln-196"></a>  <span class="k">NULLIFY</span><span class="p">(</span><span class="n">DMI</span><span class="p">%</span><span class="n">XSOIL_WGI</span><span class="p">)</span>
+<a id="ln-197" name="ln-197"></a>  <span class="k">NULLIFY</span><span class="p">(</span><span class="n">DMI</span><span class="p">%</span><span class="n">XFRD2_TWG</span><span class="p">)</span>
+<a id="ln-198" name="ln-198"></a>  <span class="k">NULLIFY</span><span class="p">(</span><span class="n">DMI</span><span class="p">%</span><span class="n">XFRD2_TWGI</span><span class="p">)</span>
+<a id="ln-199" name="ln-199"></a>  <span class="k">NULLIFY</span><span class="p">(</span><span class="n">DMI</span><span class="p">%</span><span class="n">XFRD3_TSWI</span><span class="p">)</span>
+<a id="ln-200" name="ln-200"></a>  <span class="k">NULLIFY</span><span class="p">(</span><span class="n">DMI</span><span class="p">%</span><span class="n">XFRD3_TWG</span><span class="p">)</span>
+<a id="ln-201" name="ln-201"></a>  <span class="k">NULLIFY</span><span class="p">(</span><span class="n">DMI</span><span class="p">%</span><span class="n">XFRD3_TWGI</span><span class="p">)</span>    
+<a id="ln-202" name="ln-202"></a>  <span class="k">NULLIFY</span><span class="p">(</span><span class="n">DMI</span><span class="p">%</span><span class="n">XALT</span><span class="p">)</span>
+<a id="ln-203" name="ln-203"></a>  <span class="k">NULLIFY</span><span class="p">(</span><span class="n">DMI</span><span class="p">%</span><span class="n">XFLT</span><span class="p">)</span>
+<a id="ln-204" name="ln-204"></a>  <span class="k">NULLIFY</span><span class="p">(</span><span class="n">DMI</span><span class="p">%</span><span class="n">XRNSNOW</span><span class="p">)</span>
+<a id="ln-205" name="ln-205"></a>  <span class="k">NULLIFY</span><span class="p">(</span><span class="n">DMI</span><span class="p">%</span><span class="n">XHSNOW</span><span class="p">)</span>
+<a id="ln-206" name="ln-206"></a>  <span class="k">NULLIFY</span><span class="p">(</span><span class="n">DMI</span><span class="p">%</span><span class="n">XHPSNOW</span><span class="p">)</span>
+<a id="ln-207" name="ln-207"></a>  <span class="k">NULLIFY</span><span class="p">(</span><span class="n">DMI</span><span class="p">%</span><span class="n">XGFLUXSNOW</span><span class="p">)</span>
+<a id="ln-208" name="ln-208"></a>  <span class="k">NULLIFY</span><span class="p">(</span><span class="n">DMI</span><span class="p">%</span><span class="n">XUSTARSNOW</span><span class="p">)</span>
+<a id="ln-209" name="ln-209"></a>  <span class="k">NULLIFY</span><span class="p">(</span><span class="n">DMI</span><span class="p">%</span><span class="n">XGRNDFLUX</span><span class="p">)</span>
+<a id="ln-210" name="ln-210"></a>  <span class="k">NULLIFY</span><span class="p">(</span><span class="n">DMI</span><span class="p">%</span><span class="n">XSRSFC</span><span class="p">)</span>
+<a id="ln-211" name="ln-211"></a>  <span class="k">NULLIFY</span><span class="p">(</span><span class="n">DMI</span><span class="p">%</span><span class="n">XRRSFC</span><span class="p">)</span>
+<a id="ln-212" name="ln-212"></a>  <span class="k">NULLIFY</span><span class="p">(</span><span class="n">DMI</span><span class="p">%</span><span class="n">XCDSNOW</span><span class="p">)</span>
+<a id="ln-213" name="ln-213"></a>  <span class="k">NULLIFY</span><span class="p">(</span><span class="n">DMI</span><span class="p">%</span><span class="n">XCHSNOW</span><span class="p">)</span>
+<a id="ln-214" name="ln-214"></a>  <span class="k">NULLIFY</span><span class="p">(</span><span class="n">DMI</span><span class="p">%</span><span class="n">XSNOWDZ</span><span class="p">)</span>
+<a id="ln-215" name="ln-215"></a>  <span class="k">NULLIFY</span><span class="p">(</span><span class="n">DMI</span><span class="p">%</span><span class="n">XSNOWDEND</span><span class="p">)</span>
+<a id="ln-216" name="ln-216"></a>  <span class="k">NULLIFY</span><span class="p">(</span><span class="n">DMI</span><span class="p">%</span><span class="n">XSNOWSPHER</span><span class="p">)</span>
+<a id="ln-217" name="ln-217"></a>  <span class="k">NULLIFY</span><span class="p">(</span><span class="n">DMI</span><span class="p">%</span><span class="n">XSNOWSIZE</span><span class="p">)</span>
+<a id="ln-218" name="ln-218"></a>  <span class="k">NULLIFY</span><span class="p">(</span><span class="n">DMI</span><span class="p">%</span><span class="n">XSNOWTYPEMEPRA</span><span class="p">)</span>
+<a id="ln-219" name="ln-219"></a>  <span class="k">NULLIFY</span><span class="p">(</span><span class="n">DMI</span><span class="p">%</span><span class="n">XSNOWSSA</span><span class="p">)</span>
+<a id="ln-220" name="ln-220"></a>  <span class="k">NULLIFY</span><span class="p">(</span><span class="n">DMI</span><span class="p">%</span><span class="n">XSNOWRAM</span><span class="p">)</span>
+<a id="ln-221" name="ln-221"></a>  <span class="k">NULLIFY</span><span class="p">(</span><span class="n">DMI</span><span class="p">%</span><span class="n">XSNOWSHEAR</span><span class="p">)</span>
+<a id="ln-222" name="ln-222"></a>  <span class="k">NULLIFY</span><span class="p">(</span><span class="n">DMI</span><span class="p">%</span><span class="n">XSNDPT_1DY</span><span class="p">)</span>
+<a id="ln-223" name="ln-223"></a>  <span class="k">NULLIFY</span><span class="p">(</span><span class="n">DMI</span><span class="p">%</span><span class="n">XSNDPT_3DY</span><span class="p">)</span>
+<a id="ln-224" name="ln-224"></a>  <span class="k">NULLIFY</span><span class="p">(</span><span class="n">DMI</span><span class="p">%</span><span class="n">XSNDPT_5DY</span><span class="p">)</span>
+<a id="ln-225" name="ln-225"></a>  <span class="k">NULLIFY</span><span class="p">(</span><span class="n">DMI</span><span class="p">%</span><span class="n">XSNDPT_7DY</span><span class="p">)</span> 
+<a id="ln-226" name="ln-226"></a>  <span class="k">NULLIFY</span><span class="p">(</span><span class="n">DMI</span><span class="p">%</span><span class="n">XSNSWE_1DY</span><span class="p">)</span>
+<a id="ln-227" name="ln-227"></a>  <span class="k">NULLIFY</span><span class="p">(</span><span class="n">DMI</span><span class="p">%</span><span class="n">XSNSWE_3DY</span><span class="p">)</span>
+<a id="ln-228" name="ln-228"></a>  <span class="k">NULLIFY</span><span class="p">(</span><span class="n">DMI</span><span class="p">%</span><span class="n">XSNSWE_5DY</span><span class="p">)</span>
+<a id="ln-229" name="ln-229"></a>  <span class="k">NULLIFY</span><span class="p">(</span><span class="n">DMI</span><span class="p">%</span><span class="n">XSNSWE_7DY</span><span class="p">)</span>
+<a id="ln-230" name="ln-230"></a>  <span class="k">NULLIFY</span><span class="p">(</span><span class="n">DMI</span><span class="p">%</span><span class="n">XSNRAM_SONDE</span><span class="p">)</span>
+<a id="ln-231" name="ln-231"></a>  <span class="k">NULLIFY</span><span class="p">(</span><span class="n">DMI</span><span class="p">%</span><span class="n">XSN_REFRZNTHCKN</span><span class="p">)</span>
+<a id="ln-232" name="ln-232"></a>  <span class="k">NULLIFY</span><span class="p">(</span><span class="n">DMI</span><span class="p">%</span><span class="n">XSN_WETTHCKN</span><span class="p">)</span>  
+<a id="ln-233" name="ln-233"></a>  <span class="k">NULLIFY</span><span class="p">(</span><span class="n">DMI</span><span class="p">%</span><span class="n">XSNOWHMASS</span><span class="p">)</span>  
+<a id="ln-234" name="ln-234"></a>  <span class="k">NULLIFY</span><span class="p">(</span><span class="n">DMI</span><span class="p">%</span><span class="n">XSNOWLIQ</span><span class="p">)</span>
+<a id="ln-235" name="ln-235"></a>  <span class="k">NULLIFY</span><span class="p">(</span><span class="n">DMI</span><span class="p">%</span><span class="n">XSNOWTEMP</span><span class="p">)</span>
+<a id="ln-236" name="ln-236"></a>  <span class="k">NULLIFY</span><span class="p">(</span><span class="n">DMI</span><span class="p">%</span><span class="n">XTWSNOW</span><span class="p">)</span>
+<a id="ln-237" name="ln-237"></a>  <span class="k">NULLIFY</span><span class="p">(</span><span class="n">DMI</span><span class="p">%</span><span class="n">XTDSNOW</span><span class="p">)</span>
+<a id="ln-238" name="ln-238"></a>  <span class="k">NULLIFY</span><span class="p">(</span><span class="n">DMI</span><span class="p">%</span><span class="n">XTTSNOW</span><span class="p">)</span>
+<a id="ln-239" name="ln-239"></a>  <span class="k">NULLIFY</span><span class="p">(</span><span class="n">DMI</span><span class="p">%</span><span class="n">XPSNG</span><span class="p">)</span>
+<a id="ln-240" name="ln-240"></a>  <span class="k">NULLIFY</span><span class="p">(</span><span class="n">DMI</span><span class="p">%</span><span class="n">XPSNV</span><span class="p">)</span>
+<a id="ln-241" name="ln-241"></a>  <span class="k">NULLIFY</span><span class="p">(</span><span class="n">DMI</span><span class="p">%</span><span class="n">XPSN</span><span class="p">)</span>
+<a id="ln-242" name="ln-242"></a>  <span class="k">NULLIFY</span><span class="p">(</span><span class="n">DMI</span><span class="p">%</span><span class="n">XFFG</span><span class="p">)</span>
+<a id="ln-243" name="ln-243"></a>  <span class="k">NULLIFY</span><span class="p">(</span><span class="n">DMI</span><span class="p">%</span><span class="n">XFFV</span><span class="p">)</span>
+<a id="ln-244" name="ln-244"></a>  <span class="k">NULLIFY</span><span class="p">(</span><span class="n">DMI</span><span class="p">%</span><span class="n">XFF</span><span class="p">)</span>
+<a id="ln-245" name="ln-245"></a>  <span class="k">NULLIFY</span><span class="p">(</span><span class="n">DMI</span><span class="p">%</span><span class="n">XSEUIL</span><span class="p">)</span>
+<a id="ln-246" name="ln-246"></a>  <span class="k">NULLIFY</span><span class="p">(</span><span class="n">DMI</span><span class="p">%</span><span class="n">XFAPAR</span><span class="p">)</span>
+<a id="ln-247" name="ln-247"></a>  <span class="k">NULLIFY</span><span class="p">(</span><span class="n">DMI</span><span class="p">%</span><span class="n">XFAPIR</span><span class="p">)</span>
+<a id="ln-248" name="ln-248"></a>  <span class="k">NULLIFY</span><span class="p">(</span><span class="n">DMI</span><span class="p">%</span><span class="n">XDFAPARC</span><span class="p">)</span>
+<a id="ln-249" name="ln-249"></a>  <span class="k">NULLIFY</span><span class="p">(</span><span class="n">DMI</span><span class="p">%</span><span class="n">XDFAPIRC</span><span class="p">)</span>
+<a id="ln-250" name="ln-250"></a>  <span class="k">NULLIFY</span><span class="p">(</span><span class="n">DMI</span><span class="p">%</span><span class="n">XFAPAR_BS</span><span class="p">)</span>
+<a id="ln-251" name="ln-251"></a>  <span class="k">NULLIFY</span><span class="p">(</span><span class="n">DMI</span><span class="p">%</span><span class="n">XFAPIR_BS</span><span class="p">)</span>
+<a id="ln-252" name="ln-252"></a>  <span class="k">NULLIFY</span><span class="p">(</span><span class="n">DMI</span><span class="p">%</span><span class="n">XDLAI_EFFC</span><span class="p">)</span> 
+<a id="ln-253" name="ln-253"></a>  <span class="k">NULLIFY</span><span class="p">(</span><span class="n">DMI</span><span class="p">%</span><span class="n">XCG</span><span class="p">)</span>
+<a id="ln-254" name="ln-254"></a>  <span class="k">NULLIFY</span><span class="p">(</span><span class="n">DMI</span><span class="p">%</span><span class="n">XC1</span><span class="p">)</span>
+<a id="ln-255" name="ln-255"></a>  <span class="k">NULLIFY</span><span class="p">(</span><span class="n">DMI</span><span class="p">%</span><span class="n">XC2</span><span class="p">)</span>
+<a id="ln-256" name="ln-256"></a>  <span class="k">NULLIFY</span><span class="p">(</span><span class="n">DMI</span><span class="p">%</span><span class="n">XWGEQ</span><span class="p">)</span>
+<a id="ln-257" name="ln-257"></a>  <span class="k">NULLIFY</span><span class="p">(</span><span class="n">DMI</span><span class="p">%</span><span class="n">XCT</span><span class="p">)</span>
+<a id="ln-258" name="ln-258"></a>  <span class="k">NULLIFY</span><span class="p">(</span><span class="n">DMI</span><span class="p">%</span><span class="n">XRS</span><span class="p">)</span>  
+<a id="ln-259" name="ln-259"></a><span class="n">DMI</span><span class="p">%</span><span class="n">LSURF_MISC_BUDGET</span><span class="o">=</span><span class="p">.</span><span class="n">FALSE</span><span class="p">.</span>
+<a id="ln-260" name="ln-260"></a><span class="n">DMI</span><span class="p">%</span><span class="n">LSURF_DIAG_ALBEDO</span><span class="o">=</span><span class="p">.</span><span class="n">FALSE</span><span class="p">.</span>
+<a id="ln-261" name="ln-261"></a><span class="n">DMI</span><span class="p">%</span><span class="n">LSURF_MISC_DIF</span><span class="o">=</span><span class="p">.</span><span class="n">FALSE</span><span class="p">.</span>
+<a id="ln-262" name="ln-262"></a><span class="k">IF</span> <span class="p">(</span><span class="n">LHOOK</span><span class="p">)</span> <span class="k">CALL </span><span class="n">DR_HOOK</span><span class="p">(</span><span class="s2">&quot;MODD_DIAG_MISC_ISBA_N:DIAG_MISC_ISBA_INIT&quot;</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">ZHOOK_HANDLE</span><span class="p">)</span>
+<a id="ln-263" name="ln-263"></a><span class="k">END SUBROUTINE </span><span class="n">DIAG_MISC_ISBA_INIT</span>
+<a id="ln-264" name="ln-264"></a>
+<a id="ln-265" name="ln-265"></a>
+<a id="ln-266" name="ln-266"></a><span class="k">END MODULE </span><span class="n">MODD_DIAG_MISC_ISBA_n</span>
+</pre></div>
+
+    </section>
+    </div>
+  </div>
+
+  
+    <hr>    
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+      <div class="row">
+        <div class="col-xs-6 col-md-6"><p>Town Energy Balance (TEB) model API docs was developed by teb-model<br>&copy; 2021 CeCILL
+                                          </p>
+        </div>
+        <div class="col-xs-6 col-md-6">
+          <p class="text-right">
+            Documentation generated by 
+            <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+            
+            
+          </p>
+        </div>
+      </div>
+      <br>
+      </div> <!-- /container -->    
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+<!--
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+-->
+    <script src="../js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../js/ie10-viewport-bug-workaround.js"></script>
+
+    <!-- MathJax JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+        jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+        extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+      });
+    </script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    
+    <script src="../tipuesearch/tipuesearch_content.js"></script>
+    <script src="../tipuesearch/tipuesearch_set.js"></script>
+    <script src="../tipuesearch/tipuesearch.js"></script>
+    
+    
+  </body>
+</html>

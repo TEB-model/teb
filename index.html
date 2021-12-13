@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   
+   <meta name="description" content="The Town Energy Balance (TEB) model is an urban land surface model developed to calculate the exchange of energy and water between cities and atmosphere.">
+    
+    <meta name="author" content="teb-model" >
+    <link rel="icon" href="./favicon.png">
+
+    <title> Town Energy Balance (TEB) model API docs </title>
+
+    <link href="./css/bootstrap.min.css" rel="stylesheet">
+    <link href="./css/pygments.css" rel="stylesheet">
+    <link href="./css/font-awesome.min.css" rel="stylesheet">
+    <link href="./css/local.css" rel="stylesheet">
+    
+    <link  href="./tipuesearch/tipuesearch.css" rel="stylesheet">
+    
+    
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <script src="./js/jquery-2.1.3.min.js"></script>
+    <script src="./js/svg-pan-zoom.min.js"></script>
+
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="./index.html">Town Energy Balance (TEB) model API docs </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+        
+            <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
+              <a href="#" class="dropdown-toggle"
+              data-toggle="dropdown" role="button"
+              aria-haspopup="true"
+     aria-expanded="false">Contents <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          
+              
+            <li><a href="./lists/files.html">Source Files</a></li>
+        
+        
+        
+            <li><a href="./lists/modules.html">Modules</a></li>
+        
+            
+                                
+            <li><a href="./lists/procedures.html">Procedures</a></li>
+        
+               
+            <li><a href="./lists/types.html">Derived Types</a></li>
+        
+        
+            <li><a href="./program/driver.html">Program</a></li>
+               
+        
+        
+            </ul>
+        
+            </li>
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="./lists/files.html">Source Files</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="./lists/modules.html">Modules</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="./lists/procedures.html">Procedures</a></li>
+
+                             
+<li class="visible-xs hidden-sm visible-lg"><a href="./lists/types.html">Derived Types</a></li>
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="./program/driver.html">Program</a></li>
+
+
+
+          </ul>
+        
+        <form action="./search.html" class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+        </div>
+<!--
+        <button type="submit" class="btn btn-default">Submit</button>
+-->
+        </form>
+        
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+    
+      <!-- Main component for a primary marketing message or call to action -->
+      <div class="jumbotron">
+        <p>The Town Energy Balance (TEB) model is an urban land surface model developed to calculate the exchange of energy and water between cities and atmosphere.</p>
+        	 
+	<p> Find us on&hellip;</p>
+        <p>
+			 
+          <a class="btn btn-lg btn-primary" href="https://github.com/teb-model/teb" role="button">GitHub</a>
+			 
+			 
+			 
+			 
+			 
+	         
+			 
+        </p>
+      </div>
+
+      <div class="row" id='text'>
+		  
+        <div class="col-md-8">
+		  
+          <h1>Town Energy Balance (TEB) model API docs</h1>
+          <p>This is home to the API documentation for the Town Energy Balance (TEB) model, for the project's website, please go to <a href="https://github.com/teb-model/teb">https://github.com/teb-model/teb</a>.</p>
+<hr>
+        </div>
+		  
+        <div class="col-md-4">
+	  <div class="well">
+          <h2>Developer Info</h2>
+          <h4>teb-model</h4>
+          
+          
+			   
+            <div class="text-center"><div class="btn-group" role="group">
+              
+              
+              
+              <a class="btn btn-lg btn-primary" href="https://github.com/teb-model/teb"><i class="fa fa-github fa-lg"></i></a>
+              
+              
+				  
+              
+              
+              
+              
+            </div></div>
+            
+       </div>
+       </div>
+       
+      </div>
+      
+      
+      
+      
+      
+      
+		
+        
+      <div class="row">
+        
+        <div class="col-xs-6 col-sm-3">
+              <h3>Source Files</h3>
+              <ul>
+                    <li><a href='./sourcefile/abor1_sfx.f90.html'>abor1_sfx.F90</a></li>
+                  
+                    <li><a href='./sourcefile/add_forecast_to_date_surf.f90.html'>add_forecast_to_date_surf.F90</a></li>
+                  
+                    <li><a href='./sourcefile/albedo_from_nir_vis.f90.html'>albedo_from_nir_vis.F90</a></li>
+                  
+                    <li><a href='./sourcefile/alloc_teb_struct.f90.html'>alloc_teb_struct.F90</a></li>
+                  
+                    <li><a href='./sourcefile/avg_urban_fluxes.f90.html'>avg_urban_fluxes.F90</a></li>
+                  
+                    <li><a href='./sourcefile/bem.f90.html'>bem.F90</a></li>
+                  
+                    <li><a href='./sourcefile/bem_morpho.f90.html'>bem_morpho.F90</a></li>
+                  
+                    <li><a href='./sourcefile/bem_morpho_struct.f90.html'>bem_morpho_struct.F90</a></li>
+                  
+                    <li><a href='./sourcefile/bld_e_budget.f90.html'>bld_e_budget.F90</a></li>
+                  
+                    <li><a href='./sourcefile/bld_occ_calendar.f90.html'>bld_occ_calendar.F90</a></li>
+                  </ul>
+          </div>
+        
+          
+		  <div class="col-xs-6 col-sm-3">
+              <h3>Modules</h3>
+              <ul>
+                    <li><a href='./module/modd_agri_n.html'>MODD_AGRI_n</a></li>
+                  
+                    <li><a href='./module/modd_arch.html'>MODD_ARCH</a></li>
+                  
+                    <li><a href='./module/modd_bem_cst.html'>MODD_BEM_CST</a></li>
+                  
+                    <li><a href='./module/modd_bem_n.html'>MODD_BEM_n</a></li>
+                  
+                    <li><a href='./module/modd_bem_option_n.html'>MODD_BEM_OPTION_n</a></li>
+                  
+                    <li><a href='./module/modd_bld_description_n.html'>MODD_BLD_DESCRIPTION_n</a></li>
+                  
+                    <li><a href='./module/modd_canopy_n.html'>MODD_CANOPY_n</a></li>
+                  
+                    <li><a href='./module/modd_canopy_turb.html'>MODD_CANOPY_TURB</a></li>
+                  
+                    <li><a href='./module/modd_ch_emis_field_n.html'>MODD_CH_EMIS_FIELD_n</a></li>
+                  
+                    <li><a href='./module/modd_ch_flake_n.html'>MODD_CH_FLAKE_n</a></li>
+                  </ul>
+          </div>
+          
+          
+		  <div class="col-xs-6 col-sm-3">
+              <h3>Procedures</h3>
+              <ul>
+                    <li><a href='./proc/abor1_sfx.html'>ABOR1_SFX</a></li>
+                  
+                    <li><a href='./interface/abor1_sfx.html'>ABOR1_SFX</a></li>
+                  
+                    <li><a href='./proc/add_forecast_to_date_surf.html'>ADD_FORECAST_TO_DATE_SURF</a></li>
+                  
+                    <li><a href='./interface/add_forecast_to_date_surf.html'>ADD_FORECAST_TO_DATE_SURF</a></li>
+                  
+                    <li><a href='./proc/agri_init.html'>AGRI_INIT</a></li>
+                  
+                    <li><a href='./proc/agri_np_init.html'>AGRI_NP_INIT</a></li>
+                  
+                    <li><a href='./proc/albedo_from_nir_vis.html'>ALBEDO_FROM_NIR_VIS</a></li>
+                  
+                    <li><a href='./interface/albedo_from_nir_vis.html'>ALBEDO_FROM_NIR_VIS</a></li>
+                  
+                    <li><a href='./proc/alloc_teb_struct.html'>ALLOC_TEB_STRUCT</a></li>
+                  
+                    <li><a href='./interface/alloc_teb_struct.html'>ALLOC_TEB_STRUCT</a></li>
+                  </ul>
+          </div>
+          
+          
+		  <div class="col-xs-6 col-sm-3">
+              <h3>Derived Types</h3>
+              <ul>
+                    <li><a href='./type/agri_np_t.html'>AGRI_NP_t</a></li>
+                  
+                    <li><a href='./type/agri_t.html'>AGRI_t</a></li>
+                  
+                    <li><a href='./type/bem_np_t.html'>BEM_NP_t</a></li>
+                  
+                    <li><a href='./type/bem_options_t.html'>BEM_OPTIONS_t</a></li>
+                  
+                    <li><a href='./type/bem_t.html'>BEM_t</a></li>
+                  
+                    <li><a href='./type/bld_desc_t.html'>BLD_DESC_t</a></li>
+                  
+                    <li><a href='./type/canopy_t.html'>CANOPY_t</a></li>
+                  
+                    <li><a href='./type/ch_emis_field_t.html'>CH_EMIS_FIELD_t</a></li>
+                  
+                    <li><a href='./type/ch_emis_snap_t.html'>CH_EMIS_SNAP_t</a></li>
+                  
+                    <li><a href='./type/ch_flake_t.html'>CH_FLAKE_t</a></li>
+                  </ul>
+          </div>
+          
+      </div>
+      
+
+    <hr>    
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+      <div class="row">
+        <div class="col-xs-6 col-md-6"><p>Town Energy Balance (TEB) model API docs was developed by teb-model<br>&copy; 2021 CeCILL
+                                          </p>
+        </div>
+        <div class="col-xs-6 col-md-6">
+          <p class="text-right">
+            Documentation generated by 
+            <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+            
+            
+          </p>
+        </div>
+      </div>
+      <br>
+      </div> <!-- /container -->    
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+<!--
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+-->
+    <script src="./js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="./js/ie10-viewport-bug-workaround.js"></script>
+
+    <!-- MathJax JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+        jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+        extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+      });
+    </script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    
+    <script src="./tipuesearch/tipuesearch_content.js"></script>
+    <script src="./tipuesearch/tipuesearch_set.js"></script>
+    <script src="./tipuesearch/tipuesearch.js"></script>
+    
+    
+  </body>
+</html>

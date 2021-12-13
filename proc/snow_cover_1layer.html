@@ -1,0 +1,1608 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   
+   <meta name="description" content="The Town Energy Balance (TEB) model is an urban land surface model developed to calculate the exchange of energy and water between cities and atmosphere.">
+    
+    <meta name="author" content="teb-model" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>SNOW_COVER_1LAYER &ndash; Town Energy Balance (TEB) model API docs</title>
+
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+    
+    <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+    
+    
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <script src="../js/jquery-2.1.3.min.js"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../index.html">Town Energy Balance (TEB) model API docs </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+        
+            <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
+              <a href="#" class="dropdown-toggle"
+              data-toggle="dropdown" role="button"
+              aria-haspopup="true"
+     aria-expanded="false">Contents <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          
+              
+            <li><a href="../lists/files.html">Source Files</a></li>
+        
+        
+        
+            <li><a href="../lists/modules.html">Modules</a></li>
+        
+            
+                                
+            <li><a href="../lists/procedures.html">Procedures</a></li>
+        
+               
+            <li><a href="../lists/types.html">Derived Types</a></li>
+        
+        
+            <li><a href="../program/driver.html">Program</a></li>
+               
+        
+        
+            </ul>
+        
+            </li>
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/files.html">Source Files</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
+
+                             
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/types.html">Derived Types</a></li>
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../program/driver.html">Program</a></li>
+
+
+
+          </ul>
+        
+        <form action="../search.html" class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+        </div>
+<!--
+        <button type="submit" class="btn btn-default">Submit</button>
+-->
+        </form>
+        
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+    
+  
+  <div class="row">
+    <h1>SNOW_COVER_1LAYER
+      <small>Subroutine</small>
+    
+    </h1>
+    
+<div class="row">
+  <div class="col-lg-12">
+<div class="well well-sm">
+  <ul class="list-inline" style="margin-bottom:0px;display:inline">
+     
+     
+     
+    <li><i class="fa fa-legal"></i> CeCILL</li> 
+     
+     
+     
+    
+    
+     <li><i class="fa fa-list-ol"></i>
+       <a data-toggle="tooltip"
+    data-placement="bottom" data-html="true"
+    title=" 1.9% of total for procedures.">271 statements</a>
+     </li> 
+     
+     
+     
+    <li><i class="fa fa-code"></i><a href="../src/snow_cover_1layer.F90"> Source File</a></li>
+     
+     
+  </ul>
+  <ol class="breadcrumb in-well text-right">
+  
+    
+     <li><a href='../sourcefile/snow_cover_1layer.f90.html'>snow_cover_1layer.F90</a></li>
+    
+  
+     <li class="active">SNOW_COVER_1LAYER</li>
+  </ol>
+</div>
+</div>
+</div>
+<script>
+  $(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+  })
+</script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+    
+<div id="sidebar">
+  
+<h3>Contents</h3>
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+  <div class="list-group">
+    <a class="list-group-item" href="../proc/snow_cover_1layer.html#src">SNOW_COVER_1LAYER</a>
+  </div>
+</div>
+
+
+
+</div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+    <h2>
+subroutine SNOW_COVER_1LAYER(PTSTEP, PANSMIN, PANSMAX, PTODRY, PRHOSMIN, PRHOSMAX, PRHOFOLD, OALL_MELT, PDRAIN_TIME, PWCRN, PZ0SN, PZ0HSN, TPSNOW, PTG, PTG_COEFA, PTG_COEFB, PABS_SW, PLW1, PLW2, PTA, PQA, PVMOD, PPS, PRHOA, PSR, PZREF, PUREF, PRNSNOW, PHSNOW, PLESNOW, PGSNOW, PMELT, PDQS_SNOW, PABS_LW)
+    
+    
+   
+</h2>
+    
+  
+    <div class="panel panel-default">
+      <div class="panel-heading">
+  <h3 class="panel-title">Uses</h3>
+      </div>
+      <ul class="list-group">
+      
+      <li class="list-group-item">
+  <ul class="list-inline">
+    
+    <li><a href='../module/mode_thermos.html'>MODE_THERMOS</a></li>
+    
+    <li><a href='../module/yomhook.html'>YOMHOOK</a></li>
+    
+    <li><a href='../module/modd_csts.html'>MODD_CSTS</a></li>
+    
+    <li><a href='../module/modd_snow_par.html'>MODD_SNOW_PAR</a></li>
+    
+    <li><a href='../module/modd_type_snow.html'>MODD_TYPE_SNOW</a></li>
+    
+    <li><a href='../module/parkind1.html'>PARKIND1</a></li>
+    
+    <li><a href='../module/modd_surf_par.html'>MODD_SURF_PAR</a></li>
+    
+    <li><a href='../module/modi_surface_aero_cond.html'>MODI_SURFACE_AERO_COND</a></li>
+    
+    <li><a href='../module/modi_surface_ri.html'>MODI_SURFACE_RI</a></li>
+    
+  </ul>
+      </li>
+      
+      
+      
+      </ul>
+    </div>
+    
+
+
+    
+
+    <h3>Arguments</h3>
+    
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-ptstep~13"></span>real,</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>PTSTEP</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-pansmin"></span>real,</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>PANSMIN</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-pansmax"></span>real,</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>PANSMAX</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-ptodry"></span>real,</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>PTODRY</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-prhosmin"></span>real,</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>PRHOSMIN</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-prhosmax"></span>real,</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>PRHOSMAX</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-prhofold"></span>real,</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>PRHOFOLD</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-oall_melt"></span>logical,</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>OALL_MELT</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-pdrain_time"></span>real,</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>PDRAIN_TIME</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-pwcrn"></span>real,</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>PWCRN</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-pz0sn"></span>real,</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>PZ0SN</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-pz0hsn"></span>real,</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>PZ0HSN</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-tpsnow~2"></span>type(SURF_SNOW),</td>
+  <td>intent(inout)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>TPSNOW</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-ptg~3"></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(:)</td><td>::</td>
+  <td><strong>PTG</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-ptg_coefa"></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(:)</td><td>::</td>
+  <td><strong>PTG_COEFA</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-ptg_coefb"></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(:)</td><td>::</td>
+  <td><strong>PTG_COEFB</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-pabs_sw"></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(:)</td><td>::</td>
+  <td><strong>PABS_SW</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-plw1~2"></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(:)</td><td>::</td>
+  <td><strong>PLW1</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-plw2~2"></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(:)</td><td>::</td>
+  <td><strong>PLW2</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-pta~10"></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(:)</td><td>::</td>
+  <td><strong>PTA</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-pqa~9"></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(:)</td><td>::</td>
+  <td><strong>PQA</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-pvmod~7"></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(:)</td><td>::</td>
+  <td><strong>PVMOD</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-pps~10"></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(:)</td><td>::</td>
+  <td><strong>PPS</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-prhoa~10"></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(:)</td><td>::</td>
+  <td><strong>PRHOA</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-psr~4"></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(:)</td><td>::</td>
+  <td><strong>PSR</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-pzref~7"></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(:)</td><td>::</td>
+  <td><strong>PZREF</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-puref~7"></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(:)</td><td>::</td>
+  <td><strong>PUREF</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-prnsnow"></span>real,</td>
+  <td>intent(out),</td>
+  <td></td>
+  
+  <td>DIMENSION(:)</td><td>::</td>
+  <td><strong>PRNSNOW</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-phsnow"></span>real,</td>
+  <td>intent(out),</td>
+  <td></td>
+  
+  <td>DIMENSION(:)</td><td>::</td>
+  <td><strong>PHSNOW</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-plesnow"></span>real,</td>
+  <td>intent(out),</td>
+  <td></td>
+  
+  <td>DIMENSION(:)</td><td>::</td>
+  <td><strong>PLESNOW</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-pgsnow"></span>real,</td>
+  <td>intent(out),</td>
+  <td></td>
+  
+  <td>DIMENSION(:)</td><td>::</td>
+  <td><strong>PGSNOW</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-pmelt"></span>real,</td>
+  <td>intent(out),</td>
+  <td></td>
+  
+  <td>DIMENSION(:)</td><td>::</td>
+  <td><strong>PMELT</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-pdqs_snow"></span>real,</td>
+  <td>intent(out),</td>
+  <td></td>
+  
+  <td>DIMENSION(:)</td><td>::</td>
+  <td><strong>PDQS_SNOW</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-pabs_lw"></span>real,</td>
+  <td>intent(out),</td>
+  <td></td>
+  
+  <td>DIMENSION(:)</td><td>::</td>
+  <td><strong>PABS_LW</strong></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+    
+    
+    
+    
+     
+    <br>
+
+    <section class="visible-xs visible-sm hidden-md">
+      
+<h3>Contents</h3>
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+  <div class="list-group">
+    <a class="list-group-item" href="../proc/snow_cover_1layer.html#src">SNOW_COVER_1LAYER</a>
+  </div>
+</div>
+
+
+
+    </section>
+    <br class="visible-xs visible-sm hidden-md">
+
+    
+
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+
+
+    
+    
+    
+    <section>
+    <h2><span class="anchor" id="src"></span>Source Code</h2>
+    <div class="highlight"><pre><span></span>    <span class="k">SUBROUTINE </span><span class="n">SNOW_COVER_1LAYER</span><span class="p">(</span><span class="n">PTSTEP</span><span class="p">,</span> <span class="n">PANSMIN</span><span class="p">,</span> <span class="n">PANSMAX</span><span class="p">,</span> <span class="n">PTODRY</span><span class="p">,</span> <span class="n">PRHOSMIN</span><span class="p">,</span> <span class="n">PRHOSMAX</span><span class="p">,</span>   <span class="p">&amp;</span>
+                                 <span class="n">PRHOFOLD</span><span class="p">,</span> <span class="n">OALL_MELT</span><span class="p">,</span> <span class="n">PDRAIN_TIME</span><span class="p">,</span> <span class="n">PWCRN</span><span class="p">,</span> <span class="n">PZ0SN</span><span class="p">,</span> <span class="n">PZ0HSN</span><span class="p">,</span> <span class="p">&amp;</span>
+                                 <span class="n">TPSNOW</span><span class="p">,</span> <span class="n">PTG</span><span class="p">,</span> <span class="n">PTG_COEFA</span><span class="p">,</span> <span class="n">PTG_COEFB</span><span class="p">,</span> <span class="n">PABS_SW</span><span class="p">,</span> <span class="n">PLW1</span><span class="p">,</span> <span class="n">PLW2</span><span class="p">,</span> <span class="p">&amp;</span>
+                                 <span class="n">PTA</span><span class="p">,</span> <span class="n">PQA</span><span class="p">,</span> <span class="n">PVMOD</span><span class="p">,</span> <span class="n">PPS</span><span class="p">,</span> <span class="n">PRHOA</span><span class="p">,</span> <span class="n">PSR</span><span class="p">,</span> <span class="n">PZREF</span><span class="p">,</span> <span class="n">PUREF</span><span class="p">,</span> <span class="n">PRNSNOW</span><span class="p">,&amp;</span>
+                                 <span class="n">PHSNOW</span><span class="p">,</span> <span class="n">PLESNOW</span><span class="p">,</span> <span class="n">PGSNOW</span><span class="p">,</span> <span class="n">PMELT</span><span class="p">,</span> <span class="n">PDQS_SNOW</span><span class="p">,</span> <span class="n">PABS_LW</span>  <span class="p">)</span>  
+<span class="c">!   ##########################################################################</span>
+<span class="c">!</span>
+<span class="c">!!****  *SNOW_COVER_1LAYER*  </span>
+<span class="c">!!</span>
+<span class="c">!!    PURPOSE</span>
+<span class="c">!!    -------</span>
+<span class="c">!</span>
+<span class="c">!     One layer snow mantel scheme</span>
+<span class="c">!         </span>
+<span class="c">!     </span>
+<span class="c">!!**  METHOD</span>
+<span class="c">!     ------</span>
+<span class="c">!</span>
+<span class="c">!</span>
+<span class="c">! The temperature equation is written as:</span>
+<span class="c">!</span>
+<span class="c">!              b T+ = y</span>
+<span class="c">!</span>
+<span class="c">!</span>
+<span class="c">!!    EXTERNAL</span>
+<span class="c">!!    --------</span>
+<span class="c">!!</span>
+<span class="c">!!</span>
+<span class="c">!!    IMPLICIT ARGUMENTS</span>
+<span class="c">!!    ------------------</span>
+<span class="c">!!</span>
+<span class="c">!!    MODD_CST</span>
+<span class="c">!!</span>
+<span class="c">!!      </span>
+<span class="c">!!    REFERENCE</span>
+<span class="c">!!    ---------</span>
+<span class="c">!!</span>
+<span class="c">!!      </span>
+<span class="c">!!    AUTHOR</span>
+<span class="c">!!    ------</span>
+<span class="c">!!</span>
+<span class="c">!!      V. Masson           * Meteo-France *</span>
+<span class="c">!!</span>
+<span class="c">!!    MODIFICATIONS</span>
+<span class="c">!!    -------------</span>
+<span class="c">!!      Original    08/09/98 </span>
+<span class="c">!!      J. Escobar 24/10/2012 : BUF PGI10.X , rewrite some 1 line WHERE statement</span>
+<span class="c">!!      V. Masson  13/09/2013 : implicitation of coupling with roof below</span>
+<span class="c">!-------------------------------------------------------------------------------</span>
+<span class="c">!</span>
+<span class="c">!*       0.     DECLARATIONS</span>
+<span class="c">!               ------------</span>
+<span class="c">!</span>
+<span class="k">USE </span><span class="n">MODD_TYPE_SNOW</span><span class="p">,</span> <span class="k">ONLY</span> <span class="p">:</span> <span class="n">SURF_SNOW</span>
+<span class="c">!</span>
+<span class="k">USE </span><span class="n">MODD_CSTS</span><span class="p">,</span>       <span class="k">ONLY</span> <span class="p">:</span> <span class="n">XTT</span><span class="p">,</span> <span class="n">XCI</span><span class="p">,</span> <span class="n">XRHOLI</span><span class="p">,</span> <span class="n">XRHOLW</span><span class="p">,</span> <span class="n">XCPD</span><span class="p">,</span> <span class="n">XLSTT</span><span class="p">,</span> <span class="n">XLMTT</span><span class="p">,</span> <span class="n">XDAY</span><span class="p">,</span> <span class="n">XCONDI</span>
+<span class="k">USE </span><span class="n">MODD_SNOW_PAR</span><span class="p">,</span>   <span class="k">ONLY</span> <span class="p">:</span> <span class="n">XEMISSN</span>
+<span class="k">USE </span><span class="n">MODD_SURF_PAR</span><span class="p">,</span>   <span class="k">ONLY</span> <span class="p">:</span> <span class="n">XUNDEF</span>
+<span class="c">!</span>
+<span class="k">USE </span><span class="n">MODE_THERMOS</span>
+<span class="c">!</span>
+<span class="k">USE </span><span class="n">MODI_SURFACE_RI</span>
+<span class="k">USE </span><span class="n">MODI_SURFACE_AERO_COND</span>
+<span class="c">!</span>
+<span class="c">!</span>
+<span class="k">USE </span><span class="n">YOMHOOK</span>   <span class="p">,</span><span class="k">ONLY</span> <span class="p">:</span> <span class="n">LHOOK</span><span class="p">,</span>   <span class="n">DR_HOOK</span>
+<span class="k">USE </span><span class="n">PARKIND1</span>  <span class="p">,</span><span class="k">ONLY</span> <span class="p">:</span> <span class="n">JPRB</span>
+<span class="c">!</span>
+<span class="k">IMPLICIT NONE</span>
+<span class="c">!</span>
+<span class="c">!*      0.1    declarations of arguments</span>
+<span class="c">!</span>
+<span class="c">!</span>
+<span class="kt">REAL</span><span class="p">,</span>                 <span class="k">INTENT</span><span class="p">(</span><span class="n">IN</span><span class="p">)</span>    <span class="kd">::</span> <span class="n">PTSTEP</span>   <span class="c">! time step</span>
+<span class="kt">REAL</span><span class="p">,</span>                 <span class="k">INTENT</span><span class="p">(</span><span class="n">IN</span><span class="p">)</span>    <span class="kd">::</span> <span class="n">PANSMIN</span>  <span class="c">! minimum snow albedo</span>
+<span class="kt">REAL</span><span class="p">,</span>                 <span class="k">INTENT</span><span class="p">(</span><span class="n">IN</span><span class="p">)</span>    <span class="kd">::</span> <span class="n">PANSMAX</span>  <span class="c">! maximum snow albedo</span>
+<span class="kt">REAL</span><span class="p">,</span>                 <span class="k">INTENT</span><span class="p">(</span><span class="n">IN</span><span class="p">)</span>    <span class="kd">::</span> <span class="n">PTODRY</span>   <span class="c">! snow albedo decreasing constant</span>
+<span class="kt">REAL</span><span class="p">,</span>                 <span class="k">INTENT</span><span class="p">(</span><span class="n">IN</span><span class="p">)</span>    <span class="kd">::</span> <span class="n">PRHOSMIN</span> <span class="c">! minimum snow density</span>
+<span class="kt">REAL</span><span class="p">,</span>                 <span class="k">INTENT</span><span class="p">(</span><span class="n">IN</span><span class="p">)</span>    <span class="kd">::</span> <span class="n">PRHOSMAX</span> <span class="c">! maximum snow density</span>
+<span class="kt">REAL</span><span class="p">,</span>                 <span class="k">INTENT</span><span class="p">(</span><span class="n">IN</span><span class="p">)</span>    <span class="kd">::</span> <span class="n">PRHOFOLD</span> <span class="c">! snow density increasing constant</span>
+<span class="kt">LOGICAL</span><span class="p">,</span>              <span class="k">INTENT</span><span class="p">(</span><span class="n">IN</span><span class="p">)</span>    <span class="kd">::</span> <span class="n">OALL_MELT</span><span class="c">! T --&gt; all snow runs off if</span>
+                                                <span class="c">! lower surf. temperature is</span>
+                                                <span class="c">! positive</span>
+<span class="kt">REAL</span><span class="p">,</span>                 <span class="k">INTENT</span><span class="p">(</span><span class="n">IN</span><span class="p">)</span>    <span class="kd">::</span> <span class="n">PDRAIN_TIME</span> <span class="c">! drainage folding time (days)</span>
+<span class="kt">REAL</span><span class="p">,</span>                 <span class="k">INTENT</span><span class="p">(</span><span class="n">IN</span><span class="p">)</span>    <span class="kd">::</span> <span class="n">PWCRN</span>    <span class="c">! critical snow amount necessary</span>
+                                                <span class="c">! to cover the considered surface</span>
+<span class="kt">REAL</span><span class="p">,</span>                 <span class="k">INTENT</span><span class="p">(</span><span class="n">IN</span><span class="p">)</span>    <span class="kd">::</span> <span class="n">PZ0SN</span>    <span class="c">! snow roughness length for momentum</span>
+<span class="kt">REAL</span><span class="p">,</span>                 <span class="k">INTENT</span><span class="p">(</span><span class="n">IN</span><span class="p">)</span>    <span class="kd">::</span> <span class="n">PZ0HSN</span>   <span class="c">! snow roughness length for heat</span>
+<span class="k">TYPE</span><span class="p">(</span><span class="n">SURF_SNOW</span><span class="p">),</span> <span class="k">INTENT</span><span class="p">(</span><span class="n">INOUT</span><span class="p">)</span> <span class="kd">::</span> <span class="n">TPSNOW</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:),</span> <span class="k">INTENT</span><span class="p">(</span><span class="n">IN</span><span class="p">)</span>    <span class="kd">::</span> <span class="n">PTG</span>      <span class="c">! underlying ground temperature</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:),</span> <span class="k">INTENT</span><span class="p">(</span><span class="n">IN</span><span class="p">)</span>    <span class="kd">::</span> <span class="n">PTG_COEFA</span><span class="c">! underlying ground temperature</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:),</span> <span class="k">INTENT</span><span class="p">(</span><span class="n">IN</span><span class="p">)</span>    <span class="kd">::</span> <span class="n">PTG_COEFB</span><span class="c">! implicit terms</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:),</span> <span class="k">INTENT</span><span class="p">(</span><span class="n">IN</span><span class="p">)</span>    <span class="kd">::</span> <span class="n">PABS_SW</span>  <span class="c">! absorbed SW energy (Wm-2)</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:),</span> <span class="k">INTENT</span><span class="p">(</span><span class="n">IN</span><span class="p">)</span>    <span class="kd">::</span> <span class="n">PLW1</span>     <span class="c">! LW coef independant of TSNOW</span>
+                                              <span class="c">! (Wm-2)     usually equal to:</span>
+                                              <span class="c">!      emis_snow * LW_down</span>
+                                              <span class="c">!</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:),</span> <span class="k">INTENT</span><span class="p">(</span><span class="n">IN</span><span class="p">)</span>    <span class="kd">::</span> <span class="n">PLW2</span>     <span class="c">! LW coef dependant   of TSNOW</span>
+                                              <span class="c">! (Wm-2 K-4) usually equal to:</span>
+                                              <span class="c">! -1 * emis_snow * stefan_constant</span>
+                                              <span class="c">!</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:),</span> <span class="k">INTENT</span><span class="p">(</span><span class="n">IN</span><span class="p">)</span>    <span class="kd">::</span> <span class="n">PTA</span>      <span class="c">! temperature at the lowest level</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:),</span> <span class="k">INTENT</span><span class="p">(</span><span class="n">IN</span><span class="p">)</span>    <span class="kd">::</span> <span class="n">PQA</span>      <span class="c">! specific humidity</span>
+                                                <span class="c">! at the lowest level</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:),</span> <span class="k">INTENT</span><span class="p">(</span><span class="n">IN</span><span class="p">)</span>    <span class="kd">::</span> <span class="n">PVMOD</span>    <span class="c">! module of the horizontal wind</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:),</span> <span class="k">INTENT</span><span class="p">(</span><span class="n">IN</span><span class="p">)</span>    <span class="kd">::</span> <span class="n">PPS</span>      <span class="c">! pressure at the surface</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:),</span> <span class="k">INTENT</span><span class="p">(</span><span class="n">IN</span><span class="p">)</span>    <span class="kd">::</span> <span class="n">PRHOA</span>    <span class="c">! air density</span>
+                                                <span class="c">! at the lowest level</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:),</span> <span class="k">INTENT</span><span class="p">(</span><span class="n">IN</span><span class="p">)</span>    <span class="kd">::</span> <span class="n">PSR</span>      <span class="c">! snow rate</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:),</span> <span class="k">INTENT</span><span class="p">(</span><span class="n">IN</span><span class="p">)</span>    <span class="kd">::</span> <span class="n">PZREF</span>    <span class="c">! reference height of the first</span>
+                                              <span class="c">! atmospheric level (temperature)</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:),</span> <span class="k">INTENT</span><span class="p">(</span><span class="n">IN</span><span class="p">)</span>    <span class="kd">::</span> <span class="n">PUREF</span>    <span class="c">! reference height of the first</span>
+                                              <span class="c">! atmospheric level (wind)</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:),</span> <span class="k">INTENT</span><span class="p">(</span><span class="n">OUT</span><span class="p">)</span>   <span class="kd">::</span> <span class="n">PRNSNOW</span>  <span class="c">! net radiation over snow</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:),</span> <span class="k">INTENT</span><span class="p">(</span><span class="n">OUT</span><span class="p">)</span>   <span class="kd">::</span> <span class="n">PHSNOW</span>   <span class="c">! sensible heat flux over snow</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:),</span> <span class="k">INTENT</span><span class="p">(</span><span class="n">OUT</span><span class="p">)</span>   <span class="kd">::</span> <span class="n">PLESNOW</span>  <span class="c">! latent heat flux over snow</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:),</span> <span class="k">INTENT</span><span class="p">(</span><span class="n">OUT</span><span class="p">)</span>   <span class="kd">::</span> <span class="n">PGSNOW</span>   <span class="c">! flux under the snow</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:),</span> <span class="k">INTENT</span><span class="p">(</span><span class="n">OUT</span><span class="p">)</span>   <span class="kd">::</span> <span class="n">PMELT</span>    <span class="c">! snow melting rate (kg/m2/s)</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:),</span> <span class="k">INTENT</span><span class="p">(</span><span class="n">OUT</span><span class="p">)</span>   <span class="kd">::</span> <span class="n">PDQS_SNOW</span><span class="c">! heat storage inside snow</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:),</span> <span class="k">INTENT</span><span class="p">(</span><span class="n">OUT</span><span class="p">)</span>   <span class="kd">::</span> <span class="n">PABS_LW</span> <span class="c">! absorbed LW rad by snow (W/m2)</span>
+<span class="c">!</span>
+<span class="c">!</span>
+<span class="c">!*      0.2    declarations of local variables</span>
+<span class="c">!</span>
+<span class="kt">REAL</span> <span class="kd">::</span> <span class="n">ZEXPL</span> <span class="o">=</span> <span class="mf">0.</span>
+<span class="kt">REAL</span> <span class="kd">::</span> <span class="n">ZIMPL</span> <span class="o">=</span> <span class="mf">1.</span>
+<span class="c">!</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(</span><span class="n">SIZE</span><span class="p">(</span><span class="n">TPSNOW</span><span class="p">%</span><span class="n">WSNOW</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span> <span class="kd">::</span> <span class="n">ZEXNS</span><span class="p">,</span> <span class="n">ZEXNA</span><span class="p">,</span> <span class="n">ZDIRCOSZW</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(</span><span class="n">SIZE</span><span class="p">(</span><span class="n">TPSNOW</span><span class="p">%</span><span class="n">WSNOW</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span> <span class="kd">::</span> <span class="n">ZZ0</span>      <span class="c">! roughness length for momentum</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(</span><span class="n">SIZE</span><span class="p">(</span><span class="n">TPSNOW</span><span class="p">%</span><span class="n">WSNOW</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span> <span class="kd">::</span> <span class="n">ZZ0H</span>     <span class="c">! roughness length forheat</span>
+<span class="c">!</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(</span><span class="n">SIZE</span><span class="p">(</span><span class="n">TPSNOW</span><span class="p">%</span><span class="n">WSNOW</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span> <span class="kd">::</span> <span class="n">ZRI</span>      <span class="c">! Richardson number</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(</span><span class="n">SIZE</span><span class="p">(</span><span class="n">TPSNOW</span><span class="p">%</span><span class="n">WSNOW</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span> <span class="kd">::</span> <span class="n">ZAC</span>      <span class="c">! aerodynamical conductance</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(</span><span class="n">SIZE</span><span class="p">(</span><span class="n">TPSNOW</span><span class="p">%</span><span class="n">WSNOW</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span> <span class="kd">::</span> <span class="n">ZRA</span>      <span class="c">! aerodynamical resistance</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(</span><span class="n">SIZE</span><span class="p">(</span><span class="n">TPSNOW</span><span class="p">%</span><span class="n">WSNOW</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span> <span class="kd">::</span> <span class="n">ZCH</span>      <span class="c">! drag coefficient for heat</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(</span><span class="n">SIZE</span><span class="p">(</span><span class="n">TPSNOW</span><span class="p">%</span><span class="n">WSNOW</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span> <span class="kd">::</span> <span class="n">ZB</span><span class="p">,</span> <span class="n">ZY</span>   <span class="c">! coefficients in Ts eq.</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(</span><span class="n">SIZE</span><span class="p">(</span><span class="n">TPSNOW</span><span class="p">%</span><span class="n">WSNOW</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span> <span class="kd">::</span> <span class="n">ZWSNOW</span>   <span class="c">! snow before evolution</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(</span><span class="n">SIZE</span><span class="p">(</span><span class="n">TPSNOW</span><span class="p">%</span><span class="n">WSNOW</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span> <span class="kd">::</span> <span class="n">ZSNOW_HC</span> <span class="c">! snow heat capacity</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(</span><span class="n">SIZE</span><span class="p">(</span><span class="n">TPSNOW</span><span class="p">%</span><span class="n">WSNOW</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span> <span class="kd">::</span> <span class="n">ZSNOW_TC</span> <span class="c">! snow thermal conductivity</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(</span><span class="n">SIZE</span><span class="p">(</span><span class="n">TPSNOW</span><span class="p">%</span><span class="n">WSNOW</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span> <span class="kd">::</span> <span class="n">ZSNOW_D</span>  <span class="c">! snow depth</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(</span><span class="n">SIZE</span><span class="p">(</span><span class="n">TPSNOW</span><span class="p">%</span><span class="n">WSNOW</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span> <span class="kd">::</span> <span class="n">ZMELT</span>    <span class="c">! snow melting rate (kg/m3/s)</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(</span><span class="n">SIZE</span><span class="p">(</span><span class="n">TPSNOW</span><span class="p">%</span><span class="n">WSNOW</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span> <span class="kd">::</span> <span class="n">ZTS_SNOW</span> <span class="c">! snow surface temperature</span>
+                                          <span class="c">! at previous time-step</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(</span><span class="n">SIZE</span><span class="p">(</span><span class="n">TPSNOW</span><span class="p">%</span><span class="n">WSNOW</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span> <span class="kd">::</span> <span class="n">ZQSAT</span>    <span class="c">! specific humidity</span>
+<span class="c">!                                         ! for ice</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(</span><span class="n">SIZE</span><span class="p">(</span><span class="n">TPSNOW</span><span class="p">%</span><span class="n">WSNOW</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span> <span class="kd">::</span> <span class="n">ZDQSAT</span>   <span class="c">! d(specific humidity)/dT</span>
+<span class="c">!                                         ! for ice</span>
+<span class="c">!</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(</span><span class="n">SIZE</span><span class="p">(</span><span class="n">TPSNOW</span><span class="p">%</span><span class="n">WSNOW</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span> <span class="kd">::</span> <span class="n">ZSR1</span><span class="p">,</span> <span class="n">ZSR2</span>   <span class="c">! norm. snow precip.</span>
+<span class="c">!</span>
+<span class="kt">LOGICAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(</span><span class="n">SIZE</span><span class="p">(</span><span class="n">TPSNOW</span><span class="p">%</span><span class="n">WSNOW</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span> <span class="kd">::</span> <span class="n">GSNOWMASK</span> <span class="c">! where snow is</span>
+<span class="c">!                                             ! at previuos time-step</span>
+<span class="kt">LOGICAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(</span><span class="n">SIZE</span><span class="p">(</span><span class="n">TPSNOW</span><span class="p">%</span><span class="n">WSNOW</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span> <span class="kd">::</span> <span class="n">GFLUXMASK</span> <span class="c">! where fluxes can</span>
+<span class="c">!                                             ! be computed at</span>
+<span class="c">!                                             ! new time-step</span>
+<span class="c">!                                             ! i.e. snow occurence</span>
+<span class="c">!                                             ! at previous time-step</span>
+<span class="c">!                                             ! OR snow fall</span>
+<span class="kt">INTEGER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(</span><span class="n">SIZE</span><span class="p">(</span><span class="n">TPSNOW</span><span class="p">%</span><span class="n">WSNOW</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span> <span class="kd">::</span> <span class="n">JSNOWMASK1</span><span class="p">,</span> <span class="n">JSNOWMASK2</span><span class="p">,</span> <span class="n">JSNOWMASK3</span> <span class="c">! where snow is or not</span>
+<span class="c">!                                                                      ! at previuos time-step</span>
+<span class="kt">INTEGER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(</span><span class="n">SIZE</span><span class="p">(</span><span class="n">TPSNOW</span><span class="p">%</span><span class="n">WSNOW</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span> <span class="kd">::</span> <span class="n">JFLUXMASK</span> <span class="c">! where fluxes can</span>
+<span class="c">!                                             ! be computed at</span>
+<span class="c">!                                             ! new time-step</span>
+<span class="c">!                                             ! i.e. snow occurence</span>
+<span class="c">!                                             ! at previous time-step</span>
+<span class="c">!                                             ! OR snow fall</span>
+<span class="c">!</span>
+<span class="kt">REAL</span> <span class="kd">::</span> <span class="n">ZWSNOW_MIN</span> <span class="o">=</span> <span class="mf">0.1</span> <span class="c">! minimum value of snow content (kg/m2) for prognostic</span>
+<span class="c">!                        ! computations</span>
+<span class="c">!</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(</span><span class="n">SIZE</span><span class="p">(</span><span class="n">TPSNOW</span><span class="p">%</span><span class="n">WSNOW</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span> <span class="kd">::</span> <span class="n">ZEI_SNOW</span>  <span class="c">! internal energy of snow</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(</span><span class="n">SIZE</span><span class="p">(</span><span class="n">TPSNOW</span><span class="p">%</span><span class="n">WSNOW</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span> <span class="kd">::</span> <span class="n">ZPEI_SNOW</span> <span class="c">! internal energy of snow at t+</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(</span><span class="n">SIZE</span><span class="p">(</span><span class="n">TPSNOW</span><span class="p">%</span><span class="n">WSNOW</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span> <span class="kd">::</span> <span class="n">ZWORK1</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(</span><span class="n">SIZE</span><span class="p">(</span><span class="n">TPSNOW</span><span class="p">%</span><span class="n">WSNOW</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span> <span class="kd">::</span> <span class="n">ZDQSATI</span><span class="p">,</span> <span class="n">ZQSATI</span>
+<span class="c">!</span>
+<span class="kt">INTEGER</span>                         <span class="kd">::</span> <span class="n">JJ</span><span class="p">,</span> <span class="n">JI</span><span class="p">,</span> <span class="n">JCOMPT_SNOW1</span><span class="p">,</span> <span class="n">JCOMPT_SNOW2</span><span class="p">,</span> <span class="n">JCOMPT_SNOW3</span><span class="p">,</span> <span class="n">JCOMPT_FLUX</span>
+<span class="kt">REAL</span><span class="p">(</span><span class="nb">KIND</span><span class="o">=</span><span class="n">JPRB</span><span class="p">)</span> <span class="kd">::</span> <span class="n">ZHOOK_HANDLE</span>
+<span class="c">!-------------------------------------------------------------------------------</span>
+<span class="c">!</span>
+<span class="c">!</span>
+<span class="k">IF</span> <span class="p">(</span><span class="n">LHOOK</span><span class="p">)</span> <span class="k">CALL </span><span class="n">DR_HOOK</span><span class="p">(</span><span class="s1">&#39;SNOW_COVER_1LAYER&#39;</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">ZHOOK_HANDLE</span><span class="p">)</span>
+<span class="n">ZB</span><span class="p">(:)</span><span class="o">=</span><span class="mf">0.</span>
+<span class="n">ZY</span><span class="p">(:)</span><span class="o">=</span><span class="mf">0.</span>
+<span class="n">ZMELT</span>  <span class="p">(:)</span> <span class="o">=</span> <span class="mf">0.</span>
+<span class="n">PMELT</span>  <span class="p">(:)</span> <span class="o">=</span> <span class="mf">0.</span>
+<span class="n">PRNSNOW</span><span class="p">(:)</span> <span class="o">=</span> <span class="mf">0.</span>
+<span class="n">PHSNOW</span> <span class="p">(:)</span> <span class="o">=</span> <span class="mf">0.</span>
+<span class="n">PLESNOW</span><span class="p">(:)</span> <span class="o">=</span> <span class="mf">0.</span>
+<span class="n">PGSNOW</span> <span class="p">(:)</span> <span class="o">=</span> <span class="mf">0.</span>
+<span class="c">!RJ: workaround to prevent decomposition unstable xundef masks for Tx_LWA_SN_RD fields</span>
+<span class="c">!RJ: in TEB_DIAGNOSTICS.nc during TEB_GARDEN_GREENROOF_BEM_3L_IRRIG_* tests</span>
+<span class="c">!RJ: problem with decomposition handling somewhere else</span>
+<span class="cp">#ifdef RJ_PFIX</span>
+<span class="n">PABS_LW</span><span class="p">(:)</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="cp">#else</span>
+<span class="n">PABS_LW</span><span class="p">(:)</span> <span class="o">=</span> <span class="n">XUNDEF</span>
+<span class="cp">#endif</span>
+<span class="c">!</span>
+<span class="c">!* snow reservoir before evolution</span>
+<span class="c">!</span>
+<span class="n">ZWSNOW</span><span class="p">(:)</span> <span class="o">=</span> <span class="n">TPSNOW</span><span class="p">%</span><span class="n">WSNOW</span><span class="p">(:,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">ZTS_SNOW</span><span class="p">(:)</span> <span class="o">=</span> <span class="nb">MIN</span><span class="p">(</span><span class="n">XTT</span><span class="p">,</span><span class="n">PTG</span><span class="p">(:))</span>
+<span class="c">!</span>
+<span class="n">ZSNOW_D</span> <span class="p">(:)</span> <span class="o">=</span> <span class="mf">0.</span>
+<span class="n">ZSNOW_TC</span><span class="p">(:)</span> <span class="o">=</span> <span class="mf">0.</span>
+<span class="n">ZSNOW_HC</span><span class="p">(:)</span> <span class="o">=</span> <span class="mf">0.</span>
+<span class="c">!</span>
+<span class="c">!-------------------------------------------------------------------------------</span>
+<span class="c">!</span>
+<span class="c">!*      1.1    most useful masks</span>
+<span class="c">!              -----------------</span>
+<span class="c">!</span>
+<span class="n">GSNOWMASK</span><span class="p">(:)</span><span class="o">=</span><span class="p">.</span><span class="n">FALSE</span><span class="p">.</span>
+<span class="n">GFLUXMASK</span><span class="p">(:)</span><span class="o">=</span><span class="p">.</span><span class="n">FALSE</span><span class="p">.</span>
+<span class="n">JSNOWMASK1</span><span class="p">(:)</span><span class="o">=</span><span class="mf">0.</span>
+<span class="n">JSNOWMASK2</span><span class="p">(:)</span><span class="o">=</span><span class="mf">0.</span>
+<span class="n">JSNOWMASK3</span><span class="p">(:)</span><span class="o">=</span><span class="mf">0.</span>
+<span class="n">JFLUXMASK</span><span class="p">(:)</span><span class="o">=</span><span class="mf">0.</span>
+
+  <span class="c">!*      1.2    drag</span>
+<span class="c">!              ----</span>
+<span class="c">!</span>
+<span class="c">!*      1.2.1  defaults</span>
+<span class="c">!              --------</span>
+<span class="c">!</span>
+<span class="c">!* variation of temperature with altitude is neglected</span>
+<span class="c">!</span>
+<span class="n">ZEXNS</span><span class="p">(:)</span> <span class="o">=</span> <span class="mf">1.</span>
+<span class="n">ZEXNA</span><span class="p">(:)</span> <span class="o">=</span> <span class="mf">1.</span>
+<span class="c">!</span>
+<span class="c">!* slope is neglected in drag computation</span>
+<span class="c">!</span>
+<span class="n">ZDIRCOSZW</span><span class="p">(:)</span> <span class="o">=</span> <span class="mf">1.</span>
+<span class="c">!</span>
+<span class="c">!* roughness length are imposed:</span>
+<span class="c">!</span>
+<span class="n">ZZ0</span>   <span class="p">(:)</span> <span class="o">=</span> <span class="n">PZ0SN</span>
+<span class="n">ZZ0H</span>  <span class="p">(:)</span> <span class="o">=</span> <span class="n">PZ0HSN</span>
+
+<span class="c">!</span>
+<span class="c">!</span>
+<span class="c">!*      1.1    most useful masks</span>
+<span class="c">!              -----------------</span>
+<span class="c">!* snow occurence at previous time-step</span>
+<span class="c">!</span>
+<span class="c">!* snow occurence during the time-step for fluxes computation</span>
+<span class="c">!</span>
+<span class="n">JCOMPT_SNOW1</span><span class="o">=</span><span class="mi">0</span>
+<span class="n">JCOMPT_SNOW2</span><span class="o">=</span><span class="mi">0</span>
+<span class="n">JCOMPT_SNOW3</span><span class="o">=</span><span class="mi">0</span>
+<span class="n">JCOMPT_FLUX</span><span class="o">=</span><span class="mi">0</span>
+<span class="k">DO </span><span class="n">JJ</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">SIZE</span><span class="p">(</span><span class="n">ZWSNOW</span><span class="p">)</span>
+  <span class="k">IF</span> <span class="p">(</span><span class="n">ZWSNOW</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span><span class="o">&gt;</span><span class="mf">0.</span><span class="p">)</span> <span class="k">THEN</span>
+<span class="k">    </span><span class="n">GSNOWMASK</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span><span class="o">=</span><span class="p">.</span><span class="n">TRUE</span><span class="p">.</span>
+    <span class="c">!* surface temperature</span>
+    <span class="n">ZTS_SNOW</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="n">TPSNOW</span><span class="p">%</span><span class="n">TS</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span>
+    <span class="n">GFLUXMASK</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span><span class="o">=</span><span class="p">.</span><span class="n">TRUE</span><span class="p">.</span>
+    <span class="c">!gsnowmask=t</span>
+    <span class="n">JCOMPT_SNOW1</span><span class="o">=</span><span class="n">JCOMPT_SNOW1</span><span class="o">+</span><span class="mi">1</span>
+    <span class="n">JSNOWMASK1</span><span class="p">(</span><span class="n">JCOMPT_SNOW1</span><span class="p">)</span> <span class="o">=</span> <span class="n">JJ</span>
+    <span class="c">!gfluxmask=t</span>
+    <span class="n">JCOMPT_FLUX</span><span class="o">=</span><span class="n">JCOMPT_FLUX</span><span class="o">+</span><span class="mi">1</span>
+    <span class="n">JFLUXMASK</span><span class="p">(</span><span class="n">JCOMPT_FLUX</span><span class="p">)</span> <span class="o">=</span> <span class="n">JJ</span>
+    <span class="k">IF</span> <span class="p">(</span><span class="n">ZWSNOW</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span><span class="o">&gt;=</span><span class="n">ZWSNOW_MIN</span><span class="p">)</span> <span class="k">THEN</span>
+      <span class="c">!second snow mask</span>
+      <span class="n">JCOMPT_SNOW3</span><span class="o">=</span><span class="n">JCOMPT_SNOW3</span><span class="o">+</span><span class="mi">1</span>
+      <span class="n">JSNOWMASK3</span><span class="p">(</span><span class="n">JCOMPT_SNOW3</span><span class="p">)</span><span class="o">=</span><span class="n">JJ</span>
+    <span class="k">ELSE</span>
+      <span class="c">!lower limit of snow cover for prognostic computations</span>
+      <span class="c">!0.1 kg/m2 of snow water content</span>
+      <span class="n">TPSNOW</span><span class="p">%</span><span class="n">T</span><span class="p">(</span><span class="n">JJ</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="nb">MIN</span><span class="p">(</span><span class="n">PTG</span><span class="p">(</span><span class="n">JJ</span><span class="p">),</span><span class="n">XTT</span><span class="p">)</span>
+    <span class="k">ENDIF</span>
+<span class="k">  ELSE</span>
+<span class="k">    </span><span class="n">TPSNOW</span><span class="p">%</span><span class="n">T</span><span class="p">(</span><span class="n">JJ</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="nb">MIN</span><span class="p">(</span><span class="n">PTG</span><span class="p">(</span><span class="n">JJ</span><span class="p">),</span><span class="n">XTT</span><span class="p">)</span>
+    <span class="c">!gsnowmask=false</span>
+    <span class="n">JCOMPT_SNOW2</span><span class="o">=</span><span class="n">JCOMPT_SNOW2</span><span class="o">+</span><span class="mi">1</span>
+    <span class="n">JSNOWMASK2</span><span class="p">(</span><span class="n">JCOMPT_SNOW2</span><span class="p">)</span> <span class="o">=</span> <span class="n">JJ</span>
+    <span class="k">IF</span> <span class="p">(</span><span class="n">PSR</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span><span class="o">&gt;</span><span class="mf">0.</span><span class="p">)</span> <span class="k">THEN</span>
+<span class="k">      </span><span class="n">GFLUXMASK</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span><span class="o">=</span><span class="p">.</span><span class="n">TRUE</span><span class="p">.</span>
+      <span class="n">JCOMPT_FLUX</span><span class="o">=</span><span class="n">JCOMPT_FLUX</span><span class="o">+</span><span class="mi">1</span>
+      <span class="n">JFLUXMASK</span><span class="p">(</span><span class="n">JCOMPT_FLUX</span><span class="p">)</span> <span class="o">=</span> <span class="n">JJ</span>
+    <span class="k">ENDIF</span>
+<span class="k">  ENDIF</span>
+<span class="k">ENDDO</span>
+<span class="c">!</span>
+<span class="c">!-------------------------------------------------------------------------------</span>
+<span class="c">!</span>
+<span class="c">!*      1.2    drag</span>
+<span class="c">!              ----</span>
+<span class="c">!</span>
+<span class="c">!*      1.2.2   qsat (Tsnow)</span>
+<span class="c">!              ------------</span>
+<span class="c">!</span>
+<span class="n">ZQSAT</span><span class="p">(:)</span> <span class="o">=</span> <span class="n">QSATI</span><span class="p">(</span><span class="n">ZTS_SNOW</span><span class="p">(:),</span> <span class="n">PPS</span><span class="p">(:)</span> <span class="p">)</span>
+<span class="c">!</span>
+<span class="c">!*      1.2.3  Richardson number</span>
+<span class="c">!              -----------------</span>
+<span class="c">!</span>
+<span class="c">!* snow is present on all the considered surface.</span>
+<span class="c">!* computation occurs where snow is and/or falls.</span>
+<span class="c">!</span>
+ <span class="k">CALL </span><span class="n">SURFACE_RI</span><span class="p">(</span><span class="n">ZTS_SNOW</span><span class="p">,</span> <span class="n">ZQSAT</span><span class="p">,</span> <span class="n">ZEXNS</span><span class="p">,</span> <span class="n">ZEXNA</span><span class="p">,</span> <span class="n">PTA</span><span class="p">,</span> <span class="n">PQA</span><span class="p">,</span> <span class="p">&amp;</span>
+                  <span class="n">PZREF</span><span class="p">,</span> <span class="n">PUREF</span><span class="p">,</span> <span class="n">ZDIRCOSZW</span><span class="p">,</span> <span class="n">PVMOD</span><span class="p">,</span> <span class="n">ZRI</span>      <span class="p">)</span>  
+<span class="c">!</span>
+<span class="c">!*      1.2.4  Aerodynamical conductance</span>
+<span class="c">!              -------------------------</span>
+<span class="c">!</span>
+ <span class="k">CALL </span><span class="n">SURFACE_AERO_COND</span><span class="p">(</span><span class="n">ZRI</span><span class="p">,</span> <span class="n">PZREF</span><span class="p">,</span> <span class="n">PUREF</span><span class="p">,</span> <span class="n">PVMOD</span><span class="p">,</span> <span class="n">ZZ0</span><span class="p">,</span> <span class="n">ZZ0H</span><span class="p">,</span> <span class="n">ZAC</span><span class="p">,</span> <span class="n">ZRA</span><span class="p">,</span> <span class="n">ZCH</span><span class="p">)</span>
+<span class="c">!</span>
+<span class="c">!-------------------------------------------------------------------------------</span>
+<span class="c">!</span>
+<span class="c">!*      2.     snow thermal characteristics</span>
+<span class="c">!              ----------------------------</span>
+<span class="c">!cdir nodep</span>
+<span class="k">DO </span><span class="n">JJ</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">JCOMPT_SNOW1</span>
+  <span class="c">!</span>
+  <span class="n">JI</span> <span class="o">=</span> <span class="n">JSNOWMASK1</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span>
+  <span class="c">!</span>
+  <span class="c">!*      2.1    snow heat capacity</span>
+  <span class="n">ZSNOW_HC</span><span class="p">(</span><span class="n">JI</span><span class="p">)</span> <span class="o">=</span> <span class="n">TPSNOW</span><span class="p">%</span><span class="n">RHO</span><span class="p">(</span><span class="n">JI</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">XCI</span> <span class="o">*</span> <span class="n">XRHOLI</span> <span class="o">/</span> <span class="n">XRHOLW</span>
+<span class="c">!*      2.2    snow depth</span>
+  <span class="n">ZSNOW_D</span><span class="p">(</span><span class="n">JI</span><span class="p">)</span> <span class="o">=</span> <span class="n">ZWSNOW</span><span class="p">(</span><span class="n">JI</span><span class="p">)</span> <span class="o">/</span> <span class="n">TPSNOW</span><span class="p">%</span><span class="n">RHO</span><span class="p">(</span><span class="n">JI</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="c">!*      2.3    snow thermal conductivity</span>
+  <span class="n">ZSNOW_TC</span><span class="p">(</span><span class="n">JI</span><span class="p">)</span> <span class="o">=</span> <span class="n">XCONDI</span> <span class="o">*</span> <span class="p">(</span><span class="n">TPSNOW</span><span class="p">%</span><span class="n">RHO</span><span class="p">(</span><span class="n">JI</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="n">XRHOLW</span><span class="p">)</span><span class="o">**</span><span class="mf">1.885</span>
+<span class="c">!*      2.4    internal energy of snow</span>
+  <span class="n">ZEI_SNOW</span><span class="p">(</span><span class="n">JI</span><span class="p">)</span> <span class="o">=</span> <span class="n">ZSNOW_HC</span><span class="p">(</span><span class="n">JI</span><span class="p">)</span><span class="o">*</span><span class="n">ZSNOW_D</span><span class="p">(</span><span class="n">JI</span><span class="p">)</span><span class="o">*</span><span class="n">TPSNOW</span><span class="p">%</span><span class="n">T</span><span class="p">(</span><span class="n">JI</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+  <span class="c">!</span>
+<span class="k">ENDDO</span>
+<span class="c">!</span>
+<span class="c">!cdir nodep</span>
+<span class="k">DO </span><span class="n">JJ</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">JCOMPT_SNOW2</span>
+  <span class="c">!</span>
+  <span class="n">JI</span> <span class="o">=</span> <span class="n">JSNOWMASK2</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span>
+  <span class="c">!</span>
+  <span class="c">!*      2.1    snow heat capacity</span>
+  <span class="n">ZSNOW_HC</span><span class="p">(</span><span class="n">JI</span><span class="p">)</span> <span class="o">=</span> <span class="n">PRHOSMIN</span> <span class="o">*</span> <span class="n">XCI</span> <span class="o">*</span> <span class="n">XRHOLI</span> <span class="o">/</span> <span class="n">XRHOLW</span>
+<span class="c">!*      2.2    snow depth</span>
+  <span class="n">ZSNOW_D</span><span class="p">(</span><span class="n">JI</span><span class="p">)</span> <span class="o">=</span> <span class="n">PTSTEP</span> <span class="o">*</span> <span class="n">PSR</span><span class="p">(</span><span class="n">JI</span><span class="p">)</span> <span class="o">/</span> <span class="n">PRHOSMIN</span>
+<span class="c">!*      2.3    snow thermal conductivity</span>
+  <span class="n">ZSNOW_TC</span><span class="p">(</span><span class="n">JI</span><span class="p">)</span> <span class="o">=</span> <span class="n">XCONDI</span> <span class="o">*</span> <span class="p">(</span><span class="n">PRHOSMIN</span> <span class="o">/</span><span class="n">XRHOLW</span><span class="p">)</span><span class="o">**</span><span class="mf">1.885</span>
+<span class="c">!*      2.4    internal energy of snow</span>
+  <span class="n">ZEI_SNOW</span><span class="p">(</span><span class="n">JI</span><span class="p">)</span> <span class="o">=</span> <span class="mf">0.</span>
+<span class="c">!</span>
+<span class="k">ENDDO</span>
+<span class="c">!</span>
+<span class="c">!-------------------------------------------------------------------------------</span>
+<span class="c">!</span>
+<span class="c">!*      3.     Snow temperature evolution</span>
+<span class="c">!              --------------------------</span>
+<span class="c">!</span>
+<span class="c">!*      3.5    dqsat/ dT (Tsnow)</span>
+<span class="c">!              -----------------</span>
+<span class="c">!</span>
+<span class="n">ZDQSATI</span> <span class="o">=</span> <span class="n">DQSATI</span><span class="p">(</span><span class="n">ZTS_SNOW</span><span class="p">(:),</span><span class="n">PPS</span><span class="p">(:),</span><span class="n">ZQSAT</span><span class="p">(:))</span>
+<span class="k">WHERE</span> <span class="p">(</span><span class="n">GSNOWMASK</span><span class="p">(:)</span> <span class="p">.</span><span class="nb">AND</span><span class="p">.</span> <span class="n">ZWSNOW</span><span class="p">(:)</span><span class="o">&gt;=</span><span class="n">ZWSNOW_MIN</span><span class="p">)</span>
+  <span class="n">ZDQSAT</span><span class="p">(:)</span> <span class="o">=</span> <span class="n">ZDQSATI</span><span class="p">(:)</span>
+<span class="k">END WHERE</span>
+<span class="c">!</span>
+<span class="c">!*      3.1    coefficients from Temperature tendency</span>
+<span class="c">!              --------------------------------------</span>
+<span class="c">!</span>
+<span class="c">!cdir nodep</span>
+<span class="k">DO </span><span class="n">JJ</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">JCOMPT_SNOW3</span>
+<span class="c">!</span>
+  <span class="n">JI</span><span class="o">=</span><span class="n">JSNOWMASK3</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span>
+
+  <span class="n">ZWORK1</span><span class="p">(</span><span class="n">JI</span><span class="p">)</span> <span class="o">=</span> <span class="n">ZSNOW_D</span><span class="p">(</span><span class="n">JI</span><span class="p">)</span> <span class="o">*</span> <span class="n">ZSNOW_HC</span><span class="p">(</span><span class="n">JI</span><span class="p">)</span> <span class="o">/</span> <span class="n">PTSTEP</span>
+<span class="c">!</span>
+  <span class="n">ZB</span><span class="p">(</span><span class="n">JI</span><span class="p">)</span> <span class="o">=</span> <span class="n">ZB</span><span class="p">(</span><span class="n">JI</span><span class="p">)</span> <span class="o">+</span> <span class="n">ZWORK1</span><span class="p">(</span><span class="n">JI</span><span class="p">)</span>
+<span class="c">!</span>
+<span class="c">!*      3.2    coefficients from solar radiation</span>
+<span class="c">!          ---------------------------------</span>
+<span class="c">!    </span>
+  <span class="n">ZY</span><span class="p">(</span><span class="n">JI</span><span class="p">)</span> <span class="o">=</span> <span class="n">ZY</span><span class="p">(</span><span class="n">JI</span><span class="p">)</span> <span class="o">+</span> <span class="n">ZWORK1</span><span class="p">(</span><span class="n">JI</span><span class="p">)</span> <span class="o">*</span> <span class="n">TPSNOW</span><span class="p">%</span><span class="n">T</span><span class="p">(</span><span class="n">JI</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">PABS_SW</span><span class="p">(</span><span class="n">JI</span><span class="p">)</span>
+<span class="c">!</span>
+<span class="c">!</span>
+<span class="c">!*      3.3    coefficients from infra-red radiation</span>
+<span class="c">!              -------------------------------------</span>
+<span class="c">!</span>
+  <span class="n">ZWORK1</span><span class="p">(</span><span class="n">JI</span><span class="p">)</span> <span class="o">=</span> <span class="n">PLW2</span><span class="p">(</span><span class="n">JI</span><span class="p">)</span> <span class="o">*</span> <span class="n">TPSNOW</span><span class="p">%</span><span class="n">T</span><span class="p">(</span><span class="n">JI</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">**</span><span class="mi">3</span>
+<span class="c">!</span>
+  <span class="n">ZB</span><span class="p">(</span><span class="n">JI</span><span class="p">)</span> <span class="o">=</span> <span class="n">ZB</span><span class="p">(</span><span class="n">JI</span><span class="p">)</span> <span class="o">-</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">ZIMPL</span> <span class="o">*</span> <span class="n">ZWORK1</span><span class="p">(</span><span class="n">JI</span><span class="p">)</span>
+<span class="c">!</span>
+  <span class="n">ZY</span><span class="p">(</span><span class="n">JI</span><span class="p">)</span> <span class="o">=</span> <span class="n">ZY</span><span class="p">(</span><span class="n">JI</span><span class="p">)</span> <span class="o">+</span> <span class="n">PLW1</span><span class="p">(</span><span class="n">JI</span><span class="p">)</span> <span class="o">+</span> <span class="n">ZWORK1</span><span class="p">(</span><span class="n">JI</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">ZEXPL</span><span class="o">-</span><span class="mf">3.</span><span class="o">*</span><span class="n">ZIMPL</span><span class="p">)</span> <span class="o">*</span> <span class="n">TPSNOW</span><span class="p">%</span><span class="n">T</span><span class="p">(</span><span class="n">JI</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="c">!</span>
+<span class="c">!</span>
+<span class="c">!*      3.4    coefficients from sensible heat flux</span>
+<span class="c">!              ------------------------------------</span>
+<span class="c">!</span>
+ <span class="n">ZWORK1</span><span class="p">(</span><span class="n">JI</span><span class="p">)</span> <span class="o">=</span> <span class="n">XCPD</span> <span class="o">*</span> <span class="n">PRHOA</span><span class="p">(</span><span class="n">JI</span><span class="p">)</span> <span class="o">*</span> <span class="n">ZAC</span><span class="p">(</span><span class="n">JI</span><span class="p">)</span>
+<span class="c">! </span>
+  <span class="n">ZB</span><span class="p">(</span><span class="n">JI</span><span class="p">)</span> <span class="o">=</span> <span class="n">ZB</span><span class="p">(</span><span class="n">JI</span><span class="p">)</span> <span class="o">+</span> <span class="n">ZWORK1</span><span class="p">(</span><span class="n">JI</span><span class="p">)</span> <span class="o">*</span>   <span class="n">ZIMPL</span>
+<span class="c">!</span>
+  <span class="n">ZY</span><span class="p">(</span><span class="n">JI</span><span class="p">)</span> <span class="o">=</span> <span class="n">ZY</span><span class="p">(</span><span class="n">JI</span><span class="p">)</span> <span class="o">-</span> <span class="n">ZWORK1</span><span class="p">(</span><span class="n">JI</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span> <span class="n">ZEXPL</span> <span class="o">*</span> <span class="n">TPSNOW</span><span class="p">%</span><span class="n">T</span><span class="p">(</span><span class="n">JI</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="n">PTA</span><span class="p">(</span><span class="n">JI</span><span class="p">)</span> <span class="p">)</span>
+<span class="c">!</span>
+<span class="c">!</span>
+<span class="c">!*      3.6    coefficients from latent heat flux</span>
+<span class="c">!              ----------------------------------</span>
+<span class="c">!</span>
+  <span class="n">ZWORK1</span><span class="p">(</span><span class="n">JI</span><span class="p">)</span> <span class="o">=</span>  <span class="n">XLSTT</span> <span class="o">*</span> <span class="n">PRHOA</span><span class="p">(</span><span class="n">JI</span><span class="p">)</span> <span class="o">*</span> <span class="n">ZAC</span><span class="p">(</span><span class="n">JI</span><span class="p">)</span>
+<span class="c">!</span>
+  <span class="n">ZB</span><span class="p">(</span><span class="n">JI</span><span class="p">)</span> <span class="o">=</span> <span class="n">ZB</span><span class="p">(</span><span class="n">JI</span><span class="p">)</span> <span class="o">+</span> <span class="n">ZWORK1</span><span class="p">(</span><span class="n">JI</span><span class="p">)</span> <span class="o">*</span>  <span class="n">ZIMPL</span> <span class="o">*</span> <span class="n">ZDQSAT</span><span class="p">(</span><span class="n">JI</span><span class="p">)</span>
+<span class="c">!</span>
+  <span class="n">ZY</span><span class="p">(</span><span class="n">JI</span><span class="p">)</span> <span class="o">=</span> <span class="n">ZY</span><span class="p">(</span><span class="n">JI</span><span class="p">)</span> <span class="o">-</span> <span class="n">ZWORK1</span><span class="p">(</span><span class="n">JI</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span>  <span class="n">ZQSAT</span><span class="p">(</span><span class="n">JI</span><span class="p">)</span> <span class="o">-</span> <span class="n">PQA</span><span class="p">(</span><span class="n">JI</span><span class="p">)</span> <span class="o">-</span> <span class="n">ZIMPL</span> <span class="o">*</span> <span class="n">ZDQSAT</span><span class="p">(</span><span class="n">JI</span><span class="p">)</span><span class="o">*</span><span class="n">TPSNOW</span><span class="p">%</span><span class="n">T</span><span class="p">(</span><span class="n">JI</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="p">)</span>
+<span class="c">!</span>
+<span class="c">!*      3.7    coefficients from conduction flux at snow base</span>
+<span class="c">!              ----------------------------------------------</span>
+<span class="c">!</span>
+  <span class="n">ZWORK1</span><span class="p">(</span><span class="n">JI</span><span class="p">)</span> <span class="o">=</span> <span class="n">ZSNOW_TC</span><span class="p">(</span><span class="n">JI</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mf">0.5</span><span class="o">*</span><span class="n">ZSNOW_D</span><span class="p">(</span><span class="n">JI</span><span class="p">))</span>
+<span class="c">!</span>
+  <span class="n">ZB</span><span class="p">(</span><span class="n">JI</span><span class="p">)</span> <span class="o">=</span> <span class="n">ZB</span><span class="p">(</span><span class="n">JI</span><span class="p">)</span> <span class="o">+</span> <span class="n">ZWORK1</span><span class="p">(</span><span class="n">JI</span><span class="p">)</span> <span class="o">*</span>  <span class="n">ZIMPL</span> <span class="o">/</span> <span class="p">(</span> <span class="mf">1.</span> <span class="o">+</span> <span class="n">ZWORK1</span><span class="p">(</span><span class="n">JI</span><span class="p">)</span><span class="o">*</span><span class="n">PTG_COEFA</span><span class="p">(</span><span class="n">JI</span><span class="p">)</span> <span class="p">)</span>
+<span class="c">!</span>
+  <span class="n">ZY</span><span class="p">(</span><span class="n">JI</span><span class="p">)</span> <span class="o">=</span> <span class="n">ZY</span><span class="p">(</span><span class="n">JI</span><span class="p">)</span> <span class="o">-</span> <span class="n">ZWORK1</span><span class="p">(</span><span class="n">JI</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">ZEXPL</span> <span class="o">*</span> <span class="n">TPSNOW</span><span class="p">%</span><span class="n">T</span><span class="p">(</span><span class="n">JI</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="n">PTG_COEFB</span><span class="p">(</span><span class="n">JI</span><span class="p">))</span> <span class="p">&amp;</span>
+                   <span class="o">/</span> <span class="p">(</span> <span class="mf">1.</span> <span class="o">+</span> <span class="n">ZWORK1</span><span class="p">(</span><span class="n">JI</span><span class="p">)</span><span class="o">*</span><span class="n">PTG_COEFA</span><span class="p">(</span><span class="n">JI</span><span class="p">)</span> <span class="p">)</span>
+<span class="c">!</span>
+<span class="c">!*      3.8    guess of snow temperature before accumulation and melting</span>
+<span class="c">!              ---------------------------------------------------------</span>
+<span class="c">!</span>
+  <span class="n">TPSNOW</span><span class="p">%</span><span class="n">T</span><span class="p">(</span><span class="n">JI</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="n">ZY</span><span class="p">(</span><span class="n">JI</span><span class="p">)</span> <span class="o">/</span> <span class="n">ZB</span><span class="p">(</span><span class="n">JI</span><span class="p">)</span>
+<span class="c">!</span>
+<span class="k">ENDDO</span>
+<span class="c">!</span>
+<span class="c">!-------------------------------------------------------------------------------</span>
+<span class="c">!</span>
+<span class="c">!*      4.     Snow melt</span>
+<span class="c">!              ---------</span>
+<span class="c">!</span>
+<span class="c">!*      4.1    melting</span>
+<span class="c">!              -------</span>
+<span class="c">!</span>
+<span class="c">!cdir nodep</span>
+<span class="k">DO </span><span class="n">JJ</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">JCOMPT_SNOW1</span>
+<span class="c">!</span>
+  <span class="n">JI</span> <span class="o">=</span> <span class="n">JSNOWMASK1</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span>
+<span class="c">!</span>
+  <span class="n">ZMELT</span><span class="p">(</span><span class="n">JI</span><span class="p">)</span>  <span class="o">=</span> <span class="nb">MAX</span><span class="p">(</span> <span class="n">TPSNOW</span><span class="p">%</span><span class="n">T</span><span class="p">(</span><span class="n">JI</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="n">XTT</span> <span class="p">,</span> <span class="mf">0.</span> <span class="p">)</span> <span class="o">*</span> <span class="n">ZSNOW_HC</span><span class="p">(</span><span class="n">JI</span><span class="p">)</span> <span class="o">/</span>  <span class="n">XLMTT</span> <span class="o">/</span> <span class="n">PTSTEP</span>
+<span class="c">!</span>
+  <span class="n">ZMELT</span><span class="p">(</span><span class="n">JI</span><span class="p">)</span>  <span class="o">=</span> <span class="nb">MIN</span><span class="p">(</span> <span class="n">ZMELT</span><span class="p">(</span><span class="n">JI</span><span class="p">)</span> <span class="p">,</span> <span class="n">ZWSNOW</span><span class="p">(</span><span class="n">JI</span><span class="p">)</span> <span class="o">/</span> <span class="n">ZSNOW_D</span><span class="p">(</span><span class="n">JI</span><span class="p">)</span> <span class="o">/</span> <span class="n">PTSTEP</span> <span class="p">)</span>
+<span class="c">!</span>
+  <span class="n">TPSNOW</span><span class="p">%</span><span class="n">T</span><span class="p">(</span><span class="n">JI</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="nb">MIN</span><span class="p">(</span> <span class="n">TPSNOW</span><span class="p">%</span><span class="n">T</span><span class="p">(</span><span class="n">JI</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="p">,</span> <span class="n">XTT</span> <span class="p">)</span>
+<span class="c">!</span>
+<span class="k">ENDDO</span>
+<span class="c">!</span>
+<span class="c">!*      4.2    run-off of all snow if lower surface temperature is positive</span>
+<span class="c">!              ------------------------------------------------------------</span>
+<span class="c">!</span>
+<span class="c">!* this option is used when snow is located on sloping roofs for example.</span>
+<span class="c">!</span>
+<span class="k">IF</span> <span class="p">(</span><span class="n">OALL_MELT</span><span class="p">)</span> <span class="k">THEN</span>
+<span class="k">  WHERE</span> <span class="p">(</span> <span class="n">GSNOWMASK</span><span class="p">(:)</span> <span class="p">.</span><span class="nb">AND</span><span class="p">.</span> <span class="n">PTG</span><span class="p">(:)</span><span class="o">&gt;</span><span class="n">XTT</span> <span class="p">.</span><span class="nb">AND</span><span class="p">.</span> <span class="n">ZWSNOW</span><span class="p">(:)</span><span class="o">&gt;=</span><span class="n">ZWSNOW_MIN</span> <span class="p">)</span>
+    <span class="n">PMELT</span><span class="p">(:)</span> <span class="o">=</span> <span class="n">PMELT</span><span class="p">(:)</span> <span class="o">+</span> <span class="n">ZWSNOW</span><span class="p">(:)</span> <span class="o">/</span> <span class="n">PTSTEP</span>
+  <span class="k">END WHERE</span>
+<span class="k">END IF</span>
+<span class="c">!</span>
+<span class="c">!*      4.3    output melting in kg/m2/s</span>
+<span class="c">!              -------------------------</span>
+<span class="c">!</span>
+<span class="n">PMELT</span><span class="p">(:)</span> <span class="o">=</span> <span class="n">ZMELT</span><span class="p">(:)</span> <span class="o">*</span> <span class="n">ZSNOW_D</span><span class="p">(:)</span>
+<span class="c">!</span>
+<span class="c">!-------------------------------------------------------------------------------</span>
+<span class="c">!</span>
+<span class="c">!*      5.     fluxes</span>
+<span class="c">!              ------</span>
+<span class="c">!</span>
+<span class="c">!*      5.3    qsat (Tsnow)</span>
+<span class="c">!              ------------</span>
+<span class="c">!</span>
+<span class="n">ZQSATI</span> <span class="o">=</span> <span class="n">QSATI</span><span class="p">(</span><span class="n">TPSNOW</span><span class="p">%</span><span class="n">T</span><span class="p">(:,</span><span class="mi">1</span><span class="p">),</span><span class="n">PPS</span><span class="p">(:))</span>
+<span class="k">WHERE</span> <span class="p">(</span><span class="n">GFLUXMASK</span><span class="p">(:))</span> 
+   <span class="n">ZQSAT</span><span class="p">(:)</span> <span class="o">=</span> <span class="n">ZQSATI</span><span class="p">(:)</span>
+<span class="k">END WHERE</span>
+<span class="c">!</span>
+<span class="c">!*      5.1    net radiation (with Ts lin. extrapolation)</span>
+<span class="c">!              -------------</span>
+<span class="c">!</span>
+<span class="c">!cdir nodep</span>
+<span class="k">DO </span><span class="n">JJ</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">JCOMPT_FLUX</span>
+<span class="c">!</span>
+  <span class="n">JI</span> <span class="o">=</span> <span class="n">JFLUXMASK</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span>
+<span class="c">!</span>
+  <span class="n">PABS_LW</span><span class="p">(</span><span class="n">JI</span><span class="p">)</span> <span class="o">=</span>  <span class="n">PLW1</span><span class="p">(</span><span class="n">JI</span><span class="p">)</span> <span class="o">+</span> <span class="n">PLW2</span><span class="p">(</span><span class="n">JI</span><span class="p">)</span> <span class="o">*</span> <span class="n">TPSNOW</span><span class="p">%</span><span class="n">T</span><span class="p">(</span><span class="n">JI</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">**</span><span class="mi">4</span>
+<span class="c">!</span>
+  <span class="n">PRNSNOW</span><span class="p">(</span><span class="n">JI</span><span class="p">)</span> <span class="o">=</span> <span class="n">PABS_SW</span><span class="p">(</span><span class="n">JI</span><span class="p">)</span> <span class="o">+</span> <span class="n">PABS_LW</span><span class="p">(</span><span class="n">JI</span><span class="p">)</span>
+<span class="c">!</span>
+<span class="c">!</span>
+<span class="c">!*      5.2    sensible heat flux</span>
+<span class="c">!              ------------------</span>
+<span class="c">!</span>
+  <span class="n">PHSNOW</span><span class="p">(</span><span class="n">JI</span><span class="p">)</span> <span class="o">=</span> <span class="n">XCPD</span> <span class="o">*</span> <span class="n">PRHOA</span><span class="p">(</span><span class="n">JI</span><span class="p">)</span> <span class="o">*</span> <span class="n">ZAC</span><span class="p">(</span><span class="n">JI</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span> <span class="n">TPSNOW</span><span class="p">%</span><span class="n">T</span><span class="p">(</span><span class="n">JI</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="n">PTA</span><span class="p">(</span><span class="n">JI</span><span class="p">)</span> <span class="p">)</span>
+<span class="c">!</span>
+<span class="c">!</span>
+<span class="c">!*      5.4    latent heat flux</span>
+<span class="c">!              ----------------</span>
+<span class="c">!</span>
+  <span class="n">PLESNOW</span><span class="p">(</span><span class="n">JI</span><span class="p">)</span> <span class="o">=</span> <span class="n">XLSTT</span> <span class="o">*</span> <span class="n">PRHOA</span><span class="p">(</span><span class="n">JI</span><span class="p">)</span> <span class="o">*</span> <span class="n">ZAC</span><span class="p">(</span><span class="n">JI</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span> <span class="n">ZQSAT</span><span class="p">(</span><span class="n">JI</span><span class="p">)</span> <span class="o">-</span> <span class="n">PQA</span><span class="p">(</span><span class="n">JI</span><span class="p">)</span> <span class="p">)</span>
+  <span class="c">!</span>
+<span class="c">!</span>
+<span class="c">!*      5.5    Conduction heat flux</span>
+<span class="c">!              --------------------</span>
+<span class="c">!</span>
+  <span class="c">!PGSNOW(JI) = ZSNOW_TC(JI)/(0.5*ZSNOW_D(JI)) * ( TPSNOW%T(JI,1) - PTG(JI) )</span>
+  <span class="n">PGSNOW</span><span class="p">(</span><span class="n">JI</span><span class="p">)</span> <span class="o">=</span> <span class="n">ZSNOW_TC</span><span class="p">(</span><span class="n">JI</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mf">0.5</span><span class="o">*</span><span class="n">ZSNOW_D</span><span class="p">(</span><span class="n">JI</span><span class="p">))</span> <span class="o">*</span> <span class="p">(</span> <span class="n">TPSNOW</span><span class="p">%</span><span class="n">T</span><span class="p">(</span><span class="n">JI</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="n">PTG_COEFB</span><span class="p">(</span><span class="n">JI</span><span class="p">)</span> <span class="p">)</span> <span class="p">&amp;</span>
+             <span class="o">/</span> <span class="p">(</span> <span class="mf">1.</span> <span class="o">+</span> <span class="n">ZSNOW_TC</span><span class="p">(</span><span class="n">JI</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mf">0.5</span><span class="o">*</span><span class="n">ZSNOW_D</span><span class="p">(</span><span class="n">JI</span><span class="p">))</span><span class="o">*</span><span class="n">PTG_COEFA</span><span class="p">(</span><span class="n">JI</span><span class="p">)</span> <span class="p">)</span>
+<span class="c">!</span>
+<span class="c">!</span>
+<span class="c">!*      5.6    If ground T&gt;0 C, Melting is estimated from conduction heat flux</span>
+<span class="c">!              ---------------------------------------------------------------</span>
+<span class="c">!</span>
+  <span class="k">IF</span> <span class="p">(</span><span class="n">PTG</span><span class="p">(</span><span class="n">JI</span><span class="p">)</span><span class="o">&gt;</span><span class="n">XTT</span><span class="p">)</span>  <span class="n">PMELT</span><span class="p">(</span><span class="n">JI</span><span class="p">)</span> <span class="o">=</span> <span class="nb">MAX</span> <span class="p">(</span><span class="n">PMELT</span><span class="p">(</span><span class="n">JI</span><span class="p">),</span> <span class="o">-</span><span class="n">PGSNOW</span><span class="p">(</span><span class="n">JI</span><span class="p">)</span><span class="o">/</span><span class="n">XLMTT</span><span class="p">)</span>
+<span class="c">!</span>
+<span class="k">ENDDO</span>
+<span class="c">!</span>
+<span class="c">!-------------------------------------------------------------------------------</span>
+<span class="c">!</span>
+<span class="c">!*      6.     reservoir evolution</span>
+<span class="c">!              -------------------</span>
+<span class="c">!</span>
+<span class="c">!cdir nodep</span>
+<span class="k">DO </span><span class="n">JJ</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">SIZE</span><span class="p">(</span><span class="n">TPSNOW</span><span class="p">%</span><span class="n">WSNOW</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="c">!</span>
+<span class="c">!*      6.1    snow fall</span>
+<span class="c">!              ---------</span>
+<span class="c">!</span>
+  <span class="n">TPSNOW</span><span class="p">%</span><span class="n">WSNOW</span><span class="p">(</span><span class="n">JJ</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="n">TPSNOW</span><span class="p">%</span><span class="n">WSNOW</span><span class="p">(</span><span class="n">JJ</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">PTSTEP</span> <span class="o">*</span> <span class="n">PSR</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span>
+<span class="c">!</span>
+<span class="c">!</span>
+<span class="c">!*      6.2    sublimation</span>
+<span class="c">!              -----------</span>
+<span class="c">!</span>
+  <span class="n">PLESNOW</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="nb">MIN</span><span class="p">(</span> <span class="n">PLESNOW</span><span class="p">(</span><span class="n">JJ</span><span class="p">),</span> <span class="n">XLSTT</span><span class="o">*</span><span class="n">TPSNOW</span><span class="p">%</span><span class="n">WSNOW</span><span class="p">(</span><span class="n">JJ</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="n">PTSTEP</span> <span class="p">)</span>
+<span class="c">!</span>
+  <span class="n">TPSNOW</span><span class="p">%</span><span class="n">WSNOW</span><span class="p">(</span><span class="n">JJ</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>  <span class="o">=</span> <span class="nb">MAX</span><span class="p">(</span> <span class="n">TPSNOW</span><span class="p">%</span><span class="n">WSNOW</span><span class="p">(</span><span class="n">JJ</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="n">PTSTEP</span> <span class="o">*</span> <span class="n">PLESNOW</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span><span class="o">/</span><span class="n">XLSTT</span> <span class="p">,</span> <span class="mf">0.</span><span class="p">)</span>
+<span class="c">!</span>
+  <span class="k">IF</span> <span class="p">(</span> <span class="n">TPSNOW</span><span class="p">%</span><span class="n">WSNOW</span><span class="p">(</span><span class="n">JJ</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">&lt;</span><span class="mf">1.E-8</span> <span class="o">*</span> <span class="n">PTSTEP</span> <span class="p">)</span> <span class="n">TPSNOW</span><span class="p">%</span><span class="n">WSNOW</span><span class="p">(</span><span class="n">JJ</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="mf">0.</span>
+<span class="c">!</span>
+<span class="c">!*      6.3    melting</span>
+<span class="c">!              -------</span>
+<span class="c">!</span>
+  <span class="n">PMELT</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="nb">MIN</span><span class="p">(</span> <span class="n">PMELT</span><span class="p">(</span><span class="n">JJ</span><span class="p">),</span> <span class="n">TPSNOW</span><span class="p">%</span><span class="n">WSNOW</span><span class="p">(</span><span class="n">JJ</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="n">PTSTEP</span> <span class="p">)</span>
+<span class="c">!</span>
+  <span class="n">TPSNOW</span><span class="p">%</span><span class="n">WSNOW</span><span class="p">(</span><span class="n">JJ</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">=</span> <span class="nb">MAX</span><span class="p">(</span> <span class="n">TPSNOW</span><span class="p">%</span><span class="n">WSNOW</span><span class="p">(</span><span class="n">JJ</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="n">PTSTEP</span> <span class="o">*</span> <span class="n">PMELT</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="p">,</span> <span class="mf">0.</span><span class="p">)</span>
+<span class="c">!</span>
+  <span class="k">IF</span> <span class="p">(</span> <span class="n">TPSNOW</span><span class="p">%</span><span class="n">WSNOW</span><span class="p">(</span><span class="n">JJ</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">&lt;</span><span class="mf">1.E-8</span> <span class="o">*</span> <span class="n">PTSTEP</span> <span class="p">)</span> <span class="n">TPSNOW</span><span class="p">%</span><span class="n">WSNOW</span><span class="p">(</span><span class="n">JJ</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="mf">0.</span>
+<span class="c">!</span>
+  <span class="k">IF</span> <span class="p">(</span><span class="n">TPSNOW</span><span class="p">%</span><span class="n">WSNOW</span><span class="p">(</span><span class="n">JJ</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">==</span><span class="mf">0.</span><span class="p">)</span> <span class="n">PGSNOW</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="nb">MAX</span> <span class="p">(</span> <span class="n">PGSNOW</span><span class="p">(</span><span class="n">JJ</span><span class="p">),</span> <span class="o">-</span> <span class="n">PMELT</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span><span class="o">*</span><span class="n">XLMTT</span> <span class="p">)</span>
+<span class="c">!</span>
+<span class="k">ENDDO</span>
+<span class="c">!</span>
+<span class="c">!*      6.4    time dependent drainage</span>
+<span class="c">!              -----------------------</span>
+<span class="c">!</span>
+<span class="k">IF</span> <span class="p">(</span><span class="n">PDRAIN_TIME</span><span class="o">&gt;</span><span class="mf">0.</span><span class="p">)</span> <span class="k">THEN</span>
+<span class="k">  WHERE</span> <span class="p">(</span> <span class="n">TPSNOW</span><span class="p">%</span><span class="n">WSNOW</span><span class="p">(:,</span><span class="mi">1</span><span class="p">)</span><span class="o">&gt;</span><span class="mf">0.</span><span class="p">)</span>
+    <span class="n">TPSNOW</span><span class="p">%</span><span class="n">WSNOW</span><span class="p">(:,</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="n">TPSNOW</span><span class="p">%</span><span class="n">WSNOW</span><span class="p">(:,</span><span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="nb">EXP</span><span class="p">(</span><span class="o">-</span><span class="n">PTSTEP</span><span class="o">/</span><span class="n">PDRAIN_TIME</span><span class="o">/</span><span class="n">XDAY</span><span class="p">)</span>
+  <span class="k">END WHERE</span>
+<span class="k">END IF</span>
+<span class="c">!</span>
+<span class="c">!*      6.5    melting of last 1mm of snow depth</span>
+<span class="c">!              ---------------------------------</span>
+<span class="c">!</span>
+<span class="k">WHERE</span> <span class="p">(</span> <span class="n">TPSNOW</span><span class="p">%</span><span class="n">WSNOW</span><span class="p">(:,</span><span class="mi">1</span><span class="p">)</span><span class="o">&lt;</span><span class="n">ZWSNOW_MIN</span> <span class="p">.</span><span class="nb">AND</span><span class="p">.</span> <span class="n">PMELT</span><span class="p">(:)</span><span class="o">&gt;</span><span class="mf">0.</span> <span class="p">.</span><span class="nb">AND</span><span class="p">.</span> <span class="n">PSR</span><span class="p">(:)</span><span class="o">==</span><span class="mf">0.</span> <span class="p">)</span>
+  <span class="n">PMELT</span><span class="p">(:)</span> <span class="o">=</span> <span class="n">PMELT</span><span class="p">(:)</span> <span class="o">+</span> <span class="n">TPSNOW</span><span class="p">%</span><span class="n">WSNOW</span><span class="p">(:,</span><span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="n">PTSTEP</span>
+  <span class="n">TPSNOW</span><span class="p">%</span><span class="n">WSNOW</span><span class="p">(:,</span><span class="mi">1</span><span class="p">)</span><span class="o">=</span><span class="mf">0.</span>
+<span class="k">END WHERE</span>
+<span class="c">!</span>
+<span class="k">WHERE</span> <span class="p">(</span> <span class="n">TPSNOW</span><span class="p">%</span><span class="n">WSNOW</span><span class="p">(:,</span><span class="mi">1</span><span class="p">)</span><span class="o">&lt;</span><span class="mf">1.E-8</span> <span class="o">*</span> <span class="n">PTSTEP</span> <span class="p">)</span> 
+   <span class="n">TPSNOW</span><span class="p">%</span><span class="n">WSNOW</span><span class="p">(:,</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="mf">0.</span>
+<span class="k">END WHERE</span>
+<span class="c">!</span>
+<span class="c">!-------------------------------------------------------------------------------</span>
+<span class="c">!</span>
+<span class="c">!*      7.     albedo evolution</span>
+<span class="c">!              ----------------</span>
+<span class="c">!</span>
+<span class="c">!*      7.1    If melting occurs or not</span>
+<span class="c">!              -----------------------</span>
+<span class="c">!</span>
+<span class="c">!</span>
+<span class="c">!cdir nodep</span>
+<span class="k">DO </span><span class="n">JJ</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">JCOMPT_SNOW1</span>
+<span class="c">!</span>
+  <span class="n">JI</span> <span class="o">=</span> <span class="n">JSNOWMASK1</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span>
+<span class="c">!</span>
+  <span class="k">IF</span> <span class="p">(</span><span class="n">PMELT</span><span class="p">(</span><span class="n">JI</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mf">0.</span> <span class="p">)</span> <span class="k">THEN</span>
+<span class="c">!</span>
+    <span class="n">TPSNOW</span><span class="p">%</span><span class="n">ALB</span><span class="p">(</span><span class="n">JI</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span><span class="n">TPSNOW</span><span class="p">%</span><span class="n">ALB</span><span class="p">(</span><span class="n">JI</span><span class="p">)</span><span class="o">-</span><span class="n">PANSMIN</span><span class="p">)</span><span class="o">*</span><span class="nb">EXP</span><span class="p">(</span><span class="o">-</span><span class="n">PRHOFOLD</span><span class="o">*</span><span class="n">PTSTEP</span><span class="o">/</span><span class="n">XDAY</span><span class="p">)</span> <span class="o">+</span> <span class="n">PANSMIN</span>   <span class="p">&amp;</span>
+                     <span class="o">+</span> <span class="n">PSR</span><span class="p">(</span><span class="n">JI</span><span class="p">)</span><span class="o">*</span><span class="n">PTSTEP</span><span class="o">/</span><span class="n">PWCRN</span><span class="o">*</span><span class="n">PANSMAX</span>  
+<span class="c">!</span>
+  <span class="n">ELSEIF</span> <span class="p">(</span><span class="n">PMELT</span><span class="p">(</span><span class="n">JI</span><span class="p">)</span><span class="o">==</span><span class="mf">0.</span><span class="p">)</span> <span class="k">THEN </span>
+<span class="k">    </span><span class="n">TPSNOW</span><span class="p">%</span><span class="n">ALB</span><span class="p">(</span><span class="n">JI</span><span class="p">)</span> <span class="o">=</span> <span class="n">TPSNOW</span><span class="p">%</span><span class="n">ALB</span><span class="p">(</span><span class="n">JI</span><span class="p">)</span> <span class="o">-</span> <span class="n">PTODRY</span><span class="o">*</span><span class="n">PTSTEP</span><span class="o">/</span><span class="n">XDAY</span>  <span class="o">+</span> <span class="n">PSR</span><span class="p">(</span><span class="n">JI</span><span class="p">)</span><span class="o">*</span><span class="n">PTSTEP</span><span class="o">/</span><span class="n">PWCRN</span><span class="o">*</span><span class="n">PANSMAX</span>  
+<span class="c">!</span>
+  <span class="k">ENDIF</span>
+<span class="c">!</span>
+<span class="k">ENDDO</span>
+<span class="c">!</span>
+<span class="c">!-------------------------------------------------------------------------------</span>
+<span class="c">!</span>
+<span class="c">!*      8.     density evolution</span>
+<span class="c">!              -----------------</span>
+<span class="c">!</span>
+<span class="c">!*      8.1    old snow</span>
+<span class="c">!              --------</span>
+<span class="c">!</span>
+<span class="c">!cdir nodep</span>
+<span class="k">DO </span><span class="n">JJ</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">JCOMPT_SNOW1</span>
+<span class="c">! </span>
+  <span class="n">JI</span> <span class="o">=</span> <span class="n">JSNOWMASK1</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span>
+<span class="c">!</span>
+  <span class="k">IF</span> <span class="p">(</span><span class="n">TPSNOW</span><span class="p">%</span><span class="n">WSNOW</span><span class="p">(</span><span class="n">JI</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">&gt;</span><span class="mf">0.</span> <span class="p">)</span> <span class="k">THEN</span>
+<span class="c">!</span>
+    <span class="n">ZSR1</span><span class="p">(</span><span class="n">JI</span><span class="p">)</span> <span class="o">=</span> <span class="nb">MAX</span><span class="p">(</span> <span class="n">TPSNOW</span><span class="p">%</span><span class="n">WSNOW</span><span class="p">(</span><span class="n">JI</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="p">,</span> <span class="n">PSR</span><span class="p">(</span><span class="n">JI</span><span class="p">)</span> <span class="o">*</span> <span class="n">PTSTEP</span> <span class="p">)</span>
+<span class="c">!</span>
+    <span class="n">TPSNOW</span><span class="p">%</span><span class="n">RHO</span><span class="p">(</span><span class="n">JI</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span><span class="n">TPSNOW</span><span class="p">%</span><span class="n">RHO</span><span class="p">(</span><span class="n">JI</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">-</span><span class="n">PRHOSMAX</span><span class="p">)</span><span class="o">*</span><span class="nb">EXP</span><span class="p">(</span><span class="o">-</span><span class="n">PRHOFOLD</span><span class="o">*</span><span class="n">PTSTEP</span><span class="o">/</span><span class="n">XDAY</span><span class="p">)</span> <span class="o">+</span> <span class="n">PRHOSMAX</span>
+    <span class="n">TPSNOW</span><span class="p">%</span><span class="n">RHO</span><span class="p">(</span><span class="n">JI</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span> <span class="p">(</span><span class="n">ZSR1</span><span class="p">(</span><span class="n">JI</span><span class="p">)</span><span class="o">-</span><span class="n">PSR</span><span class="p">(</span><span class="n">JI</span><span class="p">)</span><span class="o">*</span><span class="n">PTSTEP</span><span class="p">)</span> <span class="o">*</span> <span class="n">TPSNOW</span><span class="p">%</span><span class="n">RHO</span><span class="p">(</span><span class="n">JI</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>    <span class="p">&amp;</span>
+                  <span class="o">+</span> <span class="p">(</span><span class="n">PSR</span><span class="p">(</span><span class="n">JI</span><span class="p">)</span><span class="o">*</span><span class="n">PTSTEP</span><span class="p">)</span> <span class="o">*</span> <span class="n">PRHOSMIN</span> <span class="p">)</span> <span class="o">/</span> <span class="n">ZSR1</span><span class="p">(</span><span class="n">JI</span><span class="p">)</span>  
+  <span class="k">ENDIF</span>
+<span class="c">!</span>
+<span class="k">ENDDO</span>
+<span class="c">!</span>
+<span class="c">!*      8.2    fresh snow</span>
+<span class="c">!              ----------</span>
+<span class="c">!</span>
+<span class="c">!cdir nodep</span>
+<span class="k">DO </span><span class="n">JJ</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">SIZE</span><span class="p">(</span><span class="n">TPSNOW</span><span class="p">%</span><span class="n">WSNOW</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+  <span class="k">IF</span> <span class="p">(</span>  <span class="n">TPSNOW</span><span class="p">%</span><span class="n">WSNOW</span><span class="p">(</span><span class="n">JJ</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">&gt;</span><span class="mf">0.</span> <span class="p">)</span> <span class="k">THEN</span>
+<span class="k">    </span><span class="n">TPSNOW</span><span class="p">%</span><span class="n">ALB</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="nb">MAX</span><span class="p">(</span><span class="n">TPSNOW</span><span class="p">%</span><span class="n">ALB</span><span class="p">(</span><span class="n">JJ</span><span class="p">),</span><span class="n">PANSMIN</span><span class="p">)</span>
+    <span class="n">TPSNOW</span><span class="p">%</span><span class="n">ALB</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="nb">MIN</span><span class="p">(</span><span class="n">TPSNOW</span><span class="p">%</span><span class="n">ALB</span><span class="p">(</span><span class="n">JJ</span><span class="p">),</span><span class="n">PANSMAX</span><span class="p">)</span>
+    <span class="k">IF</span> <span class="p">(</span><span class="n">ZWSNOW</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span><span class="o">==</span><span class="mf">0.</span><span class="p">)</span> <span class="k">THEN</span>
+<span class="k">      </span><span class="n">TPSNOW</span><span class="p">%</span><span class="n">ALB</span>  <span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="n">PANSMAX</span>
+      <span class="n">TPSNOW</span><span class="p">%</span><span class="n">EMIS</span> <span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="n">XEMISSN</span>
+      <span class="n">TPSNOW</span><span class="p">%</span><span class="n">RHO</span><span class="p">(</span><span class="n">JJ</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="n">PRHOSMIN</span>
+    <span class="k">ENDIF</span>
+<span class="k">  ENDIF</span>
+<span class="k">    ENDDO</span>
+<span class="c">!</span>
+<span class="c">!-------------------------------------------------------------------------------</span>
+<span class="c">!</span>
+<span class="c">!*      9.     fresh snow accumulation (if more than 1mm of snow depth)</span>
+<span class="c">!              -----------------------</span>
+<span class="c">!</span>
+<span class="c">!cdir nodep</span>
+<span class="k">DO </span><span class="n">JJ</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">JCOMPT_SNOW3</span>
+<span class="c">!</span>
+  <span class="n">JI</span> <span class="o">=</span> <span class="n">JSNOWMASK3</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span>
+<span class="c">!</span>
+  <span class="k">IF</span> <span class="p">(</span><span class="n">PSR</span><span class="p">(</span><span class="n">JI</span><span class="p">)</span><span class="o">&gt;</span><span class="mf">0.</span> <span class="p">.</span><span class="nb">AND</span><span class="p">.</span> <span class="n">TPSNOW</span><span class="p">%</span><span class="n">WSNOW</span><span class="p">(</span><span class="n">JI</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">&gt;</span><span class="mf">0.</span><span class="p">)</span> <span class="k">THEN</span>
+<span class="c">!</span>
+    <span class="n">ZSR2</span><span class="p">(</span><span class="n">JI</span><span class="p">)</span> <span class="o">=</span> <span class="nb">MIN</span><span class="p">(</span> <span class="n">TPSNOW</span><span class="p">%</span><span class="n">WSNOW</span><span class="p">(</span><span class="n">JI</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="p">,</span> <span class="n">PSR</span><span class="p">(</span><span class="n">JI</span><span class="p">)</span> <span class="o">*</span> <span class="n">PTSTEP</span> <span class="p">)</span>
+<span class="c">!</span>
+    <span class="n">TPSNOW</span><span class="p">%</span><span class="n">T</span><span class="p">(</span><span class="n">JI</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span><span class="p">(</span> <span class="p">(</span> <span class="n">TPSNOW</span><span class="p">%</span><span class="n">WSNOW</span><span class="p">(</span><span class="n">JI</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="n">ZSR2</span><span class="p">(</span><span class="n">JI</span><span class="p">)</span> <span class="p">)</span> <span class="o">*</span>  <span class="n">TPSNOW</span><span class="p">%</span><span class="n">T</span><span class="p">(</span><span class="n">JI</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>        <span class="p">&amp;</span>
+              <span class="o">+</span>   <span class="n">ZSR2</span><span class="p">(</span><span class="n">JI</span><span class="p">)</span>  <span class="o">*</span> <span class="nb">MIN</span><span class="p">(</span> <span class="n">PTA</span>   <span class="p">(</span><span class="n">JI</span><span class="p">)</span> <span class="p">,</span><span class="n">XTT</span> <span class="p">))</span> <span class="o">/</span> <span class="p">(</span> <span class="n">TPSNOW</span><span class="p">%</span><span class="n">WSNOW</span><span class="p">(</span><span class="n">JI</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="p">)</span>  
+  <span class="k">ENDIF</span>
+<span class="c">!</span>
+<span class="k">ENDDO</span>
+<span class="c">!</span>
+<span class="c">!-------------------------------------------------------------------------------</span>
+<span class="c">!</span>
+<span class="c">!*     10.     Surface temperature</span>
+<span class="c">!              -------------------</span>
+<span class="c">!</span>
+<span class="c">!* note that if the relation between snow pack temperature and its</span>
+<span class="c">!  surface temperature is modified, think to modify it also in</span>
+<span class="c">!  subroutine init_snow_lw.f90</span>
+<span class="c">!</span>
+<span class="k">WHERE</span> <span class="p">(</span><span class="n">GSNOWMASK</span><span class="p">(:)</span> <span class="p">)</span>
+  <span class="n">TPSNOW</span><span class="p">%</span><span class="n">TS</span><span class="p">(:)</span> <span class="o">=</span> <span class="n">TPSNOW</span><span class="p">%</span><span class="n">T</span><span class="p">(:,</span><span class="mi">1</span><span class="p">)</span>
+<span class="k">END WHERE</span>
+<span class="c">!</span>
+<span class="c">!-------------------------------------------------------------------------------</span>
+<span class="c">!</span>
+<span class="c">!*     11.     bogus values</span>
+<span class="c">!              ------------</span>
+<span class="c">!</span>
+<span class="c">!*     11.1    snow characteristics where snow IS present at current time-step</span>
+<span class="c">!              ---------------------------------------------------------------</span>
+<span class="c">!</span>
+<span class="k">WHERE</span> <span class="p">(</span><span class="n">TPSNOW</span><span class="p">%</span><span class="n">WSNOW</span><span class="p">(:,</span><span class="mi">1</span><span class="p">)</span><span class="o">==</span><span class="mf">0.</span><span class="p">)</span>
+  <span class="n">TPSNOW</span><span class="p">%</span><span class="n">T</span><span class="p">(:,</span><span class="mi">1</span><span class="p">)</span>   <span class="o">=</span> <span class="n">XUNDEF</span>
+  <span class="n">TPSNOW</span><span class="p">%</span><span class="n">RHO</span><span class="p">(:,</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="n">XUNDEF</span>
+  <span class="n">TPSNOW</span><span class="p">%</span><span class="n">ALB</span><span class="p">(:)</span>   <span class="o">=</span> <span class="n">XUNDEF</span>
+  <span class="n">TPSNOW</span><span class="p">%</span><span class="n">TS</span><span class="p">(:)</span>    <span class="o">=</span> <span class="n">XUNDEF</span>
+  <span class="n">TPSNOW</span><span class="p">%</span><span class="n">EMIS</span><span class="p">(:)</span>  <span class="o">=</span> <span class="n">XUNDEF</span>
+<span class="k">END WHERE</span>
+<span class="c">!</span>
+<span class="c">!</span>
+<span class="c">!-------------------------------------------------------------------------------</span>
+<span class="c">!</span>
+<span class="c">!*     12.     Heat storage inside snow pack</span>
+<span class="c">!</span>
+<span class="k">WHERE</span> <span class="p">(</span><span class="n">GSNOWMASK</span><span class="p">(:))</span>
+  <span class="n">ZPEI_SNOW</span><span class="p">(:)</span> <span class="o">=</span> <span class="n">ZSNOW_HC</span><span class="p">(:)</span><span class="o">*</span><span class="n">ZSNOW_D</span><span class="p">(:)</span><span class="o">*</span><span class="n">TPSNOW</span><span class="p">%</span><span class="n">T</span><span class="p">(:,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">ELSEWHERE</span>
+  <span class="n">ZPEI_SNOW</span><span class="p">(:)</span> <span class="o">=</span> <span class="mf">0.</span>
+<span class="k">END WHERE</span>
+<span class="n">PDQS_SNOW</span><span class="p">(:)</span> <span class="o">=</span> <span class="p">(</span><span class="n">ZPEI_SNOW</span><span class="p">(:)</span><span class="o">-</span><span class="n">ZEI_SNOW</span><span class="p">(:))</span><span class="o">/</span><span class="n">PTSTEP</span>
+<span class="c">!</span>
+<span class="k">IF</span> <span class="p">(</span><span class="n">LHOOK</span><span class="p">)</span> <span class="k">CALL </span><span class="n">DR_HOOK</span><span class="p">(</span><span class="s1">&#39;SNOW_COVER_1LAYER&#39;</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">ZHOOK_HANDLE</span><span class="p">)</span>
+
+<span class="c">!------------------------------------------------------------------------------- !</span>
+<span class="k">END SUBROUTINE </span><span class="n">SNOW_COVER_1LAYER</span>
+</pre></div>
+
+    </section>
+    <br>
+    
+    
+    </div>
+  </div>
+
+
+    <hr>    
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+      <div class="row">
+        <div class="col-xs-6 col-md-6"><p>Town Energy Balance (TEB) model API docs was developed by teb-model<br>&copy; 2021 CeCILL
+                                          </p>
+        </div>
+        <div class="col-xs-6 col-md-6">
+          <p class="text-right">
+            Documentation generated by 
+            <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+            
+            
+          </p>
+        </div>
+      </div>
+      <br>
+      </div> <!-- /container -->    
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+<!--
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+-->
+    <script src="../js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../js/ie10-viewport-bug-workaround.js"></script>
+
+    <!-- MathJax JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+        jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+        extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+      });
+    </script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    
+    <script src="../tipuesearch/tipuesearch_content.js"></script>
+    <script src="../tipuesearch/tipuesearch_set.js"></script>
+    <script src="../tipuesearch/tipuesearch.js"></script>
+    
+    
+  </body>
+</html>

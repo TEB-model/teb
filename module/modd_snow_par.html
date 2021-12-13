@@ -1,0 +1,3322 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   
+   <meta name="description" content="The Town Energy Balance (TEB) model is an urban land surface model developed to calculate the exchange of energy and water between cities and atmosphere.">
+    
+    <meta name="author" content="teb-model" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>MODD_SNOW_PAR &ndash; Town Energy Balance (TEB) model API docs</title>
+
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+    
+    <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+    
+    
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <script src="../js/jquery-2.1.3.min.js"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../index.html">Town Energy Balance (TEB) model API docs </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+        
+            <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
+              <a href="#" class="dropdown-toggle"
+              data-toggle="dropdown" role="button"
+              aria-haspopup="true"
+     aria-expanded="false">Contents <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          
+              
+            <li><a href="../lists/files.html">Source Files</a></li>
+        
+        
+        
+            <li><a href="../lists/modules.html">Modules</a></li>
+        
+            
+                                
+            <li><a href="../lists/procedures.html">Procedures</a></li>
+        
+               
+            <li><a href="../lists/types.html">Derived Types</a></li>
+        
+        
+            <li><a href="../program/driver.html">Program</a></li>
+               
+        
+        
+            </ul>
+        
+            </li>
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/files.html">Source Files</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
+
+                             
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/types.html">Derived Types</a></li>
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../program/driver.html">Program</a></li>
+
+
+
+          </ul>
+        
+        <form action="../search.html" class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+        </div>
+<!--
+        <button type="submit" class="btn btn-default">Submit</button>
+-->
+        </form>
+        
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+    
+  
+  <div class="row">
+    <h1>MODD_SNOW_PAR 
+    <small>Module</small>
+    
+    </h1>
+    
+<div class="row">
+  <div class="col-lg-12">
+<div class="well well-sm">
+  <ul class="list-inline" style="margin-bottom:0px;display:inline">
+     
+     
+     
+    <li><i class="fa fa-legal"></i> CeCILL</li> 
+     
+     
+     
+    
+    
+     <li><i class="fa fa-list-ol"></i>
+       <a data-toggle="tooltip"
+    data-placement="bottom" data-html="true"
+    title=" 1.4% of total for modules and submodules.">140 statements</a>
+     </li> 
+     
+     
+     
+    <li><i class="fa fa-code"></i><a href="../src/modd_snow_par.F90"> Source File</a></li>
+     
+     
+  </ul>
+  <ol class="breadcrumb in-well text-right">
+  
+    
+     <li><a href='../sourcefile/modd_snow_par.f90.html'>modd_snow_par.F90</a></li>
+    
+  
+     <li class="active">MODD_SNOW_PAR</li>
+  </ol>
+</div>
+</div>
+</div>
+<script>
+  $(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+  })
+</script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+    
+<div id="sidebar">
+  
+<h3>Contents</h3>
+ 
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#vars-0">Variables</a></h3></div>
+  <div id="vars-0" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xemissn">XEMISSN</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xansmin">XANSMIN</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xansmax">XANSMAX</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xaglamin">XAGLAMIN</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xaglamax">XAGLAMAX</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-lmebrec">LMEBREC</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xansfracmel">XANSFRACMEL</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xtempans">XTEMPANS</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xansminmeb">XANSMINMEB</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xalbice1">XALBICE1</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xalbice2">XALBICE2</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xalbice3">XALBICE3</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xrhothreshold_ice">XRHOTHRESHOLD_ICE</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xvaging_noglacier">XVAGING_NOGLACIER</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xvaging_glacier">XVAGING_GLACIER</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xpercentagepore">XPERCENTAGEPORE</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xhgla">XHGLA</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xwsnv">XWSNV</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xz0sn">XZ0SN</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xz0hsn">XZ0HSN</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xz0icez0snow">XZ0ICEZ0SNOW</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xtau_smelt">XTAU_SMELT</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xwcrn">XWCRN</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xwcrn_expl">XWCRN_EXPL</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xwcrn_roof">XWCRN_ROOF</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xwcrn_road">XWCRN_ROAD</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xwcrn_veg">XWCRN_VEG</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xdcrn_expl">XDCRN_EXPL</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xemcrin">XEMCRIN</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xansmin_roof">XANSMIN_ROOF</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xansmin_road">XANSMIN_ROAD</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xansmax_roof">XANSMAX_ROOF</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xansmax_road">XANSMAX_ROAD</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xans_todry">XANS_TODRY</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xans_todry_roof">XANS_TODRY_ROOF</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xans_todry_road">XANS_TODRY_ROAD</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xans_todry_meb">XANS_TODRY_MEB</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xans_t">XANS_T</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xans_t_roof">XANS_T_ROOF</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xans_t_road">XANS_T_ROAD</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xans_t_meb">XANS_T_MEB</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xrhosmin">XRHOSMIN</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xrhosmin_roof">XRHOSMIN_ROOF</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xrhosmin_road">XRHOSMIN_ROAD</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xrhosmax">XRHOSMAX</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xrhosmax_roof">XRHOSMAX_ROOF</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xrhosmax_road">XRHOSMAX_ROAD</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xrhosmin_es">XRHOSMIN_ES</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xrhosmax_es">XRHOSMAX_ES</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xsnowcritd">XSNOWCRITD</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xsnowdmin">XSNOWDMIN</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-x_ri_max">X_RI_MAX</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xwsnowholdmax2">XWSNOWHOLDMAX2</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xwsnowholdmax1">XWSNOWHOLDMAX1</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xsnowrhohold">XSNOWRHOHOLD</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xsnow_agrain">XSNOW_AGRAIN</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xsnow_bgrain">XSNOW_BGRAIN</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xsnow_cgrain">XSNOW_CGRAIN</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xdsgrain_max">XDSGRAIN_MAX</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xd1">XD1</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xd2">XD2</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xd3">XD3</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xx">XX</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xvalb2">XVALB2</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xvalb3">XVALB3</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xvalb4">XVALB4</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xvalb5">XVALB5</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xvalb6">XVALB6</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xvalb7">XVALB7</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xvalb8">XVALB8</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xvalb9">XVALB9</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xvalb10">XVALB10</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xvalb11">XVALB11</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xvdiop1">XVDIOP1</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xvrpre1">XVRPRE1</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xvrpre2">XVRPRE2</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xvpres1">XVPRES1</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-nspec_band_snow">NSPEC_BAND_SNOW</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xvspec1">XVSPEC1</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xvspec2">XVSPEC2</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xvspec3">XVSPEC3</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xvw1">XVW1</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xvw2">XVW2</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xvd1">XVD1</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xvd2">XVD2</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xvbeta1">XVBETA1</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xvbeta2">XVBETA2</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xvbeta3">XVBETA3</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xvbeta4">XVBETA4</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xvbeta5">XVBETA5</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xmincoszen">XMINCOSZEN</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xsnowthrmcond1">XSNOWTHRMCOND1</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xsnowthrmcond2">XSNOWTHRMCOND2</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xsnowthrmcond_avap">XSNOWTHRMCOND_AVAP</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xsnowthrmcond_bvap">XSNOWTHRMCOND_BVAP</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xsnowthrmcond_cvap">XSNOWTHRMCOND_CVAP</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xvrkz6">XVRKZ6</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xsnowfall_a_sn">XSNOWFALL_A_SN</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xsnowfall_b_sn">XSNOWFALL_B_SN</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xsnowfall_c_sn">XSNOWFALL_C_SN</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xdz1">XDZ1</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xdz2">XDZ2</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xdz3">XDZ3</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xdz3_bis">XDZ3_BIS</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xdz4">XDZ4</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xdz5">XDZ5</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xdz_base">XDZ_BASE</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xdz_internal">XDZ_INTERNAL</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xscale_cm">XSCALE_CM</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xdzmax_internal">XDZMAX_INTERNAL</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xdzmin_top_extrem">XDZMIN_TOP_EXTREM</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xsnowfall_threshold">XSNOWFALL_THRESHOLD</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xratio_newlayer">XRATIO_NEWLAYER</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xdepth_threshold1">XDEPTH_THRESHOLD1</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xdepth_threshold2">XDEPTH_THRESHOLD2</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xdepth_surface">XDEPTH_SURFACE</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xdiff_1">XDIFF_1</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xdiff_max">XDIFF_MAX</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xscale_diff">XSCALE_DIFF</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xdzmin_top">XDZMIN_TOP</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xdzmin_top_bis">XDZMIN_TOP_BIS</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xdzmin_bot">XDZMIN_BOT</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xsplit_coef">XSPLIT_COEF</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xagreg_coef_1">XAGREG_COEF_1</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xagreg_coef_2">XAGREG_COEF_2</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xvtime">XVTIME</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xvromax">XVROMAX</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xvromin">XVROMIN</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xvmob1">XVMOB1</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xvmob2">XVMOB2</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xvmob3">XVMOB3</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xvmob4">XVMOB4</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xvdrift1">XVDRIFT1</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xvdrift2">XVDRIFT2</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xvdrift3">XVDRIFT3</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xvsizemin">XVSIZEMIN</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xcoef_ff">XCOEF_FF</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xcoef_effect">XCOEF_EFFECT</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xqs_ref">XQS_REF</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xsgcoef1">XSGCOEF1</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xsgcoef2">XSGCOEF2</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xsgcoef3">XSGCOEF3</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xsnowtrans">XSNOWTRANS</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xsnowtrans1">XSNOWTRANS1</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xsnowtrans2">XSNOWTRANS2</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xsnowtrans3">XSNOWTRANS3</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xsnowtrans4">XSNOWTRANS4</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xsnowtrans5">XSNOWTRANS5</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-ifr">IFR</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-ifr_lb">IFR_LB</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-ilb">ILB</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-ilb_fin">ILB_FIN</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-ilb_ang">ILB_ANG</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-iroul">IROUL</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-ifin">IFIN</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-ifin_ar">IFIN_AR</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-ifin_ang">IFIN_ANG</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-ipl">IPL</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-ipl_gob">IPL_GOB</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-igob">IGOB</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-igel">IGEL</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-igob_fon">IGOB_FON</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-iron_ang">IRON_ANG</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-icris_dend1d">ICRIS_DEND1D</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-icris_nondend1d">ICRIS_NONDEND1D</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+    
+      
+    
+  
+
+    
+    
+
+    <br>
+
+    <section class="visible-xs visible-sm hidden-md">
+      
+<h3>Contents</h3>
+ 
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#vars-1">Variables</a></h3></div>
+  <div id="vars-1" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xemissn">XEMISSN</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xansmin">XANSMIN</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xansmax">XANSMAX</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xaglamin">XAGLAMIN</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xaglamax">XAGLAMAX</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-lmebrec">LMEBREC</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xansfracmel">XANSFRACMEL</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xtempans">XTEMPANS</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xansminmeb">XANSMINMEB</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xalbice1">XALBICE1</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xalbice2">XALBICE2</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xalbice3">XALBICE3</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xrhothreshold_ice">XRHOTHRESHOLD_ICE</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xvaging_noglacier">XVAGING_NOGLACIER</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xvaging_glacier">XVAGING_GLACIER</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xpercentagepore">XPERCENTAGEPORE</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xhgla">XHGLA</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xwsnv">XWSNV</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xz0sn">XZ0SN</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xz0hsn">XZ0HSN</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xz0icez0snow">XZ0ICEZ0SNOW</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xtau_smelt">XTAU_SMELT</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xwcrn">XWCRN</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xwcrn_expl">XWCRN_EXPL</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xwcrn_roof">XWCRN_ROOF</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xwcrn_road">XWCRN_ROAD</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xwcrn_veg">XWCRN_VEG</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xdcrn_expl">XDCRN_EXPL</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xemcrin">XEMCRIN</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xansmin_roof">XANSMIN_ROOF</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xansmin_road">XANSMIN_ROAD</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xansmax_roof">XANSMAX_ROOF</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xansmax_road">XANSMAX_ROAD</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xans_todry">XANS_TODRY</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xans_todry_roof">XANS_TODRY_ROOF</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xans_todry_road">XANS_TODRY_ROAD</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xans_todry_meb">XANS_TODRY_MEB</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xans_t">XANS_T</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xans_t_roof">XANS_T_ROOF</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xans_t_road">XANS_T_ROAD</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xans_t_meb">XANS_T_MEB</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xrhosmin">XRHOSMIN</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xrhosmin_roof">XRHOSMIN_ROOF</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xrhosmin_road">XRHOSMIN_ROAD</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xrhosmax">XRHOSMAX</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xrhosmax_roof">XRHOSMAX_ROOF</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xrhosmax_road">XRHOSMAX_ROAD</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xrhosmin_es">XRHOSMIN_ES</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xrhosmax_es">XRHOSMAX_ES</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xsnowcritd">XSNOWCRITD</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xsnowdmin">XSNOWDMIN</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-x_ri_max">X_RI_MAX</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xwsnowholdmax2">XWSNOWHOLDMAX2</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xwsnowholdmax1">XWSNOWHOLDMAX1</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xsnowrhohold">XSNOWRHOHOLD</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xsnow_agrain">XSNOW_AGRAIN</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xsnow_bgrain">XSNOW_BGRAIN</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xsnow_cgrain">XSNOW_CGRAIN</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xdsgrain_max">XDSGRAIN_MAX</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xd1">XD1</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xd2">XD2</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xd3">XD3</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xx">XX</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xvalb2">XVALB2</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xvalb3">XVALB3</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xvalb4">XVALB4</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xvalb5">XVALB5</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xvalb6">XVALB6</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xvalb7">XVALB7</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xvalb8">XVALB8</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xvalb9">XVALB9</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xvalb10">XVALB10</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xvalb11">XVALB11</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xvdiop1">XVDIOP1</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xvrpre1">XVRPRE1</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xvrpre2">XVRPRE2</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xvpres1">XVPRES1</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-nspec_band_snow">NSPEC_BAND_SNOW</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xvspec1">XVSPEC1</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xvspec2">XVSPEC2</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xvspec3">XVSPEC3</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xvw1">XVW1</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xvw2">XVW2</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xvd1">XVD1</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xvd2">XVD2</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xvbeta1">XVBETA1</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xvbeta2">XVBETA2</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xvbeta3">XVBETA3</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xvbeta4">XVBETA4</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xvbeta5">XVBETA5</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xmincoszen">XMINCOSZEN</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xsnowthrmcond1">XSNOWTHRMCOND1</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xsnowthrmcond2">XSNOWTHRMCOND2</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xsnowthrmcond_avap">XSNOWTHRMCOND_AVAP</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xsnowthrmcond_bvap">XSNOWTHRMCOND_BVAP</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xsnowthrmcond_cvap">XSNOWTHRMCOND_CVAP</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xvrkz6">XVRKZ6</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xsnowfall_a_sn">XSNOWFALL_A_SN</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xsnowfall_b_sn">XSNOWFALL_B_SN</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xsnowfall_c_sn">XSNOWFALL_C_SN</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xdz1">XDZ1</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xdz2">XDZ2</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xdz3">XDZ3</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xdz3_bis">XDZ3_BIS</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xdz4">XDZ4</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xdz5">XDZ5</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xdz_base">XDZ_BASE</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xdz_internal">XDZ_INTERNAL</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xscale_cm">XSCALE_CM</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xdzmax_internal">XDZMAX_INTERNAL</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xdzmin_top_extrem">XDZMIN_TOP_EXTREM</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xsnowfall_threshold">XSNOWFALL_THRESHOLD</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xratio_newlayer">XRATIO_NEWLAYER</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xdepth_threshold1">XDEPTH_THRESHOLD1</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xdepth_threshold2">XDEPTH_THRESHOLD2</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xdepth_surface">XDEPTH_SURFACE</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xdiff_1">XDIFF_1</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xdiff_max">XDIFF_MAX</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xscale_diff">XSCALE_DIFF</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xdzmin_top">XDZMIN_TOP</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xdzmin_top_bis">XDZMIN_TOP_BIS</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xdzmin_bot">XDZMIN_BOT</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xsplit_coef">XSPLIT_COEF</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xagreg_coef_1">XAGREG_COEF_1</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xagreg_coef_2">XAGREG_COEF_2</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xvtime">XVTIME</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xvromax">XVROMAX</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xvromin">XVROMIN</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xvmob1">XVMOB1</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xvmob2">XVMOB2</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xvmob3">XVMOB3</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xvmob4">XVMOB4</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xvdrift1">XVDRIFT1</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xvdrift2">XVDRIFT2</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xvdrift3">XVDRIFT3</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xvsizemin">XVSIZEMIN</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xcoef_ff">XCOEF_FF</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xcoef_effect">XCOEF_EFFECT</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xqs_ref">XQS_REF</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xsgcoef1">XSGCOEF1</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xsgcoef2">XSGCOEF2</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xsgcoef3">XSGCOEF3</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xsnowtrans">XSNOWTRANS</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xsnowtrans1">XSNOWTRANS1</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xsnowtrans2">XSNOWTRANS2</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xsnowtrans3">XSNOWTRANS3</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xsnowtrans4">XSNOWTRANS4</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-xsnowtrans5">XSNOWTRANS5</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-ifr">IFR</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-ifr_lb">IFR_LB</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-ilb">ILB</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-ilb_fin">ILB_FIN</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-ilb_ang">ILB_ANG</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-iroul">IROUL</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-ifin">IFIN</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-ifin_ar">IFIN_AR</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-ifin_ang">IFIN_ANG</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-ipl">IPL</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-ipl_gob">IPL_GOB</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-igob">IGOB</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-igel">IGEL</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-igob_fon">IGOB_FON</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-iron_ang">IRON_ANG</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-icris_dend1d">ICRIS_DEND1D</a>
+      
+      <a class="list-group-item" href="../module/modd_snow_par.html#variable-icris_nondend1d">ICRIS_NONDEND1D</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </section>
+    <br class="visible-xs visible-sm hidden-md">
+
+    
+
+    
+    <section>
+    <h2>Variables</h2>
+    
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th><th>Visibility</th>
+
+<th>Attributes</th><th></th><th>Name</th><th></th><th>Initial</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xemissn"></span>real,</td>
+  
+  <td>public,</td>
+  <td>SAVE</td><td>::</td>
+  <td><strong>XEMISSN</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xansmin"></span>real,</td>
+  
+  <td>public,</td>
+  <td>SAVE</td><td>::</td>
+  <td><strong>XANSMIN</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xansmax"></span>real,</td>
+  
+  <td>public,</td>
+  <td>SAVE</td><td>::</td>
+  <td><strong>XANSMAX</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xaglamin"></span>real,</td>
+  
+  <td>public,</td>
+  <td>SAVE</td><td>::</td>
+  <td><strong>XAGLAMIN</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xaglamax"></span>real,</td>
+  
+  <td>public,</td>
+  <td>SAVE</td><td>::</td>
+  <td><strong>XAGLAMAX</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-lmebrec"></span>logical,</td>
+  
+  <td>public,</td>
+  <td>SAVE</td><td>::</td>
+  <td><strong>LMEBREC</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xansfracmel"></span>real,</td>
+  
+  <td>public,</td>
+  <td>SAVE</td><td>::</td>
+  <td><strong>XANSFRACMEL</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xtempans"></span>real,</td>
+  
+  <td>public,</td>
+  <td>SAVE</td><td>::</td>
+  <td><strong>XTEMPANS</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xansminmeb"></span>real,</td>
+  
+  <td>public,</td>
+  <td>SAVE</td><td>::</td>
+  <td><strong>XANSMINMEB</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xalbice1"></span>real,</td>
+  
+  <td>public,</td>
+  <td>SAVE</td><td>::</td>
+  <td><strong>XALBICE1</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xalbice2"></span>real,</td>
+  
+  <td>public,</td>
+  <td>SAVE</td><td>::</td>
+  <td><strong>XALBICE2</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xalbice3"></span>real,</td>
+  
+  <td>public,</td>
+  <td>SAVE</td><td>::</td>
+  <td><strong>XALBICE3</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xrhothreshold_ice"></span>real,</td>
+  
+  <td>public,</td>
+  <td>SAVE</td><td>::</td>
+  <td><strong>XRHOTHRESHOLD_ICE</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xvaging_noglacier"></span>real,</td>
+  
+  <td>public,</td>
+  <td>SAVE</td><td>::</td>
+  <td><strong>XVAGING_NOGLACIER</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xvaging_glacier"></span>real,</td>
+  
+  <td>public,</td>
+  <td>SAVE</td><td>::</td>
+  <td><strong>XVAGING_GLACIER</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xpercentagepore"></span>real,</td>
+  
+  <td>public,</td>
+  <td>SAVE</td><td>::</td>
+  <td><strong>XPERCENTAGEPORE</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xhgla"></span>real,</td>
+  
+  <td>public,</td>
+  <td>SAVE</td><td>::</td>
+  <td><strong>XHGLA</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xwsnv"></span>real,</td>
+  
+  <td>public,</td>
+  <td>SAVE</td><td>::</td>
+  <td><strong>XWSNV</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xz0sn"></span>real,</td>
+  
+  <td>public,</td>
+  <td>SAVE</td><td>::</td>
+  <td><strong>XZ0SN</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xz0hsn"></span>real,</td>
+  
+  <td>public,</td>
+  <td>SAVE</td><td>::</td>
+  <td><strong>XZ0HSN</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xz0icez0snow"></span>real,</td>
+  
+  <td>public,</td>
+  <td>SAVE</td><td>::</td>
+  <td><strong>XZ0ICEZ0SNOW</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xtau_smelt"></span>real,</td>
+  
+  <td>public,</td>
+  <td>SAVE</td><td>::</td>
+  <td><strong>XTAU_SMELT</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xwcrn"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XWCRN</strong></td><td> =</td><td>10.0</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xwcrn_expl"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XWCRN_EXPL</strong></td><td> =</td><td>1.0</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xwcrn_roof"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XWCRN_ROOF</strong></td><td> =</td><td>1.0</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xwcrn_road"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XWCRN_ROAD</strong></td><td> =</td><td>1.0</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xwcrn_veg"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XWCRN_VEG</strong></td><td> =</td><td>1.0</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xdcrn_expl"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XDCRN_EXPL</strong></td><td> =</td><td>0.01</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xemcrin"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XEMCRIN</strong></td><td> =</td><td>0.98</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xansmin_roof"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XANSMIN_ROOF</strong></td><td> =</td><td>0.30</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xansmin_road"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XANSMIN_ROAD</strong></td><td> =</td><td>0.15</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xansmax_roof"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XANSMAX_ROOF</strong></td><td> =</td><td>0.85</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xansmax_road"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XANSMAX_ROAD</strong></td><td> =</td><td>0.85</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xans_todry"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XANS_TODRY</strong></td><td> =</td><td>0.008</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xans_todry_roof"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XANS_TODRY_ROOF</strong></td><td> =</td><td>0.008</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xans_todry_road"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XANS_TODRY_ROAD</strong></td><td> =</td><td>0.008</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xans_todry_meb"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XANS_TODRY_MEB</strong></td><td> =</td><td>0.016</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xans_t"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XANS_T</strong></td><td> =</td><td>0.240</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xans_t_roof"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XANS_T_ROOF</strong></td><td> =</td><td>0.174</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xans_t_road"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XANS_T_ROAD</strong></td><td> =</td><td>0.174</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xans_t_meb"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XANS_T_MEB</strong></td><td> =</td><td>0.480</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xrhosmin"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XRHOSMIN</strong></td><td> =</td><td>100.</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xrhosmin_roof"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XRHOSMIN_ROOF</strong></td><td> =</td><td>100.</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xrhosmin_road"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XRHOSMIN_ROAD</strong></td><td> =</td><td>100.</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xrhosmax"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XRHOSMAX</strong></td><td> =</td><td>300.</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xrhosmax_roof"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XRHOSMAX_ROOF</strong></td><td> =</td><td>300.</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xrhosmax_road"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XRHOSMAX_ROAD</strong></td><td> =</td><td>350.</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xrhosmin_es"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XRHOSMIN_ES</strong></td><td> =</td><td>50.</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xrhosmax_es"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XRHOSMAX_ES</strong></td><td> =</td><td>750.</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xsnowcritd"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XSNOWCRITD</strong></td><td> =</td><td>0.03</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xsnowdmin"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XSNOWDMIN</strong></td><td> =</td><td>0.000001</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-x_ri_max"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>X_RI_MAX</strong></td><td> =</td><td>0.20</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xwsnowholdmax2"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XWSNOWHOLDMAX2</strong></td><td> =</td><td>0.10</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xwsnowholdmax1"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XWSNOWHOLDMAX1</strong></td><td> =</td><td>0.03</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xsnowrhohold"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XSNOWRHOHOLD</strong></td><td> =</td><td>200.0</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xsnow_agrain"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XSNOW_AGRAIN</strong></td><td> =</td><td>1.6e-4</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xsnow_bgrain"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XSNOW_BGRAIN</strong></td><td> =</td><td>1.1e-13</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xsnow_cgrain"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XSNOW_CGRAIN</strong></td><td> =</td><td>0.5e-4</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xdsgrain_max"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XDSGRAIN_MAX</strong></td><td> =</td><td>2.796e-3</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xd1"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XD1</strong></td><td> =</td><td>1.</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xd2"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XD2</strong></td><td> =</td><td>3.</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xd3"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XD3</strong></td><td> =</td><td>4.</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xx"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XX</strong></td><td> =</td><td>99.</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xvalb2"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XVALB2</strong></td><td> =</td><td>.96</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xvalb3"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XVALB3</strong></td><td> =</td><td>1.58</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xvalb4"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XVALB4</strong></td><td> =</td><td>.92</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xvalb5"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XVALB5</strong></td><td> =</td><td>.90</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xvalb6"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XVALB6</strong></td><td> =</td><td>15.4</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xvalb7"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XVALB7</strong></td><td> =</td><td>346.3</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xvalb8"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XVALB8</strong></td><td> =</td><td>32.31</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xvalb9"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XVALB9</strong></td><td> =</td><td>.88</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xvalb10"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XVALB10</strong></td><td> =</td><td>.200</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xvalb11"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XVALB11</strong></td><td> =</td><td>.6</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xvdiop1"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XVDIOP1</strong></td><td> =</td><td>2.3E-3</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xvrpre1"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XVRPRE1</strong></td><td> =</td><td>.5</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xvrpre2"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XVRPRE2</strong></td><td> =</td><td>1.5</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xvpres1"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XVPRES1</strong></td><td> =</td><td>87000.</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-nspec_band_snow"></span>integer,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>NSPEC_BAND_SNOW</strong></td><td> =</td><td>3</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xvspec1"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XVSPEC1</strong></td><td> =</td><td>.71</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xvspec2"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XVSPEC2</strong></td><td> =</td><td>.21</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xvspec3"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XVSPEC3</strong></td><td> =</td><td>.08</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xvw1"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XVW1</strong></td><td> =</td><td>.80</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xvw2"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XVW2</strong></td><td> =</td><td>.20</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xvd1"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XVD1</strong></td><td> =</td><td>.02</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xvd2"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XVD2</strong></td><td> =</td><td>.01</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xvbeta1"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XVBETA1</strong></td><td> =</td><td>1.92E-3</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xvbeta2"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XVBETA2</strong></td><td> =</td><td>40.</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xvbeta3"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XVBETA3</strong></td><td> =</td><td>1.098E-2</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xvbeta4"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XVBETA4</strong></td><td> =</td><td>100.</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xvbeta5"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XVBETA5</strong></td><td> =</td><td>2000.</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xmincoszen"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XMINCOSZEN</strong></td><td> =</td><td>0.01</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xsnowthrmcond1"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XSNOWTHRMCOND1</strong></td><td> =</td><td>0.02</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xsnowthrmcond2"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XSNOWTHRMCOND2</strong></td><td> =</td><td>2.5E-6</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xsnowthrmcond_avap"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XSNOWTHRMCOND_AVAP</strong></td><td> =</td><td>-0.06023</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xsnowthrmcond_bvap"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XSNOWTHRMCOND_BVAP</strong></td><td> =</td><td>-2.5425</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xsnowthrmcond_cvap"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XSNOWTHRMCOND_CVAP</strong></td><td> =</td><td>-289.99</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xvrkz6"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XVRKZ6</strong></td><td> =</td><td>1.88</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xsnowfall_a_sn"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XSNOWFALL_A_SN</strong></td><td> =</td><td>109.0</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xsnowfall_b_sn"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XSNOWFALL_B_SN</strong></td><td> =</td><td>6.0</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xsnowfall_c_sn"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XSNOWFALL_C_SN</strong></td><td> =</td><td>26.0</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xdz1"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XDZ1</strong></td><td> =</td><td>0.01</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xdz2"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XDZ2</strong></td><td> =</td><td>0.0125</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xdz3"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XDZ3</strong></td><td> =</td><td>0.015</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xdz3_bis"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XDZ3_BIS</strong></td><td> =</td><td>0.03</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xdz4"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XDZ4</strong></td><td> =</td><td>0.04</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xdz5"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XDZ5</strong></td><td> =</td><td>0.05</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xdz_base"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XDZ_BASE</strong></td><td> =</td><td>0.02</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xdz_internal"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XDZ_INTERNAL</strong></td><td> =</td><td>0.07</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xscale_cm"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XSCALE_CM</strong></td><td> =</td><td>100.</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xdzmax_internal"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter, DIMENSION(5)</td><td>::</td>
+  <td><strong>XDZMAX_INTERNAL</strong></td><td> =</td><td>(/0.5, 1., 2., 4., 10./)</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xdzmin_top_extrem"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XDZMIN_TOP_EXTREM</strong></td><td> =</td><td>0.0001</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xsnowfall_threshold"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XSNOWFALL_THRESHOLD</strong></td><td> =</td><td>0.0333/3600.</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xratio_newlayer"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XRATIO_NEWLAYER</strong></td><td> =</td><td>0.1</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xdepth_threshold1"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XDEPTH_THRESHOLD1</strong></td><td> =</td><td>3.</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xdepth_threshold2"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XDEPTH_THRESHOLD2</strong></td><td> =</td><td>20.</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xdepth_surface"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XDEPTH_SURFACE</strong></td><td> =</td><td>3.</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xdiff_1"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XDIFF_1</strong></td><td> =</td><td>20.</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xdiff_max"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XDIFF_MAX</strong></td><td> =</td><td>200.</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xscale_diff"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XSCALE_DIFF</strong></td><td> =</td><td>25.</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xdzmin_top"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XDZMIN_TOP</strong></td><td> =</td><td>0.01</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xdzmin_top_bis"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XDZMIN_TOP_BIS</strong></td><td> =</td><td>0.005</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xdzmin_bot"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XDZMIN_BOT</strong></td><td> =</td><td>0.02</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xsplit_coef"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XSPLIT_COEF</strong></td><td> =</td><td>8.</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xagreg_coef_1"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XAGREG_COEF_1</strong></td><td> =</td><td>5.</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xagreg_coef_2"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XAGREG_COEF_2</strong></td><td> =</td><td>4.5</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xvtime"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XVTIME</strong></td><td> =</td><td>48*3600.</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xvromax"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XVROMAX</strong></td><td> =</td><td>350.</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xvromin"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XVROMIN</strong></td><td> =</td><td>50.</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xvmob1"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XVMOB1</strong></td><td> =</td><td>0.295</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xvmob2"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XVMOB2</strong></td><td> =</td><td>0.833</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xvmob3"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XVMOB3</strong></td><td> =</td><td>0.583</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xvmob4"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XVMOB4</strong></td><td> =</td><td>-0.0583</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xvdrift1"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XVDRIFT1</strong></td><td> =</td><td>2.868</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xvdrift2"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XVDRIFT2</strong></td><td> =</td><td>0.085</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xvdrift3"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XVDRIFT3</strong></td><td> =</td><td>3.25</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xvsizemin"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XVSIZEMIN</strong></td><td> =</td><td>3.E-4</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xcoef_ff"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XCOEF_FF</strong></td><td> =</td><td>1.25</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xcoef_effect"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XCOEF_EFFECT</strong></td><td> =</td><td>1.0</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xqs_ref"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XQS_REF</strong></td><td> =</td><td>2.E-5</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xsgcoef1"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter, DIMENSION(3)</td><td>::</td>
+  <td><strong>XSGCOEF1</strong></td><td> =</td><td>(/0.25, 0.50, 0.25/)</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xsgcoef2"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter, DIMENSION(2)</td><td>::</td>
+  <td><strong>XSGCOEF2</strong></td><td> =</td><td>(/0.05, 0.34/)</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xsgcoef3"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter, DIMENSION(10)</td><td>::</td>
+  <td><strong>XSGCOEF3</strong></td><td> =</td><td>(/0.025, 0.033, 0.043, 0.055, 0.071, 0.091, 0.117, 0.150, 0.193, 0.247/)</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xsnowtrans"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XSNOWTRANS</strong></td><td> =</td><td>0.20</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xsnowtrans1"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XSNOWTRANS1</strong></td><td> =</td><td>0.40</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xsnowtrans2"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XSNOWTRANS2</strong></td><td> =</td><td>0.6061</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xsnowtrans3"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XSNOWTRANS3</strong></td><td> =</td><td>0.7143</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xsnowtrans4"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XSNOWTRANS4</strong></td><td> =</td><td>0.9259</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xsnowtrans5"></span>real,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>XSNOWTRANS5</strong></td><td> =</td><td>1.4493</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-ifr"></span>integer,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>IFR</strong></td><td> =</td><td>0</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-ifr_lb"></span>integer,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>IFR_LB</strong></td><td> =</td><td>1</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-ilb"></span>integer,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>ILB</strong></td><td> =</td><td>2</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-ilb_fin"></span>integer,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>ILB_FIN</strong></td><td> =</td><td>3</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-ilb_ang"></span>integer,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>ILB_ANG</strong></td><td> =</td><td>4</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-iroul"></span>integer,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>IROUL</strong></td><td> =</td><td>5</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-ifin"></span>integer,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>IFIN</strong></td><td> =</td><td>6</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-ifin_ar"></span>integer,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>IFIN_AR</strong></td><td> =</td><td>7</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-ifin_ang"></span>integer,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>IFIN_ANG</strong></td><td> =</td><td>8</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-ipl"></span>integer,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>IPL</strong></td><td> =</td><td>9</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-ipl_gob"></span>integer,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>IPL_GOB</strong></td><td> =</td><td>10</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-igob"></span>integer,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>IGOB</strong></td><td> =</td><td>11</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-igel"></span>integer,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>IGEL</strong></td><td> =</td><td>12</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-igob_fon"></span>integer,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>IGOB_FON</strong></td><td> =</td><td>13</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-iron_ang"></span>integer,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>IRON_ANG</strong></td><td> =</td><td>14</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-icris_dend1d"></span>integer,</td>
+  
+  <td>public,</td>
+  <td>parameter, DIMENSION(100)</td><td>::</td>
+  <td><strong>ICRIS_DEND1D</strong></td><td> =</td><td>(/ILB_ANG, ILB_ANG, ILB_ANG, ILB, ILB, ILB, IFR_LB, IFR_LB, IFR, IFR, ILB_ANG, ILB_ANG, ILB_ANG, ILB, ILB, ILB, IFR_LB, IFR_LB, IFR, IFR, ILB_ANG, ILB_ANG, ILB_ANG, ILB, ILB, ILB, IFR_LB, IFR_LB, IFR, IFR, ILB_ANG, ILB_ANG, ILB_ANG, ILB, ILB, ILB, IFR_LB, IFR_LB, IFR, IFR, ILB_ANG, ILB_ANG, ILB_ANG, ILB, ILB, ILB, IFR_LB, IFR_LB, IFR, IFR, ILB_FIN, ILB_FIN, ILB_FIN, ILB, ILB, ILB, IFR_LB, IFR_LB, IFR, IFR, ILB_FIN, ILB_FIN, ILB_FIN, ILB, ILB, ILB, IFR_LB, IFR_LB, IFR, IFR, ILB_FIN, ILB_FIN, ILB_FIN, ILB, ILB, ILB, IFR_LB, IFR_LB, IFR, IFR, ILB_FIN, ILB_FIN, ILB_FIN, ILB, ILB, ILB, IFR_LB, IFR_LB, IFR, IFR, ILB_FIN, ILB_FIN, ILB_FIN, ILB, ILB, ILB, IFR_LB, IFR_LB, IFR, IFR/)</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-icris_nondend1d"></span>integer,</td>
+  
+  <td>public,</td>
+  <td>parameter, DIMENSION(180)</td><td>::</td>
+  <td><strong>ICRIS_NONDEND1D</strong></td><td> =</td><td>(/IPL, IPL, IFIN_ANG, IFIN_ANG, IFIN_ANG, IFIN_ANG, IFIN_ANG, IFIN_ANG, IFIN, IFIN, IPL, IPL, IFIN_ANG, IFIN_ANG, IFIN_ANG, IFIN_ANG, IFIN_ANG, IFIN_ANG, IFIN, IFIN, IPL, IPL, IFIN_ANG, IFIN_ANG, IFIN_ANG, IFIN_ANG, IFIN_ANG, IFIN_ANG, IFIN, IFIN, IPL, IPL, IFIN_ANG, IFIN_ANG, IFIN_ANG, IFIN_ANG, IFIN_ANG, IFIN_ANG, IFIN, IFIN, IPL_GOB, IPL_GOB, IPL_GOB, IPL_GOB, IPL_GOB, IGOB_FON, IGOB_FON, IGOB_FON, IGOB_FON, IGOB_FON, IGOB, IGOB, IGOB, IGOB, IGOB, IGOB_FON, IGOB_FON, IGOB_FON, IGOB_FON, IGOB_FON, IRON_ANG, IRON_ANG, IRON_ANG, IRON_ANG, IRON_ANG, IFIN_AR, IFIN_AR, IFIN_AR, IFIN_AR, IFIN_AR, IRON_ANG, IRON_ANG, IRON_ANG, IRON_ANG, IRON_ANG, IGEL, IGEL, IGEL, IGEL, IGEL, IRON_ANG, IRON_ANG, IRON_ANG, IRON_ANG, IRON_ANG, IGEL, IGEL, IGEL, IGEL, IGEL, IRON_ANG, IRON_ANG, IRON_ANG, IRON_ANG, IRON_ANG, IGOB_FON, IGOB_FON, IGOB_FON, IGOB_FON, IGOB_FON, IRON_ANG, IRON_ANG, IRON_ANG, IRON_ANG, IRON_ANG, IGOB_FON, IGOB_FON, IGOB_FON, IGOB_FON, IGOB_FON, IRON_ANG, IRON_ANG, IRON_ANG, IRON_ANG, IRON_ANG, IGOB_FON, IGOB_FON, IGOB_FON, IGOB_FON, IGOB_FON, IRON_ANG, IRON_ANG, IRON_ANG, IRON_ANG, IRON_ANG, IFIN_AR, IFIN_AR, IFIN_AR, IFIN_AR, IFIN_AR, IRON_ANG, IRON_ANG, IRON_ANG, IRON_ANG, IRON_ANG, IGEL, IGEL, IGEL, IGEL, IGEL, IRON_ANG, IRON_ANG, IRON_ANG, IRON_ANG, IRON_ANG, IGEL, IGEL, IGEL, IGEL, IGEL, IRON_ANG, IRON_ANG, IRON_ANG, IRON_ANG, IRON_ANG, IGOB_FON, IGOB_FON, IGOB_FON, IGOB_FON, IGOB_FON, IRON_ANG, IRON_ANG, IRON_ANG, IRON_ANG, IRON_ANG, IGOB_FON, IGOB_FON, IGOB_FON, IGOB_FON, IGOB_FON, IRON_ANG, IRON_ANG, IRON_ANG, IRON_ANG, IRON_ANG, IGOB_FON, IGOB_FON, IGOB_FON, IGOB_FON, IGOB_FON/)</td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+    </section>
+    <br>
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+
+    
+    
+    
+    </div>
+  </div>
+
+  
+    <hr>    
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+      <div class="row">
+        <div class="col-xs-6 col-md-6"><p>Town Energy Balance (TEB) model API docs was developed by teb-model<br>&copy; 2021 CeCILL
+                                          </p>
+        </div>
+        <div class="col-xs-6 col-md-6">
+          <p class="text-right">
+            Documentation generated by 
+            <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+            
+            
+          </p>
+        </div>
+      </div>
+      <br>
+      </div> <!-- /container -->    
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+<!--
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+-->
+    <script src="../js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../js/ie10-viewport-bug-workaround.js"></script>
+
+    <!-- MathJax JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+        jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+        extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+      });
+    </script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    
+    <script src="../tipuesearch/tipuesearch_content.js"></script>
+    <script src="../tipuesearch/tipuesearch_set.js"></script>
+    <script src="../tipuesearch/tipuesearch.js"></script>
+    
+    
+  </body>
+</html>

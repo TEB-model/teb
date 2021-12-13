@@ -1,0 +1,1905 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   
+   <meta name="description" content="The Town Energy Balance (TEB) model is an urban land surface model developed to calculate the exchange of energy and water between cities and atmosphere.">
+    
+    <meta name="author" content="teb-model" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>ISBA_OPTIONS_t &ndash; Town Energy Balance (TEB) model API docs </title>
+
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+    
+    <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+    
+    
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <script src="../js/jquery-2.1.3.min.js"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../index.html">Town Energy Balance (TEB) model API docs </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+        
+            <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
+              <a href="#" class="dropdown-toggle"
+              data-toggle="dropdown" role="button"
+              aria-haspopup="true"
+     aria-expanded="false">Contents <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          
+              
+            <li><a href="../lists/files.html">Source Files</a></li>
+        
+        
+        
+            <li><a href="../lists/modules.html">Modules</a></li>
+        
+            
+                                
+            <li><a href="../lists/procedures.html">Procedures</a></li>
+        
+               
+            <li><a href="../lists/types.html">Derived Types</a></li>
+        
+        
+            <li><a href="../program/driver.html">Program</a></li>
+               
+        
+        
+            </ul>
+        
+            </li>
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/files.html">Source Files</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
+
+                             
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/types.html">Derived Types</a></li>
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../program/driver.html">Program</a></li>
+
+
+
+          </ul>
+        
+        <form action="../search.html" class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+        </div>
+<!--
+        <button type="submit" class="btn btn-default">Submit</button>
+-->
+        </form>
+        
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+    
+  
+  <div class="row">
+    <h1>ISBA_OPTIONS_t
+    <small>Derived Type</small>
+    
+    </h1>
+    
+<div class="row">
+  <div class="col-lg-12">
+<div class="well well-sm">
+  <ul class="list-inline" style="margin-bottom:0px;display:inline">
+     
+     
+     
+    <li><i class="fa fa-legal"></i> CeCILL</li> 
+     
+     
+     
+    
+    
+     <li><i class="fa fa-list-ol"></i>
+       <a data-toggle="tooltip"
+    data-placement="bottom" data-html="true"
+    title="<p> 4.2% of total for derived types.</p>Including implementation: 75 statements,  4.2% of total for derived types.">75 statements</a>
+     </li> 
+     
+     
+     
+    <li><i class="fa fa-code"></i><a href="../src/modd_isba_optionsn.F90"> Source File</a></li>
+     
+     
+  </ul>
+  <ol class="breadcrumb in-well text-right">
+  
+    
+     <li><a href='../sourcefile/modd_isba_optionsn.f90.html'>modd_isba_optionsn.F90</a></li>
+    
+     <li><a href='../module/modd_isba_options_n.html'>MODD_ISBA_OPTIONS_n</a></li>
+    
+  
+     <li class="active">ISBA_OPTIONS_t</li>
+  </ol>
+</div>
+</div>
+</div>
+<script>
+  $(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+  })
+</script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+    
+<div id="sidebar">
+  
+<h3>Contents</h3>
+ 
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#vars-0">Variables</a></h3></div>
+  <div id="vars-0" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-lecoclimap~3">LECOCLIMAP</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-lpar">LPAR</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-npatch">NPATCH</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-nground_layer">NGROUND_LAYER</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-cisba">CISBA</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-cpedotf">CPEDOTF</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-cphoto">CPHOTO</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-xsoilgrid">XSOILGRID</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-ltr_ml">LTR_ML</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-xrm_patch">XRM_PATCH</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-lsocp">LSOCP</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-lcti">LCTI</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-lperm">LPERM</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-lnof">LNOF</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-ctype_hveg">CTYPE_HVEG</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-ctype_lveg">CTYPE_LVEG</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-ctype_nveg">CTYPE_NVEG</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-ctyp_cov">CTYP_COV</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-nnbiomass">NNBIOMASS</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-nnlitter">NNLITTER</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-nnlittlevs">NNLITTLEVS</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-nnsoilcarb">NNSOILCARB</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-lmeb_patch">LMEB_PATCH</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-lforc_measure">LFORC_MEASURE</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-lmeb_litter">LMEB_LITTER</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-lmeb_gndres">LMEB_GNDRES</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-lcanopy~2">LCANOPY</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-crespsl">CRESPSL</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-cc1dry">CC1DRY</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-cscond">CSCOND</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-csoilfrz">CSOILFRZ</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-cdifsfcond">CDIFSFCOND</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-csnowres">CSNOWRES</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-calbedo">CALBEDO</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-ccpsurf">CCPSURF</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-xout_tstep~5">XOUT_TSTEP</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-xtstep~4">XTSTEP</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-xcgmax">XCGMAX</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-xcdrag">XCDRAG</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-lglacier">LGLACIER</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-lcanopy_drag">LCANOPY_DRAG</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-lvegupd">LVEGUPD</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-lpertsurf">LPERTSURF</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-nlayer_hort">NLAYER_HORT</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-nlayer_dun">NLAYER_DUN</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-crunoff">CRUNOFF</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-cksat">CKSAT</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-lsoc">LSOC</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-crain">CRAIN</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-chort">CHORT</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-lnitro_dilu">LNITRO_DILU</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-lspinupcarbs">LSPINUPCARBS</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-lspinupcarbw">LSPINUPCARBW</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-xspinmaxs">XSPINMAXS</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-xspinmaxw">XSPINMAXW</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-xco2_start">XCO2_START</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-xco2_end">XCO2_END</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-nnbyearspins">NNBYEARSPINS</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-nnbyearspinw">NNBYEARSPINW</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-nnbyearsold">NNBYEARSOLD</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-nspins">NSPINS</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-nspinw">NSPINW</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-lagri_to_grass">LAGRI_TO_GRASS</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-lsnowdrift">LSNOWDRIFT</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-lsnowdrift_sublim">LSNOWDRIFT_SUBLIM</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-lsnow_abs_zenith">LSNOW_ABS_ZENITH</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-csnowmetamo">CSNOWMETAMO</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-csnowrad">CSNOWRAD</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-lflood">LFLOOD</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-lwtd">LWTD</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-lcpl_rrm">LCPL_RRM</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-ltemp_arp">LTEMP_ARP</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-ntemplayer_arp">NTEMPLAYER_ARP</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-xsodelx">XSODELX</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+  <div class="list-group">
+    <a class="list-group-item" href="../type/isba_options_t.html#src">ISBA_OPTIONS_t</a>
+  </div>
+</div>
+
+
+
+</div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+      <h2>type, public :: ISBA_OPTIONS_t</h2>
+    
+    
+    
+    
+    <br>
+
+    <section class="visible-xs visible-sm hidden-md">
+      
+<h3>Contents</h3>
+ 
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#vars-1">Variables</a></h3></div>
+  <div id="vars-1" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-lecoclimap~3">LECOCLIMAP</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-lpar">LPAR</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-npatch">NPATCH</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-nground_layer">NGROUND_LAYER</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-cisba">CISBA</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-cpedotf">CPEDOTF</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-cphoto">CPHOTO</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-xsoilgrid">XSOILGRID</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-ltr_ml">LTR_ML</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-xrm_patch">XRM_PATCH</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-lsocp">LSOCP</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-lcti">LCTI</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-lperm">LPERM</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-lnof">LNOF</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-ctype_hveg">CTYPE_HVEG</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-ctype_lveg">CTYPE_LVEG</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-ctype_nveg">CTYPE_NVEG</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-ctyp_cov">CTYP_COV</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-nnbiomass">NNBIOMASS</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-nnlitter">NNLITTER</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-nnlittlevs">NNLITTLEVS</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-nnsoilcarb">NNSOILCARB</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-lmeb_patch">LMEB_PATCH</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-lforc_measure">LFORC_MEASURE</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-lmeb_litter">LMEB_LITTER</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-lmeb_gndres">LMEB_GNDRES</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-lcanopy~2">LCANOPY</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-crespsl">CRESPSL</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-cc1dry">CC1DRY</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-cscond">CSCOND</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-csoilfrz">CSOILFRZ</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-cdifsfcond">CDIFSFCOND</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-csnowres">CSNOWRES</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-calbedo">CALBEDO</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-ccpsurf">CCPSURF</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-xout_tstep~5">XOUT_TSTEP</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-xtstep~4">XTSTEP</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-xcgmax">XCGMAX</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-xcdrag">XCDRAG</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-lglacier">LGLACIER</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-lcanopy_drag">LCANOPY_DRAG</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-lvegupd">LVEGUPD</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-lpertsurf">LPERTSURF</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-nlayer_hort">NLAYER_HORT</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-nlayer_dun">NLAYER_DUN</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-crunoff">CRUNOFF</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-cksat">CKSAT</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-lsoc">LSOC</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-crain">CRAIN</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-chort">CHORT</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-lnitro_dilu">LNITRO_DILU</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-lspinupcarbs">LSPINUPCARBS</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-lspinupcarbw">LSPINUPCARBW</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-xspinmaxs">XSPINMAXS</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-xspinmaxw">XSPINMAXW</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-xco2_start">XCO2_START</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-xco2_end">XCO2_END</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-nnbyearspins">NNBYEARSPINS</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-nnbyearspinw">NNBYEARSPINW</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-nnbyearsold">NNBYEARSOLD</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-nspins">NSPINS</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-nspinw">NSPINW</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-lagri_to_grass">LAGRI_TO_GRASS</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-lsnowdrift">LSNOWDRIFT</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-lsnowdrift_sublim">LSNOWDRIFT_SUBLIM</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-lsnow_abs_zenith">LSNOW_ABS_ZENITH</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-csnowmetamo">CSNOWMETAMO</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-csnowrad">CSNOWRAD</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-lflood">LFLOOD</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-lwtd">LWTD</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-lcpl_rrm">LCPL_RRM</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-ltemp_arp">LTEMP_ARP</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-ntemplayer_arp">NTEMPLAYER_ARP</a>
+      
+      <a class="list-group-item" href="../type/isba_options_t.html#variable-xsodelx">XSODELX</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+  <div class="list-group">
+    <a class="list-group-item" href="../type/isba_options_t.html#src">ISBA_OPTIONS_t</a>
+  </div>
+</div>
+
+
+
+    </section>
+    <br class="visible-xs visible-sm hidden-md">
+
+    
+    <section>
+    <h2>Components</h2>
+    
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th><th>Visibility</th>
+
+<th>Attributes</th><th></th><th>Name</th><th></th><th>Initial</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-lecoclimap~3"></span>logical,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>LECOCLIMAP</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-lpar"></span>logical,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>LPAR</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-npatch"></span>integer,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>NPATCH</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-nground_layer"></span>integer,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>NGROUND_LAYER</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-cisba"></span>character(len=3),</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>CISBA</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-cpedotf"></span>character(len=4),</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>CPEDOTF</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-cphoto"></span>character(len=3),</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>CPHOTO</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xsoilgrid"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XSOILGRID</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-ltr_ml"></span>logical,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>LTR_ML</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xrm_patch"></span>real,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>XRM_PATCH</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-lsocp"></span>logical,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>LSOCP</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-lcti"></span>logical,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>LCTI</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-lperm"></span>logical,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>LPERM</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-lnof"></span>logical,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>LNOF</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-ctype_hveg"></span>character(len=4),</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>CTYPE_HVEG</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-ctype_lveg"></span>character(len=4),</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>CTYPE_LVEG</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-ctype_nveg"></span>character(len=4),</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>CTYPE_NVEG</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-ctyp_cov"></span>character(len=5),</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>CTYP_COV</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-nnbiomass"></span>integer,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>NNBIOMASS</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-nnlitter"></span>integer,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>NNLITTER</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-nnlittlevs"></span>integer,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>NNLITTLEVS</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-nnsoilcarb"></span>integer,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>NNSOILCARB</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-lmeb_patch"></span>logical,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>LMEB_PATCH</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-lforc_measure"></span>logical,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>LFORC_MEASURE</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-lmeb_litter"></span>logical,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>LMEB_LITTER</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-lmeb_gndres"></span>logical,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>LMEB_GNDRES</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-lcanopy~2"></span>logical,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>LCANOPY</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-crespsl"></span>character(len=3),</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>CRESPSL</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-cc1dry"></span>character(len=4),</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>CC1DRY</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-cscond"></span>character(len=4),</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>CSCOND</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-csoilfrz"></span>character(len=3),</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>CSOILFRZ</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-cdifsfcond"></span>character(len=4),</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>CDIFSFCOND</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-csnowres"></span>character(len=3),</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>CSNOWRES</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-calbedo"></span>character(len=4),</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>CALBEDO</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-ccpsurf"></span>character(len=3),</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>CCPSURF</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xout_tstep~5"></span>real,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>XOUT_TSTEP</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xtstep~4"></span>real,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>XTSTEP</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xcgmax"></span>real,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>XCGMAX</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xcdrag"></span>real,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>XCDRAG</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-lglacier"></span>logical,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>LGLACIER</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-lcanopy_drag"></span>logical,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>LCANOPY_DRAG</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-lvegupd"></span>logical,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>LVEGUPD</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-lpertsurf"></span>logical,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>LPERTSURF</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-nlayer_hort"></span>integer,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>NLAYER_HORT</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-nlayer_dun"></span>integer,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>NLAYER_DUN</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-crunoff"></span>character(len=4),</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>CRUNOFF</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-cksat"></span>character(len=3),</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>CKSAT</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-lsoc"></span>logical,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>LSOC</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-crain"></span>character(len=3),</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>CRAIN</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-chort"></span>character(len=3),</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>CHORT</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-lnitro_dilu"></span>logical,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>LNITRO_DILU</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-lspinupcarbs"></span>logical,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>LSPINUPCARBS</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-lspinupcarbw"></span>logical,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>LSPINUPCARBW</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xspinmaxs"></span>real,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>XSPINMAXS</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xspinmaxw"></span>real,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>XSPINMAXW</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xco2_start"></span>real,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>XCO2_START</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xco2_end"></span>real,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>XCO2_END</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-nnbyearspins"></span>integer,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>NNBYEARSPINS</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-nnbyearspinw"></span>integer,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>NNBYEARSPINW</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-nnbyearsold"></span>integer,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>NNBYEARSOLD</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-nspins"></span>integer,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>NSPINS</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-nspinw"></span>integer,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>NSPINW</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-lagri_to_grass"></span>logical,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>LAGRI_TO_GRASS</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-lsnowdrift"></span>logical,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>LSNOWDRIFT</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-lsnowdrift_sublim"></span>logical,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>LSNOWDRIFT_SUBLIM</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-lsnow_abs_zenith"></span>logical,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>LSNOW_ABS_ZENITH</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-csnowmetamo"></span>character(len=3),</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>CSNOWMETAMO</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-csnowrad"></span>character(len=3),</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>CSNOWRAD</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-lflood"></span>logical,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>LFLOOD</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-lwtd"></span>logical,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>LWTD</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-lcpl_rrm"></span>logical,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>LCPL_RRM</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-ltemp_arp"></span>logical,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>LTEMP_ARP</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-ntemplayer_arp"></span>integer,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>NTEMPLAYER_ARP</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xsodelx"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XSODELX</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+    </section>
+    <br>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <section>
+    <h3><span class="anchor" id="src"></span>Source Code</h3>
+    <div class="highlight"><pre><span></span><span class="k">TYPE </span><span class="n">ISBA_OPTIONS_t</span>
+<span class="c">!</span>
+<span class="c">! *  General PGD options</span>
+<span class="c">!</span>
+<span class="kt">LOGICAL</span> <span class="kd">::</span> <span class="n">LECOCLIMAP</span>         <span class="c">! T: parameters computed from ecoclimap</span>
+<span class="c">!                             ! F: they are read in the file</span>
+<span class="c">!</span>
+<span class="kt">LOGICAL</span> <span class="kd">::</span> <span class="n">LPAR</span>               <span class="c">! T: parameters computed from ecoclimap</span>
+<span class="c">!                             ! F: they are read in the file</span>
+<span class="c">!</span>
+<span class="kt">INTEGER</span> <span class="kd">::</span> <span class="n">NPATCH</span>             <span class="c">! maximum number of sub-tiles (patches)</span>
+<span class="c">!                             ! used at any grid point within a </span>
+<span class="c">!                             ! natural surface fraction</span>
+<span class="kt">INTEGER</span> <span class="kd">::</span> <span class="n">NGROUND_LAYER</span>      <span class="c">! number of ground layers</span>
+<span class="c">!</span>
+ <span class="kt">CHARACTER</span><span class="p">(</span><span class="nb">LEN</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span> <span class="kd">::</span> <span class="n">CISBA</span>    <span class="c">! type of ISBA version:</span>
+<span class="c">!                             ! &#39;2-L&#39; (default)</span>
+<span class="c">!                             ! &#39;3-L&#39;</span>
+<span class="c">!                             ! &#39;DIF&#39;</span>
+ <span class="kt">CHARACTER</span><span class="p">(</span><span class="nb">LEN</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span> <span class="kd">::</span> <span class="n">CPEDOTF</span>  <span class="c">! NOTE: Only used when HISBA = DIF</span>
+<span class="c">!                             ! &#39;CH78&#39; = Clapp and Hornberger 1978 for BC (Default)</span>
+<span class="c">!                             ! &#39;CO84&#39; = Cosby et al. 1988 for BC</span>
+ <span class="kt">CHARACTER</span><span class="p">(</span><span class="nb">LEN</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span> <span class="kd">::</span> <span class="n">CPHOTO</span>   <span class="c">! type of photosynthesis</span>
+<span class="c">!                             ! &#39;NON&#39;</span>
+<span class="c">!                             ! &#39;AST&#39;</span>
+<span class="c">!                             ! &#39;NIT&#39;</span>
+<span class="c">!                             ! &#39;NCB&#39;</span>
+<span class="c">!</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>  <span class="kd">::</span> <span class="n">XSOILGRID</span>   <span class="c">! Soil layer grid as reference for DIF</span>
+<span class="c">!</span>
+<span class="kt">LOGICAL</span> <span class="kd">::</span> <span class="n">LTR_ML</span>             <span class="c">! new radiative transfert</span>
+<span class="c">!</span>
+<span class="kt">REAL</span> <span class="kd">::</span> <span class="n">XRM_PATCH</span>             <span class="c">! threshold to remove little fractions of patches </span>
+<span class="c">!</span>
+<span class="kt">LOGICAL</span> <span class="kd">::</span> <span class="n">LSOCP</span>              <span class="c">! Soil organic carbon profile data</span>
+<span class="kt">LOGICAL</span> <span class="kd">::</span> <span class="n">LCTI</span>               <span class="c">! Topographic index data</span>
+<span class="kt">LOGICAL</span> <span class="kd">::</span> <span class="n">LPERM</span>              <span class="c">! Permafrost distribution data</span>
+<span class="kt">LOGICAL</span> <span class="kd">::</span> <span class="n">LNOF</span>  
+<span class="c">!</span>
+<span class="c">! Type of vegetation (simplification of vegetation charaterization)</span>
+<span class="c">!</span>
+<span class="kt">CHARACTER</span><span class="p">(</span><span class="nb">LEN</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>             <span class="kd">::</span> <span class="n">CTYPE_HVEG</span>   <span class="c">! type of high vegetation</span>
+<span class="kt">CHARACTER</span><span class="p">(</span><span class="nb">LEN</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>             <span class="kd">::</span> <span class="n">CTYPE_LVEG</span>   <span class="c">! type of low vegetation</span>
+<span class="kt">CHARACTER</span><span class="p">(</span><span class="nb">LEN</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>             <span class="kd">::</span> <span class="n">CTYPE_NVEG</span>   <span class="c">! type of bare soil (no vegetation)</span>
+<span class="kt">CHARACTER</span><span class="p">(</span><span class="nb">LEN</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>             <span class="kd">::</span> <span class="n">CTYP_COV</span>     <span class="c">! type of green roof</span>
+<span class="c">!</span>
+<span class="c">! * AGS and Carbon PGD options</span>
+<span class="c">!</span>
+<span class="kt">INTEGER</span> <span class="kd">::</span> <span class="n">NNBIOMASS</span>    <span class="c">! number of biomass pools</span>
+<span class="kt">INTEGER</span> <span class="kd">::</span> <span class="n">NNLITTER</span>     <span class="c">! number of litter pools</span>
+<span class="kt">INTEGER</span> <span class="kd">::</span> <span class="n">NNLITTLEVS</span>   <span class="c">! number of litter levels</span>
+<span class="kt">INTEGER</span> <span class="kd">::</span> <span class="n">NNSOILCARB</span>   <span class="c">! number of soil carbon pools  </span>
+<span class="c">!</span>
+<span class="c">! * PGD MEB OPTIONS</span>
+<span class="c">!</span>
+<span class="kt">LOGICAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span> <span class="kd">::</span> <span class="n">LMEB_PATCH</span>  <span class="c">! Vector with T/F values</span>
+                                              <span class="c">! True = treat patch with multi-energy balance </span>
+                                              <span class="c">! False = treat patch with classical ISBA </span>
+<span class="kt">LOGICAL</span>                        <span class="kd">::</span> <span class="n">LFORC_MEASURE</span> <span class="c">! True = Forcing data from observations</span>
+<span class="c">!                                               ! False = Forcing data from atmospheric model (default)</span>
+<span class="kt">LOGICAL</span>                        <span class="kd">::</span> <span class="n">LMEB_LITTER</span> <span class="c">! Activate Litter</span>
+<span class="kt">LOGICAL</span>                        <span class="kd">::</span> <span class="n">LMEB_GNDRES</span> <span class="c">! Activate Ground Resistance</span>
+<span class="c">!</span>
+<span class="c">! * General PREP options</span>
+<span class="c">!</span>
+<span class="kt">LOGICAL</span> <span class="kd">::</span> <span class="n">LCANOPY</span> <span class="c">! T: SBL scheme within the canopy</span>
+<span class="c">!                  ! F: no atmospheric layers below forcing level</span>
+<span class="c">!</span>
+<span class="c">! * Carbon PREP options</span>
+ <span class="kt">CHARACTER</span><span class="p">(</span><span class="nb">LEN</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span> <span class="kd">::</span> <span class="n">CRESPSL</span>  <span class="c">! Soil respiration</span>
+<span class="c">!                             ! &#39;DEF&#39; = Default: Norman (1992)</span>
+<span class="c">!                             ! &#39;PRM&#39; = New Parameterization</span>
+<span class="c">!                             ! &#39;CNT&#39; = CENTURY model (Gibelin 2007)</span>
+<span class="c">!</span>
+<span class="c">!</span>
+<span class="c">! * General MODEL options</span>
+<span class="c">!</span>
+ <span class="kt">CHARACTER</span><span class="p">(</span><span class="nb">LEN</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span> <span class="kd">::</span> <span class="n">CC1DRY</span>   <span class="c">! C1 formulation for dry soils</span>
+<span class="c">!                             ! &#39;DEF &#39; = DEFault: Giard-Bazile formulation</span>
+<span class="c">!                             ! &#39;GB93&#39; = Giordani 1993, Braud 1993 </span>
+<span class="c">!                             ! discontinuous at WILT</span>
+ <span class="kt">CHARACTER</span><span class="p">(</span><span class="nb">LEN</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span> <span class="kd">::</span> <span class="n">CSCOND</span>   <span class="c">! Thermal conductivity</span>
+<span class="c">!                             ! &#39;DEF &#39; = DEFault: NP89 implicit method</span>
+<span class="c">!                             ! &#39;PL98&#39; = Peters-Lidard et al. 1998 used</span>
+<span class="c">!                             ! for explicit computation of CG</span>
+ <span class="kt">CHARACTER</span><span class="p">(</span><span class="nb">LEN</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span> <span class="kd">::</span> <span class="n">CSOILFRZ</span> <span class="c">! soil freezing-physics option</span>
+<span class="c">!                             ! &#39;DEF&#39; = Default (Boone et al. 2000; </span>
+<span class="c">!                             !        Giard and Bazile 2000)</span>
+<span class="c">!                             ! &#39;LWT&#39; = Phase changes as above,</span>
+<span class="c">!                             !         but relation between unfrozen </span>
+<span class="c">!                             !         water and temperature considered</span>
+ <span class="kt">CHARACTER</span><span class="p">(</span><span class="nb">LEN</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span> <span class="kd">::</span> <span class="n">CDIFSFCOND</span> <span class="c">! Mulch effects</span>
+<span class="c">!                               ! &#39;MLCH&#39; = include the insulating effect of</span>
+<span class="c">!                               ! leaf litter/mulch on the surf. thermal cond.</span>
+<span class="c">!                               ! &#39;DEF &#39; = no mulch effect</span>
+<span class="c">!                               NOTE: Only used when YISBA = DIF</span>
+ <span class="kt">CHARACTER</span><span class="p">(</span><span class="nb">LEN</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span> <span class="kd">::</span> <span class="n">CSNOWRES</span>   <span class="c">! Turbulent exchanges over snow</span>
+<span class="c">!                               ! &#39;DEF&#39; = Default: Louis (ISBA)</span>
+<span class="c">!                               ! &#39;RIL&#39; = Maximum Richardson number limit</span>
+<span class="c">!                               !         for stable conditions ISBA-SNOW3L</span>
+<span class="c">!                               !         turbulent exchange option</span>
+ <span class="kt">CHARACTER</span><span class="p">(</span><span class="nb">LEN</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span> <span class="kd">::</span> <span class="n">CALBEDO</span>    <span class="c">! albedo type</span>
+<span class="c">!                               ! &#39;DRY &#39; </span>
+<span class="c">!                               ! &#39;EVOL&#39; </span>
+<span class="c">!                               ! &#39;WET &#39; </span>
+<span class="c">!                               ! &#39;USER&#39; </span>
+<span class="c">!                            NOTE that when using the YISBA=&#39;DIF&#39; multi-layer soil option,</span>
+<span class="c">!                            the &#39;LWT&#39; method is used. It is only an option</span>
+<span class="c">!                            when using the force-restore soil method (&#39;2-L&#39; or &#39;3-L&#39;)</span>
+ <span class="kt">CHARACTER</span><span class="p">(</span><span class="nb">LEN</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span> <span class="kd">::</span> <span class="n">CCPSURF</span>    <span class="c">! specific heat at surface</span>
+<span class="c">!                               ! &#39;DRY&#39; = default value (dry Cp)</span>
+<span class="c">!                               ! &#39;HUM&#39; = Cp as a fct of specific humidity  </span>
+<span class="c">!</span>
+<span class="kt">REAL</span> <span class="kd">::</span> <span class="n">XOUT_TSTEP</span>              <span class="c">! ISBA output writing time step</span>
+<span class="kt">REAL</span> <span class="kd">::</span> <span class="n">XTSTEP</span>                  <span class="c">! ISBA time step</span>
+<span class="kt">REAL</span> <span class="kd">::</span> <span class="n">XCGMAX</span>                  <span class="c">! maximum soil heat capacity</span>
+<span class="kt">REAL</span> <span class="kd">::</span> <span class="n">XCDRAG</span>                  <span class="c">! drag coefficient in canopy</span>
+<span class="c">!</span>
+<span class="kt">LOGICAL</span> <span class="kd">::</span> <span class="n">LGLACIER</span>             <span class="c">! True = Over permanent snow and ice, </span>
+<span class="c">!                                 initialise WGI=WSAT,</span>
+<span class="c">!                                 Hsnow&gt;=10m and allow 0.8&lt;SNOALB&lt;0.85</span>
+                                <span class="c">! False = No specific treatment</span>
+<span class="kt">LOGICAL</span> <span class="kd">::</span> <span class="n">LCANOPY_DRAG</span>         <span class="c">! T: drag activated in SBL scheme within the canopy</span>
+<span class="c">!                               ! F: no drag activated in SBL atmospheric layers</span>
+<span class="kt">LOGICAL</span> <span class="kd">::</span> <span class="n">LVEGUPD</span>              <span class="c">! True = update vegetation parameters every decade</span>
+<span class="kt">LOGICAL</span> <span class="kd">::</span> <span class="n">LPERTSURF</span>            <span class="c">! True  = apply random perturbations for ensemble prediction</span>
+                                <span class="c">! False = no random perturbation (default)</span>
+<span class="c">!</span>
+<span class="c">!</span>
+<span class="c">! * SGH model options</span>
+<span class="c">!</span>
+<span class="c">! - Adjustable physical parameters</span>
+<span class="c">!</span>
+<span class="kt">INTEGER</span> <span class="kd">::</span> <span class="n">NLAYER_HORT</span>
+<span class="kt">INTEGER</span> <span class="kd">::</span> <span class="n">NLAYER_DUN</span>
+<span class="c">!</span>
+<span class="c">! - Sub-grid hydrology and vertical hydrology</span>
+<span class="c">!                                                     </span>
+ <span class="kt">CHARACTER</span><span class="p">(</span><span class="nb">LEN</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span> <span class="kd">::</span> <span class="n">CRUNOFF</span> <span class="c">! surface runoff formulation</span>
+<span class="c">!                            ! &#39;WSAT&#39;</span>
+<span class="c">!                            ! &#39;DT92&#39;</span>
+<span class="c">!                            ! &#39;SGH &#39; Topmodel</span>
+<span class="c">!                                                     </span>
+ <span class="kt">CHARACTER</span><span class="p">(</span><span class="nb">LEN</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span> <span class="kd">::</span> <span class="n">CKSAT</span>   <span class="c">! ksat</span>
+<span class="c">!                            ! &#39;DEF&#39; = default value </span>
+<span class="c">!                            ! &#39;SGH&#39; = profil exponentiel</span>
+<span class="c">!                                           </span>
+<span class="kt">LOGICAL</span> <span class="kd">::</span> <span class="n">LSOC</span>              <span class="c">! soil organic carbon effect</span>
+<span class="c">!                            ! False = default value </span>
+<span class="c">!                            ! True  = soil SOC profil</span>
+<span class="c">!</span>
+ <span class="kt">CHARACTER</span><span class="p">(</span><span class="nb">LEN</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span> <span class="kd">::</span> <span class="n">CRAIN</span>   <span class="c">! Rainfall spatial distribution</span>
+                             <span class="c">! &#39;DEF&#39; = No rainfall spatial distribution</span>
+                             <span class="c">! &#39;SGH&#39; = Rainfall exponential spatial distribution</span>
+                             <span class="c">! </span>
+<span class="c">!</span>
+ <span class="kt">CHARACTER</span><span class="p">(</span><span class="nb">LEN</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span> <span class="kd">::</span> <span class="n">CHORT</span>   <span class="c">! Horton runoff</span>
+                             <span class="c">! &#39;DEF&#39; = no Horton runoff</span>
+                             <span class="c">! &#39;SGH&#39; = Horton runoff</span>
+<span class="c">!</span>
+<span class="c">! * AGS and carbon options</span>
+<span class="c">!</span>
+<span class="kt">LOGICAL</span> <span class="kd">::</span> <span class="n">LNITRO_DILU</span>          <span class="c">! nitrogen dilution fct of CO2 (Calvet et al. 2008)</span>
+                                <span class="c">! False = keep vegetation parameters constant in time</span>
+<span class="c">!</span>
+<span class="kt">LOGICAL</span>  <span class="kd">::</span> <span class="n">LSPINUPCARBS</span>  <span class="c">! T: do the soil carb spinup, F: no</span>
+<span class="kt">LOGICAL</span>  <span class="kd">::</span> <span class="n">LSPINUPCARBW</span>  <span class="c">! T: do the wood carb spinup, F: no  </span>
+<span class="kt">REAL</span> <span class="kd">::</span> <span class="n">XSPINMAXS</span>         <span class="c">! max number of times CARBON_SOIL subroutine is</span>
+                          <span class="c">! called for each timestep in simulation during</span>
+                          <span class="c">! acceleration procedure number                             </span>
+<span class="kt">REAL</span> <span class="kd">::</span> <span class="n">XSPINMAXW</span>         <span class="c">! max number of times the wood is accelerated  </span>
+<span class="kt">REAL</span> <span class="kd">::</span> <span class="n">XCO2_START</span>        <span class="c">! Pre-industrial CO2 concentration</span>
+<span class="kt">REAL</span> <span class="kd">::</span> <span class="n">XCO2_END</span>          <span class="c">! Begin-transient CO2 concentration</span>
+<span class="kt">INTEGER</span> <span class="kd">::</span> <span class="n">NNBYEARSPINS</span>   <span class="c">! nbr years needed to reaches soil equilibrium </span>
+<span class="kt">INTEGER</span> <span class="kd">::</span> <span class="n">NNBYEARSPINW</span>   <span class="c">! nbr years needed to reaches wood equilibrium</span>
+<span class="kt">INTEGER</span> <span class="kd">::</span> <span class="n">NNBYEARSOLD</span>    <span class="c">! nbr years executed at curent time step</span>
+<span class="kt">INTEGER</span> <span class="kd">::</span> <span class="n">NSPINS</span>         <span class="c">! number of times the soil is accelerated</span>
+<span class="kt">INTEGER</span> <span class="kd">::</span> <span class="n">NSPINW</span>         <span class="c">! number of times the wood is accelerated</span>
+<span class="c">!</span>
+<span class="kt">LOGICAL</span> <span class="kd">::</span> <span class="n">LAGRI_TO_GRASS</span> <span class="c">! During soil carbon spinup with ISBA-CC, </span>
+                          <span class="c">! grass parameters are attributed to all agricultural PFT</span>
+<span class="c">!</span>
+<span class="c">! * Snow model options</span>
+<span class="c">!                                           </span>
+<span class="kt">LOGICAL</span> <span class="kd">::</span> <span class="n">LSNOWDRIFT</span><span class="p">,</span> <span class="n">LSNOWDRIFT_SUBLIM</span> <span class="c">! Logicals for snowdrift and sublimation</span>
+
+<span class="kt">LOGICAL</span> <span class="kd">::</span> <span class="n">LSNOW_ABS_ZENITH</span>  <span class="c">! if True modify solar absorption as a function of solar zenithal angle</span>
+                             <span class="c">! (physically wrong but better results in polar regions when CSNOWRAD=B92)</span>
+<span class="c">! Scheme of snow metamorphism (Crocus)</span>
+ <span class="kt">CHARACTER</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="kd">::</span> <span class="n">CSNOWMETAMO</span> <span class="c">! B92 (historical version, Brun et al 92), C13, T07, F06 (see Carmagnola et al 2014)</span>
+<span class="c">!</span>
+<span class="c">! radiative transfer scheme in snow (Crocus)</span>
+ <span class="kt">CHARACTER</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="kd">::</span> <span class="n">CSNOWRAD</span>    <span class="c">! B92 (historical version, Brun et al 92), TAR, TA1, TA2 (see Libois et al 2013)</span>
+<span class="c">!</span>
+<span class="c">! * Other options</span>
+<span class="c">!</span>
+<span class="kt">LOGICAL</span> <span class="kd">::</span> <span class="n">LFLOOD</span>       <span class="c">! Activation of the flooding scheme</span>
+<span class="kt">LOGICAL</span> <span class="kd">::</span> <span class="n">LWTD</span>         <span class="c">! Activation of Water table depth coupling</span>
+<span class="kt">LOGICAL</span> <span class="kd">::</span> <span class="n">LCPL_RRM</span>     <span class="c">! Activation of the coupling</span>
+<span class="c">!</span>
+<span class="kt">LOGICAL</span> <span class="kd">::</span> <span class="n">LTEMP_ARP</span>      <span class="c">! True  = time-varying force-restore soil temperature (as in ARPEGE)</span>
+                          <span class="c">! False = No time-varying force-restore soil temperature (Default</span>
+<span class="kt">INTEGER</span> <span class="kd">::</span> <span class="n">NTEMPLAYER_ARP</span> <span class="c">! Number of force-restore soil temperature layer, including Ts (Default = 4)</span>
+                          <span class="c">! Only used if LTEMP_ARP=True</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span> <span class="kd">::</span>  <span class="n">XSODELX</span>       <span class="c">! Pulsation for each layer (Only used if LTEMP_ARP=True)</span>
+<span class="c">!</span>
+<span class="k">END TYPE </span><span class="n">ISBA_OPTIONS_t</span>
+</pre></div>
+
+    </section>
+    
+    
+    </div>
+  </div>
+
+
+    <hr>    
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+      <div class="row">
+        <div class="col-xs-6 col-md-6"><p>Town Energy Balance (TEB) model API docs was developed by teb-model<br>&copy; 2021 CeCILL
+                                          </p>
+        </div>
+        <div class="col-xs-6 col-md-6">
+          <p class="text-right">
+            Documentation generated by 
+            <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+            
+            
+          </p>
+        </div>
+      </div>
+      <br>
+      </div> <!-- /container -->    
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+<!--
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+-->
+    <script src="../js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../js/ie10-viewport-bug-workaround.js"></script>
+
+    <!-- MathJax JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+        jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+        extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+      });
+    </script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    
+    <script src="../tipuesearch/tipuesearch_content.js"></script>
+    <script src="../tipuesearch/tipuesearch_set.js"></script>
+    <script src="../tipuesearch/tipuesearch.js"></script>
+    
+    
+  </body>
+</html>

@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   
+   <meta name="description" content="The Town Energy Balance (TEB) model is an urban land surface model developed to calculate the exchange of energy and water between cities and atmosphere.">
+    
+    <meta name="author" content="teb-model" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>WATFLUX_t &ndash; Town Energy Balance (TEB) model API docs </title>
+
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+    
+    <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+    
+    
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <script src="../js/jquery-2.1.3.min.js"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../index.html">Town Energy Balance (TEB) model API docs </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+        
+            <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
+              <a href="#" class="dropdown-toggle"
+              data-toggle="dropdown" role="button"
+              aria-haspopup="true"
+     aria-expanded="false">Contents <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          
+              
+            <li><a href="../lists/files.html">Source Files</a></li>
+        
+        
+        
+            <li><a href="../lists/modules.html">Modules</a></li>
+        
+            
+                                
+            <li><a href="../lists/procedures.html">Procedures</a></li>
+        
+               
+            <li><a href="../lists/types.html">Derived Types</a></li>
+        
+        
+            <li><a href="../program/driver.html">Program</a></li>
+               
+        
+        
+            </ul>
+        
+            </li>
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/files.html">Source Files</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
+
+                             
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/types.html">Derived Types</a></li>
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../program/driver.html">Program</a></li>
+
+
+
+          </ul>
+        
+        <form action="../search.html" class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+        </div>
+<!--
+        <button type="submit" class="btn btn-default">Submit</button>
+-->
+        </form>
+        
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+    
+  
+  <div class="row">
+    <h1>WATFLUX_t
+    <small>Derived Type</small>
+    
+    </h1>
+    
+<div class="row">
+  <div class="col-lg-12">
+<div class="well well-sm">
+  <ul class="list-inline" style="margin-bottom:0px;display:inline">
+     
+     
+     
+    <li><i class="fa fa-legal"></i> CeCILL</li> 
+     
+     
+     
+    
+    
+     <li><i class="fa fa-list-ol"></i>
+       <a data-toggle="tooltip"
+    data-placement="bottom" data-html="true"
+    title="<p> 1.8% of total for derived types.</p>Including implementation: 33 statements,  1.8% of total for derived types.">33 statements</a>
+     </li> 
+     
+     
+     
+    <li><i class="fa fa-code"></i><a href="../src/modd_watfluxn.F90"> Source File</a></li>
+     
+     
+  </ul>
+  <ol class="breadcrumb in-well text-right">
+  
+    
+     <li><a href='../sourcefile/modd_watfluxn.f90.html'>modd_watfluxn.F90</a></li>
+    
+     <li><a href='../module/modd_watflux_n.html'>MODD_WATFLUX_n</a></li>
+    
+  
+     <li class="active">WATFLUX_t</li>
+  </ol>
+</div>
+</div>
+</div>
+<script>
+  $(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+  })
+</script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+    
+<div id="sidebar">
+  
+<h3>Contents</h3>
+ 
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#vars-0">Variables</a></h3></div>
+  <div id="vars-0" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../type/watflux_t.html#variable-xzs~4">XZS</a>
+      
+      <a class="list-group-item" href="../type/watflux_t.html#variable-xcover~4">XCOVER</a>
+      
+      <a class="list-group-item" href="../type/watflux_t.html#variable-lcover~4">LCOVER</a>
+      
+      <a class="list-group-item" href="../type/watflux_t.html#variable-lsbl~2">LSBL</a>
+      
+      <a class="list-group-item" href="../type/watflux_t.html#variable-cwat_alb">CWAT_ALB</a>
+      
+      <a class="list-group-item" href="../type/watflux_t.html#variable-linterpol_ts">LINTERPOL_TS</a>
+      
+      <a class="list-group-item" href="../type/watflux_t.html#variable-cinterpol_ts">CINTERPOL_TS</a>
+      
+      <a class="list-group-item" href="../type/watflux_t.html#variable-xts~3">XTS</a>
+      
+      <a class="list-group-item" href="../type/watflux_t.html#variable-xtice">XTICE</a>
+      
+      <a class="list-group-item" href="../type/watflux_t.html#variable-xz0~4">XZ0</a>
+      
+      <a class="list-group-item" href="../type/watflux_t.html#variable-xemis~3">XEMIS</a>
+      
+      <a class="list-group-item" href="../type/watflux_t.html#variable-xdir_alb~2">XDIR_ALB</a>
+      
+      <a class="list-group-item" href="../type/watflux_t.html#variable-xsca_alb~2">XSCA_ALB</a>
+      
+      <a class="list-group-item" href="../type/watflux_t.html#variable-xice_alb~2">XICE_ALB</a>
+      
+      <a class="list-group-item" href="../type/watflux_t.html#variable-xts_mth">XTS_MTH</a>
+      
+      <a class="list-group-item" href="../type/watflux_t.html#variable-xcpl_water_wind">XCPL_WATER_WIND</a>
+      
+      <a class="list-group-item" href="../type/watflux_t.html#variable-xcpl_water_fwsu">XCPL_WATER_FWSU</a>
+      
+      <a class="list-group-item" href="../type/watflux_t.html#variable-xcpl_water_fwsv">XCPL_WATER_FWSV</a>
+      
+      <a class="list-group-item" href="../type/watflux_t.html#variable-xcpl_water_snet">XCPL_WATER_SNET</a>
+      
+      <a class="list-group-item" href="../type/watflux_t.html#variable-xcpl_water_heat">XCPL_WATER_HEAT</a>
+      
+      <a class="list-group-item" href="../type/watflux_t.html#variable-xcpl_water_evap">XCPL_WATER_EVAP</a>
+      
+      <a class="list-group-item" href="../type/watflux_t.html#variable-xcpl_water_rain">XCPL_WATER_RAIN</a>
+      
+      <a class="list-group-item" href="../type/watflux_t.html#variable-xcpl_water_snow">XCPL_WATER_SNOW</a>
+      
+      <a class="list-group-item" href="../type/watflux_t.html#variable-xcpl_water_fwsm">XCPL_WATER_FWSM</a>
+      
+      <a class="list-group-item" href="../type/watflux_t.html#variable-xcpl_waterice_snet">XCPL_WATERICE_SNET</a>
+      
+      <a class="list-group-item" href="../type/watflux_t.html#variable-xcpl_waterice_heat">XCPL_WATERICE_HEAT</a>
+      
+      <a class="list-group-item" href="../type/watflux_t.html#variable-xcpl_waterice_evap">XCPL_WATERICE_EVAP</a>
+      
+      <a class="list-group-item" href="../type/watflux_t.html#variable-ttime~4">TTIME</a>
+      
+      <a class="list-group-item" href="../type/watflux_t.html#variable-tztime">TZTIME</a>
+      
+      <a class="list-group-item" href="../type/watflux_t.html#variable-xtstep~5">XTSTEP</a>
+      
+      <a class="list-group-item" href="../type/watflux_t.html#variable-xout_tstep~6">XOUT_TSTEP</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+  <div class="list-group">
+    <a class="list-group-item" href="../type/watflux_t.html#src">WATFLUX_t</a>
+  </div>
+</div>
+
+
+
+</div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+      <h2>type, public :: WATFLUX_t</h2>
+    
+    
+    
+    
+    <br>
+
+    <section class="visible-xs visible-sm hidden-md">
+      
+<h3>Contents</h3>
+ 
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#vars-1">Variables</a></h3></div>
+  <div id="vars-1" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../type/watflux_t.html#variable-xzs~4">XZS</a>
+      
+      <a class="list-group-item" href="../type/watflux_t.html#variable-xcover~4">XCOVER</a>
+      
+      <a class="list-group-item" href="../type/watflux_t.html#variable-lcover~4">LCOVER</a>
+      
+      <a class="list-group-item" href="../type/watflux_t.html#variable-lsbl~2">LSBL</a>
+      
+      <a class="list-group-item" href="../type/watflux_t.html#variable-cwat_alb">CWAT_ALB</a>
+      
+      <a class="list-group-item" href="../type/watflux_t.html#variable-linterpol_ts">LINTERPOL_TS</a>
+      
+      <a class="list-group-item" href="../type/watflux_t.html#variable-cinterpol_ts">CINTERPOL_TS</a>
+      
+      <a class="list-group-item" href="../type/watflux_t.html#variable-xts~3">XTS</a>
+      
+      <a class="list-group-item" href="../type/watflux_t.html#variable-xtice">XTICE</a>
+      
+      <a class="list-group-item" href="../type/watflux_t.html#variable-xz0~4">XZ0</a>
+      
+      <a class="list-group-item" href="../type/watflux_t.html#variable-xemis~3">XEMIS</a>
+      
+      <a class="list-group-item" href="../type/watflux_t.html#variable-xdir_alb~2">XDIR_ALB</a>
+      
+      <a class="list-group-item" href="../type/watflux_t.html#variable-xsca_alb~2">XSCA_ALB</a>
+      
+      <a class="list-group-item" href="../type/watflux_t.html#variable-xice_alb~2">XICE_ALB</a>
+      
+      <a class="list-group-item" href="../type/watflux_t.html#variable-xts_mth">XTS_MTH</a>
+      
+      <a class="list-group-item" href="../type/watflux_t.html#variable-xcpl_water_wind">XCPL_WATER_WIND</a>
+      
+      <a class="list-group-item" href="../type/watflux_t.html#variable-xcpl_water_fwsu">XCPL_WATER_FWSU</a>
+      
+      <a class="list-group-item" href="../type/watflux_t.html#variable-xcpl_water_fwsv">XCPL_WATER_FWSV</a>
+      
+      <a class="list-group-item" href="../type/watflux_t.html#variable-xcpl_water_snet">XCPL_WATER_SNET</a>
+      
+      <a class="list-group-item" href="../type/watflux_t.html#variable-xcpl_water_heat">XCPL_WATER_HEAT</a>
+      
+      <a class="list-group-item" href="../type/watflux_t.html#variable-xcpl_water_evap">XCPL_WATER_EVAP</a>
+      
+      <a class="list-group-item" href="../type/watflux_t.html#variable-xcpl_water_rain">XCPL_WATER_RAIN</a>
+      
+      <a class="list-group-item" href="../type/watflux_t.html#variable-xcpl_water_snow">XCPL_WATER_SNOW</a>
+      
+      <a class="list-group-item" href="../type/watflux_t.html#variable-xcpl_water_fwsm">XCPL_WATER_FWSM</a>
+      
+      <a class="list-group-item" href="../type/watflux_t.html#variable-xcpl_waterice_snet">XCPL_WATERICE_SNET</a>
+      
+      <a class="list-group-item" href="../type/watflux_t.html#variable-xcpl_waterice_heat">XCPL_WATERICE_HEAT</a>
+      
+      <a class="list-group-item" href="../type/watflux_t.html#variable-xcpl_waterice_evap">XCPL_WATERICE_EVAP</a>
+      
+      <a class="list-group-item" href="../type/watflux_t.html#variable-ttime~4">TTIME</a>
+      
+      <a class="list-group-item" href="../type/watflux_t.html#variable-tztime">TZTIME</a>
+      
+      <a class="list-group-item" href="../type/watflux_t.html#variable-xtstep~5">XTSTEP</a>
+      
+      <a class="list-group-item" href="../type/watflux_t.html#variable-xout_tstep~6">XOUT_TSTEP</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+  <div class="list-group">
+    <a class="list-group-item" href="../type/watflux_t.html#src">WATFLUX_t</a>
+  </div>
+</div>
+
+
+
+    </section>
+    <br class="visible-xs visible-sm hidden-md">
+
+    
+    <section>
+    <h2>Components</h2>
+    
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th><th>Visibility</th>
+
+<th>Attributes</th><th></th><th>Name</th><th></th><th>Initial</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xzs~4"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XZS</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xcover~4"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:)</td><td>::</td>
+  <td><strong>XCOVER</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-lcover~4"></span>logical,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>LCOVER</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-lsbl~2"></span>logical,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>LSBL</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-cwat_alb"></span>character(len=4),</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>CWAT_ALB</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-linterpol_ts"></span>logical,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>LINTERPOL_TS</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-cinterpol_ts"></span>character(len=6),</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>CINTERPOL_TS</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xts~3"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XTS</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xtice"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XTICE</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xz0~4"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XZ0</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xemis~3"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XEMIS</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xdir_alb~2"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XDIR_ALB</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xsca_alb~2"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XSCA_ALB</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xice_alb~2"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XICE_ALB</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xts_mth"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:,:)</td><td>::</td>
+  <td><strong>XTS_MTH</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xcpl_water_wind"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XCPL_WATER_WIND</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xcpl_water_fwsu"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XCPL_WATER_FWSU</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xcpl_water_fwsv"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XCPL_WATER_FWSV</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xcpl_water_snet"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XCPL_WATER_SNET</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xcpl_water_heat"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XCPL_WATER_HEAT</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xcpl_water_evap"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XCPL_WATER_EVAP</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xcpl_water_rain"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XCPL_WATER_RAIN</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xcpl_water_snow"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XCPL_WATER_SNOW</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xcpl_water_fwsm"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XCPL_WATER_FWSM</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xcpl_waterice_snet"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XCPL_WATERICE_SNET</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xcpl_waterice_heat"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XCPL_WATERICE_HEAT</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xcpl_waterice_evap"></span>real,</td>
+  
+  <td>public,</td>
+  <td>POINTER, DIMENSION(:)</td><td>::</td>
+  <td><strong>XCPL_WATERICE_EVAP</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-ttime~4"></span>type(DATE_TIME),</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>TTIME</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-tztime"></span>type(DATE_TIME),</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>TZTIME</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xtstep~5"></span>real,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>XTSTEP</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xout_tstep~6"></span>real,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>XOUT_TSTEP</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+    </section>
+    <br>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <section>
+    <h3><span class="anchor" id="src"></span>Source Code</h3>
+    <div class="highlight"><pre><span></span><span class="k">TYPE </span><span class="n">WATFLUX_t</span>
+<span class="c">!</span>
+<span class="c">! General surface: </span>
+<span class="c">!</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>   <span class="kd">::</span> <span class="n">XZS</span>     <span class="c">! orography                     (m)</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:)</span> <span class="kd">::</span> <span class="n">XCOVER</span>  <span class="c">! fraction of each ecosystem    (-)</span>
+  <span class="kt">LOGICAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span><span class="kd">::</span> <span class="n">LCOVER</span>  <span class="c">! GCOVER(i)=T --&gt; ith cover field is not 0.</span>
+  <span class="kt">LOGICAL</span>                       <span class="kd">::</span> <span class="n">LSBL</span>    <span class="c">! T: SBL scheme within the Surface Boundary Layer</span>
+<span class="c">!                                          ! F: no atmospheric layers below forcing level</span>
+  <span class="kt">CHARACTER</span><span class="p">(</span><span class="nb">LEN</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>              <span class="kd">::</span> <span class="n">CWAT_ALB</span> <span class="c">! type of albedo</span>
+<span class="c">!</span>
+  <span class="kt">LOGICAL</span>                       <span class="kd">::</span> <span class="n">LINTERPOL_TS</span> <span class="c">! Interpotalation of monthly TS</span>
+  <span class="kt">CHARACTER</span><span class="p">(</span><span class="nb">LEN</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>              <span class="kd">::</span> <span class="n">CINTERPOL_TS</span> <span class="c">! Interpotalation of monthly TS</span>
+<span class="c">!</span>
+<span class="c">! Inland water:</span>
+<span class="c">!</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span> <span class="kd">::</span> <span class="n">XTS</span>       <span class="c">! water surface temperature               (K)</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span> <span class="kd">::</span> <span class="n">XTICE</span>     <span class="c">! water ice temperature</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span> <span class="kd">::</span> <span class="n">XZ0</span>       <span class="c">! water surface roughness length          (-)</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span> <span class="kd">::</span> <span class="n">XEMIS</span>     <span class="c">! water surface emissivity                (-)</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span> <span class="kd">::</span> <span class="n">XDIR_ALB</span>  <span class="c">! water surface direct albedo             (-)</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span> <span class="kd">::</span> <span class="n">XSCA_ALB</span>  <span class="c">! water surface diffuse albedo            (-)</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span> <span class="kd">::</span> <span class="n">XICE_ALB</span>  <span class="c">! water ice albedo (for ESM coupling)     (-)</span>
+<span class="c">!</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:)</span> <span class="kd">::</span> <span class="n">XTS_MTH</span>   <span class="c">! Monthly water surface temperature               (K)</span>
+<span class="c">!</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span> <span class="kd">::</span> <span class="n">XCPL_WATER_WIND</span> <span class="c">! 10m wind speed for ESM coupling</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span> <span class="kd">::</span> <span class="n">XCPL_WATER_FWSU</span> <span class="c">! zonal wind stress for ESM coupling</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span> <span class="kd">::</span> <span class="n">XCPL_WATER_FWSV</span> <span class="c">! meridian wind stress for ESM coupling</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span> <span class="kd">::</span> <span class="n">XCPL_WATER_SNET</span> <span class="c">! Solar net heat flux</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span> <span class="kd">::</span> <span class="n">XCPL_WATER_HEAT</span> <span class="c">! Non solar net heat flux</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span> <span class="kd">::</span> <span class="n">XCPL_WATER_EVAP</span> <span class="c">! Evaporation for ESM coupling</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span> <span class="kd">::</span> <span class="n">XCPL_WATER_RAIN</span> <span class="c">! Rainfall for ESM coupling</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span> <span class="kd">::</span> <span class="n">XCPL_WATER_SNOW</span> <span class="c">! Snowfall for ESM coupling</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span> <span class="kd">::</span> <span class="n">XCPL_WATER_FWSM</span> <span class="c">! wind stress module for ESM coupling</span>
+<span class="c">!</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span> <span class="kd">::</span> <span class="n">XCPL_WATERICE_SNET</span> <span class="c">! solar net heat flux</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span> <span class="kd">::</span> <span class="n">XCPL_WATERICE_HEAT</span> <span class="c">! Non solar net heat flux</span>
+  <span class="kt">REAL</span><span class="p">,</span> <span class="k">POINTER</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span> <span class="kd">::</span> <span class="n">XCPL_WATERICE_EVAP</span> <span class="c">! Sublimation for ESM coupling</span>
+<span class="c">!</span>
+<span class="c">! Date:</span>
+<span class="c">!</span>
+  <span class="k">TYPE</span> <span class="p">(</span><span class="n">DATE_TIME</span><span class="p">)</span>                  <span class="kd">::</span> <span class="n">TTIME</span>         <span class="c">! current date and time</span>
+  <span class="k">TYPE</span> <span class="p">(</span><span class="n">DATE_TIME</span><span class="p">)</span>                  <span class="kd">::</span> <span class="n">TZTIME</span>  
+<span class="c">!</span>
+<span class="c">! Time-step:</span>
+<span class="c">!</span>
+  <span class="kt">REAL</span>                              <span class="kd">::</span> <span class="n">XTSTEP</span>        <span class="c">! time step</span>
+<span class="c">!</span>
+  <span class="kt">REAL</span>                              <span class="kd">::</span> <span class="n">XOUT_TSTEP</span>    <span class="c">! output writing time step</span>
+<span class="c">!</span>
+<span class="c">!</span>
+<span class="k">END TYPE </span><span class="n">WATFLUX_t</span>
+</pre></div>
+
+    </section>
+    
+    
+    </div>
+  </div>
+
+
+    <hr>    
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+      <div class="row">
+        <div class="col-xs-6 col-md-6"><p>Town Energy Balance (TEB) model API docs was developed by teb-model<br>&copy; 2021 CeCILL
+                                          </p>
+        </div>
+        <div class="col-xs-6 col-md-6">
+          <p class="text-right">
+            Documentation generated by 
+            <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+            
+            
+          </p>
+        </div>
+      </div>
+      <br>
+      </div> <!-- /container -->    
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+<!--
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+-->
+    <script src="../js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../js/ie10-viewport-bug-workaround.js"></script>
+
+    <!-- MathJax JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+        jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+        extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+      });
+    </script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    
+    <script src="../tipuesearch/tipuesearch_content.js"></script>
+    <script src="../tipuesearch/tipuesearch_set.js"></script>
+    <script src="../tipuesearch/tipuesearch.js"></script>
+    
+    
+  </body>
+</html>

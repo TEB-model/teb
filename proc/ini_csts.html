@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   
+   <meta name="description" content="The Town Energy Balance (TEB) model is an urban land surface model developed to calculate the exchange of energy and water between cities and atmosphere.">
+    
+    <meta name="author" content="teb-model" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>INI_CSTS &ndash; Town Energy Balance (TEB) model API docs</title>
+
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+    
+    <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+    
+    
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <script src="../js/jquery-2.1.3.min.js"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../index.html">Town Energy Balance (TEB) model API docs </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+        
+            <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
+              <a href="#" class="dropdown-toggle"
+              data-toggle="dropdown" role="button"
+              aria-haspopup="true"
+     aria-expanded="false">Contents <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          
+              
+            <li><a href="../lists/files.html">Source Files</a></li>
+        
+        
+        
+            <li><a href="../lists/modules.html">Modules</a></li>
+        
+            
+                                
+            <li><a href="../lists/procedures.html">Procedures</a></li>
+        
+               
+            <li><a href="../lists/types.html">Derived Types</a></li>
+        
+        
+            <li><a href="../program/driver.html">Program</a></li>
+               
+        
+        
+            </ul>
+        
+            </li>
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/files.html">Source Files</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
+
+                             
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/types.html">Derived Types</a></li>
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../program/driver.html">Program</a></li>
+
+
+
+          </ul>
+        
+        <form action="../search.html" class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+        </div>
+<!--
+        <button type="submit" class="btn btn-default">Submit</button>
+-->
+        </form>
+        
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+    
+  
+  <div class="row">
+    <h1>INI_CSTS
+      <small>Subroutine</small>
+    
+    </h1>
+    
+<div class="row">
+  <div class="col-lg-12">
+<div class="well well-sm">
+  <ul class="list-inline" style="margin-bottom:0px;display:inline">
+     
+     
+     
+    <li><i class="fa fa-legal"></i> CeCILL</li> 
+     
+     
+     
+    
+    
+     <li><i class="fa fa-list-ol"></i>
+       <a data-toggle="tooltip"
+    data-placement="bottom" data-html="true"
+    title=" 0.4% of total for procedures.">62 statements</a>
+     </li> 
+     
+     
+     
+    <li><i class="fa fa-code"></i><a href="../src/ini_csts.F90"> Source File</a></li>
+     
+     
+  </ul>
+  <ol class="breadcrumb in-well text-right">
+  
+    
+     <li><a href='../sourcefile/ini_csts.f90.html'>ini_csts.F90</a></li>
+    
+  
+     <li class="active">INI_CSTS</li>
+  </ol>
+</div>
+</div>
+</div>
+<script>
+  $(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+  })
+</script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+    
+<div id="sidebar">
+  
+<h3>Contents</h3>
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+  <div class="list-group">
+    <a class="list-group-item" href="../proc/ini_csts.html#src">INI_CSTS</a>
+  </div>
+</div>
+
+
+
+</div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+    <h2>
+subroutine INI_CSTS()
+    
+    
+   
+</h2>
+    
+  
+    <div class="panel panel-default">
+      <div class="panel-heading">
+  <h3 class="panel-title">Uses</h3>
+      </div>
+      <ul class="list-group">
+      
+      <li class="list-group-item">
+  <ul class="list-inline">
+    
+    <li><a href='../module/yomhook.html'>YOMHOOK</a></li>
+    
+    <li><a href='../module/modi_ini_ocean_csts.html'>MODI_INI_OCEAN_CSTS</a></li>
+    
+    <li><a href='../module/modd_csts.html'>MODD_CSTS</a></li>
+    
+    <li><a href='../module/modi_ini_surf_csts.html'>MODI_INI_SURF_CSTS</a></li>
+    
+    <li><a href='../module/modi_ini_cturbs.html'>MODI_INI_CTURBS</a></li>
+    
+    <li><a href='../module/parkind1.html'>PARKIND1</a></li>
+    
+  </ul>
+      </li>
+      
+      
+      
+      </ul>
+    </div>
+    
+
+
+    
+
+    <h3>Arguments</h3>
+    
+    <em>None</em>
+    <br>
+    
+    
+    
+    
+     
+    <br>
+
+    <section class="visible-xs visible-sm hidden-md">
+      
+<h3>Contents</h3>
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+  <div class="list-group">
+    <a class="list-group-item" href="../proc/ini_csts.html#src">INI_CSTS</a>
+  </div>
+</div>
+
+
+
+    </section>
+    <br class="visible-xs visible-sm hidden-md">
+
+    
+
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+
+
+    
+    
+    
+    <section>
+    <h2><span class="anchor" id="src"></span>Source Code</h2>
+    <div class="highlight"><pre><span></span>      <span class="k">SUBROUTINE </span><span class="n">INI_CSTS</span> 
+<span class="c">!     ##################</span>
+<span class="c">!</span>
+<span class="c">!!****  *INI_CSTS * - routine to initialize the module MODD_CST</span>
+<span class="c">!!</span>
+<span class="c">!!    PURPOSE</span>
+<span class="c">!!    -------</span>
+<span class="c">!       The purpose of this routine is to initialize  the physical constants</span>
+<span class="c">!     stored in  module MODD_CST.</span>
+<span class="c">!      </span>
+<span class="c">!</span>
+<span class="c">!!**  METHOD</span>
+<span class="c">!!    ------</span>
+<span class="c">!!      The physical constants are set to their numerical values </span>
+<span class="c">!!     </span>
+<span class="c">!!</span>
+<span class="c">!!    EXTERNAL</span>
+<span class="c">!!    --------</span>
+<span class="c">!!      FMLOOK : to retrieve logical unit number associated to a file</span>
+<span class="c">!!</span>
+<span class="c">!!    IMPLICIT ARGUMENTS</span>
+<span class="c">!!    ------------------</span>
+<span class="c">!!      Module MODD_CST     : contains physical constants</span>
+<span class="c">!!</span>
+<span class="c">!!    REFERENCE</span>
+<span class="c">!!    ---------</span>
+<span class="c">!!      Book2 of the documentation (module MODD_CST, routine INI_CSTS)</span>
+<span class="c">!!      </span>
+<span class="c">!!</span>
+<span class="c">!!    AUTHOR</span>
+<span class="c">!!    ------</span>
+<span class="c">!!      V. Ducrocq       * Meteo France *</span>
+<span class="c">!!</span>
+<span class="c">!!    MODIFICATIONS</span>
+<span class="c">!!    -------------</span>
+<span class="c">!!      Original    18/05/94 </span>
+<span class="c">!!      J. Stein    02/01/95  add the volumic mass of liquid water</span>
+<span class="c">!!      J.-P. Pinty 13/12/95  add the water vapor pressure over solid ice</span>
+<span class="c">!!      J. Stein    29/06/97  add XTH00</span>
+<span class="c">!!      V. Masson   05/10/98  add XRHOLI</span>
+<span class="c">!!      C. Mari     31/10/00  add NDAYSEC</span>
+<span class="c">!!      V. Masson   01/03/03  add XCONDI</span>
+<span class="c">!!      A. Voldoire 01/12/09  add XTTSI, XICEC, XTTS for ESM</span>
+<span class="c">!!      J. Escobar  28/03/2014 for pb with emissivity/aerosol reset XSURF_TINY=1.0e-80 in real8 case</span>
+<span class="c">!!</span>
+<span class="c">!-------------------------------------------------------------------------------</span>
+<span class="c">!</span>
+<span class="c">!*       0.    DECLARATIONS</span>
+<span class="c">!              ------------</span>
+<span class="c">!</span>
+<span class="k">USE </span><span class="n">MODD_CSTS</span>
+<span class="c">!</span>
+<span class="c">!</span>
+<span class="k">USE </span><span class="n">YOMHOOK</span>   <span class="p">,</span><span class="k">ONLY</span> <span class="p">:</span> <span class="n">LHOOK</span><span class="p">,</span>   <span class="n">DR_HOOK</span>
+<span class="k">USE </span><span class="n">PARKIND1</span>  <span class="p">,</span><span class="k">ONLY</span> <span class="p">:</span> <span class="n">JPRB</span>
+<span class="c">!</span>
+<span class="k">USE </span><span class="n">MODI_INI_CTURBS</span>
+<span class="c">!</span>
+<span class="k">USE </span><span class="n">MODI_INI_OCEAN_CSTS</span>
+<span class="c">!</span>
+<span class="k">USE </span><span class="n">MODI_INI_SURF_CSTS</span>
+<span class="c">!</span>
+<span class="k">IMPLICIT NONE</span>
+<span class="c">!  </span>
+<span class="c">!-------------------------------------------------------------------------------</span>
+<span class="c">!</span>
+<span class="c">!*       1.     FUNDAMENTAL CONSTANTS</span>
+<span class="c">!               ---------------------</span>
+<span class="c">!</span>
+
+<span class="kt">REAL</span><span class="p">(</span><span class="nb">KIND</span><span class="o">=</span><span class="n">JPRB</span><span class="p">)</span> <span class="kd">::</span> <span class="n">ZHOOK_HANDLE</span>
+
+<span class="k">IF</span> <span class="p">(</span><span class="n">LHOOK</span><span class="p">)</span> <span class="k">CALL </span><span class="n">DR_HOOK</span><span class="p">(</span><span class="s1">&#39;INI_CSTS&#39;</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">ZHOOK_HANDLE</span><span class="p">)</span>
+
+<span class="cp">#ifdef SFX_MNH</span>
+<span class="cp">#ifdef MNH_MPI_DOUBLE_PRECISION</span>
+<span class="n">XSURF_TINY</span>    <span class="o">=</span> <span class="mf">1.0e-80</span>
+<span class="cp">#else</span>
+<span class="n">XSURF_TINY</span>    <span class="o">=</span> <span class="nb">TINY</span>    <span class="p">(</span><span class="n">XSURF_TINY</span>    <span class="p">)</span>
+<span class="cp">#endif</span>
+<span class="cp">#else</span>
+<span class="n">XSURF_TINY</span>    <span class="o">=</span> <span class="mf">1.0e-80</span>
+<span class="cp">#endif</span>
+<span class="n">XSURF_TINY_12</span> <span class="o">=</span> <span class="nb">SQRT</span>    <span class="p">(</span><span class="n">XSURF_TINY</span>    <span class="p">)</span>
+<span class="n">XSURF_EPSILON</span> <span class="o">=</span> <span class="nb">EPSILON</span> <span class="p">(</span><span class="n">XSURF_EPSILON</span> <span class="p">)</span> <span class="o">*</span> <span class="mi">1</span><span class="mf">0.0</span>
+
+<span class="n">XPI</span>         <span class="o">=</span> <span class="mf">2.</span><span class="o">*</span><span class="nb">ASIN</span><span class="p">(</span><span class="mf">1.</span><span class="p">)</span>
+<span class="n">XKARMAN</span>     <span class="o">=</span> <span class="mf">0.4</span>
+<span class="n">XBOLTZ</span>      <span class="o">=</span> <span class="mf">1.380658E-23</span>
+<span class="n">XLIGHTSPEED</span> <span class="o">=</span> <span class="mi">29979245</span><span class="mf">8.</span>
+<span class="n">XPLANCK</span>     <span class="o">=</span> <span class="mf">6.6260755E-34</span>
+<span class="n">XAVOGADRO</span>   <span class="o">=</span> <span class="mf">6.0221367E+23</span>
+<span class="c">!</span>
+<span class="c">!-------------------------------------------------------------------------------</span>
+<span class="c">!</span>
+<span class="c">!*       2.     ASTRONOMICAL CONSTANTS</span>
+<span class="c">!               ----------------------</span>
+<span class="c">!</span>
+<span class="n">XDAY</span>   <span class="o">=</span> <span class="mi">8640</span><span class="mf">0.</span>
+<span class="n">XSIYEA</span> <span class="o">=</span> <span class="mi">36</span><span class="mf">5.25</span><span class="o">*</span><span class="n">XDAY</span><span class="o">*</span><span class="mf">2.</span><span class="o">*</span><span class="n">XPI</span><span class="o">/</span> <span class="mf">6.283076</span>
+<span class="n">XSIDAY</span> <span class="o">=</span> <span class="n">XDAY</span><span class="o">/</span><span class="p">(</span><span class="mf">1.</span><span class="o">+</span><span class="n">XDAY</span><span class="o">/</span><span class="n">XSIYEA</span><span class="p">)</span>
+<span class="n">XOMEGA</span> <span class="o">=</span> <span class="mf">2.</span><span class="o">*</span><span class="n">XPI</span><span class="o">/</span><span class="n">XSIDAY</span>
+<span class="n">NDAYSEC</span> <span class="o">=</span> <span class="mi">24</span><span class="o">*</span><span class="mi">3600</span> <span class="c">! Number of seconds in a day</span>
+<span class="c">!</span>
+<span class="c">!-------------------------------------------------------------------------------!</span>
+<span class="c">!</span>
+<span class="c">!</span>
+<span class="c">!*       3.     TERRESTRIAL GEOIDE CONSTANTS</span>
+<span class="c">!               ----------------------------</span>
+<span class="c">!</span>
+<span class="n">XRADIUS</span> <span class="o">=</span> <span class="mi">637122</span><span class="mf">9.</span>
+<span class="n">XG</span>      <span class="o">=</span> <span class="mf">9.80665</span>
+<span class="c">!</span>
+<span class="c">!-------------------------------------------------------------------------------</span>
+<span class="c">!</span>
+<span class="c">!*       4.     REFERENCE PRESSURE</span>
+<span class="c">!               -------------------</span>
+<span class="c">!</span>
+<span class="n">XP00</span> <span class="o">=</span> <span class="mf">1.E5</span>
+<span class="n">XTH00</span> <span class="o">=</span> <span class="mi">30</span><span class="mf">0.</span>
+<span class="c">!-------------------------------------------------------------------------------</span>
+<span class="c">!</span>
+<span class="c">!*       5.     RADIATION CONSTANTS</span>
+<span class="c">!               -------------------</span>
+<span class="c">!</span>
+<span class="c">!JUAN OVERFLOW XSTEFAN = 2.* XPI**5 * XBOLTZ**4 / (15.* XLIGHTSPEED**2 * XPLANCK**3)</span>
+<span class="n">XSTEFAN</span> <span class="o">=</span> <span class="p">(</span> <span class="mf">2.</span><span class="o">*</span> <span class="n">XPI</span><span class="o">**</span><span class="mi">5</span> <span class="o">/</span> <span class="mi">1</span><span class="mf">5.</span> <span class="p">)</span> <span class="o">*</span> <span class="p">(</span> <span class="p">(</span><span class="n">XBOLTZ</span> <span class="o">/</span> <span class="n">XPLANCK</span><span class="p">)</span><span class="o">*</span> <span class="n">XBOLTZ</span> <span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">XBOLTZ</span><span class="o">/</span><span class="p">(</span><span class="n">XLIGHTSPEED</span><span class="o">*</span><span class="n">XPLANCK</span><span class="p">))</span><span class="o">**</span><span class="mi">2</span> 
+<span class="n">XI0</span>     <span class="o">=</span> <span class="mi">137</span><span class="mf">0.</span>
+<span class="c">!</span>
+<span class="c">!-------------------------------------------------------------------------------</span>
+<span class="c">!</span>
+<span class="c">!*       6.     THERMODYNAMIC CONSTANTS</span>
+<span class="c">!               -----------------------</span>
+<span class="c">!</span>
+<span class="n">XMD</span>    <span class="o">=</span> <span class="mi">2</span><span class="mf">8.9644E-3</span>
+<span class="n">XMV</span>    <span class="o">=</span> <span class="mi">1</span><span class="mf">8.0153E-3</span>
+<span class="n">XRD</span>    <span class="o">=</span> <span class="n">XAVOGADRO</span> <span class="o">*</span> <span class="n">XBOLTZ</span> <span class="o">/</span> <span class="n">XMD</span>
+<span class="n">XRV</span>    <span class="o">=</span> <span class="n">XAVOGADRO</span> <span class="o">*</span> <span class="n">XBOLTZ</span> <span class="o">/</span> <span class="n">XMV</span>
+<span class="n">XCPD</span>   <span class="o">=</span> <span class="mf">7.</span><span class="o">*</span> <span class="n">XRD</span> <span class="o">/</span><span class="mf">2.</span>
+<span class="n">XCPV</span>   <span class="o">=</span> <span class="mf">4.</span><span class="o">*</span> <span class="n">XRV</span>
+<span class="n">XRHOLW</span> <span class="o">=</span> <span class="mi">100</span><span class="mf">0.</span>
+<span class="n">XRHOLI</span> <span class="o">=</span> <span class="mi">91</span><span class="mf">7.</span>
+<span class="n">XCONDI</span> <span class="o">=</span> <span class="mf">2.22</span>
+<span class="n">XCL</span>    <span class="o">=</span> <span class="mf">4.218E+3</span>
+<span class="n">XCI</span>    <span class="o">=</span> <span class="mf">2.106E+3</span>
+<span class="n">XTT</span>    <span class="o">=</span> <span class="mi">27</span><span class="mf">3.16</span>
+<span class="n">XTTSI</span>  <span class="o">=</span> <span class="n">XTT</span> <span class="o">-</span> <span class="mf">1.8</span>
+<span class="n">XICEC</span>  <span class="o">=</span> <span class="mf">0.5</span>
+<span class="n">XTTS</span>   <span class="o">=</span> <span class="n">XTT</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">XICEC</span><span class="p">)</span> <span class="o">+</span> <span class="n">XTTSI</span><span class="o">*</span><span class="n">XICEC</span>
+<span class="n">XLVTT</span>  <span class="o">=</span> <span class="mf">2.5008E+6</span>
+<span class="n">XLSTT</span>  <span class="o">=</span> <span class="mf">2.8345E+6</span>
+<span class="n">XLMTT</span>  <span class="o">=</span> <span class="n">XLSTT</span> <span class="o">-</span> <span class="n">XLVTT</span>
+<span class="n">XESTT</span>  <span class="o">=</span> <span class="mi">61</span><span class="mf">1.14</span>
+<span class="n">XGAMW</span>  <span class="o">=</span> <span class="p">(</span><span class="n">XCL</span> <span class="o">-</span> <span class="n">XCPV</span><span class="p">)</span> <span class="o">/</span> <span class="n">XRV</span>
+<span class="n">XBETAW</span> <span class="o">=</span> <span class="p">(</span><span class="n">XLVTT</span><span class="o">/</span><span class="n">XRV</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">XGAMW</span> <span class="o">*</span> <span class="n">XTT</span><span class="p">)</span>
+<span class="n">XALPW</span>  <span class="o">=</span> <span class="nb">LOG</span><span class="p">(</span><span class="n">XESTT</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">XBETAW</span> <span class="o">/</span><span class="n">XTT</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">XGAMW</span> <span class="o">*</span><span class="nb">LOG</span><span class="p">(</span><span class="n">XTT</span><span class="p">))</span>
+<span class="n">XGAMI</span>  <span class="o">=</span> <span class="p">(</span><span class="n">XCI</span> <span class="o">-</span> <span class="n">XCPV</span><span class="p">)</span> <span class="o">/</span> <span class="n">XRV</span>
+<span class="n">XBETAI</span> <span class="o">=</span> <span class="p">(</span><span class="n">XLSTT</span><span class="o">/</span><span class="n">XRV</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">XGAMI</span> <span class="o">*</span> <span class="n">XTT</span><span class="p">)</span>
+<span class="n">XALPI</span>  <span class="o">=</span> <span class="nb">LOG</span><span class="p">(</span><span class="n">XESTT</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">XBETAI</span> <span class="o">/</span><span class="n">XTT</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">XGAMI</span> <span class="o">*</span><span class="nb">LOG</span><span class="p">(</span><span class="n">XTT</span><span class="p">))</span>
+<span class="c">!</span>
+<span class="c">!-------------------------------------------------------------------------------</span>
+<span class="c">!</span>
+<span class="c">!*       7.     TURBULENCE CONSTANTS</span>
+<span class="c">!               --------------------</span>
+<span class="c">!</span>
+ <span class="k">CALL </span><span class="n">INI_CTURBS</span>
+<span class="c">!-------------------------------------------------------------------------------</span>
+<span class="c">!</span>
+<span class="c">!*       8.     OCEAN CONSTANTS</span>
+<span class="c">!               ---------------</span>
+<span class="c">!</span>
+ <span class="k">CALL </span><span class="n">INI_OCEAN_CSTS</span>
+<span class="c">!</span>
+<span class="c">!*       9.     SURFACE CONSTANTS</span>
+<span class="c">!               -----------------</span>
+<span class="c">!</span>
+ <span class="k">CALL </span><span class="n">INI_SURF_CSTS</span>
+<span class="k">IF</span> <span class="p">(</span><span class="n">LHOOK</span><span class="p">)</span> <span class="k">CALL </span><span class="n">DR_HOOK</span><span class="p">(</span><span class="s1">&#39;INI_CSTS&#39;</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">ZHOOK_HANDLE</span><span class="p">)</span>
+<span class="c">!</span>
+<span class="c">!-------------------------------------------------------------------------------</span>
+<span class="c">!</span>
+<span class="k">END SUBROUTINE </span><span class="n">INI_CSTS</span> 
+</pre></div>
+
+    </section>
+    <br>
+    
+    
+    </div>
+  </div>
+
+
+    <hr>    
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+      <div class="row">
+        <div class="col-xs-6 col-md-6"><p>Town Energy Balance (TEB) model API docs was developed by teb-model<br>&copy; 2021 CeCILL
+                                          </p>
+        </div>
+        <div class="col-xs-6 col-md-6">
+          <p class="text-right">
+            Documentation generated by 
+            <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+            
+            
+          </p>
+        </div>
+      </div>
+      <br>
+      </div> <!-- /container -->    
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+<!--
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+-->
+    <script src="../js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../js/ie10-viewport-bug-workaround.js"></script>
+
+    <!-- MathJax JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+        jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+        extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+      });
+    </script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    
+    <script src="../tipuesearch/tipuesearch_content.js"></script>
+    <script src="../tipuesearch/tipuesearch_set.js"></script>
+    <script src="../tipuesearch/tipuesearch.js"></script>
+    
+    
+  </body>
+</html>

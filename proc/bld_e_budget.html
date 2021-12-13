@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   
+   <meta name="description" content="The Town Energy Balance (TEB) model is an urban land surface model developed to calculate the exchange of energy and water between cities and atmosphere.">
+    
+    <meta name="author" content="teb-model" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>BLD_E_BUDGET &ndash; Town Energy Balance (TEB) model API docs</title>
+
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+    
+    <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+    
+    
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <script src="../js/jquery-2.1.3.min.js"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../index.html">Town Energy Balance (TEB) model API docs </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+        
+            <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
+              <a href="#" class="dropdown-toggle"
+              data-toggle="dropdown" role="button"
+              aria-haspopup="true"
+     aria-expanded="false">Contents <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          
+              
+            <li><a href="../lists/files.html">Source Files</a></li>
+        
+        
+        
+            <li><a href="../lists/modules.html">Modules</a></li>
+        
+            
+                                
+            <li><a href="../lists/procedures.html">Procedures</a></li>
+        
+               
+            <li><a href="../lists/types.html">Derived Types</a></li>
+        
+        
+            <li><a href="../program/driver.html">Program</a></li>
+               
+        
+        
+            </ul>
+        
+            </li>
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/files.html">Source Files</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
+
+                             
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/types.html">Derived Types</a></li>
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../program/driver.html">Program</a></li>
+
+
+
+          </ul>
+        
+        <form action="../search.html" class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+        </div>
+<!--
+        <button type="submit" class="btn btn-default">Submit</button>
+-->
+        </form>
+        
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+    
+  
+  <div class="row">
+    <h1>BLD_E_BUDGET
+      <small>Subroutine</small>
+    
+    </h1>
+    
+<div class="row">
+  <div class="col-lg-12">
+<div class="well well-sm">
+  <ul class="list-inline" style="margin-bottom:0px;display:inline">
+     
+     
+     
+    <li><i class="fa fa-legal"></i> CeCILL</li> 
+     
+     
+     
+    
+    
+     <li><i class="fa fa-list-ol"></i>
+       <a data-toggle="tooltip"
+    data-placement="bottom" data-html="true"
+    title=" 0.2% of total for procedures.">33 statements</a>
+     </li> 
+     
+     
+     
+    <li><i class="fa fa-code"></i><a href="../src/bld_e_budget.F90"> Source File</a></li>
+     
+     
+  </ul>
+  <ol class="breadcrumb in-well text-right">
+  
+    
+     <li><a href='../sourcefile/bld_e_budget.f90.html'>bld_e_budget.F90</a></li>
+    
+  
+     <li class="active">BLD_E_BUDGET</li>
+  </ol>
+</div>
+</div>
+</div>
+<script>
+  $(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+  })
+</script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+    
+<div id="sidebar">
+  
+<h3>Contents</h3>
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+  <div class="list-group">
+    <a class="list-group-item" href="../proc/bld_e_budget.html#src">BLD_E_BUDGET</a>
+  </div>
+</div>
+
+
+
+</div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+    <h2>
+subroutine BLD_E_BUDGET(OTI_EVOL, PTSTEP, PBLD, PWALL_O_HOR, PRHOA, PT_ROOF, PT_WALL, PTI_BLD, PTS_FLOOR)
+    
+    
+   
+</h2>
+    
+  
+    <div class="panel panel-default">
+      <div class="panel-heading">
+  <h3 class="panel-title">Uses</h3>
+      </div>
+      <ul class="list-group">
+      
+      <li class="list-group-item">
+  <ul class="list-inline">
+    
+    <li><a href='../module/modd_csts.html'>MODD_CSTS</a></li>
+    
+    <li><a href='../module/yomhook.html'>YOMHOOK</a></li>
+    
+    <li><a href='../module/modd_surf_par.html'>MODD_SURF_PAR</a></li>
+    
+    <li><a href='../module/parkind1.html'>PARKIND1</a></li>
+    
+  </ul>
+      </li>
+      
+      
+      
+      </ul>
+    </div>
+    
+
+
+    
+
+    <h3>Arguments</h3>
+    
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-oti_evol"></span>logical,</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>OTI_EVOL</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-ptstep~10"></span>real,</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>PTSTEP</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-pbld"></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(:)</td><td>::</td>
+  <td><strong>PBLD</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-pwall_o_hor"></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(:)</td><td>::</td>
+  <td><strong>PWALL_O_HOR</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-prhoa~6"></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(:)</td><td>::</td>
+  <td><strong>PRHOA</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-pt_roof"></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(:,:)</td><td>::</td>
+  <td><strong>PT_ROOF</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-pt_wall"></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(:,:)</td><td>::</td>
+  <td><strong>PT_WALL</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-pti_bld~2"></span>real,</td>
+  <td>intent(inout),</td>
+  <td></td>
+  
+  <td>DIMENSION(:)</td><td>::</td>
+  <td><strong>PTI_BLD</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-pts_floor~2"></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(:)</td><td>::</td>
+  <td><strong>PTS_FLOOR</strong></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+    
+    
+    
+    
+     
+    <br>
+
+    <section class="visible-xs visible-sm hidden-md">
+      
+<h3>Contents</h3>
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+  <div class="list-group">
+    <a class="list-group-item" href="../proc/bld_e_budget.html#src">BLD_E_BUDGET</a>
+  </div>
+</div>
+
+
+
+    </section>
+    <br class="visible-xs visible-sm hidden-md">
+
+    
+
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+
+
+    
+    
+    
+    <section>
+    <h2><span class="anchor" id="src"></span>Source Code</h2>
+    <div class="highlight"><pre><span></span>    <span class="k">SUBROUTINE </span><span class="n">BLD_E_BUDGET</span><span class="p">(</span> <span class="n">OTI_EVOL</span><span class="p">,</span> <span class="n">PTSTEP</span><span class="p">,</span> <span class="n">PBLD</span><span class="p">,</span> <span class="n">PWALL_O_HOR</span><span class="p">,</span>      <span class="p">&amp;</span>
+                             <span class="n">PRHOA</span><span class="p">,</span> <span class="n">PT_ROOF</span><span class="p">,</span> <span class="n">PT_WALL</span><span class="p">,</span> <span class="n">PTI_BLD</span><span class="p">,</span> <span class="n">PTS_FLOOR</span> <span class="p">)</span>  
+<span class="c">!   ##########################################################################</span>
+<span class="c">!</span>
+<span class="c">!!****  *BLD_E_BUDGET*  </span>
+<span class="c">!!</span>
+<span class="c">!!    PURPOSE</span>
+<span class="c">!!    -------</span>
+<span class="c">!</span>
+<span class="c">!     Computes the evoultion of the temperature of inside building air</span>
+        
+<span class="c">!     </span>
+<span class="c">!!**  METHOD</span>
+<span class="c">!     ------</span>
+<span class="c">!</span>
+<span class="c">!     The resistance term between the surfaces and the room is given</span>
+<span class="c">!     by a standard value, which mimics both the convection</span>
+<span class="c">!     and the radiative interactions in the room.</span>
+<span class="c">!     This explains the very low resistance. It is used to compute</span>
+<span class="c">!     the evolution of the surfaces only.</span>
+<span class="c">!     This resistance value is 0.123 Km/W  (typical for inside surfaces).</span>
+<span class="c">!     (ENVIRONMENTAL SCIENCE IN BUILDING, 3rd Edition, Randall McMullan,</span>
+<span class="c">!      THE MACMILLAN PRESS Limited).</span>
+<span class="c">!</span>
+<span class="c">!</span>
+<span class="c">!</span>
+<span class="c">!     On the contrary, the evolution of the air temperature is mainly</span>
+<span class="c">!     governed by the convection (considering the low radiative absorption</span>
+<span class="c">!     of the air itself).</span>
+<span class="c">!     In order to have a simple formulation, a diurnal cycle is assumed,</span>
+<span class="c">!     with a force restore formulation.</span>
+<span class="c">!</span>
+<span class="c">!     The floor temperature is fixed</span>
+<span class="c">!</span>
+<span class="c">!!    EXTERNAL</span>
+<span class="c">!!    --------</span>
+<span class="c">!!</span>
+<span class="c">!!</span>
+<span class="c">!!    IMPLICIT ARGUMENTS</span>
+<span class="c">!!    ------------------</span>
+<span class="c">!!</span>
+<span class="c">!!    MODD_CST</span>
+<span class="c">!!</span>
+<span class="c">!!      </span>
+<span class="c">!!    REFERENCE</span>
+<span class="c">!!    ---------</span>
+<span class="c">!!</span>
+<span class="c">!!      </span>
+<span class="c">!!    AUTHOR</span>
+<span class="c">!!    ------</span>
+<span class="c">!!</span>
+<span class="c">!!      V. Masson           * Meteo-France *</span>
+<span class="c">!!</span>
+<span class="c">!!    MODIFICATIONS</span>
+<span class="c">!!    -------------</span>
+<span class="c">!!      Original    24/08/00 </span>
+<span class="c">!</span>
+<span class="c">!-------------------------------------------------------------------------------</span>
+<span class="c">!</span>
+<span class="c">!*       0.     DECLARATIONS</span>
+<span class="c">!               ------------</span>
+<span class="c">!</span>
+<span class="k">USE </span><span class="n">MODD_CSTS</span><span class="p">,</span><span class="k">ONLY</span> <span class="p">:</span> <span class="n">XTT</span><span class="p">,</span> <span class="n">XCPD</span><span class="p">,</span> <span class="n">XDAY</span>
+<span class="k">USE </span><span class="n">MODD_SURF_PAR</span><span class="p">,</span><span class="k">ONLY</span> <span class="p">:</span> <span class="n">XUNDEF</span>
+<span class="c">!</span>
+<span class="k">USE </span><span class="n">YOMHOOK</span>   <span class="p">,</span><span class="k">ONLY</span> <span class="p">:</span> <span class="n">LHOOK</span><span class="p">,</span>   <span class="n">DR_HOOK</span>
+<span class="k">USE </span><span class="n">PARKIND1</span>  <span class="p">,</span><span class="k">ONLY</span> <span class="p">:</span> <span class="n">JPRB</span>
+<span class="c">!</span>
+<span class="k">IMPLICIT NONE</span>
+<span class="c">!</span>
+<span class="c">!*      0.1    declarations of arguments</span>
+<span class="c">!</span>
+<span class="kt">LOGICAL</span><span class="p">,</span>              <span class="k">INTENT</span><span class="p">(</span><span class="n">IN</span><span class="p">)</span>   <span class="kd">::</span> <span class="n">OTI_EVOL</span>      <span class="c">! true --&gt; internal temp. of</span>
+<span class="c">!                                                   !      of buildings evolves</span>
+<span class="c">!                                                   ! false--&gt; it is fixed</span>
+<span class="kt">REAL</span><span class="p">,</span>                 <span class="k">INTENT</span><span class="p">(</span><span class="n">IN</span><span class="p">)</span>   <span class="kd">::</span> <span class="n">PTSTEP</span>        <span class="c">! time step</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:),</span>   <span class="k">INTENT</span><span class="p">(</span><span class="n">IN</span><span class="p">)</span>   <span class="kd">::</span> <span class="n">PBLD</span>          <span class="c">! building fraction</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:),</span>   <span class="k">INTENT</span><span class="p">(</span><span class="n">IN</span><span class="p">)</span>   <span class="kd">::</span> <span class="n">PWALL_O_HOR</span>   <span class="c">! wall surf. / hor. surf.</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:),</span>   <span class="k">INTENT</span><span class="p">(</span><span class="n">IN</span><span class="p">)</span>   <span class="kd">::</span> <span class="n">PRHOA</span>         <span class="c">! air density</span>
+                                                    <span class="c">! at the lowest level</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:),</span> <span class="k">INTENT</span><span class="p">(</span><span class="n">IN</span><span class="p">)</span>   <span class="kd">::</span> <span class="n">PT_ROOF</span>       <span class="c">! roof layers temperatures</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:,:),</span> <span class="k">INTENT</span><span class="p">(</span><span class="n">IN</span><span class="p">)</span>   <span class="kd">::</span> <span class="n">PT_WALL</span>       <span class="c">! wall layers temperatures</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:),</span>   <span class="k">INTENT</span><span class="p">(</span><span class="n">INOUT</span><span class="p">)</span><span class="kd">::</span> <span class="n">PTI_BLD</span>       <span class="c">! building air temperature</span>
+                                                    <span class="c">! computed with its equation evolution</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:),</span>   <span class="k">INTENT</span><span class="p">(</span><span class="n">IN</span><span class="p">)</span>  <span class="kd">::</span> <span class="n">PTS_FLOOR</span>     <span class="c">! floor surface temperature</span>
+<span class="c">!</span>
+<span class="c">!*      0.2    declarations of local variables</span>
+<span class="c">!</span>
+<span class="c">!</span>
+<span class="kt">REAL</span>                           <span class="kd">::</span> <span class="n">ZTAU</span>         <span class="c">! temporal filter period</span>
+<span class="c">!</span>
+<span class="kt">INTEGER</span>                        <span class="kd">::</span> <span class="n">IROOF</span>        <span class="c">! number of roof layers</span>
+<span class="kt">INTEGER</span>                        <span class="kd">::</span> <span class="n">IWALL</span>        <span class="c">! number of wall layers</span>
+<span class="kt">REAL</span><span class="p">(</span><span class="nb">KIND</span><span class="o">=</span><span class="n">JPRB</span><span class="p">)</span> <span class="kd">::</span> <span class="n">ZHOOK_HANDLE</span>
+<span class="c">!-------------------------------------------------------------------------------</span>
+<span class="k">IF</span> <span class="p">(</span><span class="n">LHOOK</span><span class="p">)</span> <span class="k">CALL </span><span class="n">DR_HOOK</span><span class="p">(</span><span class="s1">&#39;BLD_E_BUDGET&#39;</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">ZHOOK_HANDLE</span><span class="p">)</span>
+<span class="c">!</span>
+<span class="c">!*      1.   initializations</span>
+<span class="c">!            ---------------</span>
+<span class="c">!</span>
+<span class="n">IROOF</span> <span class="o">=</span> <span class="n">SIZE</span><span class="p">(</span><span class="n">PT_ROOF</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">IWALL</span> <span class="o">=</span> <span class="n">SIZE</span><span class="p">(</span><span class="n">PT_WALL</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="c">!</span>
+<span class="c">!!! 27/01/2012 passé dans TEB</span>
+<span class="c">!! PTS_FLOOR(:)= 19. + XTT</span>
+<span class="c">!!! 27/01/2012 passé dans TEB</span>
+<span class="c">!</span>
+<span class="c">!*      2.   no evolution of interior temperature if OTI_EVOL=.FALSE.</span>
+<span class="c">!            --------------------------------------------------------</span>
+<span class="c">!</span>
+<span class="k">IF</span> <span class="p">(.</span><span class="nb">NOT</span><span class="p">.</span> <span class="n">OTI_EVOL</span> <span class="p">.</span><span class="nb">AND</span><span class="p">.</span> <span class="n">LHOOK</span><span class="p">)</span> <span class="k">CALL </span><span class="n">DR_HOOK</span><span class="p">(</span><span class="s1">&#39;BLD_E_BUDGET&#39;</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">ZHOOK_HANDLE</span><span class="p">)</span>
+<span class="k">IF</span> <span class="p">(.</span><span class="nb">NOT</span><span class="p">.</span> <span class="n">OTI_EVOL</span><span class="p">)</span> <span class="k">RETURN</span>
+<span class="c">!</span>
+<span class="c">!*      3.   evolution of the internal temperature</span>
+<span class="c">!            -------------------------------------</span>
+<span class="c">!</span>
+<span class="n">ZTAU</span> <span class="o">=</span> <span class="n">XDAY</span>
+<span class="c">!</span>
+<span class="k">WHERE</span> <span class="p">(</span><span class="n">PBLD</span><span class="p">(:)</span> <span class="p">.</span><span class="n">GT</span><span class="p">.</span> <span class="mf">0.</span><span class="p">)</span>
+  <span class="n">PTI_BLD</span><span class="p">(:)</span> <span class="o">=</span> <span class="n">PTI_BLD</span><span class="p">(:)</span> <span class="o">*</span> <span class="p">(</span><span class="n">ZTAU</span><span class="o">-</span><span class="n">PTSTEP</span><span class="p">)</span><span class="o">/</span><span class="n">ZTAU</span>       <span class="p">&amp;</span>
+            <span class="o">+</span> <span class="p">(</span> <span class="n">PT_ROOF</span><span class="p">(:,</span><span class="n">IROOF</span><span class="p">)</span> <span class="o">*</span> <span class="n">PBLD</span>       <span class="p">(:)</span>    <span class="p">&amp;</span>
+              <span class="o">+</span> <span class="n">PT_WALL</span><span class="p">(:,</span><span class="n">IWALL</span><span class="p">)</span> <span class="o">*</span> <span class="n">PWALL_O_HOR</span><span class="p">(:)</span>    <span class="p">&amp;</span>
+              <span class="o">+</span> <span class="n">PTS_FLOOR</span><span class="p">(:)</span>      <span class="o">*</span> <span class="n">PBLD</span>       <span class="p">(:)</span> <span class="p">)</span>  <span class="p">&amp;</span>
+             <span class="o">/</span> <span class="p">(</span>  <span class="mf">2.</span> <span class="o">*</span> <span class="n">PBLD</span><span class="p">(:)</span>  <span class="o">+</span>  <span class="n">PWALL_O_HOR</span><span class="p">(:)</span> <span class="p">)</span> <span class="o">*</span> <span class="n">PTSTEP</span> <span class="o">/</span> <span class="n">ZTAU</span>
+<span class="n">ELSEWHERE</span>
+  <span class="n">PTI_BLD</span>   <span class="p">(:)</span> <span class="o">=</span> <span class="n">PTS_FLOOR</span><span class="p">(:)</span>
+<span class="k">ENDWHERE</span>
+<span class="c">!</span>
+<span class="c">!</span>
+<span class="c">!*      5.   internal temperature set to a minimum value (heating)</span>
+<span class="c">!            -----------------------------------------------------</span>
+<span class="c">! </span>
+<span class="n">PTI_BLD</span><span class="p">(:)</span> <span class="o">=</span> <span class="nb">MAX</span><span class="p">(</span> <span class="n">PTI_BLD</span><span class="p">(:)</span> <span class="p">,</span> <span class="n">PTS_FLOOR</span> <span class="p">(:)</span> <span class="p">)</span>
+<span class="c">!</span>
+<span class="k">IF</span> <span class="p">(</span><span class="n">LHOOK</span><span class="p">)</span> <span class="k">CALL </span><span class="n">DR_HOOK</span><span class="p">(</span><span class="s1">&#39;BLD_E_BUDGET&#39;</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">ZHOOK_HANDLE</span><span class="p">)</span>
+<span class="c">!-------------------------------------------------------------------------------</span>
+<span class="k">END SUBROUTINE </span><span class="n">BLD_E_BUDGET</span>
+</pre></div>
+
+    </section>
+    <br>
+    
+    
+    </div>
+  </div>
+
+
+    <hr>    
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+      <div class="row">
+        <div class="col-xs-6 col-md-6"><p>Town Energy Balance (TEB) model API docs was developed by teb-model<br>&copy; 2021 CeCILL
+                                          </p>
+        </div>
+        <div class="col-xs-6 col-md-6">
+          <p class="text-right">
+            Documentation generated by 
+            <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+            
+            
+          </p>
+        </div>
+      </div>
+      <br>
+      </div> <!-- /container -->    
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+<!--
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+-->
+    <script src="../js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../js/ie10-viewport-bug-workaround.js"></script>
+
+    <!-- MathJax JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+        jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+        extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+      });
+    </script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    
+    <script src="../tipuesearch/tipuesearch_content.js"></script>
+    <script src="../tipuesearch/tipuesearch_set.js"></script>
+    <script src="../tipuesearch/tipuesearch.js"></script>
+    
+    
+  </body>
+</html>

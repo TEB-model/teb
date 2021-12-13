@@ -1,0 +1,1590 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   
+   <meta name="description" content="The Town Energy Balance (TEB) model is an urban land surface model developed to calculate the exchange of energy and water between cities and atmosphere.">
+    
+    <meta name="author" content="teb-model" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>BEM &ndash; Town Energy Balance (TEB) model API docs</title>
+
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+    
+    <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+    
+    
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <script src="../js/jquery-2.1.3.min.js"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../index.html">Town Energy Balance (TEB) model API docs </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+        
+            <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
+              <a href="#" class="dropdown-toggle"
+              data-toggle="dropdown" role="button"
+              aria-haspopup="true"
+     aria-expanded="false">Contents <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          
+              
+            <li><a href="../lists/files.html">Source Files</a></li>
+        
+        
+        
+            <li><a href="../lists/modules.html">Modules</a></li>
+        
+            
+                                
+            <li><a href="../lists/procedures.html">Procedures</a></li>
+        
+               
+            <li><a href="../lists/types.html">Derived Types</a></li>
+        
+        
+            <li><a href="../program/driver.html">Program</a></li>
+               
+        
+        
+            </ul>
+        
+            </li>
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/files.html">Source Files</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
+
+                             
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/types.html">Derived Types</a></li>
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../program/driver.html">Program</a></li>
+
+
+
+          </ul>
+        
+        <form action="../search.html" class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+        </div>
+<!--
+        <button type="submit" class="btn btn-default">Submit</button>
+-->
+        </form>
+        
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+    
+  
+  <div class="row">
+    <h1>BEM
+      <small>Subroutine</small>
+    
+    </h1>
+    
+<div class="row">
+  <div class="col-lg-12">
+<div class="well well-sm">
+  <ul class="list-inline" style="margin-bottom:0px;display:inline">
+     
+     
+     
+    <li><i class="fa fa-legal"></i> CeCILL</li> 
+     
+     
+     
+    
+    
+     <li><i class="fa fa-list-ol"></i>
+       <a data-toggle="tooltip"
+    data-placement="bottom" data-html="true"
+    title=" 2.1% of total for procedures.">306 statements</a>
+     </li> 
+     
+     
+     
+    <li><i class="fa fa-code"></i><a href="../src/bem.F90"> Source File</a></li>
+     
+     
+  </ul>
+  <ol class="breadcrumb in-well text-right">
+  
+    
+     <li><a href='../sourcefile/bem.f90.html'>bem.F90</a></li>
+    
+  
+     <li class="active">BEM</li>
+  </ol>
+</div>
+</div>
+</div>
+<script>
+  $(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+  })
+</script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+    
+<div id="sidebar">
+  
+<h3>Contents</h3>
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+  <div class="list-group">
+    <a class="list-group-item" href="../proc/bem.html#src">BEM</a>
+  </div>
+</div>
+
+
+
+</div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+    <h2>
+subroutine BEM(BOP, T, B, DMT, PTSTEP, PSUNTIME, KDAY, PPS, PRHOA, PT_CAN, PQ_CAN, PU_CAN, PHU_BLD, PT_RAD_IND, PFLX_BLD_FL, PFLX_BLD_MA, PRADHT_IN, PRAD_RF_MA, PRAD_RF_FL, PRAD_WL_MA, PRAD_WL_FL, PRAD_WIN_MA, PRAD_WIN_FL, PCONV_RF_BLD, PCONV_WL_BLD, PCONV_WIN_BLD, PLOAD_IN_FL, PLOAD_IN_MA)
+    
+    
+   
+</h2>
+    
+  
+    <div class="panel panel-default">
+      <div class="panel-heading">
+  <h3 class="panel-title">Uses</h3>
+      </div>
+      <ul class="list-group">
+      
+      <li class="list-group-item">
+  <ul class="list-inline">
+    
+    <li><a href='../module/modd_diag_misc_teb_n.html'>MODD_DIAG_MISC_TEB_n</a></li>
+    
+    <li><a href='../module/modd_bem_n.html'>MODD_BEM_n</a></li>
+    
+    <li><a href='../module/modd_bem_option_n.html'>MODD_BEM_OPTION_n</a></li>
+    
+    <li><a href='../module/mode_thermos.html'>MODE_THERMOS</a></li>
+    
+    <li><a href='../module/mode_psychro.html'>MODE_PSYCHRO</a></li>
+    
+    <li><a href='../module/yomhook.html'>YOMHOOK</a></li>
+    
+    <li><a href='../module/modd_csts.html'>MODD_CSTS</a></li>
+    
+    <li><a href='../module/modi_dx_air_cooling_coil_cv.html'>MODI_DX_AIR_COOLING_COIL_CV</a></li>
+    
+    <li><a href='../module/modi_floor_layer_e_budget.html'>MODI_FLOOR_LAYER_E_BUDGET</a></li>
+    
+    <li><a href='../module/mode_psychrolib.html'>mode_psychrolib</a></li>
+    
+    <li><a href='../module/parkind1.html'>PARKIND1</a></li>
+    
+    <li><a href='../module/modd_teb_n.html'>MODD_TEB_n</a></li>
+    
+    <li><a href='../module/modi_mass_layer_e_budget.html'>MODI_MASS_LAYER_E_BUDGET</a></li>
+    
+    <li>MinimalDXCoolingDriver</li>
+    
+    <li><a href='../module/mode_conv_doe.html'>MODE_CONV_DOE</a></li>
+    
+  </ul>
+      </li>
+      
+      
+      
+      </ul>
+    </div>
+    
+
+
+    
+
+    <h3>Arguments</h3>
+    
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-bop~3"></span>type(BEM_OPTIONS_t),</td>
+  <td>intent(inout)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>BOP</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-t~9"></span>type(TEB_t),</td>
+  <td>intent(inout)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>T</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-b~7"></span>type(BEM_t),</td>
+  <td>intent(inout)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>B</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-dmt~4"></span>type(DIAG_MISC_TEB_t),</td>
+  <td>intent(inout)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>DMT</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-ptstep~12"></span>real,</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>PTSTEP</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-psuntime"></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(:)</td><td>::</td>
+  <td><strong>PSUNTIME</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-kday~4"></span>integer,</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>KDAY</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-pps~9"></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(:)</td><td>::</td>
+  <td><strong>PPS</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-prhoa~8"></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(:)</td><td>::</td>
+  <td><strong>PRHOA</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-pt_can~2"></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(:)</td><td>::</td>
+  <td><strong>PT_CAN</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-pq_can~2"></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(:)</td><td>::</td>
+  <td><strong>PQ_CAN</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-pu_can~2"></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(:)</td><td>::</td>
+  <td><strong>PU_CAN</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-phu_bld~2"></span>real,</td>
+  <td>intent(out),</td>
+  <td></td>
+  
+  <td>DIMENSION(:)</td><td>::</td>
+  <td><strong>PHU_BLD</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-pt_rad_ind~2"></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(:)</td><td>::</td>
+  <td><strong>PT_RAD_IND</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-pflx_bld_fl~2"></span>real,</td>
+  <td>intent(out),</td>
+  <td></td>
+  
+  <td>DIMENSION(:)</td><td>::</td>
+  <td><strong>PFLX_BLD_FL</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-pflx_bld_ma"></span>real,</td>
+  <td>intent(out),</td>
+  <td></td>
+  
+  <td>DIMENSION(:)</td><td>::</td>
+  <td><strong>PFLX_BLD_MA</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-pradht_in~5"></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(:)</td><td>::</td>
+  <td><strong>PRADHT_IN</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-prad_rf_ma"></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(:)</td><td>::</td>
+  <td><strong>PRAD_RF_MA</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-prad_rf_fl~2"></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(:)</td><td>::</td>
+  <td><strong>PRAD_RF_FL</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-prad_wl_ma~3"></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(:)</td><td>::</td>
+  <td><strong>PRAD_WL_MA</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-prad_wl_fl~4"></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(:)</td><td>::</td>
+  <td><strong>PRAD_WL_FL</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-prad_win_ma~2"></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(:)</td><td>::</td>
+  <td><strong>PRAD_WIN_MA</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-prad_win_fl~3"></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(:)</td><td>::</td>
+  <td><strong>PRAD_WIN_FL</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-pconv_rf_bld"></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(:)</td><td>::</td>
+  <td><strong>PCONV_RF_BLD</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-pconv_wl_bld~3"></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(:)</td><td>::</td>
+  <td><strong>PCONV_WL_BLD</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-pconv_win_bld~2"></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(:)</td><td>::</td>
+  <td><strong>PCONV_WIN_BLD</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-pload_in_fl"></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(:)</td><td>::</td>
+  <td><strong>PLOAD_IN_FL</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-pload_in_ma"></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(:)</td><td>::</td>
+  <td><strong>PLOAD_IN_MA</strong></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+    
+    
+    
+    
+     
+    <br>
+
+    <section class="visible-xs visible-sm hidden-md">
+      
+<h3>Contents</h3>
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+  <div class="list-group">
+    <a class="list-group-item" href="../proc/bem.html#src">BEM</a>
+  </div>
+</div>
+
+
+
+    </section>
+    <br class="visible-xs visible-sm hidden-md">
+
+    
+
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+
+
+    
+    
+    
+    <section>
+    <h2><span class="anchor" id="src"></span>Source Code</h2>
+    <div class="highlight"><pre><span></span>        <span class="k">SUBROUTINE </span><span class="n">BEM</span><span class="p">(</span><span class="n">BOP</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">DMT</span><span class="p">,</span> <span class="n">PTSTEP</span><span class="p">,</span> <span class="n">PSUNTIME</span><span class="p">,</span> <span class="n">KDAY</span><span class="p">,</span> <span class="n">PPS</span><span class="p">,</span> <span class="n">PRHOA</span><span class="p">,</span> <span class="n">PT_CAN</span><span class="p">,</span>  <span class="p">&amp;</span>
+                       <span class="n">PQ_CAN</span><span class="p">,</span> <span class="n">PU_CAN</span><span class="p">,</span> <span class="n">PHU_BLD</span><span class="p">,</span> <span class="n">PT_RAD_IND</span><span class="p">,</span> <span class="n">PFLX_BLD_FL</span><span class="p">,</span> <span class="n">PFLX_BLD_MA</span><span class="p">,&amp;</span>
+                       <span class="n">PRADHT_IN</span><span class="p">,</span> <span class="n">PRAD_RF_MA</span><span class="p">,</span> <span class="n">PRAD_RF_FL</span><span class="p">,</span> <span class="n">PRAD_WL_MA</span><span class="p">,</span> <span class="n">PRAD_WL_FL</span><span class="p">,&amp;</span>
+                       <span class="n">PRAD_WIN_MA</span><span class="p">,</span> <span class="n">PRAD_WIN_FL</span><span class="p">,</span> <span class="n">PCONV_RF_BLD</span><span class="p">,</span> <span class="n">PCONV_WL_BLD</span><span class="p">,</span>     <span class="p">&amp;</span>
+                       <span class="n">PCONV_WIN_BLD</span><span class="p">,</span> <span class="n">PLOAD_IN_FL</span><span class="p">,</span> <span class="n">PLOAD_IN_MA</span>                <span class="p">)</span>
+<span class="c">!   ##########################################################################</span>
+<span class="c">!</span>
+<span class="c">!!****  *BEM*</span>
+<span class="c">!!</span>
+<span class="c">!!    PURPOSE</span>
+<span class="c">!!    -------</span>
+<span class="c">!</span>
+<span class="c">!     Computes the temperature and humidity evolution of indoor air, </span>
+<span class="c">!     building energy demand, HVAC energy consumption, </span>
+<span class="c">!     waste heat from HVAC systems, and heat fluxes from indoor to building surfaces.</span>
+<span class="c">!</span>
+<span class="c">!</span>
+<span class="c">!!**  METHOD</span>
+<span class="c">!     ------</span>
+<span class="c">!</span>
+<span class="c">!              NOMENCLATURE: bld  - refers to building plant area; </span>
+<span class="c">!                            floor- refers to building plant area multiplied </span>
+<span class="c">!                                   by the number of floors;</span>
+<span class="c">!                            wall - refers to wall area (excluding windows).</span>
+<span class="c">!                            win  - refers to window area. </span>
+<span class="c">!                            mass - refers to internal mass area. </span>
+<span class="c">!</span>
+<span class="c">!</span>
+<span class="c">!        solar radiation transmitted through windows</span>
+<span class="c">!        *******************************************</span>
+<span class="c">!</span>
+<span class="c">!     Qsol_tr_win = Qsol_facade * tr_win * GR </span>
+<span class="c">!</span>
+<span class="c">!</span>
+<span class="c">!        indoor wall conv/rad heat transfer coefficients</span>
+<span class="c">!        ***********************************************</span>
+<span class="c">!</span>
+<span class="c">!     The calculation of CHTC accounts for favorable or unfavorable convection </span>
+<span class="c">!     depending on the relative position between the hot layer and cold layer</span>
+<span class="c">!</span>
+<span class="c">! </span>
+<span class="c">!        building energy demand</span>
+<span class="c">!        **********************</span>
+<span class="c">!</span>
+<span class="c">!     Calculation of the cooling and heating, sensible and latent building energy demand.</span>
+<span class="c">!     The sensible demand includes the convective heat transfer from indoor surfaces, the </span>
+<span class="c">!     convective fraction of internal heat gains, and sensible infiltration/ventilation heat</span>
+<span class="c">!     gains. The latent demand includes the latent fraction of internal heat gains and latent</span>
+<span class="c">!     infiltration/ventilation heat gains.  </span>
+<span class="c">!</span>
+<span class="c">!        surface areas and volummes (referred to m2_bld)</span>
+<span class="c">!        ***********************************************</span>
+<span class="c">!</span>
+<span class="c">!     Awall   =  WALL_O_HOR * (1 - GR) / BLD [m2_wall/m2_bld]</span>
+<span class="c">!     Awin    =  WALL_O_HOR * GR / BLD       [m2_win/m2_bld]   </span>
+<span class="c">!     Amass   =  2 * N_FLOOR                  [m2_mass/m2_bld]  </span>
+<span class="c">!     N_FLOOR  =  BLD_HEIGHT / FLOOR_HEIGHT   [#]</span>
+<span class="c">!     Aroof   =  1                           [m2_roof/m2_bld]  </span>
+<span class="c">!     Afloor  =  1                           [m2_floor/m2_bld]   </span>
+<span class="c">!     Vol_air =  BLD_HEIGHT                  [m3_bld/m2_bld]</span>
+<span class="c">!</span>
+<span class="c">!</span>
+<span class="c">!        evolution of the internal temperature</span>
+<span class="c">!        *************************************</span>
+<span class="c">!</span>
+
+<span class="c">!                                  dTin  </span>
+<span class="c">!     Vol_air * ro_air * cp_air * ---- = h_wall * Awall * (Twall - Tin)</span>
+<span class="c">!                                   dt    + h_roof * Aroof * (Troof -Tin)</span>
+<span class="c">!                                         + h_floor * Afloor *(Tfloor - Tin)</span>
+<span class="c">!                                         + h_mass * Amass * (Tmass - Tin)  </span>
+<span class="c">!                                         + h_win * Awin * (Twin - Tin)</span>
+<span class="c">!                                         + Qig * (1 - fig_rad) * (1-fig_lat)</span>
+<span class="c">!                                         + Vinf * ro_air * cp_air * (Tout - Tin) </span>
+<span class="c">!                                         + Vsys * ro_air * cp_air * (Tsys - Tin) </span>
+<span class="c">!</span>
+<span class="c">!</span>
+<span class="c">!        evolution of the internal specific humidity</span>
+<span class="c">!        *******************************************</span>
+<span class="c">!</span>
+<span class="c">!                                  dQin  </span>
+<span class="c">!      Vol_air * ro_air * lv_air * ---- = Qig * fig_lat</span>
+<span class="c">!                                   dt    + Vinf * ro_air * lv_air * (Qout - Qin) </span>
+<span class="c">!                                         + Vsys * ro_air * lv_air * (Qsys - Qin) </span>
+<span class="c">!</span>
+<span class="c">!</span>
+<span class="c">!        heat fluxes from indoor to surfaces</span>
+<span class="c">!        ***********************************</span>
+<span class="c">!</span>
+<span class="c">!      Qin_wall  = h_wall  * (Tin - Twall)  [W/m2_wall]</span>
+<span class="c">!      Qin_roof  = h_roof  * (Tin - Troof)  [W/m2_roof] </span>
+<span class="c">!      Qin_floor = h_floor * (Tin - Tfloor) [W/m2_floor] </span>
+<span class="c">!      Qin_mass  = h_wall  * (Tin - Tmass)  </span>
+<span class="c">!                + Qig * fig_rad * (1-fig_lat)/ 2  </span>
+<span class="c">!                + Qsol_tr_win              [W/m2_mass]</span>
+<span class="c">!</span>
+<span class="c">!</span>
+<span class="c">!        energy consumption and waste heat from cooling system</span>
+<span class="c">!        *****************************************************</span>
+<span class="c">!</span>
+<span class="c">!      Qhvac  = Qbld / COP</span>
+<span class="c">!      Qwaste = Qbld + Qhvac</span>
+<span class="c">!</span>
+<span class="c">!</span>
+<span class="c">!        energy consumption and waste heat from heating system</span>
+<span class="c">!        *****************************************************</span>
+<span class="c">!</span>
+<span class="c">!      Qhvac  = Qbld / Eff</span>
+<span class="c">!      Qwaste = Qhvac - Qbld</span>
+<span class="c">!</span>
+<span class="c">!</span>
+<span class="c">!!    EXTERNAL</span>
+<span class="c">!!    --------</span>
+<span class="c">!!</span>
+<span class="c">!!</span>
+<span class="c">!!    IMPLICIT ARGUMENTS</span>
+<span class="c">!!    ------------------</span>
+<span class="c">!!</span>
+<span class="c">!!</span>
+<span class="c">!!    REFERENCE</span>
+<span class="c">!!    ---------</span>
+<span class="c">!!</span>
+<span class="c">!!</span>
+<span class="c">!!    AUTHOR</span>
+<span class="c">!!    ------</span>
+<span class="c">!!</span>
+<span class="c">!!      B. Bueno           * Meteo-France *</span>
+<span class="c">!!</span>
+<span class="c">!!!    MODIFICATIONS</span>
+<span class="c">!!    -------------</span>
+<span class="c">!!     Original 2010</span>
+<span class="c">!!     G. Pigeon nov. 2011: inclusion floor/mass budget inside</span>
+<span class="c">!!                          add automatic/manual ventilation</span>
+<span class="c">!!                          conserve exchanges with the different surfaces inside 1 time step</span>
+<span class="c">!!    G. Pigeon sept. 2012: use of TARP/DOE coef for indoor convection</span>
+<span class="c">!!                          use of both T%XT_WALL_A and T%XT_WALL_B for calculations</span>
+<span class="c">!!                          the internal mass depth is 1/2 of the floor depth</span>
+<span class="c">!!                          add the option of no atmospheric heat releases by HVAC system (B%XF_WATER_COND &lt; 0)</span>
+<span class="c">!!    G. Pigeon oct. 2012:  use indoor air density + new solar heat gain distribution</span>
+<span class="c">!!    V. Masson May  2013   implicitation of internal building temperature evolution</span>
+<span class="c">!-------------------------------------------------------------------------------</span>
+<span class="c">!</span>
+<span class="c">!*       0.     DECLARATIONS</span>
+<span class="c">!               ------------</span>
+<span class="c">!</span>
+<span class="k">USE </span><span class="n">MODD_BEM_OPTION_n</span><span class="p">,</span> <span class="k">ONLY</span> <span class="p">:</span> <span class="n">BEM_OPTIONS_t</span>
+<span class="k">USE </span><span class="n">MODD_TEB_n</span><span class="p">,</span> <span class="k">ONLY</span> <span class="p">:</span> <span class="n">TEB_t</span>
+<span class="k">USE </span><span class="n">MODD_BEM_n</span><span class="p">,</span> <span class="k">ONLY</span> <span class="p">:</span> <span class="n">BEM_t</span>
+<span class="k">USE </span><span class="n">MODD_DIAG_MISC_TEB_n</span><span class="p">,</span> <span class="k">ONLY</span> <span class="p">:</span> <span class="n">DIAG_MISC_TEB_t</span>
+<span class="c">!</span>
+<span class="k">USE </span><span class="n">MODD_CSTS</span><span class="p">,</span><span class="k">ONLY</span> <span class="p">:</span> <span class="n">XCPD</span><span class="p">,</span><span class="n">XSTEFAN</span><span class="p">,</span><span class="n">XLVTT</span><span class="p">,</span><span class="n">XG</span><span class="p">,</span> <span class="n">XRV</span><span class="p">,</span> <span class="n">XRD</span>
+ 
+<span class="k">USE </span><span class="n">MODE_THERMOS</span>
+<span class="k">USE </span><span class="n">MODE_PSYCHRO</span>
+<span class="k">USE </span><span class="n">MODI_DX_AIR_COOLING_COIL_CV</span>
+<span class="k">USE </span><span class="n">MODI_FLOOR_LAYER_E_BUDGET</span>
+<span class="k">USE </span><span class="n">MODI_MASS_LAYER_E_BUDGET</span>
+<span class="k">USE </span><span class="n">MODE_CONV_DOE</span>
+<span class="c">!</span>
+<span class="k">USE </span><span class="n">YOMHOOK</span>   <span class="p">,</span><span class="k">ONLY</span> <span class="p">:</span> <span class="n">LHOOK</span><span class="p">,</span>   <span class="n">DR_HOOK</span>
+<span class="k">USE </span><span class="n">PARKIND1</span>  <span class="p">,</span><span class="k">ONLY</span> <span class="p">:</span> <span class="n">JPRB</span>
+<span class="c">!</span>
+<span class="k">USE </span><span class="n">MODD_CSTS</span><span class="p">,</span> <span class="k">ONLY</span> <span class="p">:</span> <span class="n">XTT</span>
+<span class="c">!</span>
+<span class="k">use </span><span class="n">MinimalDXCoolingDriver</span><span class="p">,</span> <span class="k">only</span><span class="p">:</span> <span class="n">SimMinimalDXCooling</span>
+<span class="k">use </span><span class="n">mode_psychrolib</span><span class="p">,</span> <span class="k">only</span><span class="p">:</span> <span class="n">SetUnitSystem</span><span class="p">,</span> <span class="n">SI</span><span class="p">,</span> <span class="n">GetHumRatioFromSpecificHum</span><span class="p">,</span> <span class="n">GetSpecificHumFromHumRatio</span>
+<span class="c">!</span>
+<span class="k">IMPLICIT NONE</span>
+<span class="c">!</span>
+<span class="c">!*      0.1    Declarations of arguments</span>
+<span class="c">!</span>
+<span class="k">TYPE</span><span class="p">(</span><span class="n">BEM_OPTIONS_t</span><span class="p">),</span> <span class="k">INTENT</span><span class="p">(</span><span class="n">INOUT</span><span class="p">)</span> <span class="kd">::</span> <span class="n">BOP</span>
+<span class="k">TYPE</span><span class="p">(</span><span class="n">TEB_t</span><span class="p">),</span> <span class="k">INTENT</span><span class="p">(</span><span class="n">INOUT</span><span class="p">)</span> <span class="kd">::</span> <span class="n">T</span>
+<span class="k">TYPE</span><span class="p">(</span><span class="n">BEM_t</span><span class="p">),</span> <span class="k">INTENT</span><span class="p">(</span><span class="n">INOUT</span><span class="p">)</span> <span class="kd">::</span> <span class="n">B</span>
+<span class="k">TYPE</span><span class="p">(</span><span class="n">DIAG_MISC_TEB_t</span><span class="p">),</span> <span class="k">INTENT</span><span class="p">(</span><span class="n">INOUT</span><span class="p">)</span> <span class="kd">::</span> <span class="n">DMT</span>
+<span class="c">!</span>
+<span class="kt">REAL</span><span class="p">,</span>                <span class="k">INTENT</span><span class="p">(</span><span class="n">IN</span><span class="p">)</span>   <span class="kd">::</span> <span class="n">PTSTEP</span>        <span class="c">! Time step</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:),</span>  <span class="k">INTENT</span><span class="p">(</span><span class="n">IN</span><span class="p">)</span>   <span class="kd">::</span> <span class="n">PSUNTIME</span>       <span class="c">! current solar time since midnight (solar time, s)</span>
+<span class="kt">INTEGER</span><span class="p">,</span>             <span class="k">INTENT</span><span class="p">(</span><span class="n">IN</span><span class="p">)</span>   <span class="kd">::</span> <span class="n">KDAY</span>          <span class="c">! Simulation day</span>
+<span class="c">!</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:),</span>   <span class="k">INTENT</span><span class="p">(</span><span class="n">IN</span><span class="p">)</span>  <span class="kd">::</span> <span class="n">PPS</span>          <span class="c">! Canyon air pressure [Pa]</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:),</span>   <span class="k">INTENT</span><span class="p">(</span><span class="n">IN</span><span class="p">)</span>  <span class="kd">::</span> <span class="n">PRHOA</span>        <span class="c">! Air density at the lowest level [kg m-3]</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:),</span>   <span class="k">INTENT</span><span class="p">(</span><span class="n">IN</span><span class="p">)</span>  <span class="kd">::</span> <span class="n">PT_CAN</span>    <span class="c">! Canyon air temperature [K]</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:),</span>   <span class="k">INTENT</span><span class="p">(</span><span class="n">IN</span><span class="p">)</span>  <span class="kd">::</span> <span class="n">PQ_CAN</span>    <span class="c">! Canyon air specific humidity [kg kg-1]</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:),</span>   <span class="k">INTENT</span><span class="p">(</span><span class="n">IN</span><span class="p">)</span>  <span class="kd">::</span> <span class="n">PU_CAN</span>    <span class="c">! Canyon wind speed (m s-1)</span>
+<span class="c">!</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:),</span>   <span class="k">INTENT</span><span class="p">(</span><span class="n">OUT</span><span class="p">)</span>  <span class="kd">::</span> <span class="n">PHU_BLD</span>       <span class="c">! Indoor relative humidity 0 &lt; (-) &lt; 1</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:),</span>   <span class="k">INTENT</span><span class="p">(</span><span class="n">IN</span><span class="p">)</span>  <span class="kd">::</span> <span class="n">PT_RAD_IND</span>    <span class="c">! Indoor mean radiant temperature [K]</span>
+<span class="c">!</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:),</span>   <span class="k">INTENT</span><span class="p">(</span><span class="n">OUT</span><span class="p">)</span>  <span class="kd">::</span> <span class="n">PFLX_BLD_FL</span><span class="c">! Heat flux from indoor air to floor </span>
+                                                    <span class="c">! [W m-2(bld)]</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:),</span>   <span class="k">INTENT</span><span class="p">(</span><span class="n">OUT</span><span class="p">)</span>  <span class="kd">::</span> <span class="n">PFLX_BLD_MA</span> <span class="c">! Heat flux from indoor air to mass </span>
+                                                    <span class="c">! [W m-2(bld)]</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:),</span>   <span class="k">INTENT</span><span class="p">(</span><span class="n">IN</span><span class="p">)</span> <span class="kd">::</span> <span class="n">PRADHT_IN</span>     <span class="c">! Indoor radiant heat transfer coefficient</span>
+                                                    <span class="c">! [W K-1 m-2]</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>  <span class="p">,</span> <span class="k">INTENT</span><span class="p">(</span><span class="n">IN</span><span class="p">)</span>  <span class="kd">::</span> <span class="n">PRAD_RF_MA</span>  <span class="c">! Rad. fluxes between roof and mass</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>  <span class="p">,</span> <span class="k">INTENT</span><span class="p">(</span><span class="n">IN</span><span class="p">)</span>  <span class="kd">::</span> <span class="n">PRAD_RF_FL</span> <span class="c">! Rad. fluxes between roof and floor</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>  <span class="p">,</span> <span class="k">INTENT</span><span class="p">(</span><span class="n">IN</span><span class="p">)</span>  <span class="kd">::</span> <span class="n">PRAD_WL_MA</span>  <span class="c">! Rad. fluxes between wall and mass</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>  <span class="p">,</span> <span class="k">INTENT</span><span class="p">(</span><span class="n">IN</span><span class="p">)</span>  <span class="kd">::</span> <span class="n">PRAD_WL_FL</span> <span class="c">! Rad. fluxes between wall and floor</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>  <span class="p">,</span> <span class="k">INTENT</span><span class="p">(</span><span class="n">IN</span><span class="p">)</span>  <span class="kd">::</span> <span class="n">PRAD_WIN_MA</span>   <span class="c">! Rad. fluxes between wind. and mass</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>  <span class="p">,</span> <span class="k">INTENT</span><span class="p">(</span><span class="n">IN</span><span class="p">)</span>  <span class="kd">::</span> <span class="n">PRAD_WIN_FL</span>  <span class="c">! Rad. fluxes between wind. and floor</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>  <span class="p">,</span> <span class="k">INTENT</span><span class="p">(</span><span class="n">IN</span><span class="p">)</span>  <span class="kd">::</span> <span class="n">PCONV_RF_BLD</span>  <span class="c">! Conv. fluxes between roof and indoor air</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>  <span class="p">,</span> <span class="k">INTENT</span><span class="p">(</span><span class="n">IN</span><span class="p">)</span>  <span class="kd">::</span> <span class="n">PCONV_WL_BLD</span>  <span class="c">! Conv. fluxes between wall and indoor air</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>  <span class="p">,</span> <span class="k">INTENT</span><span class="p">(</span><span class="n">IN</span><span class="p">)</span>  <span class="kd">::</span> <span class="n">PCONV_WIN_BLD</span>   <span class="c">! Conv. fluxes between wind. and indoor air</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>  <span class="p">,</span> <span class="k">INTENT</span><span class="p">(</span><span class="n">IN</span><span class="p">)</span>  <span class="kd">::</span> <span class="n">PLOAD_IN_FL</span>  <span class="c">! solar + int heat gain on floor W/m2 [floor]</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:)</span>  <span class="p">,</span> <span class="k">INTENT</span><span class="p">(</span><span class="n">IN</span><span class="p">)</span>  <span class="kd">::</span> <span class="n">PLOAD_IN_MA</span>   <span class="c">! solar + int heat gain on floor W/m2 [mass]</span>
+<span class="c">!</span>
+<span class="c">!*      0.2    Declarations of local variables </span>
+<span class="c">!</span>
+<span class="kt">INTEGER</span>                        <span class="kd">::</span> <span class="n">IRF</span>        <span class="c">! Number of roof layers</span>
+<span class="kt">INTEGER</span>                        <span class="kd">::</span> <span class="n">IWL</span>        <span class="c">! Number of wall layers</span>
+<span class="c">!REAL                           :: ZTCOMF_MAX   ! Maximum comfort temperature for nat.vent [K]</span>
+<span class="c">!</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(</span><span class="n">SIZE</span><span class="p">(</span><span class="n">B</span><span class="p">%</span><span class="n">XTI_BLD</span><span class="p">))</span> <span class="kd">::</span> <span class="n">ZFAN_AP</span>      <span class="c">! Fan design pressure increase [Pa]</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(</span><span class="n">SIZE</span><span class="p">(</span><span class="n">B</span><span class="p">%</span><span class="n">XTI_BLD</span><span class="p">))</span> <span class="kd">::</span> <span class="n">ZFAN_EFF</span>     <span class="c">! Fan total efficiency</span>
+<span class="c">!</span>
+<span class="kt">LOGICAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(</span><span class="n">SIZE</span><span class="p">(</span><span class="n">B</span><span class="p">%</span><span class="n">XTI_BLD</span><span class="p">))</span><span class="kd">::</span> <span class="n">GSCHED</span>     <span class="c">! Day-night schedule flag </span>
+                                               <span class="c">! *to be transported to inputs*</span>
+<span class="c">!</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(</span><span class="n">SIZE</span><span class="p">(</span><span class="n">B</span><span class="p">%</span><span class="n">XTI_BLD</span><span class="p">))</span> <span class="kd">::</span> <span class="n">ZF_NIGHT</span>     <span class="c">! Reduction factor of int.gains at night</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(</span><span class="n">SIZE</span><span class="p">(</span><span class="n">B</span><span class="p">%</span><span class="n">XTI_BLD</span><span class="p">))</span> <span class="kd">::</span> <span class="n">ZF_DAY</span>       <span class="c">! Amplification factor of int.gains at daytime</span>
+<span class="c">!</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(</span><span class="n">SIZE</span><span class="p">(</span><span class="n">B</span><span class="p">%</span><span class="n">XTI_BLD</span><span class="p">))</span><span class="kd">::</span> <span class="n">ZAC_IN_MA_COOL</span><span class="p">,</span> <span class="n">ZAC_IN_FL_COOL</span><span class="p">,</span> <span class="p">&amp;</span>
+                                 <span class="n">ZAC_IN_RF_COOL</span><span class="p">,</span> <span class="n">ZAC_IN_WL_A_COOL</span><span class="p">,</span> <span class="p">&amp;</span>
+                                 <span class="n">ZAC_IN_WL_B_COOL</span><span class="p">,</span> <span class="n">ZAC_IN_WIN_COOL</span>   
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(</span><span class="n">SIZE</span><span class="p">(</span><span class="n">B</span><span class="p">%</span><span class="n">XTI_BLD</span><span class="p">))</span><span class="kd">::</span> <span class="n">ZAC_IN_MA_HEAT</span><span class="p">,</span> <span class="n">ZAC_IN_FL_HEAT</span><span class="p">,</span> <span class="p">&amp;</span>
+                                 <span class="n">ZAC_IN_RF_HEAT</span><span class="p">,</span> <span class="n">ZAC_IN_WL_A_HEAT</span><span class="p">,</span> <span class="p">&amp;</span>
+                                 <span class="n">ZAC_IN_WL_B_HEAT</span><span class="p">,</span> <span class="n">ZAC_IN_WIN_HEAT</span>   
+<span class="c">!</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(</span><span class="n">SIZE</span><span class="p">(</span><span class="n">B</span><span class="p">%</span><span class="n">XTI_BLD</span><span class="p">))</span><span class="kd">::</span> <span class="n">ZQIN</span>          <span class="c">! Internal heat gains [W m-2(bld)]</span>
+<span class="c">!</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(</span><span class="n">SIZE</span><span class="p">(</span><span class="n">B</span><span class="p">%</span><span class="n">XTI_BLD</span><span class="p">))</span><span class="kd">::</span> <span class="n">ZV_VENT</span>       <span class="c">! Ventilation flow rate [m3 s-1 m-2(bld)]</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(</span><span class="n">SIZE</span><span class="p">(</span><span class="n">B</span><span class="p">%</span><span class="n">XTI_BLD</span><span class="p">))</span><span class="kd">::</span> <span class="n">ZINF</span>          <span class="c">! Infiltration flow rate [m3 s-1 m-2(bld)]</span>
+<span class="c">!</span>
+<span class="kt">LOGICAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(</span><span class="n">SIZE</span><span class="p">(</span><span class="n">B</span><span class="p">%</span><span class="n">XTI_BLD</span><span class="p">))</span><span class="kd">::</span> <span class="n">GNAT_VENT</span>  <span class="c">! Is Natural ventilation active ? </span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(</span><span class="n">SIZE</span><span class="p">(</span><span class="n">B</span><span class="p">%</span><span class="n">XTI_BLD</span><span class="p">))</span><span class="kd">::</span> <span class="n">ZNAT_VENT</span>     <span class="c">! Nat.vent airflow rate [m3 s-1 m-2(bld)]</span>
+<span class="kt">REAL</span><span class="p">,</span><span class="k">DIMENSION</span><span class="p">(</span><span class="n">SIZE</span><span class="p">(</span><span class="n">B</span><span class="p">%</span><span class="n">XTI_BLD</span><span class="p">))</span> <span class="kd">::</span> <span class="n">ZTI_BLD</span>       <span class="c">! Indoor air temperature at time step t + dt [K]</span>
+<span class="kt">REAL</span><span class="p">,</span><span class="k">DIMENSION</span><span class="p">(</span><span class="n">SIZE</span><span class="p">(</span><span class="n">B</span><span class="p">%</span><span class="n">XTI_BLD</span><span class="p">))</span> <span class="kd">::</span> <span class="n">ZTI_BLD_OPEN</span>  <span class="c">! Indoor air temperature if windows opened</span>
+<span class="kt">REAL</span><span class="p">,</span><span class="k">DIMENSION</span><span class="p">(</span><span class="n">SIZE</span><span class="p">(</span><span class="n">B</span><span class="p">%</span><span class="n">XTI_BLD</span><span class="p">))</span> <span class="kd">::</span> <span class="n">ZTI_BLD_CLOSED</span><span class="c">! Indoor air temperature if windows closed</span>
+<span class="c">!</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(</span><span class="n">SIZE</span><span class="p">(</span><span class="n">B</span><span class="p">%</span><span class="n">XTI_BLD</span><span class="p">))</span><span class="kd">::</span> <span class="n">ZQCOOL_TRGT</span> <span class="c">! Specific humidity cooling setpoing [kg kg-1]</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(</span><span class="n">SIZE</span><span class="p">(</span><span class="n">B</span><span class="p">%</span><span class="n">XTI_BLD</span><span class="p">))</span><span class="kd">::</span> <span class="n">ZQHEAT_TRGT</span> <span class="c">! Specific humidity heating setpoing [kg kg-1]</span>
+<span class="c">!</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(</span><span class="n">SIZE</span><span class="p">(</span><span class="n">B</span><span class="p">%</span><span class="n">XTI_BLD</span><span class="p">))</span><span class="kd">::</span> <span class="n">ZSHR</span>          <span class="c">! Rated sensible heat rate</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(</span><span class="n">SIZE</span><span class="p">(</span><span class="n">B</span><span class="p">%</span><span class="n">XTI_BLD</span><span class="p">))</span><span class="kd">::</span> <span class="n">ZM_SYS_RAT</span>    <span class="c">! Auxiliar mass flow rate [kg s-1 m-2(bld)]</span>
+<span class="c">!</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(</span><span class="n">SIZE</span><span class="p">(</span><span class="n">B</span><span class="p">%</span><span class="n">XTI_BLD</span><span class="p">))</span><span class="kd">::</span> <span class="n">ZXMIX</span>         <span class="c">! Outdoor mixing fraction</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(</span><span class="n">SIZE</span><span class="p">(</span><span class="n">B</span><span class="p">%</span><span class="n">XTI_BLD</span><span class="p">))</span><span class="kd">::</span> <span class="n">ZT_MIX</span>        <span class="c">! Mixing air temperature [K]</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(</span><span class="n">SIZE</span><span class="p">(</span><span class="n">B</span><span class="p">%</span><span class="n">XTI_BLD</span><span class="p">))</span><span class="kd">::</span> <span class="n">ZQ_MIX</span>        <span class="c">! Mixing air specific humidity [kg kg-1]</span>
+<span class="c">!</span>
+<span class="kt">REAL</span><span class="p">,</span><span class="k">DIMENSION</span><span class="p">(</span><span class="n">SIZE</span><span class="p">(</span><span class="n">B</span><span class="p">%</span><span class="n">XTI_BLD</span><span class="p">))</span> <span class="kd">::</span> <span class="n">ZQI_BLD</span>       <span class="c">! Indoor air humidity at time step t + dt [K}</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(</span><span class="n">SIZE</span><span class="p">(</span><span class="n">B</span><span class="p">%</span><span class="n">XTI_BLD</span><span class="p">))</span><span class="kd">::</span> <span class="n">ZWASTE</span>
+<span class="c">!</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(</span><span class="n">SIZE</span><span class="p">(</span><span class="n">B</span><span class="p">%</span><span class="n">XTI_BLD</span><span class="p">))</span><span class="kd">::</span> <span class="n">ZDQS_FL</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(</span><span class="n">SIZE</span><span class="p">(</span><span class="n">B</span><span class="p">%</span><span class="n">XTI_BLD</span><span class="p">))</span><span class="kd">::</span> <span class="n">ZIMB_FL</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(</span><span class="n">SIZE</span><span class="p">(</span><span class="n">B</span><span class="p">%</span><span class="n">XTI_BLD</span><span class="p">))</span><span class="kd">::</span> <span class="n">ZDQS_MA</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(</span><span class="n">SIZE</span><span class="p">(</span><span class="n">B</span><span class="p">%</span><span class="n">XTI_BLD</span><span class="p">))</span><span class="kd">::</span> <span class="n">ZIMB_MA</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(</span><span class="n">SIZE</span><span class="p">(</span><span class="n">B</span><span class="p">%</span><span class="n">XTI_BLD</span><span class="p">))</span><span class="kd">::</span> <span class="n">ZLOAD_FL</span>   <span class="c">! sum of solar and internal loads on floor</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(</span><span class="n">SIZE</span><span class="p">(</span><span class="n">B</span><span class="p">%</span><span class="n">XTI_BLD</span><span class="p">))</span><span class="kd">::</span> <span class="n">ZLOAD_MA</span>    <span class="c">! sum of solar and internal loads on mass</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(</span><span class="n">SIZE</span><span class="p">(</span><span class="n">B</span><span class="p">%</span><span class="n">XTI_BLD</span><span class="p">))</span><span class="kd">::</span> <span class="n">ZRAD_FL_MA</span> <span class="c">! Rad. fluxes from floor to mass</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(</span><span class="n">SIZE</span><span class="p">(</span><span class="n">B</span><span class="p">%</span><span class="n">XTI_BLD</span><span class="p">))</span><span class="kd">::</span> <span class="n">ZCONV_FL_BLD</span> <span class="c">! Conv. fluxes from floor to indoor air</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(</span><span class="n">SIZE</span><span class="p">(</span><span class="n">B</span><span class="p">%</span><span class="n">XTI_BLD</span><span class="p">))</span><span class="kd">::</span> <span class="n">ZCONV_MA_BLD</span>  <span class="c">! Conv. fluxes from mass to indoor air</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(</span><span class="n">SIZE</span><span class="p">(</span><span class="n">B</span><span class="p">%</span><span class="n">XTI_BLD</span><span class="p">))</span><span class="kd">::</span> <span class="n">ZRHOI</span>  <span class="c">! indoor air density</span>
+<span class="c">!</span>
+<span class="kt">INTEGER</span> <span class="kd">::</span> <span class="n">JJ</span>                                  <span class="c">! Loop counter</span>
+<span class="kt">REAL</span><span class="p">(</span><span class="nb">KIND</span><span class="o">=</span><span class="n">JPRB</span><span class="p">)</span> <span class="kd">::</span> <span class="n">ZHOOK_HANDLE</span>
+<span class="c">!</span>
+<span class="c">! Local variable used for the coupling with MinimalDX</span>
+<span class="kt">REAL</span> <span class="kd">::</span> <span class="n">OutdoorHumRatio</span><span class="p">,</span> <span class="n">InletHumRatio</span><span class="p">,</span> <span class="n">OutletHumRatio</span><span class="p">,</span> <span class="n">OutdoorTDryBulb</span><span class="p">,</span> <span class="n">InletTDryBulb</span><span class="p">,</span> <span class="n">OutletTemperature</span>
+<span class="c">!</span>
+<span class="c">! Psychrolib: use International System of Units</span>
+<span class="k">call </span><span class="n">SetUnitSystem</span><span class="p">(</span><span class="n">SI</span><span class="p">)</span>
+<span class="c">!</span>
+<span class="c">!!REAL :: ZEXPL = 0.5 !explicit coefficient for internal temperature evol.</span>
+<span class="c">!!REAL :: ZIMPL = 0.5 !implicit coef..</span>
+<span class="c">!</span>
+<span class="c">!-------------------------------------------------------------------------------</span>
+<span class="k">IF</span> <span class="p">(</span><span class="n">LHOOK</span><span class="p">)</span> <span class="k">CALL </span><span class="n">DR_HOOK</span><span class="p">(</span><span class="s1">&#39;BEM&#39;</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">ZHOOK_HANDLE</span><span class="p">)</span>
+<span class="c">!</span>
+<span class="c">!*      1.   Initializations</span>
+<span class="c">!            ---------------</span>
+<span class="c">!</span>
+<span class="n">ZRHOI</span><span class="p">(:)</span> <span class="o">=</span> <span class="n">PPS</span><span class="p">(:)</span> <span class="o">/</span> <span class="p">(</span><span class="n">XRD</span> <span class="o">*</span> <span class="n">B</span><span class="p">%</span><span class="n">XTI_BLD</span><span class="p">(:)</span> <span class="o">*</span> <span class="p">(</span> <span class="mf">1.</span><span class="o">+</span><span class="p">((</span><span class="n">XRV</span><span class="o">/</span><span class="n">XRD</span><span class="p">)</span><span class="o">-</span><span class="mf">1.</span><span class="p">)</span><span class="o">*</span><span class="n">B</span><span class="p">%</span><span class="n">XQI_BLD</span><span class="p">(:)</span> <span class="p">)</span> <span class="p">)</span>
+<span class="c">! *Temperal definitions for nat.vent*</span>
+<span class="c">!ZTCOMF_MAX  = 26. + 273.16</span>
+<span class="c">!</span>
+<span class="c">! *Definitions</span>
+<span class="n">ZFAN_AP</span> <span class="p">(:)</span> <span class="o">=</span> <span class="mi">60</span><span class="mf">0.0</span>
+<span class="n">ZFAN_EFF</span><span class="p">(:)</span> <span class="o">=</span> <span class="mf">0.7</span>
+<span class="c">!</span>
+<span class="c">! *Other calcs</span>
+<span class="n">IRF</span>  <span class="o">=</span> <span class="n">SIZE</span><span class="p">(</span><span class="n">T</span><span class="p">%</span><span class="n">XT_ROOF</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">IWL</span>  <span class="o">=</span> <span class="n">SIZE</span><span class="p">(</span><span class="n">T</span><span class="p">%</span><span class="n">XT_WALL_A</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="c">!</span>
+<span class="c">!</span>
+<span class="c">! initial condition of QI_BLD equivalent to 50% RH</span>
+<span class="k">IF</span> <span class="p">(</span><span class="nb">ANY</span><span class="p">(</span><span class="n">B</span><span class="p">%</span><span class="n">XQI_BLD</span><span class="p">(:)</span> <span class="o">&lt;=</span> <span class="mf">1E-6</span><span class="p">))</span> <span class="n">B</span><span class="p">%</span><span class="n">XQI_BLD</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">QSAT</span><span class="p">(</span><span class="n">B</span><span class="p">%</span><span class="n">XTI_BLD</span><span class="p">,</span> <span class="n">PPS</span><span class="p">)</span>
+<span class="c">!</span>
+<span class="c">! *Temperal definitions for shedule*</span>
+<span class="n">GSCHED</span><span class="p">(:)</span> <span class="o">=</span> <span class="p">.</span><span class="n">FALSE</span><span class="p">.</span>
+<span class="k">WHERE</span> <span class="p">(</span><span class="n">GSCHED</span><span class="p">(:))</span>
+ <span class="n">ZF_NIGHT</span><span class="p">(:)</span>  <span class="o">=</span> <span class="mf">0.8</span>
+ <span class="n">ZF_DAY</span><span class="p">(:)</span>    <span class="o">=</span> <span class="mf">1.2</span>
+<span class="k">ELSE WHERE</span>
+<span class="k"> </span><span class="n">ZF_NIGHT</span><span class="p">(:)</span>  <span class="o">=</span> <span class="mf">1.</span>
+ <span class="n">ZF_DAY</span><span class="p">(:)</span>    <span class="o">=</span> <span class="mf">1.</span>
+<span class="k">END WHERE</span>
+<span class="c">!</span>
+<span class="c">! *Int.gains schedule</span>
+<span class="c">!</span>
+<span class="n">ZQIN</span> <span class="o">=</span> <span class="n">DMT</span><span class="p">%</span><span class="n">XQIN</span> <span class="o">*</span> <span class="n">B</span><span class="p">%</span><span class="n">XN_FLOOR</span>
+<span class="k">WHERE</span> <span class="p">(</span><span class="n">PSUNTIME</span><span class="p">(:)</span> <span class="o">&gt;</span> <span class="mf">0.</span> <span class="p">.</span><span class="nb">AND</span><span class="p">.</span> <span class="n">PSUNTIME</span><span class="p">(:)</span> <span class="o">&lt;</span> <span class="mi">2520</span><span class="mf">0.</span><span class="p">)</span> <span class="c">! night between 0000 and 0700</span>
+  <span class="n">ZQIN</span><span class="p">(:)</span> <span class="o">=</span> <span class="n">ZQIN</span><span class="p">(:)</span> <span class="o">*</span> <span class="n">ZF_NIGHT</span><span class="p">(:)</span>
+<span class="n">ELSEWHERE</span>
+  <span class="n">ZQIN</span><span class="p">(:)</span> <span class="o">=</span> <span class="n">ZQIN</span><span class="p">(:)</span> <span class="o">*</span> <span class="n">ZF_DAY</span><span class="p">(:)</span>
+<span class="k">END WHERE</span>
+
+<span class="c">! *Change of units AC/H -&gt; [m3 s-1 m-2(bld)]</span>
+<span class="n">ZV_VENT</span><span class="p">(:)</span> <span class="o">=</span> <span class="n">B</span><span class="p">%</span><span class="n">XV_VENT</span><span class="p">(:)</span> <span class="o">*</span> <span class="n">T</span><span class="p">%</span><span class="n">XBLD_HEIGHT</span><span class="p">(:)</span> <span class="o">/</span> <span class="mi">360</span><span class="mf">0.</span>
+<span class="n">ZINF</span>   <span class="p">(:)</span> <span class="o">=</span> <span class="n">B</span><span class="p">%</span><span class="n">XINF</span>   <span class="p">(:)</span> <span class="o">*</span> <span class="n">T</span><span class="p">%</span><span class="n">XBLD_HEIGHT</span><span class="p">(:)</span> <span class="o">/</span> <span class="mi">360</span><span class="mf">0.</span>  
+<span class="c">!</span>
+<span class="c">!*      2.   heat balance for building floor and mass</span>
+<span class="c">!            ----------------------------------------</span>
+<span class="c">!</span>
+<span class="c">!*      2.1 total load on the internal mass or floor</span>
+<span class="n">ZLOAD_FL</span><span class="p">(:)</span> <span class="o">=</span> <span class="p">(</span><span class="n">ZQIN</span><span class="p">(:)</span> <span class="o">*</span> <span class="n">B</span><span class="p">%</span><span class="n">XQIN_FRAD</span><span class="p">(:)</span> <span class="o">*</span> <span class="p">(</span><span class="mf">1.</span><span class="o">-</span><span class="n">B</span><span class="p">%</span><span class="n">XQIN_FLAT</span><span class="p">(:))</span> <span class="o">+</span> <span class="n">DMT</span><span class="p">%</span><span class="n">XTR_SW_WIN</span><span class="p">(:))</span> <span class="o">/</span> <span class="p">(</span><span class="n">B</span><span class="p">%</span><span class="n">XMASS_O_BLD</span><span class="p">(:)</span><span class="o">+</span><span class="mf">1.</span><span class="p">)</span>
+<span class="k">WHERE</span> <span class="p">(</span><span class="n">B</span><span class="p">%</span><span class="n">XN_FLOOR</span><span class="p">(:)</span> <span class="o">&gt;</span> <span class="mf">1.</span><span class="p">)</span>
+   <span class="n">ZLOAD_MA</span><span class="p">(:)</span> <span class="o">=</span> <span class="n">ZLOAD_FL</span><span class="p">(:)</span>
+<span class="n">ELSEWHERE</span>
+   <span class="n">ZLOAD_MA</span><span class="p">(:)</span> <span class="o">=</span> <span class="mf">0.</span>
+<span class="k">ENDWHERE</span>
+<span class="c">!</span>
+<span class="c">!*      2.2 FLOOR HEAT BALANCE</span>
+<span class="c">!</span>
+ <span class="k">CALL </span><span class="n">FLOOR_LAYER_E_BUDGET</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="n">PTSTEP</span><span class="p">,</span> <span class="n">PFLX_BLD_FL</span><span class="p">,</span> <span class="n">ZDQS_FL</span><span class="p">,</span> <span class="n">ZIMB_FL</span><span class="p">,</span> <span class="n">PRADHT_IN</span><span class="p">,</span> <span class="p">&amp;</span>
+                           <span class="n">PRAD_WL_FL</span><span class="p">,</span> <span class="n">PRAD_RF_FL</span><span class="p">,</span> <span class="n">PRAD_WIN_FL</span><span class="p">,</span> <span class="n">PLOAD_IN_FL</span><span class="p">,</span>    <span class="p">&amp;</span>
+                           <span class="n">ZRAD_FL_MA</span><span class="p">,</span> <span class="n">ZCONV_FL_BLD</span><span class="p">)</span>
+<span class="c">!</span>
+<span class="c">!*      2.3 MASS HEAT BALANCE</span>
+<span class="c">!</span>
+ <span class="k">CALL </span><span class="n">MASS_LAYER_E_BUDGET</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="n">PTSTEP</span><span class="p">,</span> <span class="n">PFLX_BLD_MA</span><span class="p">,</span> <span class="n">ZDQS_MA</span><span class="p">,</span> <span class="n">ZIMB_MA</span><span class="p">,</span> <span class="n">PRADHT_IN</span><span class="p">,</span> <span class="p">&amp;</span>
+                          <span class="n">PRAD_WL_MA</span><span class="p">,</span> <span class="n">PRAD_RF_MA</span><span class="p">,</span> <span class="n">PRAD_WIN_MA</span><span class="p">,</span> <span class="n">PLOAD_IN_MA</span><span class="p">,</span>    <span class="p">&amp;</span>
+                          <span class="n">ZRAD_FL_MA</span><span class="p">,</span> <span class="n">ZCONV_MA_BLD</span>  <span class="p">)</span>
+<span class="c">!</span>
+<span class="c">!</span>
+<span class="n">ZAC_IN_WL_A_COOL</span> <span class="o">=</span> <span class="n">CHTC_VERT_DOE</span><span class="p">(</span><span class="n">T</span><span class="p">%</span><span class="n">XT_WALL_A</span><span class="p">(:,</span><span class="n">IWL</span><span class="p">),</span> <span class="n">DMT</span><span class="p">%</span><span class="n">XTCOOL_TARGET</span><span class="p">)</span>
+<span class="n">ZAC_IN_WL_B_COOL</span> <span class="o">=</span> <span class="n">CHTC_VERT_DOE</span><span class="p">(</span><span class="n">T</span><span class="p">%</span><span class="n">XT_WALL_B</span><span class="p">(:,</span><span class="n">IWL</span><span class="p">),</span> <span class="n">DMT</span><span class="p">%</span><span class="n">XTCOOL_TARGET</span><span class="p">)</span>
+<span class="n">ZAC_IN_WIN_COOL</span>  <span class="o">=</span> <span class="n">CHTC_VERT_DOE</span><span class="p">(</span><span class="n">B</span><span class="p">%</span><span class="n">XT_WIN2</span>         <span class="p">,</span> <span class="n">DMT</span><span class="p">%</span><span class="n">XTCOOL_TARGET</span><span class="p">)</span>
+<span class="n">ZAC_IN_MA_COOL</span>   <span class="o">=</span> <span class="n">CHTC_VERT_DOE</span><span class="p">(</span><span class="n">B</span><span class="p">%</span><span class="n">XT_MASS</span><span class="p">(:,</span><span class="mi">1</span><span class="p">)</span>    <span class="p">,</span> <span class="n">DMT</span><span class="p">%</span><span class="n">XTCOOL_TARGET</span><span class="p">)</span>
+<span class="n">ZAC_IN_RF_COOL</span>   <span class="o">=</span> <span class="n">CHTC_DOWN_DOE</span><span class="p">(</span><span class="n">T</span><span class="p">%</span><span class="n">XT_ROOF</span><span class="p">(:,</span><span class="n">IRF</span><span class="p">)</span>  <span class="p">,</span> <span class="n">DMT</span><span class="p">%</span><span class="n">XTCOOL_TARGET</span><span class="p">)</span>
+<span class="n">ZAC_IN_FL_COOL</span>   <span class="o">=</span> <span class="n">CHTC_UP_DOE</span>  <span class="p">(</span><span class="n">B</span><span class="p">%</span><span class="n">XT_FLOOR</span><span class="p">(:,</span><span class="mi">1</span><span class="p">)</span>   <span class="p">,</span> <span class="n">DMT</span><span class="p">%</span><span class="n">XTCOOL_TARGET</span><span class="p">)</span>
+
+<span class="n">ZAC_IN_WL_A_HEAT</span> <span class="o">=</span> <span class="n">CHTC_VERT_DOE</span><span class="p">(</span><span class="n">T</span><span class="p">%</span><span class="n">XT_WALL_A</span><span class="p">(:,</span><span class="n">IWL</span><span class="p">),</span> <span class="n">DMT</span><span class="p">%</span><span class="n">XTHEAT_TARGET</span><span class="p">)</span>
+<span class="n">ZAC_IN_WL_B_HEAT</span> <span class="o">=</span> <span class="n">CHTC_VERT_DOE</span><span class="p">(</span><span class="n">T</span><span class="p">%</span><span class="n">XT_WALL_B</span><span class="p">(:,</span><span class="n">IWL</span><span class="p">),</span> <span class="n">DMT</span><span class="p">%</span><span class="n">XTHEAT_TARGET</span><span class="p">)</span>
+<span class="n">ZAC_IN_WIN_HEAT</span>  <span class="o">=</span> <span class="n">CHTC_VERT_DOE</span><span class="p">(</span><span class="n">B</span><span class="p">%</span><span class="n">XT_WIN2</span>         <span class="p">,</span> <span class="n">DMT</span><span class="p">%</span><span class="n">XTHEAT_TARGET</span><span class="p">)</span>
+<span class="n">ZAC_IN_MA_HEAT</span>   <span class="o">=</span> <span class="n">CHTC_VERT_DOE</span><span class="p">(</span><span class="n">B</span><span class="p">%</span><span class="n">XT_MASS</span><span class="p">(:,</span><span class="mi">1</span><span class="p">)</span>    <span class="p">,</span> <span class="n">DMT</span><span class="p">%</span><span class="n">XTHEAT_TARGET</span><span class="p">)</span>
+<span class="n">ZAC_IN_RF_HEAT</span>   <span class="o">=</span> <span class="n">CHTC_DOWN_DOE</span><span class="p">(</span><span class="n">T</span><span class="p">%</span><span class="n">XT_ROOF</span><span class="p">(:,</span><span class="n">IRF</span><span class="p">)</span>  <span class="p">,</span> <span class="n">DMT</span><span class="p">%</span><span class="n">XTHEAT_TARGET</span><span class="p">)</span>
+<span class="n">ZAC_IN_FL_HEAT</span>   <span class="o">=</span> <span class="n">CHTC_UP_DOE</span>  <span class="p">(</span><span class="n">B</span><span class="p">%</span><span class="n">XT_FLOOR</span><span class="p">(:,</span><span class="mi">1</span><span class="p">)</span>   <span class="p">,</span> <span class="n">DMT</span><span class="p">%</span><span class="n">XTHEAT_TARGET</span><span class="p">)</span>
+
+<span class="k">DO </span><span class="n">JJ</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">SIZE</span><span class="p">(</span><span class="n">ZAC_IN_WIN_COOL</span><span class="p">)</span>
+   <span class="n">ZAC_IN_WL_A_COOL</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="nb">MAX</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span> <span class="n">ZAC_IN_WL_A_COOL</span><span class="p">(</span><span class="n">JJ</span><span class="p">))</span>
+   <span class="n">ZAC_IN_WL_B_COOL</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="nb">MAX</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span> <span class="n">ZAC_IN_WL_B_COOL</span><span class="p">(</span><span class="n">JJ</span><span class="p">))</span>
+   <span class="n">ZAC_IN_WIN_COOL</span> <span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="nb">MAX</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span> <span class="n">ZAC_IN_WIN_COOL</span><span class="p">(</span><span class="n">JJ</span><span class="p">))</span>
+   <span class="n">ZAC_IN_MA_COOL</span>  <span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="nb">MAX</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span> <span class="n">ZAC_IN_MA_COOL</span> <span class="p">(</span><span class="n">JJ</span><span class="p">))</span>
+   <span class="n">ZAC_IN_RF_COOL</span>  <span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="nb">MAX</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span> <span class="n">ZAC_IN_RF_COOL</span> <span class="p">(</span><span class="n">JJ</span><span class="p">))</span>
+   <span class="n">ZAC_IN_FL_COOL</span>  <span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="nb">MAX</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span> <span class="n">ZAC_IN_FL_COOL</span> <span class="p">(</span><span class="n">JJ</span><span class="p">))</span>
+   
+   <span class="n">ZAC_IN_WL_A_HEAT</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="nb">MAX</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span> <span class="n">ZAC_IN_WL_A_HEAT</span><span class="p">(</span><span class="n">JJ</span><span class="p">))</span>
+   <span class="n">ZAC_IN_WL_B_HEAT</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="nb">MAX</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span> <span class="n">ZAC_IN_WL_B_HEAT</span><span class="p">(</span><span class="n">JJ</span><span class="p">))</span>
+   <span class="n">ZAC_IN_WIN_HEAT</span> <span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="nb">MAX</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span> <span class="n">ZAC_IN_WIN_HEAT</span><span class="p">(</span><span class="n">JJ</span><span class="p">))</span>
+   <span class="n">ZAC_IN_MA_HEAT</span>  <span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="nb">MAX</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span> <span class="n">ZAC_IN_MA_HEAT</span> <span class="p">(</span><span class="n">JJ</span><span class="p">))</span>
+   <span class="n">ZAC_IN_RF_HEAT</span>  <span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="nb">MAX</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span> <span class="n">ZAC_IN_RF_HEAT</span> <span class="p">(</span><span class="n">JJ</span><span class="p">))</span>
+   <span class="n">ZAC_IN_FL_HEAT</span>  <span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="nb">MAX</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span> <span class="n">ZAC_IN_FL_HEAT</span> <span class="p">(</span><span class="n">JJ</span><span class="p">))</span>
+<span class="k">ENDDO</span>
+
+<span class="c">!*      4.   Indoor energy balance calculation</span>
+<span class="c">!            ---------------------------------</span>
+<span class="c">!</span>
+<span class="k">DO </span><span class="n">JJ</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">SIZE</span><span class="p">(</span><span class="n">PT_CAN</span><span class="p">)</span>
+  <span class="c">! *first guess of indoor temperature</span>
+
+  <span class="n">ZTI_BLD</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="n">B</span><span class="p">%</span><span class="n">XTI_BLD</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">+</span> <span class="n">PTSTEP</span><span class="o">/</span><span class="p">(</span><span class="n">ZRHOI</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">*</span> <span class="n">XCPD</span> <span class="o">*</span> <span class="n">T</span><span class="p">%</span><span class="n">XBLD_HEIGHT</span><span class="p">(</span><span class="n">JJ</span><span class="p">))</span>    <span class="p">&amp;</span> 
+          <span class="o">*</span> <span class="p">(</span>  <span class="n">T</span><span class="p">%</span><span class="n">XWALL_O_BLD</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">*</span> <span class="n">PCONV_WL_BLD</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">+</span> <span class="n">B</span><span class="p">%</span><span class="n">XGLAZ_O_BLD</span> <span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">*</span> <span class="n">PCONV_WIN_BLD</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span>  <span class="p">&amp;</span>
+             <span class="o">+</span> <span class="n">B</span><span class="p">%</span><span class="n">XMASS_O_BLD</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">*</span> <span class="n">ZCONV_MA_BLD</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">+</span> <span class="n">PCONV_RF_BLD</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">+</span> <span class="n">ZCONV_FL_BLD</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span>   <span class="p">&amp;</span>
+             <span class="o">+</span> <span class="n">ZQIN</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">B</span><span class="p">%</span><span class="n">XQIN_FRAD</span><span class="p">(</span><span class="n">JJ</span><span class="p">))</span>  <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">B</span><span class="p">%</span><span class="n">XQIN_FLAT</span><span class="p">(</span><span class="n">JJ</span><span class="p">))</span> <span class="p">)</span>
+  <span class="c">!</span>
+  <span class="c">!################################################################################</span>
+  <span class="c">! *is natural surventilation active at the current time step ?</span>
+  <span class="c">!---------------------------------------------------------------------------------</span>
+  <span class="c">!</span>
+  <span class="c">!    *no surventilation possible</span>
+
+  <span class="k">IF</span> <span class="p">(</span><span class="n">B</span><span class="p">%</span><span class="n">CNATVENT</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span><span class="o">==</span><span class="s1">&#39;NONE&#39;</span><span class="p">)</span> <span class="k">THEN</span>
+    <span class="c">!</span>
+    <span class="n">GNAT_VENT</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="p">.</span><span class="n">FALSE</span><span class="p">.</span>
+    <span class="c">!</span>
+  <span class="c">!    *automatic management of surventilation</span>
+  <span class="n">ELSEIF</span> <span class="p">(</span><span class="n">B</span><span class="p">%</span><span class="n">CNATVENT</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span><span class="o">==</span><span class="s1">&#39;AUTO&#39;</span> <span class="p">.</span><span class="nb">OR</span><span class="p">.</span> <span class="n">B</span><span class="p">%</span><span class="n">CNATVENT</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span><span class="o">==</span><span class="s1">&#39;MECH&#39;</span><span class="p">)</span> <span class="k">THEN</span>
+    <span class="c">!</span>
+    <span class="k">IF</span> <span class="p">(</span><span class="nb">MOD</span><span class="p">(</span><span class="n">PSUNTIME</span><span class="p">(</span><span class="n">JJ</span><span class="p">),</span> <span class="mi">360</span><span class="mf">0.</span><span class="p">)</span> <span class="p">.</span><span class="n">LT</span><span class="p">.</span> <span class="n">PTSTEP</span><span class="p">)</span> <span class="k">THEN</span>
+      <span class="c">!</span>
+      <span class="k">IF</span> <span class="p">(</span> <span class="n">B</span><span class="p">%</span><span class="n">XTI_BLD</span><span class="p">(</span><span class="n">JJ</span><span class="p">).</span><span class="n">GT</span><span class="p">.</span> <span class="n">PT_CAN</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span> <span class="p">)</span> <span class="k">THEN</span> <span class="c">! condition to enable the</span>
+        <span class="k">IF</span> <span class="p">(</span><span class="n">B</span><span class="p">%</span><span class="n">CNATVENT</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span><span class="o">==</span><span class="s1">&#39;AUTO&#39;</span><span class="p">)</span> <span class="k">THEN</span>
+        <span class="c">! natural surventilation rate calculation (window opening)</span>
+          <span class="k">CALL </span><span class="n">GET_NAT_VENT</span><span class="p">(</span><span class="n">B</span><span class="p">%</span><span class="n">XTI_BLD</span><span class="p">(</span><span class="n">JJ</span><span class="p">),</span> <span class="n">PT_CAN</span><span class="p">(</span><span class="n">JJ</span><span class="p">),</span> <span class="n">PU_CAN</span><span class="p">(</span><span class="n">JJ</span><span class="p">),</span> <span class="n">B</span><span class="p">%</span><span class="n">XGR</span><span class="p">(</span><span class="n">JJ</span><span class="p">),</span> <span class="p">&amp;</span>
+                            <span class="n">B</span><span class="p">%</span><span class="n">XFLOOR_HW_RATIO</span><span class="p">(</span><span class="n">JJ</span><span class="p">),</span> <span class="n">T</span><span class="p">%</span><span class="n">XBLD_HEIGHT</span><span class="p">(</span><span class="n">JJ</span><span class="p">),</span> <span class="n">ZNAT_VENT</span><span class="p">(</span><span class="n">JJ</span><span class="p">))</span>
+        <span class="k">ELSE IF</span> <span class="p">(</span><span class="n">B</span><span class="p">%</span><span class="n">CNATVENT</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span><span class="o">==</span><span class="s1">&#39;MECH&#39;</span><span class="p">)</span> <span class="k">THEN</span>
+        <span class="c">! mechanical surventilation rate calculation : 5 volumes/hour</span>
+          <span class="n">ZNAT_VENT</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span>  <span class="mf">5.0</span><span class="o">*</span><span class="n">T</span><span class="p">%</span><span class="n">XBLD_HEIGHT</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span><span class="o">/</span><span class="mi">360</span><span class="mf">0.</span>
+        <span class="k">END IF</span>
+        <span class="c">!</span>
+        <span class="n">ZTI_BLD_OPEN</span>  <span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="n">ZTI_BLD</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="p">&amp;</span>
+                <span class="o">+</span> <span class="n">ZNAT_VENT</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span>            <span class="o">*</span> <span class="n">PTSTEP</span><span class="o">/</span><span class="n">T</span><span class="p">%</span><span class="n">XBLD_HEIGHT</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">PT_CAN</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">-</span> <span class="n">B</span><span class="p">%</span><span class="n">XTI_BLD</span><span class="p">(</span><span class="n">JJ</span><span class="p">))</span> 
+        <span class="n">ZTI_BLD_CLOSED</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="n">ZTI_BLD</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="p">&amp;</span>
+                <span class="o">+</span> <span class="p">(</span><span class="n">ZINF</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">+</span> <span class="n">ZV_VENT</span><span class="p">(</span><span class="n">JJ</span><span class="p">))</span> <span class="o">*</span> <span class="n">PTSTEP</span><span class="o">/</span><span class="n">T</span><span class="p">%</span><span class="n">XBLD_HEIGHT</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">PT_CAN</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">-</span> <span class="n">B</span><span class="p">%</span><span class="n">XTI_BLD</span><span class="p">(</span><span class="n">JJ</span><span class="p">))</span> 
+        <span class="c">!</span>
+        <span class="n">GNAT_VENT</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span><span class="n">ZTI_BLD_OPEN</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">DMT</span><span class="p">%</span><span class="n">XTCOOL_TARGET</span> <span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="p">.</span><span class="nb">AND</span><span class="p">.</span> <span class="p">&amp;</span>            
+                         <span class="n">ZTI_BLD_OPEN</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">&lt;</span>  <span class="n">ZTI_BLD_CLOSED</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="p">.</span><span class="nb">AND</span><span class="p">.</span> <span class="p">&amp;</span>
+                         <span class="n">ZTI_BLD_OPEN</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">&gt;</span>  <span class="n">DMT</span><span class="p">%</span><span class="n">XTHEAT_TARGET</span> <span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">+</span> <span class="mf">4.</span><span class="p">)</span>
+        <span class="c">!</span>
+      <span class="k">ELSE</span>
+<span class="k">        </span><span class="n">GNAT_VENT</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="p">.</span><span class="n">FALSE</span><span class="p">.</span>
+      <span class="k">ENDIF</span>
+<span class="k">      </span><span class="n">B</span><span class="p">%</span><span class="n">LNATVENT_NIGHT</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="n">GNAT_VENT</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span>
+    <span class="k">ELSE </span>
+<span class="k">      </span><span class="n">GNAT_VENT</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="n">B</span><span class="p">%</span><span class="n">LNATVENT_NIGHT</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span>
+    <span class="k">ENDIF</span>
+    <span class="c">!</span>
+  <span class="c">!    *manual management of surventilation</span>
+  <span class="n">ELSEIF</span> <span class="p">(</span><span class="n">B</span><span class="p">%</span><span class="n">CNATVENT</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span><span class="o">==</span><span class="s1">&#39;MANU&#39;</span><span class="p">)</span> <span class="k">THEN</span>
+    <span class="c">!</span>
+    <span class="n">B</span><span class="p">%</span><span class="n">LNATVENT_NIGHT</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="n">B</span><span class="p">%</span><span class="n">LNATVENT_NIGHT</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="p">.</span><span class="nb">AND</span><span class="p">.</span> <span class="p">&amp;</span>
+                         <span class="p">.</span><span class="nb">NOT</span><span class="p">.</span> <span class="p">(</span> <span class="n">PSUNTIME</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mf">5.</span><span class="o">*</span><span class="mi">3600</span> <span class="p">.</span><span class="nb">AND</span><span class="p">.</span> <span class="n">PSUNTIME</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="mf">8.</span><span class="o">*</span><span class="mi">3600</span> <span class="p">)</span>
+    <span class="c">!</span>
+    <span class="n">GNAT_VENT</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span> <span class="n">PSUNTIME</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="mf">8.</span><span class="o">*</span><span class="mi">360</span><span class="mf">0.</span> <span class="p">.</span><span class="nb">AND</span><span class="p">.</span> <span class="n">PSUNTIME</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="mf">1.</span><span class="o">*</span><span class="mi">360</span><span class="mf">0.</span>  <span class="p">&amp;</span>
+                      <span class="p">.</span><span class="nb">AND</span><span class="p">.</span> <span class="n">PT_CAN</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">B</span><span class="p">%</span><span class="n">XTI_BLD</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span><span class="o">+</span><span class="mf">2.</span>       <span class="p">&amp;</span>
+                      <span class="p">.</span><span class="nb">AND</span><span class="p">.</span> <span class="n">PT_CAN</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">DMT</span><span class="p">%</span><span class="n">XTHEAT_TARGET</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span>    <span class="p">&amp;</span> 
+                      <span class="p">.</span><span class="nb">AND</span><span class="p">.</span> <span class="p">(</span> <span class="n">B</span><span class="p">%</span><span class="n">XTI_BLD</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">DMT</span><span class="p">%</span><span class="n">XTHEAT_TARGET</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span><span class="o">+</span><span class="mf">5.</span> <span class="p">&amp;</span>
+                       <span class="p">.</span><span class="nb">OR</span><span class="p">.</span> <span class="n">B</span><span class="p">%</span><span class="n">XTI_BLD</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">==</span> <span class="n">DMT</span><span class="p">%</span><span class="n">XTCOOL_TARGET</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="p">)</span>   <span class="p">)</span> 
+    <span class="n">GNAT_VENT</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="n">GNAT_VENT</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="p">.</span><span class="nb">OR</span><span class="p">.</span> <span class="n">B</span><span class="p">%</span><span class="n">LNATVENT_NIGHT</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span>
+    <span class="c">!</span>
+  <span class="k">ENDIF</span>
+  <span class="c">!</span>
+  <span class="c">! Decicion about natural surventilation OK</span>
+  <span class="c">!################################################################################</span>
+  <span class="c">!</span>
+  <span class="c">!</span>
+  <span class="c">!################################################################################</span>
+  <span class="c">! COMPUTE ENERGY DEMAND</span>
+  <span class="c">!---------------------------------------------------------------------------------</span>
+
+  <span class="c">! *If natural surventilation ACTIVE</span>
+  <span class="k">IF</span> <span class="p">(</span><span class="n">GNAT_VENT</span><span class="p">(</span><span class="n">JJ</span><span class="p">))</span> <span class="k">THEN</span>
+     <span class="c">! </span>
+     <span class="k">CALL </span><span class="n">GET_NAT_VENT</span><span class="p">(</span><span class="n">B</span><span class="p">%</span><span class="n">XTI_BLD</span><span class="p">(</span><span class="n">JJ</span><span class="p">),</span> <span class="n">PT_CAN</span><span class="p">(</span><span class="n">JJ</span><span class="p">),</span> <span class="n">PU_CAN</span><span class="p">(</span><span class="n">JJ</span><span class="p">),</span> <span class="n">B</span><span class="p">%</span><span class="n">XGR</span><span class="p">(</span><span class="n">JJ</span><span class="p">),</span> <span class="p">&amp;</span>
+                       <span class="n">B</span><span class="p">%</span><span class="n">XFLOOR_HW_RATIO</span><span class="p">(</span><span class="n">JJ</span><span class="p">),</span> <span class="n">T</span><span class="p">%</span><span class="n">XBLD_HEIGHT</span><span class="p">(</span><span class="n">JJ</span><span class="p">),</span> <span class="n">ZNAT_VENT</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span>     <span class="p">)</span>
+     <span class="c">!</span>
+     <span class="n">ZV_VENT</span>     <span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="mf">0.</span>
+     <span class="n">ZINF</span>        <span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="mf">0.</span>
+     <span class="c">!</span>
+     <span class="n">DMT</span><span class="p">%</span><span class="n">XH_BLD_COOL</span> <span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="mf">0.0</span>         <span class="c">! No HVAC consumption</span>
+     <span class="n">DMT</span><span class="p">%</span><span class="n">XH_BLD_HEAT</span> <span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="mf">0.0</span>    
+     <span class="n">DMT</span><span class="p">%</span><span class="n">XLE_BLD_COOL</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="mf">0.0</span>         <span class="c">! No HVAC consumption</span>
+     <span class="n">DMT</span><span class="p">%</span><span class="n">XLE_BLD_HEAT</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="mf">0.0</span>   
+     <span class="c">!    </span>
+     <span class="n">DMT</span><span class="p">%</span><span class="n">XT_BLD_COOL</span> <span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="mf">0.0</span>         <span class="c">! No HVAC consumption</span>
+     <span class="n">DMT</span><span class="p">%</span><span class="n">XHVAC_COOL</span>  <span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="mf">0.0</span>    
+     <span class="n">DMT</span><span class="p">%</span><span class="n">XT_SYS</span>      <span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="n">B</span><span class="p">%</span><span class="n">XTI_BLD</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="c">! No mechanical ventilation</span>
+     <span class="n">DMT</span><span class="p">%</span><span class="n">XQ_SYS</span>      <span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="n">B</span><span class="p">%</span><span class="n">XQI_BLD</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="c">! </span>
+     <span class="n">DMT</span><span class="p">%</span><span class="n">XH_WASTE</span>    <span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="mf">0.0</span>
+     <span class="n">DMT</span><span class="p">%</span><span class="n">XLE_WASTE</span>   <span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="mf">0.0</span>     
+     <span class="n">DMT</span><span class="p">%</span><span class="n">XFAN_POWER</span>  <span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="mf">0.0</span>    
+     <span class="n">DMT</span><span class="p">%</span><span class="n">XHVAC_HEAT</span>  <span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="mf">0.0</span>
+     <span class="c">!</span>
+     <span class="n">DMT</span><span class="p">%</span><span class="n">XM_SYS</span>  <span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="mf">0.0</span>
+     <span class="n">DMT</span><span class="p">%</span><span class="n">XCOP</span>    <span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="mf">0.0</span>
+     <span class="n">DMT</span><span class="p">%</span><span class="n">XCAP_SYS</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="mf">0.0</span>
+     <span class="c">!</span>
+  <span class="c">! *If natural surventilation INACTIVE</span>
+  <span class="k">ELSE</span> 
+    <span class="c">!</span>
+    <span class="n">ZNAT_VENT</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="mf">0.</span>
+    <span class="c">!</span>
+    <span class="c">! ------------------------------------------------</span>
+    <span class="c">! * Building energy demand for heating and cooling</span>
+    <span class="c">! ------------------------------------------------</span>
+    <span class="c">!</span>
+    <span class="n">DMT</span><span class="p">%</span><span class="n">XH_BLD_COOL</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="n">T</span><span class="p">%</span><span class="n">XWALL_O_BLD</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span><span class="o">/</span><span class="mf">2.</span> <span class="o">*</span> <span class="p">(</span><span class="n">ZAC_IN_WL_A_COOL</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">T</span><span class="p">%</span><span class="n">XT_WALL_A</span><span class="p">(</span><span class="n">JJ</span><span class="p">,</span><span class="n">IWL</span><span class="p">)</span> <span class="o">-</span> <span class="n">DMT</span><span class="p">%</span><span class="n">XTCOOL_TARGET</span><span class="p">(</span><span class="n">JJ</span><span class="p">))</span>  <span class="p">&amp;</span>
+                                            <span class="o">+</span> <span class="n">ZAC_IN_WL_B_COOL</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">T</span><span class="p">%</span><span class="n">XT_WALL_B</span><span class="p">(</span><span class="n">JJ</span><span class="p">,</span><span class="n">IWL</span><span class="p">)</span> <span class="o">-</span> <span class="n">DMT</span><span class="p">%</span><span class="n">XTCOOL_TARGET</span><span class="p">(</span><span class="n">JJ</span><span class="p">)))</span> <span class="p">&amp;</span>
+                         <span class="o">+</span> <span class="n">B</span><span class="p">%</span><span class="n">XGLAZ_O_BLD</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">*</span> <span class="n">ZAC_IN_WIN_COOL</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">B</span><span class="p">%</span><span class="n">XT_WIN2</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span>       <span class="o">-</span> <span class="n">DMT</span><span class="p">%</span><span class="n">XTCOOL_TARGET</span><span class="p">(</span><span class="n">JJ</span><span class="p">))</span>  <span class="p">&amp;</span>    
+                          <span class="o">+</span> <span class="n">ZAC_IN_MA_COOL</span> <span class="p">(</span><span class="n">JJ</span><span class="p">)</span><span class="o">*</span> <span class="n">B</span><span class="p">%</span><span class="n">XMASS_O_BLD</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">B</span><span class="p">%</span><span class="n">XT_MASS</span><span class="p">(</span><span class="n">JJ</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>     <span class="o">-</span> <span class="n">DMT</span><span class="p">%</span><span class="n">XTCOOL_TARGET</span><span class="p">(</span><span class="n">JJ</span><span class="p">))</span>  <span class="p">&amp;</span>
+                                              <span class="o">+</span> <span class="n">ZAC_IN_RF_COOL</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">T</span><span class="p">%</span><span class="n">XT_ROOF</span><span class="p">(</span><span class="n">JJ</span><span class="p">,</span><span class="n">IRF</span><span class="p">)</span>   <span class="o">-</span> <span class="n">DMT</span><span class="p">%</span><span class="n">XTCOOL_TARGET</span><span class="p">(</span><span class="n">JJ</span><span class="p">))</span>  <span class="p">&amp;</span>
+                                              <span class="o">+</span> <span class="n">ZAC_IN_FL_COOL</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">B</span><span class="p">%</span><span class="n">XT_FLOOR</span><span class="p">(</span><span class="n">JJ</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>    <span class="o">-</span> <span class="n">DMT</span><span class="p">%</span><span class="n">XTCOOL_TARGET</span><span class="p">(</span><span class="n">JJ</span><span class="p">))</span>  <span class="p">&amp;</span>
+                                 <span class="o">+</span> <span class="n">ZQIN</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">B</span><span class="p">%</span><span class="n">XQIN_FRAD</span><span class="p">(</span><span class="n">JJ</span><span class="p">))</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">B</span><span class="p">%</span><span class="n">XQIN_FLAT</span><span class="p">(</span><span class="n">JJ</span><span class="p">))</span>                   <span class="p">&amp;</span>
+                              <span class="o">+</span> <span class="p">(</span><span class="n">ZINF</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">+</span> <span class="n">ZV_VENT</span><span class="p">(</span><span class="n">JJ</span><span class="p">))</span> <span class="o">*</span> <span class="n">ZRHOI</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">*</span> <span class="n">XCPD</span> <span class="o">*</span> <span class="p">(</span><span class="n">PT_CAN</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">-</span> <span class="n">DMT</span><span class="p">%</span><span class="n">XTCOOL_TARGET</span><span class="p">(</span><span class="n">JJ</span><span class="p">))</span>
+    <span class="c">!</span>
+    <span class="n">DMT</span><span class="p">%</span><span class="n">XH_BLD_HEAT</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="o">-</span> <span class="p">(</span> <span class="n">T</span><span class="p">%</span><span class="n">XWALL_O_BLD</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span><span class="o">/</span><span class="mf">2.</span> <span class="o">*</span> <span class="p">(</span><span class="n">ZAC_IN_WL_A_HEAT</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">T</span><span class="p">%</span><span class="n">XT_WALL_A</span><span class="p">(</span><span class="n">JJ</span><span class="p">,</span><span class="n">IWL</span><span class="p">)</span> <span class="o">-</span> <span class="n">DMT</span><span class="p">%</span><span class="n">XTHEAT_TARGET</span><span class="p">(</span><span class="n">JJ</span><span class="p">))</span>  <span class="p">&amp;</span>
+                                                <span class="o">+</span> <span class="n">ZAC_IN_WL_B_HEAT</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">T</span><span class="p">%</span><span class="n">XT_WALL_B</span><span class="p">(</span><span class="n">JJ</span><span class="p">,</span><span class="n">IWL</span><span class="p">)</span> <span class="o">-</span> <span class="n">DMT</span><span class="p">%</span><span class="n">XTHEAT_TARGET</span><span class="p">(</span><span class="n">JJ</span><span class="p">)))</span> <span class="p">&amp;</span>
+                             <span class="o">+</span> <span class="n">B</span><span class="p">%</span><span class="n">XGLAZ_O_BLD</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">*</span> <span class="n">ZAC_IN_WIN_HEAT</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">B</span><span class="p">%</span><span class="n">XT_WIN2</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span>       <span class="o">-</span> <span class="n">DMT</span><span class="p">%</span><span class="n">XTHEAT_TARGET</span><span class="p">(</span><span class="n">JJ</span><span class="p">))</span>  <span class="p">&amp;</span>    
+                              <span class="o">+</span>  <span class="n">ZAC_IN_MA_HEAT</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span><span class="o">*</span> <span class="n">B</span><span class="p">%</span><span class="n">XMASS_O_BLD</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">B</span><span class="p">%</span><span class="n">XT_MASS</span><span class="p">(</span><span class="n">JJ</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>     <span class="o">-</span> <span class="n">DMT</span><span class="p">%</span><span class="n">XTHEAT_TARGET</span><span class="p">(</span><span class="n">JJ</span><span class="p">))</span>  <span class="p">&amp;</span>
+                                                  <span class="o">+</span> <span class="n">ZAC_IN_RF_HEAT</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">T</span><span class="p">%</span><span class="n">XT_ROOF</span><span class="p">(</span><span class="n">JJ</span><span class="p">,</span><span class="n">IRF</span><span class="p">)</span>   <span class="o">-</span> <span class="n">DMT</span><span class="p">%</span><span class="n">XTHEAT_TARGET</span><span class="p">(</span><span class="n">JJ</span><span class="p">))</span>  <span class="p">&amp;</span>
+                                                  <span class="o">+</span> <span class="n">ZAC_IN_FL_HEAT</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">B</span><span class="p">%</span><span class="n">XT_FLOOR</span><span class="p">(</span><span class="n">JJ</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>    <span class="o">-</span> <span class="n">DMT</span><span class="p">%</span><span class="n">XTHEAT_TARGET</span><span class="p">(</span><span class="n">JJ</span><span class="p">))</span>  <span class="p">&amp;</span>
+                                   <span class="o">+</span> <span class="n">ZQIN</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">B</span><span class="p">%</span><span class="n">XQIN_FRAD</span><span class="p">(</span><span class="n">JJ</span><span class="p">))</span><span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">B</span><span class="p">%</span><span class="n">XQIN_FLAT</span><span class="p">(</span><span class="n">JJ</span><span class="p">))</span>                      <span class="p">&amp;</span>
+                                  <span class="o">+</span> <span class="p">(</span><span class="n">ZINF</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">+</span> <span class="n">ZV_VENT</span><span class="p">(</span><span class="n">JJ</span><span class="p">))</span> <span class="o">*</span> <span class="n">ZRHOI</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">*</span> <span class="n">XCPD</span> <span class="o">*</span> <span class="p">(</span><span class="n">PT_CAN</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">-</span> <span class="n">DMT</span><span class="p">%</span><span class="n">XTHEAT_TARGET</span><span class="p">(</span><span class="n">JJ</span><span class="p">)))</span>
+    <span class="c">!</span>
+    <span class="n">ZQCOOL_TRGT</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="mf">0.62198</span> <span class="o">*</span> <span class="n">B</span><span class="p">%</span><span class="n">XHR_TARGET</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">*</span> <span class="n">PSAT</span><span class="p">(</span><span class="n">DMT</span><span class="p">%</span><span class="n">XTCOOL_TARGET</span><span class="p">(</span><span class="n">JJ</span><span class="p">))</span> <span class="o">/</span> <span class="p">&amp;</span>
+                      <span class="p">(</span><span class="n">PPS</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span><span class="o">-</span> <span class="n">B</span><span class="p">%</span><span class="n">XHR_TARGET</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">*</span> <span class="n">PSAT</span><span class="p">(</span><span class="n">DMT</span><span class="p">%</span><span class="n">XTCOOL_TARGET</span><span class="p">(</span><span class="n">JJ</span><span class="p">)))</span>    
+    <span class="c">!</span>
+    <span class="n">DMT</span><span class="p">%</span><span class="n">XLE_BLD_COOL</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="n">ZQIN</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">*</span> <span class="n">B</span><span class="p">%</span><span class="n">XQIN_FLAT</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span>                                           <span class="p">&amp;</span>
+               <span class="o">+</span> <span class="p">(</span><span class="n">ZINF</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">+</span> <span class="n">ZV_VENT</span><span class="p">(</span><span class="n">JJ</span><span class="p">))</span> <span class="o">*</span> <span class="n">ZRHOI</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">*</span> <span class="n">XLVTT</span> <span class="o">*</span> <span class="p">(</span><span class="n">PQ_CAN</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">-</span> <span class="n">ZQCOOL_TRGT</span><span class="p">(</span><span class="n">JJ</span><span class="p">))</span> 
+    <span class="c">!</span>
+    <span class="n">ZQHEAT_TRGT</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="mf">0.62198</span> <span class="o">*</span> <span class="n">B</span><span class="p">%</span><span class="n">XHR_TARGET</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">*</span> <span class="n">PSAT</span><span class="p">(</span><span class="n">DMT</span><span class="p">%</span><span class="n">XTHEAT_TARGET</span><span class="p">(</span><span class="n">JJ</span><span class="p">))</span> <span class="o">/</span> <span class="p">&amp;</span>
+                      <span class="p">(</span><span class="n">PPS</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span><span class="o">-</span> <span class="n">B</span><span class="p">%</span><span class="n">XHR_TARGET</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">*</span> <span class="n">PSAT</span><span class="p">(</span><span class="n">DMT</span><span class="p">%</span><span class="n">XTHEAT_TARGET</span><span class="p">(</span><span class="n">JJ</span><span class="p">)))</span>    
+    <span class="c">!</span>
+    <span class="n">DMT</span><span class="p">%</span><span class="n">XLE_BLD_HEAT</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="n">ZQIN</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">*</span> <span class="n">B</span><span class="p">%</span><span class="n">XQIN_FLAT</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span>                                           <span class="p">&amp;</span>
+              <span class="o">+</span> <span class="p">(</span><span class="n">ZINF</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">+</span> <span class="n">ZV_VENT</span><span class="p">(</span><span class="n">JJ</span><span class="p">))</span> <span class="o">*</span> <span class="n">ZRHOI</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">*</span> <span class="n">XLVTT</span> <span class="o">*</span> <span class="p">(</span><span class="n">PQ_CAN</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">-</span> <span class="n">ZQHEAT_TRGT</span><span class="p">(</span><span class="n">JJ</span><span class="p">))</span>       
+    <span class="c">!</span>
+    <span class="c">! * Autosize calculations</span>
+    <span class="c">!</span>
+    <span class="k">IF</span> <span class="p">(</span><span class="n">BOP</span><span class="p">%</span><span class="n">LAUTOSIZE</span> <span class="p">.</span><span class="nb">AND</span><span class="p">.</span> <span class="n">KDAY</span><span class="o">==</span><span class="mi">15</span><span class="p">)</span> <span class="k">THEN</span>
+      <span class="c">!</span>
+      <span class="k">IF</span> <span class="p">(</span><span class="n">DMT</span><span class="p">%</span><span class="n">XH_BLD_COOL</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">B</span><span class="p">%</span><span class="n">XAUX_MAX</span><span class="p">(</span><span class="n">JJ</span><span class="p">))</span>  <span class="k">THEN</span>
+        <span class="c">!  </span>
+        <span class="n">B</span><span class="p">%</span><span class="n">XAUX_MAX</span>    <span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="n">DMT</span><span class="p">%</span><span class="n">XH_BLD_COOL</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span>
+        <span class="c">!</span>
+        <span class="c">! Cooling coil sensible heat rate </span>
+        <span class="n">ZSHR</span>        <span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="nb">MIN</span><span class="p">(</span><span class="n">XCPD</span> <span class="o">*</span> <span class="p">(</span><span class="n">DMT</span><span class="p">%</span><span class="n">XTCOOL_TARGET</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">-</span> <span class="n">B</span><span class="p">%</span><span class="n">XT_ADP</span><span class="p">(</span><span class="n">JJ</span><span class="p">))</span> <span class="o">/</span>           <span class="p">&amp;</span>
+                                  <span class="p">(</span><span class="n">ENTH_FN_T_Q</span><span class="p">(</span><span class="n">DMT</span><span class="p">%</span><span class="n">XTCOOL_TARGET</span><span class="p">(</span><span class="n">JJ</span><span class="p">),</span><span class="n">ZQCOOL_TRGT</span><span class="p">(</span><span class="n">JJ</span><span class="p">))</span> <span class="o">-</span>  <span class="p">&amp;</span>
+                                   <span class="n">ENTH_FN_T_Q</span><span class="p">(</span><span class="n">B</span><span class="p">%</span><span class="n">XT_ADP</span><span class="p">(</span><span class="n">JJ</span><span class="p">),</span><span class="n">QSAT</span><span class="p">(</span><span class="n">B</span><span class="p">%</span><span class="n">XT_ADP</span><span class="p">(</span><span class="n">JJ</span><span class="p">),</span><span class="n">PPS</span><span class="p">(</span><span class="n">JJ</span><span class="p">)))),</span> <span class="mf">1.</span><span class="p">)</span>
+        <span class="c">! Cooling Coil Capacity [W m-2(bld)]</span>
+        <span class="n">B</span><span class="p">%</span><span class="n">XCAP_SYS_RAT</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="n">DMT</span><span class="p">%</span><span class="n">XH_BLD_COOL</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">/</span> <span class="n">ZSHR</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> 
+        <span class="c">!</span>
+        <span class="c">! Cooling rated air flow rate [kg s-1 m-2(bld)]</span>
+        <span class="n">ZM_SYS_RAT</span>  <span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="n">DMT</span><span class="p">%</span><span class="n">XH_BLD_COOL</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">/</span> <span class="n">XCPD</span> <span class="o">/</span> <span class="p">(</span><span class="n">DMT</span><span class="p">%</span><span class="n">XTCOOL_TARGET</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span><span class="o">-</span><span class="p">(</span><span class="mi">1</span><span class="mf">4.0</span><span class="o">+</span><span class="mi">27</span><span class="mf">3.16</span><span class="p">))</span>
+        <span class="k">IF</span> <span class="p">(</span><span class="n">ZM_SYS_RAT</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">B</span><span class="p">%</span><span class="n">XM_SYS_RAT</span><span class="p">(</span><span class="n">JJ</span><span class="p">))</span> <span class="n">B</span><span class="p">%</span><span class="n">XM_SYS_RAT</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="n">ZM_SYS_RAT</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span>
+        <span class="c">!</span>
+        <span class="c">! Impose condition </span>
+        <span class="k">IF</span> <span class="p">(</span><span class="n">B</span><span class="p">%</span><span class="n">XM_SYS_RAT</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span><span class="o">/</span><span class="n">ZRHOI</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span><span class="o">/</span><span class="n">B</span><span class="p">%</span><span class="n">XCAP_SYS_RAT</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">0.00004027</span><span class="p">)</span> <span class="k">THEN</span>
+<span class="k">          </span><span class="n">B</span><span class="p">%</span><span class="n">XCAP_SYS_RAT</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="n">B</span><span class="p">%</span><span class="n">XM_SYS_RAT</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span><span class="o">/</span><span class="n">ZRHOI</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span><span class="o">/</span><span class="mf">0.00004027</span>
+        <span class="k">ELSE IF</span> <span class="p">(</span><span class="n">B</span><span class="p">%</span><span class="n">XM_SYS_RAT</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span><span class="o">/</span><span class="n">ZRHOI</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span><span class="o">/</span><span class="n">B</span><span class="p">%</span><span class="n">XCAP_SYS_RAT</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mf">0.00006041</span><span class="p">)</span> <span class="k">THEN</span>
+<span class="k">          </span><span class="n">B</span><span class="p">%</span><span class="n">XCAP_SYS_RAT</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="n">B</span><span class="p">%</span><span class="n">XM_SYS_RAT</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span><span class="o">/</span><span class="n">ZRHOI</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span><span class="o">/</span><span class="mf">0.00006041</span>
+        <span class="k">END IF</span>
+        <span class="c">!</span>
+      <span class="k">END IF</span>
+      <span class="c">!</span>
+    <span class="k">END IF</span>
+    <span class="c">!</span>
+    <span class="c">! * END Autosize calculations</span>
+    <span class="c">!</span>
+    <span class="c">! * system efficiency</span>
+    <span class="c">! ...................</span>
+    <span class="c">!</span>
+    <span class="n">DMT</span><span class="p">%</span><span class="n">XM_SYS</span>  <span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="n">B</span><span class="p">%</span><span class="n">XM_SYS_RAT</span>  <span class="p">(</span><span class="n">JJ</span><span class="p">)</span>
+    <span class="n">DMT</span><span class="p">%</span><span class="n">XCOP</span>    <span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="n">B</span><span class="p">%</span><span class="n">XCOP_RAT</span>    <span class="p">(</span><span class="n">JJ</span><span class="p">)</span>
+    <span class="n">DMT</span><span class="p">%</span><span class="n">XCAP_SYS</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="n">B</span><span class="p">%</span><span class="n">XCAP_SYS_RAT</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span>
+    <span class="c">!</span>
+    <span class="c">! * Mixing conditions</span>
+    <span class="c">! .................</span>
+    <span class="c">!</span>
+    <span class="n">ZXMIX</span> <span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="n">ZV_VENT</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">*</span> <span class="n">ZRHOI</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">/</span> <span class="n">DMT</span><span class="p">%</span><span class="n">XM_SYS</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span>
+    <span class="n">ZT_MIX</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="n">ZXMIX</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">*</span> <span class="n">PT_CAN</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="mf">1.</span><span class="o">-</span><span class="n">ZXMIX</span><span class="p">(</span><span class="n">JJ</span><span class="p">))</span> <span class="o">*</span> <span class="n">B</span><span class="p">%</span><span class="n">XTI_BLD</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span>
+    <span class="n">ZQ_MIX</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="n">ZXMIX</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">*</span> <span class="n">PQ_CAN</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="mf">1.</span><span class="o">-</span><span class="n">ZXMIX</span><span class="p">(</span><span class="n">JJ</span><span class="p">))</span> <span class="o">*</span> <span class="n">B</span><span class="p">%</span><span class="n">XQI_BLD</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span>
+    <span class="c">! </span>
+    <span class="c">! ---------------------------------------------</span>
+    <span class="c">! * COOLING system : Performance and Waste heat</span>
+    <span class="c">! ---------------------------------------------</span>
+    <span class="c">!</span>
+    <span class="k">IF</span> <span class="p">(</span><span class="n">DMT</span><span class="p">%</span><span class="n">XH_BLD_COOL</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mf">0.0</span><span class="p">)</span> <span class="k">THEN</span>
+      <span class="c">!</span>
+      <span class="c">! *ideal system</span>
+      <span class="k">IF</span> <span class="p">(</span><span class="n">BOP</span><span class="p">%</span><span class="n">CCOOL_COIL</span><span class="o">==</span><span class="s1">&#39;IDEAL&#39;</span><span class="p">)</span> <span class="k">THEN</span>
+        <span class="c">!</span>
+        <span class="n">DMT</span><span class="p">%</span><span class="n">XT_BLD_COOL</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="n">DMT</span><span class="p">%</span><span class="n">XH_BLD_COOL</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">+</span> <span class="n">DMT</span><span class="p">%</span><span class="n">XLE_BLD_COOL</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span>
+        <span class="c">!desactivation of LE_BLD_COOL impact on HVAC_COOL calculation</span>
+        <span class="c">!following too much impact in VURCA simulation (23/01/2012)</span>
+        <span class="c">!this would be the case for a vaporization system !</span>
+        <span class="c">!DMT%XHVAC_COOL (JJ) = DMT%XT_BLD_COOL(JJ) / B%XCOP_RAT(JJ)</span>
+        <span class="n">DMT</span><span class="p">%</span><span class="n">XHVAC_COOL</span> <span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="n">DMT</span><span class="p">%</span><span class="n">XH_BLD_COOL</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">/</span> <span class="n">B</span><span class="p">%</span><span class="n">XCOP_RAT</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span>
+        <span class="k">IF</span> <span class="p">(</span><span class="n">DMT</span><span class="p">%</span><span class="n">XHVAC_COOL</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">0.0</span><span class="p">)</span> <span class="n">DMT</span><span class="p">%</span><span class="n">XHVAC_COOL</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="mf">0.0</span>
+          <span class="c">!</span>
+          <span class="n">DMT</span><span class="p">%</span><span class="n">XT_SYS</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="n">ZT_MIX</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">-</span> <span class="n">DMT</span><span class="p">%</span><span class="n">XH_BLD_COOL</span> <span class="p">(</span><span class="n">JJ</span><span class="p">)</span>  <span class="o">/</span><span class="n">DMT</span><span class="p">%</span><span class="n">XM_SYS</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">/</span> <span class="n">XCPD</span>
+          <span class="c">!DMT%XQ_SYS(JJ) = ZQ_MIX(JJ) - DMT%XLE_BLD_COOL(JJ) / DMT%XM_SYS(JJ)/ XLVTT</span>
+          <span class="c">!desactivation following too much impact in VURCA simulation</span>
+          <span class="c">!(23/01/2012)</span>
+          <span class="n">DMT</span><span class="p">%</span><span class="n">XQ_SYS</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="n">ZQ_MIX</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span>
+          <span class="c">!</span>
+          <span class="n">DMT</span><span class="p">%</span><span class="n">XH_WASTE</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span>  <span class="o">=</span> <span class="n">DMT</span><span class="p">%</span><span class="n">XHVAC_COOL</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mf">1.</span><span class="o">+</span><span class="n">B</span><span class="p">%</span><span class="n">XCOP_RAT</span><span class="p">(</span><span class="n">JJ</span><span class="p">))</span> <span class="o">*</span> <span class="p">(</span><span class="mf">1.</span> <span class="o">-</span> <span class="n">B</span><span class="p">%</span><span class="n">XF_WATER_COND</span><span class="p">(</span><span class="n">JJ</span><span class="p">))</span>
+          <span class="n">DMT</span><span class="p">%</span><span class="n">XLE_WASTE</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="n">DMT</span><span class="p">%</span><span class="n">XHVAC_COOL</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mf">1.</span><span class="o">+</span><span class="n">B</span><span class="p">%</span><span class="n">XCOP_RAT</span><span class="p">(</span><span class="n">JJ</span><span class="p">))</span> <span class="o">*</span> <span class="n">B</span><span class="p">%</span><span class="n">XF_WATER_COND</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span>
+          <span class="c">!</span>
+        <span class="c">! *real system</span>
+        <span class="n">ELSEIF</span> <span class="p">(</span><span class="n">BOP</span><span class="p">%</span><span class="n">CCOOL_COIL</span><span class="o">==</span><span class="s1">&#39;DXCOIL&#39;</span><span class="p">)</span> <span class="k">THEN</span>
+          <span class="c">!</span>
+          <span class="k">CALL </span><span class="n">DX_AIR_COOLING_COIL_CV</span><span class="p">(</span><span class="n">PT_CAN</span><span class="p">(</span><span class="n">JJ</span><span class="p">),</span> <span class="n">PQ_CAN</span><span class="p">(</span><span class="n">JJ</span><span class="p">),</span> <span class="n">PPS</span><span class="p">(</span><span class="n">JJ</span><span class="p">),</span>  <span class="n">ZRHOI</span><span class="p">(</span><span class="n">JJ</span><span class="p">),</span> <span class="n">ZT_MIX</span><span class="p">(</span><span class="n">JJ</span><span class="p">),</span> <span class="p">&amp;</span>
+                                      <span class="n">ZQ_MIX</span><span class="p">(</span><span class="n">JJ</span><span class="p">),</span> <span class="n">B</span><span class="p">%</span><span class="n">XCOP_RAT</span><span class="p">(</span><span class="n">JJ</span><span class="p">),</span> <span class="n">B</span><span class="p">%</span><span class="n">XCAP_SYS_RAT</span><span class="p">(</span><span class="n">JJ</span><span class="p">),</span>          <span class="p">&amp;</span>
+                                      <span class="n">B</span><span class="p">%</span><span class="n">XT_ADP</span><span class="p">(</span><span class="n">JJ</span><span class="p">),</span> <span class="n">B</span><span class="p">%</span><span class="n">XF_WATER_COND</span><span class="p">(</span><span class="n">JJ</span><span class="p">),</span> <span class="n">DMT</span><span class="p">%</span><span class="n">XM_SYS</span><span class="p">(</span><span class="n">JJ</span><span class="p">),</span>      <span class="p">&amp;</span>
+                                      <span class="n">DMT</span><span class="p">%</span><span class="n">XH_BLD_COOL</span><span class="p">(</span><span class="n">JJ</span><span class="p">),</span> <span class="n">DMT</span><span class="p">%</span><span class="n">XH_WASTE</span><span class="p">(</span><span class="n">JJ</span><span class="p">),</span> <span class="n">DMT</span><span class="p">%</span><span class="n">XLE_WASTE</span><span class="p">(</span><span class="n">JJ</span><span class="p">),</span> <span class="p">&amp;</span>
+                                      <span class="n">DMT</span><span class="p">%</span><span class="n">XCOP</span><span class="p">(</span><span class="n">JJ</span><span class="p">),</span> <span class="n">DMT</span><span class="p">%</span><span class="n">XCAP_SYS</span><span class="p">(</span><span class="n">JJ</span><span class="p">),</span> <span class="n">DMT</span><span class="p">%</span><span class="n">XT_SYS</span><span class="p">(</span><span class="n">JJ</span><span class="p">),</span> <span class="p">&amp;</span> 
+                                      <span class="n">DMT</span><span class="p">%</span><span class="n">XQ_SYS</span><span class="p">(</span><span class="n">JJ</span><span class="p">),</span> <span class="n">DMT</span><span class="p">%</span><span class="n">XHVAC_COOL</span><span class="p">(</span><span class="n">JJ</span><span class="p">),</span> <span class="n">DMT</span><span class="p">%</span><span class="n">XT_BLD_COOL</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="p">)</span>
+
+        <span class="n">ELSEIF</span> <span class="p">(</span><span class="n">BOP</span><span class="p">%</span><span class="n">CCOOL_COIL</span><span class="o">==</span><span class="s1">&#39;MINIDX&#39;</span><span class="p">)</span> <span class="k">THEN</span>
+          <span class="c">! Notes:</span>
+          <span class="c">! B%XT_ADP(JJ) -- i.e. PT_ADP in dx_air_cooling_coil_cv.F90 -- is no loger needed as the ADP is now calculated.</span>
+          <span class="c">! B%XF_WATER_COND(JJ) -- i.e. PF_WATER_COND in dx_air_cooling_coil_cv.F90 -- is no longer used as</span>
+          <span class="c">! MinimalDX only supoorts dry evaporators.</span>
+          <span class="n">B</span><span class="p">%</span><span class="n">XF_WATER_COND</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="mf">0.</span>
+
+          <span class="c">! In TEB the humidity is specified in terms of speicifc humidity, in MinimalDX the mixing ratio is used instead.</span>
+          <span class="n">OutdoorHumRatio</span> <span class="o">=</span> <span class="n">GetHumRatioFromSpecificHum</span><span class="p">(</span><span class="n">PQ_CAN</span><span class="p">(</span><span class="n">JJ</span><span class="p">))</span>
+          <span class="n">InletHumRatio</span> <span class="o">=</span> <span class="n">GetHumRatioFromSpecificHum</span><span class="p">(</span><span class="n">ZQ_MIX</span><span class="p">(</span><span class="n">JJ</span><span class="p">))</span>
+
+          <span class="c">! In TEB the temperature is specified in K, in MinimalDX in degree C.</span>
+          <span class="n">OutdoorTDryBulb</span> <span class="o">=</span> <span class="n">PT_CAN</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">-</span> <span class="n">XTT</span>
+          <span class="n">InletTDryBulb</span> <span class="o">=</span> <span class="n">ZT_MIX</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span>  <span class="o">-</span> <span class="n">XTT</span>
+
+          <span class="k">call </span><span class="n">SimMinimalDXCooling</span><span class="p">(</span> <span class="n">OutdoorTDryBulb</span><span class="p">,</span>      <span class="p">&amp;</span>   <span class="c">! PT_CANYON   : OutdoorTDryBulb</span>
+                                    <span class="n">OutdoorHumRatio</span><span class="p">,</span>      <span class="p">&amp;</span>   <span class="c">! PQ_CANYON   : OutdoorSpecificHum</span>
+                                    <span class="n">PPS</span><span class="p">(</span><span class="n">JJ</span><span class="p">),</span>              <span class="p">&amp;</span>   <span class="c">! PPS         : OutdoorPressure</span>
+                                    <span class="n">InletTDryBulb</span><span class="p">,</span>        <span class="p">&amp;</span>   <span class="c">! PT_IN       : InletTDryBulb</span>
+                                    <span class="n">InletHumRatio</span><span class="p">,</span>        <span class="p">&amp;</span>   <span class="c">! PQ_IN       : InletHumRatio</span>
+                                    <span class="n">B</span><span class="p">%</span><span class="n">XCOP_RAT</span><span class="p">(</span><span class="n">JJ</span><span class="p">),</span>       <span class="p">&amp;</span>   <span class="c">! PCOP_RAT    : RatedCOP</span>
+                                    <span class="n">B</span><span class="p">%</span><span class="n">XCAP_SYS_RAT</span><span class="p">(</span><span class="n">JJ</span><span class="p">),</span>   <span class="p">&amp;</span>   <span class="c">! PCAP_SYS_RAT: RatedTotCap</span>
+                                    <span class="n">DMT</span><span class="p">%</span><span class="n">XH_BLD_COOL</span><span class="p">(</span><span class="n">JJ</span><span class="p">),</span>  <span class="p">&amp;</span>   <span class="c">! PH_BLD_COOL : SensibleCoolingLoad</span>
+                                    <span class="n">DMT</span><span class="p">%</span><span class="n">XM_SYS</span><span class="p">(</span><span class="n">JJ</span><span class="p">),</span>       <span class="p">&amp;</span>   <span class="c">! PM_SYS      : RatedAirMassFlowRate</span>
+                                    <span class="n">DMT</span><span class="p">%</span><span class="n">XCOP</span><span class="p">(</span><span class="n">JJ</span><span class="p">),</span>         <span class="p">&amp;</span>   <span class="c">! PCOP        : COP</span>
+                                    <span class="n">DMT</span><span class="p">%</span><span class="n">XCAP_SYS</span><span class="p">(</span><span class="n">JJ</span><span class="p">),</span>     <span class="p">&amp;</span>   <span class="c">! PCAP_SYS    : TotalCoolingCapacity</span>
+                                    <span class="n">OutletTemperature</span><span class="p">,</span>    <span class="p">&amp;</span>   <span class="c">! PT_OUT      : OutletTemperature</span>
+                                    <span class="n">OutletHumRatio</span><span class="p">,</span>       <span class="p">&amp;</span>   <span class="c">! PQ_OUT      : OutletHumRatio</span>
+                                    <span class="n">DMT</span><span class="p">%</span><span class="n">XHVAC_COOL</span><span class="p">(</span><span class="n">JJ</span><span class="p">),</span>   <span class="p">&amp;</span>   <span class="c">! PDX_POWER   : ElecCoolingPower</span>
+                                    <span class="n">DMT</span><span class="p">%</span><span class="n">XLE_WASTE</span><span class="p">(</span><span class="n">JJ</span><span class="p">),</span>    <span class="p">&amp;</span>   <span class="c">! LE_WASTE    : LatCoolingEnergyRate</span>
+                                    <span class="n">DMT</span><span class="p">%</span><span class="n">XT_BLD_COOL</span><span class="p">(</span><span class="n">JJ</span><span class="p">),</span>  <span class="p">&amp;</span>   <span class="c">! PT_BLD_COOL : TotalCoolingEnergyRate</span>
+                                    <span class="n">DMT</span><span class="p">%</span><span class="n">XH_WASTE</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="p">)</span>        <span class="c">! PH_WASTE    : TotalSensibleHeatOut</span>
+
+          <span class="n">DMT</span><span class="p">%</span><span class="n">XT_SYS</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="n">OutletTemperature</span> <span class="o">+</span> <span class="n">XTT</span>
+          <span class="n">DMT</span><span class="p">%</span><span class="n">XQ_SYS</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="n">GetSpecificHumFromHumRatio</span><span class="p">(</span><span class="n">OutletHumRatio</span><span class="p">)</span>
+
+        <span class="k">ENDIF</span> <span class="c">!end type of cooling system</span>
+
+        <span class="c">!!! case of system without atmospheric releases. I-e releases in soil/water F_WATER_COND &lt; 0 </span>
+        <span class="k">IF</span> <span class="p">(</span><span class="n">B</span><span class="p">%</span><span class="n">XF_WATER_COND</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="k">THEN</span>
+<span class="k">          </span><span class="n">DMT</span><span class="p">%</span><span class="n">XH_WASTE</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="mf">0.</span> 
+          <span class="n">DMT</span><span class="p">%</span><span class="n">XLE_WASTE</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="mf">0.</span> 
+        <span class="k">ENDIF</span>
+        <span class="c">!!!!</span>
+        <span class="c">!</span>
+        <span class="c">!         From EP Engineering Reference (p. 647)</span>
+        <span class="n">DMT</span><span class="p">%</span><span class="n">XFAN_POWER</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="n">DMT</span><span class="p">%</span><span class="n">XM_SYS</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">*</span> <span class="n">ZFAN_AP</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">*</span> <span class="n">ZFAN_EFF</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">*</span> <span class="n">ZRHOI</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span>
+        <span class="c">!</span>
+        <span class="n">DMT</span><span class="p">%</span><span class="n">XH_BLD_HEAT</span> <span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="n">DMT</span><span class="p">%</span><span class="n">XLE_BLD_HEAT</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="n">DMT</span><span class="p">%</span><span class="n">XHVAC_HEAT</span>  <span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="mf">0.0</span>
+      <span class="c">!</span>
+      <span class="c">! ---------------------------------------------</span>
+      <span class="c">! * HEATING system : Performance and Waste heat</span>
+      <span class="c">! ---------------------------------------------</span>
+      <span class="c">!</span>
+      <span class="k">ELSE IF</span> <span class="p">(</span><span class="n">DMT</span><span class="p">%</span><span class="n">XH_BLD_HEAT</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mf">0.0</span><span class="p">)</span> <span class="k">THEN</span>
+        <span class="c">!</span>
+        <span class="c">! *specific computation for real heating system</span>
+        <span class="k">IF</span>  <span class="p">(</span><span class="n">BOP</span><span class="p">%</span><span class="n">CHEAT_COIL</span> <span class="p">.</span><span class="n">EQ</span><span class="p">.</span> <span class="s1">&#39;FINCAP&#39;</span><span class="p">)</span> <span class="k">THEN</span>
+<span class="k">          IF</span> <span class="p">(</span><span class="n">DMT</span><span class="p">%</span><span class="n">XH_BLD_HEAT</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">B</span><span class="p">%</span><span class="n">XCAP_SYS_HEAT</span><span class="p">(</span><span class="n">JJ</span><span class="p">))</span> <span class="n">DMT</span><span class="p">%</span><span class="n">XH_BLD_HEAT</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span>  <span class="n">B</span><span class="p">%</span><span class="n">XCAP_SYS_HEAT</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span>
+        <span class="k">END IF</span>
+        <span class="c">!</span>
+        <span class="n">DMT</span><span class="p">%</span><span class="n">XT_SYS</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="n">ZT_MIX</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">+</span> <span class="n">DMT</span><span class="p">%</span><span class="n">XH_BLD_HEAT</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">/</span> <span class="n">DMT</span><span class="p">%</span><span class="n">XM_SYS</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">/</span> <span class="n">XCPD</span>
+        <span class="n">DMT</span><span class="p">%</span><span class="n">XQ_SYS</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="n">ZQ_MIX</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span>
+        <span class="c">!</span>
+        <span class="n">DMT</span><span class="p">%</span><span class="n">XHVAC_HEAT</span>  <span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="n">DMT</span><span class="p">%</span><span class="n">XH_BLD_HEAT</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">/</span> <span class="n">B</span><span class="p">%</span><span class="n">XEFF_HEAT</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span>
+        <span class="n">DMT</span><span class="p">%</span><span class="n">XH_WASTE</span>    <span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="n">DMT</span><span class="p">%</span><span class="n">XHVAC_HEAT</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">-</span> <span class="n">DMT</span><span class="p">%</span><span class="n">XH_BLD_HEAT</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span>  
+        <span class="n">DMT</span><span class="p">%</span><span class="n">XLE_WASTE</span>   <span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="n">DMT</span><span class="p">%</span><span class="n">XH_BLD_COOL</span> <span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="n">DMT</span><span class="p">%</span><span class="n">XLE_BLD_COOL</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="n">DMT</span><span class="p">%</span><span class="n">XT_BLD_COOL</span> <span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="n">DMT</span><span class="p">%</span><span class="n">XHVAC_COOL</span>  <span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="c">!       From EP Engineering Reference (p. 647)</span>
+        <span class="n">DMT</span><span class="p">%</span><span class="n">XFAN_POWER</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="n">DMT</span><span class="p">%</span><span class="n">XM_SYS</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span><span class="o">*</span><span class="n">ZFAN_AP</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">ZFAN_EFF</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span><span class="o">*</span><span class="n">ZRHOI</span><span class="p">(</span><span class="n">JJ</span><span class="p">))</span>
+     <span class="c">!</span>
+     <span class="c">! ------------------------------</span>
+     <span class="c">! * NEITHEIR COOLING NOR HEATING</span>
+     <span class="c">! ------------------------------</span>
+     <span class="c">! </span>
+     <span class="k">ELSE</span>
+        <span class="c">!</span>
+        <span class="n">DMT</span><span class="p">%</span><span class="n">XH_BLD_COOL</span> <span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="n">DMT</span><span class="p">%</span><span class="n">XH_BLD_HEAT</span> <span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="mf">0.0</span> 
+        <span class="n">DMT</span><span class="p">%</span><span class="n">XLE_BLD_COOL</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="n">DMT</span><span class="p">%</span><span class="n">XLE_BLD_HEAT</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="c">!</span>
+        <span class="n">DMT</span><span class="p">%</span><span class="n">XT_BLD_COOL</span> <span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="mf">0.0</span> 
+        <span class="n">DMT</span><span class="p">%</span><span class="n">XHVAC_COOL</span>  <span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="n">DMT</span><span class="p">%</span><span class="n">XT_SYS</span>      <span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="n">ZT_MIX</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span>
+        <span class="n">DMT</span><span class="p">%</span><span class="n">XQ_SYS</span>      <span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="n">ZQ_MIX</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span>
+        <span class="n">DMT</span><span class="p">%</span><span class="n">XH_WASTE</span>    <span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="n">DMT</span><span class="p">%</span><span class="n">XLE_WASTE</span>   <span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="n">DMT</span><span class="p">%</span><span class="n">XFAN_POWER</span>  <span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="mf">0.0</span>     
+        <span class="n">DMT</span><span class="p">%</span><span class="n">XHVAC_HEAT</span>  <span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="c">!</span>
+     <span class="k">END IF</span> <span class="c">!end for heating/cooling sytem</span>
+     <span class="c">!</span>
+  <span class="k">END IF</span>
+  <span class="c">!</span>
+  <span class="c">!---------------------------------------------------------------------------------</span>
+  <span class="c">! ENERGY DEMAND COMPUTED</span>
+  <span class="c">!################################################################################</span>
+<span class="k">ENDDO</span>
+<span class="c">!</span>
+<span class="c">!---------------------------------------------------</span>
+<span class="c">! EVOLUTION OF THE INTERNAL TEMPERATURE AND HUMIDITY</span>
+<span class="c">!###################################################</span>
+<span class="c">!</span>
+<span class="n">ZTI_BLD</span><span class="p">(:)</span> <span class="o">=</span> <span class="p">(</span> <span class="n">ZTI_BLD</span><span class="p">(:)</span> <span class="o">+</span> <span class="n">PTSTEP</span><span class="o">/</span><span class="n">T</span><span class="p">%</span><span class="n">XBLD_HEIGHT</span><span class="p">(:)</span> <span class="o">*</span>                   <span class="p">&amp;</span> 
+            <span class="p">((</span><span class="n">ZINF</span><span class="p">(:)</span> <span class="o">+</span> <span class="n">ZNAT_VENT</span><span class="p">(:))</span> <span class="o">*</span> <span class="n">PT_CAN</span><span class="p">(:)</span> <span class="o">+</span> <span class="n">DMT</span><span class="p">%</span><span class="n">XM_SYS</span><span class="p">(:)</span> <span class="o">/</span> <span class="n">ZRHOI</span><span class="p">(:)</span> <span class="o">*</span> <span class="p">(</span><span class="n">DMT</span><span class="p">%</span><span class="n">XT_SYS</span><span class="p">(:)</span> <span class="p">)</span> <span class="p">))</span> <span class="p">&amp;</span>
+          <span class="o">/</span> <span class="p">(</span><span class="mf">1.</span> <span class="o">+</span> <span class="n">PTSTEP</span><span class="o">/</span><span class="n">T</span><span class="p">%</span><span class="n">XBLD_HEIGHT</span><span class="p">(:)</span><span class="o">*</span><span class="p">(</span><span class="n">ZINF</span><span class="p">(:)</span> <span class="o">+</span> <span class="n">ZNAT_VENT</span><span class="p">(:)</span> <span class="o">+</span> <span class="n">DMT</span><span class="p">%</span><span class="n">XM_SYS</span><span class="p">(:)</span> <span class="o">/</span> <span class="n">ZRHOI</span><span class="p">(:))</span>  <span class="p">)</span>
+<span class="n">ZQI_BLD</span><span class="p">(:)</span> <span class="o">=</span> <span class="p">(</span> <span class="n">B</span><span class="p">%</span><span class="n">XQI_BLD</span><span class="p">(:)</span> <span class="o">+</span>  <span class="n">PTSTEP</span><span class="o">/</span><span class="n">T</span><span class="p">%</span><span class="n">XBLD_HEIGHT</span><span class="p">(:)</span> <span class="o">*</span>                    <span class="p">&amp;</span> 
+             <span class="p">(</span><span class="n">ZQIN</span><span class="p">(:)</span> <span class="o">*</span> <span class="n">B</span><span class="p">%</span><span class="n">XQIN_FLAT</span><span class="p">(:)</span> <span class="o">/</span> <span class="p">(</span><span class="n">ZRHOI</span><span class="p">(:)</span> <span class="o">*</span> <span class="n">XLVTT</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">ZINF</span><span class="p">(:)</span> <span class="o">+</span> <span class="n">ZNAT_VENT</span><span class="p">(:))</span> <span class="o">*</span> <span class="p">(</span><span class="n">PQ_CAN</span><span class="p">(:))</span>   <span class="p">&amp;</span>
+              <span class="o">+</span> <span class="n">DMT</span><span class="p">%</span><span class="n">XM_SYS</span><span class="p">(:)</span> <span class="o">/</span> <span class="n">ZRHOI</span><span class="p">(:)</span>     <span class="o">*</span> <span class="p">(</span><span class="n">DMT</span><span class="p">%</span><span class="n">XQ_SYS</span><span class="p">(:)</span> <span class="p">)</span> <span class="p">))&amp;</span>
+          <span class="o">/</span> <span class="p">(</span><span class="mf">1.</span> <span class="o">+</span> <span class="n">PTSTEP</span><span class="o">/</span><span class="n">T</span><span class="p">%</span><span class="n">XBLD_HEIGHT</span><span class="p">(:)</span><span class="o">*</span> <span class="p">(</span><span class="n">ZINF</span><span class="p">(:)</span> <span class="o">+</span> <span class="n">ZNAT_VENT</span><span class="p">(:)</span> <span class="o">+</span> <span class="n">DMT</span><span class="p">%</span><span class="n">XM_SYS</span><span class="p">(:)</span> <span class="o">/</span> <span class="n">ZRHOI</span><span class="p">(:))</span>  <span class="p">)</span>
+<span class="c">!</span>
+<span class="c">! Update variables</span>
+<span class="n">B</span><span class="p">%</span><span class="n">XTI_BLD</span><span class="p">(:)</span> <span class="o">=</span> <span class="n">ZTI_BLD</span><span class="p">(:)</span>
+<span class="n">B</span><span class="p">%</span><span class="n">XQI_BLD</span><span class="p">(:)</span> <span class="o">=</span> <span class="n">ZQI_BLD</span><span class="p">(:)</span>
+<span class="c">!</span>
+<span class="c">! Waste heat due to infiltration/ventilation</span>
+<span class="n">ZWASTE</span>   <span class="p">(:)</span> <span class="o">=</span> <span class="p">(</span><span class="n">ZINF</span><span class="p">(:)</span><span class="o">+</span><span class="n">ZV_VENT</span><span class="p">(:)</span><span class="o">+</span><span class="n">ZNAT_VENT</span><span class="p">(:))</span> <span class="o">*</span> <span class="n">ZRHOI</span><span class="p">(:)</span> 
+<span class="n">DMT</span><span class="p">%</span><span class="n">XH_WASTE</span> <span class="p">(:)</span> <span class="o">=</span> <span class="n">DMT</span><span class="p">%</span><span class="n">XH_WASTE</span> <span class="p">(:)</span> <span class="o">+</span> <span class="n">ZWASTE</span><span class="p">(:)</span> <span class="o">*</span> <span class="n">XCPD</span>  <span class="o">*</span> <span class="p">(</span><span class="n">B</span><span class="p">%</span><span class="n">XTI_BLD</span><span class="p">(:)</span> <span class="o">-</span> <span class="n">PT_CAN</span><span class="p">(:))</span>
+<span class="n">DMT</span><span class="p">%</span><span class="n">XLE_WASTE</span><span class="p">(:)</span> <span class="o">=</span> <span class="n">DMT</span><span class="p">%</span><span class="n">XLE_WASTE</span><span class="p">(:)</span> <span class="o">+</span> <span class="n">ZWASTE</span><span class="p">(:)</span> <span class="o">*</span> <span class="n">XLVTT</span> <span class="o">*</span> <span class="p">(</span><span class="n">B</span><span class="p">%</span><span class="n">XQI_BLD</span><span class="p">(:)</span> <span class="o">-</span> <span class="n">PQ_CAN</span><span class="p">(:))</span> 
+<span class="c">!</span>
+<span class="c">!</span>
+<span class="k">IF</span> <span class="p">(</span><span class="n">LHOOK</span><span class="p">)</span> <span class="k">CALL </span><span class="n">DR_HOOK</span><span class="p">(</span><span class="s1">&#39;BEM&#39;</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">ZHOOK_HANDLE</span><span class="p">)</span>
+<span class="c">!</span>
+<span class="k">CONTAINS</span>
+<span class="c">!</span>
+<span class="k">SUBROUTINE </span><span class="n">GET_NAT_VENT</span><span class="p">(</span><span class="n">PTI_BLD</span><span class="p">,</span> <span class="n">PPT_CAN</span><span class="p">,</span> <span class="n">PPU_CAN</span><span class="p">,</span> <span class="n">PGR</span><span class="p">,</span> <span class="n">PF_AUX</span><span class="p">,</span> <span class="n">PPBLD_HEIGHT</span><span class="p">,</span> <span class="n">PNAT_VENT</span><span class="p">)</span>
+<span class="c">!</span>
+<span class="k">IMPLICIT NONE</span>
+<span class="c">!</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">INTENT</span><span class="p">(</span><span class="n">IN</span><span class="p">)</span> <span class="kd">::</span> <span class="n">PTI_BLD</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">INTENT</span><span class="p">(</span><span class="n">IN</span><span class="p">)</span> <span class="kd">::</span> <span class="n">PPT_CAN</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">INTENT</span><span class="p">(</span><span class="n">IN</span><span class="p">)</span> <span class="kd">::</span> <span class="n">PPU_CAN</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">INTENT</span><span class="p">(</span><span class="n">IN</span><span class="p">)</span> <span class="kd">::</span> <span class="n">PGR</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">INTENT</span><span class="p">(</span><span class="n">IN</span><span class="p">)</span> <span class="kd">::</span> <span class="n">PF_AUX</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">INTENT</span><span class="p">(</span><span class="n">IN</span><span class="p">)</span> <span class="kd">::</span> <span class="n">PPBLD_HEIGHT</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">INTENT</span><span class="p">(</span><span class="n">OUT</span><span class="p">)</span> <span class="kd">::</span> <span class="n">PNAT_VENT</span>
+<span class="kt">REAL</span><span class="p">(</span><span class="nb">KIND</span><span class="o">=</span><span class="n">JPRB</span><span class="p">)</span> <span class="kd">::</span> <span class="n">ZHOOK_HANDLE</span>
+<span class="c">!</span>
+<span class="k">IF</span> <span class="p">(</span><span class="n">LHOOK</span><span class="p">)</span> <span class="k">CALL </span><span class="n">DR_HOOK</span><span class="p">(</span><span class="s1">&#39;BEM:GET_NAT_VENT&#39;</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">ZHOOK_HANDLE</span><span class="p">)</span>
+<span class="c">!</span>
+<span class="n">PNAT_VENT</span> <span class="o">=</span> <span class="n">XG</span> <span class="o">*</span> <span class="p">(</span><span class="n">PTI_BLD</span> <span class="o">-</span> <span class="n">PPT_CAN</span><span class="p">)</span>
+<span class="k">IF</span> <span class="p">(</span><span class="n">PNAT_VENT</span> <span class="p">.</span><span class="n">LT</span><span class="p">.</span> <span class="mf">0.</span><span class="p">)</span> <span class="k">THEN</span> <span class="c">! exceptional case with MANU ventilation system</span>
+   <span class="n">PNAT_VENT</span><span class="o">=</span> <span class="n">PPBLD_HEIGHT</span><span class="o">/</span><span class="mi">360</span><span class="mf">0.</span> <span class="c">!minimum value</span>
+<span class="k">ELSE</span>
+<span class="k">   </span><span class="n">PNAT_VENT</span> <span class="o">=</span> <span class="mf">1.</span><span class="o">/</span><span class="mf">3.</span> <span class="o">*</span> <span class="p">(</span><span class="n">PNAT_VENT</span><span class="o">/</span><span class="n">PPT_CAN</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="mf">1.</span><span class="o">/</span><span class="mf">2.</span><span class="p">)</span>                          <span class="p">&amp;</span>
+               <span class="o">*</span> <span class="p">(</span><span class="mf">1.5</span> <span class="o">+</span> <span class="n">PTI_BLD</span><span class="o">/</span><span class="n">PNAT_VENT</span> <span class="o">*</span> <span class="mf">1.</span><span class="o">/</span><span class="mf">2.</span> <span class="o">*</span> <span class="n">PPU_CAN</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="mf">0.1</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="mf">3.</span><span class="o">/</span><span class="mf">2.</span><span class="p">)</span> <span class="p">&amp;</span>
+               <span class="o">*</span> <span class="n">PGR</span> <span class="o">*</span> <span class="n">PF_AUX</span> <span class="o">/</span> <span class="mf">1.5</span> <span class="o">/</span> <span class="mf">2.</span>
+   <span class="n">PNAT_VENT</span> <span class="o">=</span> <span class="nb">MIN</span><span class="p">(</span><span class="n">PNAT_VENT</span><span class="p">,</span> <span class="mf">5.0</span><span class="o">*</span><span class="n">PPBLD_HEIGHT</span><span class="o">/</span><span class="mi">360</span><span class="mf">0.</span><span class="p">)</span>
+<span class="k">ENDIF</span>
+<span class="c">!</span>
+<span class="k">IF</span> <span class="p">(</span><span class="n">LHOOK</span><span class="p">)</span> <span class="k">CALL </span><span class="n">DR_HOOK</span><span class="p">(</span><span class="s1">&#39;BEM:GET_NAT_VENT&#39;</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">ZHOOK_HANDLE</span><span class="p">)</span>
+<span class="c">!</span>
+<span class="k">END SUBROUTINE </span><span class="n">GET_NAT_VENT</span>
+<span class="c">!</span>
+<span class="k">END SUBROUTINE </span><span class="n">BEM</span>
+</pre></div>
+
+    </section>
+    <br>
+    
+    
+    </div>
+  </div>
+
+
+    <hr>    
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+      <div class="row">
+        <div class="col-xs-6 col-md-6"><p>Town Energy Balance (TEB) model API docs was developed by teb-model<br>&copy; 2021 CeCILL
+                                          </p>
+        </div>
+        <div class="col-xs-6 col-md-6">
+          <p class="text-right">
+            Documentation generated by 
+            <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+            
+            
+          </p>
+        </div>
+      </div>
+      <br>
+      </div> <!-- /container -->    
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+<!--
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+-->
+    <script src="../js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../js/ie10-viewport-bug-workaround.js"></script>
+
+    <!-- MathJax JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+        jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+        extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+      });
+    </script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    
+    <script src="../tipuesearch/tipuesearch_content.js"></script>
+    <script src="../tipuesearch/tipuesearch_set.js"></script>
+    <script src="../tipuesearch/tipuesearch.js"></script>
+    
+    
+  </body>
+</html>

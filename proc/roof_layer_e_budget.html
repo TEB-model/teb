@@ -1,0 +1,1290 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   
+   <meta name="description" content="The Town Energy Balance (TEB) model is an urban land surface model developed to calculate the exchange of energy and water between cities and atmosphere.">
+    
+    <meta name="author" content="teb-model" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>ROOF_LAYER_E_BUDGET &ndash; Town Energy Balance (TEB) model API docs</title>
+
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+    
+    <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+    
+    
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <script src="../js/jquery-2.1.3.min.js"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../index.html">Town Energy Balance (TEB) model API docs </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+        
+            <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
+              <a href="#" class="dropdown-toggle"
+              data-toggle="dropdown" role="button"
+              aria-haspopup="true"
+     aria-expanded="false">Contents <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          
+              
+            <li><a href="../lists/files.html">Source Files</a></li>
+        
+        
+        
+            <li><a href="../lists/modules.html">Modules</a></li>
+        
+            
+                                
+            <li><a href="../lists/procedures.html">Procedures</a></li>
+        
+               
+            <li><a href="../lists/types.html">Derived Types</a></li>
+        
+        
+            <li><a href="../program/driver.html">Program</a></li>
+               
+        
+        
+            </ul>
+        
+            </li>
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/files.html">Source Files</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
+
+                             
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/types.html">Derived Types</a></li>
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../program/driver.html">Program</a></li>
+
+
+
+          </ul>
+        
+        <form action="../search.html" class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+        </div>
+<!--
+        <button type="submit" class="btn btn-default">Submit</button>
+-->
+        </form>
+        
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+    
+  
+  <div class="row">
+    <h1>ROOF_LAYER_E_BUDGET
+      <small>Subroutine</small>
+    
+    </h1>
+    
+<div class="row">
+  <div class="col-lg-12">
+<div class="well well-sm">
+  <ul class="list-inline" style="margin-bottom:0px;display:inline">
+     
+     
+     
+    <li><i class="fa fa-legal"></i> CeCILL</li> 
+     
+     
+     
+    
+    
+     <li><i class="fa fa-list-ol"></i>
+       <a data-toggle="tooltip"
+    data-placement="bottom" data-html="true"
+    title=" 0.9% of total for procedures.">129 statements</a>
+     </li> 
+     
+     
+     
+    <li><i class="fa fa-code"></i><a href="../src/roof_layer_e_budget.F90"> Source File</a></li>
+     
+     
+  </ul>
+  <ol class="breadcrumb in-well text-right">
+  
+    
+     <li><a href='../sourcefile/roof_layer_e_budget.f90.html'>roof_layer_e_budget.F90</a></li>
+    
+  
+     <li class="active">ROOF_LAYER_E_BUDGET</li>
+  </ol>
+</div>
+</div>
+</div>
+<script>
+  $(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+  })
+</script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+    
+<div id="sidebar">
+  
+<h3>Contents</h3>
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+  <div class="list-group">
+    <a class="list-group-item" href="../proc/roof_layer_e_budget.html#src">ROOF_LAYER_E_BUDGET</a>
+  </div>
+</div>
+
+
+
+</div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+    <h2>
+subroutine ROOF_LAYER_E_BUDGET(TOP, T, B, PQSAT_ROOF, PAC_BLD, PTSTEP, PDN_ROOF, PRHOA, PAC_ROOF, PAC_ROOF_WAT, PLW_RAD, PPS, PDELT_ROOF, PTA, PQA, PEXNA, PEXNS, PABS_SW_ROOF, PGSNOW_ROOF, PFLX_BLD_ROOF, PDQS_ROOF, PABS_LW_ROOF, PHFREE_ROOF, PLEFREE_ROOF, PIMB_ROOF, PG_GREENROOF_ROOF, PRADHT_IN, PTS_FLOOR, PTI_WALL, PRAD_ROOF_WALL, PRAD_ROOF_WIN, PRAD_ROOF_FLOOR, PRAD_ROOF_MASS, PCONV_ROOF_BLD, PRR, PLOAD_IN_ROOF)
+    
+    
+   
+</h2>
+    
+  
+    <div class="panel panel-default">
+      <div class="panel-heading">
+  <h3 class="panel-title">Uses</h3>
+      </div>
+      <ul class="list-group">
+      
+      <li class="list-group-item">
+  <ul class="list-inline">
+    
+    <li><a href='../module/modd_bem_n.html'>MODD_BEM_n</a></li>
+    
+    <li><a href='../module/mode_thermos.html'>MODE_THERMOS</a></li>
+    
+    <li><a href='../module/yomhook.html'>YOMHOOK</a></li>
+    
+    <li><a href='../module/modd_csts.html'>MODD_CSTS</a></li>
+    
+    <li><a href='../module/parkind1.html'>PARKIND1</a></li>
+    
+    <li><a href='../module/modd_surf_par.html'>MODD_SURF_PAR</a></li>
+    
+    <li><a href='../module/modi_layer_e_budget.html'>MODI_LAYER_E_BUDGET</a></li>
+    
+    <li><a href='../module/modd_teb_n.html'>MODD_TEB_n</a></li>
+    
+    <li><a href='../module/modd_teb_option_n.html'>MODD_TEB_OPTION_n</a></li>
+    
+    <li><a href='../module/modi_layer_e_budget_get_coef.html'>MODI_LAYER_E_BUDGET_GET_COEF</a></li>
+    
+    <li><a href='../module/mode_conv_doe.html'>MODE_CONV_DOE</a></li>
+    
+  </ul>
+      </li>
+      
+      
+      
+      </ul>
+    </div>
+    
+
+
+    
+
+    <h3>Arguments</h3>
+    
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-top~4"></span>type(TEB_OPTIONS_t),</td>
+  <td>intent(inout)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>TOP</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-t~4"></span>type(TEB_t),</td>
+  <td>intent(inout)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>T</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-b"></span>type(BEM_t),</td>
+  <td>intent(inout)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>B</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-pqsat_roof"></span>real,</td>
+  <td>intent(inout),</td>
+  <td></td>
+  
+  <td>DIMENSION(:)</td><td>::</td>
+  <td><strong>PQSAT_ROOF</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-pac_bld"></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(:)</td><td>::</td>
+  <td><strong>PAC_BLD</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-ptstep~5"></span>real,</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>PTSTEP</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-pdn_roof"></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(:)</td><td>::</td>
+  <td><strong>PDN_ROOF</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-prhoa~3"></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(:)</td><td>::</td>
+  <td><strong>PRHOA</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-pac_roof"></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(:)</td><td>::</td>
+  <td><strong>PAC_ROOF</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-pac_roof_wat"></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(:)</td><td>::</td>
+  <td><strong>PAC_ROOF_WAT</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-plw_rad"></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(:)</td><td>::</td>
+  <td><strong>PLW_RAD</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-pps~5"></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(:)</td><td>::</td>
+  <td><strong>PPS</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-pdelt_roof"></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(:)</td><td>::</td>
+  <td><strong>PDELT_ROOF</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-pta~6"></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(:)</td><td>::</td>
+  <td><strong>PTA</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-pqa~5"></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(:)</td><td>::</td>
+  <td><strong>PQA</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-pexna~2"></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(:)</td><td>::</td>
+  <td><strong>PEXNA</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-pexns~3"></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(:)</td><td>::</td>
+  <td><strong>PEXNS</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-pabs_sw_roof"></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(:)</td><td>::</td>
+  <td><strong>PABS_SW_ROOF</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-pgsnow_roof"></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(:)</td><td>::</td>
+  <td><strong>PGSNOW_ROOF</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-pflx_bld_roof"></span>real,</td>
+  <td>intent(out),</td>
+  <td></td>
+  
+  <td>DIMENSION(:)</td><td>::</td>
+  <td><strong>PFLX_BLD_ROOF</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-pdqs_roof"></span>real,</td>
+  <td>intent(out),</td>
+  <td></td>
+  
+  <td>DIMENSION(:)</td><td>::</td>
+  <td><strong>PDQS_ROOF</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-pabs_lw_roof"></span>real,</td>
+  <td>intent(out),</td>
+  <td></td>
+  
+  <td>DIMENSION(:)</td><td>::</td>
+  <td><strong>PABS_LW_ROOF</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-phfree_roof"></span>real,</td>
+  <td>intent(out),</td>
+  <td></td>
+  
+  <td>DIMENSION(:)</td><td>::</td>
+  <td><strong>PHFREE_ROOF</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-plefree_roof"></span>real,</td>
+  <td>intent(out),</td>
+  <td></td>
+  
+  <td>DIMENSION(:)</td><td>::</td>
+  <td><strong>PLEFREE_ROOF</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-pimb_roof"></span>real,</td>
+  <td>intent(out),</td>
+  <td></td>
+  
+  <td>DIMENSION(:)</td><td>::</td>
+  <td><strong>PIMB_ROOF</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-pg_greenroof_roof"></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(:)</td><td>::</td>
+  <td><strong>PG_GREENROOF_ROOF</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-pradht_in"></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(:)</td><td>::</td>
+  <td><strong>PRADHT_IN</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-pts_floor"></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(:)</td><td>::</td>
+  <td><strong>PTS_FLOOR</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-pti_wall"></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(:)</td><td>::</td>
+  <td><strong>PTI_WALL</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-prad_roof_wall"></span>real,</td>
+  <td>intent(out),</td>
+  <td></td>
+  
+  <td>DIMENSION(:)</td><td>::</td>
+  <td><strong>PRAD_ROOF_WALL</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-prad_roof_win"></span>real,</td>
+  <td>intent(out),</td>
+  <td></td>
+  
+  <td>DIMENSION(:)</td><td>::</td>
+  <td><strong>PRAD_ROOF_WIN</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-prad_roof_floor"></span>real,</td>
+  <td>intent(out),</td>
+  <td></td>
+  
+  <td>DIMENSION(:)</td><td>::</td>
+  <td><strong>PRAD_ROOF_FLOOR</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-prad_roof_mass"></span>real,</td>
+  <td>intent(out),</td>
+  <td></td>
+  
+  <td>DIMENSION(:)</td><td>::</td>
+  <td><strong>PRAD_ROOF_MASS</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-pconv_roof_bld"></span>real,</td>
+  <td>intent(out),</td>
+  <td></td>
+  
+  <td>DIMENSION(:)</td><td>::</td>
+  <td><strong>PCONV_ROOF_BLD</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-prr~3"></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(:)</td><td>::</td>
+  <td><strong>PRR</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-pload_in_roof"></span>real,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>DIMENSION(:)</td><td>::</td>
+  <td><strong>PLOAD_IN_ROOF</strong></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+    
+    
+    
+    
+     
+    <br>
+
+    <section class="visible-xs visible-sm hidden-md">
+      
+<h3>Contents</h3>
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+  <div class="list-group">
+    <a class="list-group-item" href="../proc/roof_layer_e_budget.html#src">ROOF_LAYER_E_BUDGET</a>
+  </div>
+</div>
+
+
+
+    </section>
+    <br class="visible-xs visible-sm hidden-md">
+
+    
+
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+
+
+    
+    
+    
+    <section>
+    <h2><span class="anchor" id="src"></span>Source Code</h2>
+    <div class="highlight"><pre><span></span>    <span class="k">SUBROUTINE </span><span class="n">ROOF_LAYER_E_BUDGET</span><span class="p">(</span><span class="n">TOP</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">PQSAT_ROOF</span><span class="p">,</span> <span class="n">PAC_BLD</span><span class="p">,</span> <span class="n">PTSTEP</span><span class="p">,</span> <span class="n">PDN_ROOF</span><span class="p">,</span>   <span class="p">&amp;</span>
+                                   <span class="n">PRHOA</span><span class="p">,</span> <span class="n">PAC_ROOF</span><span class="p">,</span> <span class="n">PAC_ROOF_WAT</span><span class="p">,</span> <span class="n">PLW_RAD</span><span class="p">,</span> <span class="n">PPS</span><span class="p">,</span>        <span class="p">&amp;</span>
+                                   <span class="n">PDELT_ROOF</span><span class="p">,</span> <span class="n">PTA</span><span class="p">,</span> <span class="n">PQA</span><span class="p">,</span> <span class="n">PEXNA</span><span class="p">,</span> <span class="n">PEXNS</span><span class="p">,</span> <span class="n">PABS_SW_ROOF</span><span class="p">,</span>   <span class="p">&amp;</span>
+                                   <span class="n">PGSNOW_ROOF</span><span class="p">,</span> <span class="n">PFLX_BLD_ROOF</span><span class="p">,</span> <span class="n">PDQS_ROOF</span><span class="p">,</span> <span class="n">PABS_LW_ROOF</span><span class="p">,&amp;</span>
+                                   <span class="n">PHFREE_ROOF</span><span class="p">,</span> <span class="n">PLEFREE_ROOF</span><span class="p">,</span> <span class="n">PIMB_ROOF</span><span class="p">,</span>               <span class="p">&amp;</span>
+                                   <span class="n">PG_GREENROOF_ROOF</span><span class="p">,</span> <span class="n">PRADHT_IN</span><span class="p">,</span> <span class="n">PTS_FLOOR</span><span class="p">,</span> <span class="n">PTI_WALL</span><span class="p">,</span>  <span class="p">&amp;</span>
+                                   <span class="n">PRAD_ROOF_WALL</span><span class="p">,</span> <span class="n">PRAD_ROOF_WIN</span><span class="p">,</span> <span class="n">PRAD_ROOF_FLOOR</span><span class="p">,</span>     <span class="p">&amp;</span>
+                                   <span class="n">PRAD_ROOF_MASS</span><span class="p">,</span> <span class="n">PCONV_ROOF_BLD</span><span class="p">,</span> <span class="n">PRR</span><span class="p">,</span> <span class="n">PLOAD_IN_ROOF</span> <span class="p">)</span>
+<span class="c">!   ##########################################################################</span>
+<span class="c">!</span>
+<span class="c">!!****  *ROOF_LAYER_E_BUDGET*  </span>
+<span class="c">!!</span>
+<span class="c">!!    PURPOSE</span>
+<span class="c">!!    -------</span>
+<span class="c">!</span>
+<span class="c">!     Computes the evoultion of surface temperature of roofs</span>
+<span class="c">!         </span>
+<span class="c">!     </span>
+<span class="c">!!**  METHOD</span>
+<span class="c">!     ------</span>
+<span class="c">!</span>
+<span class="c">!</span>
+<span class="c">!</span>
+<span class="c">!</span>
+<span class="c">!    5 : equation for evolution of Ts_roof</span>
+<span class="c">!        *********************************</span>
+<span class="c">!</span>
+<span class="c">!     dTt_1(t) / dt = 1/(dt_1*Ct_1) * (  Rn - H - LE</span>
+<span class="c">!                                      - 2*Kt_1*(Tt_1-Tt_2)/(dt_1 +dt_2)       )</span>
+<span class="c">!</span>
+<span class="c">!     dTt_k(t) / dt = 1/(dt_k*Ct_k) * (- 2*Kt_k-1*(Tt_k-Tt_k-1)/(dt_k-1 +dt_k) </span>
+<span class="c">!                                      - 2*Kt_k  *(Tt_k-Tt_k+1)/(dt_k+1 +dt_k) )</span>
+<span class="c">!</span>
+<span class="c">!       with</span>
+<span class="c">!</span>
+<span class="c">!       K*_k  = (d*_k+ d*_k+1)/(d*_k/k*_k+ d*_k+1/k*_k+1)</span>
+<span class="c">!</span>
+<span class="c">!       Rn = (dir_Rg + sca_Rg) (1-a) + emis * ( Rat - sigma Ts**4 (t+dt) )</span>
+<span class="c">!</span>
+<span class="c">!       H  = rho Cp CH V ( Ts (t+dt) - Tas )</span>
+<span class="c">!</span>
+<span class="c">!       LE = rho Lv CH V ( qs (t+dt) - qas )</span>
+<span class="c">!</span>
+<span class="c">!      where the as subscript denotes atmospheric values at ground level</span>
+<span class="c">!      (and not at first half level)</span>
+<span class="c">!</span>
+<span class="c">!      The tridiagonal systel is linearized with</span>
+<span class="c">!</span>
+<span class="c">!       using      Ts**4 (t+dt) = Ts**4 (t) + 4*Ts**3 (t) * ( Ts(t+dt) - Ts(t) )</span>
+<span class="c">!</span>
+<span class="c">!       and  qs (t+dt) = Hu(t) * qsat(t) + Hu(t) dqsat/dT * ( Ts(t+dt) - Ts(t) )</span>
+<span class="c">!</span>
+<span class="c">!</span>
+<span class="c">!</span>
+<span class="c">!!    EXTERNAL</span>
+<span class="c">!!    --------</span>
+<span class="c">!!</span>
+<span class="c">!!</span>
+<span class="c">!!    IMPLICIT ARGUMENTS</span>
+<span class="c">!!    ------------------</span>
+<span class="c">!!</span>
+<span class="c">!!    MODD_CST</span>
+<span class="c">!!</span>
+<span class="c">!!      </span>
+<span class="c">!!    REFERENCE</span>
+<span class="c">!!    ---------</span>
+<span class="c">!!</span>
+<span class="c">!!      </span>
+<span class="c">!!    AUTHOR</span>
+<span class="c">!!    ------</span>
+<span class="c">!!</span>
+<span class="c">!!      V. Masson           * Meteo-France *</span>
+<span class="c">!!</span>
+<span class="c">!!    MODIFICATIONS</span>
+<span class="c">!!    -------------</span>
+<span class="c">!!      Original    23/01/98 </span>
+<span class="c">!!                  17/10/05 (G. Pigeon) computation of storage inside the roofs</span>
+<span class="c">!!                  26/04/12 (G. Pigeon) add term of heating of rain (new arg PRR+XCL)</span>
+<span class="c">!!                     09/12 (G. Pigeon) modif of indoor conv. coef and implicit calculation</span>
+<span class="c">!!                     10/12 (G. Pigeon) add indoor solar heat load</span>
+<span class="c">!-------------------------------------------------------------------------------</span>
+<span class="c">!</span>
+<span class="c">!*       0.     DECLARATIONS</span>
+<span class="c">!               ------------</span>
+<span class="c">!</span>
+<span class="k">USE </span><span class="n">MODD_TEB_OPTION_n</span><span class="p">,</span> <span class="k">ONLY</span> <span class="p">:</span> <span class="n">TEB_OPTIONS_t</span>
+<span class="k">USE </span><span class="n">MODD_TEB_n</span><span class="p">,</span> <span class="k">ONLY</span> <span class="p">:</span> <span class="n">TEB_t</span>
+<span class="k">USE </span><span class="n">MODD_BEM_n</span><span class="p">,</span> <span class="k">ONLY</span> <span class="p">:</span> <span class="n">BEM_t</span>
+<span class="c">!</span>
+<span class="k">USE </span><span class="n">MODD_SURF_PAR</span><span class="p">,</span>  <span class="k">ONLY</span> <span class="p">:</span> <span class="n">XUNDEF</span>
+<span class="k">USE </span><span class="n">MODD_CSTS</span><span class="p">,</span><span class="k">ONLY</span> <span class="p">:</span> <span class="n">XCPD</span><span class="p">,</span> <span class="n">XLVTT</span><span class="p">,</span> <span class="n">XSTEFAN</span><span class="p">,</span> <span class="n">XCL</span>
+<span class="c">!</span>
+<span class="k">USE </span><span class="n">MODE_THERMOS</span>
+<span class="c">!</span>
+<span class="k">USE </span><span class="n">MODI_LAYER_E_BUDGET</span>
+<span class="k">USE </span><span class="n">MODI_LAYER_E_BUDGET_GET_COEF</span>
+<span class="k">USE </span><span class="n">MODE_CONV_DOE</span>
+<span class="c">!</span>
+<span class="k">USE </span><span class="n">YOMHOOK</span>   <span class="p">,</span><span class="k">ONLY</span> <span class="p">:</span> <span class="n">LHOOK</span><span class="p">,</span>   <span class="n">DR_HOOK</span>
+<span class="k">USE </span><span class="n">PARKIND1</span>  <span class="p">,</span><span class="k">ONLY</span> <span class="p">:</span> <span class="n">JPRB</span>
+<span class="c">!</span>
+<span class="k">IMPLICIT NONE</span>
+<span class="c">!</span>
+<span class="c">!*      0.1    declarations of arguments</span>
+<span class="c">!</span>
+<span class="k">TYPE</span><span class="p">(</span><span class="n">TEB_OPTIONS_t</span><span class="p">),</span> <span class="k">INTENT</span><span class="p">(</span><span class="n">INOUT</span><span class="p">)</span> <span class="kd">::</span> <span class="n">TOP</span>
+<span class="k">TYPE</span><span class="p">(</span><span class="n">TEB_t</span><span class="p">),</span> <span class="k">INTENT</span><span class="p">(</span><span class="n">INOUT</span><span class="p">)</span> <span class="kd">::</span> <span class="n">T</span>
+<span class="k">TYPE</span><span class="p">(</span><span class="n">BEM_t</span><span class="p">),</span> <span class="k">INTENT</span><span class="p">(</span><span class="n">INOUT</span><span class="p">)</span> <span class="kd">::</span> <span class="n">B</span>
+<span class="c">!</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:),</span> <span class="k">INTENT</span><span class="p">(</span><span class="n">INOUT</span><span class="p">)</span> <span class="kd">::</span> <span class="n">PQSAT_ROOF</span>     <span class="c">! q_sat(Ts)</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:),</span> <span class="k">INTENT</span><span class="p">(</span><span class="n">IN</span><span class="p">)</span>    <span class="kd">::</span> <span class="n">PAC_BLD</span>        <span class="c">! aerodynamical resistance</span>
+                                                    <span class="c">! inside building itself</span>
+<span class="kt">REAL</span><span class="p">,</span>               <span class="k">INTENT</span><span class="p">(</span><span class="n">IN</span><span class="p">)</span>    <span class="kd">::</span> <span class="n">PTSTEP</span>         <span class="c">! time step</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:),</span> <span class="k">INTENT</span><span class="p">(</span><span class="n">IN</span><span class="p">)</span>    <span class="kd">::</span> <span class="n">PDN_ROOF</span>       <span class="c">! roof snow fraction</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:),</span> <span class="k">INTENT</span><span class="p">(</span><span class="n">IN</span><span class="p">)</span>    <span class="kd">::</span> <span class="n">PRHOA</span>          <span class="c">! air density</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:),</span> <span class="k">INTENT</span><span class="p">(</span><span class="n">IN</span><span class="p">)</span>    <span class="kd">::</span> <span class="n">PAC_ROOF</span>       <span class="c">! aerodynamical conductance</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:),</span> <span class="k">INTENT</span><span class="p">(</span><span class="n">IN</span><span class="p">)</span>    <span class="kd">::</span> <span class="n">PAC_ROOF_WAT</span>   <span class="c">! aerodynamical conductance (for water)</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:),</span> <span class="k">INTENT</span><span class="p">(</span><span class="n">IN</span><span class="p">)</span>    <span class="kd">::</span> <span class="n">PLW_RAD</span>        <span class="c">! atmospheric infrared radiation</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:),</span> <span class="k">INTENT</span><span class="p">(</span><span class="n">IN</span><span class="p">)</span>    <span class="kd">::</span> <span class="n">PPS</span>            <span class="c">! pressure at the surface</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:),</span> <span class="k">INTENT</span><span class="p">(</span><span class="n">IN</span><span class="p">)</span>    <span class="kd">::</span> <span class="n">PDELT_ROOF</span>     <span class="c">! fraction of water</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:),</span> <span class="k">INTENT</span><span class="p">(</span><span class="n">IN</span><span class="p">)</span>    <span class="kd">::</span> <span class="n">PTA</span>            <span class="c">! air temperature at roof level</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:),</span> <span class="k">INTENT</span><span class="p">(</span><span class="n">IN</span><span class="p">)</span>    <span class="kd">::</span> <span class="n">PQA</span>            <span class="c">! air specific humidity</span>
+                                                    <span class="c">! at roof level</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:),</span> <span class="k">INTENT</span><span class="p">(</span><span class="n">IN</span><span class="p">)</span>    <span class="kd">::</span> <span class="n">PEXNA</span>          <span class="c">! exner function</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:),</span> <span class="k">INTENT</span><span class="p">(</span><span class="n">IN</span><span class="p">)</span>    <span class="kd">::</span> <span class="n">PEXNS</span>          <span class="c">! surface exner function</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:),</span> <span class="k">INTENT</span><span class="p">(</span><span class="n">IN</span><span class="p">)</span>    <span class="kd">::</span> <span class="n">PABS_SW_ROOF</span>   <span class="c">! absorbed solar radiation</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:),</span> <span class="k">INTENT</span><span class="p">(</span><span class="n">IN</span><span class="p">)</span>    <span class="kd">::</span> <span class="n">PGSNOW_ROOF</span>    <span class="c">! roof snow conduction</span>
+<span class="c">!                                                   ! heat fluxes at mantel</span>
+<span class="c">!                                                   ! base</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:),</span> <span class="k">INTENT</span><span class="p">(</span><span class="n">IN</span><span class="p">)</span>    <span class="kd">::</span> <span class="n">PG_GREENROOF_ROOF</span> <span class="c">! heat conduction flux</span>
+<span class="c">!                                                        between greenroof and</span>
+<span class="c">!                                                        structural roof</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:),</span> <span class="k">INTENT</span><span class="p">(</span><span class="n">OUT</span><span class="p">)</span>   <span class="kd">::</span> <span class="n">PFLX_BLD_ROOF</span>  <span class="c">! flux from bld to roof</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:),</span> <span class="k">INTENT</span><span class="p">(</span><span class="n">OUT</span><span class="p">)</span>   <span class="kd">::</span> <span class="n">PDQS_ROOF</span>      <span class="c">! heat storage inside the roofs</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:),</span> <span class="k">INTENT</span><span class="p">(</span><span class="n">OUT</span><span class="p">)</span>   <span class="kd">::</span> <span class="n">PABS_LW_ROOF</span>   <span class="c">! absorbed infra-red rad.</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:),</span> <span class="k">INTENT</span><span class="p">(</span><span class="n">OUT</span><span class="p">)</span>   <span class="kd">::</span> <span class="n">PHFREE_ROOF</span>    <span class="c">! sensible heat flux of the</span>
+                                                    <span class="c">! snow free part of the roof</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:),</span> <span class="k">INTENT</span><span class="p">(</span><span class="n">OUT</span><span class="p">)</span>   <span class="kd">::</span> <span class="n">PLEFREE_ROOF</span>   <span class="c">! latent heat flux of the</span>
+                                                    <span class="c">! snow free part of the roof</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:),</span> <span class="k">INTENT</span><span class="p">(</span><span class="n">OUT</span><span class="p">)</span>   <span class="kd">::</span> <span class="n">PIMB_ROOF</span>      <span class="c">! residual energy imbalance</span>
+                                                    <span class="c">! of the roof for</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:),</span> <span class="k">INTENT</span><span class="p">(</span><span class="n">IN</span><span class="p">)</span>    <span class="kd">::</span> <span class="n">PRADHT_IN</span>      <span class="c">! Indoor radiant heat transfer coefficient</span>
+                                                    <span class="c">! [W K-1 m-2]</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:),</span> <span class="k">INTENT</span><span class="p">(</span><span class="n">IN</span><span class="p">)</span>    <span class="kd">::</span> <span class="n">PTS_FLOOR</span>      <span class="c">! surf. floor temp. (contact with bld air)</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:),</span> <span class="k">INTENT</span><span class="p">(</span><span class="n">IN</span><span class="p">)</span>    <span class="kd">::</span> <span class="n">PTI_WALL</span>       <span class="c">! indoor wall temp.</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:),</span> <span class="k">INTENT</span><span class="p">(</span><span class="n">OUT</span><span class="p">)</span>   <span class="kd">::</span> <span class="n">PRAD_ROOF_WALL</span> <span class="c">! rad. fluxes from roof to wall [W m-2(roof)]</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:),</span> <span class="k">INTENT</span><span class="p">(</span><span class="n">OUT</span><span class="p">)</span>   <span class="kd">::</span> <span class="n">PRAD_ROOF_WIN</span>  <span class="c">! rad. fluxes from roof to win [W m-2(roof)]</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:),</span> <span class="k">INTENT</span><span class="p">(</span><span class="n">OUT</span><span class="p">)</span>   <span class="kd">::</span> <span class="n">PRAD_ROOF_FLOOR</span><span class="c">! rad. fluxes from roof to floor [W m-2(roof)]</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:),</span> <span class="k">INTENT</span><span class="p">(</span><span class="n">OUT</span><span class="p">)</span>   <span class="kd">::</span> <span class="n">PRAD_ROOF_MASS</span> <span class="c">! rad. fluxes from roof to mass [W m-2(roof)]</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:),</span> <span class="k">INTENT</span><span class="p">(</span><span class="n">OUT</span><span class="p">)</span>   <span class="kd">::</span> <span class="n">PCONV_ROOF_BLD</span> <span class="c">! conv. fluxes from roof to bld [W m-2(roof)]</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:),</span> <span class="k">INTENT</span><span class="p">(</span><span class="n">IN</span><span class="p">)</span>    <span class="kd">::</span> <span class="n">PRR</span> <span class="c">! rain rate [kg m-2 s-1]</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(:),</span> <span class="k">INTENT</span><span class="p">(</span><span class="n">IN</span><span class="p">)</span>    <span class="kd">::</span> <span class="n">PLOAD_IN_ROOF</span> <span class="c">! solar + int heat gain on roof W/m2 [roof]</span>
+<span class="c">!</span>
+<span class="c">!*      0.2    declarations of local variables</span>
+<span class="c">!</span>
+<span class="kt">REAL</span> <span class="kd">::</span> <span class="n">ZIMPL</span> <span class="o">=</span> <span class="mf">1.0</span>        <span class="c">! implicit coefficient</span>
+<span class="kt">REAL</span> <span class="kd">::</span> <span class="n">ZEXPL</span> <span class="o">=</span> <span class="mf">0.0</span>        <span class="c">! explicit coefficient</span>
+<span class="c">!</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(</span><span class="n">SIZE</span><span class="p">(</span><span class="n">PTA</span><span class="p">))</span> <span class="kd">::</span> <span class="n">ZDF_ROOF</span> <span class="c">! snow-free fraction</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(</span><span class="n">SIZE</span><span class="p">(</span><span class="n">PTA</span><span class="p">),</span><span class="n">SIZE</span><span class="p">(</span><span class="n">T</span><span class="p">%</span><span class="n">XT_ROOF</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span> <span class="kd">::</span> <span class="n">ZA</span><span class="p">,&amp;</span> <span class="c">! lower diag.</span>
+                                              <span class="n">ZB</span><span class="p">,&amp;</span> <span class="c">! main  diag.</span>
+                                              <span class="n">ZC</span><span class="p">,&amp;</span> <span class="c">! upper diag.</span>
+                                              <span class="n">ZY</span>   <span class="c">! r.h.s.</span>
+<span class="c">!</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(</span><span class="n">SIZE</span><span class="p">(</span><span class="n">PTA</span><span class="p">))</span> <span class="kd">::</span> <span class="n">ZDQSAT_ROOF</span>      <span class="c">! dq_sat/dTs</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(</span><span class="n">SIZE</span><span class="p">(</span><span class="n">PTA</span><span class="p">))</span> <span class="kd">::</span> <span class="n">ZRHO_ACF_ROOF</span>    <span class="c">! conductance * rho</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(</span><span class="n">SIZE</span><span class="p">(</span><span class="n">PTA</span><span class="p">))</span> <span class="kd">::</span> <span class="n">ZRHO_ACF_ROOF_WAT</span><span class="c">! conductance * rho (for water)</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(</span><span class="n">SIZE</span><span class="p">(</span><span class="n">PTA</span><span class="p">))</span> <span class="kd">::</span> <span class="n">ZMTC_O_D_ROOF_IN</span> <span class="c">! thermal capacity times layer depth</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(</span><span class="n">SIZE</span><span class="p">(</span><span class="n">PTA</span><span class="p">))</span> <span class="kd">::</span> <span class="n">ZTS_ROOF</span>         <span class="c">! roof surface temperature at previous time step</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(</span><span class="n">SIZE</span><span class="p">(</span><span class="n">PTA</span><span class="p">))</span> <span class="kd">::</span> <span class="n">ZTRAD_ROOF</span>       <span class="c">! roof radiative surface temperature at intermediate time step</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(</span><span class="n">SIZE</span><span class="p">(</span><span class="n">PTA</span><span class="p">))</span> <span class="kd">::</span> <span class="n">ZTAER_ROOF</span>       <span class="c">! roof aerodyn. surface temperature at intermediate time step</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(</span><span class="n">SIZE</span><span class="p">(</span><span class="n">PTA</span><span class="p">))</span> <span class="kd">::</span> <span class="n">ZHEAT_RR</span>         <span class="c">! heat used too cool/heat the rain from the roof</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(</span><span class="n">SIZE</span><span class="p">(</span><span class="n">PTA</span><span class="p">))</span> <span class="kd">::</span> <span class="n">ZTI_ROOF</span>         <span class="c">! temperature of internal roof layer used for radiative exchanges</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(</span><span class="n">SIZE</span><span class="p">(</span><span class="n">PTA</span><span class="p">))</span> <span class="kd">::</span> <span class="n">ZTI_ROOF_CONV</span>    <span class="c">! temperature of internal roof layer used for convective exchanges</span>
+<span class="kt">REAL</span><span class="p">,</span> <span class="k">DIMENSION</span><span class="p">(</span><span class="n">SIZE</span><span class="p">(</span><span class="n">PTA</span><span class="p">))</span> <span class="kd">::</span> <span class="n">ZCHTC_IN_ROOF</span>      <span class="c">! Indoor roof convec heat transfer coefficient</span>
+                                               <span class="c">! [W K-1 m-2(bld)]</span>
+<span class="c">!</span>
+<span class="kt">INTEGER</span> <span class="kd">::</span> <span class="n">JJ</span>
+<span class="kt">INTEGER</span> <span class="kd">::</span> <span class="n">IROOF_LAYER</span>           <span class="c">! number of roof layers</span>
+<span class="kt">INTEGER</span> <span class="kd">::</span> <span class="n">JLAYER</span>                <span class="c">! loop counter</span>
+<span class="kt">REAL</span><span class="p">(</span><span class="nb">KIND</span><span class="o">=</span><span class="n">JPRB</span><span class="p">)</span> <span class="kd">::</span> <span class="n">ZHOOK_HANDLE</span>
+<span class="c">!-------------------------------------------------------------------------------</span>
+<span class="c">!</span>
+<span class="k">IF</span> <span class="p">(</span><span class="n">LHOOK</span><span class="p">)</span> <span class="k">CALL </span><span class="n">DR_HOOK</span><span class="p">(</span><span class="s1">&#39;ROOF_LAYER_E_BUDGET&#39;</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">ZHOOK_HANDLE</span><span class="p">)</span>
+<span class="c">!</span>
+<span class="n">PRAD_ROOF_WALL</span><span class="p">(:)</span> <span class="o">=</span> <span class="n">XUNDEF</span>
+<span class="n">PRAD_ROOF_WIN</span><span class="p">(:)</span>  <span class="o">=</span> <span class="n">XUNDEF</span>
+<span class="n">PRAD_ROOF_FLOOR</span><span class="p">(:)</span><span class="o">=</span> <span class="n">XUNDEF</span>
+<span class="n">PRAD_ROOF_MASS</span><span class="p">(:)</span> <span class="o">=</span> <span class="n">XUNDEF</span>
+<span class="n">PCONV_ROOF_BLD</span><span class="p">(:)</span> <span class="o">=</span> <span class="n">XUNDEF</span>
+<span class="c">!</span>
+<span class="c">! *Convection heat transfer coefficients [W m-2 K-1] from EP Engineering Reference</span>
+<span class="c">!</span>
+<span class="n">IROOF_LAYER</span> <span class="o">=</span> <span class="n">SIZE</span><span class="p">(</span><span class="n">T</span><span class="p">%</span><span class="n">XT_ROOF</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="c">!</span>
+<span class="n">ZCHTC_IN_ROOF</span><span class="p">(:)</span> <span class="o">=</span> <span class="n">CHTC_DOWN_DOE</span><span class="p">(</span><span class="n">T</span><span class="p">%</span><span class="n">XT_ROOF</span><span class="p">(:,</span><span class="n">IROOF_LAYER</span><span class="p">),</span> <span class="n">B</span><span class="p">%</span><span class="n">XTI_BLD</span><span class="p">(:))</span>
+<span class="k">DO </span><span class="n">JJ</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">SIZE</span><span class="p">(</span><span class="n">ZCHTC_IN_ROOF</span><span class="p">)</span>
+   <span class="n">ZCHTC_IN_ROOF</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="nb">MAX</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span> <span class="n">ZCHTC_IN_ROOF</span><span class="p">(</span><span class="n">JJ</span><span class="p">))</span>
+<span class="k">ENDDO</span>
+<span class="c">!</span>
+ <span class="k">CALL </span><span class="n">LAYER_E_BUDGET_GET_COEF</span><span class="p">(</span><span class="n">T</span><span class="p">%</span><span class="n">XT_ROOF</span><span class="p">,</span> <span class="n">PTSTEP</span><span class="p">,</span> <span class="n">ZIMPL</span><span class="p">,</span> <span class="n">T</span><span class="p">%</span><span class="n">XHC_ROOF</span><span class="p">,</span> <span class="n">T</span><span class="p">%</span><span class="n">XTC_ROOF</span><span class="p">,</span> <span class="n">T</span><span class="p">%</span><span class="n">XD_ROOF</span><span class="p">,</span> <span class="p">&amp;</span>
+                              <span class="n">ZA</span><span class="p">,</span> <span class="n">ZB</span><span class="p">,</span> <span class="n">ZC</span><span class="p">,</span> <span class="n">ZY</span> <span class="p">)</span>
+<span class="c">!</span>
+<span class="c">!</span>
+<span class="k">DO </span><span class="n">JJ</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">SIZE</span><span class="p">(</span><span class="n">PDN_ROOF</span><span class="p">)</span>
+  <span class="c">!</span>
+  <span class="n">ZDF_ROOF</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="mf">1.</span> <span class="o">-</span> <span class="n">PDN_ROOF</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span>
+  <span class="c">!</span>
+  <span class="n">ZTS_ROOF</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="n">T</span><span class="p">%</span><span class="n">XT_ROOF</span><span class="p">(</span><span class="n">JJ</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+  <span class="n">ZTI_ROOF</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="n">T</span><span class="p">%</span><span class="n">XT_ROOF</span><span class="p">(</span><span class="n">JJ</span><span class="p">,</span><span class="n">IROOF_LAYER</span><span class="p">)</span>
+  <span class="c">!</span>
+  <span class="c">!*      2.     Roof Ts coefficients</span>
+  <span class="c">!              --------------------</span>
+  <span class="c">!</span>
+  <span class="n">ZRHO_ACF_ROOF</span>    <span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="n">PRHOA</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">*</span> <span class="n">PAC_ROOF</span>    <span class="p">(</span><span class="n">JJ</span><span class="p">)</span>
+  <span class="n">ZRHO_ACF_ROOF_WAT</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="n">PRHOA</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">*</span> <span class="n">PAC_ROOF_WAT</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span>
+  <span class="c">!</span>
+  <span class="k">IF</span> <span class="p">(</span><span class="n">TOP</span><span class="p">%</span><span class="n">CBEM</span> <span class="p">.</span><span class="n">EQ</span><span class="p">.</span> <span class="s1">&#39;DEF&#39;</span><span class="p">)</span> <span class="k">THEN</span>
+<span class="k">    </span><span class="n">ZMTC_O_D_ROOF_IN</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="mf">2.</span> <span class="o">*</span> <span class="n">T</span><span class="p">%</span><span class="n">XTC_ROOF</span><span class="p">(</span><span class="n">JJ</span><span class="p">,</span><span class="n">IROOF_LAYER</span><span class="p">)</span> <span class="o">/</span> <span class="n">T</span><span class="p">%</span><span class="n">XD_ROOF</span> <span class="p">(</span><span class="n">JJ</span><span class="p">,</span><span class="n">IROOF_LAYER</span><span class="p">)</span>
+    <span class="n">ZMTC_O_D_ROOF_IN</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="mf">1.</span><span class="o">/</span><span class="p">(</span>  <span class="mf">1.</span><span class="o">/</span><span class="n">ZMTC_O_D_ROOF_IN</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">+</span> <span class="mf">1.</span><span class="o">/</span><span class="p">(</span><span class="n">XCPD</span><span class="o">*</span><span class="n">PRHOA</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span><span class="o">*</span><span class="n">PAC_BLD</span><span class="p">(</span><span class="n">JJ</span><span class="p">))</span> <span class="p">)</span> 
+  <span class="k">ENDIF</span>
+  <span class="c">!</span>
+<span class="k">ENDDO</span>
+<span class="c">!</span>
+<span class="c">!*      2.1    dqsat/dTs, and humidity for roofs</span>
+<span class="c">!              ---------------------------------</span>
+<span class="c">!</span>
+<span class="n">ZDQSAT_ROOF</span><span class="p">(:)</span> <span class="o">=</span> <span class="n">DQSAT</span><span class="p">(</span><span class="n">ZTS_ROOF</span><span class="p">(:),</span><span class="n">PPS</span><span class="p">(:),</span><span class="n">PQSAT_ROOF</span><span class="p">(:))</span>
+<span class="c">!</span>
+<span class="c">!*      2.2    coefficients</span>
+<span class="c">!              ------------</span>
+<span class="c">! </span>
+<span class="k">DO </span><span class="n">JJ</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">SIZE</span><span class="p">(</span><span class="n">T</span><span class="p">%</span><span class="n">XT_ROOF</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+  <span class="c">!</span>
+  <span class="n">ZB</span><span class="p">(</span><span class="n">JJ</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="n">ZB</span><span class="p">(</span><span class="n">JJ</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">ZDF_ROOF</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mf">1.</span><span class="o">-</span><span class="n">T</span><span class="p">%</span><span class="n">XGREENROOF</span><span class="p">(</span><span class="n">JJ</span><span class="p">))</span> <span class="o">*</span> <span class="p">(</span>                           <span class="p">&amp;</span>
+                        <span class="n">ZIMPL</span> <span class="o">*</span> <span class="p">(</span> <span class="n">XCPD</span><span class="o">/</span><span class="n">PEXNS</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">*</span> <span class="n">ZRHO_ACF_ROOF</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span>                       <span class="p">&amp;</span>
+                        <span class="o">+</span> <span class="n">XLVTT</span> <span class="o">*</span> <span class="n">ZRHO_ACF_ROOF_WAT</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">*</span> <span class="n">PDELT_ROOF</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">*</span> <span class="n">ZDQSAT_ROOF</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="p">&amp;</span>
+                        <span class="o">+</span> <span class="n">XSTEFAN</span> <span class="o">*</span> <span class="n">T</span><span class="p">%</span><span class="n">XEMIS_ROOF</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">*</span> <span class="mf">4.</span><span class="o">*</span><span class="n">ZTS_ROOF</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span><span class="o">**</span><span class="mi">3</span>                  <span class="p">&amp;</span>
+                        <span class="o">+</span> <span class="n">PRR</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">*</span> <span class="n">XCL</span> <span class="p">))</span> <span class="c">!! heating/cooling of rain </span>
+  <span class="c">!</span>
+  <span class="n">ZY</span><span class="p">(</span><span class="n">JJ</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="n">ZY</span><span class="p">(</span><span class="n">JJ</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="mf">1.</span><span class="o">-</span><span class="n">T</span><span class="p">%</span><span class="n">XGREENROOF</span><span class="p">(</span><span class="n">JJ</span><span class="p">))</span>                                                            <span class="p">&amp;</span>
+                      <span class="o">*</span> <span class="p">(</span><span class="n">PDN_ROOF</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span><span class="o">*</span><span class="n">PGSNOW_ROOF</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">+</span> <span class="n">ZDF_ROOF</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span> <span class="n">PABS_SW_ROOF</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span>                <span class="p">&amp;</span>
+                        <span class="o">+</span> <span class="n">XCPD</span> <span class="o">*</span> <span class="n">ZRHO_ACF_ROOF</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span> <span class="n">PTA</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span><span class="o">/</span><span class="n">PEXNA</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">-</span> <span class="n">ZEXPL</span><span class="o">*</span><span class="n">ZTS_ROOF</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span><span class="o">/</span><span class="n">PEXNS</span><span class="p">(</span><span class="n">JJ</span><span class="p">))</span> <span class="p">&amp;</span>
+                        <span class="o">+</span> <span class="n">T</span><span class="p">%</span><span class="n">XEMIS_ROOF</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span><span class="o">*</span><span class="n">PLW_RAD</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span>                                                   <span class="p">&amp;</span>                 
+                        <span class="o">+</span> <span class="n">XLVTT</span> <span class="o">*</span> <span class="n">ZRHO_ACF_ROOF_WAT</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">*</span> <span class="n">PDELT_ROOF</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span>                                 <span class="p">&amp;</span>
+                          <span class="o">*</span> <span class="p">(</span> <span class="n">PQA</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">-</span> <span class="n">PQSAT_ROOF</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">+</span> <span class="n">ZIMPL</span> <span class="o">*</span> <span class="n">ZDQSAT_ROOF</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">*</span> <span class="n">ZTS_ROOF</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="p">)</span>        <span class="p">&amp;</span>
+                        <span class="o">+</span> <span class="n">XSTEFAN</span> <span class="o">*</span> <span class="n">T</span><span class="p">%</span><span class="n">XEMIS_ROOF</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">*</span> <span class="n">ZTS_ROOF</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span><span class="o">**</span><span class="mi">4</span> <span class="o">*</span> <span class="p">(</span> <span class="mf">3.</span><span class="o">*</span><span class="n">ZIMPL</span><span class="o">-</span><span class="n">ZEXPL</span> <span class="p">)</span>              <span class="p">&amp;</span>
+                        <span class="o">+</span> <span class="n">PRR</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">*</span> <span class="n">XCL</span> <span class="o">*</span> <span class="p">(</span><span class="n">PTA</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">-</span> <span class="n">ZEXPL</span> <span class="o">*</span> <span class="n">ZTS_ROOF</span><span class="p">(</span><span class="n">JJ</span><span class="p">))</span> <span class="p">)</span> <span class="p">)</span> <span class="p">&amp;</span> <span class="c">!! heating/cooling of rain</span>
+                        <span class="o">+</span> <span class="n">T</span><span class="p">%</span><span class="n">XGREENROOF</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span><span class="o">*</span><span class="n">PG_GREENROOF_ROOF</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span>
+  <span class="c">!</span>
+  <span class="k">IF</span> <span class="p">(</span><span class="n">TOP</span><span class="p">%</span><span class="n">CBEM</span><span class="o">==</span><span class="s2">&quot;DEF&quot;</span><span class="p">)</span> <span class="k">THEN</span>
+    <span class="c">!</span>
+    <span class="n">ZB</span><span class="p">(</span><span class="n">JJ</span><span class="p">,</span><span class="n">IROOF_LAYER</span><span class="p">)</span> <span class="o">=</span> <span class="n">ZB</span><span class="p">(</span><span class="n">JJ</span><span class="p">,</span><span class="n">IROOF_LAYER</span><span class="p">)</span> <span class="o">+</span> <span class="n">ZIMPL</span> <span class="o">*</span> <span class="n">ZMTC_O_D_ROOF_IN</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span>
+    <span class="c">!</span>
+    <span class="n">ZY</span><span class="p">(</span><span class="n">JJ</span><span class="p">,</span><span class="n">IROOF_LAYER</span><span class="p">)</span> <span class="o">=</span> <span class="n">ZY</span><span class="p">(</span><span class="n">JJ</span><span class="p">,</span><span class="n">IROOF_LAYER</span><span class="p">)</span> <span class="p">&amp;</span>
+                         <span class="o">+</span> <span class="n">ZMTC_O_D_ROOF_IN</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">*</span> <span class="n">B</span><span class="p">%</span><span class="n">XTI_BLD</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="p">&amp;</span>
+                         <span class="o">-</span> <span class="n">ZEXPL</span> <span class="o">*</span> <span class="n">ZMTC_O_D_ROOF_IN</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">*</span> <span class="n">T</span><span class="p">%</span><span class="n">XT_ROOF</span><span class="p">(</span><span class="n">JJ</span><span class="p">,</span><span class="n">IROOF_LAYER</span><span class="p">)</span>
+    <span class="c">!</span>
+  <span class="n">ELSEIF</span> <span class="p">(</span><span class="n">TOP</span><span class="p">%</span><span class="n">CBEM</span><span class="o">==</span><span class="s2">&quot;BEM&quot;</span><span class="p">)</span> <span class="k">THEN</span>
+    <span class="c">!</span>
+    <span class="n">ZB</span><span class="p">(</span><span class="n">JJ</span><span class="p">,</span> <span class="n">IROOF_LAYER</span><span class="p">)</span> <span class="o">=</span> <span class="n">ZB</span><span class="p">(</span><span class="n">JJ</span><span class="p">,</span><span class="n">IROOF_LAYER</span><span class="p">)</span> <span class="o">+</span> <span class="n">ZIMPL</span> <span class="o">*</span> <span class="p">&amp;</span>
+                         <span class="p">(</span><span class="n">ZCHTC_IN_ROOF</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">*</span> <span class="mf">4.</span><span class="o">/</span><span class="mf">3.</span> <span class="o">+</span> <span class="n">PRADHT_IN</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">*</span> <span class="p">&amp;</span>
+                         <span class="p">(</span><span class="n">B</span><span class="p">%</span><span class="n">XF_FLOOR_MASS</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">+</span> <span class="n">B</span><span class="p">%</span><span class="n">XF_FLOOR_WIN</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">+</span> <span class="p">&amp;</span>
+                          <span class="n">B</span><span class="p">%</span><span class="n">XF_FLOOR_WALL</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">+</span> <span class="n">B</span><span class="p">%</span><span class="n">XF_FLOOR_ROOF</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="p">))</span>
+
+    <span class="n">ZY</span><span class="p">(</span><span class="n">JJ</span><span class="p">,</span><span class="n">IROOF_LAYER</span><span class="p">)</span> <span class="o">=</span> <span class="n">ZY</span><span class="p">(</span><span class="n">JJ</span><span class="p">,</span><span class="n">IROOF_LAYER</span><span class="p">)</span> <span class="o">+</span> <span class="p">&amp;</span>
+       <span class="n">ZCHTC_IN_ROOF</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">B</span><span class="p">%</span><span class="n">XTI_BLD</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">-</span> <span class="mf">1.</span><span class="o">/</span><span class="mf">3.</span> <span class="o">*</span>  <span class="n">T</span><span class="p">%</span><span class="n">XT_ROOF</span><span class="p">(</span><span class="n">JJ</span><span class="p">,</span> <span class="n">IROOF_LAYER</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="mi">4</span><span class="o">*</span><span class="n">ZEXPL</span> <span class="o">-</span> <span class="mf">1.</span><span class="p">))</span> <span class="o">+</span> <span class="p">&amp;</span>
+       <span class="n">PRADHT_IN</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span> <span class="p">&amp;</span>
+          <span class="n">B</span><span class="p">%</span><span class="n">XF_FLOOR_MASS</span> <span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">B</span><span class="p">%</span><span class="n">XT_MASS</span><span class="p">(</span><span class="n">JJ</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="n">ZEXPL</span> <span class="o">*</span> <span class="n">T</span><span class="p">%</span><span class="n">XT_ROOF</span><span class="p">(</span><span class="n">JJ</span><span class="p">,</span><span class="n">IROOF_LAYER</span><span class="p">))</span> <span class="o">+</span> <span class="p">&amp;</span>
+          <span class="n">B</span><span class="p">%</span><span class="n">XF_FLOOR_WIN</span>  <span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">B</span><span class="p">%</span><span class="n">XT_WIN2</span>  <span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">-</span> <span class="n">ZEXPL</span> <span class="o">*</span> <span class="n">T</span><span class="p">%</span><span class="n">XT_ROOF</span><span class="p">(</span><span class="n">JJ</span><span class="p">,</span><span class="n">IROOF_LAYER</span><span class="p">))</span> <span class="o">+</span> <span class="p">&amp;</span>
+          <span class="n">B</span><span class="p">%</span><span class="n">XF_FLOOR_WALL</span> <span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">PTI_WALL</span>   <span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">-</span> <span class="n">ZEXPL</span> <span class="o">*</span> <span class="n">T</span><span class="p">%</span><span class="n">XT_ROOF</span><span class="p">(</span><span class="n">JJ</span><span class="p">,</span><span class="n">IROOF_LAYER</span><span class="p">))</span> <span class="o">+</span> <span class="p">&amp;</span>
+          <span class="n">B</span><span class="p">%</span><span class="n">XF_FLOOR_ROOF</span> <span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">PTS_FLOOR</span>  <span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">-</span> <span class="n">ZEXPL</span> <span class="o">*</span> <span class="n">T</span><span class="p">%</span><span class="n">XT_ROOF</span><span class="p">(</span><span class="n">JJ</span><span class="p">,</span><span class="n">IROOF_LAYER</span><span class="p">)))</span> <span class="o">+</span> <span class="p">&amp;</span>
+          <span class="n">PLOAD_IN_ROOF</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span>
+    <span class="c">!</span>
+  <span class="k">ENDIF</span>
+  <span class="c">!</span>
+<span class="k">ENDDO</span>
+<span class="c">!</span>
+<span class="c">!</span>
+ <span class="k">CALL </span><span class="n">LAYER_E_BUDGET</span><span class="p">(</span> <span class="n">T</span><span class="p">%</span><span class="n">XT_ROOF</span><span class="p">,</span> <span class="n">PTSTEP</span><span class="p">,</span> <span class="n">ZIMPL</span><span class="p">,</span> <span class="n">T</span><span class="p">%</span><span class="n">XHC_ROOF</span><span class="p">,</span> <span class="n">T</span><span class="p">%</span><span class="n">XTC_ROOF</span><span class="p">,</span> <span class="n">T</span><span class="p">%</span><span class="n">XD_ROOF</span><span class="p">,</span> <span class="p">&amp;</span>
+                     <span class="n">ZA</span><span class="p">,</span> <span class="n">ZB</span><span class="p">,</span> <span class="n">ZC</span><span class="p">,</span> <span class="n">ZY</span><span class="p">,</span> <span class="n">PDQS_ROOF</span> <span class="p">)</span>
+<span class="c">!</span>
+<span class="c">!-------------------------------------------------------------------------------</span>
+<span class="c">!</span>
+<span class="c">!*     diagnostic: computation of flux between bld and internal roof layer</span>
+<span class="k">DO </span><span class="n">JJ</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">SIZE</span><span class="p">(</span><span class="n">T</span><span class="p">%</span><span class="n">XT_ROOF</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+  <span class="c">!</span>
+  <span class="n">ZTI_ROOF_CONV</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="mf">4.</span><span class="o">/</span><span class="mf">3.</span> <span class="o">*</span> <span class="n">ZIMPL</span> <span class="o">*</span> <span class="n">T</span><span class="p">%</span><span class="n">XT_ROOF</span><span class="p">(</span><span class="n">JJ</span><span class="p">,</span> <span class="n">IROOF_LAYER</span><span class="p">)</span> <span class="o">+</span> <span class="mf">1.</span><span class="o">/</span><span class="mf">3.</span> <span class="o">*</span> <span class="n">ZTI_ROOF</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">4</span><span class="o">*</span><span class="n">ZEXPL</span> <span class="o">-</span><span class="mf">1.</span><span class="p">)</span>
+  <span class="n">ZTI_ROOF</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="n">ZEXPL</span> <span class="o">*</span> <span class="n">ZTI_ROOF</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">+</span> <span class="n">ZIMPL</span> <span class="o">*</span> <span class="n">T</span><span class="p">%</span><span class="n">XT_ROOF</span><span class="p">(</span><span class="n">JJ</span><span class="p">,</span> <span class="n">IROOF_LAYER</span><span class="p">)</span> 
+  <span class="k">SELECT CASE</span><span class="p">(</span><span class="n">TOP</span><span class="p">%</span><span class="n">CBEM</span><span class="p">)</span>
+  <span class="k">CASE</span><span class="p">(</span><span class="s2">&quot;DEF&quot;</span><span class="p">)</span>
+     <span class="n">PFLX_BLD_ROOF</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="n">ZMTC_O_D_ROOF_IN</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">B</span><span class="p">%</span><span class="n">XTI_BLD</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">-</span> <span class="n">ZTI_ROOF</span><span class="p">(</span><span class="n">JJ</span><span class="p">))</span>
+  <span class="k">CASE</span><span class="p">(</span><span class="s2">&quot;BEM&quot;</span><span class="p">)</span>
+     <span class="n">PRAD_ROOF_WALL</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="n">PRADHT_IN</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span>     <span class="o">*</span> <span class="p">(</span><span class="n">ZTI_ROOF</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">-</span> <span class="n">PTI_WALL</span><span class="p">(</span><span class="n">JJ</span><span class="p">))</span>
+     <span class="n">PRAD_ROOF_WIN</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span>  <span class="o">=</span> <span class="n">PRADHT_IN</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span>     <span class="o">*</span> <span class="p">(</span><span class="n">ZTI_ROOF</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">-</span> <span class="n">B</span><span class="p">%</span><span class="n">XT_WIN2</span><span class="p">(</span><span class="n">JJ</span><span class="p">))</span>
+     <span class="n">PRAD_ROOF_FLOOR</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span><span class="o">=</span> <span class="n">PRADHT_IN</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span>     <span class="o">*</span> <span class="p">(</span><span class="n">ZTI_ROOF</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">-</span> <span class="n">PTS_FLOOR</span><span class="p">(</span><span class="n">JJ</span><span class="p">))</span>
+     <span class="n">PRAD_ROOF_MASS</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="n">PRADHT_IN</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span>     <span class="o">*</span> <span class="p">(</span><span class="n">ZTI_ROOF</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">-</span> <span class="n">B</span><span class="p">%</span><span class="n">XT_MASS</span><span class="p">(</span><span class="n">JJ</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+     <span class="n">PCONV_ROOF_BLD</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="n">ZCHTC_IN_ROOF</span>  <span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">ZTI_ROOF_CONV</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">-</span> <span class="n">B</span><span class="p">%</span><span class="n">XTI_BLD</span> <span class="p">(</span><span class="n">JJ</span><span class="p">))</span>
+     <span class="n">PFLX_BLD_ROOF</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="o">-</span><span class="p">(</span><span class="n">PRAD_ROOF_WALL</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">+</span> <span class="n">PRAD_ROOF_WIN</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">+</span> <span class="n">PRAD_ROOF_FLOOR</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">+</span> <span class="p">&amp;</span>
+                            <span class="n">PRAD_ROOF_MASS</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">+</span> <span class="n">PCONV_ROOF_BLD</span><span class="p">(</span><span class="n">JJ</span><span class="p">))</span>
+  <span class="k">ENDSELECT</span>
+  
+  <span class="c">!</span>
+  <span class="c">!*      8.     Infra-red radiation absorbed by roofs</span>
+  <span class="c">!              -------------------------------------</span>
+  <span class="c">!</span>
+  <span class="c">!* radiative surface temperature at intermediate time step</span>
+  <span class="n">ZTRAD_ROOF</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span> <span class="n">ZTS_ROOF</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span><span class="o">**</span><span class="mi">4</span> <span class="o">+</span> <span class="p">&amp;</span>
+                   <span class="mf">4.</span><span class="o">*</span><span class="n">ZIMPL</span><span class="o">*</span><span class="n">ZTS_ROOF</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span><span class="o">**</span><span class="mi">3</span> <span class="o">*</span> <span class="p">(</span><span class="n">T</span><span class="p">%</span><span class="n">XT_ROOF</span><span class="p">(</span><span class="n">JJ</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="n">ZTS_ROOF</span><span class="p">(</span><span class="n">JJ</span><span class="p">))</span> <span class="p">)</span><span class="o">**</span><span class="mf">0.25</span>
+  <span class="c">!</span>
+  <span class="c">!* absorbed LW</span>
+  <span class="n">PABS_LW_ROOF</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="n">T</span><span class="p">%</span><span class="n">XEMIS_ROOF</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">PLW_RAD</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">-</span> <span class="n">XSTEFAN</span> <span class="o">*</span> <span class="n">ZTRAD_ROOF</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span><span class="o">**</span> <span class="mi">4</span><span class="p">)</span>
+  <span class="c">!</span>
+  <span class="c">!*      9.     Sensible heat flux between snow free roof and air</span>
+  <span class="c">!              -------------------------------------------------</span>
+  <span class="c">!</span>
+  <span class="c">!* aerodynamic surface temperature at the intermediate time step</span>
+  <span class="n">ZTAER_ROOF</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="n">ZEXPL</span> <span class="o">*</span> <span class="n">ZTS_ROOF</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">+</span> <span class="n">ZIMPL</span> <span class="o">*</span> <span class="n">T</span><span class="p">%</span><span class="n">XT_ROOF</span><span class="p">(</span><span class="n">JJ</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+  <span class="n">PHFREE_ROOF</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="n">ZRHO_ACF_ROOF</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">*</span> <span class="n">XCPD</span> <span class="o">*</span> <span class="p">&amp;</span>
+                   <span class="p">(</span> <span class="n">ZTAER_ROOF</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span><span class="o">/</span><span class="n">PEXNS</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">-</span> <span class="n">PTA</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span><span class="o">/</span><span class="n">PEXNA</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="p">)</span>
+  <span class="c">!</span>
+  <span class="n">ZHEAT_RR</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="n">PRR</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">*</span> <span class="n">XCL</span> <span class="o">*</span> <span class="p">(</span><span class="n">ZTAER_ROOF</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">-</span> <span class="n">PTA</span><span class="p">(</span><span class="n">JJ</span><span class="p">))</span>
+  <span class="c">!</span>
+  <span class="c">!*      10.     Latent heat flux between snow free roof and air</span>
+  <span class="c">!              -------------------------------------------------</span>
+  <span class="c">!</span>
+  <span class="n">PLEFREE_ROOF</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="n">ZRHO_ACF_ROOF_WAT</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">*</span> <span class="n">XLVTT</span> <span class="o">*</span> <span class="n">PDELT_ROOF</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">*</span> <span class="p">&amp;</span>
+                     <span class="p">(</span> <span class="n">PQSAT_ROOF</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">-</span> <span class="n">PQA</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">+</span>                     <span class="p">&amp;</span>
+                       <span class="n">ZIMPL</span> <span class="o">*</span> <span class="n">ZDQSAT_ROOF</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">T</span><span class="p">%</span><span class="n">XT_ROOF</span><span class="p">(</span><span class="n">JJ</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="n">ZTS_ROOF</span><span class="p">(</span><span class="n">JJ</span><span class="p">))</span> <span class="p">)</span> 
+  <span class="c">!</span>
+  <span class="c">!      13.     Energy imbalance for verification</span>
+  <span class="c">!              ---------------------------------</span>
+  <span class="n">PIMB_ROOF</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">=</span> <span class="n">PABS_SW_ROOF</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">+</span> <span class="n">PABS_LW_ROOF</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">-</span> <span class="n">PDQS_ROOF</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="p">&amp;</span>
+               <span class="o">-</span> <span class="n">ZDF_ROOF</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span> <span class="n">PHFREE_ROOF</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">+</span> <span class="n">PLEFREE_ROOF</span><span class="p">(</span><span class="n">JJ</span><span class="p">))</span> <span class="p">&amp;</span>
+               <span class="o">-</span> <span class="n">PDN_ROOF</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">*</span> <span class="n">PGSNOW_ROOF</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span> <span class="o">+</span> <span class="n">PFLX_BLD_ROOF</span><span class="p">(</span><span class="n">JJ</span><span class="p">)</span>
+  <span class="c">!</span>
+<span class="k">ENDDO</span>
+<span class="c">!</span>
+<span class="c">!*      11.     New saturated specified humidity near the roof surface</span>
+<span class="c">!              ------------------------------------------------------</span>
+<span class="c">!</span>
+<span class="n">PQSAT_ROOF</span><span class="p">(:)</span> <span class="o">=</span>  <span class="n">QSAT</span><span class="p">(</span><span class="n">T</span><span class="p">%</span><span class="n">XT_ROOF</span><span class="p">(:,</span><span class="mi">1</span><span class="p">),</span><span class="n">PPS</span><span class="p">(:))</span>
+<span class="c">!</span>
+<span class="c">!-------------------------------------------------------------------------</span>
+<span class="k">IF</span> <span class="p">(</span><span class="n">LHOOK</span><span class="p">)</span> <span class="k">CALL </span><span class="n">DR_HOOK</span><span class="p">(</span><span class="s1">&#39;ROOF_LAYER_E_BUDGET&#39;</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">ZHOOK_HANDLE</span><span class="p">)</span>
+<span class="c">!-------------------------------------------------------------------------</span>
+<span class="c">!</span>
+<span class="k">END SUBROUTINE </span><span class="n">ROOF_LAYER_E_BUDGET</span>
+</pre></div>
+
+    </section>
+    <br>
+    
+    
+    </div>
+  </div>
+
+
+    <hr>    
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+      <div class="row">
+        <div class="col-xs-6 col-md-6"><p>Town Energy Balance (TEB) model API docs was developed by teb-model<br>&copy; 2021 CeCILL
+                                          </p>
+        </div>
+        <div class="col-xs-6 col-md-6">
+          <p class="text-right">
+            Documentation generated by 
+            <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+            
+            
+          </p>
+        </div>
+      </div>
+      <br>
+      </div> <!-- /container -->    
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+<!--
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+-->
+    <script src="../js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../js/ie10-viewport-bug-workaround.js"></script>
+
+    <!-- MathJax JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+        jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+        extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+      });
+    </script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    
+    <script src="../tipuesearch/tipuesearch_content.js"></script>
+    <script src="../tipuesearch/tipuesearch_set.js"></script>
+    <script src="../tipuesearch/tipuesearch.js"></script>
+    
+    
+  </body>
+</html>
