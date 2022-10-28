@@ -45,7 +45,7 @@ build/
 *.app
 
 # TEB test output files
-examples/CAPITOUL/output/*.txt
+examples/*/output/*.txt
 
 # Test artefacts
 artefacts/

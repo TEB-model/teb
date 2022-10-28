@@ -1,0 +1,416 @@
+&dimensions
+NROOF_LAYER = 9          ! number of roof layers
+NROAD_LAYER = 8          ! number of road layers
+NWALL_LAYER = 9          ! number of wall layers
+NFLOOR_LAYER = 9         ! number of floor layers
+/
+
+&parameters
+XTSTEP_SURF = 300.      ! Time step used in TEB (s)
+IYEAR       = 2004      ! Current year (UTC)
+IMONTH      = 2         ! Current month (UTC)
+IDAY        = 19        ! Current day (UTC)
+ZTIME_START = 82800.    ! Time at start of the run (UTC) (s)
+                        ! I.e. 23:00 as Toulouse time zone is UTC + 1
+ZLON        = 1.3       ! Longitude (deg)
+ZLAT        = 43.484    ! Latitude (deg)
+INB_STEP_ATM = 17999    ! Number of time steps in input data
+INB_ATM     = 6         ! number time the driver calls the TEB
+                        ! routines during a forcing time-step
+                        ! --> it defines the time-step for TEB
+                        ! Forcing time step=XTSTEP_SURF*INB_ATM.
+                        ! The output time step should be equal to the
+                        ! native time step of the input data.
+KSW         = 1         ! number of spectral bands in SW forcing
+ZZREF       = 28.       ! Atm. Forcing height above roof level
+NO_OUTPUT   = .FALSE.   ! Whether to output results to file
+
+!                                                                                     ! ||   ||
+!                                                                                     ! ||   ||
+!============================================================                         ! ||   ||
+!============================================================                         ! ||   ||
+!============================================================            //_____________||   ||
+!============================================================           //_______________|   ||
+!             PARAMETERS SETUP : CAPITOUL CASE                         //                    ||
+!============================================================          \\ ___________________||
+!============================================================           \\ ___________________|
+!============================================================            \\
+!============================================================
+!
+! Main TEB options
+!
+!============================================================
+!============================================================
+! Building energy Model
+!     ! 'DEF'  : no Building Energy Model
+!     ! 'BEM'  :    Building Energy Model
+CBEM = "BEM"
+! Road direction
+!     ! 'UNIF' : uniform roads
+!     ! 'ORIE' : specified road orientation
+HROAD_DIR = 'UNIF'
+! Wall option
+!     ! 'UNIF' : uniform walls
+!     ! 'TWO ' : 2 opposite  wall
+HWALL_OPT = 'UNIF'
+! Garden and greenroof options
+VEG_ALB = 0.25
+VEG_EMIS = 0.98
+! Gardens
+LGARDEN = .TRUE.
+GARDEN_BR = 0.25 ! Bowen ratio for gardens
+! Green roofs
+LGREENROOF = .TRUE. ! greenroof activation
+GREENROOF_BR = 0.5 ! Bowen ratio for greenroof
+ZFRAC_GR   = 0.      ! greenroof fraction on roofs
+! Solar panels
+LSOLAR_PANEL = .FALSE. ! solar panels activation
+ZFRAC_PANEL  = 0.0     ! solar panels fraction on roofs
+! Cooling system    ! 'DXCOIL','IDEAL ', 'MINIDX'
+CCOOL_COIL = "DXCOIL"
+! Heating system    ! 'FINCAP','IDEAL '
+CHEAT_COIL = "FINCAP"
+! TEB option for z0h roof & road: 'MASC95' : Mascart et al,1995;
+!                                 'BRUT82' : Brustaert,1982;
+!                                 'KAND07' : Kanda,2007
+HZ0H = 'KAND07'
+!
+!
+!============================================================
+!============================================================
+! Urban geometry
+!============================================================
+!============================================================
+ZZ0         = 2.0     ! Roughness length (m)
+ZBLD        = 0.68   ! Horizontal building area density
+ZGARDEN     = 0.0   ! fraction of GARDEN areas
+ZBLD_HEIGHT = 20   ! Canyon height (m)
+ZWALL_O_HOR = 1.05   ! Vertical to horizonal surf ratio
+!* Road direction
+ZROAD_DIR    = 0.   ! N-S road  (° from North, clockwise)
+!
+!============================================================
+!============================================================
+! Roof
+!============================================================
+!============================================================
+ZALB_ROOF   = 0.32       ! albedo of roof
+ZEMIS_ROOF  = 0.95       ! emissivity of roof
+ZHC_ROOF(1,1) = 1580000  ! volumetric heat capacity (J m-3 K-1) (external layer)
+ZHC_ROOF(1,2) = 1580000  ! volumetric heat capacity (J m-3 K-1) (external layer)
+ZHC_ROOF(1,3) = 1580000  ! volumetric heat capacity (J m-3 K-1) (external layer)
+ZHC_ROOF(1,4) = 1580000  ! volumetric heat capacity (J m-3 K-1) (inner layer)
+ZHC_ROOF(1,5) = 1580000  ! volumetric heat capacity (J m-3 K-1) (inner layer)
+ZHC_ROOF(1,6) = 1580000  ! volumetric heat capacity (J m-3 K-1) (inner layer)
+ZHC_ROOF(1,7) = 1580000  ! volumetric heat capacity (J m-3 K-1) (inner layer)
+ZHC_ROOF(1,8) = 1580000  ! volumetric heat capacity (J m-3 K-1) (inner layer)
+ZHC_ROOF(1,9) =   52030  ! volumetric heat capacity (J m-3 K-1) (inner layer)
+ZTC_ROOF(1,1) = 1.15     ! thermal conductivity (W/m K) (external layer)
+ZTC_ROOF(1,2) = 1.15     ! thermal conductivity (W/m K) (external layer)
+ZTC_ROOF(1,3) = 1.15     ! thermal conductivity (W/m K) (external layer)
+ZTC_ROOF(1,4) = 1.15     ! thermal conductivity (W/m K) (external layer)
+ZTC_ROOF(1,5) = 1.15     ! thermal conductivity (W/m K) (external layer)
+ZTC_ROOF(1,6) = 1.15     ! thermal conductivity (W/m K) (external layer)
+ZTC_ROOF(1,7) = 1.15     ! thermal conductivity (W/m K) (external layer)
+ZTC_ROOF(1,8) = 1.15     ! thermal conductivity (W/m K) (external layer)
+ZTC_ROOF(1,9) = 0.03      ! thermal conductivity (W/m K) (inner layer)
+ZD_ROOF(1,1)  = 0.038     ! thickcness (m) (external layer)
+ZD_ROOF(1,2)  = 0.038    ! thickcness (m) (external layer)
+ZD_ROOF(1,3)  = 0.038    ! thickcness (m) (external layer)
+ZD_ROOF(1,4)  = 0.038    ! thickcness (m) (external layer)
+ZD_ROOF(1,5)  = 0.038    ! thickcness (m) (external layer)
+ZD_ROOF(1,6)  = 0.038    ! thickcness (m) (external layer)
+ZD_ROOF(1,7)  = 0.038    ! thickcness (m) (external layer)
+ZD_ROOF(1,8)  = 0.038    ! thickcness (m) (external layer)
+ZD_ROOF(1,9)  = 0.03     ! thickcness (m) (inner layer)
+!============================================================
+!============================================================
+! Road
+!============================================================
+!============================================================
+ZALB_ROAD   = 0.08       ! albedo of roof
+ZEMIS_ROAD  = 0.94       ! emissivity of roof
+ZHC_ROAD(1,1) = 2106000  ! volumetric heat capacity (J m-3 K-1) (external layer)
+ZHC_ROAD(1,2) = 2106000  ! volumetric heat capacity (J m-3 K-1) (external layer)
+ZHC_ROAD(1,3) = 2106000  ! volumetric heat capacity (J m-3 K-1) (external layer)
+ZHC_ROAD(1,4) = 1400000  ! volumetric heat capacity (J m-3 K-1) (inner layer)
+ZHC_ROAD(1,5) = 1400000  ! volumetric heat capacity (J m-3 K-1) (inner layer)
+ZHC_ROAD(1,6) = 1400000  ! volumetric heat capacity (J m-3 K-1) (inner layer)
+ZHC_ROAD(1,7) = 1400000  ! volumetric heat capacity (J m-3 K-1) (inner layer)
+ZHC_ROAD(1,8) = 1400000  ! volumetric heat capacity (J m-3 K-1) (inner layer)
+ZTC_ROAD(1,1) = 1.95     ! thermal conductivity (W/m K) (external layer)
+ZTC_ROAD(1,2) = 1.95     ! thermal conductivity (W/m K) (external layer)
+ZTC_ROAD(1,3) = 1.95     ! thermal conductivity (W/m K) (external layer)
+ZTC_ROAD(1,4) = 0.40     ! thermal conductivity (W/m K) (inner layer)
+ZTC_ROAD(1,5) = 0.40     ! thermal conductivity (W/m K) (inner layer)
+ZTC_ROAD(1,6) = 0.40     ! thermal conductivity (W/m K) (inner layer)
+ZTC_ROAD(1,7) = 0.40     ! thermal conductivity (W/m K) (inner layer)
+ZTC_ROAD(1,8) = 0.40     ! thermal conductivity (W/m K) (inner layer)
+ZD_ROAD(1,1)  = 0.08     ! thickcness (m) (external layer)
+ZD_ROAD(1,2)  = 0.08     ! thickcness (m) (external layer)
+ZD_ROAD(1,3)  = 0.08     ! thickcness (m) (external layer)
+ZD_ROAD(1,4)  = 0.20     ! thickcness (m) (inner layer)
+ZD_ROAD(1,5)  = 0.20     ! thickcness (m) (inner layer)
+ZD_ROAD(1,6)  = 0.20     ! thickcness (m) (inner layer)
+ZD_ROAD(1,7)  = 0.20     ! thickcness (m) (inner layer)
+ZD_ROAD(1,8)  = 0.20     ! thickcness (m) (inner layer)
+!============================================================
+!============================================================
+! Wall
+!============================================================
+!============================================================
+ZALB_WALL   = 0.32       ! albedo of roof
+ZEMIS_WALL  = 0.95       ! emissivity of roof
+ZHC_WALL(1,1) = 1580000  ! volumetric heat capacity (J m-3 K-1) (external layer)
+ZHC_WALL(1,2) = 1580000  ! volumetric heat capacity (J m-3 K-1) (external layer)
+ZHC_WALL(1,3) = 1580000  ! volumetric heat capacity (J m-3 K-1) (external layer)
+ZHC_WALL(1,4) = 1580000  ! volumetric heat capacity (J m-3 K-1) (inner layer)
+ZHC_WALL(1,5) = 1580000  ! volumetric heat capacity (J m-3 K-1) (inner layer)
+ZHC_WALL(1,6) = 1580000  ! volumetric heat capacity (J m-3 K-1) (inner layer)
+ZHC_WALL(1,7) = 1580000  ! volumetric heat capacity (J m-3 K-1) (inner layer)
+ZHC_WALL(1,8) = 1580000  ! volumetric heat capacity (J m-3 K-1) (inner layer)
+ZHC_WALL(1,9) =   52030  ! volumetric heat capacity (J m-3 K-1) (inner layer)
+ZTC_WALL(1,1) = 1.15     ! thermal conductivity (W/m K) (external layer)
+ZTC_WALL(1,2) = 1.15     ! thermal conductivity (W/m K) (external layer)
+ZTC_WALL(1,3) = 1.15     ! thermal conductivity (W/m K) (external layer)
+ZTC_WALL(1,4) = 1.15     ! thermal conductivity (W/m K) (external layer)
+ZTC_WALL(1,5) = 1.15     ! thermal conductivity (W/m K) (external layer)
+ZTC_WALL(1,6) = 1.15     ! thermal conductivity (W/m K) (external layer)
+ZTC_WALL(1,7) = 1.15     ! thermal conductivity (W/m K) (external layer)
+ZTC_WALL(1,8) = 1.15     ! thermal conductivity (W/m K) (external layer)
+ZTC_WALL(1,9) = 0.03      ! thermal conductivity (W/m K) (inner layer)
+ZD_WALL(1,1)  = 0.038     ! thickcness (m) (external layer)
+ZD_WALL(1,2)  = 0.038    ! thickcness (m) (external layer)
+ZD_WALL(1,3)  = 0.038    ! thickcness (m) (external layer)
+ZD_WALL(1,4)  = 0.038    ! thickcness (m) (external layer)
+ZD_WALL(1,5)  = 0.038    ! thickcness (m) (external layer)
+ZD_WALL(1,6)  = 0.038    ! thickcness (m) (external layer)
+ZD_WALL(1,7)  = 0.038    ! thickcness (m) (external layer)
+ZD_WALL(1,8)  = 0.038    ! thickcness (m) (external layer)
+ZD_WALL(1,9)  = 0.03     ! thickcness (m) (inner layer)
+!============================================================
+!============================================================
+! Floor and internal mass
+!============================================================
+!============================================================
+ZHC_FLOOR(1,1) = 1580000  ! volumetric heat capacity (J m-3 K-1) (external layer)
+ZHC_FLOOR(1,2) = 1580000  ! volumetric heat capacity (J m-3 K-1) (external layer)
+ZHC_FLOOR(1,3) = 1580000  ! volumetric heat capacity (J m-3 K-1) (external layer)
+ZHC_FLOOR(1,4) = 1580000  ! volumetric heat capacity (J m-3 K-1) (inner layer)
+ZHC_FLOOR(1,5) = 1580000  ! volumetric heat capacity (J m-3 K-1) (inner layer)
+ZHC_FLOOR(1,6) = 1580000  ! volumetric heat capacity (J m-3 K-1) (inner layer)
+ZHC_FLOOR(1,7) = 1580000  ! volumetric heat capacity (J m-3 K-1) (inner layer)
+ZHC_FLOOR(1,8) = 1580000  ! volumetric heat capacity (J m-3 K-1) (inner layer)
+ZHC_FLOOR(1,9) =   52030  ! volumetric heat capacity (J m-3 K-1) (inner layer)
+ZTC_FLOOR(1,1) = 1.15     ! thermal conductivity (W/m K) (external layer)
+ZTC_FLOOR(1,2) = 1.15     ! thermal conductivity (W/m K) (external layer)
+ZTC_FLOOR(1,3) = 1.15     ! thermal conductivity (W/m K) (external layer)
+ZTC_FLOOR(1,4) = 1.15     ! thermal conductivity (W/m K) (external layer)
+ZTC_FLOOR(1,5) = 1.15     ! thermal conductivity (W/m K) (external layer)
+ZTC_FLOOR(1,6) = 1.15     ! thermal conductivity (W/m K) (external layer)
+ZTC_FLOOR(1,7) = 1.15     ! thermal conductivity (W/m K) (external layer)
+ZTC_FLOOR(1,8) = 1.15     ! thermal conductivity (W/m K) (external layer)
+ZTC_FLOOR(1,9) = 0.03      ! thermal conductivity (W/m K) (inner layer)
+ZD_FLOOR(1,1)  = 0.038     ! thickcness (m) (external layer)
+ZD_FLOOR(1,2)  = 0.038    ! thickcness (m) (external layer)
+ZD_FLOOR(1,3)  = 0.038    ! thickcness (m) (external layer)
+ZD_FLOOR(1,4)  = 0.038    ! thickcness (m) (external layer)
+ZD_FLOOR(1,5)  = 0.038    ! thickcness (m) (external layer)
+ZD_FLOOR(1,6)  = 0.038    ! thickcness (m) (external layer)
+ZD_FLOOR(1,7)  = 0.038    ! thickcness (m) (external layer)
+ZD_FLOOR(1,8)  = 0.038    ! thickcness (m) (external layer)
+ZD_FLOOR(1,9)  = 0.03     ! thickcness (m) (inner layer)
+!
+!============================================================
+!============================================================
+!* anthropogenic heat fluxes
+!============================================================
+!============================================================
+ZH_TRAFFIC   = 8.0  ! heat fluxes due to traffic
+ZLE_TRAFFIC  = 0.0  ! heat fluxes due to traffic
+ZH_INDUSTRY  = 0.0  ! heat fluxes due to factories
+ZLE_INDUSTRY = 0.0  ! heat fluxes due to factories
+!
+!
+!============================================================
+!============================================================
+! solar panels
+!============================================================
+!============================================================
+ZEMIS_PANEL = 0.9      ! Emissivity of solar panel [-]
+ZALB_PANEL  = 0.1      ! albedo of solar panel  [-]
+ZEFF_PANEL  = 0.14     ! Efficiency of solar panel [-]
+!
+!============================================================
+!============================================================
+! Buildings' use information
+!============================================================
+!============================================================
+ZRESIDENTIAL = 1.      ! Fraction of residential use in buildings (-)
+ZDT_RES      = 0.      ! target temperature change when unoccupied (K) (residential buildings)
+ZDT_OFF      = 0.      ! target temperature change when unoccupied (K) (office buildings)
+!
+!============================================================
+!============================================================
+! Parameters for Building Energy Module (BEM)
+!============================================================
+!============================================================
+!
+!=============================================================
+! Building configuration
+!=============================================================
+!
+PFLOOR_HEIGHT = 3.0     ! Floor height (m)
+ZINF          = 0.5     ! Infiltration flow rate [AC/H]
+ZQIN          = 5.8     ! Internal heat gains [W m-2(floor)]
+ZQIN_FRAD     = 0.2     ! Radiant fraction of internal heat gains
+ZQIN_FLAT     = 0.2     ! Latent franction of internal heat gains
+!
+!=============================================================
+! windows
+!=============================================================
+!
+ZGR           = 0.3     ! Glazing ratio
+ZSHGC         = 0.763   ! window solar transmittance
+PU_WIN        = 2.716   ! window glass-to-glass U-factor [W m-2 K-1]
+!
+!=============================================================
+! Shading devices
+!=============================================================
+!
+ZSHADE        = 1.      ! flag to activate shading devices -> REAL for i/o 0. or 1
+ZSHGC_SH      = 0.025   ! window + shading solar heat gain coef.
+!
+!=============================================================
+! Natural ventilation
+!=============================================================
+!
+ZNATVENT = 0.           ! flag to describe surventilation system for i/o
+                        ! 0 for NONE, 1 for MANU and 2 for AUTO
+!=============================================================
+! HVAC system
+!=============================================================
+!
+ZV_VENT       = 0.     ! Ventilation flow rate [AC/H]
+ZF_WATER_COND = 0.      ! fraction of evaporation for the condensers
+ZF_WASTE_CAN  = 1.0     ! fraction of waste heat released into the canyon
+!
+!=============================================================
+! Internal target temperatures
+!=============================================================
+!
+ZTCOOL_TARGET = 300.16  ! Cooling setpoint of HVAC system [K]
+ZTHEAT_TARGET = 292.16  ! Heating setpoint of HVAC system [K]
+ZHR_TARGET    = 0.5     ! Relative humidity setpoint
+!
+!=============================================================
+! Heating system
+!=============================================================
+!
+ZEFF_HEAT     = 0.9     ! Efficiency of the heating system
+ZCAP_SYS_HEAT =  90.    ! Capacity of the heating system
+                        ! [W m-2(bld)]
+!
+!=============================================================
+! Cooling system
+!=============================================================
+!
+ZCAP_SYS_RAT  = 100.0   ! Rated capacity of the cooling system
+                        ! [W m-2(bld)]
+ZT_ADP        = 285.66  ! Apparatus dewpoint temperature of the
+                        ! cooling coil [K]
+ZM_SYS_RAT    = 0.0067  ! Rated HVAC mass flow rate
+                        ! [kg s-1 m-2(bld)]
+ZCOP_RAT      = 2.5     ! Rated COP of the cooling system
+!
+!=============================================================
+! convection coefficients option
+!=============================================================
+!
+CCH_BEM       = 'DOE-2' ! TEB option for building outside conv. coef : 'ROW30', 'DOE-2'
+ZROUGH_ROOF   = 1.52    ! roof roughness coef. in case DOE-2
+ZROUGH_ROOF   = 1.52    ! wall roughness coef. in case DOE-2
+!
+!===========================================================================
+!===========================================================================
+!===========================================================================
+!===========================================================================
+! END OF PARAMETERS SETUP
+!===========================================================================
+!===========================================================================
+!===========================================================================
+!===========================================================================
+!
+!                  Check First time-step values below
+!
+!                               ||   ||
+!                               ||   ||
+!                              \\     //
+!                               \\   //
+!                                \\ //
+!                                 \\/
+!
+!===========================================================================
+!===========================================================================
+!===========================================================================
+!===========================================================================
+! Inizialization for first time-step
+!===========================================================================
+!===========================================================================
+!===========================================================================
+!===========================================================================
+!
+! These values correspond to the "capitoul" test case in SURFEX7_3
+!
+ZT_ROAD(:,1) = 274.07256  ! road layers temperatures
+ZT_ROAD(:,2) = 274.16793  ! road layers temperatures
+ZT_ROAD(:,3) = 274.16793  ! road layers temperatures
+ZT_ROAD(:,4) = 274.16793  ! road layers temperatures
+ZT_ROAD(:,5) = 274.16793  ! road layers temperatures
+ZT_ROAD(:,6) = 274.16793  ! road layers temperatures
+ZT_ROAD(:,7) = 274.16793  ! road layers temperatures
+ZT_ROAD(:,8) = 274.16793  ! road layers temperatures
+ZT_ROOF(:,1) = 274.09930  ! roof layers temperatures
+ZT_ROOF(:,2) = 276.95065  ! roof layers temperatures
+ZT_ROOF(:,3) = 276.95065  ! roof layers temperatures
+ZT_ROOF(:,4) = 276.95065  ! roof layers temperatures
+ZT_ROOF(:,5) = 276.95065  ! roof layers temperatures
+ZT_ROOF(:,6) = 276.95065  ! roof layers temperatures
+ZT_ROOF(:,7) = 276.95065  ! roof layers temperatures
+ZT_ROOF(:,8) = 276.95065  ! roof layers temperatures
+ZT_ROOF(:,9) = 276.95065  ! roof layers temperatures
+ZT_WALL(:,1) = 274.09930  ! wall layers temperatures
+ZT_WALL(:,2) = 276.95065  ! wall layers temperatures
+ZT_WALL(:,3) = 276.95065  ! wall layers temperatures
+ZT_WALL(:,4) = 276.95065  ! wall layers temperatures
+ZT_WALL(:,5) = 276.95065  ! wall layers temperatures
+ZT_WALL(:,6) = 276.95065  ! wall layers temperatures
+ZT_WALL(:,7) = 276.95065  ! wall layers temperatures
+ZT_WALL(:,8) = 276.95065  ! wall layers temperatures
+ZT_WALL(:,9) = 276.95065  ! wall layers temperatures
+ZT_FLOOR(:,1) = 292.12     ! building floor temperature
+ZT_FLOOR(:,2) = 291.89778  ! building floor temperature
+ZT_FLOOR(:,3) = 291.26111  ! building floor temperature
+ZT_FLOOR(:,4) = 289.48333  ! building floor temperature
+ZT_FLOOR(:,5) = 283.84017  ! building floor temperature
+ZT_FLOOR(:,6) = 283.84017  ! building floor temperature
+ZT_FLOOR(:,7) = 283.84017  ! building floor temperature
+ZT_FLOOR(:,8) = 283.84017  ! building floor temperature
+ZT_FLOOR(:,9) = 283.84017  ! building floor temperature
+ZT_MASS(:,1) = 292.15     ! building mass temperature
+ZT_MASS(:,2) = 292.15     ! building mass temperature
+ZT_MASS(:,3) = 292.15     ! building mass temperature
+ZT_MASS(:,4) = 292.15     ! building mass temperature
+ZT_MASS(:,5) = 291.84017  ! building mass temperature
+ZT_MASS(:,6) = 291.84017  ! building mass temperature
+ZT_MASS(:,7) = 291.84017  ! building mass temperature
+ZT_MASS(:,8) = 291.84017  ! building mass temperature
+ZT_MASS(:,9) = 291.84017  ! building mass temperature
+ZTI_BLD        = 292.15     ! indoor air temperature
+ZT_CANYON      = 274.07050  ! canyon air temperature
+ZT_WIN1        = 275.       ! External window temperature
+ZT_WIN2        = 292.15     ! Internal window temperature
+ZQ_CANYON      = 0.0020888011 ! Outdoor specific humidity    [kg kg-1]
+ZQI_BLD        = 0.0068794074 ! Indoor air specific humidity [kg kg-1]
+/
+

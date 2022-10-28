@@ -1,0 +1,5 @@
+numpy
+pandas
+f90nml==1.1.2
+matplotlib
+notebook
