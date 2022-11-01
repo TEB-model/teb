@@ -278,7 +278,7 @@ PU_WIN        = 2.716   ! window glass-to-glass U-factor [W m-2 K-1]
 ! Shading devices
 !=============================================================
 !
-ZSHADE        = 1.      ! flag to activate shading devices -> REAL for i/o 0. or 1
+ZSHADE        = 0.      ! flag to activate shading devices -> REAL for i/o 0. or 1
 ZSHGC_SH      = 0.025   ! window + shading solar heat gain coef.
 !
 !=============================================================
